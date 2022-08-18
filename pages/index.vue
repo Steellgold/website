@@ -1,5 +1,5 @@
 <template>
-  <Tutorial/>
+  <Home/>
 </template>
 
 <style>
