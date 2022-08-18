@@ -2,8 +2,8 @@
 <template>
   <div class="relative flex items-top justify-center min-h-screen bg-gray-900 sm:items-center sm:pt-0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
-    <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 shadow-2xl">
-      <h1 class="text-white text-8xl font-black">Hey <span class="wave">👋🏻</span></h1>
+    <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+      <h1 class="text-white text-8xl font-black">Salut <span class="wave">👋🏻</span></h1>
     </div>
   </div>
 </template>
