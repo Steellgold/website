@@ -1,4 +1,10 @@
-<h1 class="center">Hey <span class="wave">👋🏻</span></h1>
+<h1 class="center">
+  Salut
+  <span class="wave">
+    <img class="wave" src = "/images/FluentWave.svg" height="120em" alt="Wave"/>
+  </span>
+</h1>
+<p>ça va ?</p>
 
 <style lang="scss">
   @import "../lib/scss/animations.scss";
@@ -11,11 +17,20 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 100px;
+
+    img.wave {
+      margin-bottom: -13px;
+    }
   }
 
   @media (max-width: 768px) {
     .center {
       font-size: 50px;
+
+      img.wave {
+        height: 56px;
+        margin-bottom: -7px;
+      }
     }
   }
 
