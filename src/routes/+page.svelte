@@ -1,17 +1,18 @@
-<h1 class="center">
-  Salut
-  <span class="wave">
-    <img class="wave" src = "/images/FluentWave.svg" height="120em" alt="Wave"/>
-  </span>
-</h1>
-<p>ça va ?</p>
+<div class="center">
+  <h1 class="center">
+    Salut
+    <span class="wave">
+      <img class="wave" src = "/images/FluentWave.svg" height="120em" alt="Wave"/>
+    </span>
+  </h1>
+  
+  <p>azaz</p>
+</div>
 
 <style lang="scss">
   @import "../lib/scss/animations.scss";
 
-  .center {
-    text-align: center;
-    /** center the text in middle of screen */
+  h1.center {
     position: absolute;
     top: 30%;
     left: 50%;
@@ -25,7 +26,13 @@
 
   @media (max-width: 768px) {
     .center {
-      font-size: 50px;
+      h1 {
+        font-size: 50px;
+      }
+
+      p {
+        font-size: 10px;
+      }
 
       img.wave {
         height: 56px;
