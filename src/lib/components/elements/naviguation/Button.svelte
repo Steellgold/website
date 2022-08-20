@@ -4,7 +4,7 @@
   export let color: string = "white";
 </script>
 
-<a href="{link}">
+<a href="{link}" target="_blank">
   {#if icon}
     <img src="/icons/{icon}" alt="Icon">
   {/if}
