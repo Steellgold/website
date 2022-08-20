@@ -2,6 +2,8 @@
   import Bar from "$lib/components/Bar.svelte";
 </script>
 
+<Bar/>
+
 <div class="page">
   <div class="title">
     <h1>Salut <span class="wave">
@@ -10,7 +12,7 @@
   </div>
   <div class="text">
     <p>
-      wsh la street
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi voluptas expedita repellat quidem maxime ipsa nihil.  
     </p>
   </div>
 </div>

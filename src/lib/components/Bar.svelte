@@ -1,41 +1,53 @@
-<div class="nav">
-  <nav class="navbar">
-    <img class="pdp" src="/images/profile.jpg" alt="Profile Picture" width="40px" height="40px">
-
-    <div class="navbar-links">
-      <a class="navbar-link" href="/">Home</a>
-      <a class="navbar-link" href="/">Projects</a>
-      <a class="navbar-link" href="/">Contact</a>
-    </div>
+<div>
+  <nav>
+    <img src="/images/profile.jpg" alt="logo">
+  
+    <ul>
+      <li>
+        <a href="/about" class="link">About me</a>
+      </li>    
+      <li>
+        <a href="/projects" class="link">Projects</a>
+      </li>
+    </ul>
   </nav>
 </div>
 
 <style lang="scss">
-  .nav {
-    a.navbar-link {
-      font-weight: 500;
+  @import "../scss/variables.scss";
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      border-radius: 15px;
+      height: 60px;
     }
-  }
 
-  nav.navbar {
-    display: flex;
-    justify-content: center;
-  }
+    ul {
+      list-style-type: none;
+      overflow: hidden;
+    }
 
-  .navbar-links {
-    display: flex;
-    gap: 10px;
-  }
+    li {
+      float: left;
 
-  a.navbar-link {
-    justify-content: flex-end;
-    text-decoration: none;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 200;
-  }
+      a {
+        display: block;
+        color: $color-white;
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: $color-background;
+        text-align: center;
+        padding: 16px 16px;
+        text-decoration: none;
+      }
 
-  img.pdp {
-    border-radius: 10px;
+      a:hover:not(.active) {
+        background-color: #111;
+      }
+    }
   }
 </style>
