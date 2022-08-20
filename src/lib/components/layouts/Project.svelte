@@ -81,6 +81,7 @@
 
     h1 {
       margin: 0;
+      margin-top: 5px;
       text-align: center;
     }
     
@@ -113,6 +114,7 @@
       img {
         height: 30px;
         width: 30px;
+        border-radius: 10px;
       }
     }
   }
