@@ -18,8 +18,6 @@
 </div>
 
 <style lang="scss">
-  @import "../../scss/variables.scss";
-  
   .card {
     position: relative;
 
