@@ -5,7 +5,7 @@
     <ul>
       <li>
         <a href="/about" class="link">About me</a>
-      </li>    
+      </li>
       <li>
         <a href="#projects" class="link">Projects</a>
       </li>
