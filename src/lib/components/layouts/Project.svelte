@@ -6,8 +6,7 @@
   export let icon: string | null = null;
   export let techs: string[] | null = null;
   export let co_author: string | null = null;
-  export let gh_co_othor : string | null = null;
-  export let active: boolean = true;
+  // export let active: boolean = true;
   export let github_link: string | null = null;
 </script>
 
@@ -21,7 +20,7 @@
   <p><slot></slot></p>
 
   {#if techs}
-    <span class="subtitle"><u>Technologies:</u></span>
+    <span class="subtitle"><u>Technologies used:</u></span>
     <div class="techs">
     {#each techs as tech}
       <img width="50px" height="50px" alt="" src="/icons/prog/{tech}.png">&nbsp;
@@ -30,7 +29,7 @@
   {/if}
 
   {#if co_author}
-    <span class="subtitle">Co-author: <a href="https://github.com/{gh_co_othor}">@{co_author}</a></span>
+    <span class="subtitle">Co-author: <a href="https://github.com/{co_author}">@{co_author}</a></span>
   {/if}
     
   {#if github_link}
