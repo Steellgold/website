@@ -59,9 +59,9 @@
     line-height: 30px;
 
     @media (max-width: 768px) {
-    margin-top: -60px;
+      margin-top: -60px;
       font-size: 20px;
-      text-align: center;;
+      text-align: center;
     }
   }
 </style>
