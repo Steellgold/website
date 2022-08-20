@@ -1,5 +1,7 @@
 <script>
-  import Bar from "$lib/components/Bar.svelte";
+  import Bar from "$lib/components/layouts/Navbar.svelte";
+  import Button from "$lib/components/elements/naviguation/Button.svelte";
+  import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte";
 </script>
 
 <Bar/>
@@ -12,8 +14,16 @@
   </div>
   <div class="text">
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi voluptas expedita repellat quidem maxime ipsa nihil.  
+      Gaëtan, 17 ans, passionné de la programmation et de l'informatique, je suis développeur PHP, j'apprend actuellement le développement Web ainsi que le Java
     </p>
+  </div>
+
+  <div class="links">
+    <ButtonGroup>
+      <Button link="https://github.com/Steellgold" icon="dark/GitHub.png">GitHub</Button>
+      <Button link="https://youtube.com/Steellgold" icon="dark/YouTube.png">YouTube</Button>
+      <Button link="https://twitter.com/Steellgold" icon="dark/Twitter.png">Twitter</Button>
+    </ButtonGroup>
   </div>
 </div>
 
