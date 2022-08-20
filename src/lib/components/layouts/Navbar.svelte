@@ -14,9 +14,10 @@
 </div>
 
 <style lang="scss">
-  @import "../scss/variables.scss";
+  @import "../../scss/variables.scss";
 
   nav {
+    padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,6 +25,9 @@
     img {
       border-radius: 15px;
       height: 60px;
+      @media (max-width: 768px) {
+        height: 50px;
+      }
     }
 
     ul {
@@ -43,10 +47,12 @@
         text-align: center;
         padding: 16px 16px;
         text-decoration: none;
+        transition: background 0.3s;
+        border-radius: 50px;
       }
 
       a:hover:not(.active) {
-        background-color: #111;
+        background-color: $color-background-hover;
       }
     }
   }
