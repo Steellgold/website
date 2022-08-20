@@ -1,9 +1,14 @@
 <script lang="ts">
-  export let title = "";
-  export let icon: string | null = null;
-  export let active: boolean = true;
+  import Button from "$lib/components/elements/naviguation/Button.svelte";
 
-  import Button from "../elements/naviguation/Button.svelte";
+  export let title = "";
+  export let year = "";
+  export let icon: string | null = null;
+  export let techs: string[] | null = null;
+  export let co_author: string | null = null;
+  export let gh_co_othor : string | null = null;
+  export let active: boolean = true;
+  export let github_link: string | null = null;
 </script>
 
 <div class="card">
@@ -12,12 +17,42 @@
   </div>
 
   <h1 class="title">{title}</h1>
+  <span class="subtitle">{year}</span>
   <p><slot></slot></p>
 
-  <Button>GitHub</Button>
+  {#if techs}
+    <span class="subtitle"><u>Technologies:</u></span>
+    <div class="techs">
+    {#each techs as tech}
+      <img width="50px" height="50px" alt="" src="/icons/prog/{tech}.png">&nbsp;
+    {/each}      
+    </div>
+  {/if}
+
+  {#if co_author}
+    <span class="subtitle">Co-author: <a href="https://github.com/{gh_co_othor}">@{co_author}</a></span>
+  {/if}
+    
+  {#if github_link}
+    <span class="button">
+      <Button link={github_link} icon="dark/GitHub.png">GitHub</Button>
+    </span>
+  {/if}
 </div>
 
 <style lang="scss">
+  // hr {
+  //   margin: 0;
+  //   background-color: white;
+  //   width: 10%;
+  //   margin: auto;
+  // }
+
+  span.button {
+    margin: auto;
+    width: 50%;
+  }
+
   .card {
     position: relative;
 
@@ -25,7 +60,7 @@
     flex-direction: column;
     width: 300px;
     height: fit-content;
-    margin-top: 25px;
+    margin-top: 30px;
     padding: 30px 10px;
     gap: 20px;
     background: #111827;
@@ -41,8 +76,17 @@
       }
     }
 
+    a {
+      color: #FFFFFF;
+    }
+
     h1 {
       margin: 0;
+      text-align: center;
+    }
+    
+    span.subtitle {
+      margin: -15px;
       text-align: center;
     }
 
@@ -63,6 +107,13 @@
       img {
         height: 100%;
         width: 100%;
+      }
+    }
+
+    .techs {
+      img {
+        height: 30px;
+        width: 30px;
       }
     }
   }

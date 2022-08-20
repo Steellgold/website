@@ -37,10 +37,13 @@
   <div class="page">
     <div class="projects">
       <ProjectGroup>
-        <Project title="Portfolio" icon="svelte">
+        <Project title="Portfolio" icon="svelte" github_link="https://github.com/Steellgold/Portfolio" techs={["java","svelte"]}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
         </Project>
-        <Project title="IsMyStore" icon="symfony" active=false>
+        <Project title="Atlas" icon="php" github_link="https://github.com/Steellgold/AtlasCore" year="2019 → 2020" techs={["pmmp"]}>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
+        </Project>
+        <Project title="Rox" icon="typescript" year="2020 → now" co_author="RomainSav" gh_co_othor="RomainSav">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
         </Project>
       </ProjectGroup>
