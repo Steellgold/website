@@ -1,6 +1,7 @@
 <script lang="ts">
   export let link: string | null = "";
   export let icon: string | null = null;
+  // export let click2copy: boolean | null = null;
   // export let icon_colored: string | null = null; [TODO]
 </script>
 

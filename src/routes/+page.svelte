@@ -40,7 +40,7 @@
     </Project>
     <Project title="Atlas" icon="php" github_link="https://github.com/Steellgold/AtlasCore" year="2019 → 2020" techs={["pmmp"]}>
       A server with <b>4100+ unique players</b> (at the time of my departure). I developed the whole first version as well as the pre-release which was under another name (RivalityShock PvP) which lasted 4 months (from the moment I arrived), this is where I was able to use my knowledge of PocketMine-MP and get to where I am now
-    </Project> 
+    </Project>
   </div>
 </section>
 

@@ -18,12 +18,9 @@
   </div>
 
   <div>
-    {#if participe}
-      <span class="subtitle">I participate in the project:</span>
-    {/if}
     <h1 class="title">{title}</h1>
     {#if participe}
-      <span class="subtitle">since {year}</span>
+      <span class="subtitle">I'm in the project since {year}</span>
     {:else}
       <span class="subtitle">{year}</span>
     {/if}

@@ -14,8 +14,6 @@
 
 <div>
   <nav>
-    <!-- <img src="/images/profile.jpg" alt="logo"> -->
-
     <div class="discord-status">
       <img src="https://cdn.discordapp.com/avatars/504392983244832780/f3af1c0ca6af234103b6241839d447d3.png" alt="discord">
       <span class="back-status"></span>
