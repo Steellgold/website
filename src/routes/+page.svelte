@@ -26,13 +26,13 @@
     <Project title="Portfolio" icon="svelte" github_link="https://github.com/Steellgold/Portfolio" techs={["typescript","javascript","html", "css", "sass"]}>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
     </Project>
+    <Project title="Lunastia" icon="java" year="2022 → now" techs={["spigot","maven"]}>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
+    </Project>
     <Project title="Rox" icon="typescript" year="2020 → now" co_author="RomainSav" techs={["nodejs", "discordjs"]}>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
     </Project>
     <Project title="Atlas" icon="php" github_link="https://github.com/Steellgold/AtlasCore" year="2019 → 2020" techs={["pmmp"]}>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
-    </Project>
-    <Project title="Lunastia" icon="java" github_link="https://github.com/LunastiaMC" year="2022 → now" techs={["spigot","maven"]}>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
     </Project>
   </div>
