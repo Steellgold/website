@@ -1,6 +1,25 @@
+<script lang="ts">
+  import { onMount } from "svelte";
+
+  let online: string = "offline";
+  let avatar = "";
+
+  onMount(async () => {
+    const response = await fetch("https://api.lanyard.rest/v1/users/504392983244832780");
+    const data = await response.json();
+    online = data.data.discord_status;
+    avatar = data.data.discord_user.avatar;
+  });
+</script>
+
 <div>
   <nav>
-    <img src="/images/profile.jpg" alt="logo">
+    <!-- <img src="/images/profile.jpg" alt="logo"> -->
+
+    <div class="discord-status">
+      <img src="https://cdn.discordapp.com/avatars/504392983244832780/f3af1c0ca6af234103b6241839d447d3.png" alt="discord">
+      <span class="{online}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
   
     <ul>
       <li>
@@ -45,9 +64,39 @@
     align-items: center;
     background-color: $color-background-100-opacity;
 
+    .discord-status {
+      position: relative;
+
+      span {
+        position: absolute;
+        bottom: 0px;
+        right: -5px;
+        height: 20px;
+        width: 20px;
+
+        border-radius: 100px;
+      }
+
+      span.online {
+        background: $color-discord-green;
+      }
+      
+      span.dnd {
+        background: $color-discord-red;
+      }
+      
+      span.idle {
+        background: $color-discord-yellow;
+      }
+      
+      span.offline {
+        background: $color-gray-100;
+      }
+    }
+
     img {
       border-radius: 15px;
-      height: 60px;
+      height: 70px;
       @media (max-width: 768px) {
         height: 50px;
       }
