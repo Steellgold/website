@@ -1,6 +1,6 @@
 .page {
   @media only screen and (max-width: 500px) {
-    span.wave {
+    img.wave {
       animation-name: wave-animation;
       animation-duration: 2.5s;
       animation-iteration-count: infinite;
@@ -10,7 +10,7 @@
   }
 
   @media only screen and (min-width: 992px) {
-    span.wave:hover {
+    img.wave:hover {
       animation-name: wave-animation;
       animation-duration: 2.5s;
       animation-iteration-count: infinite;

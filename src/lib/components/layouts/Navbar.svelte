@@ -4,13 +4,15 @@
   
     <ul>
       <li>
-        <a href="/about" class="link">About me</a>
+        <a href="/" class="link">About me</a>
       </li>
       <li>
         <a href="#projects" class="link">Projects</a>
       </li>
     </ul>
   </nav>
+
+  <!-- A faire: Faire une version mobile (😰) -->
 </div>
 
 <style lang="scss">

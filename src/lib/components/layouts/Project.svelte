@@ -12,19 +12,25 @@
 
 <div class="card">
   <div class="lang">
-    <img width="150px" height="150px" alt="" src="/icons/prog/{icon}.png">
+    <img width="150px" height="150px" alt="" src="/icons/techs/{icon}.png">
   </div>
 
-  <h1 class="title">{title}</h1>
-  <span class="subtitle">{year}</span>
+  <div>
+    <h1 class="title">{title}</h1>
+    <span class="subtitle">{year}</span>
+  </div>
+
   <p><slot></slot></p>
 
   {#if techs}
-    <span class="subtitle"><u>Technologies used:</u></span>
-    <div class="techs">
-    {#each techs as tech}
-      <img width="50px" height="50px" alt="" src="/icons/prog/{tech}.png">&nbsp;
-    {/each}      
+    <div class="technos">
+      <span class="subtitle"><u>Technologies used:</u></span>
+
+      <div class="techs">
+        {#each techs as tech}
+          <img width="50px" height="50px" alt="" src="/icons/techs/{tech}.png">&nbsp;
+        {/each}      
+      </div>
     </div>
   {/if}
 
@@ -84,9 +90,14 @@
       margin-top: 5px;
       text-align: center;
     }
+
+    .technos {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
     
     span.subtitle {
-      margin: -15px;
       text-align: center;
     }
 
