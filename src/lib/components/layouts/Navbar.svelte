@@ -1,4 +1,5 @@
 <script lang="ts">
+
   import { onMount } from "svelte";
 
   let online: string = "offline";
@@ -28,6 +29,8 @@
       }
     }
   });
+
+  
 </script>
 
 <div>
@@ -59,7 +62,7 @@
           <p>Group: {listening.artistName}</p>
         </div>
         <div>
-          <img src="{listening.albumArtUrl}" alt="Album Art" height="100px">   
+          <img src="{listening.albumArtUrl}" alt="Album Icon" height="100px">   
         </div> 
     </nav>
   {/if}
