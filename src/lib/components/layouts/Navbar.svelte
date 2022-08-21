@@ -49,19 +49,19 @@
     </ul>
   </nav>
 
-  <nav class="rich-presence">
-    {#if listening}
-      <div>
-        <h1>Écoute sur Spotify</h1>
-        <p>Musique: {listening.songName}</p>
-        <p>Album: {listening.albumName}</p>
-        <p>Groupe: {listening.artistName}</p>
-      </div>
-      <div>
-        <img src="{listening.albumArtUrl}" alt="Album Art" height="100px">   
-      </div> 
-    {/if}
-  </nav>
+  {#if listening}
+    <nav class="rich-presence">
+        <div>
+          <h1>Écoute sur Spotify</h1>
+          <p>Musique: {listening.songName}</p>
+          <p>Album: {listening.albumName}</p>
+          <p>Groupe: {listening.artistName}</p>
+        </div>
+        <div>
+          <img src="{listening.albumArtUrl}" alt="Album Art" height="100px">   
+        </div> 
+    </nav>
+  {/if}
 
   <!-- A faire: Faire une version mobile (😰) -->
 </div>
@@ -156,7 +156,7 @@
   nav.rich-presence {
     background-color: $color-background-100-opacity;
     display: flex;
-    padding: 10px;
+    padding: 20px;
     margin: 0;
     justify-content: space-between;
     align-items: center;
