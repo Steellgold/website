@@ -23,7 +23,11 @@
 		"svelte-preprocess": "^4.10.6",
 		"tslib": "^2.3.1",
 		"typescript": "^4.7.4",
-		"vite": "^3.0.4"
+		"vite": "^3.0.4",
+		"scss-tokenizer": ">=0.4.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"scss-tokenizer": ">=0.4.3"
+	}
 }
