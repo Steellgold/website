@@ -18,7 +18,8 @@
 
     <div class="discord-status">
       <img src="https://cdn.discordapp.com/avatars/504392983244832780/f3af1c0ca6af234103b6241839d447d3.png" alt="discord">
-      <span class="{online}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="back-status">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="status {online}">&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
   
     <ul>
@@ -67,14 +68,23 @@
     .discord-status {
       position: relative;
 
-      span {
+      span.status {
         position: absolute;
-        bottom: 0px;
+        bottom: 2px;
         right: -5px;
-        height: 20px;
-        width: 20px;
+        height: 15px;
+        width: 15px;
+        border-radius: 85px;
+      }
 
-        border-radius: 100px;
+      span.back-status {
+        position: absolute;
+        bottom: .5px;
+        right: -6.4px;
+        height: 18px;
+        width: 18px;
+        border-radius: 400px;
+        background: $color-background;
       }
 
       span.online {
@@ -86,7 +96,7 @@
       }
       
       span.idle {
-        background: $color-discord-yellow;
+        background: $color-discord-orange;
       }
       
       span.offline {
@@ -104,7 +114,6 @@
 
     ul {
       list-style-type: none;
-      overflow: hidden;
     }
 
     li {
