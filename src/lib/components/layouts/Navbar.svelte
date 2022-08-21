@@ -28,6 +28,8 @@
         albumArtUrl: data.data.spotify.album_art_url,
       }
     }
+
+    console.log(data.data)
   });
 
   
@@ -55,11 +57,11 @@
     <nav id="richPresence" class="rich-presence">
         <div>
           <h4>Currently listening on Spotify</h4>
-          <p>Music: {listening.songName}</p>
+          <p><b>Music</b>: {listening.songName}</p>
           {#if listening.songName !== listening.albumName}
-            <p>Album: {listening.albumName}</p>
+            <p><b>Album</b>: {listening.albumName}</p>
           {/if}
-          <p>Group: {listening.artistName}</p>
+          <p><b>Group</b>: {listening.artistName}</p>
         </div>
         <div>
           <img src="{listening.albumArtUrl}" alt="Album Icon" height="100px">   
@@ -85,8 +87,8 @@
         position: absolute;
         bottom: 2px;
         right: -5px;
-        height: 15px;
-        width: 15px;
+        height: 20px;
+        width: 20px;
         border-radius: 85px;
       }
 
@@ -94,8 +96,8 @@
         position: absolute;
         bottom: .5px;
         right: -6.4px;
-        height: 18px;
-        width: 18px;
+        height: 22px;
+        width: 22px;
         border-radius: 400px;
         background: $color-background;
       }
@@ -163,7 +165,7 @@
     margin: 0;
     justify-content: space-between;
     align-items: center;
-    
+  
     img {
       border-radius: 20px;
       border: 3px solid #FFFFFF;
