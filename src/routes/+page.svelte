@@ -1,10 +1,8 @@
 <script>
-  import Bar from "$lib/components/layouts/Navbar.svelte";
   import Button from "$lib/components/elements/naviguation/Button.svelte";
   import Project from "$lib/components/layouts/Project.svelte";
+  import projects from "$lib/config/projects.json";
 </script>
-
-<Bar/>
 
 <header>
   <div class="title">
@@ -25,22 +23,16 @@
 
 <section class="projects">
   <div class="list">
-    <Project title="Portfolio" icon="svelte" github_link="https://github.com/Steellgold/Portfolio" techs={["typescript","javascript","html", "css", "sass"]}>
-      I decided to make a Portfolio myself using a web framework "Svelte" where I know absolutely nothing about the basics, nor in CSS or I do it myself without Bootstrap or others.<br>I'm not a web developer at all and I really enjoy using Svelte since I started.
-    </Project>
-    <Project title="Lunastia" icon="java" year="2022 → now" techs={["spigot","maven"]}>
-      Minecraft server on the Desktop version, written in <b>Java</b> on the <b>Spigot</b> software, with the primary goal of training, learning Java, and secondarily opening a server on a version with a language that is not my <abbr title="I'm used to PHP with PocketMine-MP">comfort zone</abbr>
-    </Project>
-    <Project title="RoyaumeBot" icon="typescript" github_link="https://github.com/Virtual-Royaume/Royaume-Discord-Bot" year="2022" techs={["nodejs","discordjs"]} participe=true>
-      I am part of the "Royaume" community, a community of developers in which I participate in the development of some open source projects such as their Bot Discord
-      <br>
-    </Project>
-    <Project title="Rox" icon="typescript" github_link="https://github.com/Steellgold/Rox" button_text="GitHub (old)" year="2020 → now" co_author="RomainSav" techs={["nodejs", "discordjs"]}>
-      A bot initially developed by me alone in JavaScript without having concrete knowledge, it reached <b><abbr title="Total number of members from the servers where they were">100 000 users</abbr></b> but I stopped the development due to lack of knowledge and lack of time <br>Resumed in 2022 in TypeScript with RomainSav to relaunch it, with a clean, uncluttered and understandable code.
-    </Project>
-    <Project title="Atlas" icon="php" github_link="https://github.com/Steellgold/AtlasCore" year="2019 → 2020" techs={["pmmp"]}>
-      A server with <b>4100+ unique players</b> (at the time of my departure). I developed the whole first version as well as the pre-release which was under another name (RivalityShock PvP) which lasted 4 months (from the moment I arrived), this is where I was able to use my knowledge of PocketMine-MP and get to where I am now
-    </Project>
+    {#each projects as project}
+      <Project
+        title={project.title} 
+        year={project.year}
+        description={project.description}
+        primaryTechIcon={project.primaryTechIcon}
+        techIcons={project.techIcons}
+        button={project.button}
+      />
+    {/each}
   </div>
 </section>
 
