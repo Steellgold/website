@@ -15,8 +15,32 @@
   <!-- A faire: Faire une version mobile (😰) -->
 </div>
 
+<div class="waves">
+  <img src = "/images/Waves.png" alt="Waves"/>
+</div>
+
 <style lang="scss">
   @import "../../scss/variables.scss";
+
+  .waves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color: aliceblue;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 768px) {
+      img {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  }
 
   nav {
     padding: 15px;
