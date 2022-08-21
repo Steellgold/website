@@ -15,9 +15,11 @@
   <p>Gaëtan, 17 years old, passionate about programming and computer science, I am a PHP developer, I am currently learning Web development and Java<p>
 
   <div class="buttons">
-    <Button link="https://github.com/Steellgold" icon="dark/GitHub.png">GitHub</Button>
-    <Button link="https://youtube.com/Steellgold" icon="dark/YouTube.png">YouTube</Button>
-    <Button link="https://twitter.com/Steellgold" icon="dark/Twitter.png">Twitter</Button>
+    <Button link="https://github.com/Steellgold" icon="dark/GitHub.png">Gaëtan H</Button>
+    <Button link="https://discord.com/users/504392983244832780" icon="light/Discord.png">Gaëtan 🐈#2728</Button>
+    <Button link="https://youtube.com/Steellgold" icon="light/YouTube.png">Steellgold</Button>
+    <Button link="https://twitter.com/Steellgold" icon="light/Twitter.png">Gaëtan</Button>
+    <Button link="https://instagram.com/steellgold" icon="light/Instagram.png">steellgold</Button>
   </div>
 </header>
 
