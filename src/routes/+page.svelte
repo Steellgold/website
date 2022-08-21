@@ -109,6 +109,14 @@
       @media (min-width: calc($column-size * 4)) {
         grid-template-columns: 350px 350px 350px 350px; // TODO : fix this
       }
+
+      @media (max-width: $breakpoint-xl) {
+        grid-template-columns: 350px 350px; // TODO : fix this
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 350px; // TODO : fix this
+      }
     }
   }
 </style>
