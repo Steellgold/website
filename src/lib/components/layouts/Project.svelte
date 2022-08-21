@@ -1,120 +1,81 @@
 <script lang="ts">
   import Button from "$lib/components/elements/naviguation/Button.svelte";
 
-  export let title = "";
-  export let year = "";
-  export let icon: string | null = null;
-  export let techs: string[] | null = null;
-  export let co_author: string | null = null;
-  export let github_link: string | null = null;
-  export let button_text: string | null = null;
-  export let participe: boolean | null = null;
-  // export let active: boolean = true;
+  interface YearProp {
+    from: string;
+    to?: string;
+  }
+
+  interface ButtonProp {
+    text: string;
+    link: string;
+    icon: string;
+  }
+
+  export let title: string;
+  export let year: YearProp;
+  export let description: string;
+
+  export let primaryTechIcon: string;
+  export let techIcons: string[];
+  
+  export let button: ButtonProp;
 </script>
 
 <div class="card">
+  <!-- Primary language used -->
   <div class="lang">
-    <img width="150px" height="150px" alt="" src="/icons/techs/{icon}.png">
+    <img src={primaryTechIcon} alt="primary skill"/>
   </div>
 
-  <div>
-    {#if participe}
-      <span class="subtitle">I participate in the project:</span>
-    {/if}
-    <h1 class="title">{title}</h1>
-    {#if participe}
-      <span class="subtitle">since {year}</span>
-    {:else}
-      <span class="subtitle">{year}</span>
+  <!-- Title and dates -->
+  <div class="title-date">
+    <h2>{title}</h2>
+
+    {#if year.from !== "0"}
+      <p>{`${year.from} → ${year.to ? year.to : "now"}`}</p>
     {/if}
   </div>
 
-  <p><slot></slot></p>
+  <!-- Description -->
+  <div class="description">
+    <p>{description}</p>
+  </div>
 
-  {#if techs}
-    <div class="technos">
-      <span class="subtitle"><u>Technologies used:</u></span>
+  <!-- Technos -->
+  <div class="skills">
+    <p>Technologies used:</p>
 
-      <div class="techs">
-        {#each techs as tech}
-          <img width="50px" height="50px" alt="" src="/icons/techs/{tech}.png">&nbsp;
-        {/each}      
-      </div>
+    <div>
+      {#each techIcons as tech}
+        <img src={tech} alt="a used tech">
+      {/each}      
     </div>
-  {/if}
+  </div>
 
-  {#if co_author}
-    <span class="subtitle">Co-author: <a href="https://github.com/{co_author}">@{co_author}</a></span>
-  {/if}
-    
-  {#if github_link}
-    <span class="button">
-      <Button link={github_link} icon="dark/GitHub.png">
-        {#if button_text}
-          {button_text}
-        {:else}
-          GitHub
-        {/if}
-      </Button>
-    </span>
-  {/if}
+  <!-- Button -->
+  <Button link={button.link} icon={button.icon} small={true}>{button.text}</Button>
 </div>
 
 <style lang="scss">
-  // hr {
-  //   margin: 0;
-  //   background-color: white;
-  //   width: 10%;
-  //   margin: auto;
-  // }
-
-  span.button {
-    margin: auto;
-    width: 60%;
-  }
-
   .card {
     position: relative;
 
+    background: #111827;
+
     display: flex;
     flex-direction: column;
-    width: 300px;
-    height: fit-content;
-    margin-top: 30px;
-    padding: 30px 10px;
-    gap: 20px;
-    background: #111827;
-    border: 10px solid #FFFFFF;
-    border-radius: 30px;
-    text-align: center;
-
-    @media (max-width: 768px) {
-      padding: 25px 2px;
-
-      p {
-        font-size: 15px;
-      }
-    }
-
-    a {
-      color: #FFFFFF;
-    }
-
-    h1 {
-      margin: 0;
-      margin-top: 5px;
-      text-align: center;
-    }
-
-    .technos {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
+    justify-content: space-between;
+    gap: 15px;
     
-    span.subtitle {
-      text-align: center;
-    }
+    height: 400px;
+    margin-top: 30px; // for fix the techno absolute element size
+    padding: 30px 15px;
+    
+    border: 8px solid #FFFFFF;
+    border-radius: 30px;
+    
+    text-align: center;
 
     .lang {
       position: absolute;
@@ -136,11 +97,36 @@
       }
     }
 
-    .techs {
-      img {
-        height: 30px;
-        width: 30px;
-        border-radius: 10px;
+    .title-date {
+      margin-top: 10px;
+
+      display: grid;
+      place-content: center;
+    }
+
+    .description {
+      height: 200px;
+    }
+
+    .skills {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      p {
+        font-weight: bold;
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+
+        img {
+          height: 40px;
+          width: auto;
+          border-radius: 10px;
+        }
       }
     }
   }

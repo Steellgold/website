@@ -1,26 +1,16 @@
 <script lang="ts">
   export let link: string | null = "";
   export let icon: string | null = null;
-  // export let icon_colored: string | null = null; [TODO]
+  export let small: boolean;
 </script>
 
-{#if link}
-  <a href="{link}" target="_blank">
-    {#if icon}
-      <img src="/icons/{icon}" alt="Icon">
-      <span>|</span>
-    {/if}
-    <slot></slot>
-  </a>
-{:else}
-  <a>
-    {#if icon}
-      <img src="/icons/{icon}" alt="Icon">
-      <span>|</span>
-    {/if}
-    <slot></slot>
-  </a>
-{/if}
+<a href="{link}" target="_blank" class="{small ? 'small' : ''}">
+  {#if icon}
+    <img src="/icons/{icon}" alt="Icon">
+    <span>|</span>
+  {/if}
+  <slot></slot>
+</a>
 
 <style lang="scss">
   @import "../../../scss/variables.scss";
@@ -49,6 +39,11 @@
     img {
       height: 20px;
     }
+  }
+
+  a.small {
+    width: 60%;
+    margin: auto;
   }
 
   a:hover:not(.active) {

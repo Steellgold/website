@@ -14,8 +14,6 @@
 
 <div>
   <nav>
-    <!-- <img src="/images/profile.jpg" alt="logo"> -->
-
     <div class="discord-status">
       <img src="https://cdn.discordapp.com/avatars/504392983244832780/f3af1c0ca6af234103b6241839d447d3.png" alt="discord">
       <span class="back-status"></span>
@@ -28,7 +26,7 @@
       </li>
       <li>
         <a href="#projects" class="link">Projects</a>
-      </li>
+      </li> 
     </ul>
   </nav>
 
@@ -94,26 +92,30 @@
 
     ul {
       list-style-type: none;
-    }
 
-    li {
-      float: left;
+      li {
+        float: left;
 
-      a {
-        display: block;
-        color: $color-white;
-        font-weight: bold;
-        text-transform: uppercase;
-        background-color: $color-background;
-        text-align: center;
-        padding: 16px 16px;
-        text-decoration: none;
-        transition: background 0.3s;
-        border-radius: 50px;
-      }
+        a {
+          background-color: $color-background;
+          transition: background 0.5s;
 
-      a:hover:not(.active) {
-        background-color: $color-background-hover;
+          padding: 16px 16px;
+
+          color: $color-white;
+          font-weight: bold;
+          text-transform: uppercase;
+          text-align: center;
+          text-decoration: none;
+
+          border-radius: 50px;
+
+          margin: 0 6px;
+        }
+
+        a:hover:not(.active) {
+          background-color: $color-background-hover;
+        }
       }
     }
   }
