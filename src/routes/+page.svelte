@@ -32,7 +32,8 @@
       Minecraft server on the Desktop version, written in <b>Java</b> on the <b>Spigot</b> software, with the primary goal of training, learning Java, and secondarily opening a server on a version with a language that is not my <abbr title="I'm used to PHP with PocketMine-MP">comfort zone</abbr>
     </Project>
     <Project title="RoyaumeBot" icon="typescript" github_link="https://github.com/Virtual-Royaume/Royaume-Discord-Bot" year="2022" techs={["nodejs","discordjs"]} participe=true>
-      It is the bot of our Discord community, it offers various utility features. It is written in TypeScript and uses the DiscordJS package to interact with the Discord API.
+      I am part of the "Royaume" community, a community of developers in which I participate in the development of some open source projects such as their Bot Discord
+      <br>
     </Project>
     <Project title="Rox" icon="typescript" github_link="https://github.com/Steellgold/Rox" button_text="GitHub (old)" year="2020 → now" co_author="RomainSav" techs={["nodejs", "discordjs"]}>
       A bot initially developed by me alone in JavaScript without having concrete knowledge, it reached <b><abbr title="Total number of members from the servers where they were">100 000 users</abbr></b> but I stopped the development due to lack of knowledge and lack of time <br>Resumed in 2022 in TypeScript with RomainSav to relaunch it, with a clean, uncluttered and understandable code.
