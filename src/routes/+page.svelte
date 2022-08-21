@@ -10,7 +10,6 @@
     <img class="wave" src = "/images/FluentWave.svg" alt="Wave"/>
   </div>
 
-  <p>{ process.env.TEST }</p>
   <p>Gaëtan, 17 years old, passionate about programming and computer science, I am a PHP developer, I am currently learning Web development and Java<p>
 
   <div class="buttons">
