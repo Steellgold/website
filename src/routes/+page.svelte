@@ -32,7 +32,7 @@
     <Project title="RoyaumeBot" icon="typescript" github_link="https://github.com/Virtual-Royaume/Royaume-Discord-Bot" year="2022" techs={["nodejs","discordjs"]} participe=true>
       It is the bot of our Discord community, it offers various utility features. It is written in TypeScript and uses the DiscordJS package to interact with the Discord API.
     </Project>
-    <Project title="Rox" icon="typescript" year="2020 → now" co_author="RomainSav" techs={["nodejs", "discordjs"]}>
+    <Project title="Rox" icon="typescript" github_link="https://github.com/Steellgold/Rox" button_text="GitHub (old)" year="2020 → now" co_author="RomainSav" techs={["nodejs", "discordjs"]}>
       A bot initially developed by me alone in JavaScript without having concrete knowledge, it reached <b><abbr title="Total number of members from the servers where they were">100 000 users</abbr></b> but I stopped the development due to lack of knowledge and lack of time <br>Resumed in 2022 in TypeScript with RomainSav to relaunch it, with a clean, uncluttered and understandable code.
     </Project>
     <Project title="Atlas" icon="php" github_link="https://github.com/Steellgold/AtlasCore" year="2019 → 2020" techs={["pmmp"]}>

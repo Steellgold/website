@@ -7,6 +7,7 @@
   export let techs: string[] | null = null;
   export let co_author: string | null = null;
   export let github_link: string | null = null;
+  export let button_text: string | null = null;
   export let participe: boolean | null = null;
   // export let active: boolean = true;
 </script>
@@ -48,7 +49,13 @@
     
   {#if github_link}
     <span class="button">
-      <Button link={github_link} icon="dark/GitHub.png">GitHub</Button>
+      <Button link={github_link} icon="dark/GitHub.png">
+        {#if button_text}
+          {button_text}
+        {:else}
+          GitHub
+        {/if}
+      </Button>
     </span>
   {/if}
 </div>
@@ -63,7 +70,7 @@
 
   span.button {
     margin: auto;
-    width: 50%;
+    width: 60%;
   }
 
   .card {

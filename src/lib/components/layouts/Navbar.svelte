@@ -15,10 +15,6 @@
   <!-- A faire: Faire une version mobile (😰) -->
 </div>
 
-<div class="waves">
-  <img src = "/images/Waves.png" alt="Waves"/>
-</div>
-
 <style lang="scss">
   @import "../../scss/variables.scss";
 
@@ -43,10 +39,11 @@
   }
 
   nav {
-    padding: 15px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: $color-background-100-opacity;
 
     img {
       border-radius: 15px;
