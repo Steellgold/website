@@ -27,7 +27,6 @@
         albumArtUrl: data.data.spotify.album_art_url,
       }
     }
-
   });
 </script>
 
@@ -49,21 +48,21 @@
     </ul>
   </nav>
 
-  {#if listening}
-    <nav class="rich-presence">
+  {#if listening && window.innerWidth < 768}
+    <nav id="richPresence" class="rich-presence">
         <div>
-          <h1>Écoute sur Spotify</h1>
-          <p>Musique: {listening.songName}</p>
-          <p>Album: {listening.albumName}</p>
-          <p>Groupe: {listening.artistName}</p>
+          <h4>Currently listening on Spotify</h4>
+          <p>Music: {listening.songName}</p>
+          {#if listening.songName !== listening.albumName}
+            <p>Album: {listening.albumName}</p>
+          {/if}
+          <p>Group: {listening.artistName}</p>
         </div>
         <div>
           <img src="{listening.albumArtUrl}" alt="Album Art" height="100px">   
         </div> 
     </nav>
   {/if}
-
-  <!-- A faire: Faire une version mobile (😰) -->
 </div>
 
 <style lang="scss">
@@ -153,6 +152,7 @@
     }
   }
 
+  
   nav.rich-presence {
     background-color: $color-background-100-opacity;
     display: flex;
