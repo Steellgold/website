@@ -2,7 +2,7 @@
   {
     "title": "Portfolio",
     "year": {
-      "from": "2022"
+      "from": "0"
     },
     "description": "I decided to make a Portfolio myself using a web framework Svelte where I know absolutely nothing about the basics, nor in CSS or I do it myself without Bootstrap or others. I'm not a web developer at all and I really enjoy using Svelte since I started.",
     "primaryTechIcon": "/icons/techs/svelte.png",

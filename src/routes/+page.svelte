@@ -13,11 +13,11 @@
   <p>Gaëtan, 17 years old, passionate about programming and computer science, I am a PHP developer, I am currently learning Web development and Java<p>
 
   <div class="buttons">
-    <Button link="https://github.com/Steellgold" icon="dark/GitHub.png">Gaëtan H</Button>
-    <Button link="https://discord.com/users/504392983244832780" icon="light/Discord.png">Gaëtan 🐈#2728</Button>
-    <Button link="https://youtube.com/Steellgold" icon="light/YouTube.png">Steellgold</Button>
-    <Button link="https://twitter.com/Steellgold" icon="light/Twitter.png">Gaëtan</Button>
-    <Button link="https://instagram.com/steellgold" icon="light/Instagram.png">steellgold</Button>
+    <Button link="https://github.com/Steellgold" icon="dark/GitHub.png" small={false}>Gaëtan H</Button>
+    <Button link="https://discord.com/users/504392983244832780" icon="light/Discord.png" small={false}>Gaëtan 🐈#2728</Button>
+    <Button link="https://youtube.com/Steellgold" icon="light/YouTube.png" small={false}>Steellgold</Button>
+    <Button link="https://twitter.com/Steellgold" icon="light/Twitter.png" small={false}>Gaëtan</Button>
+    <Button link="https://instagram.com/steellgold" icon="light/Instagram.png" small={false}>steellgold</Button>
   </div>
 </header>
 

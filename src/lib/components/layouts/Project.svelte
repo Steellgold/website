@@ -32,7 +32,9 @@
   <div class="title-date">
     <h2>{title}</h2>
 
-    <p>{`${year.from} → ${year.to ? year.to : "now"}`}</p>
+    {#if year.from !== "0"}
+      <p>{`${year.from} → ${year.to ? year.to : "now"}`}</p>
+    {/if}
   </div>
 
   <!-- Description -->
