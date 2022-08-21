@@ -26,7 +26,7 @@
       </li>
       <li>
         <a href="#projects" class="link">Projects</a>
-      </li>
+      </li> 
     </ul>
   </nav>
 
@@ -92,26 +92,30 @@
 
     ul {
       list-style-type: none;
-    }
 
-    li {
-      float: left;
+      li {
+        float: left;
 
-      a {
-        display: block;
-        color: $color-white;
-        font-weight: bold;
-        text-transform: uppercase;
-        background-color: $color-background;
-        text-align: center;
-        padding: 16px 16px;
-        text-decoration: none;
-        transition: background 0.3s;
-        border-radius: 50px;
-      }
+        a {
+          background-color: $color-background;
+          transition: background 0.5s;
 
-      a:hover:not(.active) {
-        background-color: $color-background-hover;
+          padding: 16px 16px;
+
+          color: $color-white;
+          font-weight: bold;
+          text-transform: uppercase;
+          text-align: center;
+          text-decoration: none;
+
+          border-radius: 50px;
+
+          margin: 0 6px;
+        }
+
+        a:hover:not(.active) {
+          background-color: $color-background-hover;
+        }
       }
     }
   }
