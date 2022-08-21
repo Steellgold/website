@@ -29,6 +29,9 @@
     <Project title="Lunastia" icon="java" year="2022 → now" techs={["spigot","maven"]}>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
     </Project>
+    <Project title="RoyaumeBot" icon="typescript" github_link="https://github.com/Virtual-Royaume/Royaume-Discord-Bot" year="2022" techs={["nodejs","discordjs"]} participe=true>
+      It is the bot of our Discord community, it offers various utility features. It is written in TypeScript and uses the DiscordJS package to interact with the Discord API.
+    </Project>
     <Project title="Rox" icon="typescript" year="2020 → now" co_author="RomainSav" techs={["nodejs", "discordjs"]}>
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi quae aliquid qui ex laboriosam minus, assumenda est maxime nam et pariatur accusantium eum. Eligendi, unde assumenda! Esse quae voluptate omnis.
     </Project>

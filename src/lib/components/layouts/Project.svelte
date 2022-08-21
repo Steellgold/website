@@ -6,8 +6,9 @@
   export let icon: string | null = null;
   export let techs: string[] | null = null;
   export let co_author: string | null = null;
-  // export let active: boolean = true;
   export let github_link: string | null = null;
+  export let participe: boolean | null = null;
+  // export let active: boolean = true;
 </script>
 
 <div class="card">
@@ -16,8 +17,15 @@
   </div>
 
   <div>
+    {#if participe}
+      <span class="subtitle">I participate in the project:</span>
+    {/if}
     <h1 class="title">{title}</h1>
-    <span class="subtitle">{year}</span>
+    {#if participe}
+      <span class="subtitle">since {year}</span>
+    {:else}
+      <span class="subtitle">{year}</span>
+    {/if}
   </div>
 
   <p><slot></slot></p>
