@@ -30,7 +30,8 @@
         description={project.description}
         primaryTechIcon={project.primaryTechIcon}
         techIcons={project.techIcons}
-        button={project.button}
+        button={project.button ?? undefined}
+        buttons={project.buttons ?? undefined}
       />
     {/each}
   </div>

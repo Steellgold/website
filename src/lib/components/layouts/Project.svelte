@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/elements/naviguation/Button.svelte";
+import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
 
   interface YearProp {
     from: string;
@@ -19,7 +20,8 @@
   export let primaryTechIcon: string;
   export let techIcons: string[];
   
-  export let button: ButtonProp;
+  export let button: ButtonProp | undefined = undefined;
+  export let buttons: ButtonProp[] | undefined = undefined;
 </script>
 
 <div class="card">
@@ -54,7 +56,17 @@
   </div>
 
   <!-- Button -->
-  <Button link={button.link} icon={button.icon} small={true}>{button.text}</Button>
+  {#if button}
+    <Button link={button.link} icon={button.icon} small={false}>{button.text}</Button>
+  {/if}
+
+  {#if buttons !== undefined}
+    <ButtonGroup>
+      {#each buttons as button}
+        <Button link={button.link} icon={button.icon} small={false}>{button.text}</Button>
+      {/each}
+    </ButtonGroup>
+  {/if}
 </div>
 
 <style lang="scss">
