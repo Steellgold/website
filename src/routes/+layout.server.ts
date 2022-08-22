@@ -7,12 +7,12 @@ export async function load() {
   
   return {
     spotify : {
-      listening: data.data.listening_to_spotify ?? false,
-      trackId : data.data.spotify.track_id ?? null,
-      trackName : data.data.spotify.song ?? null,
-      artistName : data.data.spotify.artist ?? null,
-      albumName : data.data.spotify.album ?? null,
-      albumCover : data.data.spotify.album_art_url ?? null,
+      listening: data.data.listening_to_spotify,
+      trackId : data.data.listening_to_spotify ? data.data.spotify.track_id : null,
+      trackName : data.data.listening_to_spotify ? data.data.spotify.song : null,
+      artistName : data.data.listening_to_spotify ? data.data.spotify.artist : null,
+      albumName : data.data.listening_to_spotify ? data.data.spotify.album : null,
+      albumCover : data.data.listening_to_spotify ? data.data.spotify.album_art_url : null,
     },
 
     user: {
