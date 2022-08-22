@@ -36,6 +36,8 @@
           </a>
         </div> 
     </nav>
+
+    <!-- TODO: Vue PC -->
   {/if}
 </div>
 
@@ -126,7 +128,6 @@
     }
   }
 
-  
   nav.rich-presence {
     background-color: $color-background-100-opacity;
     display: flex;
