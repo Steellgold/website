@@ -1,48 +1,13 @@
 <script lang="ts">
-
-  import { onMount } from "svelte";
-
-  let online: string = "offline";
-  let avatar = "";
-  
-  interface ListeningProp {
-    songName: string;
-    artistName: string;
-    albumName: string;
-    albumArtUrl: string;
-    trackId: string;
-  }
-
-  let listening: ListeningProp | null = null;
-
-  onMount(async () => {
-    const response = await fetch("https://api.lanyard.rest/v1/users/504392983244832780");
-    const data = await response.json();
-    online = data.data.discord_status;
-    avatar = data.data.discord_user.avatar;
-
-    if (data.data.spotify) {
-      listening = {
-        songName: data.data.spotify.song,
-        artistName: data.data.spotify.artist,
-        albumName: data.data.spotify.album,
-        albumArtUrl: data.data.spotify.album_art_url,
-        trackId: data.data.spotify.track_id,
-      }
-    }
-
-    console.log(data.data)
-  });
-
-  
+  export let data: any; 
 </script>
 
 <div>
   <nav class="navbar">
     <div class="discord-status">
-      <img id="discord-avatar" src="https://cdn.discordapp.com/avatars/504392983244832780/{avatar}.png" alt="discord">
+      <img id="discord-avatar" src="{data.user.avatar}" alt="discord">
       <span class="back-status"></span>
-      <span class="status {online}"></span>
+      <span class="status {data.user.status}"></span>
     </div>
   
     <ul>
@@ -55,19 +20,19 @@
     </ul>
   </nav>
 
-  {#if listening && window.innerWidth < 768}
+  {#if data.spotify.listening}
     <nav id="richPresence" class="rich-presence">
         <div>
           <h2>Currently listening</h2>
-          <p><b>Music</b>: {listening.songName}</p>
-          {#if listening.songName !== listening.albumName}
-            <p><b>Album</b>: {listening.albumName}</p>
+          <p><b>Music</b>: {data.spotify.trackName}</p>
+          {#if data.spotify.trackName !== data.spotify.albumName}
+            <p><b>Album</b>: {data.spotify.albumName}</p>
           {/if}
-          <p><b>Group</b>: {listening.artistName}</p>
+          <p><b>Group</b>: {data.spotify.artistName}</p>
         </div>
         <div>
-          <a href="https://open.spotify.com/track/{listening.trackId}">
-            <img src="{listening.albumArtUrl}" alt="Album Icon" height="100px">
+          <a href="https://open.spotify.com/track/{data.spotify.trackId}">
+            <img src="{data.spotify.albumCover}" alt="Album Icon" height="100px">
           </a>
         </div> 
     </nav>
