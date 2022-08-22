@@ -1,21 +1,46 @@
 <script lang="ts">
+
   import { onMount } from "svelte";
 
   let online: string = "offline";
   let avatar = "";
+  
+  interface ListeningProp {
+    songName: string;
+    artistName: string;
+    albumName: string;
+    albumArtUrl: string;
+    trackId: string;
+  }
+
+  let listening: ListeningProp | null = null;
 
   onMount(async () => {
     const response = await fetch("https://api.lanyard.rest/v1/users/504392983244832780");
     const data = await response.json();
     online = data.data.discord_status;
     avatar = data.data.discord_user.avatar;
+
+    if (data.data.spotify) {
+      listening = {
+        songName: data.data.spotify.song,
+        artistName: data.data.spotify.artist,
+        albumName: data.data.spotify.album,
+        albumArtUrl: data.data.spotify.album_art_url,
+        trackId: data.data.spotify.track_id,
+      }
+    }
+
+    console.log(data.data)
   });
+
+  
 </script>
 
 <div>
-  <nav>
+  <nav class="navbar">
     <div class="discord-status">
-      <img src="https://cdn.discordapp.com/avatars/504392983244832780/f3af1c0ca6af234103b6241839d447d3.png" alt="discord">
+      <img id="discord-avatar" src="https://cdn.discordapp.com/avatars/504392983244832780/{avatar}.png" alt="discord">
       <span class="back-status"></span>
       <span class="status {online}"></span>
     </div>
@@ -30,13 +55,29 @@
     </ul>
   </nav>
 
-  <!-- A faire: Faire une version mobile (😰) -->
+  {#if listening && window.innerWidth < 768}
+    <nav id="richPresence" class="rich-presence">
+        <div>
+          <h4>Currently listening on Spotify</h4>
+          <p><b>Music</b>: {listening.songName}</p>
+          {#if listening.songName !== listening.albumName}
+            <p><b>Album</b>: {listening.albumName}</p>
+          {/if}
+          <p><b>Group</b>: {listening.artistName}</p>
+        </div>
+        <div>
+          <a href="https://open.spotify.com/track/{listening.trackId}">
+            <img src="{listening.albumArtUrl}" alt="Album Icon" height="100px">
+          </a>
+        </div> 
+    </nav>
+  {/if}
 </div>
 
 <style lang="scss">
   @import "../../scss/variables.scss";
 
-  nav {
+  nav.navbar {
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -50,8 +91,8 @@
         position: absolute;
         bottom: 2px;
         right: -5px;
-        height: 15px;
-        width: 15px;
+        height: 20px;
+        width: 20px;
         border-radius: 85px;
       }
 
@@ -59,8 +100,8 @@
         position: absolute;
         bottom: .5px;
         right: -6.4px;
-        height: 18px;
-        width: 18px;
+        height: 22px;
+        width: 22px;
         border-radius: 400px;
         background: $color-background;
       }
@@ -116,6 +157,26 @@
         a:hover:not(.active) {
           background-color: $color-background-hover;
         }
+      }
+    }
+  }
+
+  
+  nav.rich-presence {
+    background-color: $color-background-100-opacity;
+    display: flex;
+    padding: 20px;
+    margin: 0;
+    justify-content: space-between;
+    align-items: center;
+  
+    img {
+      border-radius: 20px;
+      border: 3px solid #FFFFFF;
+      
+      @media (max-width: 768px) {
+        justify-content: space-between;
+        align-items: center;
       }
     }
   }
