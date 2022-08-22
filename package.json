@@ -28,7 +28,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"scss-tokenizer": ">=0.4.3",
-		"svelte-spa-router": "^3.3.0"
+		"scss-tokenizer": ">=0.4.3"
 	}
 }

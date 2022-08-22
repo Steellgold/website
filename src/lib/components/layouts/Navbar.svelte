@@ -10,6 +10,7 @@
     artistName: string;
     albumName: string;
     albumArtUrl: string;
+    trackId: string;
   }
 
   let listening: ListeningProp | null = null;
@@ -26,6 +27,7 @@
         artistName: data.data.spotify.artist,
         albumName: data.data.spotify.album,
         albumArtUrl: data.data.spotify.album_art_url,
+        trackId: data.data.spotify.track_id,
       }
     }
 
@@ -64,7 +66,9 @@
           <p><b>Group</b>: {listening.artistName}</p>
         </div>
         <div>
-          <img src="{listening.albumArtUrl}" alt="Album Icon" height="100px">   
+          <a href="https://open.spotify.com/track/{listening.trackId}">
+            <img src="{listening.albumArtUrl}" alt="Album Icon" height="100px">
+          </a>
         </div> 
     </nav>
   {/if}
