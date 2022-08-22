@@ -58,7 +58,7 @@
   {#if listening && window.innerWidth < 768}
     <nav id="richPresence" class="rich-presence">
         <div>
-          <h4>Currently listening on Spotify</h4>
+          <h2>Currently listening</h2>
           <p><b>Music</b>: {listening.songName}</p>
           {#if listening.songName !== listening.albumName}
             <p><b>Album</b>: {listening.albumName}</p>
