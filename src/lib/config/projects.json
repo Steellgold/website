@@ -58,7 +58,7 @@
     "year": {
       "from": "2022"
     },
-    "description": "A bot initially developed by me alone in JavaScript without having concrete knowledge, it reached 100 000 users but I stopped the development due to lack of knowledge and lack of time, resumed in 2022 in TypeScript with RomainSav to relaunch it, with a clean, uncluttered and understandable code.",
+    "description": "A bot initially developed by me alone in JavaScript without having concrete knowledge, it <b>reached 100 000 users</b> but I stopped the development due to lack of knowledge and lack of time, resumed in 2022 in TypeScript with RomainSav to relaunch it, with a clean, uncluttered and understandable code.",
     "primaryTechIcon": "/icons/techs/typescript.png",
     "techIcons": [
       "/icons/techs/nodejs.png",
@@ -76,7 +76,7 @@
       "from": "2019",
       "to": "2020"
     },
-    "description": "A server with 4100+ unique players (at the time of my departure). I developed the whole first version as well as the pre-release which was under another name (RivalityShock PvP) which lasted 4 months (from the moment I arrived), this is where I was able to use my knowledge of PocketMine-MP and get to where I am now",
+    "description": "A server with <b>4100+ unique players</b> (at the time of my departure). I developed the whole first version as well as the pre-release which was under another name (RivalityShock PvP) which lasted 4 months (from the moment I arrived), this is where I was able to use my knowledge of PocketMine-MP and get to where I am now",
     "primaryTechIcon": "/icons/techs/php.png",
     "techIcons": [
       "/icons/techs/pmmp.png"
