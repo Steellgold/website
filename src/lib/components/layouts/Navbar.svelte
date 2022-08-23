@@ -3,7 +3,7 @@
 </script>
 
 <div>
-  {#if process.env.IS_PREVIEW}
+  {#if process.env.IS_PREVIEW == "true"}
     <div class="preview">
       <p>This is a development mode of the portfolio, you may run into a bug or something like that, go to the <a href="https://steellgold.fr">stable version</a> to be sure not to be surprised</p>
       <p>Deployed from commit: <a href="https://github.com/Steellgold/Portfolio/commit/{process.env.VERCEL_GIT_COMMIT_SHA}">{process.env.VERCEL_GIT_COMMIT_MESSAGE}</a></p>
