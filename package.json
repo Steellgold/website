@@ -28,6 +28,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"dotenv": "^16.0.1",
 		"scss-tokenizer": ">=0.4.3"
 	}
 }
