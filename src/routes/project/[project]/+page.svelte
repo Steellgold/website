@@ -67,13 +67,13 @@
       <div class="buttons">
         <ButtonGroup>
           {#each project.buttons as button}
-            <Button link={button.link} icon={button.icon}>{button.text}</Button>
+            <Button link={button.link} icon={button.icon} small={false}>{button.text}</Button>
           {/each}
         </ButtonGroup>
       </div>
     {:else if project.button}
       <div class="buttons">
-        <Button link={project.button.link} icon={project.button.icon}>{project.button.text}</Button>
+        <Button link={project.button.link} icon={project.button.icon} small={false}>{project.button.text}</Button>
       </div>
     {/if}
   </div>
