@@ -1,15 +1,13 @@
 <script lang="ts">
-import { env } from "$env/dynamic/private";
-
-
   export let data: any; 
 </script>
 
 <div>
-  <div class="preview">
-    <p>This is a development mode of the portfolio, you may run into a bug or something like that, go to the <a href="https://steellgold.fr">stable version</a> to be sure not to be surprised</p>
-    <p>{process.env.IS_PREVIEW}</p>
-  </div>
+  {#if process.env.IS_PREVIEW}
+    <div class="preview">
+      <p>This is a development mode of the portfolio, you may run into a bug or something like that, go to the <a href="https://steellgold.fr">stable version</a> to be sure not to be surprised</p>
+    </div>
+  {/if}
 
   <nav class="navbar">
     <div class="discord-status">
