@@ -1,6 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/elements/naviguation/Button.svelte";
-import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
+  import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
 
   interface YearProp {
     from: string;
@@ -12,7 +12,7 @@ import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
     link: string;
     icon: string;
   }
-
+  
   export let title: string;
   export let year: YearProp;
   export let small_description: string | undefined = undefined;
