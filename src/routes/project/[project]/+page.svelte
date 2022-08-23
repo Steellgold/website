@@ -61,7 +61,7 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
           <h2>People</h2>
           {#each project.people as person}
             <a class="user" href="https://github.com/{person}" target="_blank">
-              <img src="https://avatars.githubusercontent.com/{person}" alt="{person}"/>
+              <img class="avatar" src="https://avatars.githubusercontent.com/{person}" alt="{person}"/>
             </a>
           {/each}
           </div>
@@ -72,7 +72,7 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
           <h2>Contributors</h2>
           {#each project.contributors as person}
             <a class="user" href="https://github.com/{person}" target="_blank">
-              <img src="https://avatars.githubusercontent.com/{person}" alt="{person}"/>
+              <img class="avatar" src="https://avatars.githubusercontent.com/{person}" alt="{person}"/>
             </a>
           {/each}
         </div>
@@ -111,6 +111,10 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
       .left {
         img.banner {
           width: 100%;
+          height: auto;
+        }
+
+        img.avatar {
           height: auto;
         }
       }
