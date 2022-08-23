@@ -4,6 +4,7 @@
     "year": {
       "from": "0"
     },
+    "small_description": "Lorem ipsum dolor sit amet. In molestias eaque est facere beatae sed quia accusantium in harum eius id nesciunt dolorem id tenetur dicta.",
     "description": "I decided to make a Portfolio myself using a web framework Svelte where I know absolutely nothing about the basics, nor in CSS or I do it myself without Bootstrap or others. I'm not a web developer at all and I really enjoy using Svelte since I started.",
     "primaryTechIcon": "/icons/techs/svelte.png",
     "techIcons": [
@@ -24,6 +25,9 @@
         "link": "https://www.figma.com/file/FFj5HB04eYnIOpWNCns1k9/Portfolio?node-id=41%3A2",
         "icon": "techs/figma.png"
       }
+    ],
+    "contributors": [
+      "Bluzzi"
     ]
   },
   {
@@ -31,6 +35,7 @@
     "year": {
       "from": "2022"
     },
+    "small_description": "Lorem ipsum dolor sit amet. In molestias eaque est facere beatae sed quia accusantium in harum eius id nesciunt dolorem id tenetur dicta.",
     "description": "Minecraft server on the Desktop version, written in Java on the Spigot software, with the primary goal of training, learning Java, and secondarily opening a server on a version with a language that is not my comfort zone",
     "primaryTechIcon": "/icons/techs/java.png",
     "techIcons": [
@@ -41,13 +46,23 @@
       "text": "Discord",
       "link": "https://discord.com/",
       "icon": "dark/Discord.png"
-    }
+    },
+    "people": [
+      "Steellgold",
+      "Pralexkid",
+      "Azalee",
+      "LeKiMi"
+    ],
+    "contributors": [
+      "KingDeadKnight"
+    ]
   },
   {
     "title": "RoyaumeBot",
     "year": {
       "from": "2022"
     },
+    "small_description": "Lorem ipsum dolor sit amet. In molestias eaque est facere beatae sed quia accusantium in harum eius id nesciunt dolorem id tenetur dicta.",
     "description": "It is the bot of our Discord community, it offers various utility features. It is written in TypeScript and uses the DiscordJS package to interact with the Discord API.",
     "primaryTechIcon": "/icons/techs/typescript.png",
     "techIcons": [
@@ -58,13 +73,27 @@
       "text": "GitHub",
       "link": "https://github.com/Virtual-Royaume/Royaume-Discord-Bot",
       "icon": "dark/GitHub.png"
-    }
+    },
+    "people": [
+      "Bluzzi",
+      "Steellgold",
+      "RomainSav",
+      "Verre2OuiSki",
+      "Se7en-dev",
+      "JedXDs",
+      "Asplix",
+      "LMGerard",
+      "shaynlink",
+      "RtoxGaming",
+      "scdying"
+    ]
   },
   {
     "title": "Rox",
     "year": {
       "from": "2022"
     },
+    "small_description": "Lorem ipsum dolor sit amet. In molestias eaque est facere beatae sed quia accusantium in harum eius id nesciunt dolorem id tenetur dicta.",
     "description": "A bot initially developed by me alone in JavaScript without having concrete knowledge, it <b>reached 100 000 users</b> but I stopped the development due to lack of knowledge and lack of time, resumed in 2022 in TypeScript with RomainSav to relaunch it, with a clean, uncluttered and understandable code.",
     "primaryTechIcon": "/icons/techs/typescript.png",
     "techIcons": [
@@ -75,7 +104,10 @@
       "text": "GitHub (old)",
       "link": "https://github.com/Steellgold/Rox",
       "icon": "dark/GitHub.png"
-    }
+    },
+    "contributors": [
+      "RomainSav"
+    ]
   },
   {
     "title": "Atlas",
@@ -83,6 +115,7 @@
       "from": "2019",
       "to": "2020"
     },
+    "small_description": "Lorem ipsum dolor sit amet. In molestias eaque est facere beatae sed quia accusantium in harum eius id nesciunt dolorem id tenetur dicta.",
     "description": "A server with <b>4100+ unique players</b> (at the time of my departure). I developed the whole first version as well as the pre-release which was under another name (RivalityShock PvP) which lasted 4 months (from the moment I arrived), this is where I was able to use my knowledge of PocketMine-MP and get to where I am now",
     "primaryTechIcon": "/icons/techs/php.png",
     "techIcons": [
