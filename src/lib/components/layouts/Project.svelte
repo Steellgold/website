@@ -17,6 +17,7 @@
   export let year: YearProp;
   export let small_description: string | undefined = undefined;
   export let description: string;
+  export let banner: string | undefined = undefined;
 
   export let primaryTechIcon: string;
   export let techIcons: string[];

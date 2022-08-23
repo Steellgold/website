@@ -21,7 +21,7 @@
   </div>
 </header>
 
-<section class="projects">
+<section id="projects" class="projects">
   <div class="list">
     {#each projects as project}
       <Project
@@ -29,6 +29,7 @@
         year={project.year}
         small_description={project.small_description}
         description={project.description}
+        banner={project.banner ?? undefined}
         primaryTechIcon={project.primaryTechIcon}
         techIcons={project.techIcons}
         button={project.button ?? undefined}

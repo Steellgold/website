@@ -35,8 +35,9 @@
     "year": {
       "from": "2022"
     },
-    "small_description": "Lorem ipsum dolor sit amet. In molestias eaque est facere beatae sed quia accusantium in harum eius id nesciunt dolorem id tenetur dicta.",
+    "small_description": "A Minecraft server based on the SkyBlock with a rewriting of the concept by adding new ways to play, or systems invented from scratch to bring a new side to the game.",
     "description": "Minecraft server on the Desktop version, written in Java on the Spigot software, with the primary goal of training, learning Java, and secondarily opening a server on a version with a language that is not my comfort zone",
+    "banner": "https://media.discordapp.net/attachments/580083630995537961/1011656732579205151/image_2_1.png",
     "primaryTechIcon": "/icons/techs/java.png",
     "techIcons": [
       "/icons/techs/spigot.png",
@@ -50,11 +51,12 @@
     "people": [
       "Steellgold",
       "Pralexkid",
-      "Azalee",
+      "Zaelee",
       "LeKiMi"
     ],
     "contributors": [
-      "KingDeadKnight"
+      "KingDeadKnight",
+      "Arcoz0308"
     ]
   },
   {
