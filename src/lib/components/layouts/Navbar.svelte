@@ -1,48 +1,20 @@
 <script lang="ts">
-
-  import { onMount } from "svelte";
-
-  let online: string = "offline";
-  let avatar = "";
-  
-  interface ListeningProp {
-    songName: string;
-    artistName: string;
-    albumName: string;
-    albumArtUrl: string;
-    trackId: string;
-  }
-
-  let listening: ListeningProp | null = null;
-
-  onMount(async () => {
-    const response = await fetch("https://api.lanyard.rest/v1/users/504392983244832780");
-    const data = await response.json();
-    online = data.data.discord_status;
-    avatar = data.data.discord_user.avatar;
-
-    if (data.data.spotify) {
-      listening = {
-        songName: data.data.spotify.song,
-        artistName: data.data.spotify.artist,
-        albumName: data.data.spotify.album,
-        albumArtUrl: data.data.spotify.album_art_url,
-        trackId: data.data.spotify.track_id,
-      }
-    }
-
-    console.log(data.data)
-  });
-
-  
+  export let data: any; 
 </script>
 
 <div>
+  {#if process.env.IS_PREVIEW}
+    <div class="preview">
+      <p>This is a development mode of the portfolio, you may run into a bug or something like that, go to the <a href="https://steellgold.fr">stable version</a> to be sure not to be surprised</p>
+      <p>Deployed from commit: <a href="https://github.com/Steellgold/Portfolio/commit/{process.env.VERCEL_GIT_COMMIT_SHA}">{process.env.VERCEL_GIT_COMMIT_MESSAGE}</a></p>
+    </div>
+  {/if}
+
   <nav class="navbar">
     <div class="discord-status">
-      <img id="discord-avatar" src="https://cdn.discordapp.com/avatars/504392983244832780/{avatar}.png" alt="discord">
+      <img id="discord-avatar" src="{data.user.avatar}" alt="discord">
       <span class="back-status"></span>
-      <span class="status {online}"></span>
+      <span class="status {data.user.status}"></span>
     </div>
   
     <ul>
@@ -50,32 +22,44 @@
         <a href="/" class="link">About me</a>
       </li>
       <li>
-        <a href="#projects" class="link">Projects</a>
+        <a href="/#projects" class="link">Projects</a>
       </li> 
     </ul>
   </nav>
 
-  {#if listening && window.innerWidth < 768}
+  {#if data.spotify.listening}
     <nav id="richPresence" class="rich-presence">
         <div>
-          <h4>Currently listening on Spotify</h4>
-          <p><b>Music</b>: {listening.songName}</p>
-          {#if listening.songName !== listening.albumName}
-            <p><b>Album</b>: {listening.albumName}</p>
+          <h2>Currently listening</h2>
+          <p><b>Music</b>: {data.spotify.trackName}</p>
+          {#if data.spotify.trackName !== data.spotify.albumName}
+            <p><b>Album</b>: {data.spotify.albumName}</p>
           {/if}
-          <p><b>Group</b>: {listening.artistName}</p>
+          <p><b>Group</b>: {data.spotify.artistName}</p>
         </div>
         <div>
-          <a href="https://open.spotify.com/track/{listening.trackId}">
-            <img src="{listening.albumArtUrl}" alt="Album Icon" height="100px">
+          <a href="https://open.spotify.com/track/{data.spotify.trackId}">
+            <img src="{data.spotify.albumCover}" alt="Album Icon" height="100px">
           </a>
         </div> 
     </nav>
+
+    <!-- TODO: Vue PC -->
   {/if}
 </div>
 
 <style lang="scss">
   @import "../../scss/variables.scss";
+
+  .preview {
+    background: linear-gradient(180deg, rgba(129, 74, 74, 0.74) 0%, rgba(129, 74, 74, 0.47) 100%);
+    padding: 20px;
+    text-align: center;
+
+    a {
+      color: #fff;
+    }
+  }
 
   nav.navbar {
     padding: 20px;
@@ -161,7 +145,6 @@
     }
   }
 
-  
   nav.rich-presence {
     background-color: $color-background-100-opacity;
     display: flex;

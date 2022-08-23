@@ -1,8 +1,11 @@
 <script>
-  import Navbar from "$lib/components/layouts/Navbar.svelte"; 
+  import Navbar from '$lib/components/layouts/Navbar.svelte';
+
+  /** @type {import('./$types').PageData} */
+  export let data;
 </script>
 
-<Navbar/>
+<Navbar data={data}/>
 
 <slot/>
 

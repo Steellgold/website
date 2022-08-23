@@ -1,5 +1,6 @@
 <script lang="ts">
   import Button from "$lib/components/elements/naviguation/Button.svelte";
+  import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
 
   interface YearProp {
     from: string;
@@ -11,15 +12,21 @@
     link: string;
     icon: string;
   }
-
+  
   export let title: string;
   export let year: YearProp;
+  export let small_description: string | undefined = undefined;
   export let description: string;
+  export let banner: string | undefined = undefined;
 
   export let primaryTechIcon: string;
   export let techIcons: string[];
   
-  export let button: ButtonProp;
+  export let button: ButtonProp | undefined = undefined;
+  export let buttons: ButtonProp[] | undefined = undefined;
+  
+  export let people: string[] | undefined = undefined;
+  export let contributors: string[] | undefined = undefined;
 </script>
 
 <div class="card">
@@ -39,7 +46,9 @@
 
   <!-- Description -->
   <div class="description">
-    <p>{description}</p>
+    <a href={`/project/${title}`} class="toPage">
+      <p>{@html small_description}</p>
+    </a>
   </div>
 
   <!-- Technos -->
@@ -54,11 +63,26 @@
   </div>
 
   <!-- Button -->
-  <Button link={button.link} icon={button.icon} small={true}>{button.text}</Button>
+  {#if button}
+    <Button link={button.link} icon={button.icon} small={true}>{button.text}</Button>
+  {/if}
+
+  {#if buttons !== undefined}
+    <ButtonGroup>
+      {#each buttons as button}
+        <Button link={button.link} icon={button.icon} small={false}>{button.text}</Button>
+      {/each}
+    </ButtonGroup>
+  {/if}
 </div>
 
 <style lang="scss">
   .card {
+    a.toPage {
+      color: white;
+      text-decoration: none;
+    }
+
     position: relative;
 
     background: #111827;
