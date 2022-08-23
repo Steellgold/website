@@ -22,7 +22,7 @@
         <a href="/" class="link">About me</a>
       </li>
       <li>
-        <a href="#projects" class="link">Projects</a>
+        <a href="/#projects" class="link">Projects</a>
       </li> 
     </ul>
   </nav>

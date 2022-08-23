@@ -37,16 +37,12 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
 <div class="page">
   <div class="right">
     <h1>{project.title}</h1>
-    <p class="small">{project.small_description}</p>
+    <p class="small">{@html project.small_description}</p>
 
     <hr>
     
     <div class="desc">
-      <p>
-        Lorem ipsum dolor sit amet. Sed earum dolore in numquam rerum et omnis cupiditate non incidunt ipsum voluptas consequatur qui porro alias et voluptatum nisi. Sit quisquam officiis qui eligendi voluptatem ut mollitia enim et voluptatem voluptates et temporibus molestias et inventore laborum. Quo soluta quae eos minima voluptatem est quae velit ut debitis quis ut recusandae esse qui tenetur ipsa eum quisquam accusamus! Et tempora soluta eum libero quibusdam ad officia veritatis est minima soluta. Aut fuga aperiam At consectetur voluptas rem nostrum facilis. Ut neque saepe ad enim nihil id vitae. Sed provident quod quo quaerat aperiam aut earum quia. Eos consequatur incidunt nam libero velit 33 quae esse et Quis quia sed suscipit sint sit impedit dicta est reiciendis cumque. Quo expedita temporibus vel magnam omnis ex voluptas quod. Ut internos fugit aut repellendus maxime et esse porro ex distinctio unde eum laborum quidem. Ab nesciunt ipsa non possimus doloribus et eligendi tempore. Ut doloribus voluptatem sed possimus deleniti aut quas ratione aut dignissimos quibusdam est enim! Sed minima atque vel internos sunt est repellendus magni ut enim iure vel natus sunt eum labore dolorem. Id doloribus necessitatibus et perferendis esse et quisquam maxime.<br><br>
-        Et dolorem dolores qui asperiores amet ex voluptas excepturi. A debitis animi aut pariatur animi eos quia consequatur id itaque voluptatem non voluptatum sunt in reiciendis praesentium. In galisum asperiores sit placeat quia non corporis accusantium cum doloremque labore 33 quibusdam nemo et deserunt provident est error internos.<br><br>
-        Est facilis itaque nam sequi voluptatem et dolores quae ut similique enim qui omnis sint? Cum quasi aliquam quo veniam voluptatum et repellendus beatae aut architecto saepe. Et voluptas officia et accusamus incidunt ex vitae voluptatem non nulla similique et perspiciatis delectus sed cumque quisquam ab obcaecati laudantium. Cupiditate voluptatem eos omnis animi tenetur blanditiis eos perspiciatis deleniti non voluptatibus beatae sed repellat tenetur sit earum provident. Qui animi omnis eum aperiam recusandae a enim quis et nisi libero non fugiat autem eum error numquam? Aut eius accusamus 33 similique sint nam maiores ipsa non saepe sunt non velit incidunt et perspiciatis reiciendis. Et corporis reiciendis At similique labore et ratione perspiciatis. Qui illo nobis et adipisci assumenda vel quia dolores et eius necessitatibus. Id porro quia non quisquam earum est tempora sequi. Quo autem atque est placeat itaque est autem autem 33 libero galisum. Ut optio nulla ea soluta autem in cumque illo. Vel debitis velit est debitis quasi est veritatis voluptatem. Aut consequatur corporis et doloribus esse id veritatis odio non numquam porro ea autem voluptatibus id quaerat illum ad beatae alias. Ad eligendi pariatur ab error autem nam soluta aliquid
-      </p>
+      <p class="long">{@html project.description}</p>
     </div>
   </div>
   
@@ -138,6 +134,17 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
         text-align: center;
         width: 70%;
         margin: 0;
+      }
+
+      .desc {
+        align-self: center;
+        text-align: center;
+        width: 80%;
+
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          text-align: left;
+        }
       }
 
       h1 {

@@ -47,7 +47,7 @@
   <!-- Description -->
   <div class="description">
     <a href={`/project/${title}`} class="toPage">
-      <p>{@html description}</p>
+      <p>{@html small_description}</p>
     </a>
   </div>
 
