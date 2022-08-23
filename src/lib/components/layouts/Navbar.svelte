@@ -6,7 +6,7 @@
   {#if process.env.IS_PREVIEW}
     <div class="preview">
       <p>This is a development mode of the portfolio, you may run into a bug or something like that, go to the <a href="https://steellgold.fr">stable version</a> to be sure not to be surprised</p>
-      <p>Deployed from commit: {process.env.VERCEL_GIT_COMMIT_REF}</p>
+      <p>Deployed from commit: {process.env.VERCEL_GIT_COMMIT_MESSAGE}</p>
     </div>
   {/if}
 
