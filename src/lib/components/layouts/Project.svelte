@@ -45,7 +45,9 @@
 
   <!-- Description -->
   <div class="description">
-    <p>{@html description}</p>
+    <a href={`/project/${title}`} class="toPage">
+      <p>{@html description}</p>
+    </a>
   </div>
 
   <!-- Technos -->
@@ -75,6 +77,11 @@
 
 <style lang="scss">
   .card {
+    a.toPage {
+      color: white;
+      text-decoration: none;
+    }
+
     position: relative;
 
     background: #111827;
