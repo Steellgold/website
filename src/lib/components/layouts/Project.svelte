@@ -57,7 +57,7 @@ import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
 
   <!-- Button -->
   {#if button}
-    <Button link={button.link} icon={button.icon} small={false}>{button.text}</Button>
+    <Button link={button.link} icon={button.icon} small={true}>{button.text}</Button>
   {/if}
 
   {#if buttons !== undefined}
