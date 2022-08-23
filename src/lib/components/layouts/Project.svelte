@@ -15,6 +15,7 @@ import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
 
   export let title: string;
   export let year: YearProp;
+  export let small_description: string | undefined = undefined;
   export let description: string;
 
   export let primaryTechIcon: string;
@@ -22,6 +23,9 @@ import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
   
   export let button: ButtonProp | undefined = undefined;
   export let buttons: ButtonProp[] | undefined = undefined;
+  
+  export let people: string[] | undefined = undefined;
+  export let contributors: string[] | undefined = undefined;
 </script>
 
 <div class="card">
