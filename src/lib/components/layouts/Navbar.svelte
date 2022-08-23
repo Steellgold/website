@@ -53,7 +53,7 @@
 
   .preview {
     background: linear-gradient(180deg, rgba(129, 74, 74, 0.74) 0%, rgba(129, 74, 74, 0.47) 100%);
-    padding: 10px;
+    padding: 20px;
     text-align: center;
 
     a {
