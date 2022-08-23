@@ -28,14 +28,10 @@
         title={project.title} 
         year={project.year}
         small_description={project.small_description}
-        description={project.description}
-        banner={project.banner ?? undefined}
         primaryTechIcon={project.primaryTechIcon}
         techIcons={project.techIcons}
         button={project.button ?? undefined}
         buttons={project.buttons ?? undefined}
-        people={project.people ?? undefined}
-        contributors={project.contributors ?? undefined}
       />
     {/each}
   </div>
