@@ -16,17 +16,12 @@
   export let title: string;
   export let year: YearProp;
   export let small_description: string | undefined = undefined;
-  export let description: string;
-  export let banner: string | undefined = undefined;
 
   export let primaryTechIcon: string;
   export let techIcons: string[];
   
   export let button: ButtonProp | undefined = undefined;
   export let buttons: ButtonProp[] | undefined = undefined;
-  
-  export let people: string[] | undefined = undefined;
-  export let contributors: string[] | undefined = undefined;
 </script>
 
 <div class="card">
