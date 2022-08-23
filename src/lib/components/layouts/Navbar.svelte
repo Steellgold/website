@@ -3,6 +3,12 @@
 </script>
 
 <div>
+  {#if process.env.IS_PREVIEW == "false"}
+    <div class="preview">
+      <p>This is a development mode of the portfolio, you may run into a bug or something like that, go to the <a href="https://steellgold.fr">stable version</a> to be sure not to be surprised</p>
+    </div>
+  {/if}
+
   <nav class="navbar">
     <div class="discord-status">
       <img id="discord-avatar" src="{data.user.avatar}" alt="discord">
@@ -43,6 +49,16 @@
 
 <style lang="scss">
   @import "../../scss/variables.scss";
+
+  .preview {
+    background: linear-gradient(180deg, rgba(129, 74, 74, 0.74) 0%, rgba(129, 74, 74, 0.47) 100%);
+    padding: 10px;
+    text-align: center;
+
+    a {
+      color: #fff;
+    }
+  }
 
   nav.navbar {
     padding: 20px;
