@@ -8,7 +8,7 @@ import { env } from "$env/dynamic/private";
 <div>
   <div class="preview">
     <p>This is a development mode of the portfolio, you may run into a bug or something like that, go to the <a href="https://steellgold.fr">stable version</a> to be sure not to be surprised</p>
-    <p>{env.IS_PREVIEW}</p>
+    <p>{process.env.IS_PREVIEW}</p>
   </div>
 
   <nav class="navbar">
