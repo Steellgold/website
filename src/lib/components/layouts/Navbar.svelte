@@ -152,6 +152,10 @@
     margin: 0;
     justify-content: space-between;
     align-items: center;
+
+    @media (min-width: $breakpoint-lg) {
+      display: none;
+    }
   
     img {
       border-radius: 20px;
