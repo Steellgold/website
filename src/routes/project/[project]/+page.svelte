@@ -94,6 +94,8 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
 </div>
 
 <style lang="scss">
+  @import "../../../lib/scss/variables.scss";
+
   .page {
     padding: 30px;
     display: flex;
@@ -121,7 +123,7 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
       width: 30%;
       align-self: center;
       padding: 2px;
-      background: #D9D9D9;
+      background: $color-hr;
       border-radius: 4px;
     }
 

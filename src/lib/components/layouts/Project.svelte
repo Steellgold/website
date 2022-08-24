@@ -72,6 +72,8 @@
 </div>
 
 <style lang="scss">
+  @import "../../scss/variables.scss";
+
   .card {
     a.toPage {
       color: white;
@@ -80,7 +82,7 @@
 
     position: relative;
 
-    background: #111827;
+    background: $color-background;
 
     display: flex;
     flex-direction: column;

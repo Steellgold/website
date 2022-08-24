@@ -18,7 +18,7 @@
 
   .article {
     display: flex;
-    background-color: #1D212C;
+    background-color: $color-primary;
     border-radius: 20px;
     width: 600px;
     padding: 10px;
