@@ -14,11 +14,13 @@
 </div>
 
 <style lang="scss">
+  @import "../../scss/variables.scss";
+
   .article {
     display: flex;
     background-color: #1D212C;
     border-radius: 20px;
-    width: 44%;
+    width: 600px;
     padding: 10px;
 
     .infos {
