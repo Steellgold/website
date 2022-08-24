@@ -36,7 +36,7 @@
       }
 
       p.subtitle {
-        color: #B5B5B5;
+        color: $color-gray;
         font-weight: 500;
         font-size: 20px;
       }
