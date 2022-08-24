@@ -43,7 +43,6 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
     
     <div class="desc">
       <p class="long">{@html project.description}</p>
-      <p>{process.env.IS_PREVIEW}</p>
     </div>
   </div>
   
