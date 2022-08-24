@@ -9,9 +9,7 @@
   <img class="icon" src="/icons/techs/{primaryTechIcon}.png" alt="primary skill"/>
   <div class="infos">
     <h2>{title}</h2>
-    <div class="text">
-      <p class="subtitle">{small_description}</p>
-    </div>
+    <p class="subtitle">{small_description}</p>
   </div>
 </div>
 
@@ -29,43 +27,33 @@
       justify-content: center;
       width: 100%;
       
-      .text {
-        display: flex;
-        justify-content: space-between;
-        
+      h2 {
+        font-weight: 800;
+        color: white;
+        font-size: 20px;
+      }
+
+      p.subtitle {
+        color: #B5B5B5;
+        font-weight: 500;
+        font-size: 20px;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+
         h2 {
-          font-weight: 800;
-          color: white;
-          font-size: 1.5rem;
+          font-size: 15px;
         }
 
         p.subtitle {
-          color: #B5B5B5;
-          font-weight: 500;
-          font-size: 20px;
-        }
-
-        p.position {
-          color: #B5B5B5;
-          font-weight: 500;
-          font-size: 20px;
-          margin-right: 13px;
-      }
-
-        hr {
-          width: auto;
-          height: 0;
-          border-top: 3px solid #fff;
+          font-size: 15px;
         }
       }
     }
 
     @media screen and (max-width: 768px) {
       width: 100%;
-      
-      h2 {
-        font-size: 12px;
-      }
     }
 
     img.icon {
