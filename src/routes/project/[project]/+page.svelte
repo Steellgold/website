@@ -1,8 +1,7 @@
 <script lang="ts">
   /** @type {import('./$types').PageData} */
 
-  import { base } from "$app/paths";
-import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte";
+  import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte";
   import Button from "$lib/components/elements/naviguation/Button.svelte";
   
   interface PageData {

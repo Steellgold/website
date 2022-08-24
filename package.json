@@ -28,7 +28,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"dotenv": "^16.0.1",
 		"firebase": "^9.9.3",
 		"scss-tokenizer": ">=0.4.3"
 	}

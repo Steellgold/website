@@ -1,5 +1,4 @@
 /** @type {import('./$types').PageServerLoad} */
-import 'dotenv/config';
 
 export async function load() {
 
