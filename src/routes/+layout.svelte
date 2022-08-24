@@ -22,6 +22,10 @@
       text-decoration: none;
       color: $color-gray-200;
     }
+
+    a:hover {
+      color: $color-gray-300;
+    }
   }
 </style>
 
