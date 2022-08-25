@@ -24,6 +24,9 @@
         <a href="/" class="link">About me</a>
       </li>
       <li>
+        <a href="/blog" class="link">Blog</a>
+      </li> 
+      <li>
         <a href="/#projects" class="link">Projects</a>
       </li> 
     </ul>

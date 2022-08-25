@@ -12,7 +12,8 @@
       "/icons/techs/javascript.png", 
       "/icons/techs/html.png", 
       "/icons/techs/css.png", 
-      "/icons/techs/sass.png"
+      "/icons/techs/sass.png",
+      "/icons/techs/firebase.png"
     ],
     "buttons": [
       {

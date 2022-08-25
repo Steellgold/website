@@ -1,26 +1,47 @@
 <script lang="ts">
-  export let id: string;
+import Tag from "../elements/naviguation/Tag.svelte";
+
+  export let id: string; // for the <a>, todo
   export let title: string;
   export let published_date: string;
   export let small_description: string;
-  export let primaryTechIcon: string;
-  export let banner: string | null = null;
+  export let primary_tech: string | null = null;
+  export let banner_url: string | null = null;
+  export let tags: string[] = [];
+  export let difficulty: string;
 </script>
 
 <div class="article">
-  {#if banner}
-    <img class="banner" src="{banner}" alt="Banner">
+  {#if banner_url}
+    <img class="banner" src="{banner_url}" alt="Banner">
   {/if}
 
   <div class="infos">
-    <img class="icon" src="/icons/techs/{primaryTechIcon}.png" alt="primary skill"/>
+    {#if primary_tech}
+      <img class="icon" src="/icons/techs/{primary_tech}.png" alt="primary skill"/>
+    {/if}
 
-    <div>
+    <div class="center">
       <h2>{title}</h2>
       <p class="subtitle">{small_description}</p>
-      <p class="date">Published at {published_date}</p>
     </div>
   </div>
+  <div class="footer">
+    {#if difficulty}
+      <p>Difficulty: <b>{difficulty}</b></p>
+    {/if}
+
+    <p>Author: Steellgold</p>
+    <p>Published at {published_date}</p>
+  </div>
+
+  {#if tags}
+    <div class="tags">
+      {#each tags as tag}
+        <Tag title={tag} />
+      {/each}
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
@@ -38,12 +59,25 @@
       height: 200px;
     }
 
+    .footer {
+      color: $color-gray;
+      font-weight: 500;
+      padding: 3px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
     .infos {
       padding: 5px 0px;
       gap: 4px;
-      display: flex;
       width: 100%;
+      display: flex;
       
+      .center {
+        align-self: center;
+      }
+
       img.icon {
         margin-right: 1rem;
         border-radius: 20px;
@@ -53,6 +87,7 @@
         font-weight: 800;
         color: white;
         font-size: 20px;
+        text-transform: uppercase;
       }
 
       p.subtitle {
@@ -60,30 +95,13 @@
         font-weight: 500;
         font-size: 15px;
       }
-
-      p.date {
-        color: $color-gray;
-        font-weight: 500;
-        font-size: 10px;
-        display: flex;
-        justify-content: flex-end;
-      }
-
-      @media screen and (max-width: 768px) {
-        width: 100%;
-
-        h2 {
-          font-size: 15px;
-        }
-
-        p.subtitle {
-          font-size: 15px;
-        }
-      }
     }
 
-    @media screen and (max-width: 768px) {
-      width: 100%;
+    .tags {
+      display: flex;
+      padding: 10px;
+      justify-content: flex-end;
+      gap: 10px;
     }
   }
 </style>

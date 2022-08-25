@@ -11,10 +11,10 @@
 
   interface Article {
     title: string;
-    primaryTechIcon: string;
+    primary_tech: string;
     published_date: string;
     small_description: string;
-    banner: string | null;
+    banner_url: string | null;
   }
 
   let articles: Article[] = [];
