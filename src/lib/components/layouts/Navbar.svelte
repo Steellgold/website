@@ -1,7 +1,21 @@
 <script lang="ts">
   import { PUBLIC_IS_PREVIEW } from '$env/static/public';
   import { VERCEL_GIT_COMMIT_SHA, VERCEL_GIT_COMMIT_MESSAGE} from '$env/static/private';
-  export let data: any; 
+  export let data: any;
+  
+  // on click the a with class: "mobile" the UI change class by "active-links"
+  function handleClick() {
+    const mobile = document.querySelector('.mobile');
+    const mobileLink = document.querySelector('.mobile-link');
+    const activeLinks = document.getElementById('links');
+    if (!activeLinks) return;
+    activeLinks.classList.toggle('disabled-links');
+
+    if (mobileLink) {
+      console.log(mobileLink?.innerHTML)
+      mobileLink.innerHTML = (mobileLink?.innerHTML === 'Close' ? 'Menu' : 'Close');
+    }
+  }
 </script>
 
 <div>
@@ -19,7 +33,7 @@
       <span class="status {data.user.status}"></span>
     </div>
   
-    <ul>
+    <ul id="links" class="disabled-links">
       <li>
         <a href="/" class="link">About me</a>
       </li>
@@ -28,7 +42,13 @@
       </li> 
       <li>
         <a href="/#projects" class="link">Projects</a>
-      </li> 
+      </li>
+    </ul>
+
+    <ul>
+      <li class="mobile">
+        <a class="link mobile-link" on:click="{handleClick}">Menu</a>
+      </li>
     </ul>
   </nav>
 
@@ -48,8 +68,6 @@
           </a>
         </div> 
     </nav>
-
-    <!-- TODO: Vue PC -->
   {/if}
 </div>
 
@@ -148,8 +166,24 @@
         }
       }
     }
+
+    @media (max-width: 768px) {
+      ul.disabled-links {
+        display: none;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 10px;
+      }
+    }
   }
 
+  // adapt navbar to mobile
   nav.rich-presence {
     background-color: $color-background-100-opacity;
     display: flex;
