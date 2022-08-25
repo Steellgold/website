@@ -52,6 +52,10 @@ import Tag from "../elements/naviguation/Tag.svelte";
     border-radius: 20px;
     width: 600px;
     padding: 10px;
+    
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 
     .banner {
       border-radius: 26px;
@@ -66,6 +70,10 @@ import Tag from "../elements/naviguation/Tag.svelte";
       font-size: 12px;
       display: flex;
       justify-content: space-between;
+
+      @media (max-width: 768px) {
+        margin-bottom: -15px;
+      }
     }
 
     .infos {
@@ -88,12 +96,20 @@ import Tag from "../elements/naviguation/Tag.svelte";
         color: white;
         font-size: 20px;
         text-transform: uppercase;
+
+        @media (max-width: 768px) {
+          font-size: 13px;
+        }
       }
 
       p.subtitle {
         color: $color-gray;
         font-weight: 500;
         font-size: 15px;
+
+        @media (max-width: 768px) {
+          font-size: 13px;
+        }
       }
     }
 
