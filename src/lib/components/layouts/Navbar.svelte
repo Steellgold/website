@@ -5,7 +5,6 @@
   
   // on click the a with class: "mobile" the UI change class by "active-links"
   function handleClick() {
-    const mobile = document.querySelector('.mobile');
     const mobileLink = document.querySelector('.mobile-link');
     const activeLinks = document.getElementById('links');
     if (!activeLinks) return;
