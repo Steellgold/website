@@ -45,7 +45,7 @@
       </li>
     </ul>
 
-    <ul>
+    <ul class="desktop-hide">
       <li class="mobile">
         <a class="link mobile-link" on:click="{handleClick}">Menu</a>
       </li>
@@ -179,6 +179,13 @@
         align-items: center;
         gap: 40px;
         padding: 10px;
+      }
+    }
+
+    // Hide the ul desktop-hide on desktop
+    @media (min-width: 768px) {
+      ul.desktop-hide {
+        display: none;
       }
     }
   }
