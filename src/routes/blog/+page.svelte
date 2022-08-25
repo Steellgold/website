@@ -1,10 +1,41 @@
 <script lang="ts">
   import Article from "$lib/components/layouts/Article.svelte";
+  import { initializeApp, getApps, getApp } from "firebase/app";
+  import { collection, getFirestore, onSnapshot } from "firebase/firestore";
+  import { firebaseConfig } from "$lib/config/firebase";
+  import { browser } from "$app/env";
+
+  const firebaseApp = browser && (getApps().length === 0 ? initializeApp(firebaseConfig) : getApp());
+  const db = browser && getFirestore();
+  const colRef = browser && collection(db, "articles");
+
+  interface Article {
+    title: string;
+    primaryTechIcon: string;
+    published_date: string;
+    small_description: string;
+    banner: string | null;
+  }
+
+  let articles: Article[] = [];
+  const unsubscribe = browser &&
+    onSnapshot(colRef, (querySnapshot) => {
+      let content: Article[] = [];
+      querySnapshot.forEach((doc) => {
+        let article = {...doc.data(), id: doc.id};
+        content.push(article);
+      })
+      articles = content;
+  });
+
+  /** @type {import('./$types').PageData} */
+  export let data: any;
 </script>
 
 <div class="articles">
-  <Article title="CRÉATION D’UN PLUGIN POCKETMINE-MP" small_description="Voyons ensemble comment faire la base de [...]" published_date="23/08/2022" primaryTechIcon="php" />
-  <Article title="TUTORIEL POUR CUSTOMIES" small_description="Nous allons voir comment créer un [...]" published_date="24/08/2022" primaryTechIcon="php" />
+  {#each articles as article}
+    <Article {...article} />
+  {/each}
 </div>
 
 <style lang="scss">
