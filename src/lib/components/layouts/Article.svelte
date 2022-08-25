@@ -1,5 +1,7 @@
 <script lang="ts">
-import Tag from "../elements/naviguation/Tag.svelte";
+  import { redirect } from "@sveltejs/kit";
+
+  import Tag from "../elements/naviguation/Tag.svelte";
 
   export let id: string; // for the <a>, todo
   export let title: string;
@@ -13,17 +15,20 @@ import Tag from "../elements/naviguation/Tag.svelte";
 
 <div class="article">
   {#if banner_url}
-    <img class="banner" src="{banner_url}" alt="Banner">
+    <a href="/blog/{id}">
+      <img class="banner" src="{banner_url}" alt="Banner">
+    </a>
   {/if}
 
   <div class="infos">
     {#if primary_tech}
+      <!-- TODO: Show articles with this tech -->
       <img class="icon" src="/icons/techs/{primary_tech}.png" alt="primary skill"/>
     {/if}
 
     <div class="center">
-      <h2>{title}</h2>
-      <p class="subtitle">{small_description}</p>
+      <a href="/blog/{id}"><h2>{title}</h2></a>
+      <a href="/blog/{id}"><p class="subtitle">{small_description}</p></a>
     </div>
   </div>
   <div class="footer">
@@ -52,6 +57,10 @@ import Tag from "../elements/naviguation/Tag.svelte";
     border-radius: 20px;
     width: 600px;
     padding: 10px;
+
+    a {
+      text-decoration: none;
+    }
     
     @media (max-width: 768px) {
         width: 100%;
@@ -70,10 +79,7 @@ import Tag from "../elements/naviguation/Tag.svelte";
       font-size: 12px;
       display: flex;
       justify-content: space-between;
-
-      @media (max-width: 768px) {
-        margin-bottom: -15px;
-      }
+      margin-bottom: -19px;
     }
 
     .infos {
