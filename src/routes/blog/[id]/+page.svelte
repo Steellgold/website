@@ -1,13 +1,30 @@
 <script lang="ts">
-
+  /** @type {import('./$types').PageServerLoad} */
+  export let data: any;
 </script>
 
 <div class="article">
-  <img class="banner" src="https://media.discordapp.net/attachments/951208784200630392/1012395263828181062/Rectangle_123_1.png" alt="">
+  {#if data.article.banner_url}
+    <img class="banner" src="{data.article.banner_url}" alt="">
+  {/if}
 
-  <div class="content">
-    <h3>cc</h3>
+  <div class="infos">
+    <div class="in1">
+      <p>Published at {data.article.published_date}</p>
+      <p>By: Steellgold</p>
+    </div>
+    <div class="in2">
+      <p>Technologies</p>
+      <div>
+        {#each ["php", "javascript", "typescript", "svelte"] as technology}
+          <span>{technology}</span>
+        {/each}
+      </div>
+    </div>
   </div>
+  
+  <!-- <h1>{data.article.content.title}</h1> -->
+  <!-- <h4>{data.article.content.subtitle}</h4> -->
 </div>
 
 <style lang="scss">
@@ -25,46 +42,37 @@
 
   .article {
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 
-    p {
-      color: $color-gray;
-      width: 50%;
-      padding: 5px;
-      margin: auto;
+    .infos {
+      width: 65%;
+      .in1{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        color: $color-gray;
+        font-weight: 500;
+      }
+
+      
     }
 
-    img.article-img {
-      margin: auto;
-      padding: 15px;
-      display: block;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      color: #fff;
-      padding: 10px;
-      margin: auto;
+    h1 {
+      font-weight: 900;
       text-align: center;
+      margin-top: 20px;
       text-transform: uppercase;
     }
 
-    a {
-      color: #fff;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      margin: auto;
+    h4 {
       text-align: center;
-    }
+      font-weight: 600;
+      color: $color-gray-200;
 
-    @media (max-width: 768px) {
-      p {
-        width: 90%;
+      @media (max-width: 768px) {
+        font-size: 15px;
+        width: 95%;
       }
     }
   }
