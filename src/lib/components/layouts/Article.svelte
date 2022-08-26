@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { redirect } from "@sveltejs/kit";
-
   import Tag from "../elements/naviguation/Tag.svelte";
 
   export let id: string; // for the <a>, todo
