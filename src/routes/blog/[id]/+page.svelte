@@ -1,6 +1,4 @@
 <script lang="ts">
-import Article from "$lib/components/layouts/Article.svelte";
-
   /** @type {import('./$types').PageServerLoad} */
   export let data: any;
 </script>
@@ -11,8 +9,18 @@ import Article from "$lib/components/layouts/Article.svelte";
   {/if}
 
   <div class="infos">
-    <span>Published at {data.article.published_date}</span>
-    <span>By: Steellgold</span>
+    <div class="in1">
+      <p>Published at {data.article.published_date}</p>
+      <p>By: Steellgold</p>
+    </div>
+    <div class="in2">
+      <p>Technologies</p>
+      <div>
+        {#each ["php", "javascript", "typescript", "svelte"] as technology}
+          <span>{technology}</span>
+        {/each}
+      </div>
+    </div>
   </div>
   
   <!-- <h1>{data.article.content.title}</h1> -->
@@ -38,11 +46,16 @@ import Article from "$lib/components/layouts/Article.svelte";
     flex-direction: column;
 
     .infos {
-      color: $color-gray;
-      font-weight: 400;
-      padding: 10px;
-      flex-direction: column;
-      justify-content: space-between;
+      width: 65%;
+      .in1{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        color: $color-gray;
+        font-weight: 500;
+      }
+
+      
     }
 
     h1 {
