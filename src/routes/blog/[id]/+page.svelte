@@ -1,6 +1,14 @@
 <script lang="ts">
-  /** @type {import('./$types').PageServerLoad} */
+  interface Article {
+    title: string;
+    small_description: string;
+    primary_tech: string;
+    published_date: string;
+    content: any;
+  }
+
   export let data: any;
+  export let article: Article = data.article;
 </script>
 
 <div class="article">
@@ -15,12 +23,16 @@
     </div>
     <div class="in2">
       <p>Technologies</p>
-      <div>
+      <div class="techs">
         {#each ["php", "javascript", "typescript", "svelte"] as technology}
-          <span>{technology}</span>
+          <img src="/icons/techs/{technology}.png" alt="{technology} icon">
         {/each}
       </div>
     </div>
+  </div>
+
+  <div class="content">
+    {@html article.content.body}
   </div>
   
   <!-- <h1>{data.article.content.title}</h1> -->
@@ -34,7 +46,7 @@
     height: 50%;
     border-radius: 0px 0px 40px 40px;
 
-    @media (max-width: 768px) {
+    @media (max-width: 912px) or (max-width: 820px) or (max-width: 768px) {
       width: 90%;
       border-radius: 0px 0px 20px 20px;
     }
@@ -46,33 +58,46 @@
     flex-direction: column;
 
     .infos {
-      width: 65%;
-      .in1{
-        padding: 10px;
-        display: flex;
-        justify-content: space-between;
-        color: $color-gray;
-        font-weight: 500;
+      width: 55%;
+      padding: 10px;
+      color: $color-gray;
+      font-weight: 500;
+
+      @media (max-width: 912px) or (max-width: 820px) or (max-width: 768px) {
+        font-size: 15px;
+        width: 80%;
       }
 
+      .in1 {
+        display: flex;
+        justify-content: space-between;
+      }
       
+      .in2 {
+        margin-top: 10px;
+
+        .techs {
+          margin-top: 5px;
+          display: flex;
+          align-items: center;
+        }
+
+        img {
+          width: 35px;
+          height: 35px;
+          margin-right: 5px;
+          border-radius: 8;
+        }
+      }
     }
+    
+    .content {
+      padding: 10px;
+      width: 60%;
+      color: $color-gray;
 
-    h1 {
-      font-weight: 900;
-      text-align: center;
-      margin-top: 20px;
-      text-transform: uppercase;
-    }
-
-    h4 {
-      text-align: center;
-      font-weight: 600;
-      color: $color-gray-200;
-
-      @media (max-width: 768px) {
-        font-size: 15px;
-        width: 95%;
+      @media (max-width: 912px) or (max-width: 820px) or (max-width: 768px) {
+        width: 90%;
       }
     }
   }
