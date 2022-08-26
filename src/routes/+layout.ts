@@ -1,5 +1,7 @@
 /** @type {import('./$types').PageLoad} */
 
-export function load({ data }) {
+import type { LoadEvent } from "@sveltejs/kit";
+
+export function load({ data }: LoadEvent) {
   return data;
 }
