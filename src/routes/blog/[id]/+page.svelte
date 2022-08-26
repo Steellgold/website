@@ -1,17 +1,12 @@
 <script lang="ts">
-  import Article from "$lib/components/layouts/Article.svelte";
 
-  /** @type {import('./$types').PageLoad} */
-  export let data;
-
-  console.log(data);
 </script>
 
 <div class="article">
   <img class="banner" src="https://media.discordapp.net/attachments/951208784200630392/1012395263828181062/Rectangle_123_1.png" alt="">
 
   <div class="content">
-    
+    <h3>cc</h3>
   </div>
 </div>
 
