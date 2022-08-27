@@ -49,6 +49,16 @@
       width: 90%;
       border-radius: 0px 0px 20px 20px;
     }
+
+    @media (max-width: 820px) {
+      width: 90%;
+      border-radius: 0px 0px 20px 20px;
+    }
+
+    @media (max-width: 912px) {
+      width: 90%;
+      border-radius: 0px 0px 20px 20px;
+    }
   }
 
   .article {
@@ -62,7 +72,17 @@
       color: $color-gray;
       font-weight: 500;
 
-      @media (max-width: 768px) or (max-width: 820px) or (max-width: 912px) {
+      @media (max-width: 768px) {
+        font-size: 15px;
+        width: 80%;
+      }
+
+      @media (max-width: 820px) {
+        font-size: 15px;
+        width: 80%;
+      }
+
+      @media (max-width: 912px) {
         font-size: 15px;
         width: 80%;
       }
@@ -95,7 +115,15 @@
       width: 60%;
       color: $color-gray;
 
-      @media (max-width: 768px) or (max-width: 820px) or (max-width: 912px) {
+      @media (max-width: 768px) {
+        width: 90%;
+      }
+
+      @media (max-width: 820px) {
+        width: 90%;
+      }
+
+      @media (max-width: 912px) {
         width: 90%;
       }
     }
