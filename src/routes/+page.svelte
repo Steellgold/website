@@ -1,5 +1,5 @@
 <script>
-  import Button from "$lib/components/elements/naviguation/Button.svelte";
+  import Button from "$lib/components/elements/navigation/Button.svelte";
   import Project from "$lib/components/layouts/Project.svelte";
   import projects from "$lib/config/projects.json";
 </script>
