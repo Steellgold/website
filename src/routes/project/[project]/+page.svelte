@@ -1,8 +1,8 @@
 <script lang="ts">
   /** @type {import('./$types').PageData} */
 
-  import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte";
-  import Button from "$lib/components/elements/naviguation/Button.svelte";
+  import ButtonGroup from "$lib/components/elements/containers/ButtonGroup.svelte";
+  import Button from "$lib/components/elements/navigation/Button.svelte";
   
   interface PageData {
     title: string;
@@ -10,7 +10,7 @@
       from: string;
       to?: string;
     };
-    small_description: string;
+    smallDescription: string;
     description: string;
     banner?: string;
     primaryTechIcon: string;
@@ -36,7 +36,7 @@
 <div class="page">
   <div class="right">
     <h1>{project.title}</h1>
-    <p class="small">{@html project.small_description}</p>
+    <p class="small">{@html project.smallDescription}</p>
 
     <hr>
     
