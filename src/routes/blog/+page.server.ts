@@ -1,14 +1,14 @@
 import { db } from "../../lib/database/Firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, Timestamp } from "firebase/firestore";
 
 interface ArticleData {
   id: string;
   title: string;
   content: string;
-  published_date: string;
-  small_description: string;
-  primary_tech: string;
-  banner_url: string | null;
+  publishedDate: Timestamp;
+  smallDescription: string;
+  primaryTech: string;
+  bannerUrl: string | null;
 }
 
 const articles: ArticleData[] = [];
@@ -19,10 +19,10 @@ querySnapshot.forEach((doc) => {
     id: doc.id,
     title: data.title,
     content: data.content,
-    published_date: data.published_date,
-    small_description: data.small_description,
-    primary_tech: data.primary_tech,
-    banner_url: data.banner_url,
+    publishedDate: data.publishedDate,
+    smallDescription: data.smallDescription,
+    primaryTech: data.primaryTech,
+    bannerUrl: data.bannerUrl,
   });
 });
 
