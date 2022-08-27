@@ -7,7 +7,7 @@ interface ArticleData {
   content: string;
   published_date: string;
   small_description: string;
-  primaryt_tech: string;
+  primary_tech: string;
   banner_url: string | null;
 }
 
@@ -21,7 +21,7 @@ querySnapshot.forEach((doc) => {
     content: data.content,
     published_date: data.published_date,
     small_description: data.small_description,
-    primaryt_tech: data.primaryt_tech,
+    primary_tech: data.primary_tech,
     banner_url: data.banner_url,
   });
 });
