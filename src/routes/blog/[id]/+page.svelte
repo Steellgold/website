@@ -43,10 +43,9 @@
   @import "../../../lib/scss/variables.scss";
   
   img.banner {
-    height: 50%;
     border-radius: 0px 0px 40px 40px;
 
-    @media (max-width: 768px) or (max-width: 820px) or (max-width: 912px) {
+    @media (max-width: 768px) {
       width: 90%;
       border-radius: 0px 0px 20px 20px;
     }
