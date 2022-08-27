@@ -27,7 +27,7 @@
       <Project
         title={project.title} 
         year={project.year}
-        small_description={project.small_description}
+        smallDescription={project.smallDescription}
         primaryTechIcon={project.primaryTechIcon}
         techIcons={project.techIcons}
         button={project.button ?? undefined}
