@@ -1,32 +1,32 @@
 <script lang="ts">
-  import Tag from "../elements/naviguation/Tag.svelte";
+  import Tag from "../elements/navigation/Tag.svelte";
 
   export let id: string; // for the <a>, todo
   export let title: string;
   export let published_date: string;
-  export let small_description: string;
-  export let primary_tech: string | null = null;
-  export let banner_url: string | null = null;
+  export let smallDescription: string;
+  export let primaryTech: string | null = null;
+  export let bannerUrl: string | null = null;
   export let tags: string[] = [];
   export let difficulty: string;
 </script>
 
 <div class="article">
-  {#if banner_url}
-    <a href="/blog/{id}">
-      <img class="banner" src="{banner_url}" alt="Banner">
+  {#if bannerUrl}
+    <a href="/blog/view/{id}">
+      <img class="banner" src="{bannerUrl}" alt="Banner">
     </a>
   {/if}
 
   <div class="infos">
-    {#if primary_tech}
+    {#if primaryTech}
       <!-- TODO: Show articles with this tech -->
-      <img class="icon" src="/icons/techs/{primary_tech}.png" alt="primary skill"/>
+      <img class="icon" src="/icons/techs/{primaryTech}.png" alt="primary skill"/>
     {/if}
 
     <div class="center">
-      <a href="/blog/{id}"><h2>{title}</h2></a>
-      <a href="/blog/{id}"><p class="subtitle">{small_description}</p></a>
+      <a href="/blog/view/{id}"><h2>{title}</h2></a>
+      <a href="/blog/view/{id}"><p class="subtitle">{smallDescription}</p></a>
     </div>
   </div>
   <div class="footer">

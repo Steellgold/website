@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Button from "$lib/components/elements/naviguation/Button.svelte";
-  import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
+  import Button from "$lib/components/elements/navigation/Button.svelte";
+  import ButtonGroup from "../elements/containers/ButtonGroup.svelte";
 
   interface YearProp {
     from: string;
@@ -15,7 +15,7 @@
   
   export let title: string;
   export let year: YearProp;
-  export let small_description: string | undefined = undefined;
+  export let smallDescription: string | undefined = undefined;
 
   export let primaryTechIcon: string;
   export let techIcons: string[];
@@ -42,7 +42,7 @@
   <!-- Description -->
   <div class="description">
     <a href={`/project/${title}`} class="toPage">
-      <p>{@html small_description}</p>
+      <p>{@html smallDescription}</p>
     </a>
   </div>
 
