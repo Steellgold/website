@@ -28,7 +28,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"dayjs": "^1.11.5",
 		"firebase": "^9.9.3",
-		"scss-tokenizer": ">=0.4.3"
+		"scss-tokenizer": ">=0.4.3",
+		"svelte-markdown": "^0.2.3",
+		"zod": "^3.18.0"
 	}
 }
