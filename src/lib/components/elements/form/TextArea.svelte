@@ -2,31 +2,24 @@
   export let placeholder: string;
 </script>
 
-<textarea placeholder={placeholder}></textarea>
+<textarea placeholder={placeholder} cols="70" rows="10"></textarea>
 
 <style lang="scss">
+  @import '../../../scss/variables.scss';
+  
   textarea {
     padding: 13px;
-    width: 50%;
-    max-width: 50%;
-    background-color: #1E2A42;
-    border: 3px solid #1E2A42;
-    border-radius: 5px;
-    color: #A9A9A9;
-    font-weight: 600;
-    font-family: 'Inter';
+
+    background-color: $color-background-input;
+    border: 3px solid $color-background-input;
+    border-radius: $textarea-border-radius;
+    color: $color-background-input-text;
+    font-weight: $font-weight-600;
+    font-family: $font-family;
 
     &:focus {
       outline: none;
-      border: 3px solid #37435E;
-    }
-    
-    @media (max-width: 768px) {
-      width: 50%;
-    }
-    
-    @media (max-width: 820px) {
-      width: 40%;
+      border: 3px solid $color-background-input-focus;
     }
   }
 </style>
