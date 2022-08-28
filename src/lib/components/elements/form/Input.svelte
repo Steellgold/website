@@ -16,14 +16,11 @@
     border-radius: 13px;
     color: #A9A9A9;
     font-weight: 600;
+    font-family: 'Inter';
 
     &:focus {
       outline: none;
       border: 3px solid #37435E;
-    }
-
-    &::placeholder {
-      text-transform: uppercase;
     }
 
     @media (max-width: 768px) {

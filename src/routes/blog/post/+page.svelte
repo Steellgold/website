@@ -121,6 +121,10 @@ import TextArea from "$lib/components/elements/form/TextArea.svelte";
       } />
       <Input placeholder="Auteur" />
     </div>
+
+    <div class="content">
+      <TextArea placeholder="Contenu de l'article" />
+    </div>
   </div>
 </div>
 
@@ -142,6 +146,14 @@ import TextArea from "$lib/components/elements/form/TextArea.svelte";
     }
 
     .technology {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 10px;
+      gap: 20px;
+    }
+
+    .content {
       display: flex;
       flex-direction: row;
       justify-content: center;
