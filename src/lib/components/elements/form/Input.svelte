@@ -1,27 +1,26 @@
 <script lang="ts">
-  export let value: string | null = null;
-  export let type: "text" | "number" | "email" | "tel" | "url" | "password" = "text";
-  export let placeholder: string | null = null;
+  export let placeholder: string;
+  export let type: "text" | "email" | "password" | "number" = "text";
+
 </script>
 
-<input type={type} placeholder={placeholder} value={value ?? ""}>
+<input type={type} placeholder={placeholder}>
 
 <style lang="scss">
-  @import '../../../scss/variables.scss';
+  @import "../../../../lib/scss/variables.scss";
 
   input {
-    padding: 13px;
-
-    background-color: $color-background-input;
-    border: 3px solid $color-background-input;
-    border-radius: $input-border-radius;
-    color: $color-background-input-text;
-    font-weight: $font-weight-600;
-    font-family: $font-family;
+    padding: 15px;
+    background-color: #283651;
+    border: 0;
+    border-radius: 5px;
 
     &:focus {
       outline: none;
-      border: 3px solid $color-background-input-focus;
+    }
+
+    &::placeholder {
+      color: #FFFFFF;
     }
   }
 </style>
