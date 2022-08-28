@@ -10,7 +10,7 @@
 <select>
   {#each options as option}
     {#if i == 0}
-      <option value={option.value} selected hidden disabled>{option.label}</option>
+      <option value={option.value} selected hidden>{option.label}</option>
     {:else}
       <option value={option.value}>{option.label}</option>
     {/if}

@@ -1,6 +1,7 @@
 <script lang="ts">
 import Input from "$lib/components/elements/form/Input.svelte";
 import Option from "$lib/components/elements/form/Option.svelte";
+import TextArea from "$lib/components/elements/form/TextArea.svelte";
 
   interface Article {
     title: string;
@@ -33,85 +34,93 @@ import Option from "$lib/components/elements/form/Option.svelte";
 </script>
 
 <div class="form">
+  <h2>Poster un nouvel article</h2>
   <form accept="javascript:void(0)">
-    <Input type="text" placeholder="Titre de l'article" bind={article.title} />
-    <Input type="text" placeholder="Sous-titre" bind={article.smallDescription}/>
-    <Option options={
-      [
-        {
-          value: "none",
-          label: "Aucune technologie",
-        },
-        {
-          value: "css",
-          label: "CSS"
-        },
-        {
-          value: "discord",
-          label: "Discord"
-        },
-        {
-          value: "discordjs",
-          label: "DiscordJS"
-        },
-        {
-          value: "figma",
-          label: "Figma"
-        },
-        {
-          value: "firebase",
-          label: "Firebase"
-        },
-        {
-          value: "html",
-          label: "HTML"
-        },
-        {
-          value: "java",
-          label: "Java"
-        },
-        {
-          value: "javascript",
-          label: "JavaScript"
-        },
-        {
-          value: "maven",
-          label: "Maven"
-        },
-        {
-          value: "nodejs",
-          label: "NodeJS"
-        },
-        {
-          value: "php",
-          label: "PHP"
-        },
-        {
-          value: "pmmp",
-          label: "PocketMine-MP"
-        },
-        {
-          value: "sass",
-          label: "SCSS"
-        },
-        {
-          value: "spigot",
-          label: "Spigot"
-        },
-        {
-          value: "svelte",
-          label: "Svelte"
-        },
-        {
-          value: "symfony",
-          label: "Symfony"
-        },
-        {
-          value: "typescript",
-          label: "TypeScript"
-        }
-      ]
-    } />
+    <div class="row">
+      <Input type="text" placeholder="Titre de l'article" bind={article.title} />
+      <Input type="text" placeholder="Sous-titre" bind={article.smallDescription}/>  
+    </div>
+
+    <div class="row">
+      <Option options={
+        [
+          {
+            value: "none",
+            label: "Aucune technologie",
+          },
+          {
+            value: "css",
+            label: "CSS"
+          },
+          {
+            value: "discord",
+            label: "Discord"
+          },
+          {
+            value: "discordjs",
+            label: "DiscordJS"
+          },
+          {
+            value: "figma",
+            label: "Figma"
+          },
+          {
+            value: "firebase",
+            label: "Firebase"
+          },
+          {
+            value: "html",
+            label: "HTML"
+          },
+          {
+            value: "java",
+            label: "Java"
+          },
+          {
+            value: "javascript",
+            label: "JavaScript"
+          },
+          {
+            value: "maven",
+            label: "Maven"
+          },
+          {
+            value: "nodejs",
+            label: "NodeJS"
+          },
+          {
+            value: "php",
+            label: "PHP"
+          },
+          {
+            value: "pmmp",
+            label: "PocketMine-MP"
+          },
+          {
+            value: "sass",
+            label: "SCSS"
+          },
+          {
+            value: "spigot",
+            label: "Spigot"
+          },
+          {
+            value: "svelte",
+            label: "Svelte"
+          },
+          {
+            value: "symfony",
+            label: "Symfony"
+          },
+          {
+            value: "typescript",
+            label: "TypeScript"
+          }
+        ]
+      } />
+    </div>
+
+    <TextArea placeholder="Contenu de votre article" />
 
     <!-- <label for="subtitle">Sous-titre de l'article</label> -->
     <!-- <input id="subtitle" type="text" bind:value={article.smallDescription}> -->
@@ -133,10 +142,20 @@ import Option from "$lib/components/elements/form/Option.svelte";
 
     <button type="button" on:click={onClick}>Envoyer</button> -->
   </form>
-
+<!-- 
   <p>{JSON.stringify(article, 0, 2)}</p>
-  <img src="{article.bannerUrl}" alt="azaz">
+  <img src="{article.bannerUrl}" alt="azaz"> -->
 </div>
 
 <style lang="scss">
+  .form {
+    padding: 10px;
+    
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 0;
+    }
+  }
 </style>
