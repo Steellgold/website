@@ -34,19 +34,20 @@ import TextArea from "$lib/components/elements/form/TextArea.svelte";
 </script>
 
 <div class="form">
-  <h2>Poster un nouvel article</h2>
-  <form accept="javascript:void(0)">
-    <div class="row">
-      <Input type="text" placeholder="Titre de l'article" bind={article.title} />
-      <Input type="text" placeholder="Sous-titre" bind={article.smallDescription}/>  
+  <h1>PUBLIER UN NOUVEL ARTICLE</h1>
+
+  <div class="form">
+    <div class="infos">
+      <Input placeholder="Titre" />
+      <Input placeholder="Sous-titre" />
     </div>
 
-    <div class="row">
+    <div class="technology">
       <Option options={
         [
           {
-            value: "none",
-            label: "Aucune technologie",
+            value: "",
+            label: "Sélectionnez une technologie"
           },
           {
             value: "css",
@@ -118,44 +119,35 @@ import TextArea from "$lib/components/elements/form/TextArea.svelte";
           }
         ]
       } />
+      <Input placeholder="Auteur" />
     </div>
-
-    <TextArea placeholder="Contenu de votre article" />
-
-    <!-- <label for="subtitle">Sous-titre de l'article</label> -->
-    <!-- <input id="subtitle" type="text" bind:value={article.smallDescription}> -->
-
-    <!-- <label for="content">Contenu de l'article</label> -->
-    <!-- <textarea id="content" bind:value={article.content}></textarea> -->
-<!-- 
-    <label for="primaryTech">Technologie principale</label>
-    <select id="primaryTech" bind:value={article.primaryTech}>
-      <option selected disabled hidden value="">Aucune</option>
-      <option value="php">PHP</option>
-      <option value="javascript">Javascript</option>
-      <option value="typescript">Typescript</option>
-      <option value="svelte">Svelte</option>
-    </select> -->
-
-    <!-- <label for="bannerUrl">Url de la bannière</label>
-    <input id="bannerUrl" type="text" bind:value={article.bannerUrl}>
-
-    <button type="button" on:click={onClick}>Envoyer</button> -->
-  </form>
-<!-- 
-  <p>{JSON.stringify(article, 0, 2)}</p>
-  <img src="{article.bannerUrl}" alt="azaz"> -->
+  </div>
 </div>
 
 <style lang="scss">
-  .form {
+  h1 {
     padding: 10px;
-    
-    .row {
+    text-align: center;
+  }
+
+
+  .form {
+    padding: 8px;
+
+    .infos {
       display: flex;
+      flex-direction: row;
       justify-content: center;
-      gap: 10px;
-      margin: 0;
+      gap: 20px;
+    }
+
+    .technology {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 10px;
+      gap: 20px;
     }
   }
+
 </style>

@@ -1,12 +1,10 @@
 <script lang="ts">
-  export let label: string | null = null;
   export let value: string | null = null;
-  export let type: "text" | "number" | "email" | "tel" | "url" | "password";
+  export let type: "text" | "number" | "email" | "tel" | "url" | "password" = "tewt";
   export let placeholder: string | null = null;
-  export let bind;
 </script>
 
-<input type={type} placeholder={placeholder} value={value}>
+<input type={type} placeholder={placeholder} value={value ?? ""}>
 
 <style lang="scss">
   input {
