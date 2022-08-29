@@ -9,38 +9,40 @@
 </div>
 
 <style lang="scss">
-.file-drop-area {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 450px;
-  height: 150px;
-  padding: 25px;
-  background-color: #283651;
-  border-radius: 3px;
-  transition: 0.2s;
-}
+  @import "../../../../lib/scss/variables.scss";
 
-.file-msg {
-  font-size: small;
-  font-weight: 300;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.file-input {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-  opacity: 0;
-  &:focus {
-    outline: none;
+  .file-drop-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 150px;
+    padding: 25px;
+    background-color: #283651;
+    border-radius: 3px;
+    transition: 0.2s;
   }
-}
+
+  .file-msg {
+    font-size: small;
+    font-weight: $font-weight-400;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+    &:focus {
+      outline: none;
+    }
+  }
 </style>
