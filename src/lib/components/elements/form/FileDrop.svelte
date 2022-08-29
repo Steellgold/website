@@ -20,6 +20,13 @@
     height: 200px;
     padding: 15px;
     background-color: #283651;
+    
+    // on hover
+    &:hover {
+      background-color: #2a3444;
+    }
+    
+    transition: 0.3s;
   }
 
   .file-msg {
