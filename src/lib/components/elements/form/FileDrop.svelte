@@ -16,27 +16,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 400px;
-    height: 150px;
-    padding: 25px;
+    width: 500px;
+    height: 200px;
+    padding: 15px;
     background-color: #283651;
-    border-radius: 3px;
-    transition: 0.2s;
   }
 
   .file-msg {
     font-size: small;
     font-weight: $font-weight-400;
     line-height: 1.4;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
   }
 
   .file-input {
     position: absolute;
-    left: 0;
-    top: 0;
     height: 100%;
     width: 100%;
     cursor: pointer;
