@@ -1,6 +1,6 @@
 <script lang="ts">
   import Input from "$lib/components/elements/form/Input.svelte";
-
+  import FileDrop from "$lib/components/elements/form/FileDrop.svelte";
 </script>
 
 <div class="page">
@@ -14,7 +14,7 @@
     </div>
 
     <div class="col2">
-      <p>un truc a la place de ca</p>
+      <FileDrop />
     </div>
   </div>
 </div>
@@ -36,6 +36,7 @@
       justify-content: center;
       align-items: center;
       padding: 10px;
+      gap: 10px;
 
       .col1 {
         display: flex;

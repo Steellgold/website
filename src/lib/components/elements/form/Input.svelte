@@ -10,10 +10,13 @@
   @import "../../../../lib/scss/variables.scss";
 
   input {
+    font-family: $font-family;
+    font-weight: $font-weight-400;
+
     padding: 15px;
     background-color: #283651;
     border: 0;
-    border-radius: 5px;
+    color: #fff;
 
     &:focus {
       outline: none;
