@@ -10,6 +10,7 @@
     <div class="col1">
       <Input type="text" placeholder="Title" />
       <Input type="text" placeholder="Sous-titre" />
+      <Input type="text" placeholder="Auteur" />
     </div>
 
     <div class="col2">
@@ -39,7 +40,7 @@
       .col1 {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 10px;  
       }
 
       .col2 {
