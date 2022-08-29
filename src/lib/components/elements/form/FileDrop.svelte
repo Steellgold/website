@@ -1,6 +1,10 @@
 <script lang="ts">
   export let isMultiple: boolean = false;
   export let label: string = "Choose an image for the article banner, by clicking or dragging a file here";
+
+  if (!isMultiple) {
+    
+  }
 </script>
 
 <div class="file-drop-area">
