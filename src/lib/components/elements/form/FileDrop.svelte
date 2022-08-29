@@ -15,9 +15,9 @@
   align-items: center;
   justify-content: center;
   width: 450px;
-  height: 100px;
+  height: 150px;
   padding: 25px;
-  border: 1px dashed rgba(255, 255, 255, 0.4);
+  background-color: #283651;
   border-radius: 3px;
   transition: 0.2s;
 }
