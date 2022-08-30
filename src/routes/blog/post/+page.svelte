@@ -10,11 +10,22 @@
     <div class="col1">
       <Input type="text" placeholder="Title" />
       <Input type="text" placeholder="Sous-titre" />
-      <Input type="text" placeholder="Auteur" />
+      <Input type="text" placeholder="Technologies" />
+      <Input type="text" placeholder="Auteur" value="Steellgold" disabled={true} />
     </div>
 
     <div class="col2">
       <FileDrop />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col1">
+
+    </div>
+
+    <div class="col2">
+      <Input type="text" placeholder="Description" />
     </div>
   </div>
 </div>
