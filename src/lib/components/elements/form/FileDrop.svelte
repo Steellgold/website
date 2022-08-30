@@ -3,6 +3,8 @@
   export let isMultiple: boolean = false;
   export let label: string = "Choose an image for the article banner, by clicking or dragging a file here";
 
+  let active = false;
+
   function onChange(e: any) {
     console.log(e);
     // get the file
@@ -10,22 +12,22 @@
     console.log(file);
     // check if it's an image
     if (!file.type.startsWith("image/")) {
-      const doc = document.getElementById("error");
-      if (doc) {
-        doc.innerHTML = "Please upload an image file";
-      }
-      return;
+      active = true;
+      setTimeout(() => {
+        active = false;
+      }, 3000);
     }
   }
 </script>
 
+{#if active}
+  <Alert type="error" message="Please upload an image file" />
+{/if}
+
 <div class="file-drop-area">
   <span class="file-msg">{label}</span>
-  <span id="error" class="error-msg"></span>
   <input class="file-input" type="file" multiple={isMultiple} on:change="{onChange}" />
 </div>
-
-<Alert type="error" message="cc" />
 
 <style lang="scss">
   @import "../../../../lib/scss/variables.scss";
