@@ -1,6 +1,7 @@
 <script lang="ts">
   import Input from "$lib/components/elements/form/Input.svelte";
   import FileDrop from "$lib/components/elements/form/FileDrop.svelte";
+import TextArea from "$lib/components/elements/form/TextArea.svelte";
 </script>
 
 <div class="page">
@@ -21,7 +22,7 @@
 
   <div class="row">
     <div class="col1">
-
+      <TextArea />
     </div>
 
     <div class="col2">
