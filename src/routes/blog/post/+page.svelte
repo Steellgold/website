@@ -1,7 +1,7 @@
 <script lang="ts">
   import Input from "$lib/components/elements/form/Input.svelte";
-  import FileDrop from "$lib/components/elements/form/FileDrop.svelte";
-import TextArea from "$lib/components/elements/form/TextArea.svelte";
+  import { FileDrop } from "$lib/components/elements/form/file-drop";
+  import TextArea from "$lib/components/elements/form/TextArea.svelte";
 </script>
 
 <div class="page">
