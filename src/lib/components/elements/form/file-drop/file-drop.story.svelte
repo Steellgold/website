@@ -5,5 +5,5 @@
 </script>
 
 <Hst.Story title="FileDrop">
-  <p>a</p>
+  <FileDrop />
 </Hst.Story>

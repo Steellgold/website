@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Alert } from "../../../layouts/alert";
+  import { Alert } from "$lib/components/layouts/alert";
   export let isMultiple: boolean = false;
   export let label: string = "Choose an image for the article banner, by clicking or dragging a file here";
 
@@ -42,6 +42,7 @@
     height: 200px;
     padding: 15px;
     background-color: #283651;
+    color: #fff;
 
     background-repeat: no-repeat;
     background-position: center;
