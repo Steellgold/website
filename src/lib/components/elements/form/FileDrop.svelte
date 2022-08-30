@@ -10,7 +10,10 @@
     console.log(file);
     // check if it's an image
     if (!file.type.startsWith("image/")) {
-      document.getElementById("error").innerHTML = "Please upload an image file";
+      const doc = document.getElementById("error");
+      if (doc) {
+        doc.innerHTML = "Please upload an image file";
+      }
       return;
     }
   }
