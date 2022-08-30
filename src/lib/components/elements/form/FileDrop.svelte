@@ -17,7 +17,6 @@
     }else{
       const div = e.target.parentElement;
       div.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
-      // TODO: Check size
     }
   }
 </script>
