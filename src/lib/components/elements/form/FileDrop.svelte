@@ -4,18 +4,20 @@
   export let label: string = "Choose an image for the article banner, by clicking or dragging a file here";
 
   let active = false;
+  let error = "";
 
   function onChange(e: any) {
-    console.log(e);
-    // get the file
     const file = e.target.files[0];
-    console.log(file);
-    // check if it's an image
     if (!file.type.startsWith("image/")) {
       active = true;
+      error = "Please select an image file";
       setTimeout(() => {
         active = false;
       }, 3000);
+    }else{
+      const div = e.target.parentElement;
+      div.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+      // TODO: Check size
     }
   }
 </script>
@@ -41,6 +43,10 @@
     height: 200px;
     padding: 15px;
     background-color: #283651;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     
     // on hover
     &:hover {
