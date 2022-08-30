@@ -4,7 +4,7 @@
 </script>
 
 <div class="alert {type}">
-  <span class="closebtn">&times;</span>
+  <!-- TODO: close -->
   {message}
 </div>
 
@@ -16,34 +16,21 @@
   }
 
   .error {
-    background-color: #f44336; /* Red */
+    background-color: #f44336;
   }
 
   .success {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
   }
 
   .warning {
-    background-color: #ff9800; /* Yellow */
+    background-color: #ff9800;
   }
 
   .info {
-    background-color: #51a8b3; /* Blue */
+    background-color: #51a8b3;
   }
 
-  /* The close button */
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  /* When moving the mouse over the close button */
   .closebtn:hover {
     color: black;
   }
