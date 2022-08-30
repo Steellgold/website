@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Alert from "$lib/components/layouts/Alert.svelte";
   export let isMultiple: boolean = false;
   export let label: string = "Choose an image for the article banner, by clicking or dragging a file here";
 
@@ -20,6 +21,8 @@
   <span id="error" class="error-msg"></span>
   <input class="file-input" type="file" multiple={isMultiple} on:change="{onChange}" />
 </div>
+
+<Alert type="error" message="cc" />
 
 <style lang="scss">
   @import "../../../../lib/scss/variables.scss";
