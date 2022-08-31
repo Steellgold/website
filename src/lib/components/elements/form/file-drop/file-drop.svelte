@@ -7,16 +7,20 @@
   let error = "";
 
   function onChange(e: any) {
-    const file = e.target.files[0];
-    if (!file.type.startsWith("image/")) {
-      active = true;
-      error = "Please upload an image file";
-      setTimeout(() => {
-        active = false;
-      }, 3000);
+    if (!isMultiple) {
+      const file = e.target.files[0];
+      if (!file.type.startsWith("image/")) {
+        active = true;
+        error = "Please upload an image file";
+        setTimeout(() => {
+          active = false;
+        }, 3000);
+      }else{
+        const div = e.target.parentElement;
+        div.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+      }
     }else{
-      const div = e.target.parentElement;
-      div.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+      
     }
   }
 </script>
@@ -27,7 +31,7 @@
 
 <div class="file-drop-area">
   <span class="file-msg">{label}</span>
-  <input class="file-input" type="file" multiple={isMultiple} on:change="{onChange}" />
+  <input class="file-input" type="file" multiple={isMultiple} on:change="{onChange}" />  
 </div>
 
 <style lang="scss">
