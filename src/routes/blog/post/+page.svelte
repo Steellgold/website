@@ -26,7 +26,7 @@
     </div>
 
     <div class="col2">
-      <Input type="text" placeholder="Description" />
+      <FileDrop isMultiple={true} label="Additional files" />
     </div>
   </div>
 
