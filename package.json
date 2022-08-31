@@ -9,10 +9,9 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "eslint .",
-
 		"story:dev": "histoire dev",
-    "story:build": "histoire build",
-    "story:preview": "histoire preview"
+		"story:build": "histoire build",
+		"story:preview": "histoire preview"
 	},
 	"devDependencies": {
 		"@histoire/plugin-svelte": "^0.10.7",
