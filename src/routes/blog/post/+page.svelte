@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Input from "$lib/components/elements/form/Input.svelte";
   import { FileDrop } from "$lib/components/elements/form/file-drop";
+  import Input from "$lib/components/elements/form/Input.svelte";
   import TextArea from "$lib/components/elements/form/TextArea.svelte";
 </script>
 
@@ -28,6 +28,10 @@
     <div class="col2">
       <Input type="text" placeholder="Description" />
     </div>
+  </div>
+
+  <div class="center">
+    <input type="submit" value="Créer l'article" />
   </div>
 </div>
 
@@ -58,6 +62,37 @@
 
       .col2 {
         
+      }
+    }
+
+    .center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      input {
+        font-family: $font-family;
+        font-weight: $font-weight-400;
+
+        padding: 15px;
+        background-color: #283651;
+        border: 0;
+        color: #fff;
+
+        &:focus {
+          outline: none;
+          color: #fff;
+        }
+
+        &:disabled {
+          background-color: #374154;
+        }
+
+        &::placeholder {
+          color: #FFFFFF;
+        }
       }
     }
   }
