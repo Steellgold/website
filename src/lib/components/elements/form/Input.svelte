@@ -1,11 +1,18 @@
 <script lang="ts">
+  export let value = '';
+
   export let placeholder: string | null = null;
   export let type: "text" | "email" | "password" | "number" = "text";
-  export let value: string | null = null;
+  export let defaultText: string | null = null;
   export let disabled: boolean = false;
+
+  function changeValue(event: Event) {
+    const target = event.target as HTMLInputElement;
+    value = target.value;
+  }
 </script>
 
-<input type={type} placeholder={placeholder} value="{value}" disabled={disabled} />
+<input type={type} placeholder={placeholder} value={defaultText} disabled={disabled} on:change={changeValue} />
 
 <style lang="scss">
   @import "../../../../lib/scss/variables.scss";
