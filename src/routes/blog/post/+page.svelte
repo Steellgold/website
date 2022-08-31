@@ -1,7 +1,25 @@
 <script lang="ts">
   import { FileDrop } from "$lib/components/elements/form/file-drop";
+  import { Select } from "$lib/components/elements/form/select";
   import Input from "$lib/components/elements/form/Input.svelte";
   import TextArea from "$lib/components/elements/form/TextArea.svelte";
+
+  let title: string;
+  let subtitle: string;
+  let tech: string;
+
+  function submit() {
+    const request = fetch("/api/blog", {
+      method: "POST",
+      body: JSON.stringify({
+        title: title,
+        smallDescription: subtitle,
+        primaryTech: tech,
+        bannerUrl: "https://images-ext-2.discordapp.net/external/8wJ_e55ylxIJFQoXjUiDzAWtatuW6Sy9e0COOR7nsNg/https/www.media.pokekalos.fr/img/jeux/vignettes/pokekalos.jpg",
+        content: "Contenu"
+      })
+    });
+  }
 </script>
 
 <div class="page">
@@ -9,16 +27,89 @@
 
   <div class="row">
     <div class="col1">
-      <Input type="text" placeholder="Title" />
-      <Input type="text" placeholder="Sous-titre" />
-      <Input type="text" placeholder="Technologies" />
-      <Input type="text" placeholder="Auteur" value="Steellgold" disabled={true} />
+      <Input type="text" placeholder="Title" bind:value={title} />
+      <Input type="text" placeholder="Sous-titre" bind:value={subtitle} />
+      <Select options={
+        [
+          {
+            value: "css",
+            label: "CSS"
+          },
+          {
+            value: "discord",
+            label: "Discord"
+          },
+          {
+            value: "discordjs",
+            label: "DiscordJS"
+          },
+          {
+            value: "figma",
+            label: "Figma"
+          },
+          {
+            value: "firebase",
+            label: "Firebase"
+          },
+          {
+            value: "html",
+            label: "HTML"
+          },
+          {
+            value: "java",
+            label: "Java"
+          },
+          {
+            value: "javascript",
+            label: "JavaScript"
+          },
+          {
+            value: "maven",
+            label: "Maven"
+          },
+          {
+            value: "nodejs",
+            label: "NodeJS"
+          },
+          {
+            value: "php",
+            label: "PHP"
+          },
+          {
+            value: "pmmp",
+            label: "PocketMine-MP"
+          },
+          {
+            value: "sass",
+            label: "SCSS"
+          },
+          {
+            value: "spigot",
+            label: "Spigot"
+          },
+          {
+            value: "svelte",
+            label: "Svelte"
+          },
+          {
+            value: "symfony",
+            label: "Symfony"
+          },
+          {
+            value: "typescript",
+            label: "TypeScript"
+          }
+        ]
+      } bind:value={tech} />
+      <Input type="text" placeholder="Auteur" defaultText="Steellgold" disabled={true} />
     </div>
 
     <div class="col2">
       <FileDrop />
     </div>
   </div>
+
+  <p>{tech}</p>
 
   <div class="row">
     <div class="col1">
@@ -31,7 +122,7 @@
   </div>
 
   <div class="center">
-    <input type="submit" value="Créer l'article" />
+    <input type="submit" value="Créer l'article" on:click={submit} />
   </div>
 </div>
 
