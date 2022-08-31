@@ -6,6 +6,8 @@
   let active = false;
   let error = "";
 
+  let files: any[] = [];
+
   function onChange(e: any) {
     if (!isMultiple) {
       const file = e.target.files[0];
@@ -19,8 +21,6 @@
         const div = e.target.parentElement;
         div.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
       }
-    }else{
-      
     }
   }
 </script>
@@ -29,10 +29,20 @@
   <Alert type="error" message={error} />
 {/if}
 
-<div class="file-drop-area">
-  <span class="file-msg">{label}</span>
-  <input class="file-input" type="file" multiple={isMultiple} on:change="{onChange}" />  
+<div class="file-drop-area multiple-{isMultiple}">
+  <span class="file-msg">{label} {isMultiple ? "("+ files.length + ")" : ""}</span>
+  <input class="file-input" type="file" accept="image/png, image/jpeg" multiple={isMultiple} on:change="{onChange}" />  
 </div>
+
+{#if isMultiple}
+  <div class="file-previews">
+    {#each files as file}
+      <div class="file-preview">
+        <img src={URL.createObjectURL(file)} />
+      </div>
+    {/each}
+  </div>
+{/if}
 
 <style lang="scss">
   @import "../../../../../lib/scss/variables.scss";
@@ -59,6 +69,11 @@
     
     transition: 0.3s;
   }
+
+  .multiple-true {
+      width: 190px;
+      height: 90px;
+    }
 
   .file-msg {
     font-size: small;
