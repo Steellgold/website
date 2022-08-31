@@ -3,7 +3,7 @@
 
   export let id: string; // for the <a>, todo
   export let title: string;
-  export let published_date: string;
+  export let publishedDate: string;
   export let smallDescription: string;
   export let primaryTech: string | null = null;
   export let bannerUrl: string | null = null;
@@ -35,7 +35,7 @@
     {/if}
 
     <p>Author: Steellgold</p>
-    <p>Published at {published_date}</p>
+    <p>Published at {publishedDate}</p>
   </div>
 
   {#if tags}
