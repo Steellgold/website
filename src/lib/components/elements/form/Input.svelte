@@ -1,11 +1,11 @@
 <script lang="ts">
-  export let placeholder: string;
+  export let placeholder: string | null = null;
   export let type: "text" | "email" | "password" | "number" = "text";
   export let value: string | null = null;
   export let disabled: boolean = false;
 </script>
 
-<input type={type} placeholder={placeholder} value="{value}" disabled={disabled}>
+<input type={type} placeholder={placeholder} value="{value}" disabled={disabled} />
 
 <style lang="scss">
   @import "../../../../lib/scss/variables.scss";
