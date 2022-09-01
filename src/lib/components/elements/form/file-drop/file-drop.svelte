@@ -22,6 +22,10 @@
         div.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
       }
     }
+
+    if (isMultiple) {
+      files = e.target.files;
+    }
   }
 </script>
 
