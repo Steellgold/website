@@ -47,6 +47,6 @@ export async function GET({ request }: RequestEvent): Promise<Response> {
   if (docSnap.exists()) {
     return new Response(JSON.stringify(docSnap.data()), { status: 200 });
   } else {
-    return new Response('Article not found', { status: 40 });
+    return new Response('Article not found', { status: 400 });
   }
 }
