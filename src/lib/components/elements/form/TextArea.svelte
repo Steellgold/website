@@ -1,8 +1,13 @@
 <script lang="ts">
+  export let value: string = '';
 
+  function changeValue(event: Event) {
+    const target = event.target as HTMLInputElement;
+    value = target.value;
+  }
 </script>
 
-<textarea name="" id="" cols="70" rows="20"></textarea>
+<textarea cols="70" rows="20" on:change="{changeValue}"></textarea>
 
 <style lang="scss">
   @import "../../../../lib/scss/variables.scss";
