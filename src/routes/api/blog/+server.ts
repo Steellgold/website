@@ -34,19 +34,3 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
 
   return new Response('Article was been successfuly created', { status: 200 });
 }
-
-export async function GET({ request }: RequestEvent): Promise<Response> {
-  const values = await request.json();
-  const bodySchema = z.object({
-    id: z.string(),
-  });
-
-  const docRef = doc(db, "articles", values.id);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    return new Response(JSON.stringify(docSnap.data()), { status: 200 });
-  } else {
-    return new Response('Article not found', { status: 400 });
-  }
-}
