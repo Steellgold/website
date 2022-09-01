@@ -1,12 +1,12 @@
 import { db } from '$lib/database/Firebase';
 import type { RequestEvent } from '@sveltejs/kit';
-import { collection, addDoc, doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { z } from 'zod';
 import dayjs from 'dayjs';
 
   // GET: Obtenir la liste des articles
   // POST: Ajouter un article
-export async function ARTICLE_POST({ request }: RequestEvent): Promise<Response> {
+export async function POST({ request }: RequestEvent): Promise<Response> {
   const values = await request.json();
 
   const bodySchema = z.object({
@@ -33,8 +33,4 @@ export async function ARTICLE_POST({ request }: RequestEvent): Promise<Response>
   })
 
   return new Response('Article was been successfuly created', { status: 200 });
-}
-
-export async function IMG_ARTICLE_POST({ request }: RequestEvent): Promise<Response> {
-  return new Response('Image successfuly added in the database', { status: 200 });
 }
