@@ -110,8 +110,6 @@
     </div>
   </div>
 
-  <p>{tech}</p>
-
   <div class="row">
     <div class="col1">
       <TextArea bind:value={content} />
