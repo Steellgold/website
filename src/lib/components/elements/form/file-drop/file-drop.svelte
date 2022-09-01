@@ -12,20 +12,20 @@
     if (!isMultiple) {
       const file = e.target.files[0];
       if (!file.type.startsWith("image/")) {
-        active = true;
         error = "Please upload an image file";
-        setTimeout(() => {
-          active = false;
-        }, 3000);
+        active = true;
+        setTimeout(() => { active = false; }, 3000);
       }else{
         const div = e.target.parentElement;
         div.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
       }
-    }
-
-    if (isMultiple) {
+    } else {
       files = e.target.files;
     }
+  }
+
+  function getFileSize(size: string) {
+    return (Math.round(+size/1024)/1000).toFixed(2) + " mb";
   }
 </script>
 
@@ -42,7 +42,7 @@
   <div class="file-previews">
     {#each files as file}
       <div class="file-preview">
-        <img src={URL.createObjectURL(file)} />
+        <p>{file.name + " ("+ getFileSize(file.size) +")"}</p>
       </div>
     {/each}
   </div>

@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 
   // GET: Obtenir la liste des articles
   // POST: Ajouter un article
-export async function POST({ request }: RequestEvent): Promise<Response> {
+export async function ARTICLE_POST({ request }: RequestEvent): Promise<Response> {
   const values = await request.json();
 
   const bodySchema = z.object({
@@ -33,4 +33,8 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
   })
 
   return new Response('Article was been successfuly created', { status: 200 });
+}
+
+export async function IMG_ARTICLE_POST({ request }: RequestEvent): Promise<Response> {
+  return new Response('Image successfuly added in the database', { status: 200 });
 }
