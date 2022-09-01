@@ -6,6 +6,7 @@
 
   let title: string;
   let subtitle: string;
+  let content: string;
   let tech: string;
 
   function submit() {
@@ -16,7 +17,7 @@
         smallDescription: subtitle,
         primaryTech: tech,
         bannerUrl: "https://images-ext-2.discordapp.net/external/8wJ_e55ylxIJFQoXjUiDzAWtatuW6Sy9e0COOR7nsNg/https/www.media.pokekalos.fr/img/jeux/vignettes/pokekalos.jpg",
-        content: "Contenu"
+        content: content
       })
     });
   }
@@ -113,7 +114,7 @@
 
   <div class="row">
     <div class="col1">
-      <TextArea />
+      <TextArea bind:value={content} />
     </div>
 
     <div class="col2">
