@@ -17,14 +17,14 @@ specifiers:
 
 dependencies:
   '@histoire/shared': 0.10.7_vite@3.1.0-beta.2
+  scss-tokenizer: 0.4.3
 
 devDependencies:
   '@histoire/plugin-svelte': 0.10.7_4krodhrgo2awjlwpjmtzfgk3eu
   '@sveltejs/adapter-auto': 1.0.0-next.71
-  '@sveltejs/kit': 1.0.0-next.463_qevq5tvhizyxp44gfhkn6m3ljq
+  '@sveltejs/kit': 1.0.0-next.464_qevq5tvhizyxp44gfhkn6m3ljq
   histoire: 0.10.7_xk7dylwzmzrjpimkcaanjzzeki
   sass: 1.54.8
-  scss-tokenizer: 0.4.3
   svelte: 3.50.0
   svelte-check: 2.9.0_sass@1.54.8+svelte@3.50.0
   svelte-preprocess: 4.10.7_sjp5ofbomyujp4wh2lbbqndg4q
@@ -214,8 +214,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.463_qevq5tvhizyxp44gfhkn6m3ljq:
-    resolution: {integrity: sha512-r08t2FTbWC/eem1j70HcdsRPj+L0X/aXiTqQkyUgn5/3yBxxx4jXQqlkzBtYsjxZ4x+94yWQxYQTYXD6PxWM5g==}
+  /@sveltejs/kit/1.0.0-next.464_qevq5tvhizyxp44gfhkn6m3ljq:
+    resolution: {integrity: sha512-QV0IE8ShRC5ndP0fQN4/3bg8PMkjnhvLo0C4gULJ14LFPw5fgDbwuVM4uXmM+nfzT8hTkf9F27J3uZSoJmHaeg==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -1415,7 +1415,7 @@ packages:
 
   /js-base64/2.6.4:
     resolution: {integrity: sha512-pZe//GGmwJndub7ZghVHz7vjb2LgC1m8B07Au3eYqeqv9emhESByMXxaEgkUkEqJe87oBbSniGYoQNIBklc7IQ==}
-    dev: true
+    dev: false
 
   /js-yaml/3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
@@ -1916,7 +1916,7 @@ packages:
     dependencies:
       js-base64: 2.6.4
       source-map: 0.7.4
-    dev: true
+    dev: false
 
   /section-matter/1.0.0:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
@@ -1998,7 +1998,7 @@ packages:
   /source-map/0.7.4:
     resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
     engines: {node: '>= 8'}
-    dev: true
+    dev: false
 
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
