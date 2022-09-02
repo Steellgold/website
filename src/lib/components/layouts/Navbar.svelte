@@ -1,5 +1,20 @@
 <script lang="ts">
-  export let data: any; 
+  import { PUBLIC_IS_PREVIEW } from '$env/static/public';
+  import { VERCEL_GIT_COMMIT_SHA, VERCEL_GIT_COMMIT_MESSAGE} from '$env/static/private';
+  export let data: any;
+  
+  // on click the a with class: "mobile" the UI change class by "active-links"
+  function handleClick() {
+    const mobileLink = document.querySelector('.mobile-link');
+    const activeLinks = document.getElementById('links');
+    if (!activeLinks) return;
+    activeLinks.classList.toggle('disabled-links');
+
+    if (mobileLink) {
+      console.log(mobileLink?.innerHTML)
+      mobileLink.innerHTML = (mobileLink?.innerHTML === 'Close' ? 'Menu' : 'Close');
+    }
+  }
 </script>
 
 <div>
@@ -10,13 +25,19 @@
       <span class="status {data.user.status}"></span>
     </div>
   
-    <ul>
+    <ul id="links" class="disabled-links">
       <li>
         <a href="/" class="link">About me</a>
       </li>
       <li>
         <a href="/#projects" class="link">Projects</a>
-      </li> 
+      </li>
+    </ul>
+
+    <ul class="desktop-hide">
+      <li class="mobile">
+        <a class="link mobile-link" on:click="{handleClick}">Menu</a>
+      </li>
     </ul>
   </nav>
 
@@ -36,8 +57,6 @@
           </a>
         </div> 
     </nav>
-
-    <!-- TODO: Vue PC -->
   {/if}
 </div>
 
@@ -136,8 +155,31 @@
         }
       }
     }
+
+    @media (max-width: 768px) {
+      ul.disabled-links {
+        display: none;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        padding: 10px;
+      }
+    }
+
+    // Hide the ul desktop-hide on desktop
+    @media (min-width: 768px) {
+      ul.desktop-hide {
+        display: none;
+      }
+    }
   }
 
+  // adapt navbar to mobile
   nav.rich-presence {
     background-color: $color-background-100-opacity;
     display: flex;
@@ -145,6 +187,10 @@
     margin: 0;
     justify-content: space-between;
     align-items: center;
+
+    @media (min-width: $breakpoint-lg) {
+      display: none;
+    }
   
     img {
       border-radius: 20px;

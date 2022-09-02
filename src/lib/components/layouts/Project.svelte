@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Button from "$lib/components/elements/naviguation/Button.svelte";
-  import ButtonGroup from "../elements/contenairs/ButtonGroup.svelte";
+  import Button from "$lib/components/elements/navigation/Button.svelte";
+  import ButtonGroup from "../elements/containers/ButtonGroup.svelte";
 
   interface YearProp {
     from: string;
@@ -15,18 +15,13 @@
   
   export let title: string;
   export let year: YearProp;
-  export let small_description: string | undefined = undefined;
-  export let description: string;
-  export let banner: string | undefined = undefined;
+  export let smallDescription: string | undefined = undefined;
 
   export let primaryTechIcon: string;
   export let techIcons: string[];
   
   export let button: ButtonProp | undefined = undefined;
   export let buttons: ButtonProp[] | undefined = undefined;
-  
-  export let people: string[] | undefined = undefined;
-  export let contributors: string[] | undefined = undefined;
 </script>
 
 <div class="card">
@@ -47,7 +42,7 @@
   <!-- Description -->
   <div class="description">
     <a href={`/project/${title}`} class="toPage">
-      <p>{@html small_description}</p>
+      <p>{@html smallDescription}</p>
     </a>
   </div>
 
@@ -77,6 +72,8 @@
 </div>
 
 <style lang="scss">
+  @import "../../scss/variables.scss";
+
   .card {
     a.toPage {
       color: white;
@@ -85,7 +82,7 @@
 
     position: relative;
 
-    background: #111827;
+    background: $color-background;
 
     display: flex;
     flex-direction: column;

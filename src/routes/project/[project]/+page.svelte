@@ -1,9 +1,8 @@
 <script lang="ts">
   /** @type {import('./$types').PageData} */
 
-  import { base } from "$app/paths";
-import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte";
-  import Button from "$lib/components/elements/naviguation/Button.svelte";
+  import ButtonGroup from "$lib/components/elements/containers/ButtonGroup.svelte";
+  import Button from "$lib/components/elements/navigation/Button.svelte";
   
   interface PageData {
     title: string;
@@ -11,7 +10,7 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
       from: string;
       to?: string;
     };
-    small_description: string;
+    smallDescription: string;
     description: string;
     banner?: string;
     primaryTechIcon: string;
@@ -37,7 +36,7 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
 <div class="page">
   <div class="right">
     <h1>{project.title}</h1>
-    <p class="small">{@html project.small_description}</p>
+    <p class="small">{@html project.smallDescription}</p>
 
     <hr>
     
@@ -94,6 +93,8 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
 </div>
 
 <style lang="scss">
+  @import "../../../lib/scss/variables.scss";
+
   .page {
     padding: 30px;
     display: flex;
@@ -121,7 +122,7 @@ import ButtonGroup from "$lib/components/elements/contenairs/ButtonGroup.svelte"
       width: 30%;
       align-self: center;
       padding: 2px;
-      background: #D9D9D9;
+      background: $color-hr;
       border-radius: 4px;
     }
 
