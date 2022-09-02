@@ -18,13 +18,6 @@
 </script>
 
 <div>
-  {#if PUBLIC_IS_PREVIEW == "true"}
-    <div class="preview">
-      <p>This is a development mode of the portfolio, you may run into a bug or something like that, go to the <a href="https://steellgold.fr">stable version</a> to be sure not to be surprised</p>
-      <p>Deployed from commit: <a href="https://github.com/Steellgold/Portfolio/commit/{VERCEL_GIT_COMMIT_SHA}">{VERCEL_GIT_COMMIT_MESSAGE}</a></p>
-    </div>
-  {/if}
-
   <nav class="navbar">
     <div class="discord-status">
       <img id="discord-avatar" src="{data.user.avatar}" alt="discord">
