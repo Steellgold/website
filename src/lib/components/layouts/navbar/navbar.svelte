@@ -27,7 +27,7 @@
     background: $secondary;
 
     height: 7vh;
-    padding: 0 25px;
+    padding: 20px;
 
     i {
       display: none;
@@ -101,6 +101,10 @@
 
         &.active {
           top: 0;
+        }
+
+        a {
+          font-size: 20px;
         }
       }
     }
