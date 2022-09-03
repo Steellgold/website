@@ -1,8 +1,7 @@
 <script lang="ts">
+  import { Text } from "$lib/components/elements/text";
 </script>
 
-<br>
-
 <style lang="scss">
-  
+    
 </style>
