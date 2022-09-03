@@ -11,18 +11,11 @@ Here is my site, on the first page you have a portfolio that presents my project
 
 For the deployment of the project I use **Vercel**, to make my all project models I use **Figma**, You can find the models on these two pages, [First version](https://www.figma.com/file/T25TyKTK75lAsAXTBHdl2B/New-portfolio?node-id=14%3A43) of my project and the [second version](https://www.figma.com/file/FFj5HB04eYnIOpWNCns1k9/Portfolio?node-id=41%3A2) in the "preview" branch
 
-[![Techs](https://skillicons.dev/icons?i=vercel,figma)](https://skillicons.dev)
+[![Techs](https://
+skillicons.dev/icons?i=vercel,figma)](https://skillicons.dev)
 ## Color References
 
-| Color | Hex |
-| - | ---- |
-| Primary | ![#0B2545](https://via.placeholder.com/100x40/0B2545?text=+) |
-| Secondary | ![#134074](https://via.placeholder.com/100x40/134074?text=+) |
-| tertiary | ![#13315C](https://via.placeholder.com/100x40/13315C?text=+) |
-| Misc | ![#8DA9C4](https://via.placeholder.com/100x40/8DA9C4?text=+) |
-| Misc (for Gradiants) | ![#173963](https://via.placeholder.com/100x40/173963?text=+) |
-| White | ![#EEF4ED](https://via.placeholder.com/100x40/EEF4ED?text=+) |
-| White (100) | ![#DEDEDE](https://via.placeholder.com/100x40/DEDEDE?text=+) |
+![Code couleurs (3)](https://user-images.githubusercontent.com/51505384/188270679-1eea7805-217b-4a54-8842-bc7724f17fb6.png)
 
 ## Installation
 
@@ -55,7 +48,6 @@ If you want to use this project at home to potentially propose changes, test thi
 
 `FIREBASE_MEASUREMENT_ID`, `FIREBASE_APP_ID`, `FIREBASE_MESSAGING_SENDER_ID`, `FIREBASE_STORAGE_BUCKET`, `FIREBASE_PROJECT_ID`, `FIREBASE_AUTH_DOMAIN`, and `FIREBASE_API_KEY`
 ## Contributors
-
 
 * [Bluzzi](https://github.com/Bluzzi)
 * [LMGerard](https://github.com/LMGerard)
