@@ -17,7 +17,7 @@ For the deployment of the project I use **Vercel**, to make my all project model
 
 Clone the repository with:
 ```bash
-git clone https://github.com/Steellgold/Portfolio.git
+npx degit https://github.com/Steellgold/Portfolio.git
 ```
 
 Install packages from `package.json` with PNPM or NPM `pnpm i`, `npm i`
