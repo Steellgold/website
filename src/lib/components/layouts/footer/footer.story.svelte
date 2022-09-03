@@ -4,6 +4,6 @@
   export let Hst: any;
 </script>
 
-<Hst.Story title="Footer">
+<Hst.Story title="components/layouts/Footer">
   <Footer />
 </Hst.Story>
