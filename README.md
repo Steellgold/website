@@ -1,7 +1,4 @@
 
-![Logo](https://yt3.ggpht.com/GLKipb5f4tSFUPxLd0u5enwLsU-b-QkhB6rJCbpVjKcmTEy3K4gQu5vJGk5YowUu9t53Ry16ow=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj)
-
-
 # Portfolio
 
 Here is my site, on the first page you have a portfolio that presents my projects, achievements, all that touch the development or even random photos to bring colors
@@ -11,8 +8,7 @@ Here is my site, on the first page you have a portfolio that presents my project
 
 For the deployment of the project I use **Vercel**, to make my all project models I use **Figma**, You can find the models on these two pages, [First version](https://www.figma.com/file/T25TyKTK75lAsAXTBHdl2B/New-portfolio?node-id=14%3A43) of my project and the [second version](https://www.figma.com/file/FFj5HB04eYnIOpWNCns1k9/Portfolio?node-id=41%3A2) in the "preview" branch
 
-[![Techs](https://
-skillicons.dev/icons?i=vercel,figma)](https://skillicons.dev)
+[![Techs](https://skillicons.dev/icons?i=vercel,figma)](https://skillicons.dev)
 ## Color References
 
 ![Code couleurs (3)](https://user-images.githubusercontent.com/51505384/188270679-1eea7805-217b-4a54-8842-bc7724f17fb6.png)
