@@ -60,13 +60,12 @@
     }
 
     .logo {
-      padding: 10px 0;
-      
       img {
-        border-radius: 10%;
-        height: 80%;
+        border-radius: 20%;
+        height: 70px;
 
         @media (max-width: $breakpoint-md) {
+          padding: 10px 0;
           height: 70px;
         }
       }
