@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: $primary-gradiant;
+    background: $secondary;
 
     height: 7vh;
     padding: 0 25px;
@@ -54,7 +54,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        background: $primary-gradiant;
+        background: $secondary;
         z-index: 10;
       }
     }
@@ -62,11 +62,12 @@
     .logo {
       img {
         border-radius: 20%;
-        height: 70px;
+        height: 50px;
 
         @media (max-width: $breakpoint-md) {
-          padding: 10px 0;
-          height: 70px;
+          padding: 20px 0;
+          height: 50px;
+          border-radius: 40%;
         }
       }
     }
@@ -79,6 +80,8 @@
         color: $white;
         text-decoration: none;
         margin: 0 10px;
+        font-weight: 900;
+        text-transform: uppercase;
       }
 
       @media (max-width: $breakpoint-md) {
@@ -88,7 +91,7 @@
         flex-direction: column;
         transition-duration: 0.50s;
 
-        background: $primary-gradiant;
+        background: $secondary;
         width: 100%;
 
         padding-top: 10px;
@@ -97,7 +100,6 @@
         height: fit-content;
 
         &.active {
-          // transform: translateY(-100%);
           top: 0;
         }
       }

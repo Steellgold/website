@@ -13,7 +13,7 @@
     justify-content: center;
 
     padding: 25px;
-    background-color: $primary;
+    background-color: $secondary;
 
     p {
       text-align: center;
