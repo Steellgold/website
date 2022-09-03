@@ -18,6 +18,7 @@
     <Hst.Select bind:value={align} title="Align" options={["left", "center", "right", "default"]} />
     <Hst.Checkbox bind:value={italic} title="Italic" />
     <Hst.Select bind:value={textTransform} title="Text Transform" options={["none", "capitalize", "uppercase", "lowercase"]} />
+    Color: <input type="color" bind:value={color} />
   </svelte:fragment>
 
   <Text type={type} color={color} align={align} italic={italic} textTransform={textTransform}>
