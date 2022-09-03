@@ -13,7 +13,7 @@
 <Hst.Story title="components/elements/Text" icon="ic:outline-clear-all">
   <svelte:fragment slot="controls">
     <Hst.Text bind:value={text} title="Text" />
-    <Hst.Select bind:value={type} title="aa" options={["p", "h1", "h2", "h3", "h4", "h5", "h6"]} />
+    <Hst.Select bind:value={type} title="Type" options={["p", "h1", "h2", "h3", "h4", "h5", "h6"]} />
     <Hst.Select bind:value={color} title="Color" options={["white", "primary", "secondary", "tertiary", "default"]} />
     <Hst.Select bind:value={align} title="Align" options={["left", "center", "right", "default"]} />
     <Hst.Checkbox bind:value={italic} title="Italic" />

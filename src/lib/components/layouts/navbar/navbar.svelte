@@ -82,6 +82,7 @@
         margin: 0 10px;
         font-weight: 900;
         text-transform: uppercase;
+        font-size: 20px;
       }
 
       @media (max-width: $breakpoint-md) {
