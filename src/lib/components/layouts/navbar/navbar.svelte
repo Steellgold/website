@@ -7,13 +7,13 @@
     <img src="/profile.jpg" alt="Logo">
   </div>
 
-  <div class="links" class:active={active}>
+  <div class="links" class:active={!active}>
     <a href="/">Réalisations</a>
     <a href="/">Projets</a>
     <a href="/">Blog</a>
   </div>
 
-  <i class="fa-solid " class:fa-x={!active} class:fa-bars={active} on:click={() => active = !active}></i>
+  <i class="fa-solid " class:fa-x={active} class:fa-bars={!active} on:click={() => active = !active}></i>
 </div>
 
 <style lang="scss">
