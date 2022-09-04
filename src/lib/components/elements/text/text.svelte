@@ -10,46 +10,13 @@
   $: classes = `text-${type} text-color-${color} text-align-${align} ${italic ? "text-italic" : ""} text-transform-${textTransform}`;
 </script>
 
-<p class={classes}><slot /></p>
+<svelte:element this={type}>
+  <p class={classes}><slot /></p>
+</svelte:element>
 
 <style lang="scss">
   @import "../../../scss/colors.scss";
   @import "../../../scss/variables.scss";
-
-  .text-p {
-    font-size: 16px;
-    font-weight: 400;
-  }
-
-  .text-h1 {
-    font-size: 32px;
-    font-weight: 700;
-  }
-
-  .text-h2 {
-    font-size: 24px;
-    font-weight: 700;
-  }
-
-  .text-h3 {
-    font-size: 18px;
-    font-weight: 700;
-  }
-
-  .text-h4 {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .text-h5 {
-    font-size: 13px;
-    font-weight: 700;
-  }
-
-  .text-h6 {
-    font-size: 10px;
-    font-weight: 700;
-  }
 
   .text-color-white {
     color: $white;
