@@ -6,6 +6,7 @@
   export let italic: boolean = false;
   export let textTransform: "none" | "capitalize" | "uppercase" | "lowercase" = "none";
   export let weight: "normal" | "bold" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 = "normal";
+  export let width: "default" | "auto" | 100 | 90 | 80 | 70 | 60 | 50 | 40 | 30 | 20 | 10 = "default";
   
   let classes = "";
   
