@@ -1,7 +1,8 @@
 <script lang="ts">
   export let type: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" = "p";
   export let size: "default" | "1xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl" = "default";
-  export let color: "white" | "primary" | "secondary" | "tertiary" | "default" = "default";
+  export let color: "white" | "primary" | "secondary" | "tertiary" | "custom" | "default" = "default";
+  export let customColor: string = "#fff";
   export let align: "left" | "center" | "right" | "default" = "default";
   export let italic: boolean = false;
   export let textTransform: "none" | "capitalize" | "uppercase" | "lowercase" = "none";
@@ -9,17 +10,29 @@
   export let width: "default" | "auto" | 100 | 90 | 80 | 70 | 60 | 50 | 40 | 30 | 20 | 10 = "default";
   
   let classes = "";
+  let style = "";
   
-  $: classes = `text-size-${size} text-${type} text-color-${color} text-align-${align} ${italic ? "text-italic" : ""} text-transform-${textTransform} text-weight-${weight} text-width-${width}`;
+  $: classes = `text-size-${size} text-color-${color} ${italic ? "text-italic" : ""} text-transform-${textTransform} text-weight-${weight} text-width-${width} text-align-${align}`;
+  if (color == "custom") {
+    style = `--color-custom: ${customColor};`;
+  }
 </script>
 
 <svelte:element this={type}>
-  <p class={classes}><slot /></p>
+  <p class={classes} style={style ?? ""}><slot /></p>
 </svelte:element>
 
 <style lang="scss">
   @import "../../../scss/colors.scss";
   @import "../../../scss/variables.scss";
+
+  :root {
+    --color-custom: rgb(215, 57, 57);
+  }
+
+  .text-color-custom {
+    color: var(--color-custom);
+  }
 
   .text-size-1xl {
     font-size: 1.5rem;
