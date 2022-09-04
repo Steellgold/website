@@ -18,8 +18,8 @@
   }
 </script>
 
-<svelte:element this={type}>
-  <p class={classes} style={style ?? ""}><slot /></p>
+<svelte:element this={type} class={classes} style={style ?? ""}>
+  <slot />
 </svelte:element>
 
 <style lang="scss">
