@@ -15,12 +15,4 @@
 <style lang="scss">
   @import "../lib/scss/colors.scss";
   @import "../lib/scss/variables.scss";
-
-  header {
-    padding: 2rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
 </style>
