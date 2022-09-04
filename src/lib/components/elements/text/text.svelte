@@ -1,5 +1,6 @@
 <script lang="ts">
   export let type: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" = "p";
+  export let size: "default" | "1xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl" | "8xl" | "9xl" = "default";
   export let color: "white" | "primary" | "secondary" | "tertiary" | "default" = "default";
   export let align: "left" | "center" | "right" | "default" = "default";
   export let italic: boolean = false;
