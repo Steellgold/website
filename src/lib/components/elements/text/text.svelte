@@ -5,6 +5,7 @@
   export let align: "left" | "center" | "right" | "default" = "default";
   export let italic: boolean = false;
   export let textTransform: "none" | "capitalize" | "uppercase" | "lowercase" = "none";
+  export let weight: "normal" | "bold" | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 = "normal";
   
   let classes = "";
   
