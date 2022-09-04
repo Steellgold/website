@@ -27,7 +27,7 @@
     background: $secondary;
 
     height: 7vh;
-    padding: 20px;
+    padding: 0px 30px;
 
     i {
       display: none;
@@ -83,6 +83,12 @@
         font-weight: 900;
         text-transform: uppercase;
         font-size: 20px;
+
+        transition: all 0.1s ease-in-out;
+      }
+
+      a:hover {
+        color: $white-200;
       }
 
       @media (max-width: $breakpoint-md) {
