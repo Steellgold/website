@@ -27,7 +27,7 @@
   @import "../../../scss/variables.scss";
 
   :root {
-    --color-custom: rgb(215, 57, 57);
+    --color-custom: #fff;
   }
 
   .text-color-custom {
