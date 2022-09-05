@@ -5,7 +5,7 @@
 
 <header>
   <div class="title">
-    <Text type="h1" size="4xl" weight="bold" align="center">Hey 👋</Text>
+    <Text type="h1" size="4xl" weight={900} align="center">Hey 👋</Text>
   </div>
 
   <Text align="center" width={50}>
