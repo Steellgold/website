@@ -25,23 +25,4 @@
 <style lang="scss">
   @import "../../../../lib/scss/colors.scss";
   @import "../../../../lib/scss/variables.scss";
-
-  a {
-    padding: 10px;
-    background-color: #134074;
-    border-radius: 7px;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    color: white;
-    transition: all 0.3s ease-in-out;
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    span.icon {
-      &.sm {
-        font-size: 12px;
-      }
 </style>
