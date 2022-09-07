@@ -44,23 +44,4 @@
       &.sm {
         font-size: 12px;
       }
-
-      &.md {
-        font-size: 16px;
-      }
-
-      &.lg {
-        font-size: 20px;
-      }
-    }
-
-    &:hover {
-      background-color: $button-hover;
-    }
-
-    &.disabled {
-      background-color: $button-disabled;
-      cursor: not-allowed;
-    }
-  }
 </style>
