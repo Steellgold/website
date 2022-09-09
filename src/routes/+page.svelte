@@ -42,5 +42,16 @@
     .title {
       margin-bottom: 10px;
     }
+
+    .buttons {
+      max-width: 90%;
+      width: 500px;
+      padding: 40px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
   }
 </style>
