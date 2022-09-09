@@ -46,6 +46,11 @@
     img {
       height: 20px;
     }
+
+    span.icon {
+      display: flex;
+      font-size: 20px;
+    }
   }
 
   a.small {
