@@ -20,10 +20,10 @@
       Steellgold
     </Button>
     <Button link="https://youtube.com/Steellgold" iconType="fontawesome" icon="fa-brands fa-youtube" iconSize="md"  disabled={false}>
-      Steellgold
+      Steellg0ld
     </Button>
     <Button link="https://instagram.com/Steellgold" iconType="fontawesome" icon="fa-brands fa-instagram" iconSize="md"  disabled={false}>
-      Steellgold
+      steellgold
     </Button>
 </header>
 
