@@ -2,7 +2,6 @@
   export let link: string | null = "";
   export let size: "large" | "default" = "default";
 
-  export let iconType: "fontawesome" | "custom" | null = null;
   export let iconSize: "sm" | "md" | "lg" | "default" = "default"; 
   export let icon: string | null = null;
 
@@ -12,11 +11,7 @@
 <a href={disabled == true ? "#" : link} class={size} class:disabled={disabled}>
   {#if icon}
     <span class="icon {iconSize}">
-      {#if iconType === "fontawesome"}
-        <i class={icon} />
-      {:else}
-        <img src="/icons/{icon}" alt="icon" />
-      {/if}
+      <i class={icon} />
     </span>
   {/if}
   <slot />
@@ -42,15 +37,6 @@
 
     background-color: $white;
     color: #000;
-
-    img {
-      height: 20px;
-    }
-
-    span.icon {
-      display: flex;
-      font-size: 20px;
-    }
   }
 
   a.small {
