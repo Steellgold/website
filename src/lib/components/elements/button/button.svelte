@@ -48,6 +48,12 @@
     }
   }
 
+  a.small {
+    width: 60%;
+    margin: auto;
+  }
 
+  a:hover:not(.active) {
+      background-color: #d4d4d4;
   }
 </style>
