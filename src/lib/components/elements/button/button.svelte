@@ -26,43 +26,13 @@
   @import "../../../../lib/scss/colors.scss";
   @import "../../../../lib/scss/variables.scss";
 
-  // TODO: https://media.discordapp.net/attachments/806219620456333413/1017151758734204948/unknown.png
-
   a {
-    padding: 10px;
-    background-color: #134074;
-    border-radius: 7px;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    color: white;
-    transition: all 0.3s ease-in-out;
-
     display: flex;
     align-items: center;
-    gap: 10px;
 
-    span.icon {
-      &.sm {
-        font-size: 12px;
-      }
 
-      &.md {
-        font-size: 16px;
-      }
-
-      &.lg {
-        font-size: 20px;
-      }
     }
 
-    &:hover {
-      background-color: $button-hover;
-    }
 
-    &.disabled {
-      background-color: $button-disabled;
-      cursor: not-allowed;
-    }
   }
 </style>
