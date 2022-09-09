@@ -14,6 +14,9 @@
 
   <div class="buttons">
     <Button link="https://github.com/Steellgold" iconType="fontawesome" icon="fa-brands fa-github" iconSize="md"  disabled={false}>
+      Steellgold
+    </Button>
+    <Button link="https://discord.com/users/504392983244832780" iconType="fontawesome" icon="fa-brands fa-discord" iconSize="md"  disabled={false}>
       Gaëtan 🐈#2728
     </Button>
     <Button link="https://twitter.com/Steellgold" iconType="fontawesome" icon="fa-brands fa-twitter" iconSize="md"  disabled={false}>
