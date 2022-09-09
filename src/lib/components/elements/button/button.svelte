@@ -28,10 +28,25 @@
 
   a {
     display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 14px 18px;
+    opacity: 0.9;
+    border-radius: 18px;
+    transition: background 0.3s;
+    font-weight: 700;
+    box-shadow: 0px 4px 4px rgba(249, 249, 249, 0.25);
 
+    background-color: $white;
+    color: #000;
 
+    img {
+      height: 20px;
     }
+  }
 
 
   }
