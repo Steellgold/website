@@ -1,60 +1,118 @@
-<script lang="ts">
-  import { Text } from "$lib/components/elements/text";
-  import { Button } from "$lib/components/elements/button";
+<script>
+  import Button from "$lib/components/elements/navigation/Button.svelte";
+  import Project from "$lib/components/layouts/Project.svelte";
+  import projects from "$lib/config/projects.json";
 </script>
 
 <header>
   <div class="title">
-    <Text type="h1" size="4xl" weight={900} align="center">Hey 👋</Text>
+    <h1>Hey</h1>
+    <img class="wave" src = "/images/FluentWave.svg" alt="Wave"/>
   </div>
 
-  <Text align="center" width={50}>
-    Gaëtan, 17 years old, passionate about programming and computer science, I am a PHP developer, I am currently learning Web development and Java
-  </Text>
+  <p>Gaëtan, 17 years old, passionate about programming and computer science, I am a PHP developer, I am currently learning Web development and Java<p>
 
   <div class="buttons">
-    <Button link="https://github.com/Steellgold" icon="fa-brands fa-github" iconSize="md"  disabled={false}>
-      Steellgold
-    </Button>
-    <Button link="https://discord.com/users/504392983244832780" icon="fa-brands fa-discord" iconSize="md"  disabled={false}>
-      Gaëtan 🐈#2728
-    </Button>
-    <Button link="https://twitter.com/Steellgold" icon="fa-brands fa-twitter" iconSize="md"  disabled={false}>
-      Steellgold
-    </Button>
-    <Button link="https://youtube.com/Steellgold" icon="fa-brands fa-youtube" iconSize="md"  disabled={false}>
-      Steellg0ld
-    </Button>
-    <Button link="https://instagram.com/Steellgold" icon="fa-brands fa-instagram" iconSize="md"  disabled={false}>
-      steellgold
-    </Button>
+    <Button link="https://github.com/Steellgold" icon="dark/GitHub.png" small={false}>Gaëtan H</Button>
+    <Button link="https://discord.com/users/504392983244832780" icon="light/Discord.png" small={false}>Gaëtan 🐈#2728</Button>
+    <Button link="https://youtube.com/Steellgold" icon="light/YouTube.png" small={false}>Steellgold</Button>
+    <Button link="https://twitter.com/Steellgold" icon="light/Twitter.png" small={false}>Gaëtan</Button>
+    <Button link="https://instagram.com/steellgold" icon="light/Instagram.png" small={false}>steellgold</Button>
+  </div>
 </header>
 
+<section id="projects" class="projects">
+  <div class="list">
+    {#each projects as project}
+      <Project
+        title={project.title} 
+        year={project.year}
+        smallDescription={project.smallDescription}
+        primaryTechIcon={project.primaryTechIcon}
+        techIcons={project.techIcons}
+        button={project.button ?? undefined}
+        buttons={project.buttons ?? undefined}
+      />
+    {/each}
+  </div>
+</section>
+
 <style lang="scss">
-  @import "../lib/scss/colors.scss";
+  @import "../lib/scss/animations.scss";
   @import "../lib/scss/variables.scss";
 
   header {
-    padding: 20px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    gap: 40px;
+
+    margin: 50px 0;
 
     .title {
-      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      img {
+        height: 100px;
+        width: auto;
+      }
+    }
+
+    p {
+      font-size: 1.25rem;
+      text-align: center;
+      
+      width: 50%;
+
+      @media (max-width: $breakpoint-md) {
+        width: 90%
+      }
     }
 
     .buttons {
       max-width: 90%;
       width: 500px;
-      padding: 40px;
 
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
+    }
+  }
+
+  .projects {
+    background-color: $color-background-100;
+
+    padding: 50px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .list {
+      $column-size: 350px;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax($column-size, 1fr));
+      gap: 30px;
+
+      @media (min-width: calc($column-size * 4)) {
+        grid-template-columns: 350px 350px 350px 350px; // TODO : fix this
+      }
+
+      @media (max-width: $breakpoint-xl) {
+        grid-template-columns: 350px 350px; // TODO : fix this
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 350px; // TODO : fix this
+      }
     }
   }
 </style>
