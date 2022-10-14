@@ -10,7 +10,7 @@
     <img class="wave" src = "/images/FluentWave.svg" alt="Wave"/>
   </div>
 
-  <p>Gaëtan, 17 years old, passionate about programming and computer science, I am a PHP developer, I am currently learning Web development and Java<p>
+  <p>Gaëtan, 18 years old, passionate about programming and computer science, I am a PHP developer, I am currently learning Web development and Java<p>
 
   <div class="buttons">
     <Button link="https://github.com/Steellgold" icon="dark/GitHub.png" small={false}>Gaëtan H</Button>
