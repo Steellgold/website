@@ -13,7 +13,8 @@
       "/icons/techs/html.png", 
       "/icons/techs/css.png", 
       "/icons/techs/sass.png",
-      "/icons/techs/firebase.png"
+      "/icons/techs/firebase.png",
+      "/icons/techs/vercel.svg"
     ],
     "buttons": [
       {
@@ -30,6 +31,50 @@
     "contributors": [
       "Bluzzi"
     ]
+  },
+  {
+    "title": "Vendit",
+    "year": {
+      "from": "2022"
+    },
+    "smallDescription": "Site where you can sell PocketMine-MP plugins",
+    "description": "On this site you can buy or sell Minecraft plugins on the PocketMine-MP API, you can also in the future (for sellers) use an API that will indicate if the plugin has been purchased or if it is a leak",
+    "primaryTechIcon": "/icons/techs/svelte.png",
+    "techIcons": [
+      "/icons/techs/typescript.png", 
+      "/icons/techs/javascript.png", 
+      "/icons/techs/html.png", 
+      "/icons/techs/css.png", 
+      "/icons/techs/sass.png",
+      "/icons/techs/railway.png"
+    ],
+    "button": {
+      "text": "Vendit (old)",
+      "link": "https://old.vendit.steellgold.fr"
+    }
+  },
+  {
+    "title": "ActuCroûtons",
+    "year": {
+      "from": "2022"
+    },
+    "smallDescription": "I develop the website of the information media dedicated to the Crouton Team",
+    "description": "This is a site that will allow maintainers to post information, new videos and other topics about Team Crouton",
+    "banner": "https://media.discordapp.net/attachments/1031293529546305658/1031294348899405824/unknown.png?width=568&height=804",
+    "primaryTechIcon": "/icons/techs/svelte.png",
+    "techIcons": [
+      "/icons/techs/typescript.png", 
+      "/icons/techs/javascript.png", 
+      "/icons/techs/html.png", 
+      "/icons/techs/css.png", 
+      "/icons/techs/sass.png",
+      "/icons/techs/railway.png"
+    ],
+    "button": {
+      "text": "Instagram",
+      "link": "https://www.instagram.com/actucroutons/",
+      "icon": "dark/Instagram.png"
+    }
   },
   {
     "title": "Lunastia",
