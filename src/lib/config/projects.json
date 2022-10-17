@@ -70,11 +70,17 @@
       "/icons/techs/sass.png",
       "/icons/techs/railway.png"
     ],
-    "button": {
-      "text": "Instagram",
-      "link": "https://www.instagram.com/actucroutons/",
-      "icon": "dark/Instagram.png"
-    }
+    "buttons": [
+      {
+        "text": "Website",
+        "link": "https://actuscroutons.steellgold.fr/"
+      },
+      {
+        "text": "ActuCroûtons",
+        "link": "https://www.instagram.com/actucroutons/",
+        "icon": "dark/Instagram.png"
+      }
+    ]
   },
   {
     "title": "Lunastia",
