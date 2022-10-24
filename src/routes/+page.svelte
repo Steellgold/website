@@ -18,6 +18,7 @@
     <Button link="https://youtube.com/Steellgold" icon="light/YouTube.png" small={false}>Steellgold</Button>
     <Button link="https://twitter.com/Steellgold" icon="light/Twitter.png" small={false}>Gaëtan</Button>
     <Button link="https://instagram.com/steellgold" icon="light/Instagram.png" small={false}>steellgold</Button>
+    <iframe src="https://github.com/sponsors/Steellgold/button" title="Sponsor Steellgold" height="35" width="116" style="border: 0;"></iframe>
   </div>
 </header>
 
