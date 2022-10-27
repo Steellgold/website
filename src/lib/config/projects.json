@@ -54,7 +54,7 @@
     "year": {
       "from": "0"
     },
-    "smallDescription": "I develop the website of the information media dedicated to the Crouton Team",
+    "smallDescription": "I develop the website of the information media dedicated to the Crouton Team, the website work in progress",
     "description": "This is a site that will allow maintainers to post information, new videos and other topics about Team Crouton<br><br>Deployed with Railway",
     "banner": "https://media.discordapp.net/attachments/1031293529546305658/1031294348899405824/unknown.png?width=568&height=804",
     "primaryTechIcon": "/icons/techs/svelte.png",
@@ -68,7 +68,7 @@
     ],
     "buttons": [
       {
-        "text": "Website (WIP)",
+        "text": "Website",
         "link": "https://actuscroutons.steellgold.fr/"
       },
       {
