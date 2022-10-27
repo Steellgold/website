@@ -37,7 +37,7 @@
     "year": {
       "from": "2022"
     },
-    "smallDescription": "Site where you can sell PocketMine-MP plugins, <b>the site is undergoing a graphic redesign</b>"",
+    "smallDescription": "Site where you can sell PocketMine-MP plugins, <b>the site is undergoing a graphic redesign</b>",
     "description": "On this site you can buy or sell Minecraft plugins on the PocketMine-MP API, you can also in the future (for sellers) use an API that will indicate if the plugin has been purchased or if it is a leak<br><br>Deployed with Railway",
     "primaryTechIcon": "/icons/techs/svelte.png",
     "techIcons": [
