@@ -47,11 +47,7 @@
       "/icons/techs/css.png", 
       "/icons/techs/sass.png",
       "/icons/techs/railway.png"
-    ],
-    "button": {
-      "text": "Vendit (old)",
-      "link": "https://old.vendit.steellgold.fr"
-    }
+    ]
   },
   {
     "title": "ActuCroûtons",
@@ -72,7 +68,7 @@
     ],
     "buttons": [
       {
-        "text": "Website",
+        "text": "Website (WIP)",
         "link": "https://actuscroutons.steellgold.fr/"
       },
       {
