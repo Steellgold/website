@@ -52,7 +52,7 @@
       "text": "Website (old)",
       "link": "https://github.com/Steellgold/Rox",
       "icon": "dark/GitHub.png"
-    },
+    }
   },
   {
     "title": "ActuCroûtons",
@@ -69,7 +69,7 @@
       "/icons/techs/html.png", 
       "/icons/techs/css.png", 
       "/icons/techs/sass.png",
-      "/icons/techs/railway.png"
+      "/icons/techs/vercel.png"
     ],
     "buttons": [
       {
