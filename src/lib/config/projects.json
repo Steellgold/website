@@ -38,7 +38,7 @@
       "from": "2022"
     },
     "smallDescription": "Site where you can sell PocketMine-MP plugins",
-    "description": "On this site you can buy or sell Minecraft plugins on the PocketMine-MP API, you can also in the future (for sellers) use an API that will indicate if the plugin has been purchased or if it is a leak",
+    "description": "On this site you can buy or sell Minecraft plugins on the PocketMine-MP API, you can also in the future (for sellers) use an API that will indicate if the plugin has been purchased or if it is a leak<br><br>Deployed with Railway",
     "primaryTechIcon": "/icons/techs/svelte.png",
     "techIcons": [
       "/icons/techs/typescript.png", 
@@ -55,7 +55,7 @@
       "from": "0"
     },
     "smallDescription": "I develop the website of the information media dedicated to the Crouton Team",
-    "description": "This is a site that will allow maintainers to post information, new videos and other topics about Team Crouton",
+    "description": "This is a site that will allow maintainers to post information, new videos and other topics about Team Crouton<br><br>Deployed with Railway",
     "banner": "https://media.discordapp.net/attachments/1031293529546305658/1031294348899405824/unknown.png?width=568&height=804",
     "primaryTechIcon": "/icons/techs/svelte.png",
     "techIcons": [
