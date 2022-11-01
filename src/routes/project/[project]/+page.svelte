@@ -89,14 +89,6 @@
         </ButtonGroup>
       </div>
     {/if}
-      <amp-ad width="100vw" height="320"
-        type="adsense"
-        data-ad-client="ca-pub-7932654374026164"
-        data-ad-slot="5871086509"
-        data-auto-format="rspv"
-        data-full-width="">
-      <div overflow=""></div>
-    </amp-ad>
   </div>
 </div>
 
