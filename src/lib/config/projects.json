@@ -4,7 +4,7 @@
     "year": {
       "from": "0"
     },
-    "smallDescription": "Simply my portfolio, with other things that happen on the site without being in real connection with a portfolio because I want to learn more about the Web and in general",
+    "smallDescription": "Simply my portfolio, with other things that happen on the site without being in real connection with a portfolio because I want to learn more about the Web and in general <br><br>The site is undergoing a graphic redesign <a style=\"color: #FF8A65; font-weight: bold;\" href=\"https://www.figma.com/file/Y3GivtSEWFnhniop8ZQOtL/Nouvelle-maquette-pour-mon-portfolio?node-id=0%3A1\">Figma link</a>",
     "description": "At the beginning I created this portfolio to show my different projects, and learn at the same time Svelte and CSS in general because I use very often Bootstrap but I'm not autonomous enough (to make myself the CSS) so I decided to do it myself, well I confess I was a bit forced by someone but 😨 in the end I don't regret.<br><br>And by making this site I quickly realized that I can push even further, so I really intend to push further this repository by making for example to train me a blog with comments for example,<br><br>Everything that can make me learn things I intend to do even if it goes out of the context of a portfolio, I will rename the other pages and I will leave the default page under the name of Portfolio.",
     "primaryTechIcon": "/icons/techs/svelte.png",
     "techIcons": [
@@ -23,7 +23,7 @@
         "icon": "dark/GitHub.png"
       },
       {
-        "text": "Figma",
+        "text": "Old",
         "link": "https://www.figma.com/file/FFj5HB04eYnIOpWNCns1k9/Portfolio?node-id=41%3A2",
         "icon": "techs/figma.png"
       }
@@ -54,38 +54,9 @@
     }
   },
   {
-    "title": "ActuCroûtons",
-    "year": {
-      "from": "0"
-    },
-    "smallDescription": "I develop the website of the information media dedicated to the Crouton Team, the website work in progress",
-    "description": "This is a site that will allow maintainers to post information, new videos and other topics about Team Crouton<br><br>Deployed with Railway",
-    "banner": "https://media.discordapp.net/attachments/1031293529546305658/1031294348899405824/unknown.png?width=568&height=804",
-    "primaryTechIcon": "/icons/techs/svelte.png",
-    "techIcons": [
-      "/icons/techs/typescript.png", 
-      "/icons/techs/javascript.png", 
-      "/icons/techs/html.png", 
-      "/icons/techs/css.png", 
-      "/icons/techs/sass.png",
-      "/icons/techs/vercel.svg"
-    ],
-    "buttons": [
-      {
-        "text": "Website",
-        "link": "https://actuscroutons.steellgold.fr/"
-      },
-      {
-        "text": "Instagram",
-        "link": "https://www.instagram.com/actucroutons/",
-        "icon": "dark/Instagram.png"
-      }
-    ]
-  },
-  {
     "title": "Lunastia",
     "year": {
-      "from": "2022"
+      "paused": true
     },
     "smallDescription": "A Minecraft server based on the SkyBlock with a rewriting of the concept by adding new ways to play, or systems invented from scratch to bring a new side to the game.",
     "description": "This server has a funny beginning, on a Discord server someone was looking for a developer for a Java server and so I didn't want to introduce myself because obviously I've never done it, but I was really advised to do it because it was a good experience to know different languages and even to do something else than PHP<br><br>So I said OK, a few days after I started to work I was informed about a bad news so I put on pause and I went back to my job, and a few days later my friend came and proposed me to make a java server.<br><br>For fun I said yes because it was supposed to be private for the two of us to play, and the craziness went too far which brings us to today, to make it a real server as people we know or not joined the project, and we will say that the project has a good potential due to the huge number of pages on the specifications for the server.<br><br>Here is the project, a Minecraft server <b>Java</b> Edition modifying largely the style of game or implementing new systems on the known name: SkyBlock.",

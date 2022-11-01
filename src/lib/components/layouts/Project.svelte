@@ -5,6 +5,7 @@
   interface YearProp {
     from: string;
     to?: string;
+    paused?: boolean;
   }
 
   interface ButtonProp {
@@ -34,8 +35,12 @@
   <div class="title-date">
     <h2>{title}</h2>
 
-    {#if year.from !== "0"}
-      <p>{`${year.from} → ${year.to ? year.to : "now"}`}</p>
+    {#if year.paused}
+      <p>Paused</p>
+    {:else}
+      {#if year.from !== "0"}
+        <p>{`${year.from} → ${year.to ? year.to : "now"}`}</p>
+      {/if}
     {/if}
   </div>
 
