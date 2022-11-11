@@ -1,5 +1,5 @@
 
-![Logo](https://yt3.ggpht.com/GLKipb5f4tSFUPxLd0u5enwLsU-b-QkhB6rJCbpVjKcmTEy3K4gQu5vJGk5YowUu9t53Ry16ow=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj)
+![Logo](https://github.com/Steellgold/Portfolio/blob/stable/.github/banner.png)
 
 
 # Portfolio
