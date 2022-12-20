@@ -31,7 +31,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-#### Building:
+### Building:
 ```BASH
 npm run build
 ```
