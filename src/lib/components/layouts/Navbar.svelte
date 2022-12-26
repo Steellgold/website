@@ -11,7 +11,6 @@
     activeLinks.classList.toggle('disabled-links');
 
     if (mobileLink) {
-      console.log(mobileLink?.innerHTML)
       mobileLink.innerHTML = (mobileLink?.innerHTML === 'Close' ? 'Menu' : 'Close');
     }
   }
