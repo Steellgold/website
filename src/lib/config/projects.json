@@ -64,7 +64,7 @@
     "techIcons": [
       "/icons/techs/typescript.png", 
       "/icons/techs/javascript.png",
-      "/icons/techs/tailwindcss.svg,
+      "/icons/techs/tailwindcss.svg",
       "/icons/techs/vercel.svg"
     ],
     "button": {
