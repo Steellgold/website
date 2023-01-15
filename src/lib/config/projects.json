@@ -54,6 +54,25 @@
     }
   },
   {
+    "title": "Shortener",
+    "year": {
+      "from": "2023"
+    },
+    "smallDescription": "Site on which you can shrink links to make them shorter, in order to share them more easily",
+    "description": "",
+    "primaryTechIcon": "/icons/techs/svelte.png",
+    "techIcons": [
+      "/icons/techs/typescript.png", 
+      "/icons/techs/javascript.png",
+      "/icons/techs/tailwindcss.png,
+      "/icons/techs/vercel.svg"
+    ],
+    "button": {
+      "text": "Website",
+      "link": "https://links.steellgold.fr"
+    }
+  },
+  {
     "title": "Lunastia",
     "year": {
       "paused": true
