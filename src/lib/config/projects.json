@@ -66,7 +66,8 @@
       "/icons/techs/javascript.png",
       "/icons/techs/tailwindcss.svg",
       "/icons/techs/supabase.svg",
-      "/icons/techs/vercel.svg"
+      "/icons/techs/vercel.svg",
+      "/icons/techs/postgresql.svg"
     ],
     "button": {
       "text": "Website",
