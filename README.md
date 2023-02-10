@@ -1,45 +1,38 @@
+# create-svelte
 
-![Logo](https://github.com/Steellgold/Portfolio/blob/stable/.github/banner.png)
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
+## Creating a project
 
-# Portfolio
+If you're seeing this, you've probably already done this step. Congrats!
 
-Here is my site, on the first page you have a portfolio that presents my projects, achievements, all that touch the development or even random photos to bring colors
-## Technologies used
-
-[![Techs](https://skillicons.dev/icons?i=svelte,typescript,scss,js,html)](https://skillicons.dev)
-
-For the deployment of the project I use **Vercel**, to make my all project models I use **Figma**, You can find the models on these two pages, [First version](https://www.figma.com/file/T25TyKTK75lAsAXTBHdl2B/New-portfolio?node-id=14%3A43) of my project and the [second version](https://www.figma.com/file/FFj5HB04eYnIOpWNCns1k9/Portfolio?node-id=41%3A2) in the "preview" branch
-
-[![Techs](https://skillicons.dev/icons?i=vercel,figma)](https://skillicons.dev)
-## Installation
-
-Clone the repository with:
 ```bash
-git clone https://github.com/Steellgold/Portfolio.git
+# create a new project in the current directory
+npm create svelte@latest
+
+# create a new project in my-app
+npm create svelte@latest my-app
 ```
 
-Install packages from `package.json` with PNPM or NPM `pnpm i`, `npm i`
+## Developing
 
-#### Developpment:
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-Once you've cloned the project and installed dependencies with npm install (or pnpm install or yarn), start a development server:
-
-```BASH
+```bash
 npm run dev
+
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
 
-### Building:
-```BASH
+## Building
+
+To create a production version of your app:
+
+```bash
 npm run build
 ```
 
-You can preview the production build with npm run preview.
+You can preview the production build with `npm run preview`.
 
-## Contributors
-
-
-* [Bluzzi](https://github.com/Bluzzi)
-* [LMGerard](https://github.com/LMGerard)
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

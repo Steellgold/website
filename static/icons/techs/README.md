@@ -1,2 +1,0 @@
-## Icons
-https://skillicons.dev/
