@@ -1,1 +1,5 @@
-<p>Welcome to my future Portfolio !</p>
+<script lang="ts">
+  import Header from "$lib/sections/Header.svelte";
+</script>
+
+<Header />
