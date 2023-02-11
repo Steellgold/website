@@ -1,5 +1,6 @@
 <script lang="ts">
   import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from "$lib/components/icons";
+  import Spotify from "$lib/components/renders/Spotify.svelte";
 </script>
 
 <section>
@@ -25,4 +26,6 @@
     <h1 class="text-5xl font-bold text-left">Gaëtan</h1>
     <p class="text-1xl pt-1 text-left">Je suis développeur back-end sur TypeScript, ainsi que sur PHP.</p>
   </div>
+
+  <Spotify />
 </section>
