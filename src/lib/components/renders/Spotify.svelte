@@ -1,5 +1,4 @@
 <script lang="ts">
-  import dayjs from "dayjs";
   import { onMount } from "svelte";
   import { IconBrandSpotify } from "../icons";
   
@@ -50,7 +49,7 @@
 
 {#if spotify.isPlaying}
   <div class="mx-auto w-5/6 lg:w-2/4">
-    <ul class="flex-row text-green-500 animate-pulse gap-2 p-2">
+    <ul class="flex-row text-green-500 animate-pulse gap-2 pt-3">
       <a href="https://open.spotify.com/track/0pqnGHJpmpxLKifKRmU6WP" class="flex items-center gap-2">
         <IconBrandSpotify />
         <code>Écoute « {spotify.song} » de {spotify.artist}</code>

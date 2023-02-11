@@ -5,4 +5,4 @@
   import hljs from "highlight.js";
 </script>
 
-<pre class="hjls">{@html hljs.highlight(lang, text).value}</pre>
+<pre class="hjls">{@html hljs.highlight(lang, text, true).value}</pre>

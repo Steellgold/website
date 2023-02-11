@@ -1,10 +1,11 @@
 <script lang="ts">
+  import { page } from "$app/stores";
   import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from "$lib/components/icons";
   import Spotify from "$lib/components/renders/Spotify.svelte";
 </script>
 
 <section>
-  <img src="/images/banner_kitty.jpeg" alt="Kitty's Banner" class="h-96 w-full object-cover block object-center transition-all" />
+  <img src="/images/banner_kitty.jpeg" alt="Kitty's Banner" class="h-[405px] w-full object-cover block object-center transition-all" />
 
   <div class="shrink-0 flex items-center justify-start mx-auto w-5/6 lg:w-2/4">
     <img alt="profile" class="-mt-16 h-32 w-32 rounded-full border-white" src="/images/profile_noisette.jpeg" />
@@ -26,6 +27,6 @@
     <h1 class="text-5xl font-bold text-left">Gaëtan</h1>
     <p class="text-1xl pt-1 text-left">Je suis développeur back-end sur TypeScript, ainsi que sur PHP.</p>
   </div>
-
+  
   <Spotify />
 </section>
