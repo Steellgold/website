@@ -9,7 +9,7 @@ export const Projects: Project[] = [
       Typescript, Svelte, Supabase, Postgresql
     ],
     date: { start: "15/01/2023" },
-    link: "https//github.com/Steellgold/Linkfy",
+    link: "https://github.com/Steellgold/Linkfy",
     type: "Open Source"
   },
   {
