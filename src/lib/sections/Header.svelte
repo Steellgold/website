@@ -3,7 +3,7 @@
 </script>
 
 <section>
-  <img src="/images/banner_kitty.jpeg" alt="Kitty's Banner" class="h-52 max-h-96 w-full object-cover block object-center sm:hover:h-96 transition-all" />
+  <img src="/images/banner_kitty.jpeg" alt="Kitty's Banner" class="h-96 w-full object-cover block object-center transition-all" />
 
   <div class="shrink-0 flex items-center justify-start mx-auto w-5/6 lg:w-2/4">
     <img alt="profile" class="-mt-16 h-32 w-32 rounded-full border-white" src="/images/profile_noisette.jpeg" />
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="pt-9 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
+  <div id="about" class="pt-9 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
     <p class="text-1xl pt-1 text-left">Moi c'est</p>
     <h1 class="text-5xl font-bold text-left">Gaëtan</h1>
     <p class="text-1xl pt-1 text-left">J'ai 18 ans et je suis développeur <span class="line-through opacity-50">spécialisé dans le</span> back-end. Mon langage de prédilection est le PHP, mais je suis également à l'aise avec le Typescript</p>
