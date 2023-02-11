@@ -21,8 +21,8 @@
   </div>
 
   <div id="about" class="pt-9 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
-    <p class="text-1xl pt-1 text-left">Moi c'est</p>
+    <p class="text-1xl pt-1 text-left">Salut, moi c'est</p>
     <h1 class="text-5xl font-bold text-left">Gaëtan</h1>
-    <p class="text-1xl pt-1 text-left">J'ai 18 ans et je suis développeur <span class="line-through opacity-50">spécialisé dans le</span> back-end. Mon langage de prédilection est le PHP, mais je suis également à l'aise avec le Typescript</p>
+    <p class="text-1xl pt-1 text-left">Je suis développeur back-end et je suis passionné par la programmation.</p>
   </div>
 </section>

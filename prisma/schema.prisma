@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  slug      String   @db.VarChar(255) @unique // Ex: "untitled-1"
+  createdAt DateTime @default(now())
+  title     String   @db.VarChar(255) @default("Untitled")
+  content   String   @db.Text @default("Hello World")
+  bannerUrl String?  @default("https://source.unsplash.com/random/800x600")
+  published Boolean  @default(false)
+  // comments  Comment[]
+  // likes     Like[]
+}
