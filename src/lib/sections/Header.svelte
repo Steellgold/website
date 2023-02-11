@@ -23,6 +23,6 @@
   <div id="about" class="pt-9 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
     <p class="text-1xl pt-1 text-left">Salut, moi c'est</p>
     <h1 class="text-5xl font-bold text-left">Gaëtan</h1>
-    <p class="text-1xl pt-1 text-left">Je suis développeur back-end et je suis passionné par la programmation.</p>
+    <p class="text-1xl pt-1 text-left">Je suis développeur back-end sur TypeScript, ainsi que sur PHP.</p>
   </div>
 </section>
