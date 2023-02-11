@@ -31,7 +31,7 @@
   });
 </script>
 
-<section class="pb-3">
+<section class="pb-3 mb-5">
   <!-- TODO: Check if has last article or not -->
   <div class="pt-9 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
     <h1 class="text-3xl font-bold text-left">Dernière publication:</h1>
