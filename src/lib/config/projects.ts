@@ -1,5 +1,5 @@
 import type { Project } from "./project.types";
-import { DiscordJs, Graphql, Postgresql, Prisma, Railway, Supabase, Svelte, Tailwindcss, Typescript } from "./skills";
+import { DiscordJs, Graphql, Nodejs, Postgresql, Prisma, Railway, Supabase, Svelte, Tailwindcss, Typescript } from "./skills";
 
 export const Projects: Project[] = [
   {
@@ -16,7 +16,7 @@ export const Projects: Project[] = [
     title: "Royaume Bot",
     description: "Communauté de développeurs où chacun contribue aux projets internes",
     skills: [
-      Typescript, Graphql, DiscordJs
+      Typescript, Graphql, DiscordJs, Nodejs
     ],
     date: { start: "23/06/2022" },
     link: "https://github.com/Virtual-Royaume",
