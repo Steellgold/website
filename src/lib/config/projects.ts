@@ -1,15 +1,26 @@
 import type { Project } from "./project.types";
-import { Postgresql, Supabase, Svelte, Typescript } from "./skills";
+import { DiscordJs, Graphql, Postgresql, Railway, Supabase, Svelte, Tailwindcss, Typescript } from "./skills";
 
 export const Projects: Project[] = [
   {
     title: "Linkfy",
-    description: "Open-Source tool to shorten your links quickly",
+    description: "Outil open-source pour raccourcir rapidement vos liens",
     skills: [
       Typescript, Svelte, Supabase, Postgresql
     ],
-    date: { start: "2023-01-15" },
-    link: "https://linkfy.fr",
-    type: "Pro"
+    date: { start: "15/01/2023" },
+    link: "https//github.com/Steellgold/Linkfy",
+    type: "Open Source"
+  },
+  {
+    title: "Royaume Bot",
+    description: "Communauté de développeurs où chacun contribue aux projets internes",
+    skills: [
+      Typescript, Graphql, DiscordJs
+    ],
+    date: { start: "23/06/2022" },
+    link: "https://github.com/Virtual-Royaume",
+    type: "Open Source"
   }
+  // For more projects, add them here
 ];
