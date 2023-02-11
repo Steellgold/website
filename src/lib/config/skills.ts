@@ -24,3 +24,4 @@ export const Nodejs: Skill = { name: "NodeJS", icon: "nodejs", color: "#339933" 
 export const Fastify: Skill = { name: "Fastify", icon: "fastify", color: "#503E33" };
 export const Java: Skill = { name: "Java", icon: "java", color: "#007396" };
 export const DiscordJs: Skill = { name: "DiscordJS", icon: "discordjs", color: "#7289DA" };
+export const Prisma: Skill = { name: "Prisma", icon: "prisma", color: "#0C344B" };
