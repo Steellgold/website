@@ -1,7 +1,7 @@
 <script>
   import "../app.css";
   
-  import Navigation from "$lib/sections/Navigation.svelte";
+  import Navigation from "./sections/Navigation.svelte";
 </script>
 
 <Navigation />

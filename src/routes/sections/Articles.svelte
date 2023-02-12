@@ -10,8 +10,8 @@
   }
 
   let loading: boolean = true;
-
-  let last: Post = { slug: "", title: "", bannerUrl: "", content: "", publishedAt: "" };
+  let posts: Post[] = [];
+  let recent: Post;
 
   onMount(async () => {
     let res = await fetch("/api/posts");
@@ -21,18 +21,25 @@
 
     let data = await res.json();
 
-    last.slug = data[0].slug;
-    last.title = data[0].title;
-    last.bannerUrl = data[0].bannerUrl;
-    last.content = data[0].content;
-    last.publishedAt = data[0].publishedAt;
+    for (let post of data) {
+      posts.push({
+        slug: post.slug,
+        title: post.title,
+        bannerUrl: post.bannerUrl,
+        content: post.content,
+        publishedAt: post.publishedAt,
+      });
+    }
 
+    recent = posts[0];
     loading = false;
+
+    console.log(posts.length);
   });
 </script>
 
 <section class="pb-3 mb-5">
-  <!-- TODO: Check if has last article or not -->
+  <!-- TODO: Check if has recent article or not -->
   <div class="pt-9 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
     <h1 class="text-3xl font-bold text-left">Dernière publication:</h1>
   </div>
@@ -43,8 +50,8 @@
       {#if loading}
         <div class="animate-pulse w-full h-48 bg-gray-700"></div>
       {:else}
-        <a href="/blog/{last.slug}">
-          <img src={last.bannerUrl} class="w-full h-48 object-cover" alt="Post banner" />
+        <a href="/blog/{recent.slug}">
+          <img src={recent.bannerUrl} class="w-full h-48 object-cover" alt="Post banner" />
         </a>
       {/if}
 
@@ -54,7 +61,7 @@
             {#if loading}
               <span class="animate-pulse">Chargement...</span>
             {:else}
-              <a href="/blog/{last.slug}">{last.title}</a>
+              <a href="/blog/{recent.slug}">{recent.title}</a>
             {/if}
           </h3>
         </div>
@@ -64,7 +71,7 @@
             <div class="h-2 w-full animate-pulse rounded-full bg-gray-700 mb-2.5"></div>
             <div class="h-2  w-32 animate-pulse rounded-full bg-gray-700 mb-2.5"></div>
           {:else}
-            <a href="/blog/{last.slug}">{last.content.split(" ").slice(0, 20).join(" ")} ...</a>
+            <a href="/blog/{recent.slug}">{recent.content.split(" ").slice(0, 20).join(" ")} ...</a>
           {/if}
         </p>
       </div>
@@ -93,4 +100,10 @@
       </div> -->
     </div>
   </div>
+
+  {#if posts.length > 1}
+    <div class="pt-3 text-white flex flex-col items-center mx-auto w-5/6 lg:w-2/4">
+      <a href="/blog" class="text-3xl font-bold text-left">Voir {posts.length - 1} autres publications</a>
+    </div>
+  {/if}
 </section>

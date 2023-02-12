@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { page } from "$app/stores";
   import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from "$lib/components/icons";
-  import Spotify from "$lib/components/renders/Spotify.svelte";
+  import { Spotify } from "$lib/components/renders/spotify";
 </script>
 
 <section>
