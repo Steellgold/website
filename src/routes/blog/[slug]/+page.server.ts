@@ -1,3 +1,6 @@
+import { PUBLIC_URL } from "$env/static/public";
+import { restRequest } from "$lib/utils/request/request";
+import type { Post } from "$lib/utils/types/Post";
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
@@ -8,19 +11,24 @@ export const load = (async({ params, fetch })  => {
     throw redirect(307, "/");
   }
 
-  const res = await fetch(`/api/post?slug=${slug}`);
-  if (!res.ok) {
-    throw redirect(307, "/");
-  }
-
-  const post = await res.json();
-
-  return {
-    post: {
-      title: post.title,
-      publishedAt: post.publishedAt,
-      content: post.content,
-      bannerUrl: post.bannerUrl
+  const res = await restRequest<Post>("get", PUBLIC_URL + `/api/post`, {
+    query: {
+      slug: slug
     }
+  });
+
+  if (res.success) {
+    const post = res.data;
+
+    return {
+      post: {
+        title: post.title,
+        publishedAt: post.createdAt,
+        content: post.content,
+        bannerUrl: post.bannerUrl
+      }
+    }
+  } else {
+    throw redirect(307, "/");
   }
 }) as PageServerLoad;

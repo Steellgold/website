@@ -1,45 +1,25 @@
 <script lang="ts">
+  import { PUBLIC_URL } from "$env/static/public";
+  import { restRequest } from "$lib/utils/request/request";
+  import type { Post } from "$lib/utils/types/Post";
   import { onMount } from "svelte";
 
-  interface Post {
-    slug: string;
-    title: string;
-    bannerUrl: string;
-    content: string;
-    publishedAt: string;
-  }
-
   let loading: boolean = true;
-  let posts: Post[] = [];
   let recent: Post;
 
   onMount(async () => {
-    let res = await fetch("/api/posts");
-    if (!res.ok) {
-      console.error("Error while fetching posts");
+    let res = await restRequest<Post[]>("get", PUBLIC_URL + "/api/posts");
+    if (!res.success) {
+      console.error(res.data.message);
+      return;
     }
 
-    let data = await res.json();
-
-    for (let post of data) {
-      posts.push({
-        slug: post.slug,
-        title: post.title,
-        bannerUrl: post.bannerUrl,
-        content: post.content,
-        publishedAt: post.publishedAt,
-      });
-    }
-
-    recent = posts[0];
+    recent = res.data[res.data.length - 1];
     loading = false;
-
-    console.log(posts.length);
   });
 </script>
 
 <section class="pb-3 mb-5">
-  <!-- TODO: Check if has recent article or not -->
   <div class="pt-9 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
     <h1 class="text-3xl font-bold text-left">Dernière publication:</h1>
   </div>
@@ -50,7 +30,7 @@
       {#if loading}
         <div class="animate-pulse w-full h-48 bg-gray-700"></div>
       {:else}
-        <a href="/blog/{recent.slug}">
+        <a href="/blog/{recent.slug}" data-sveltekit-preload-data="off">
           <img src={recent.bannerUrl} class="w-full h-48 object-cover" alt="Post banner" />
         </a>
       {/if}
@@ -61,7 +41,7 @@
             {#if loading}
               <span class="animate-pulse">Chargement...</span>
             {:else}
-              <a href="/blog/{recent.slug}">{recent.title}</a>
+              <a href="/blog/{recent.slug}" data-sveltekit-preload-data="off">{recent.title}</a>
             {/if}
           </h3>
         </div>
@@ -71,7 +51,7 @@
             <div class="h-2 w-full animate-pulse rounded-full bg-gray-700 mb-2.5"></div>
             <div class="h-2  w-32 animate-pulse rounded-full bg-gray-700 mb-2.5"></div>
           {:else}
-            <a href="/blog/{recent.slug}">{recent.content.split(" ").slice(0, 20).join(" ")} ...</a>
+            <a href="/blog/{recent.slug}" data-sveltekit-preload-data="off">{recent.content.split(" ").slice(0, 20).join(" ")} ...</a>
           {/if}
         </p>
       </div>
