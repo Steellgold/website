@@ -6,7 +6,7 @@
 
   export let data: PageData;
 
-  let description = data.post.content.replace(/(<([^>]+)>)/gi, '').substring(0, 150);
+  let description = data.post.content.replace(/(<([^>]+)>)/gi, '').substring(0, 150) + '[...]';
 </script>
 
 <svelte:head>
@@ -44,7 +44,7 @@
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 
   </div>
 
-  <div class="pt-9 text-white flex flex-col mx-auto w-5/6 lg:w-2/4">
+  <div class="mt-8 prose prose-slate mx-auto lg:prose-lg text-white prose-headings:text-white prose-headings:underline">
     <Markdown source={data.post.content} renderers={{ code: Code }} />
   </div>
 </section>
