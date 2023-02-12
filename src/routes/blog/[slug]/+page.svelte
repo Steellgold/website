@@ -1,10 +1,12 @@
 <script lang="ts">
-  import dayjs from 'dayjs';
   import type { PageData } from './$types';
+  import dayjs from 'dayjs';
   import Markdown from 'svelte-markdown';
   import Code from '$lib/components/renders/Code.svelte';
 
   export let data: PageData;
+
+  let description = data.post.content.replace(/(<([^>]+)>)/gi, '').substring(0, 150);
 </script>
 
 <svelte:head>
@@ -12,6 +14,20 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
   <title>{data.post.title}</title>
+  <meta name="description" content={description} />
+  <meta name="og:title" content={data.post.title} />
+  <meta name="og:site_name" content="Blog de Gaëtan" />
+  <meta name="og:description" content={description} />
+  <meta name="og:image" content={data.post.bannerUrl} />
+  <meta name="og:url" content="https://steellgold.fr/blog/{data.post.slug}" />
+  <meta name="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content={data.post.bannerUrl} />
+  <meta name="twitter:site" content="@Steellgold" />
+  <meta name="twitter:creator" content="@Steellgold" />
+  <meta name="twitter:title" content={data.post.title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="theme-color" content="#15803D" />
 </svelte:head>
 
 <section>  
