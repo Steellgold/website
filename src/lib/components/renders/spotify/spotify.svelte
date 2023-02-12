@@ -1,18 +1,9 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
-  import { IconBrandSpotify } from "../icons";
+  import {IconBrandSpotify } from "$lib/components/icons";
+  import type { ISpotify } from "./spotify.types";
 
-  interface Spotify {
-    song?: string;
-    artist?: string;
-    trackUrl?: string;
-    timestamps: {
-      start: number;
-      end: number;
-    }
-  }
-
-  let spotify: Spotify = { timestamps: { start: 0, end: 0 } };
+  let spotify: ISpotify = { timestamps: { start: 0, end: 0 } };
   let interval: any;
 
   const tick = async () => {
