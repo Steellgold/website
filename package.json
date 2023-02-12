@@ -34,7 +34,6 @@
 		"dayjs": "^1.11.7",
 		"highlight.js": "^11.7.0",
 		"svelte-markdown": "^0.2.3",
-		"tailwind-highlightjs": "^2.0.1",
 		"zod": "^3.20.2"
 	}
 }
