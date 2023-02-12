@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
+  <title>{data.post.title}</title>
   <MetaTags title={data.post.title} description={description} image={data.post.bannerUrl} />
 </svelte:head>
 
@@ -32,7 +33,7 @@
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 
   </div>
 
-  <div class="z-0 mt-8 prose prose-slate mx-auto lg:prose-lg text-white prose-headings:text-white prose-headings:underline">
+  <div class="mb-5 z-0 mt-8 prose prose-slate mx-auto lg:prose-lg text-white prose-headings:text-white prose-headings:underline">
     <Markdown source={data.post.content} />
   </div>
 </section>
