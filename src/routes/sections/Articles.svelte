@@ -100,10 +100,4 @@
       </div> -->
     </div>
   </div>
-
-  {#if posts.length > 1}
-    <div class="pt-3 text-white flex flex-col items-center mx-auto w-5/6 lg:w-2/4">
-      <a href="/blog" class="text-3xl font-bold text-left">Voir {posts.length - 1} autres publications</a>
-    </div>
-  {/if}
 </section>
