@@ -1,0 +1,1 @@
+export { default as MetaTags } from "./tags.svelte";

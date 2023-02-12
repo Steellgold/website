@@ -3,6 +3,7 @@
   import dayjs from 'dayjs';
   import Markdown from 'svelte-markdown';
   import Code from '$lib/components/renders/Code.svelte';
+  import { MetaTags } from '$lib/components/meta';
 
   export let data: PageData;
 
@@ -13,21 +14,7 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 
-  <title>{data.post.title}</title>
-  <meta name="description" content={description} />
-  <meta name="og:title" content={data.post.title} />
-  <meta name="og:site_name" content="Blog de Gaëtan" />
-  <meta name="og:description" content={description} />
-  <meta name="og:image" content={data.post.bannerUrl} />
-  <meta name="og:url" content="https://steellgold.fr/blog/{data.post.slug}" />
-  <meta name="og:type" content="article" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content={data.post.bannerUrl} />
-  <meta name="twitter:site" content="@Steellgold" />
-  <meta name="twitter:creator" content="@Steellgold" />
-  <meta name="twitter:title" content={data.post.title} />
-  <meta name="twitter:description" content={description} />
-  <meta name="theme-color" content="#15803D" />
+  <MetaTags title={data.post.title} description={description} image={data.post.bannerUrl} />
 </svelte:head>
 
 <section>  
