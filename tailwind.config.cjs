@@ -1,8 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
+  safelist: [{
+    pattern: /hljs+/,
+  }],
   theme: {
+    hljs: {
+      theme: 'agate',
+    },
     extend: {},
   },
-  plugins: [],
+  plugins: [require('tailwind-highlightjs')]
 }
