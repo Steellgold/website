@@ -4,7 +4,7 @@ import type { Post } from "$lib/utils/types/Post";
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
-export const load = (async({ params, fetch })  => {
+export const load = (async({ params })  => {
   const { slug } = params;
 
   if (!slug) {

@@ -1,4 +1,4 @@
-import type { RequestParams } from "./request.interfaces";
+import type { RequestParams } from "./request.types";
 
 export function paramsToString(params: RequestParams = {}): string {
   if (!params.query) {

@@ -11,4 +11,8 @@ export type ResponseError = {
   }
 }
 
+export type RequestParams = Omit<RequestInit, "method"> & {
+  query?: Record<string, string | string[]>
+}
+
 export type Response<T> = ResponseSuccess<T> | ResponseError;
