@@ -4,7 +4,7 @@ import { DiscordJs, Graphql, Nodejs, Postgresql, Prisma, Railway, Supabase, Svel
 export const Projects: Project[] = [
   {
     title: "Linkfy",
-    description: "Outil open-source pour raccourcir rapidement vos liens",
+    description: "Outil pour créer des liens raccourcis vers des sites web, totalement gratuit et open source",
     skills: [
       Typescript, Svelte, Supabase, Postgresql, Prisma
     ],

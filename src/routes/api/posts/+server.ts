@@ -7,7 +7,6 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
     return new Response("No body", { status: 400 });
   }
 
-
   const body = await request.json();
   const schema = z.object({
     title: z.string().min(1).max(255),
@@ -37,7 +36,7 @@ export async function POST({ request }: RequestEvent): Promise<Response> {
   return new Response("An error occured", { status: 500 });
 }
 
-export async function GET({ request }: RequestEvent): Promise<Response> {
+export async function GET({ }: RequestEvent): Promise<Response> {
   const posts = await prisma.post.findMany();
   return new Response(JSON.stringify(posts), { status: 200 });
 }
