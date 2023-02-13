@@ -6,7 +6,7 @@
   export let project: Project;
 </script>
 
-<div class="bg-[#161616] rounded-lg shadow-lg overflow-hidden">
+<div class="bg-[#161616] md:min-h-[200px] rounded-lg shadow-lg overflow-hidden">
   <div class="p-4">
     <div class="flex flex-row justify-between items-center">
       <h3 class="text-lg font-semibold text-white">{project.title}</h3>

@@ -13,7 +13,7 @@ export const Projects: Project[] = [
     type: "Open Source"
   },
   {
-    title: "Royaume Bot",
+    title: "Royaume",
     description: "Communauté de développeurs où chacun contribue aux projets internes",
     skills: [
       Typescript, Graphql, DiscordJs, Nodejs
