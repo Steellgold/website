@@ -1,63 +1,59 @@
 <script lang="ts">
-  import { onDestroy, onMount } from "svelte";
-  import {IconBrandSpotify } from "$lib/components/icons";
-  import type { ISpotify } from "./spotify.types";
+  import { spotifyListening as spotify } from "$lib/components/renders/spotify";
+  import { IconBrandSpotify, IconPlayerPause } from "$lib/components/icons";
+  import { getSpotifyListening } from "./spotify.utils";
+  import { onDestroy } from "svelte";
 
-  let spotify: ISpotify = { timestamps: { start: 0, end: 0 } };
-  let interval: any;
-
-  const tick = async () => {
-    const response = await fetch('https://api.lanyard.rest/v1/users/504392983244832780');
-    if (!response.ok) throw new Error(response.statusText);
-    const data = await response.json();
-
-    if (data.data.spotify) {
-      spotify = {
-        song: data.data.spotify.song,
-        artist: data.data.spotify.artist,
-        trackUrl: "https://open.spotify.com/track/" + data.data.spotify.track_id,
-        timestamps: {
-          start: data.data.spotify.timestamps.start,
-          end: data.data.spotify.timestamps.end
-        }
-      };
+  const fetchSpotify = async () => {
+    let data = await getSpotifyListening();
+    if (data.item.name == "Aucune musique en cours"){
+      spotify.set("NotPlaying");
     } else {
-      spotify = { timestamps: { start: 0, end: 0 } };
+      spotify.set(data);
     }
-  }
+  };
 
-  $: interval = setInterval(tick, 5000);
+  fetchSpotify();
 
-  tick();
+  let interval = setInterval(async() => {
+    await fetchSpotify();
+  }, 7000);
 
   onDestroy(() => {
     clearInterval(interval);
   });
-
-  let progress = 0;
-  setInterval(() => {
-    if (spotify.song !== undefined) {
-      progress = (Date.now() - spotify.timestamps.start) / (spotify.timestamps.end - spotify.timestamps.start) * 100;
-      if (progress > 100) progress = 0;
-    }
-  }, 1000);
 </script>
 
-{#if interval !== null}
-  {#if spotify.song !== undefined}
-    <div class="mx-auto w-5/6 lg:w-2/4">
-      <ul class="flex-row text-green-500 animate-pulse gap-2 pt-3">
-        <a href={spotify.trackUrl} class="flex items-center gap-2">
-          <IconBrandSpotify />
-          <code>Écoute « {spotify.song} » de {spotify.artist}</code>
-        </a>
-
-        <div class="pt-1 gap-2">
-          <div class="w-full bg-gray-700 rounded-full h-1">
-            <div class="bg-green-600 h-1 rounded-full animate-pulse transition-all" style="width: {progress}%"></div>
-          </div>
-        </div>
+{#if $spotify !== "NotPlaying"}
+  <div class="mx-auto w-5/6 lg:w-2/4 mt-3">
+    {#if $spotify == null}
+      <div class="flex gap-2">
+        <div class="h-3 w-5 animate-pulse rounded-full bg-gray-700 mb-2.5"></div>
+        <div class="h-3 w-44 animate-pulse rounded-full bg-gray-700 mb-2.5"></div>
+      </div>
+      <div class="h-2 w-full animate-pulse rounded-full bg-gray-700"></div>
+    {:else}
+      <ul class="flex flex-row items-center animate-pulse gap-2 text-green-500">
+        {#if !$spotify.item.is_local }
+          {#if $spotify.is_playing && $spotify.actions.disallows.resuming }
+            <IconBrandSpotify /> <code>Écoute « {$spotify.item.name} » de {$spotify.item.artists[0].name}</code>
+          {:else}
+            <IconPlayerPause /> <code>Écoute « {$spotify.item.name} » de {$spotify.item.artists[0].name} (Pause)</code>
+          {/if}
+        {:else}
+          {#if $spotify.is_playing && $spotify.actions.disallows.resuming }
+            <IconBrandSpotify /> <code>Écoute « {$spotify.item.name} » (Fichier local)</code>
+          {:else}
+            <IconPlayerPause /> <code>Écoute « {$spotify.item.name} » (Pause, fichier local)</code>
+          {/if}
+        {/if}
       </ul>
-    </div>
-  {/if}
+
+      <div class="pt-1 gap-2">
+        <div class="w-full bg-gray-700 rounded-full h-1">
+          <div class="bg-green-600 h-1 rounded-full animate-pulse transition-all" style="width: {$spotify.progress_ms / $spotify.item.duration_ms * 100}%"></div>
+        </div>
+      </div>
+    {/if}
+  </div>
 {/if}

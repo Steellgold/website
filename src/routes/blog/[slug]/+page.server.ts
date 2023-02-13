@@ -15,7 +15,7 @@ export const load = (async({ params })  => {
     query: {
       slug: slug
     }
-  });
+  }, [], true);
 
   if (res.success) {
     const post = res.data;
