@@ -1,5 +1,3 @@
-import dayjs from "dayjs";
-
 export function fromStart(start: string) {
   return `${start} → aujourd'hui`;
 }
