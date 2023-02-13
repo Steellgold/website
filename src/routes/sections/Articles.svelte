@@ -21,7 +21,7 @@
   });
 </script>
 
-{#if posts.length >= 1}
+{#if posts.length > 0}
   <section class="pb-3">
     <div class="pt-9 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
       <h1 class="text-3xl font-bold text-left">Dernière publication:</h1>

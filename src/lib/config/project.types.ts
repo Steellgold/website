@@ -7,7 +7,6 @@ export type Project = {
 
   description: string;
   date: {
-    // TODO: DayJs
     start: string;
     end?: string; 
   };
