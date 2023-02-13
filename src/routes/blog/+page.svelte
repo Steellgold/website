@@ -1,23 +1,3 @@
-<script lang="ts">
-  import Article from "$lib/components/layouts/Article.svelte";
-
-  /** @type {import('./$types').PageServerLoad} */
-  export let data: any;
-</script>
-
-<div class="articles">
-  {#each data.articles as article}
-    <Article {...article} />
-  {/each}
+<div class="shrink-0 flex items-center justify-center mt-6 mx-auto w-5/6 lg:w-2/4">
+  <h1 class="text-white text-3xl font-semibold">Bientôt</h1>
 </div>
-
-<style lang="scss">
-  .articles {
-    padding: 30px;
-    gap: 10px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-</style>
