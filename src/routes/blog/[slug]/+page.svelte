@@ -9,17 +9,35 @@
   let description = data.post.content.replace(/(<([^>]+)>)/gi, '').substring(0, 150) + '[...]';
   let publishedAtDay = dayjs(data.post.publishedAt).format('DD/MM/YYYY');
   let publishedAtHour = dayjs(data.post.publishedAt).format('HH:mm');
+
+  // Progressbar on scroll
+  let progress = 0;
+  let scrollHeight = 0;
+  let clientHeight = 0;
+
+  const onScroll = () => {
+    scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    clientHeight = document.documentElement.clientHeight;
+    progress = (document.documentElement.scrollTop / scrollHeight) * 100;
+
+    console.log(progress);
+  };
+
+  window.addEventListener('scroll', onScroll);
 </script>
 
 <svelte:head>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-
   <title>{data.post.title}</title>
   <MetaTags title={data.post.title} description={description} image={data.post.bannerUrl} />
 </svelte:head>
 
-<section>  
+{#if progress !== 0}
+  <div class="fixed top-0 left-0 w-full h-2 bg-gray-300 z-10">
+    <div class="h-full bg-black transition-all" style="width: {progress}%"></div>
+  </div>
+{/if}
+
+<section>
   <div class="pt-3 flex items-center justify-center">
     <figure class="max-w-lg">
       <img class="h-auto max-w-full px-4 sm:px-0 rounded-lg" src={data.post.bannerUrl} alt="Bannière {data.post.title}">
