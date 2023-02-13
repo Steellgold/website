@@ -1,8 +1,6 @@
-import type { RequestParams } from "./request.types";
+import type { Method, RequestParams } from "./request.types";
 import type { Response } from "./request.types";
 import { paramsToString } from "./request.util";
-
-type Method = "get" | "delete" | "post"| "put";
 
 export const restRequest = async<T>(method: Method, endpoint: string, config: RequestParams = {}): Promise<Response<T>> => {
   if (config.query) {
