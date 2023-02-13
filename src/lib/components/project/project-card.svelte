@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { Project } from "$lib/config/project.types";
-  import { IconExternalLink} from "$lib/components/icons";
   import { fromStartToEnd, fromStart } from "$lib/utils/Time";
   import { ProjectLink } from ".";
 
