@@ -19,8 +19,6 @@
     scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     clientHeight = document.documentElement.clientHeight;
     progress = (document.documentElement.scrollTop / scrollHeight) * 100;
-
-    console.log(progress);
   };
 
   window.addEventListener('scroll', onScroll);
