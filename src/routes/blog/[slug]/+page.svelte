@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import { MetaTags } from '$lib/components/meta';
   import dayjs from 'dayjs';
   import Markdown from 'svelte-markdown';
-  import { MetaTags } from '$lib/components/meta';
 
   export let data: PageData;
 
@@ -33,7 +33,7 @@
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 
   </div>
   
-  <div class="mb-5 z-0 mt-8 prose prose-slate mx-auto px-4 sm:px-0 lg:prose-lg text-white prose-headings:text-white prose-headings:underline">
+  <div class="z-0 mt-8 prose prose-slate mx-auto px-4 sm:px-0 lg:prose-lg text-white prose-headings:text-white prose-headings:underline">
     <Markdown source={data.post.content} />
   </div>
 </section>

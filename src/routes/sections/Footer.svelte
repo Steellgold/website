@@ -2,7 +2,7 @@
   import dayjs from 'dayjs';
 </script>
 
-<footer class="mb-5">
+<footer class="mt-5 mb-5">
   <p class="text-center text-gray-500 text-sm">
     Made with <span class="text-red-500">❤</span> by <a href="https://github.com/Steellgold" class="text-white hover:text-gray-500 transition-all">Steellgold</a>
   </p>
