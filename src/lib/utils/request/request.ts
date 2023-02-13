@@ -1,4 +1,4 @@
-import type { RequestParams } from "./request.interfaces";
+import type { RequestParams } from "./request.types";
 import type { Response } from "./request.types";
 import { paramsToString } from "./request.util";
 
