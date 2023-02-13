@@ -30,7 +30,7 @@
       {#if loading}
         <div class="animate-pulse w-full h-48 bg-gray-700"></div>
       {:else}
-        <a href="/blog/{recent.slug}" data-sveltekit-preload-data="off">
+        <a href="/blog/{recent.slug}">
           <img src={recent.bannerUrl} class="w-full h-48 object-cover" alt="Post banner" />
         </a>
       {/if}
@@ -41,7 +41,7 @@
             {#if loading}
               <span class="animate-pulse">Chargement...</span>
             {:else}
-              <a href="/blog/{recent.slug}" data-sveltekit-preload-data="off">{recent.title}</a>
+              <a href="/blog/{recent.slug}">{recent.title}</a>
             {/if}
           </h3>
         </div>
@@ -51,7 +51,7 @@
             <div class="h-2 w-full animate-pulse rounded-full bg-gray-700 mb-2.5"></div>
             <div class="h-2  w-32 animate-pulse rounded-full bg-gray-700 mb-2.5"></div>
           {:else}
-            <a href="/blog/{recent.slug}" data-sveltekit-preload-data="off">{recent.content.split(" ").slice(0, 20).join(" ")} ...</a>
+            <a href="/blog/{recent.slug}">{recent.content.split(" ").slice(0, 20).join(" ")} ...</a>
           {/if}
         </p>
       </div>
