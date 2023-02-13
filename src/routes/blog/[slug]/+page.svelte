@@ -20,8 +20,6 @@
     clientHeight = document.documentElement.clientHeight;
     progress = (document.documentElement.scrollTop / scrollHeight) * 100;
   };
-
-  window.addEventListener('scroll', onScroll);
 </script>
 
 <svelte:head>
@@ -29,8 +27,10 @@
   <MetaTags title={data.post.title} description={description} image={data.post.bannerUrl} />
 </svelte:head>
 
+<svelte:window on:scroll={onScroll} />
+
 {#if progress !== 0}
-  <div class="fixed top-0 left-0 w-full h-2 bg-gray-300 z-10">
+  <div class="fixed top-0 left-0 w-full h-1 bg-gray-300 z-10">
     <div class="h-full bg-black transition-all" style="width: {progress}%"></div>
   </div>
 {/if}
