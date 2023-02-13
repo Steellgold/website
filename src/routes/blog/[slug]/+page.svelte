@@ -22,7 +22,7 @@
 <section>  
   <div class="pt-3 flex items-center justify-center">
     <figure class="max-w-lg">
-      <img class="h-auto max-w-full rounded-lg" src={data.post.bannerUrl} alt="Bannière {data.post.title}">
+      <img class="h-auto max-w-full px-4 sm:px-0 rounded-lg" src={data.post.bannerUrl} alt="Bannière {data.post.title}">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
         Article publié le {publishedAtDay} à {publishedAtHour}
       </figcaption>
@@ -33,7 +33,7 @@
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 
   </div>
 
-  <div class="mb-5 z-0 mt-8 prose prose-slate mx-auto lg:prose-lg text-white prose-headings:text-white prose-headings:underline">
+  <div class="mb-5 z-0 mt-8 prose prose-slate mx-auto px-4 sm:px-0 lg:prose-lg text-white prose-headings:text-white prose-headings:underline">
     <Markdown source={data.post.content} />
   </div>
 </section>
