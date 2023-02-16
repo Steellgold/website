@@ -5,11 +5,15 @@
   import { onDestroy } from "svelte";
 
   const fetchSpotify = async () => {
-    let data = await getSpotifyListening();
-    if (data.item.name == "Aucune musique en cours"){
-      spotify.set("NotPlaying");
-    } else {
-      spotify.set(data);
+    try {
+      let data = await getSpotifyListening();
+      if (data.item.name == "Aucune musique en cours"){
+        spotify.set("NotPlaying");
+      } else {
+        spotify.set(data);
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 

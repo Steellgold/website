@@ -46,6 +46,5 @@ export const getSpotifyListening = async () : Promise<ISpotify> => {
     };
   }
 
-
   return response.data;
 }
