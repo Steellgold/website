@@ -46,6 +46,17 @@ export const getSpotifyListening = async () : Promise<ISpotify> => {
     };
   }
 
-
   return response.data;
 }
+
+export const getArtists = (artists: { name: string }[]) => {
+  return artists.map((artist) => artist.name).join(", ");
+};
+
+export const getListeningText = (local: boolean, pause: boolean, artists: { name: string }[], name: string) => {
+  if (local) {
+    return `Écoute « ${name} » (Fichier local) ${pause ? "(Pause)" : ""}`;
+  }
+
+  return `Écoute « ${name} » de ${getArtists(artists)} ${pause ? "(Pause)" : ""}`;
+};
