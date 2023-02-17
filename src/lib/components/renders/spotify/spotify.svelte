@@ -1,7 +1,7 @@
 <script lang="ts">
   import { spotifyListening as spotify } from "$lib/components/renders/spotify";
   import { IconBrandSpotify, IconPlayerPause } from "$lib/components/icons";
-  import { getSpotifyListening, getArtists } from "./spotify.utils";
+  import { getSpotifyListening, getListeningText } from "./spotify.utils";
   import { onDestroy } from "svelte";
 
   const fetchSpotify = async () => {
@@ -38,18 +38,10 @@
       <div class="h-2 w-full animate-pulse rounded-full bg-gray-700"></div>
     {:else}
       <a class="flex flex-row items-center animate-pulse gap-2 text-green-500" href="{$spotify.item.external_urls.spotify ?? "#"}">
-        {#if !$spotify.item.is_local }
-          {#if $spotify.is_playing && $spotify.actions.disallows.resuming }
-            <IconBrandSpotify /> <code>Écoute « {$spotify.item.name} » de {getArtists($spotify.item.artists)}</code>
-          {:else}
-            <IconPlayerPause /> <code>Écoute « {$spotify.item.name} » de {getArtists($spotify.item.artists)} (Pause)</code>
-          {/if}
+        {#if $spotify.is_playing && $spotify.actions.disallows.resuming }
+          <IconBrandSpotify /> <code>{ getListeningText($spotify.item.is_local, false, $spotify.item.artists, $spotify.item.name) }</code>
         {:else}
-          {#if $spotify.is_playing && $spotify.actions.disallows.resuming }
-            <IconBrandSpotify /> <code>Écoute « {$spotify.item.name} » (Fichier local)</code>
-          {:else}
-            <IconPlayerPause /> <code>Écoute « {$spotify.item.name} » (Pause, fichier local)</code>
-          {/if}
+          <IconPlayerPause /> <code>{ getListeningText($spotify.item.is_local, true, $spotify.item.artists, $spotify.item.name) }</code>
         {/if}
       </a>
 
