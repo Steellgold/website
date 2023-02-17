@@ -37,7 +37,7 @@
       </div>
       <div class="h-2 w-full animate-pulse rounded-full bg-gray-700"></div>
     {:else}
-      <ul class="flex flex-row items-center animate-pulse gap-2 text-green-500">
+      <a class="flex flex-row items-center animate-pulse gap-2 text-green-500" href="{$spotify.item.external_urls.spotify ?? "#"}">
         {#if !$spotify.item.is_local }
           {#if $spotify.is_playing && $spotify.actions.disallows.resuming }
             <IconBrandSpotify /> <code>Écoute « {$spotify.item.name} » de {getArtists($spotify.item.artists)}</code>
@@ -51,7 +51,7 @@
             <IconPlayerPause /> <code>Écoute « {$spotify.item.name} » (Pause, fichier local)</code>
           {/if}
         {/if}
-      </ul>
+      </a>
 
       <div class="pt-1 gap-2">
         <div class="w-full bg-gray-700 rounded-full h-1">
