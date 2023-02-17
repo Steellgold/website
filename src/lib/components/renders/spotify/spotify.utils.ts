@@ -48,3 +48,9 @@ export const getSpotifyListening = async () : Promise<ISpotify> => {
 
   return response.data;
 }
+
+export const getArtists = (artists: { name: string }[]) => {
+  return artists.map((artist) => artist.name).join(", ");
+};
+
+export const getListeningText = (local: boolean, pause: boolean, artists: { name: string }[], name: string) => {

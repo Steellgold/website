@@ -1,7 +1,7 @@
 <script lang="ts">
   import { spotifyListening as spotify } from "$lib/components/renders/spotify";
   import { IconBrandSpotify, IconPlayerPause } from "$lib/components/icons";
-  import { getSpotifyListening } from "./spotify.utils";
+  import { getSpotifyListening, getArtists } from "./spotify.utils";
   import { onDestroy } from "svelte";
 
   const fetchSpotify = async () => {
@@ -40,9 +40,9 @@
       <ul class="flex flex-row items-center animate-pulse gap-2 text-green-500">
         {#if !$spotify.item.is_local }
           {#if $spotify.is_playing && $spotify.actions.disallows.resuming }
-            <IconBrandSpotify /> <code>Écoute « {$spotify.item.name} » de {$spotify.item.artists[0].name}</code>
+            <IconBrandSpotify /> <code>Écoute « {$spotify.item.name} » de {getArtists($spotify.item.artists)}</code>
           {:else}
-            <IconPlayerPause /> <code>Écoute « {$spotify.item.name} » de {$spotify.item.artists[0].name} (Pause)</code>
+            <IconPlayerPause /> <code>Écoute « {$spotify.item.name} » de {getArtists($spotify.item.artists)} (Pause)</code>
           {/if}
         {:else}
           {#if $spotify.is_playing && $spotify.actions.disallows.resuming }
