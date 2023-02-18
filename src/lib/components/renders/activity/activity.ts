@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import { getActivities } from "../presence";
 import type { IActivity } from "./activity.types";
 
