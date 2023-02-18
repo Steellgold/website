@@ -1,5 +1,6 @@
 <script lang="ts">
   import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from "$lib/components/icons";
+  import { Netflix, Twitch, PrimeVideo, YouTube } from "$lib/components/renders/activity/list";
   import { Spotify } from "$lib/components/renders/spotify";
 </script>
 
@@ -28,4 +29,8 @@
   </div>
   
   <Spotify />
+  <Netflix />
+  <PrimeVideo />
+  <Twitch />
+  <YouTube />
 </section>
