@@ -1,5 +1,5 @@
 import type { Project } from "./project.types";
-import { DiscordJs, Graphql, Nodejs, Postgresql, Prisma, Railway, Supabase, Svelte, Tailwindcss, Typescript } from "./skills";
+import { DiscordJs, Graphql, Nodejs, OpenAI, Postgresql, Prisma, Railway, Supabase, Svelte, Tailwindcss, Typescript } from "./skills";
 
 export const Projects: Project[] = [
   {
@@ -20,6 +20,16 @@ export const Projects: Project[] = [
     ],
     date: { start: "23/06/2022" },
     link: "https://github.com/Virtual-Royaume",
+    type: "Open Source"
+  },
+  {
+    title: "GPT",
+    description: "Un bot Discord permettant aux utilisateurs de poser des questions à ChatGPT",
+    skills: [
+      Typescript, DiscordJs, OpenAI, Prisma, Postgresql
+    ],
+    date: { start: "19/02/2023" },
+    link: "https://github.com/Steellgold/GPT",
     type: "Open Source"
   },
   {
