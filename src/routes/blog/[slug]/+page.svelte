@@ -47,9 +47,8 @@
 
   <div class="shrink-0 pt-4 flex items-center justify-center mx-auto w-5/6">
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 
-  </div>
-  
+  </div>  
   <div class="z-0 mt-8 prose prose-slate mx-auto px-4 sm:px-0 lg:prose-lg text-white prose-headings:text-white prose-headings:underline prose-strong:underline prose-strong:text-white prose-img:rounded-lg prose-a:text-gray-500 prose-a:no-underline">
-    <Markdown source={data.post.content} />
+    <Markdown source={data.post.content} />Stashed changes
   </div>
 </section>
