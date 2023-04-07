@@ -41,6 +41,16 @@ export const Projects: Project[] = [
     date: { start: "18/08/2022" },
     link: "https://github.com/Steellgold/Portfolio",
     type: "Open Source"
+  },
+  {
+    title: "bettercolors",
+    description: "Une librairie pour envoyer des messages en couleur dans la console",
+    skills: [
+      Typescript, Nodejs
+    ],
+    date: { start: "06/04/2023" },
+    link: "https://npmjs.com/package/bettercolors",
+    type: "Open Source"
   }
   // For more projects, add them here
 ];
