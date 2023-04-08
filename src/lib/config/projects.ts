@@ -26,7 +26,7 @@ export const Projects: Project[] = [
     title: "GPT",
     description: "Un bot Discord permettant aux utilisateurs de poser des questions à ChatGPT",
     skills: [
-      Typescript, DiscordJs, OpenAI, Prisma, Postgresql
+      Typescript, DiscordJs, OpenAI, Prisma, Postgresql, Railway
     ],
     date: { start: "19/02/2023" },
     link: "https://github.com/Steellgold/GPT",
