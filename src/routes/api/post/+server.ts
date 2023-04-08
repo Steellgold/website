@@ -1,5 +1,4 @@
 import type { RequestEvent } from "./$types";
-import { z } from "zod";
 import prisma from "$lib/database/Prisma";
 
 export async function GET({ request }: RequestEvent): Promise<Response> {
@@ -8,7 +7,7 @@ export async function GET({ request }: RequestEvent): Promise<Response> {
 
   if (!slug) {
     return new Response("No slug", { status: 400 });
-  } 
+  }
 
   const post = await prisma.post.findUnique({
     where: {

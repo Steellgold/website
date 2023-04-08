@@ -12,7 +12,7 @@ export const load = (async({ params, cookies })  => {
     throw redirect(307, "/");
   }
 
-  const res = await restRequest<Post>("get", PUBLIC_URL + `/api/post`, {
+  const res = await restRequest<Post>("get", PUBLIC_URL + "/api/post", {
     query: {
       slug: slug
     }
@@ -23,7 +23,7 @@ export const load = (async({ params, cookies })  => {
 
     if (!cookies.get("views")) {
       cookies.set("views", slug, { path: "/", maxAge: 60 * 60 * 24 * 7 });
-      await prisma.post.update({where: { slug }, data: { views: { increment: 1} }});
+      await prisma.post.update({ where: { slug }, data: { views: { increment: 1 } } });
     }
 
     return {
@@ -35,7 +35,7 @@ export const load = (async({ params, cookies })  => {
         views: post.views + 1,
         likes: post.likes
       }
-    }
+    };
   } else {
     throw redirect(307, "/");
   }

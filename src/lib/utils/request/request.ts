@@ -2,7 +2,12 @@ import type { Method, RequestParams } from "./request.types";
 import type { Response } from "./request.types";
 import { paramsToString } from "./request.utils";
 
-export const restRequest = async<T>(method: Method, endpoint: string, config: RequestParams = {}, contentTypesNeeded: string[] = [], asPrefix: boolean = false): Promise<Response<T>> => {
+export const restRequest = async<T>(
+  method: Method,
+  endpoint: string,
+  config: RequestParams = {},
+  contentTypesNeeded: string[] = [],
+  asPrefix = false): Promise<Response<T>> => {
   if (config.query) {
     endpoint += paramsToString(config.query, asPrefix);
   }

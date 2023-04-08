@@ -6,7 +6,16 @@ const TWITCH_ID = "802958789555781663";
 const PRIME_VIDEO_ID = "705139844883677224";
 const YOUTUBE_ID = "463097721130188830";
 
-let notInclude = ["Browsing...", "Viewing series:", "Viewing movie:", "Visualisation de la page d'accueil", "Visualisation du canal:", "Navigue à travers", "Regarde ses vidéos", "Regarde les tendances"]; // oof youtube..
+const notInclude = [
+  "Browsing...",
+  "Viewing series:",
+  "Viewing movie:",
+  "Visualisation de la page d'accueil",
+  "Visualisation du canal:",
+  "Navigue à travers",
+  "Regarde ses vidéos",
+  "Regarde les tendances"
+]; // oof youtube..
 
 const getID = (name: "Netflix" | "Twitch" | "Prime Video" | "YouTube") : string => {
   switch (name) {
@@ -19,9 +28,9 @@ const getID = (name: "Netflix" | "Twitch" | "Prime Video" | "YouTube") : string 
     case "YouTube":
       return YOUTUBE_ID;
   }
-}
+};
 
-export const getWatching = async (name: "Netflix" | "Twitch" | "Prime Video" | "YouTube") : Promise<IActivity | null> => {
+export const getWatching = async(name: "Netflix" | "Twitch" | "Prime Video" | "YouTube") : Promise<IActivity | null> => {
   const presence = await getActivities();
   if (!presence.data.activities) return null;
 
@@ -38,5 +47,5 @@ export const getWatching = async (name: "Netflix" | "Twitch" | "Prime Video" | "
     end_at: activity.timestamps?.end ?? null,
 
     isPaused: ["Paused", "En pause"].includes(activity.assets.small_text)
-  }
-}
+  };
+};

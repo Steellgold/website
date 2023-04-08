@@ -1,5 +1,3 @@
-import type { RequestEvent } from "./$types";
-import { z } from "zod";
 import prisma from "$lib/database/Prisma";
 
 // export async function POST({ request }: RequestEvent): Promise<Response> {
@@ -32,11 +30,11 @@ import prisma from "$lib/database/Prisma";
 //   if (post) {
 //     return new Response("The post has been created", { status: 201 });
 //   }
-  
+
 //   return new Response("An error occured", { status: 500 });
 // }
 
-export async function GET({ }: RequestEvent): Promise<Response> {
+export async function GET(): Promise<Response> {
   const posts = await prisma.post.findMany({
     where: {
       published: true
