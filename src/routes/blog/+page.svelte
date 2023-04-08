@@ -1,5 +1,1 @@
-<script>
-
-    import { MetaTags } from "$lib/components/meta";
-
-</script>
+<h1>Bientôt</h1>

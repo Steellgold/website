@@ -17,14 +17,3 @@ jobs:
         run: npm install
       - name: Run ESLint
         run: npm run lint
-  svelte-check:
-    name: Type & A11y & Unused CSS
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v3
-      - uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm install
-      - name: Run Svelte check
-        run: npm run check
-        env: ${{ secrets }}

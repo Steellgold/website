@@ -5,11 +5,6 @@
   import "../app.css";
 </script>
 
-<svelte:head>
-  <title>Gaëtan | Développeur back-end</title>
-  <MetaTags />
-</svelte:head>
-
 <Navigation />
 
 <slot />

@@ -22,7 +22,6 @@
 </script>
 
 <svelte:head>
-  <title>{data.post.title}</title>
   <MetaTags title={data.post.title} description={description} image={data.post.bannerUrl} />
 </svelte:head>
 
