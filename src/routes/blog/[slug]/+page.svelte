@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-  <MetaTags title={data.post.title} description={description} image={data.post.bannerUrl} color={data.post.color} />
+  <MetaTags title={data.post.title} description={description} image={data.post.bannerUrl} color={data.post.color} />  
 </svelte:head>
 
 <svelte:window on:scroll={onScroll} />
