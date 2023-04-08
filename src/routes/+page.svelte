@@ -1,16 +1,15 @@
 <script lang="ts">
-  import { MetaTags } from "$lib/components/meta";
   import Articles from "./sections/Articles.svelte";
   import Header from "./sections/Header.svelte";
   import Projects from "./sections/Projects.svelte";
 </script>
 
 <svelte:head>
-  <MetaTags />
+  <title>Gaëtan | Développeur back-end</title>
 </svelte:head>
 
 <Header />
 
 <Projects />
 
-<!-- <Articles /> -->
+<Articles />

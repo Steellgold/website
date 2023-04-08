@@ -5,4 +5,10 @@ export interface Post {
   createdAt: string;
   slug: string;
   published: boolean;
+  views: number;
+  likes: {
+    like: boolean;
+    happy: boolean;
+    explode: boolean;
+  }
 }
