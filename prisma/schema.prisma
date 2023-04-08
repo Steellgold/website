@@ -15,4 +15,6 @@ model Post {
   content   String   @default("Hello World") @db.Text
   bannerUrl String?  @default("https://source.unsplash.com/random/800x600")
   published Boolean  @default(false)
+  views     Int      @default(0)
+  likes     Int      @default(0)
 }
