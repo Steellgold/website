@@ -33,7 +33,8 @@ export const load = (async({ params, cookies })  => {
         content: post.content,
         bannerUrl: post.bannerUrl,
         views: post.views + 1,
-        likes: post.likes
+        likes: post.likes,
+        color: post.color
       }
     };
   } else {

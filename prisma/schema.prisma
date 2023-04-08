@@ -17,4 +17,5 @@ model Post {
   published Boolean  @default(false)
   views     Int      @default(0)
   likes     Int      @default(0)
+  color     String   @default("#15803D")
 }

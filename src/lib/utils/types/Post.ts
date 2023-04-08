@@ -10,5 +10,6 @@ export interface Post {
     like: boolean;
     happy: boolean;
     explode: boolean;
-  }
+  },
+  color: string;
 }
