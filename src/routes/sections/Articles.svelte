@@ -26,7 +26,6 @@
 </div>
 {#if posts.length > 0}
   <section class="pb-3">
-
     <div class="pt-3 shrink-0 grid grid-cols-1 gap-2 sm:gap-3 items-center justify-start mx-auto w-5/6 lg:w-2/4">
       <div class="bg-[#161616] rounded-lg shadow-lg overflow-hidden">
         <a href="/blog/{recent.slug}">

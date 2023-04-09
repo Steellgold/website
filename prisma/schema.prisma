@@ -8,14 +8,16 @@ datasource db {
 }
 
 model Post {
-  id        String   @id @default(cuid())
-  slug      String   @unique @db.VarChar(255) // Ex: "untitled-1"
-  createdAt DateTime @default(now())
-  title     String   @default("Untitled") @db.VarChar(255)
-  content   String   @default("Hello World") @db.Text
-  bannerUrl String?  @default("https://source.unsplash.com/random/800x600")
-  published Boolean  @default(false)
-  views     Int      @default(0)
-  likes     Int      @default(0)
-  color     String   @default("#15803D")
+  id            String   @id @default(cuid())
+  slug          String   @unique @db.VarChar(255) // Ex: "untitled-1"
+  createdAt     DateTime @default(now())
+  title         String   @default("Untitled") @db.VarChar(255)
+  content       String   @default("Hello World") @db.Text
+  bannerUrl     String?  @default("https://source.unsplash.com/random/800x600")
+  published     Boolean  @default(false)
+  views         Int      @default(0)
+  likes_default Int      @default(0)
+  likes_happy   Int      @default(0)
+  likes_explode Int      @default(0)
+  color         String   @default("#15803D")
 }

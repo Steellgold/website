@@ -3,6 +3,9 @@
   import { MetaTags } from '$lib/components/meta';
   import dayjs from 'dayjs';
   import Markdown from 'svelte-markdown';
+  import { restRequest } from '$lib/utils/request/request';
+  import type { Post } from '$lib/utils/types/Post';
+  import { PUBLIC_URL } from '$env/static/public';
 
   export let data: PageData;
 
@@ -19,6 +22,15 @@
     clientHeight = document.documentElement.clientHeight;
     progress = (document.documentElement.scrollTop / scrollHeight) * 100;
   };
+
+  async function like(type: "default" | "happy" | "explode") {
+    let res = await restRequest<Post[]>("post", PUBLIC_URL + "/api/post/like", {
+      body: JSON.stringify({
+        slug: data.post.slug,
+        like: type
+      })
+    });
+  }
 </script>
 
 <svelte:head>
@@ -38,8 +50,22 @@
     <figure class="max-w-lg">
       <img class="h-auto max-w-full px-4 sm:px-0 rounded-lg" src={data.post.bannerUrl} alt="Bannière {data.post.title}">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
-        Article publié le {publishedAtDay} à {publishedAtHour} <br />
-        Vu {data.post.views} fois et aimé {data.post.likes} fois
+        <div class="flex justify-between px-10">
+          <div>
+            Article publié le {publishedAtDay} à {publishedAtHour}, <br />Vu un total {data.post.views} fois
+          </div>
+          <div class="flex space-x-2">
+            <button class="text-gray-400 hover:text-gray-200 hover:text-lg" on:click={() => like("default")}>
+              🥰 ({data.post.likes.like || 0})
+            </button>
+            <button class="text-gray-400 hover:text-gray-200 hover:text-lg" on:click={() => like("happy")}>
+              😍 ({data.post.likes.happy || 0})
+            </button>
+            <button class="text-gray-400 hover:text-gray-200 hover:text-lg" on:click={() => like("explode")}>
+              🤯 ({data.post.likes.explode || 0})
+            </button>
+          </div>
+        </div>
       </figcaption>
     </figure>
   </div>

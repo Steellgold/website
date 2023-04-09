@@ -33,7 +33,12 @@ export const load = (async({ params, cookies })  => {
         content: post.content,
         bannerUrl: post.bannerUrl,
         views: post.views + 1,
-        likes: post.likes,
+        likes: {
+          default: post.likes_default,
+          happy: post.likes_happy,
+          explode: post.likes_explode
+        },
+        slug: post.slug,
         color: post.color
       }
     };

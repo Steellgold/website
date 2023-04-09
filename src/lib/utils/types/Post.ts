@@ -6,10 +6,8 @@ export interface Post {
   slug: string;
   published: boolean;
   views: number;
-  likes: {
-    like: boolean;
-    happy: boolean;
-    explode: boolean;
-  },
+  likes_default: number;
+  likes_happy: number;
+  likes_explode: number;
   color: string;
 }
