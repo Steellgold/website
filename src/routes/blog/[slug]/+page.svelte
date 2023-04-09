@@ -1,9 +1,10 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import { MetaTags } from '$lib/components/meta';
+  import { IconCalendar, IconClockHour10, IconShare } from '$lib/components/icons';
+  import { fade } from 'svelte/transition';
   import Markdown from 'svelte-markdown';
   import dayjs from 'dayjs';
-    import { IconCalendar, IconClockHour10, IconShare } from '$lib/components/icons';
 
   export let data: PageData;
 
@@ -20,6 +21,16 @@
     clientHeight = document.documentElement.clientHeight;
     progress = (document.documentElement.scrollTop / scrollHeight) * 100;
   };
+
+  let copied: boolean = false;
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href);
+    copied = true;
+
+    setTimeout(() => {
+      copied = false;
+    }, 2000);
+  }
 </script>
 
 <svelte:head>
@@ -49,11 +60,15 @@
               <IconCalendar />
               Article publié le {publishedAtDay} {publishedAtHour}
             </p>
-            <button class="flex items-center space-x-1 gap-2 text-gray-400 hover:text-gray-200">
+            <button class="flex items-center space-x-1 gap-2 text-gray-400 hover:text-gray-200" on:click={copyLink}>
               <IconShare />
               Partager
             </button>
           </div>
+
+          {#if copied}
+            <p class="text-green-500 mt-3" in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>Lien copié !</p>
+          {/if}
         </div>
       </figcaption>
     </figure>
