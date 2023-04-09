@@ -12,3 +12,6 @@ export { default as IconBrandAmazon } from "./brand/brand-amazon.svelte";
 export { default as IconExternalLink } from "./external-link.svelte";
 export { default as IconPlayerPause } from "./player-pause.svelte";
 export { default as IconPlayerPlay } from "./player-play.svelte";
+export { default as IconClockHour10 } from "./clock-hour-10.svelte";
+export { default as IconShare } from "./share.svelte";
+export { default as IconCalendar } from "./calendar-event.svelte";

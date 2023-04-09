@@ -39,7 +39,8 @@ export const load = (async({ params, cookies })  => {
           explode: post.likes_explode
         },
         slug: post.slug,
-        color: post.color
+        color: post.color,
+        readingTime: post.readingTime
       }
     };
   } else {

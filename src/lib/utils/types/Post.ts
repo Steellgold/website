@@ -10,4 +10,5 @@ export interface Post {
   likes_happy: number;
   likes_explode: number;
   color: string;
+  readingTime: number;
 }

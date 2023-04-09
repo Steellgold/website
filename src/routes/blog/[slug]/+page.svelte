@@ -1,11 +1,9 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import { MetaTags } from '$lib/components/meta';
-  import dayjs from 'dayjs';
   import Markdown from 'svelte-markdown';
-  import { restRequest } from '$lib/utils/request/request';
-  import type { Post } from '$lib/utils/types/Post';
-  import { PUBLIC_URL } from '$env/static/public';
+  import dayjs from 'dayjs';
+    import { IconCalendar, IconClockHour10, IconShare } from '$lib/components/icons';
 
   export let data: PageData;
 
@@ -22,15 +20,6 @@
     clientHeight = document.documentElement.clientHeight;
     progress = (document.documentElement.scrollTop / scrollHeight) * 100;
   };
-
-  async function like(type: "default" | "happy" | "explode") {
-    let res = await restRequest<Post[]>("post", PUBLIC_URL + "/api/post/like", {
-      body: JSON.stringify({
-        slug: data.post.slug,
-        like: type
-      })
-    });
-  }
 </script>
 
 <svelte:head>
@@ -50,25 +39,36 @@
     <figure class="max-w-lg">
       <img class="h-auto max-w-full px-4 sm:px-0 rounded-lg" src={data.post.bannerUrl} alt="Bannière {data.post.title}">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">
-        <div class="flex justify-between px-10">
-          <div>
-            Article publié le {publishedAtDay} à {publishedAtHour}, <br />Vu un total {data.post.views} fois
-          </div>
-          <div class="flex space-x-2">
-            <button class="text-gray-400 hover:text-gray-200 hover:text-lg" on:click={() => like("default")}>
-              🥰 ({data.post.likes.like || 0})
-            </button>
-            <button class="text-gray-400 hover:text-gray-200 hover:text-lg" on:click={() => like("happy")}>
-              😍 ({data.post.likes.happy || 0})
-            </button>
-            <button class="text-gray-400 hover:text-gray-200 hover:text-lg" on:click={() => like("explode")}>
-              🤯 ({data.post.likes.explode || 0})
+        <div class="px-10 line-clamp-3">
+          <div class="md:flex md:justify-between mt-2">
+            <p class="flex items-center space-x-1 gap-2 text-gray-400">
+              <IconClockHour10 />
+              ~{data.post.readingTime} min
+            </p>
+            <p class="flex items-center space-x-1 gap-2 text-gray-400">
+              <IconCalendar />
+              Article publié le {publishedAtDay} {publishedAtHour}
+            </p>
+            <button class="flex items-center space-x-1 gap-2 text-gray-400 hover:text-gray-200">
+              <IconShare />
+              Partager
             </button>
           </div>
         </div>
       </figcaption>
     </figure>
   </div>
+  <!-- <div class="flex justify-center mt-2 space-x-2 text-gray-400">
+    <button class="hover:text-gray-200" on:click={() => like("default")}>
+      🥰 ({likeLike})
+    </button>
+    <button class="hover:text-gray-200" on:click={() => like("happy")}>
+      😍 ({likeHappy})
+    </button>
+    <button class="hover:text-gray-200" on:click={() => like("explode")}>
+      🤯 ({likeExplode})
+    </button>
+  </div> -->
 
   <div class="shrink-0 pt-4 flex items-center justify-center mx-auto w-5/6">
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 

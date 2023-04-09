@@ -20,4 +20,5 @@ model Post {
   likes_happy   Int      @default(0)
   likes_explode Int      @default(0)
   color         String   @default("#15803D")
+  readingTime      Int   @default(10)
 }
