@@ -94,7 +94,7 @@
   </div>
 
   {#if readedPopup && readedPopupShow}
-    <div class="fixed bottom-0 left-0 w-full z-10">
+    <div class="fixed bottom-0 left-0 w-full z-10" in:fade={{ duration: 200, y: 100 }} out:fade={{ duration: 200, y: 100 }}>
       <div class="flex bg-gray-100 mb-10 w-11/12 md:w-7/12 p-4 rounded-lg shadow-lg mx-auto justify-between">
         <div>
           Voulez vous noter cet article ?
