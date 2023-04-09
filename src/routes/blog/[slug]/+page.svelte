@@ -12,14 +12,25 @@
   let publishedAtDay = dayjs(data.post.publishedAt).format('DD/MM/YYYY');
   let publishedAtHour = dayjs(data.post.publishedAt).format('HH:mm');
 
-  let progress = 0;
-  let scrollHeight = 0;
-  let clientHeight = 0;
+  let progress: number = 0;
+  let readed: number = 0;
+  let readedPopup: boolean = false;
+  let readedPopupShow: boolean = true;
+  let scrollHeight: number = 0;
+  let clientHeight: number = 0;
 
   const onScroll = () => {
     scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     clientHeight = document.documentElement.clientHeight;
     progress = (document.documentElement.scrollTop / scrollHeight) * 100;
+
+    if (document.documentElement.scrollTop > readed) {
+      readed = document.documentElement.scrollTop;
+    }
+
+    if (readed > scrollHeight / 2) {
+      readedPopup = true;
+    }
   };
 
   let copied: boolean = false;
@@ -73,22 +84,35 @@
       </figcaption>
     </figure>
   </div>
-  <!-- <div class="flex justify-center mt-2 space-x-2 text-gray-400">
-    <button class="hover:text-gray-200" on:click={() => like("default")}>
-      🥰 ({likeLike})
-    </button>
-    <button class="hover:text-gray-200" on:click={() => like("happy")}>
-      😍 ({likeHappy})
-    </button>
-    <button class="hover:text-gray-200" on:click={() => like("explode")}>
-      🤯 ({likeExplode})
-    </button>
-  </div> -->
 
   <div class="shrink-0 pt-4 flex items-center justify-center mx-auto w-5/6">
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 
   </div>  
   <div class="z-0 mt-8 prose prose-slate mx-auto px-4 sm:px-0 lg:prose-lg text-white prose-blockquote:line-clamp-2 prose-headings:text-white prose-headings:underline prose-strong:underline prose-strong:text-white prose-img:rounded-lg prose-a:text-gray-500 prose-a:no-underline prose-blockquote:italic prose-blockquote:text-gray-500 prose-blockquote:border-gray-500">
     <Markdown source={data.post.content} />
+    <br><br>
   </div>
+
+  {#if readedPopup && readedPopupShow}
+    <div class="fixed bottom-0 left-0 w-full z-10">
+      <div class="flex bg-gray-100 mb-10 w-11/12 md:w-7/12 p-4 rounded-lg shadow-lg mx-auto justify-between">
+        <div>
+          Voulez vous noter cet article ?
+          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => readedPopupShow = false}>
+            🥰 (0)
+          </button>
+          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => readedPopupShow = false}>
+            😍 (0)
+          </button>
+          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => readedPopupShow = false}>
+            🤯 (0)
+          </button>
+        </div>
+
+        <button class="top-0 right-0 text-black" on:click={() => readedPopupShow = false}>
+          Non merci
+        </button>
+      </div>
+    </div>
+  {/if}
 </section>
