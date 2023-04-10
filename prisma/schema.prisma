@@ -13,6 +13,7 @@ model Post {
   createdAt     DateTime @default(now())
   title         String   @default("Untitled") @db.VarChar(255)
   content       String   @default("Hello World") @db.Text
+  introduction  String   @default("This is an introduction from the post") @db.Text
   bannerUrl     String?  @default("https://source.unsplash.com/random/800x600")
   published     Boolean  @default(false)
   views         Int      @default(0)

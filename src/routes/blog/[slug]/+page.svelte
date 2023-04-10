@@ -11,6 +11,7 @@
   let description = data.post.content.replace(/(<([^>]+)>)/gi, '').substring(0, 140) + '[...]';
   let publishedAtDay = dayjs(data.post.publishedAt).format('DD/MM/YYYY');
   let publishedAtHour = dayjs(data.post.publishedAt).format('HH:mm');
+  let lastUpdatedAtDay = dayjs(data.post.lastUpdatedAt || data.post.publishedAt).format('DD/MM/YYYY');
 
   let progress: number = 0;
   let readed: number = 0;
@@ -45,14 +46,14 @@
 </script>
 
 <svelte:head>
-  <MetaTags title={data.post.title} description={description} image={data.post.bannerUrl} color={data.post.color} />  
+  <MetaTags title={data.post.title} description={data.post.introduction} image={data.post.bannerUrl} color={data.post.color} />  
 </svelte:head>
 
 <svelte:window on:scroll={onScroll} />
 
 {#if progress !== 0}
   <div class="fixed top-0 left-0 w-full h-1 bg-black z-10">
-    <div class="h-full transition-all" style="width: {progress}%" class:bg-gray-100={progress <= 99} class:bg-black={progress > 99}></div>
+    <div class="h-full transition-all bg-gray-100" style="width: {progress}%"></div>
   </div>
 {/if}
 
@@ -94,7 +95,7 @@
   </div>
 
   {#if readedPopup && readedPopupShow}
-    <div class="fixed bottom-0 left-0 w-full z-10" in:fade={{ duration: 200, y: 100 }} out:fade={{ duration: 200, y: 100 }}>
+    <div class="fixed bottom-0 left-0 w-full z-10" in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
       <div class="flex bg-gray-100 mb-10 w-11/12 md:w-7/12 p-4 rounded-lg shadow-lg mx-auto justify-between">
         <div>
           Voulez vous noter cet article ?

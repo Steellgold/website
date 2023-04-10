@@ -1,6 +1,7 @@
 export interface Post {
   title: string;
   content: string;
+  introduction: string;
   bannerUrl: string;
   createdAt: string;
   slug: string;
