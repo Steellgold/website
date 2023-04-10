@@ -3,7 +3,7 @@ import { restRequest } from "$lib/utils/request/request";
 import type { Post } from "$lib/utils/types/Post";
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import prisma from "$lib/database/Prisma";
+import prisma from "$lib/database/prisma";
 
 export const load = (async({ params, cookies })  => {
   const { slug } = params;

@@ -1,4 +1,4 @@
-import prisma from "$lib/database/Prisma";
+import prisma from "$lib/database/prisma";
 
 // export async function POST({ request }: RequestEvent): Promise<Response> {
 //   if (!request.body) {
