@@ -1,3 +1,8 @@
+<script lang="ts">
+  import { page } from "$app/stores";
+  import { supabase } from "$lib/database/supabase";
+</script>
+
 <section>
   <div class="flex items-center justify-start mx-auto w-5/6 lg:w-2/4">
     <ul class="flex flex-row justify-end text-white gap-2 p-2">
@@ -18,4 +23,20 @@
       </ul>
     </div>
   </div>
+
+  {#if $page.data.session}
+    <div class="flex items-center justify-between mx-auto w-5/6 lg:w-2/4">
+      <ul class="flex flex-row justify-end text-white gap-2 p-2">
+        <a href="/user" class="block hover:text-white hover:opacity-40 transition-all">
+          <code>{$page.data.session.user.email}</code>
+        </a>
+      </ul>
+
+      <div class="flex flex-row justify-end text-white gap-2 p-2">
+        <a href="/user/logout" type="submit" class="block hover:text-white hover:opacity-40 transition-all">
+          <code>Se déconnecter</code>
+        </a>
+      </div>
+    </div>
+  {/if}
 </section>
