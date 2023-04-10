@@ -1,5 +1,5 @@
-import type { RequestEvent } from "./$types";
 import prisma from "$lib/database/prisma";
+import type { RequestEvent } from "./$types";
 
 export async function GET({ request }: RequestEvent): Promise<Response> {
   const url = new URL(request.url);
