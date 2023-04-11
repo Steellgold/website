@@ -1,6 +1,6 @@
 <script lang="ts">
   import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from "$lib/components/icons";
-  import { Netflix, Twitch, PrimeVideo, YouTube } from "$lib/components/renders/activity/list";
+  import { Netflix, Twitch, PrimeVideo, YouTube, Figma } from "$lib/components/renders/activity/list";
   import { Spotify } from "$lib/components/renders/spotify";
 
   let isHover: boolean = false;
@@ -48,4 +48,5 @@
   <PrimeVideo />
   <Twitch />
   <YouTube />
+  <Figma />
 </section>

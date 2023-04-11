@@ -8,6 +8,7 @@ export { default as IconBrandSpotify } from "./brand/brand-spotify.svelte";
 export { default as IconBrandTwitch } from "./brand/brand-twitch.svelte";
 export { default as IconBrandNetflix } from "./brand/brand-netflix.svelte";
 export { default as IconBrandAmazon } from "./brand/brand-amazon.svelte";
+export { default as IconBrandFigma } from "./brand/brand-figma.svelte";
 
 export { default as IconExternalLink } from "./external-link.svelte";
 export { default as IconPlayerPause } from "./player-pause.svelte";

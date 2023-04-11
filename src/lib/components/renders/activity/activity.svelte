@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { IconBrandAmazon, IconBrandNetflix, IconBrandTwitch, IconBrandYoutube, IconPlayerPause } from "$lib/components/icons";
+  import { IconBrandAmazon, IconBrandFigma, IconBrandNetflix, IconBrandTwitch, IconBrandYoutube, IconPlayerPause } from "$lib/components/icons";
 
-  export let activity: "Netflix" | "Prime Video" | "Twitch" | "YouTube";
+  export let activity: "Netflix" | "Prime Video" | "Twitch" | "YouTube" | "Figma";
   export let details: string;
   export let state: string;
 
@@ -11,7 +11,8 @@
     "Netflix": "text-red-600",
     "Prime Video": "text-blue-500",
     "Twitch": "text-purple-500",
-    "YouTube": "text-red-500"
+    "YouTube": "text-red-500",
+    "Figma": "text-pink-500"
   }
 </script>
 
@@ -29,10 +30,16 @@
           <IconBrandTwitch />
         {:else if activity === "YouTube"}
           <IconBrandYoutube />
+        {:else if activity === "Figma"}
+          <IconBrandFigma />
         {/if}
       {/if}
     </span>
 
-    <code>Regarde: {details} {state} {isPaused ? "(En pause)" : ""}</code>
+    {#if ["Figma"].includes(activity)}
+      <code>{details} {state}</code>
+    {:else}
+      <code>Regarde: {details} {state} {isPaused ? "(En pause)" : ""}</code>
+    {/if}
   </ul>
 </div>

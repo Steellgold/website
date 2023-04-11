@@ -5,6 +5,7 @@ const NETFLIX_ID = "926541425682829352";
 const TWITCH_ID = "802958789555781663";
 const PRIME_VIDEO_ID = "705139844883677224";
 const YOUTUBE_ID = "463097721130188830";
+const FIGMA_ID = "768942376403075073";
 
 const notInclude = [
   "Browsing...",
@@ -17,7 +18,7 @@ const notInclude = [
   "Regarde les tendances"
 ]; // oof youtube..
 
-const getID = (name: "Netflix" | "Twitch" | "Prime Video" | "YouTube") : string => {
+const getID = (name: "Netflix" | "Twitch" | "Prime Video" | "YouTube" | "Figma"): string => {
   switch (name) {
     case "Netflix":
       return NETFLIX_ID;
@@ -27,6 +28,8 @@ const getID = (name: "Netflix" | "Twitch" | "Prime Video" | "YouTube") : string 
       return PRIME_VIDEO_ID;
     case "YouTube":
       return YOUTUBE_ID;
+    case "Figma":
+      return FIGMA_ID;
   }
 };
 
@@ -47,5 +50,23 @@ export const getWatching = async(name: "Netflix" | "Twitch" | "Prime Video" | "Y
     end_at: activity.timestamps?.end ?? null,
 
     isPaused: ["Paused", "En pause"].includes(activity.assets.small_text)
+  };
+};
+
+export const getPlaying = async(name: "Figma") : Promise<IActivity | null> => {
+  const presence = await getActivities();
+  if (!presence.data.activities) return null;
+
+  const activity = presence.data.activities.find((activity) => activity.name === name);
+  if (!activity) return null;
+
+  return {
+    details: activity.details,
+    name: activity.name,
+    state: activity.state,
+    created_at: null,
+    end_at: null,
+
+    isPaused: false
   };
 };

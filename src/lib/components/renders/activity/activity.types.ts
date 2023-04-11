@@ -3,8 +3,8 @@ export type IActivity = {
   name: string;
   state: string;
 
-  created_at: number;
-  end_at?: number;
+  created_at: number | null;
+  end_at?: number | null;
 
   isPaused: boolean;
 }
