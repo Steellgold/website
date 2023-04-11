@@ -21,10 +21,10 @@
 </script>
 
 <div class="justify-center mx-auto w-5/6 lg:w-2/4">
-  <h1 class="text-3xl font-bold text-left">Liste des publications:</h1>
+  <h1 class="text-3xl font-bold text-left text-white">Liste des publications:</h1>
   <div class="pt-3 grid grid-cols-1 gap-2 sm:gap-3 items-center justify-start">
     {#if loading}
-      <p class="text-white">Chargement...</p>
+      <p class="text-white">Les publications sont en cours de chargement...</p>
     {:else}
       {#each posts as post}
         <div class="flex-col bg-[#161616] rounded-lg shadow-lg overflow-hidden">
