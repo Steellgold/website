@@ -2,13 +2,28 @@
   import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from "$lib/components/icons";
   import { Netflix, Twitch, PrimeVideo, YouTube } from "$lib/components/renders/activity/list";
   import { Spotify } from "$lib/components/renders/spotify";
+
+  let isHover: boolean = false;
+
+  function image(element: MouseEvent, hover: boolean) {
+    const img = element.target as HTMLImageElement
+    img.setAttribute("src", hover ? "/images/me.jpeg" : "/images/profile_noisette.jpeg")
+    isHover = hover;
+  }
 </script>
 
 <section>
-  <img src="/images/banner_kitty.jpeg" alt="Kitty's Banner" class="h-[405px] w-full object-cover block object-center transition-all" />
+  <img src="/images/banner_kitty.jpeg" alt="Kitty's Banner" class="h-[405px] w-full object-cover block object-center" />
 
   <div class="shrink-0 flex items-center justify-start mx-auto w-5/6 lg:w-2/4">
-    <img alt="profile" class="-mt-16 h-32 w-32 rounded-full border-white" src="/images/profile_noisette.jpeg" />
+    <img
+      alt="profile"
+      class="-mt-16 h-32 w-32 rounded-lg border-white transform transition-all hover:scale-110 hover:rotate-12"
+      src="/images/profile_noisette.jpeg"
+      class:border-black={isHover}
+      on:mouseenter={(e) => image(e, true)}
+      on:mouseleave={(e) => image(e, false)}
+    />
 
     <div class="flex flex-col justify-center ml-auto sm:bg-[#161616] sm:rounded-lg sm:shadow-lg sm:overflow-hidden">
       <ul class="flex flex-row justify-end text-white gap-2 p-2">
