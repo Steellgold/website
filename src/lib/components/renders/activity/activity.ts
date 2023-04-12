@@ -1,11 +1,12 @@
 import { getActivities } from "../presence";
-import type { IActivity } from "./activity.types";
+import type { ActivityList, IActivity, PlayingList, WatchingList } from "./activity.types";
 
 const NETFLIX_ID = "926541425682829352";
 const TWITCH_ID = "802958789555781663";
 const PRIME_VIDEO_ID = "705139844883677224";
 const YOUTUBE_ID = "463097721130188830";
 const FIGMA_ID = "768942376403075073";
+const VSCODE_ID = "383226320970055681";
 
 const notInclude = [
   "Browsing...",
@@ -18,7 +19,7 @@ const notInclude = [
   "Regarde les tendances"
 ]; // oof youtube..
 
-const getID = (name: "Netflix" | "Twitch" | "Prime Video" | "YouTube" | "Figma"): string => {
+const getID = (name: ActivityList) : string => {
   switch (name) {
     case "Netflix":
       return NETFLIX_ID;
@@ -30,10 +31,12 @@ const getID = (name: "Netflix" | "Twitch" | "Prime Video" | "YouTube" | "Figma")
       return YOUTUBE_ID;
     case "Figma":
       return FIGMA_ID;
+    case "Visual Studio Code":
+      return VSCODE_ID;
   }
 };
 
-export const getWatching = async(name: "Netflix" | "Twitch" | "Prime Video" | "YouTube") : Promise<IActivity | null> => {
+export const getWatching = async(name: WatchingList) : Promise<IActivity | null> => {
   const presence = await getActivities();
   if (!presence.data.activities) return null;
 
@@ -53,7 +56,7 @@ export const getWatching = async(name: "Netflix" | "Twitch" | "Prime Video" | "Y
   };
 };
 
-export const getPlaying = async(name: "Figma") : Promise<IActivity | null> => {
+export const getPlaying = async(name: PlayingList) : Promise<IActivity | null> => {
   const presence = await getActivities();
   if (!presence.data.activities) return null;
 
