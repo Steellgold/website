@@ -19,3 +19,4 @@ export { default as IconShare } from "./share.svelte";
 export { default as IconCalendar } from "./calendar-event.svelte";
 export { default as IconEyes } from "./eyes.svelte";
 export { default as IconHeart } from "./heart.svelte";
+export { default as IconAlertSquare } from "./alert-square.svelte";

@@ -1,7 +1,14 @@
 <script lang="ts">
-  import { IconBrandDiscord, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandTwitter, IconBrandYoutube } from "$lib/components/icons";
+  import {
+    IconBrandDiscord,
+    IconBrandGithub,
+    IconBrandInstagram,
+    IconBrandLinkedin,
+    IconBrandTwitter,
+    IconBrandYoutube
+  } from "$lib/components/icons";
   import { Netflix, Twitch, PrimeVideo, YouTube, Figma } from "$lib/components/renders/activity/list";
-    import VisualStudioCode from "$lib/components/renders/activity/list/visual-studio-code.svelte";
+  import VisualStudioCode from "$lib/components/renders/activity/list/visual-studio-code.svelte";
   import { Spotify } from "$lib/components/renders/spotify";
 
   let isHover: boolean = false;
