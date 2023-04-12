@@ -8,10 +8,8 @@
 
   export let data: PageData;
 
-  let description = data.post.content.replace(/(<([^>]+)>)/gi, '').substring(0, 140) + '[...]';
   let publishedAtDay = dayjs(data.post.publishedAt).format('DD/MM/YYYY');
   let publishedAtHour = dayjs(data.post.publishedAt).format('HH:mm');
-  let lastUpdatedAtDay = dayjs(data.post.lastUpdatedAt || data.post.publishedAt).format('DD/MM/YYYY');
 
   let progress: number = 0;
   let readed: number = 0;
