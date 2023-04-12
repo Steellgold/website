@@ -1,7 +1,7 @@
 <script lang="ts">
   import { IconAlertSquare } from "$lib/components/icons";
   import { page } from "$app/stores";
-    import { PUBLIC_VERCEL_ENV } from "$env/static/public";
+  import { PUBLIC_ENV } from "$env/static/public";
 </script>
 
 <section>
@@ -41,7 +41,7 @@
     </div>
   {/if}
 
-  {#if PUBLIC_VERCEL_ENV == "preview" || PUBLIC_VERCEL_ENV == "development"}
+  {#if PUBLIC_ENV == "preview"}
     <div class="bg-red-500 text-white flex items-center justify-center p-2 gap-3">
       <i><IconAlertSquare /></i>
       <p>Vous êtes actuellement sur la version de développement de mon site web. Certaines fonctionnalités peuvent ne pas fonctionner correctement. Rendez vous sur <a href="https://steellgold.fr" class="underline">steellgold.fr</a> pour accéder à la version stable.</p>
