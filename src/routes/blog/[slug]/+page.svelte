@@ -89,7 +89,7 @@
   <div class="shrink-0 pt-4 flex items-center justify-center mx-auto w-5/6">
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 
   </div>  
-  <div class="z-0 mt-8 prose prose-slate mx-auto px-4 sm:px-0 lg:prose-lg text-white prose-blockquote:line-clamp-2 prose-headings:text-white prose-headings:underline prose-strong:underline prose-strong:text-white prose-img:rounded-lg prose-a:text-gray-500 prose-a:no-underline prose-blockquote:italic prose-blockquote:text-gray-500 prose-blockquote:border-gray-500 md:hover:prose-img:scale-[2] prose-img:transition-transform prose-img:duration-1000">
+  <div class="z-0 mt-8 prose prose-slate mx-auto px-4 sm:px-0 lg:prose-lg text-white prose-blockquote:line-clamp-2 prose-headings:text-white prose-headings:underline prose-strong:underline prose-strong:text-white prose-img:rounded-lg prose-a:text-gray-500 prose-a:no-underline prose-blockquote:italic prose-blockquote:text-gray-500 prose-blockquote:border-gray-500 list-outside hyphens-auto prose-a:after:content-['_↗'] md:prose-img:scale-125 md:prose-img:p-5">
     <Markdown source={data.post.content} />
     <br><br>
   </div>
