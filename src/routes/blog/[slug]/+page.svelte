@@ -3,6 +3,8 @@
   import { MetaTags } from '$lib/components/meta';
   import { IconCalendar, IconClockHour10, IconShare } from '$lib/components/icons';
   import { fade } from 'svelte/transition';
+  import { restRequest } from '$lib/utils/request/request';
+  import { PUBLIC_URL } from "$env/static/public";
   import Markdown from 'svelte-markdown';
   import dayjs from 'dayjs';
 
@@ -18,18 +20,17 @@
   let scrollHeight: number = 0;
   let clientHeight: number = 0;
 
+  let clicked = 0;
+
+  let likes = data.post.likes;
+
   const onScroll = () => {
     scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     clientHeight = document.documentElement.clientHeight;
     progress = (document.documentElement.scrollTop / scrollHeight) * 100;
 
-    if (document.documentElement.scrollTop > readed) {
-      readed = document.documentElement.scrollTop;
-    }
-
-    if (readed > scrollHeight / 2) {
-      readedPopup = true;
-    }
+    if (document.documentElement.scrollTop > readed) readed = document.documentElement.scrollTop;
+    if (readed > scrollHeight / 2) readedPopup = true;
   };
 
   let copied: boolean = false;
@@ -40,6 +41,19 @@
     setTimeout(() => {
       copied = false;
     }, 2000);
+  }
+
+  async function addReaction(type: "like" | "happy" | "explode") {
+    clicked++;
+    if (clicked > 1) return;
+
+    await restRequest("post", PUBLIC_URL + "/api/post/like", {
+      body: JSON.stringify({ slug: data.post.slug, type: type})
+    });
+
+    if (type == "like") likes.default++;
+    if (type == "happy") likes.happy++;
+    if (type == "explode") likes.explode++;
   }
 </script>
 
@@ -75,6 +89,17 @@
               Partager
             </button>
           </div>
+          <div class="md:flex md:justify-center mt-3 space-x-2 gap-2">
+            <span>
+              🥰 ({likes.default})
+            </span>
+            <span>
+              😍 ({likes.happy})
+            </span>
+            <span>
+              🤯 ({likes.explode})
+            </span>
+          </div>
 
           {#if copied}
             <p class="text-green-500 mt-3" in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>Lien copié !</p>
@@ -97,14 +122,14 @@
       <div class="flex bg-gray-100 mb-10 w-11/12 md:w-7/12 p-4 rounded-lg shadow-lg mx-auto justify-between">
         <div>
           Voulez vous noter cet article ?
-          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => readedPopupShow = false}>
-            🥰 (0)
+          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => addReaction("like")}>
+            🥰 ({likes.default})
           </button>
-          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => readedPopupShow = false}>
-            😍 (0)
+          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => addReaction("happy")}>
+            😍 ({likes.happy})
           </button>
-          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => readedPopupShow = false}>
-            🤯 (0)
+          <button class="hover:text-gray-900 hover:font-semibold" on:click={() => addReaction("explode")}>
+            🤯 ({likes.explode})
           </button>
         </div>
 

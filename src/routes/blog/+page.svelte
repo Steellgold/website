@@ -28,7 +28,9 @@
     {:else}
       {#each posts as post}
         <div class="flex-col bg-[#161616] rounded-lg shadow-lg overflow-hidden">
-          <img src={post.bannerUrl} class="w-full h-48 object-cover" alt="Post banner" />
+          <a href="/blog/{post.slug}">
+            <img src={post.bannerUrl} class="w-full h-48 object-cover" alt="Post banner" />
+          </a>
           <div class=" p-4">
             <a href="/blog/{post.slug}">
               <h2 class="text-2xl font-semibold text-white">{post.title}</h2>

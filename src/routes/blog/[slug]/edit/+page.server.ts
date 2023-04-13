@@ -3,20 +3,18 @@ import { restRequest } from "$lib/utils/request/request";
 import type { Post } from "$lib/utils/types/Post";
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
+import { PRIVATE_AUTHORIZED_EMAIL } from "$env/static/private";
 import prisma from "$lib/database/prisma";
 
-export const load = (async({ params, cookies })  => {
+export const load = (async({ params, cookies, locals: { getSession } }) => {
   const { slug } = params;
 
-  if (!slug) {
-    throw redirect(307, "/");
-  }
+  const session = await getSession();
+  if (!session) throw redirect(307, "/user");
+  if (session.user.email !== PRIVATE_AUTHORIZED_EMAIL) throw redirect(307, "/user");
+  if (!slug) throw redirect(307, "/");
 
-  const res = await restRequest<Post>("get", PUBLIC_URL + "/api/post", {
-    query: {
-      slug: slug
-    }
-  }, [], true);
+  const res = await restRequest<Post>("get", PUBLIC_URL + "/api/post", { query: { slug: slug } }, [], true);
 
   if (res.success) {
     const post = res.data;

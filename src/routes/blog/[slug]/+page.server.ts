@@ -8,15 +8,9 @@ import prisma from "$lib/database/prisma";
 export const load = (async({ params, cookies })  => {
   const { slug } = params;
 
-  if (!slug) {
-    throw redirect(307, "/");
-  }
+  if (!slug) throw redirect(307, "/");
 
-  const res = await restRequest<Post>("get", PUBLIC_URL + "/api/post", {
-    query: {
-      slug: slug
-    }
-  }, [], true);
+  const res = await restRequest<Post>("get", PUBLIC_URL + "/api/post", { query: { slug: slug } }, [], true);
 
   if (res.success) {
     const post = res.data;
