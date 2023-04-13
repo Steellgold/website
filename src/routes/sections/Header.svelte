@@ -7,8 +7,19 @@
     IconBrandTwitter,
     IconBrandYoutube
   } from "$lib/components/icons";
-  import { Netflix, Twitch, PrimeVideo, YouTube, Figma } from "$lib/components/renders/activity/list";
-  import VisualStudioCode from "$lib/components/renders/activity/list/visual-studio-code.svelte";
+  import {
+    Netflix,
+    Twitch,
+    PrimeVideo,
+    YouTube,
+    Figma,
+    StackOverflow,
+    VisualStudioCode,
+    GitHub,
+    Coinbase,
+    Twitter,
+    Instagram
+  } from "$lib/components/renders/activity/list";
   import { Spotify } from "$lib/components/renders/spotify";
 
   let isHover: boolean = false;
@@ -58,4 +69,9 @@
   <YouTube />
   <Figma />
   <VisualStudioCode />
+  <StackOverflow />
+  <GitHub />
+  <Coinbase />
+  <Twitter />
+  <Instagram />
 </section>

@@ -7,6 +7,11 @@ const PRIME_VIDEO_ID = "705139844883677224";
 const YOUTUBE_ID = "463097721130188830";
 const FIGMA_ID = "768942376403075073";
 const VSCODE_ID = "383226320970055681";
+const STACKOVERFLOW_ID = "610123745033584651";
+const GITHUB_ID = "607587875122446359";
+const COINBASE_ID = "796810487177674822";
+const TWITTER_ID = "802958757909889054";
+const INSTAGRAM_ID = "547436289960574977";
 
 const notInclude = [
   "Browsing...",
@@ -33,6 +38,16 @@ const getID = (name: ActivityList) : string => {
       return FIGMA_ID;
     case "Visual Studio Code":
       return VSCODE_ID;
+    case "Stack Overflow":
+      return STACKOVERFLOW_ID;
+    case "GitHub":
+      return GITHUB_ID;
+    case "Coinbase":
+      return COINBASE_ID;
+    case "Twitter":
+      return TWITTER_ID;
+    case "Instagram":
+      return INSTAGRAM_ID;
   }
 };
 

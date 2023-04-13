@@ -10,6 +10,8 @@ export { default as IconBrandNetflix } from "./brand/brand-netflix.svelte";
 export { default as IconBrandAmazon } from "./brand/brand-amazon.svelte";
 export { default as IconBrandFigma } from "./brand/brand-figma.svelte";
 export { default as IconBrandVisualStudioCode } from "./brand/brand-vscode.svelte";
+export { default as IconStackOverflow } from "./brand/brand-stackoverflow.svelte";
+export { default as IconBrandCoinbase } from "./brand/brand-coinbase.svelte";
 
 export { default as IconExternalLink } from "./external-link.svelte";
 export { default as IconPlayerPause } from "./player-pause.svelte";
