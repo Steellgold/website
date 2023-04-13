@@ -2,6 +2,7 @@
   import { onDestroy } from "svelte";
   import { Activity, netflixWatching } from "..";
   import { getWatching } from "../activity";
+  import { UPDATE_PRESENCE_TIME } from "../../presence";
 
   const fetchNetflix = async () => {
     try {
@@ -20,7 +21,7 @@
 
   let interval = setInterval(async() => {
     await fetchNetflix();
-  }, 7000);
+  }, UPDATE_PRESENCE_TIME);
 
   onDestroy(() => {
     clearInterval(interval);

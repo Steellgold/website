@@ -2,6 +2,7 @@
   import { onDestroy } from "svelte";
   import { Activity, vscodePlaying } from "..";
   import { getPlaying } from "../activity";
+  import { UPDATE_PRESENCE_TIME } from "../../presence";
 
   const fetchTwitch = async () => {
     try {
@@ -20,7 +21,7 @@
 
   let interval = setInterval(async() => {
     await fetchTwitch();
-  }, 7000);
+  }, UPDATE_PRESENCE_TIME);
 
   onDestroy(() => {
     clearInterval(interval);

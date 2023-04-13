@@ -2,6 +2,7 @@
   import { onDestroy } from "svelte";
   import { Activity, coinbasePlaying } from "..";
   import { getPlaying } from "../activity";
+  import { UPDATE_PRESENCE_TIME } from "../../presence";
 
   const fetchCoinbase = async () => {
     try {
@@ -20,7 +21,7 @@
 
   let interval = setInterval(async() => {
     await fetchCoinbase();
-  }, 7000);
+  }, UPDATE_PRESENCE_TIME);
 
   onDestroy(() => {
     clearInterval(interval);

@@ -1,5 +1,7 @@
 import { restRequest } from "$lib/utils/request/request";
 
+export const UPDATE_PRESENCE_TIME = 7000;
+
 export type Presence = {
   data: {
     spotify?: boolean;

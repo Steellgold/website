@@ -2,6 +2,7 @@
   import { onDestroy } from "svelte";
   import { Activity, figmaPlaying } from "..";
   import { getPlaying } from "../activity";
+  import { UPDATE_PRESENCE_TIME } from "../../presence";
 
   const fetchFigma = async () => {
     try {
@@ -20,7 +21,7 @@
 
   let interval = setInterval(async() => {
     await fetchFigma();
-  }, 7000);
+  }, UPDATE_PRESENCE_TIME);
 
   onDestroy(() => {
     clearInterval(interval);
