@@ -2,10 +2,13 @@
   import type { LayoutData } from './$types';
   import { invalidate } from '$app/navigation';
   import { onMount } from 'svelte';
+  import { dev } from '$app/environment';
+  import { inject } from '@vercel/analytics';
   import Navigation from "./sections/Navigation.svelte";
   import Footer from "./sections/Footer.svelte";
   import "../app.css";
 
+  inject({ mode: dev ? 'development' : 'production' });
   export let data: LayoutData;
 
   $: ({ supabase, session } = data);
