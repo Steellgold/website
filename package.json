@@ -34,6 +34,7 @@
 	"dependencies": {
 		"@sveltejs/vite-plugin-svelte": "^2.0.2",
 		"@tailwindcss/typography": "^0.5.9",
+		"@vercel/analytics": "^1.0.0",
 		"dayjs": "^1.11.7",
 		"svelte-markdown": "^0.2.3",
 		"zod": "^3.20.2"
