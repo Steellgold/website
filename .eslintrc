@@ -1,6 +1,0 @@
-{
-  "extends": "@bluzzi/eslint-config",
-  "rules": {
-    "camelcase": "off" // That fuck my discord activity/spotify code
-  }
-}

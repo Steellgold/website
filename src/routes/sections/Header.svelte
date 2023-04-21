@@ -27,7 +27,7 @@
   function image(element: MouseEvent, hover: boolean) {
     const img = element.target as HTMLImageElement
     img.setAttribute("src", hover ? "/images/me.jpeg" : "/images/profile_noisette.jpeg")
-    isHover = hover;
+    isHover = hover;    
   }
 </script>
 
