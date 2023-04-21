@@ -1,8 +1,6 @@
 <script lang="ts">
   import type { PageData } from './$types';
-  import { MetaTags } from '$lib/components/meta';
   import { IconCalendar, IconClockHour10, IconShare } from '$lib/components/icons';
-  import { fade } from 'svelte/transition';
   import Markdown from 'svelte-markdown';
   import dayjs from 'dayjs';
 

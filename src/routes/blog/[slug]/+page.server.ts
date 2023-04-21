@@ -20,6 +20,9 @@ export const load = (async({ params, cookies })  => {
       await prisma.post.update({ where: { slug }, data: { views: { increment: 1 } } });
     }
 
+    let alreadyLiked = false;
+    if (cookies.get("liked-" + slug)) alreadyLiked = true;
+
     return {
       post: {
         title: post.title,
@@ -35,7 +38,8 @@ export const load = (async({ params, cookies })  => {
         },
         slug: post.slug,
         color: post.color,
-        readingTime: post.readingTime
+        readingTime: post.readingTime,
+        alreadyLiked: alreadyLiked ? 1 : 0
       }
     };
   } else {

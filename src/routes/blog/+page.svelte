@@ -26,22 +26,24 @@
     {#if loading}
       <p class="text-white">Les publications sont en cours de chargement...</p>
     {:else}
-      {#each posts as post}
-        <div class="flex-col bg-[#161616] rounded-lg shadow-lg overflow-hidden">
-          <a href="/blog/{post.slug}">
-            <img src={post.bannerUrl} class="w-full h-48 object-cover" alt="Post banner" />
-          </a>
-          <div class=" p-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 items-center justify-start">
+        {#each posts as post}
+          <div class="flex-col bg-[#161616] rounded-b-lg shadow-lg overflow-hidden max-h-">
             <a href="/blog/{post.slug}">
-              <h2 class="text-2xl font-semibold text-white">{post.title}</h2>
-              <h4 class="text-sm font-normal text-gray-400">Posté le {DayJS(post.createdAt).format("DD/MM/YYYY")} à {DayJS(post.createdAt).format("HH:mm")}</h4>
+              <img src={post.bannerUrl} class="w-full h-48 object-fill" alt="Post banner" />
             </a>
-            <p class="text-gray-300 mt-2">
-              <a href="/blog/{post.slug}" class="line-clamp-2">{post.content}</a>
-            </p>
+            <div class="p-4">
+              <a href="/blog/{post.slug}">
+                <h2 class="text-2xl font-semibold text-white line-clamp-1">{post.title}</h2>
+                <h4 class="text-sm font-normal text-gray-400">Posté le {DayJS(post.createdAt).format("DD/MM/YYYY")} à {DayJS(post.createdAt).format("HH:mm")}</h4>
+              </a>
+              <p class="text-gray-300 mt-2">
+                <a href="/blog/{post.slug}" class="line-clamp-2">{post.introduction}</a>
+              </p>
+            </div>
           </div>
-        </div>
-      {/each}
+        {/each}
+      </div>
     {/if}
   </div>
 </div>
