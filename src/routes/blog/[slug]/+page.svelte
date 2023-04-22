@@ -122,7 +122,7 @@
       body: JSON.stringify({ slug: data.post.slug, type: type})
     });
 
-    // document.cookie = `liked-${data.post.slug}=true; max-age=31536000; path=/`;
+    document.cookie = `liked-${data.post.slug}=true; max-age=31536000; path=/`;
   }
 </script>
 
