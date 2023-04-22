@@ -5,7 +5,7 @@ import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import prisma from "$lib/database/prisma";
 
-export const load = (async({ params, cookies })  => {
+export const load = (async({ params, cookies }) => {
   const { slug } = params;
 
   if (!slug) throw redirect(307, "/");

@@ -10,8 +10,7 @@
 
   export let data: PageData;
 
-  let publishedAtDay = dayjs(data.post.publishedAt).format('DD/MM/YYYY');
-  let publishedAtHour = dayjs(data.post.publishedAt).format('HH:mm');
+  let publishedAtDay = dayjs(data.post.publishedAt).format('DD/MM/YYYY HH:mm');
 
   let progress: number = 0;
   let readed: number = 0;
@@ -21,7 +20,6 @@
   let clientHeight: number = 0;
 
   let alreadyLiked = data.post.alreadyLiked;
-
   let likes = data.post.likes;
 
   const onScroll = () => {
@@ -53,16 +51,21 @@
 
   let confetties: Emoji[] = [];
 
-  function startAnimation(chars: string[]): () => void {
+  const startAnimation = (chars: string[]): Promise<void> => {
     let frame: number;
     let startTime = Date.now();
-    let duration = 5000;
+    let duration = 4350;
+
+    let xSize = 100;
+    if (/Android|iPhone/i.test(navigator.userAgent)) {
+      xSize = 80;
+    }
 
     confetties = new Array(100).fill(null)
       .map((_, i) => {
         return {
           character: chars[i % chars.length],
-          x: Math.random() * 100,
+          x: Math.random() * xSize,
           y: -20 - Math.random() * 100,
           r: 0.1 + Math.random() * 1,
           opacity: 1
@@ -79,7 +82,7 @@
           return {
             ...emoji,
             opacity: 0
-            };
+          };
         });
 
         return;
@@ -95,7 +98,11 @@
 
     loop();
 
-    return (): void => cancelAnimationFrame(frame);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, duration);
+    });
   }
 
   async function addReaction(type: "like" | "happy" | "explode") {
@@ -115,7 +122,7 @@
       body: JSON.stringify({ slug: data.post.slug, type: type})
     });
 
-    document.cookie = `liked-${data.post.slug}=true; max-age=31536000; path=/`;
+    // document.cookie = `liked-${data.post.slug}=true; max-age=31536000; path=/`;
   }
 </script>
 
@@ -125,17 +132,19 @@
 
 <svelte:window on:scroll={onScroll} />
 
-{#each confetties as c}
-  <span style={`left: ${c.x}%; top: ${c.y}%; transform: scale(${c.r}); opacity: ${c.opacity}`} class:fade-out={c.opacity === 0}>
-    {c.character}
-  </span>
-{/each}
-
 {#if progress !== 0}
   <div class="fixed top-0 left-0 w-full h-1 bg-black z-10">
     <div class="h-full transition-all bg-gray-100" style="width: {progress}%"></div>
   </div>
 {/if}
+
+{#each confetties as c}
+  <span
+  class="emoji-reaction"
+  style={`left: ${c.x}%; top: ${c.y}%; transform: scale(${c.r}); opacity: ${c.opacity}`} class:fade-out={c.opacity === 0}>
+    {c.character}
+  </span>
+{/each}
 
 <section>
   <div class="pt-3 flex items-center justify-center">
@@ -150,7 +159,7 @@
             </p>
             <p class="flex items-center space-x-1 gap-2 text-gray-400">
               <IconCalendar />
-              Article publié le {publishedAtDay} {publishedAtHour}
+              Article publié le {publishedAtDay}
             </p>
             <button class="flex items-center space-x-1 gap-2 text-gray-400 hover:text-gray-200" on:click={copyLink}>
               <IconShare />
@@ -237,19 +246,24 @@
 </section>
 
 <style>
-  span {
+  span.emoji-reaction {
     position: absolute;
-    font-size: 5vw;
+    font-size: 5rem;
     user-select: none;
-    transition: opacity 1s ease-out;
+  }
+
+  @media (max-width: 640px) {
+    span.emoji-reaction {
+      font-size: 3rem;
+    }
   }
 
 	:global(body) {
 		overflow-x: hidden;
-	}
+  }
 
   .fade-out {
     opacity: 0;
-    transition: opacity 1s ease-out;
+    transition: opacity 0.2s ease-out;
   }
 </style>
