@@ -13,6 +13,8 @@
       
       {#if project.link}
         <ProjectLink link={project.link} type={project.type} />
+      {:else}
+        <ProjectLink type={project.type} />
       {/if}
     </div>
     
