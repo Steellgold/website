@@ -22,3 +22,4 @@ export { default as IconCalendar } from "./calendar-event.svelte";
 export { default as IconEyes } from "./eyes.svelte";
 export { default as IconHeart } from "./heart.svelte";
 export { default as IconAlertSquare } from "./alert-square.svelte";
+export { default as IconEdit } from "./edit.svelte";

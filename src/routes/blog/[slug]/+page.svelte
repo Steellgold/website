@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types';
   import { MetaTags } from '$lib/components/meta';
-  import { IconCalendar, IconClockHour10, IconShare } from '$lib/components/icons';
+  import { IconCalendar, IconClockHour10, IconEdit, IconShare } from '$lib/components/icons';
   import { fade } from 'svelte/transition';
   import { restRequest } from '$lib/utils/request/request';
   import { PUBLIC_URL } from "$env/static/public";
@@ -165,6 +165,16 @@
               <IconShare />
               Partager
             </button>
+            {#if data.post.isOwner}
+              <a
+                href={PUBLIC_URL + "/blog/" + data.post.slug + "/edit"}
+                class="flex items-center space-x-1 gap-2 text-gray-400 hover:text-gray-200"
+                data-sveltekit-preload-data="off"
+                data-sveltekit-preload-code="off"
+              >
+                <IconEdit />
+              </a>
+            {/if}
           </div>
           <div class="md:flex md:justify-center mt-3 space-x-2 gap-2">
             <button

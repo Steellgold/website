@@ -35,7 +35,6 @@
         <a href="/blog/{recent.slug}">
           <div class="absolute top-0 right-5 justify-center">
             <div class="flex flex-row gap-3 p-2 items-center mt-4 rounded-lg shadow-lg overflow-hidden" style="background-color: {recent.color}">
-            <!-- <div class="flex flex-row gap-3 p-2 bg-[#111113] items-center mt-4 rounded-lg shadow-lg overflow-hidden"> -->
               <p class="text-white flex gap-2 items-center justify-center">    
                 <IconEyes />
                 {recent.views} vues
