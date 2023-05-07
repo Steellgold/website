@@ -11,15 +11,10 @@ export async function GET({ request }: RequestEvent): Promise<Response> {
     return new Response("No slug", { status: 400 });
   }
 
-  const post = await prisma.post.findUnique({
-    where: {
-      slug
-    }
-  });
 
-  if (!post) {
-    return new Response("No post", { status: 404 });
-  }
+  const post = await prisma.post.findUnique({ where: { slug } });
+
+  if (!post) return new Response("No post", { status: 404 });
 
   return new Response(JSON.stringify(post), { status: 200 });
 }
