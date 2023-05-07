@@ -6,6 +6,7 @@
 </script>
 
 <svelte:head>
+  <title>Gaëtan | Développeur back-end</title>
   <MetaTags />
 </svelte:head>
 
@@ -13,4 +14,4 @@
 
 <Projects />
 
-<!-- <Articles /> -->
+<Articles />

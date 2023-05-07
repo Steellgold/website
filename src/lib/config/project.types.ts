@@ -8,7 +8,7 @@ export type Project = {
   description: string;
   date: {
     start: string;
-    end?: string; 
+    end?: string;
   };
 
   link: string | null;

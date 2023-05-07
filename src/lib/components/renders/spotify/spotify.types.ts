@@ -14,7 +14,7 @@ export interface ISpotify {
   }
 
   progress_ms: number;
-  
+
   actions: {
     disallows: {
       pausing: boolean;

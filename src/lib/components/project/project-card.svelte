@@ -13,6 +13,8 @@
       
       {#if project.link}
         <ProjectLink link={project.link} type={project.type} />
+      {:else}
+        <ProjectLink type={project.type} />
       {/if}
     </div>
     
@@ -23,7 +25,7 @@
       </p>
     {/if}
     
-    <p class="pt-3 text-gray-400">{project.description}</p>
+    <p class="pt-3 text-gray-400 line-clamp-2">{project.description}</p>
 
     <div class="flex flex-row flex-wrap gap-2 pt-3">
       <div class="flex flex-row flex-wrap gap-2 text-sm text-gray-400">
@@ -31,7 +33,9 @@
           Technologie(s):
         </span>
         {#each project.skills as skill}
-          <span>{skill.name}</span>
+          <span>
+            {skill.name}
+          </span>
         {/each}
       </div>
     </div>
