@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import type { PageData } from "./$types";
   import type { Post } from "$lib/utils/types/Post";
   import DayJS from "dayjs";
@@ -6,9 +6,13 @@
   export let data: PageData;
 
   let posts: Post[] = data.posts;
-</script>
+</script> -->
 
-<div class="justify-center mx-auto w-5/6 lg:w-2/4">
+<div class="shrink-0 flex items-center justify-center mt-6 mx-auto w-5/6 lg:w-2/4">
+  <h1 class="text-white text-3xl font-semibold">Bientôt</h1>
+</div>
+
+<!-- <div class="justify-center mx-auto w-5/6 lg:w-2/4">
   <div class="justify-between mx-auto mt-8 flex items-center">
     <h1 class="text-2xl font-bold text-left text-white">Liste des publications:</h1>
     <div>
@@ -42,4 +46,4 @@
       {/each}
     </div>
   </div>
-</div>
+</div> -->
