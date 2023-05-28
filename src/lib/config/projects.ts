@@ -23,13 +23,13 @@ export const Projects: Project[] = [
     type: "Open Source"
   },
   {
-    title: "GPT",
-    description: "Un bot Discord permettant aux utilisateurs de poser des questions à ChatGPT",
+    title: "Bottly",
+    description: "Un bot discord avec de l'intéliigence artificielle",
     skills: [
       Typescript, DiscordJs, OpenAI, Prisma, Postgresql, Railway
     ],
     date: { start: "19/02/2023" },
-    link: "https://github.com/Steellgold/GPT",
+    link: "https://github.com/bottlycorp",
     type: "Open Source"
   },
   {
