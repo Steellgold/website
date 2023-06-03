@@ -1,12 +1,12 @@
 import type { Project } from "./project.types";
-import { DiscordJs, Graphql, Nodejs, OpenAI, Postgresql, Prisma, Railway, Supabase, Svelte, Tailwindcss, Typescript } from "./skills";
+import { DiscordJs, Graphql, Nodejs, OpenAI, Postgresql, Prisma, Railway, Supabase, Svelte, Tailwindcss, Typescript, Vercel } from "./skills";
 
 export const Projects: Project[] = [
   {
     title: "Linkfy",
     description: "Outil pour créer des liens raccourcis vers des sites web, totalement gratuit et open source",
     skills: [
-      Typescript, Svelte, Supabase, Postgresql, Prisma
+      Typescript, Svelte, Supabase, Postgresql, Prisma, Tailwindcss, Vercel
     ],
     date: { start: "15/01/2023" },
     link: "https://github.com/Steellgold/Linkfy",
@@ -16,14 +16,14 @@ export const Projects: Project[] = [
     title: "Royaume",
     description: "Communauté de développeurs où chacun contribue aux projets internes",
     skills: [
-      Typescript, Graphql, DiscordJs, Nodejs
+      Typescript, Graphql, Tailwindcss, DiscordJs, Nodejs
     ],
     date: { start: "23/06/2022" },
     link: "https://github.com/Virtual-Royaume",
     type: "Open Source"
   },
   {
-    title: "GPT",
+    title: "Bottly",
     description: "Un bot Discord permettant aux utilisateurs de poser des questions à ChatGPT",
     skills: [
       Typescript, DiscordJs, OpenAI, Prisma, Postgresql, Railway

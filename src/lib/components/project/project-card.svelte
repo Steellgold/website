@@ -28,15 +28,12 @@
     <p class="pt-3 text-gray-400 line-clamp-2">{project.description}</p>
 
     <div class="flex flex-row flex-wrap gap-2 pt-3">
-      <div class="flex flex-row flex-wrap gap-2 text-sm text-gray-400">
-        <span class="font-semibold text-white"> 
-          Technologie(s):
-        </span>
-        {#each project.skills as skill}
-          <span>
-            {skill.name}
-          </span>
-        {/each}
+      <div class="flex flex-row flex-wrap gap-5 text-sm text-gray-400">
+        <div class="flex -space-x-4">
+          {#each project.skills as skill}
+            <img class="w-8 h-8 border-2 rounded-full border-gray-800" src="/icons/{skill.icon}.png" alt="">
+          {/each}
+        </div>
       </div>
     </div>
   </div>
