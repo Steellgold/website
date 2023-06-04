@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import { PUBLIC_URL } from "$env/static/public";
   import { IconEyes, IconHeart } from "$lib/components/icons";
   import { restRequest } from "$lib/utils/request/request";
@@ -66,4 +66,4 @@
   <div class="text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
     <p>Il n'y a encore aucune publication, revevez bientôt ! 😉</p>
   </div>
-{/if}
+{/if} -->
