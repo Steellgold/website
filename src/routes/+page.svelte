@@ -1,8 +1,7 @@
 <script lang="ts">
   import { MetaTags } from "$lib/components/meta";
-  import Articles from "./sections/Articles.svelte";
-  import Header from "./sections/Header.svelte";
-  import Projects from "./sections/Projects.svelte";
+  import Header from "./sections/__header.svelte";
+  import Projects from "./sections/__projects.svelte";
 </script>
 
 <svelte:head>
@@ -13,5 +12,3 @@
 <Header />
 
 <Projects />
-
-<Articles />

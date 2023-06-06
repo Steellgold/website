@@ -29,7 +29,7 @@ export const Projects: Project[] = [
       Typescript, DiscordJs, OpenAI, Prisma, Postgresql, Railway
     ],
     date: { start: "19/02/2023" },
-    link: "https://github.com/Steellgold/GPT",
+    link: "https://github.com/bottlycorp/bottly",
     type: "Open Source"
   },
   {
