@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Project } from "$lib/config/project.types";
   import { fromStartToEnd, fromStart } from "$lib/utils/Time";
-  import { ProjectLink } from ".";
+  import { ProjectLink, ProjectVisit } from ".";
     import { Image } from "../image";
 
   export let project: Project;
@@ -11,12 +11,17 @@
   <div class="p-4">
     <div class="flex flex-row justify-between items-center">
       <h3 class="text-lg font-semibold text-white">{project.title}</h3>
-      
-      {#if project.link}
-        <ProjectLink link={project.link} type={project.type} />
-      {:else}
-        <ProjectLink type={project.type} />
-      {/if}
+      <div class="flex flex-row gap-2">
+        {#if project.link}
+          <ProjectLink link={project.link} type={project.type} />
+        {:else}
+          <ProjectLink type={project.type} />
+        {/if}
+
+        {#if project.subLink}
+          <ProjectVisit link={project.subLink} />
+        {/if}
+      </div>
     </div>
     
     {#if project.date}
@@ -30,7 +35,7 @@
 
     <div class="flex flex-row flex-wrap gap-2 pt-3">
       <div class="flex flex-row flex-wrap gap-5 text-sm text-gray-400">
-        <div class="flex -space-x-4">
+        <div class="flex -space-x-3">
           {#each project.skills as skill}
             <Image targetImage="/icons/{skill.icon}.png" text="{skill.name}" />
           {/each}

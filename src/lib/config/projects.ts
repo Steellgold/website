@@ -1,5 +1,19 @@
 import type { Project } from "./project.types";
-import { DiscordJs, Graphql, Nodejs, OpenAI, Postgresql, Prisma, Railway, Supabase, Svelte, Tailwindcss, Typescript, Vercel } from "./skills";
+import {
+  DiscordJs,
+  Express,
+  Graphql,
+  Nodejs,
+  OpenAI,
+  Postgresql,
+  Prisma,
+  Railway,
+  Supabase,
+  Svelte,
+  Tailwindcss,
+  Typescript,
+  Vercel
+} from "./skills";
 
 export const Projects: Project[] = [
   {
@@ -10,6 +24,7 @@ export const Projects: Project[] = [
     ],
     date: { start: "15/01/2023" },
     link: "https://github.com/Steellgold/Linkfy",
+    subLink: "https://linkfy.fr",
     type: "Open Source"
   },
   {
@@ -23,20 +38,20 @@ export const Projects: Project[] = [
     type: "Open Source"
   },
   {
-    title: "Bottly",
-    description: "Un bot Discord permettant aux utilisateurs de poser des questions à ChatGPT",
+    title: "Bottly (Corp)",
+    description: "l'Organisation sur GitHub qui regroupe tous les projets internes de Bottly (un bot discord IA)",
     skills: [
-      Typescript, DiscordJs, OpenAI, Prisma, Postgresql, Railway
+      Typescript, DiscordJs, OpenAI, Prisma, Postgresql, Railway, Express, Svelte, Tailwindcss
     ],
     date: { start: "19/02/2023" },
-    link: "https://github.com/bottlycorp/bottly",
+    link: "https://github.com/bottlycorp",
     type: "Open Source"
   },
   {
     title: "Site internet",
     description: "Mon portfolio, mon site web, mon CV, mon blog, mon tout",
     skills: [
-      Typescript, Svelte, Tailwindcss, Postgresql, Prisma
+      Typescript, Svelte, Tailwindcss, Supabase, Postgresql, Prisma
     ],
     date: { start: "18/08/2022" },
     link: "https://github.com/Steellgold/Portfolio",
