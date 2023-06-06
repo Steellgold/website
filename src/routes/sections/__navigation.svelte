@@ -1,7 +1,9 @@
 <script lang="ts">
   import { IconAlertSquare } from "$lib/components/icons";
-  import { page } from "$app/stores";
   import { PUBLIC_ENV } from "$env/static/public";
+
+  let showPopover = false;
+  let showPopover2 = false;
 </script>
 
 <section>
@@ -11,8 +13,20 @@
         <code>/about</code>
       </a>
   
-      <a href="/blog" class="block hover:text-white hover:opacity-40 transition-all">
+      <!-- <a href="/" class="block hover:text-white hover:opacity-40 transition-all"> -->
+      <!-- "Easter" egg -->
+      <a href="/" class="opacity-40 cursor-not-allowed" on:mouseenter={() => showPopover = true} on:mouseleave={() => showPopover = false}>
         <code>/blog</code>
+        {#if showPopover}
+         <code class="text-red-300">
+          this section is not available <span on:mouseenter={() => showPopover2 = true} on:mouseleave={() => showPopover2 = false}>yet</span>
+          {#if showPopover2}
+            <code class="text-red-300">
+              because i'm rewriting it
+            </code>
+          {/if}
+         </code>
+        {/if}
       </a>
     </ul>
   
@@ -24,22 +38,6 @@
       </ul>
     </div>
   </div>
-
-  {#if $page.data.session}
-    <div class="flex items-center justify-between mx-auto w-5/6 lg:w-2/4">
-      <ul class="flex flex-row justify-end text-white gap-2 p-2">
-        <a href="/user" class="block hover:text-white hover:opacity-40 transition-all">
-          <code>{$page.data.session.user.email}</code>
-        </a>
-      </ul>
-
-      <div class="flex flex-row justify-end text-white gap-2 p-2">
-        <a href="/user/logout" type="submit" class="block hover:text-white hover:opacity-40 transition-all">
-          <code>Se déconnecter</code>
-        </a>
-      </div>
-    </div>
-  {/if}
 
   {#if PUBLIC_ENV == "preview"}
     <div class="bg-red-500 text-white flex items-center justify-center p-2 gap-3 bottom-0 left-0 right-0">
