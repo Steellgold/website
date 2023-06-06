@@ -37,7 +37,7 @@
       <div class="flex flex-row flex-wrap gap-5 text-sm text-gray-400">
         <div class="flex -space-x-3">
           {#each project.skills as skill}
-            <div class="hover:pl-4 hover:pr-4 transition-all duration-200">
+            <div class="hover:pr-5 transition-all duration-200">
               <Image targetImage="/icons/{skill.icon}.png" text="{skill.name}" />
             </div>
           {/each}
