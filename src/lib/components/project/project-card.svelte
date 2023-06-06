@@ -31,7 +31,7 @@
       </p>
     {/if}
     
-    <p class="pt-3 text-gray-400 line-clamp-2">{project.description}</p>
+    <p class="pt-3 text-gray-400 line-clamp-3">{project.description}</p>
 
     <div class="flex flex-row flex-wrap gap-2 pt-3">
       <div class="flex flex-row flex-wrap gap-5 text-sm text-gray-400">
