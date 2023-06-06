@@ -1,21 +1,27 @@
 <script lang="ts">
   import type { Project } from "$lib/config/project.types";
   import { fromStartToEnd, fromStart } from "$lib/utils/Time";
-  import { ProjectLink } from ".";
+  import { ProjectLink, ProjectVisit } from ".";
+    import { Image } from "../image";
 
   export let project: Project;
 </script>
 
-<div class="bg-[#161616] md:min-h-[200px] rounded-lg shadow-lg overflow-hidden">
+<div class="bg-[#161616] md:min-h-[180px] rounded-lg shadow-lg overflow-hidden">
   <div class="p-4">
     <div class="flex flex-row justify-between items-center">
       <h3 class="text-lg font-semibold text-white">{project.title}</h3>
-      
-      {#if project.link}
-        <ProjectLink link={project.link} type={project.type} />
-      {:else}
-        <ProjectLink type={project.type} />
-      {/if}
+      <div class="flex flex-row gap-2">
+        {#if project.link}
+          <ProjectLink link={project.link} type={project.type} />
+        {:else}
+          <ProjectLink type={project.type} />
+        {/if}
+
+        {#if project.subLink}
+          <ProjectVisit link={project.subLink} />
+        {/if}
+      </div>
     </div>
     
     {#if project.date}
@@ -28,15 +34,14 @@
     <p class="pt-3 text-gray-400 line-clamp-2">{project.description}</p>
 
     <div class="flex flex-row flex-wrap gap-2 pt-3">
-      <div class="flex flex-row flex-wrap gap-2 text-sm text-gray-400">
-        <span class="font-semibold text-white"> 
-          Technologie(s):
-        </span>
-        {#each project.skills as skill}
-          <span>
-            {skill.name}
-          </span>
-        {/each}
+      <div class="flex flex-row flex-wrap gap-5 text-sm text-gray-400">
+        <div class="flex -space-x-3">
+          {#each project.skills as skill}
+            <div class="hover:pl-4 hover:pr-4 transition-all duration-200">
+              <Image targetImage="/icons/{skill.icon}.png" text="{skill.name}" />
+            </div>
+          {/each}
+        </div>
       </div>
     </div>
   </div>

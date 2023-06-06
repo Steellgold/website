@@ -12,5 +12,6 @@ export type Project = {
   };
 
   link: string | null;
+  subLink?: string | null;
   type: ProjectType;
 };
