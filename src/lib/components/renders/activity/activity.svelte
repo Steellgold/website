@@ -11,7 +11,10 @@
     IconBrandGithub,
     IconBrandCoinbase,
     IconBrandTwitter,
-    IconBrandInstagram
+    IconBrandInstagram,
+
+    IconBrandDisneyPlus
+
   } from "$lib/components/icons";
   import type { ActivityList } from "./activity.types";
 
@@ -24,7 +27,8 @@
     "Idle",
     "Viewing Recent",
     "Main Page | Home",
-    "Unknown page"
+    "Unknown page",
+    "Browsing..."
   ];
 
   export let isPaused: boolean;
@@ -40,7 +44,8 @@
     "GitHub": "text-gray-500",
     "Coinbase": "text-blue-800",
     "Twitter": "text-blue-400",
-    "Instagram": "text-pink-500"
+    "Instagram": "text-pink-500",
+    "DisneyPlus": "text-blue-700"
   };
 </script>
 
@@ -72,6 +77,8 @@
           <IconBrandTwitter />
         {:else if activity === "Instagram"}
           <IconBrandInstagram />
+        {:else if activity === "DisneyPlus"}
+          <IconBrandDisneyPlus />
         {/if}
       {/if}
     </span>

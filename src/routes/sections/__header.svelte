@@ -21,7 +21,10 @@
     GitHub,
     Coinbase,
     Twitter,
-    Instagram
+    Instagram,
+
+    DisneyPlus
+
   } from "$lib/components/renders/activity/list";
   import { Spotify } from "$lib/components/renders/spotify";
 
@@ -82,4 +85,5 @@
   <Coinbase />
   <Twitter />
   <Instagram />
+  <DisneyPlus />
 </section>

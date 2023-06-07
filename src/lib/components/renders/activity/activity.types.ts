@@ -20,6 +20,7 @@ export type ActivityList =
   | "GitHub"
   | "Coinbase"
   | "Twitter"
-  | "Instagram";
+  | "Instagram"
+  | "DisneyPlus";
 export type PlayingList = "Figma" | "Visual Studio Code" | "Stack Overflow" | "GitHub" | "Coinbase" | "Twitter" | "Instagram";
-export type WatchingList = "Netflix" | "Twitch" | "Prime Video" | "YouTube";
+export type WatchingList = "Netflix" | "Twitch" | "Prime Video" | "YouTube" | "DisneyPlus";

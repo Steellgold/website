@@ -12,6 +12,7 @@ export { default as IconBrandFigma } from "./brand/brand-figma.svelte";
 export { default as IconBrandVisualStudioCode } from "./brand/brand-vscode.svelte";
 export { default as IconStackOverflow } from "./brand/brand-stackoverflow.svelte";
 export { default as IconBrandCoinbase } from "./brand/brand-coinbase.svelte";
+export { default as IconBrandDisneyPlus } from "./brand/brand-disneyplus.svelte";
 
 export { default as IconExternalLink } from "./external-link.svelte";
 export { default as IconPlayerPause } from "./player-pause.svelte";
