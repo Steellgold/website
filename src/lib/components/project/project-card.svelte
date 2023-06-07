@@ -10,7 +10,9 @@
 <div class="bg-[#161616] md:min-h-[180px] rounded-lg shadow-lg overflow-hidden">
   <div class="p-4">
     <div class="flex flex-row justify-between items-center">
-      <h3 class="text-lg font-semibold text-white">{project.title}</h3>
+      <h3 class="text-lg font-semibold text-white">
+        <a href="/project/{project.slug}" class="no-underline">{project.title}</a>
+      </h3>
       <div class="flex flex-row gap-2">
         {#if project.link}
           <ProjectLink link={project.link} type={project.type} />
@@ -31,13 +33,15 @@
       </p>
     {/if}
     
-    <p class="pt-3 text-gray-400 line-clamp-2">{project.description}</p>
+    <p class="pt-3 text-gray-400 line-clamp-2">
+      <a href="/project/{project.slug}" class="no-underline">{project.description}</a>
+    </p>
 
     <div class="flex flex-row flex-wrap gap-2 pt-3">
       <div class="flex flex-row flex-wrap gap-5 text-sm text-gray-400">
         <div class="flex -space-x-3">
           {#each project.skills as skill}
-            <div class="hover:pl-4 hover:pr-4 transition-all duration-200">
+            <div class="hover:pr-4 transition-all duration-200">
               <Image targetImage="/icons/{skill.icon}.png" text="{skill.name}" />
             </div>
           {/each}
