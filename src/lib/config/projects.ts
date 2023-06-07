@@ -25,7 +25,8 @@ export const Projects: Project[] = [
     date: { start: "15/01/2023" },
     link: "https://github.com/Steellgold/Linkfy",
     subLink: "https://linkfy.fr",
-    type: "Open Source"
+    type: "Open Source",
+    slug: "linkfy"
   },
   {
     title: "Royaume",
@@ -35,7 +36,8 @@ export const Projects: Project[] = [
     ],
     date: { start: "23/06/2022" },
     link: "https://github.com/Virtual-Royaume",
-    type: "Open Source"
+    type: "Open Source",
+    slug: "royaume"
   },
   {
     title: "Bottly (Corp)",
@@ -45,7 +47,8 @@ export const Projects: Project[] = [
     ],
     date: { start: "19/02/2023" },
     link: "https://github.com/bottlycorp",
-    type: "Open Source"
+    type: "Open Source",
+    slug: "bottlycorp"
   },
   {
     title: "Site internet",
@@ -55,7 +58,8 @@ export const Projects: Project[] = [
     ],
     date: { start: "18/08/2022" },
     link: "https://github.com/Steellgold/Portfolio",
-    type: "Open Source"
+    type: "Open Source",
+    slug: "portfolio"
   },
   {
     title: "bettercolors",
@@ -65,7 +69,8 @@ export const Projects: Project[] = [
     ],
     date: { start: "06/04/2023" },
     link: "https://npmjs.com/package/bettercolors",
-    type: "Open Source"
+    type: "Open Source",
+    slug: "bettercolors"
   }
   // For more projects, add them here
 ];

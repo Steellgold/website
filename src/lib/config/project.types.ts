@@ -6,6 +6,9 @@ export type Project = {
   skills: Skill[];
 
   description: string;
+  longDescription?: string;
+  images?: string[];
+
   date: {
     start: string;
     end?: string;
@@ -14,4 +17,5 @@ export type Project = {
   link: string | null;
   subLink?: string | null;
   type: ProjectType;
+  slug: string;
 };

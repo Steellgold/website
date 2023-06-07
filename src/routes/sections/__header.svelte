@@ -5,7 +5,10 @@
     IconBrandInstagram,
     IconBrandLinkedin,
     IconBrandTwitter,
-    IconBrandYoutube
+    IconBrandYoutube,
+
+    IconMinusVertical
+
   } from "$lib/components/icons";
   import {
     Netflix,
@@ -46,12 +49,17 @@
 
     <div class="flex flex-col justify-center ml-auto sm:bg-[#161616] sm:rounded-lg sm:shadow-lg sm:overflow-hidden">
       <ul class="flex flex-row justify-end text-white gap-2 p-2">
-        <a href="https://github.com/Steellgold" class="block hover:text-white transition-all hover:-rotate-12"><IconBrandGithub /></a>
-        <a href="https://discord.com/users/504392983244832780" class="block hover:text-gray-600 transition-all hover:rotate-12"><IconBrandDiscord /></a>
-        <a href="https://youtube.com/c/Steellgold" class="block hover:text-red-600 transition-all hover:-rotate-12"><IconBrandYoutube /></a>
-        <a href="https://instagram.com/steellgold" class="block hover:text-pink-600 transition-all hover:rotate-12"><IconBrandInstagram /></a>
-        <a href="https://twitter.com/Steellgold" class="block hover:text-blue-600 transition-all hover:-rotate-12"><IconBrandTwitter /></a>
-        <a href="https://linkedin.com/in/gaetanhus" class="block hover:text-blue-600 transition-all hover:rotate-12"><IconBrandLinkedin /></a>
+        <div class="flex gap-2">
+          <a href="https://github.com/Steellgold" class="block hover:text-white transition-all hover:-rotate-12"><IconBrandGithub /></a>
+          <a href="https://linkedin.com/in/gaetanhus" class="block hover:text-blue-600 transition-all hover:rotate-12"><IconBrandLinkedin /></a>
+          <span class="hidden sm:block"><IconMinusVertical /></span>
+        </div>
+        <div class="flex gap-2">
+          <a href="https://discord.com/users/504392983244832780" class="block hover:text-gray-600 transition-all hover:-rotate-12"><IconBrandDiscord /></a>
+          <a href="https://instagram.com/steellgold" class="block hover:text-pink-600 transition-all hover:rotate-12"><IconBrandInstagram /></a>
+          <a href="https://twitter.com/Steellgold" class="block hover:text-blue-600 transition-all hover:-rotate-12"><IconBrandTwitter /></a>
+          <a href="https://youtube.com/c/Steellgold" class="block hover:text-red-600 transition-all hover:rotate-12"><IconBrandYoutube /></a>
+        </div>
       </ul>
     </div>
   </div>
