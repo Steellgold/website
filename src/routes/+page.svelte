@@ -11,7 +11,7 @@
   </div>
 
   <p>Gaëtan, 18 years old, passionate about programming and computer science, I am a PHP developer, I am currently learning Web development and Java<p>
-  <p><a href="https://preview.steellgold.fr">👀</a></p>
+  <p><a href="https://steellgold.fr">new version of my portfolio , click here 👀</a></p>
   
   <div class="buttons">
     <Button link="https://github.com/Steellgold" icon="dark/GitHub.png" small={false}>Gaëtan H</Button>
