@@ -28,7 +28,15 @@
     "Viewing Recent",
     "Main Page | Home",
     "Unknown page",
-    "Browsing..."
+    "Browsing...", 
+    "Viewing series:",
+    "Viewing movie:",
+    "Visualisation de la page d'accueil",
+    "Visualisation du canal:",
+    "Navigue à travers",
+    "Regarde ses vidéos",
+    "Regarde les tendances",
+    "Navigue..."
   ];
 
   export let isPaused: boolean;
@@ -45,7 +53,7 @@
     "Coinbase": "text-blue-800",
     "Twitter": "text-blue-400",
     "Instagram": "text-pink-500",
-    "DisneyPlus": "text-blue-700"
+    "DisneyPlus": "text-blue-300"
   };
 </script>
 
@@ -112,7 +120,11 @@
         <code>Regarde ses paramètres sur <b>{activity}</b></code>
       {/if}
     {:else}
-      <code>Regarde: {details} {state} {isPaused ? "(En pause)" : ""}</code>
+      {#if idling.includes(details) || idling.includes(state)}
+        <code>Cherche quelque chose à regarder sur <b>{activity}</b></code>
+      {:else}
+        <code>Regarde: {details} {state} {isPaused ? "(En pause)" : ""}</code>
+      {/if}
     {/if}
   </ul>
 </div>

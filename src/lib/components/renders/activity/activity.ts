@@ -14,17 +14,6 @@ const TWITTER_ID = "802958757909889054";
 const INSTAGRAM_ID = "547436289960574977";
 const DISNEYPLUS_ID = "630236276829716483";
 
-const notInclude = [
-  "Browsing...",
-  "Viewing series:",
-  "Viewing movie:",
-  "Visualisation de la page d'accueil",
-  "Visualisation du canal:",
-  "Navigue à travers",
-  "Regarde ses vidéos",
-  "Regarde les tendances"
-]; // oof youtube..
-
 const getID = (name: ActivityList) : string => {
   switch (name) {
     case "Netflix":
@@ -57,12 +46,8 @@ const getID = (name: ActivityList) : string => {
 export const getWatching = async(name: WatchingList) : Promise<IActivity | null> => {
   const presence = await getActivities();
   if (!presence.data.activities) return null;
-
   const activity = presence.data.activities.find((activity) => activity.application_id === getID(name));
-
   if (!activity) return null;
-
-  if (notInclude.includes(activity?.details)) return null;
 
   return {
     details: activity.details,
