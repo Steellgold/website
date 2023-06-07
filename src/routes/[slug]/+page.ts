@@ -1,13 +1,13 @@
-import { Projects } from "$lib/config/projects";
+import { projects } from "$lib/config/projects";
 import { redirect } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
 export const load = (async({ params }) => {
   const { slug } = params;
-  const projects = Projects.filter((project) => project.slug === slug);
+  const project = projects.filter((project) => project.slug === slug);
 
-  if (projects.length === 1) {
-    return projects[0];
+  if (project.length === 1) {
+    return project[0];
   }
 
   throw redirect(303, "/");
