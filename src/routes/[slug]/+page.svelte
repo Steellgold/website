@@ -2,8 +2,6 @@
   import type { PageData } from "./$types";
 
   export let data: PageData;
-
-  console.log(data.images);
 </script>
 
 <section class="mt-10 mb-5 rounded-lg shadow-lg overflow-hidden flex flex-col justify-center items-center">

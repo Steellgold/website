@@ -2,7 +2,7 @@
   import type { Project } from "$lib/config/project.types";
   import { fromStartToEnd, fromStart } from "$lib/utils/Time";
   import { ProjectLink, ProjectVisit } from ".";
-    import { Image } from "../image";
+  import { Image } from "../image";
 
   export let project: Project;
 </script>
