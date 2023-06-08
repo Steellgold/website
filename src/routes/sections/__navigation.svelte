@@ -1,9 +1,27 @@
 <script lang="ts">
-  import { IconAlertSquare } from "$lib/components/icons";
+  import { IconAlertSquare, IconX } from "$lib/components/icons";
   import { PUBLIC_ENV } from "$env/static/public";
+  import { CookieMaxAge, type Cookie, type HttpCookieOptions, domCookie } from "cookie-muncher";
+  import { onMount } from "svelte";
 
   let showPopover = false;
   let showPopover2 = false;
+
+  let previewAlert = "hidden";
+
+  onMount(() => {
+    let cookie = domCookie.get("previewAlert");
+    if (cookie !== null) previewAlert = cookie.value;
+    if (cookie == null){
+      previewAlert = "none";
+      domCookie.set({ name: "previewAlert", value: "none" }, { maxAge: CookieMaxAge.OneWeek });
+    }
+  });
+
+  const hidePreviewAlert = () => {
+    previewAlert = "hidden";
+    domCookie.set({ name: "previewAlert", value: "hidden" }, { maxAge: CookieMaxAge.OneWeek });
+  }
 </script>
 
 <section>
@@ -13,8 +31,6 @@
         <code>/about</code>
       </a>
   
-      <!-- <a href="/" class="block hover:text-white hover:opacity-40 transition-all"> -->
-      <!-- "Easter" egg -->
       <a href="/" class="opacity-40 cursor-not-allowed" on:mouseenter={() => showPopover = true} on:mouseleave={() => showPopover = false}>
         <code>/blog</code>
         {#if showPopover}
@@ -39,10 +55,13 @@
     </div>
   </div>
 
-  {#if PUBLIC_ENV == "preview"}
+  {#if PUBLIC_ENV == "preview" && previewAlert !== "hidden"}
     <div class="bg-red-500 text-white flex items-center justify-center p-2 gap-3 bottom-0 left-0 right-0">
       <i><IconAlertSquare /></i>
-      <p>Vous êtes actuellement sur la version de développement de mon site web. Certaines fonctionnalités peuvent ne pas fonctionner correctement. Rendez vous sur <a href="https://steellgold.fr" class="underline">steellgold.fr</a> pour accéder à la version stable.</p>
+      <div>
+        Vous êtes actuellement sur la version de développement de mon site web, accédez à la <a href="https://steellgold.fr" class="underline">version stable</a><br>
+        <span class="flex items-center cursor-pointer text-center" on:click={hidePreviewAlert}><IconX />Ne plus afficher ce message</span>
+      </div>
     </div>
   {/if}
 </section>
