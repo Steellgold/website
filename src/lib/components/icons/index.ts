@@ -25,3 +25,4 @@ export { default as IconHeart } from "./heart.svelte";
 export { default as IconAlertSquare } from "./alert-square.svelte";
 export { default as IconEdit } from "./edit.svelte";
 export { default as IconMinusVertical } from "./minus-vertical.svelte";
+export { default as IconX } from "./x.svelte";
