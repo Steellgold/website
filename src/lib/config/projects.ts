@@ -114,7 +114,10 @@ export const projects: Project[] = [
       "● Générer un texte à partir des informations récupérées."
     ],
     longDescription: "Beyond2021 est une librairie NPM qui permet de récupérer les informations au-delà de 2021 pour OpenAI. Elle permet également de générer un texte à partir des informations récupérées.",
-    slug: "beyond2021"
+    slug: "beyond2021",
+    images: [
+      "https://media.discordapp.net/attachments/927843710669062204/1116833496472760370/ray-so-export_2.png?width=1088&height=654"
+    ]
   }
   // For more projects, add them here
 ];
