@@ -1,5 +1,5 @@
 import type { Skill } from "./skills.types";
-export type ProjectType = "Open Source" | "Pro";
+export type ProjectType = "Open Source" | "Freelance - Pro";
 
 export type Project = {
   title: string;
@@ -7,15 +7,16 @@ export type Project = {
 
   description: string;
   longDescription?: string;
+  features?: string[];
   images?: string[];
 
-  date: {
+  date?: {
     start: string;
     end?: string;
   };
 
-  link: string | null;
-  subLink?: string | null;
+  links?: string[];
+  preview?: string | null;
   type: ProjectType;
   slug: string;
 };
