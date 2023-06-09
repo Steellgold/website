@@ -6,9 +6,7 @@
     IconBrandLinkedin,
     IconBrandTwitter,
     IconBrandYoutube,
-
     IconMinusVertical
-
   } from "$lib/components/icons";
   import {
     Netflix,
@@ -22,9 +20,7 @@
     Coinbase,
     Twitter,
     Instagram,
-
     DisneyPlus
-
   } from "$lib/components/renders/activity/list";
   import { Spotify } from "$lib/components/renders/spotify";
 
