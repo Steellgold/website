@@ -1,8 +1,11 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
     extend: {}
   },
-  plugins: [require("@tailwindcss/typography")]
+  plugins: [
+    // eslint-disable-next-line
+    require("@tailwindcss/typography")
+  ]
 };

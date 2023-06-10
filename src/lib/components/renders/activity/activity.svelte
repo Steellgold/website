@@ -11,7 +11,10 @@
     IconBrandGithub,
     IconBrandCoinbase,
     IconBrandTwitter,
-    IconBrandInstagram
+    IconBrandInstagram,
+
+    IconBrandDisneyPlus
+
   } from "$lib/components/icons";
   import type { ActivityList } from "./activity.types";
 
@@ -24,7 +27,16 @@
     "Idle",
     "Viewing Recent",
     "Main Page | Home",
-    "Unknown page"
+    "Unknown page",
+    "Browsing...", 
+    "Viewing series:",
+    "Viewing movie:",
+    "Visualisation de la page d'accueil",
+    "Visualisation du canal:",
+    "Navigue à travers",
+    "Regarde ses vidéos",
+    "Regarde les tendances",
+    "Navigue..."
   ];
 
   export let isPaused: boolean;
@@ -40,7 +52,8 @@
     "GitHub": "text-gray-500",
     "Coinbase": "text-blue-800",
     "Twitter": "text-blue-400",
-    "Instagram": "text-pink-500"
+    "Instagram": "text-pink-500",
+    "DisneyPlus": "text-blue-300"
   };
 </script>
 
@@ -72,6 +85,8 @@
           <IconBrandTwitter />
         {:else if activity === "Instagram"}
           <IconBrandInstagram />
+        {:else if activity === "DisneyPlus"}
+          <IconBrandDisneyPlus />
         {/if}
       {/if}
     </span>
@@ -105,7 +120,11 @@
         <code>Regarde ses paramètres sur <b>{activity}</b></code>
       {/if}
     {:else}
-      <code>Regarde: {details} {state} {isPaused ? "(En pause)" : ""}</code>
+      {#if idling.includes(details) || idling.includes(state)}
+        <code>Cherche quelque chose à regarder sur <b>{activity}</b></code>
+      {:else}
+        <code>Regarde: {details} {state} {isPaused ? "(En pause)" : ""}</code>
+      {/if}
     {/if}
   </ul>
 </div>

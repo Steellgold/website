@@ -12,17 +12,7 @@ const GITHUB_ID = "607587875122446359";
 const COINBASE_ID = "796810487177674822";
 const TWITTER_ID = "802958757909889054";
 const INSTAGRAM_ID = "547436289960574977";
-
-const notInclude = [
-  "Browsing...",
-  "Viewing series:",
-  "Viewing movie:",
-  "Visualisation de la page d'accueil",
-  "Visualisation du canal:",
-  "Navigue à travers",
-  "Regarde ses vidéos",
-  "Regarde les tendances"
-]; // oof youtube..
+const DISNEYPLUS_ID = "630236276829716483";
 
 const getID = (name: ActivityList) : string => {
   switch (name) {
@@ -48,17 +38,16 @@ const getID = (name: ActivityList) : string => {
       return TWITTER_ID;
     case "Instagram":
       return INSTAGRAM_ID;
+    case "DisneyPlus":
+      return DISNEYPLUS_ID;
   }
 };
 
 export const getWatching = async(name: WatchingList) : Promise<IActivity | null> => {
   const presence = await getActivities();
   if (!presence.data.activities) return null;
-
   const activity = presence.data.activities.find((activity) => activity.application_id === getID(name));
   if (!activity) return null;
-
-  if (notInclude.includes(activity?.details)) return null;
 
   return {
     details: activity.details,

@@ -1,10 +1,10 @@
 <script lang="ts">
   export let title: string = "Gaëtan | Développeur back-end";
   export let siteName: string = "Portfolio de Gaëtan";
-  export let description: string = "Développeur back-end depuis 2019, spécialisé sur TypeScript et PHP !";
+  export let description: string = "Développeur back-end depuis 2018, spécialisé sur TypeScript et PHP !";
   export let url: string = "https://steellgold.fr";
   export let color: string = "#15803D";
-  export let image: string|null = null;
+  export let image: string | null = null;
 </script>
 
 <title>{title}</title>
