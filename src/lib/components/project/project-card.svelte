@@ -11,7 +11,9 @@
   <div class="p-4">
     <div class="flex flex-row justify-between items-center">
       <h3 class="text-lg font-semibold text-white">
-        <a href="/project/{project.slug}" class="no-underline">{project.title}</a>
+        <!-- <a href="/project/{project.slug}" class="no-underline"> -->
+          {project.title}
+        <!-- </a> -->
       </h3>
       <div class="flex flex-row gap-2">
         <ProjectLink type={project.type} links={project.links} />
@@ -26,7 +28,9 @@
     {/if}
     
     <p class="pt-3 text-gray-400 line-clamp-2">
-      <a href="/{project.slug}" class="no-underline">{project.description}</a>
+      <!-- <a href="/{project.slug}" class="no-underline"> -->
+        {project.description}
+      <!-- </a> -->
     </p>
 
     <div class="flex flex-row flex-wrap gap-2 pt-3">
