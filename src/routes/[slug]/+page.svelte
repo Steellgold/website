@@ -6,7 +6,7 @@
 
   export let data: PageData;
 
-  let title =  data.title + " | Gaëtan";
+  let title =  data.title + " | " + data.type;
   let description = data.description;
   let image = "";
   if (data.images) image = data.images[0];
@@ -21,6 +21,7 @@
     description={description}
     image={image}
     url={url}
+    color={data.color}
   />
 </svelte:head>
 
