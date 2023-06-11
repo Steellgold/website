@@ -1,13 +1,27 @@
 <script lang="ts">
-  import ProjectTag from "$lib/components/project/project-tag.svelte";
+  import { MetaTags } from "$lib/components/meta";
+  import { ProjectTag } from "$lib/components/project";
   import { fromStart, fromStartToEnd } from "$lib/utils/Time";
   import type { PageData } from "./$types";
 
   export let data: PageData;
+
+  let title =  data.title + " | Gaëtan";
+  let description = data.description;
+  let image = "";
+  if (data.images) image = data.images[0];
+  let url = "";
+  if (data.links) url = data.links[0];
 </script>
 
 <svelte:head>
   <title>{data.title} | Gaëtan</title>
+  <MetaTags
+    title={title}
+    description={description}
+    image={image}
+    url={url}
+  />
 </svelte:head>
 
 <section class="mt-10 mb-5 rounded-lg shadow-lg overflow-hidden flex flex-col justify-center items-center">

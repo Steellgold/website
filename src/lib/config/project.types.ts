@@ -19,4 +19,5 @@ export type Project = {
   preview?: string | null;
   type: ProjectType;
   slug: string;
+  color?: string;
 };

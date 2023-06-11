@@ -39,7 +39,8 @@ export const projects: Project[] = [
       "● Gérer ses liens via un tableau de bord",
       "● Historique complet des liens créés"
     ],
-    preview: "https://preview.linkfy.fr"
+    preview: "https://preview.linkfy.fr",
+    color: "#111827"
   },
   {
     title: "Royaume",
@@ -60,7 +61,8 @@ export const projects: Project[] = [
       "https://media.discordapp.net/attachments/927843710669062204/1116043411749884007/image.png?width=1249&height=783"
     ],
     // eslint-disable-next-line max-len
-    longDescription: "Royaume est une communauté de développeurs, de graphistes, de joueurs et toute personne qui se réunissent pour partager leurs passions et leurs connaissances. Nous avons pour but de créer un espace de partage et d'entraide pour tous, que vous soyez débutant ou expert. Nous avons également pour but de créer des projets open source pour que tout le monde puisse y contribuer et apprendre de nouvelles choses. Nous avons également un serveur discord qui est ouvert à tous, vous pouvez y rejoindre en cliquant sur le bouton ci-dessous."
+    longDescription: "Royaume est une communauté de développeurs, de graphistes, de joueurs et toute personne qui se réunissent pour partager leurs passions et leurs connaissances. Nous avons pour but de créer un espace de partage et d'entraide pour tous, que vous soyez débutant ou expert. Nous avons également pour but de créer des projets open source pour que tout le monde puisse y contribuer et apprendre de nouvelles choses. Nous avons également un serveur discord qui est ouvert à tous, vous pouvez y rejoindre en cliquant sur le bouton ci-dessous.",
+    color: "#5339dd"
   },
   {
     title: "Bottly",
@@ -71,7 +73,8 @@ export const projects: Project[] = [
     date: { start: "19/02/2023" },
     links: ["https://github.com/bottlycorp", "https://bottly.xyz"],
     type: "Open Source",
-    slug: "bottlycorp"
+    slug: "bottlycorp",
+    color: "#454cb5"
   },
   {
     title: "Site internet",
@@ -82,7 +85,8 @@ export const projects: Project[] = [
     date: { start: "18/08/2022" },
     links: ["https://github.com/Steellgold/Portfolio"],
     type: "Open Source",
-    slug: "portfolio"
+    slug: "portfolio",
+    color: "#111111"
   },
   {
     title: "bettercolors",
@@ -98,7 +102,8 @@ export const projects: Project[] = [
       "● Fournir un ensemble de méthodes pour formater les messages pour différents types tels que success, error, warning, info, debug, log et rainbow.",
     ],
     longDescription: "BetterColors est une librairie NPM qui permet de formater et afficher des messages console avec différentes couleurs et styles. Elle fournit également un ensemble de méthodes pour formater les messages pour différents types tels que success, error, warning, info, debug, log et rainbow.",
-    slug: "bettercolors"
+    slug: "bettercolors",
+    color: "#6b7280"
   },
   {
     title: "beyond2021",
@@ -117,7 +122,8 @@ export const projects: Project[] = [
     slug: "beyond2021",
     images: [
       "https://media.discordapp.net/attachments/927843710669062204/1116833496472760370/ray-so-export_2.png?width=1088&height=654"
-    ]
+    ],
+    color: "#6672f3"
   }
   // For more projects, add them here
 ];
