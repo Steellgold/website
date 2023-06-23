@@ -12,9 +12,7 @@
     IconBrandCoinbase,
     IconBrandTwitter,
     IconBrandInstagram,
-
     IconBrandDisneyPlus
-
   } from "$lib/components/icons";
   import type { ActivityList } from "./activity.types";
 
@@ -53,7 +51,8 @@
     "Coinbase": "text-blue-800",
     "Twitter": "text-blue-400",
     "Instagram": "text-pink-500",
-    "DisneyPlus": "text-blue-300"
+    "DisneyPlus": "text-blue-300",
+    "CanalPlus": "text-stone-600"
   };
 </script>
 
@@ -87,6 +86,10 @@
           <IconBrandInstagram />
         {:else if activity === "DisneyPlus"}
           <IconBrandDisneyPlus />
+        {:else if activity === "CanalPlus"}
+          <div class="flex w-5 h-5">
+            <img src="/icons/canalplus.png" alt="CanalPlus" />
+          </div>
         {/if}
       {/if}
     </span>

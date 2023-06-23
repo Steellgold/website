@@ -13,6 +13,7 @@ const COINBASE_ID = "796810487177674822";
 const TWITTER_ID = "802958757909889054";
 const INSTAGRAM_ID = "547436289960574977";
 const DISNEYPLUS_ID = "630236276829716483";
+const CANALPLUS_ID = "844106861711196179";
 
 const getID = (name: ActivityList) : string => {
   switch (name) {
@@ -40,6 +41,8 @@ const getID = (name: ActivityList) : string => {
       return INSTAGRAM_ID;
     case "DisneyPlus":
       return DISNEYPLUS_ID;
+    case "CanalPlus":
+      return CANALPLUS_ID;
   }
 };
 

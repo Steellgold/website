@@ -20,7 +20,8 @@
     Coinbase,
     Twitter,
     Instagram,
-    DisneyPlus
+    DisneyPlus,
+    CanalPlus
   } from "$lib/components/renders/activity/list";
   import { Spotify } from "$lib/components/renders/spotify";
 
@@ -82,4 +83,5 @@
   <Twitter />
   <Instagram />
   <DisneyPlus />
+  <CanalPlus />
 </section>

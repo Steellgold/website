@@ -10,3 +10,4 @@ export { default as Coinbase } from "./coinbase.svelte";
 export { default as Twitter } from "./twitter.svelte";
 export { default as Instagram } from "./instagram.svelte";
 export { default as DisneyPlus } from "./disneyplus.svelte";
+export { default as CanalPlus } from "./canalplus.svelte";
