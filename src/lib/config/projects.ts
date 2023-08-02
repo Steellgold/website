@@ -4,11 +4,15 @@ import {
   Express,
   Google,
   Graphql,
+  NextJs,
   Nodejs,
   OpenAI,
   Postgresql,
   Prisma,
   Railway,
+  React,
+  Redis,
+  Stripe,
   Supabase,
   Svelte,
   Tailwindcss,
@@ -77,16 +81,16 @@ export const projects: Project[] = [
     color: "#454cb5"
   },
   {
-    title: "Site internet",
-    description: "Mon portfolio, mon site web, mon CV, mon blog, mon tout",
+    title: "Simplist",
+    description: "Une page d'accueil simplifiée pour vos navigateurs web.",
     skills: [
-      Typescript, Svelte, Tailwindcss, Supabase, Postgresql, Prisma
+      Typescript, React, NextJs, Stripe, Tailwindcss, Vercel, OpenAI, Redis, Supabase, Prisma, Postgresql
     ],
-    date: { start: "18/08/2022" },
-    links: ["https://github.com/Steellgold/Portfolio"],
+    date: { start: "01/07/2023" },
+    links: ["https://simplist.page", "https://github.com/Steellgold/simplist"],
     type: "Open Source",
-    slug: "portfolio",
-    color: "#111111"
+    color: "#0f172a",
+    slug: "simplist"
   },
   {
     title: "bettercolors",
@@ -124,6 +128,18 @@ export const projects: Project[] = [
       "https://media.discordapp.net/attachments/927843710669062204/1116833496472760370/ray-so-export_2.png?width=1088&height=654"
     ],
     color: "#6672f3"
-  }
+  },
+  {
+    title: "Site internet",
+    description: "Mon portfolio, mon site web, mon CV, mon blog, mon tout",
+    skills: [
+      Typescript, Svelte, Tailwindcss, Supabase, Postgresql, Prisma
+    ],
+    date: { start: "18/08/2022" },
+    links: ["https://github.com/Steellgold/Portfolio"],
+    type: "Open Source",
+    slug: "portfolio",
+    color: "#111111"
+  },
   // For more projects, add them here
 ];

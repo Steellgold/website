@@ -24,3 +24,6 @@ export const DiscordJs: Skill = { name: "DiscordJS", icon: "discordjs", link: "h
 export const Prisma: Skill = { name: "Prisma", icon: "prisma", link: "https://prisma.io" };
 export const OpenAI: Skill = { name: "OpenAI", icon: "openai", link: "https://openai.com" };
 export const Google: Skill = { name: "PSE", icon: "google", link: "https://developers.google.com/custom-search/v1/overview" };
+export const NextJs: Skill = { name: "NextJS", icon: "nextjs", link: "https://nextjs.org" };
+export const React: Skill = { name: "React", icon: "react", link: "https://reactjs.org" };
+export const Stripe: Skill = { name: "Stripe", icon: "stripe", link: "https://stripe.com" };
