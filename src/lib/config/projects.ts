@@ -47,6 +47,23 @@ export const projects: Project[] = [
     color: "#111827"
   },
   {
+    title: "Tweeets",
+    description: "Générateur de tweets avec l'intelligence artificielle, gratuit et open source",
+    skills: [
+      Typescript, NextJs, OpenAI, Tailwindcss, Vercel, Prisma, Postgresql, Supabase, Stripe,
+    ],
+    date: { start: "06/08/2023" },
+    links: ["https://github.com/Steellgold/tweeets", "https://tweeets.app/"],
+    type: "Open Source",
+    slug: "tweeets",
+    images: [
+      "https://media.discordapp.net/attachments/1139302236258832405/1139302237340958812/Group_38_3_2.png",
+      "https://media.discordapp.net/attachments/1139302236258832405/1139302236711833650/Group_45_1.png",
+      "https://media.discordapp.net/attachments/1139302236258832405/1139302237089316954/Group_43_1.png"
+    ],
+    color: "#070709"
+  },
+  {
     title: "Royaume",
     // eslint-disable-next-line max-len
     description: "Une communauté de développeurs, de graphistes, de joueurs et toute personne qui se réunissent pour partager leurs passions et leurs connaissances",
