@@ -35,9 +35,11 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@prisma/client": "4.15.0",
 		"@sveltejs/vite-plugin-svelte": "^2.4.1",
 		"@tailwindcss/typography": "^0.5.9",
 		"@vercel/analytics": "^1.0.1",
+		"@vercel/postgres": "^0.4.1",
 		"cookie-muncher": "^0.4.2",
 		"dayjs": "^1.11.8",
 		"svelte-markdown": "^0.2.3",

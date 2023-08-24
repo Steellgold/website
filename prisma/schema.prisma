@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("POSTGRES_PRISMA_URL")
 }
 
 model Post {
@@ -15,7 +15,6 @@ model Post {
   content       String   @default("Hello World") @db.Text
   introduction  String   @default("This is an introduction from the post") @db.Text
   bannerUrl     String?  @default("https://source.unsplash.com/random/800x600")
-  published     Boolean  @default(false)
   views         Int      @default(0)
   likes_default Int      @default(0)
   likes_happy   Int      @default(0)

@@ -1,11 +1,9 @@
 <script lang="ts">
-  import { IconAlertSquare, IconX } from "$lib/components/icons";
-  import { PUBLIC_ENV } from "$env/static/public";
-  import { CookieMaxAge, type Cookie, type HttpCookieOptions, domCookie } from "cookie-muncher";
+  import { CookieMaxAge, domCookie } from "cookie-muncher";
   import { onMount } from "svelte";
 
-  let showPopover = false;
-  let showPopover2 = false;
+  // let showPopover = false;
+  // let showPopover2 = false;
 
   let previewAlert = "hidden";
 
@@ -31,7 +29,7 @@
         <code>/about</code>
       </a>
   
-      <a href="/" class="opacity-40 cursor-not-allowed" on:mouseenter={() => showPopover = true} on:mouseleave={() => showPopover = false}>
+      <!-- <a href="/" class="opacity-40 cursor-not-allowed" on:mouseenter={() => showPopover = true} on:mouseleave={() => showPopover = false}>
         <code>/blog</code>
         {#if showPopover}
          <code class="text-red-300">
@@ -43,7 +41,7 @@
           {/if}
          </code>
         {/if}
-      </a>
+      </a> -->
     </ul>
   
     <div class="flex flex-col justify-center ml-auto sm:rounded-lg sm:shadow-lg sm:overflow-hidden">
@@ -54,14 +52,4 @@
       </ul>
     </div>
   </div>
-
-  {#if PUBLIC_ENV == "preview" && previewAlert !== "hidden"}
-    <div class="bg-red-500 text-white flex items-center justify-center p-2 gap-3 bottom-0 left-0 right-0">
-      <i><IconAlertSquare /></i>
-      <div>
-        Vous êtes actuellement sur la version de développement de mon site web, accédez à la <a href="https://steellgold.fr" class="underline">version stable</a><br>
-        <span class="flex items-center cursor-pointer text-center" on:click={hidePreviewAlert}><IconX />Ne plus afficher ce message</span>
-      </div>
-    </div>
-  {/if}
 </section>
