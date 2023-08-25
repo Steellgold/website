@@ -159,11 +159,11 @@
             </p>
             <p class="flex items-center space-x-1 gap-2 text-gray-400">
               <IconCalendar />
-              Article publié le {publishedAtDay}
+              Posted the {publishedAtDay}
             </p>
             <button class="flex items-center space-x-1 gap-2 text-gray-400 hover:text-gray-200" on:click={copyLink}>
               <IconShare />
-              Partager
+              Share
             </button>
             {#if data.post.isOwner}
               <a
@@ -202,7 +202,7 @@
 
           {#if copied}
             <p class="text-green-500 mt-3" in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
-              Lien copié !
+              Link copied!
             </p>
           {/if}
         </div>
@@ -248,7 +248,7 @@
         </div>
 
         <button class="top-0 right-0 text-black" on:click={() => readedPopupShow = false}>
-          Non merci
+          No thanks
         </button>
       </div>
     </div>
