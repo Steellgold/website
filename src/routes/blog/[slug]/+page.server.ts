@@ -59,7 +59,7 @@ export const load = (async({ params, cookies }) => {
       post: {
         title: post.title,
         publishedAt: post.createdAt,
-        content: post.content,
+        content: Buffer.from(post.content, "base64").toString("utf-8"),
         introduction: post.introduction,
         bannerUrl: post.bannerUrl,
         views: post.views + 1,

@@ -6,6 +6,7 @@
   import { restRequest } from '$lib/utils/request/request';
   import { PUBLIC_URL } from "$env/static/public";
   import Markdown from 'svelte-markdown';
+  import clsx from 'clsx';
   import dayjs from 'dayjs';
 
   export let data: PageData;
@@ -214,7 +215,12 @@
     <h1 class="text-4xl font-bold text-white">{data.post.title}</h1> 
   </div>
 
-  <div class="z-0 mt-8 prose prose-slate mx-auto px-4 sm:px-0 lg:prose-lg text-white prose-blockquote:line-clamp-2 prose-headings:text-white prose-headings:underline prose-strong:underline prose-strong:text-white prose-img:rounded-lg prose-a:text-gray-500 prose-a:no-underline prose-blockquote:italic prose-blockquote:text-gray-500 prose-blockquote:border-gray-500 list-outside hyphens-auto prose-a:after:content-['_↗'] md:prose-img:scale-125 md:prose-img:p-5">
+  <div class={clsx(
+    "z-0 mt-8 prose prose-lg max-w-xl w-5/6 mx-auto",
+    "prose-a:no-underline hover:prose-a:underline prose-a:text-blue-400 hover:prose-a:text-blue-500 prose-a:after:content-['_↗']",
+    "prose-p:text-gray-400 prose-code:text-gray-300 prose-strong:text-white prose-li:text-white",
+    "prose-h1:text-white prose-h2:text-white prose-h3:text-white prose-h4:text-white prose-5:text-white prose-h6:text-white"
+  )}>
     <Markdown source={data.post.content} />
     <br><br>
   </div>

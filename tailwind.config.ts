@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+import { Config } from "tailwindcss";
+
 export default {
   content: ["./src/**/*.{html,js,svelte,ts}"],
   theme: {
@@ -8,4 +9,4 @@ export default {
     // eslint-disable-next-line
     require("@tailwindcss/typography")
   ]
-};
+} satisfies Config;
