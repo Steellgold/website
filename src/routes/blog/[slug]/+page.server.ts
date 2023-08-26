@@ -1,7 +1,4 @@
 import { prisma } from "$lib/database/prisma";
-import { PUBLIC_URL } from "$env/static/public";
-import { restRequest } from "$lib/utils/request/request";
-import type { Post } from "$lib/utils/types/Post";
 import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import { z } from "zod";

@@ -8,6 +8,7 @@
   import Markdown from 'svelte-markdown';
   import clsx from 'clsx';
   import dayjs from 'dayjs';
+  import { toast } from 'svelte-sonner';
 
   export let data: PageData;
 
@@ -179,33 +180,36 @@
           </div>
           <div class="md:flex md:justify-center mt-3 space-x-2 gap-2">
             <button
-              class="hover:text-gray-400 hover:font-semibold"
-              on:click={() => addReaction("like")}
+              class="hover:text-gray-400 hover:font-semibold bg-black p-2 rounded-lg"
+              on:click={() => {
+                addReaction("like")
+                toast("Thanks for your reaction 🥰")
+              }}
               disabled={alreadyLiked !== 0}
               class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
-              🥰 ({likes.default})
+              🥰 <span class="text-gray-300">I like ({likes.default})</span>
             </button>
             <button
-              class="hover:text-gray-400 hover:font-semibold"
-              on:click={() => addReaction("happy")}
+            class="hover:text-gray-400 hover:font-semibold bg-black p-2 rounded-lg"
+              on:click={() => {
+                addReaction("happy")
+                toast("Thanks for your reaction 😍")
+              }}
               disabled={alreadyLiked !== 0}
               class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
-              😍 ({likes.happy})
+              😍 <span class="text-gray-300">I love ({likes.happy})</span>
             </button>
             <button
-              class="hover:text-gray-400 hover:font-semibold"
-              on:click={() => addReaction("explode")}
+            class="hover:text-gray-400 hover:font-semibold bg-black p-2 rounded-lg"
+              on:click={() => {
+                addReaction("explode")
+                toast("Thanks for your reaction 🤯")
+              }}
               disabled={alreadyLiked !== 0}
               class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
-              🤯 ({likes.explode})
+              🤯 <span class="text-gray-300">I'm shocked ({likes.explode})</span>
             </button>
           </div>
-
-          {#if copied}
-            <p class="text-green-500 mt-3" in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
-              Link copied!
-            </p>
-          {/if}
         </div>
       </figcaption>
     </figure>
@@ -227,33 +231,37 @@
 
   {#if readedPopup && readedPopupShow && alreadyLiked == 0}
     <div class="fixed bottom-0 left-0 w-full z-10" in:fade={{ duration: 200 }} out:fade={{ duration: 200 }}>
-      <div class="flex bg-gray-100 mb-10 w-11/12 md:w-7/12 p-4 rounded-lg shadow-lg mx-auto justify-between">
-        <div>
-          Do you like this article ?<br>
-          <button
-            class="hover:text-gray-400 hover:font-semibold"
-            on:click={() => addReaction("like")}
-            disabled={alreadyLiked !== 0}
-            class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
-            🥰 ({likes.default})
-          </button>
-          <button
-            class="hover:text-gray-400 hover:font-semibold"
-            on:click={() => addReaction("happy")}
-            disabled={alreadyLiked !== 0}
-            class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
-            😍 ({likes.happy})
-          </button>
-          <button
-            class="hover:text-gray-400 hover:font-semibold"
-            on:click={() => addReaction("explode")}
-            disabled={alreadyLiked !== 0}
-            class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
-            🤯 ({likes.explode})
-          </button>
+      <div class="flex bg-gray-100 mb-10 w-11/12 md:w-4/12 p-4 rounded-lg shadow-lg mx-auto justify-between">
+        <div class="flex flex-col">
+          Do you like this article ?
+          <div class="flex gap-2 mt-2">
+            <button
+              class="hover:text-gray-400 hover:font-semibold"
+              on:click={() => addReaction("like")}
+              disabled={alreadyLiked !== 0}
+              class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
+              🥰 ({likes.default})
+            </button>
+            <button
+              class="hover:text-gray-400 hover:font-semibold"
+              on:click={() => addReaction("happy")}
+              disabled={alreadyLiked !== 0}
+              class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
+              😍 ({likes.happy})
+            </button>
+            <button
+              class="hover:text-gray-400 hover:font-semibold"
+              on:click={() => addReaction("explode")}
+              disabled={alreadyLiked !== 0}
+              class:disabled:cursor-not-allowed={alreadyLiked !== 0}>
+              🤯 ({likes.explode})
+            </button>
+          </div>
         </div>
 
-        <button class="top-0 right-0 text-black" on:click={() => readedPopupShow = false}>
+        <button
+          class="top-0 right-0 text-black hover:text-white hover:bg-black rounded-lg p-2 transition-colors"
+          on:click={() => readedPopupShow = false}>
           No thanks
         </button>
       </div>

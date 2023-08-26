@@ -43,6 +43,7 @@
 		"cookie-muncher": "^0.4.2",
 		"dayjs": "^1.11.9",
 		"svelte-markdown": "^0.2.3",
+		"svelte-sonner": "^0.1.4",
 		"zod": "^3.22.2"
 	},
 	"eslintConfig": {
