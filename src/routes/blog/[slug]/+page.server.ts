@@ -57,7 +57,7 @@ export const load = (async({ params, cookies }) => {
         title: post.title,
         publishedAt: post.createdAt,
         content: Buffer.from(post.content, "base64").toString("utf-8"),
-        introduction: Buffer.from(post.introduction, "base64").toString("utf-8"),
+        introduction: post.introduction,
         bannerUrl: post.bannerUrl,
         views: post.views + 1,
         likes: {
@@ -68,7 +68,7 @@ export const load = (async({ params, cookies }) => {
         slug: post.slug,
         color: post.color,
         readingTime: post.readingTime,
-        alreadyLiked: alreadyLiked ? 1 : 0,
+        alreadyLiked: alreadyLiked ? 1 : 0
       }
     };
   } else {

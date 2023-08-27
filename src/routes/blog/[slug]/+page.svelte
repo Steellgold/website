@@ -33,14 +33,8 @@
     if (readed > scrollHeight / 2) readedPopup = true;
   };
 
-  let copied: boolean = false;
   function copyLink() {
     navigator.clipboard.writeText(window.location.href);
-    copied = true;
-
-    setTimeout(() => {
-      copied = false;
-    }, 2000);
   }
 
   interface Emoji {
