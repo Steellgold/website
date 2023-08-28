@@ -217,7 +217,7 @@
     "z-0 mt-8 prose prose-lg max-w-xl w-5/6 mx-auto",
     "prose-a:no-underline hover:prose-a:underline prose-a:text-blue-400 hover:prose-a:text-blue-500 prose-a:after:content-['_↗']",
     "prose-p:text-gray-400 prose-code:text-gray-300 prose-strong:text-white prose-li:text-white",
-    "prose-h1:text-white prose-h2:text-white prose-h3:text-white prose-h4:text-white prose-5:text-white prose-h6:text-white"
+    "prose-h1:text-white prose-h2:text-white prose-h3:text-white prose-h4:text-white prose-5:text-white prose-h6:text-white",
   )}>
     <Markdown source={data.post.content} />
     <br><br>
