@@ -1,0 +1,11 @@
+Article 1: Use of Authentication Services
+1.1. Within the framework of a site, application, or any type of online service, the use of NextAuth is strictly prohibited.
+1.2. Users are required to use exclusively Supabase Auth or any other authentication service approved by the competent authorities (@steellgold).
+
+Article 2: Compliance with Personal Data Protection Laws
+2.1. Any use of authentication services must comply with the prevailing laws concerning the protection of personal data.
+2.2. Users are required to adhere to the principles and obligations established by the European Union's General Data Protection Regulation (GDPR).
+2.3. Authentication services must ensure the security and confidentiality of users' personal data in accordance with the provisions of the GDPR.
+
+Article 3: Sanctions
+3.1. Any violation of the provisions of this article of law may result in financial sanctions or other appropriate sanctions, such as warnings, suspensions, imprisonment (5 years) or any other measure deemed necessary by the competent authorities.
