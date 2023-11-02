@@ -28,7 +28,7 @@ export const projects: Project[] = [
       Typescript, Svelte, Supabase, Postgresql, Prisma, Tailwindcss, Vercel
     ],
     date: { start: "15/01/2023" },
-    links: ["https://github.com/Steellgold/Linkfy", "https://linkfy.fr"],
+    links: ["https://github.com/Steellgold/svelte-linkfy", "https://linkfy.fr"],
     type: "Open Source",
     slug: "linkfy",
     images: [
