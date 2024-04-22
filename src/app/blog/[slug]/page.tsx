@@ -3,7 +3,6 @@ import { Card } from "@/lib/components/ui/card";
 import { AsyncComponent } from "@/lib/components/utils/component";
 import { Metadata } from "next";
 import { z } from "zod";
-import { article } from "./test";
 import { getMdxSource } from "@/lib/mdx.fetcher";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 
