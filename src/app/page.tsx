@@ -1,9 +1,17 @@
-import Image from "next/image";
+import { ReactElement } from "react";
+import { Header } from "./lib/header";
+import { Projects } from "./lib/projects";
 
-export default function Home() {
+const Home = (): ReactElement => {
   return (
-    <p>
-      Hello world!
-    </p>
+    <>
+      <Header />
+
+      <div className="justify-center mx-auto w-5/6 lg:w-2/4">
+        <Projects />
+      </div>
+    </>
   );
 }
+
+export default Home;
