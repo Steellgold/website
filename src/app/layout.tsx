@@ -20,10 +20,8 @@ export const viewport: Viewport = {
 const Layout: Component<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={cn("min-h-screen scroll-smooth bg-black py-16", nunito.className)}>
-        <main className="mx-auto w-1/2 xl:w-5/6 lg:w-3/4 sm:w-11/12">
+      <body className={cn("bg-black", nunito.className)}>
         {children}
-        </main>
       </body>
     </html>
   );
