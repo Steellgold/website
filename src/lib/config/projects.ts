@@ -1,4 +1,4 @@
-import { AuthJS, NextJS, OpenAI, PostgreSQL, Prisma, Stripe, Supabase, TailwindCSS, Typescript, Vercel } from "./stacks";
+import { AuthJS, DiscordJS, NextJS, OpenAI, PostgreSQL, Prisma, Railway, Redis, Stripe, Supabase, TailwindCSS, Typescript, Vercel } from "./stacks";
 import { Project } from "./types/project.type";
 
 export const projects: Project[] = [
@@ -16,11 +16,12 @@ export const projects: Project[] = [
       PostgreSQL,
       Supabase,
       Stripe
-    ]
+    ],
+    url: "https://tweeets.app"
   },
   {
     title: "Simplist",
-    description: "Simplist is a fast posting API.",
+    description: "Post a article and retrieve it using the API.",
     type: "open-source",
     stacks: [
       Typescript,
@@ -29,9 +30,25 @@ export const projects: Project[] = [
       Vercel,
       Prisma,
       PostgreSQL,
-      Stripe,
-      AuthJS
+      Supabase,
+      Redis
     ],
     url: "https://simplist.blog"
+  },
+  {
+    title: "Bottly",
+    description: "An Discord bot allow users ask questions to ChatGPT",
+    type: "open-source",
+    stacks: [
+      Typescript,
+      DiscordJS,
+      OpenAI,
+      Prisma,
+      Supabase,
+      PostgreSQL,
+      Railway,
+      Redis
+    ],
+    url: "https://discord.com/application-directory/1076862546658738236"
   }
 ];
