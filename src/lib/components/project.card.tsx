@@ -7,24 +7,27 @@ import { Component } from "./utils/component";
 import { ExternalLink } from "lucide-react";
 import { PropsWithChildren } from "react";
 
-export const ProjectCard: Component<Project> = ({ title, description, stacks, url, type }) => {
+export const ProjectCard: Component<Project & { className?: string }> = ({ title, description, stacks, url, type, className }) => {
   return (
-    <SurroundLink href={url}>
+    <SurroundLink href={url} className={cn("cursor-pointer", className)}>
       <Card className={cn(
-        "flex flex-col h-full bg-[#161616] border-[2px] border-[#1a1a1a]",
-        "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]"
+        "h-full bg-[#161616] border-[2px] border-[#1a1a1a]",
+        "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]",
+        className
       )}>
         <CardHeader>
-          <CardTitle className={cn("text-[#f0f0f0]", {
-            "flex items-center": url !== ""
-          })}>
-            {title}
-            {url ? <ExternalLink className="w-4 h-4 ml-2" /> : null}
-          </CardTitle>
+          <div className="flex justify-between items-center">            
+            <CardTitle className={cn("text-[#f0f0f0]", { "flex items-center": url !== "" })}>
+              {title}
+              {url ? <ExternalLink className="w-4 h-4 ml-2" /> : null}
+            </CardTitle>
+            
+            {type === "pro" && <span className="text-[#181b20] bg-[#f5f1de] px-2 py-1 rounded-md text-xs">Pro</span>}
+          </div>
           <CardDescription>{description}</CardDescription>
         </CardHeader>
 
-        <CardFooter className="flex flex-col gap-2">
+        <CardFooter>
           <div className="flex flex-wrap gap-1">
             {stacks.map((stack) => (
               <span key={stack.name} className="text-[#f0f0f0] bg-[#333] px-2 py-1 rounded-md text-xs">
@@ -38,11 +41,11 @@ export const ProjectCard: Component<Project> = ({ title, description, stacks, ur
   );
 }
 
-const SurroundLink: Component<PropsWithChildren & { href?: string }> = ({ href, children }) => {
+const SurroundLink: Component<PropsWithChildren & { href?: string, className?: string }> = ({ href, children, className }) => {
   if (!href) return children as any;
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref className={className}>
       {children}
     </Link>
   );
