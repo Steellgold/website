@@ -1,55 +1,92 @@
+"use client";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { Separator } from "@/lib/components/ui/separator";
+import { PostSchema } from "@/lib/types/post.type";
 import { cn } from "@/lib/utils";
+import { dayJS } from "@/lib/utils/dayjs/day-js";
+import { Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { z } from "zod";
 
-export const Blog = async(): Promise<ReactElement> => {
-  const response = await fetch("https://simplist.blog/api/clvb16vqu0000syvk0rfb7pjx/last", {
-    headers: {
-      "x-api-key": process.env.SIMPLIST_API_KEY!,
-      "Cache-Control": "no-cache",
-      "If-None-Match": "",
+export const Blog = (): ReactElement => {
+  const [data, setData] = useState<z.infer<typeof PostSchema> | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async() => {
+      const response = await fetch("/api/last-post");
+      const data =  await response.json()
+      const schema = PostSchema.safeParse(data);
+
+      if (!schema.success) {
+        console.error(schema.error.errors);
+        setData(null);
+        setError("Failed to fetch data");
+        console.error("Failed to fetch data");
+        return;
+      }
+
+      if (!schema.data) {
+        setData(null);
+        setError("No published posts found");
+        console.error("No published posts found");
+        return;
+      }
+
+      setData(schema.data);
     }
-  });
 
-  const data =  await response.json()
+    fetchData();
+  }, []);
 
-  const schema = z.object({
-    id: z.string(),
-    title: z.string(),
-    slug: z.string(),
-    excerpt: z.string(),
-    content: z.string(),
-    banner: z.string(),
-    status: z.enum(["DRAFT", "PUBLISHED"]),
-  }).safeParse(data);
+  if (error) return <div className="text-white">An error occured: {error}</div>;
+  if (!data) return <></>
+  if (data.status !== "PUBLISHED") {
+    const lockedUntil = data.metadata?.find((meta) => meta.key === "lockedUntil")?.value;
 
-  if (!schema.success) {
-    return <Card>{schema.error.message}</Card>;
+    if (lockedUntil) {
+      return (
+        <>
+          <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
+
+          <Card className={cn(
+            "bg-[#161616] border-[2px] border-[#1a1a1a]",
+            "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]"
+          )}>
+            <CardContent className="h-60 relative">
+              <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 text-white">
+                <Lock size={24} />
+                <p className="text-sm text-center">
+                  A new post is here, but it won&apos;t be released until {dayJS(lockedUntil).format("D MMMM YYYY")}, be patient!
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </>
+      )
+    };
   }
-
-  if (schema.data.status === "DRAFT") return <></>;
 
   return (
     <>
       <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
-      <Link href={`/blog/${schema.data.slug}`} passHref prefetch>
+      <Link href={`/blog/${data.slug}`} passHref prefetch={data.status === "PUBLISHED"}>
         <Card className={cn(
           "bg-[#161616] border-[2px] border-[#1a1a1a]",
           "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]"
         )}>
           <CardHeader>
-            <CardTitle className="text-[#f0f0f0]">{schema.data.title}</CardTitle>
-            <CardDescription>{schema.data.excerpt}</CardDescription>
+            <CardTitle className="text-[#f0f0f0]">{data.title}</CardTitle>
+            <CardDescription>{data.excerpt}</CardDescription>
           </CardHeader>
 
           <CardContent>
             <Image
-              src={schema.data.banner}
-              alt={schema.data.title}
+              src={data.banner || ""}
+              alt={data.title}
               className="object-cover object-center rounded-lg"
               width={1920}
               height={1080}
