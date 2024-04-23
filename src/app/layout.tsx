@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Gaëtan | Back-end Developer",
+  title: "Gaëtan | Full-stack Developer",
   applicationName: "Gaëtan's Portfolio",
   description: "19. Indie Hacker | Full-stack developper",
 };

@@ -58,7 +58,7 @@ export const Header = (): ReactElement => {
       <div className="pt-3 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
         <p className="text-1xl pt-1 text-left">Hello, I&apos;m</p>
         <h1 className="text-5xl font-bold text-left">Gaëtan</h1>
-        <p className="text-1xl pt-1 text-left">I&apos;m a back-end developer, working with TypeScript.</p>
+        <p className="text-1xl pt-1 text-left">I&apos;m a full-stack developer, working with TypeScript.</p>
 
         {dayJS().format("MM-DD") === "10-14" && (
           <Alert className="mt-3">
