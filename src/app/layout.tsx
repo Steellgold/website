@@ -21,6 +21,7 @@ const Layout: Component<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
       <script defer src="https://supalytics.co/track.js" data-website-id="ffa13789-0111-4357-8b65-1777364c77b3"></script>
+
       <body className={cn("bg-black", nunito.className)}>
         {children}
       </body>
