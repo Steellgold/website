@@ -11,7 +11,7 @@ import { ReactElement } from "react";
 export const Blog = async(): Promise<ReactElement> => {
   const response = await fetch("https://simplist.blog/api/clvb16vqu0000syvk0rfb7pjx/last", {
     headers: {
-      "x-api-key": process.env.SIMPLIST_API_KEY || ""
+      "x-api-key": process.env.SIMPLIST_API_KEY!
     } as HeadersInit,
     cache: "no-cache"
   });
