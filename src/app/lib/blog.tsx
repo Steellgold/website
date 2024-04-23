@@ -1,5 +1,3 @@
-"use client";
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { Separator } from "@/lib/components/ui/separator";
 import { PostSchema } from "@/lib/types/post.type";
@@ -8,40 +6,20 @@ import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactElement, useEffect, useState } from "react";
-import { z } from "zod";
+import { ReactElement } from "react";
 
-export const Blog = (): ReactElement => {
-  const [data, setData] = useState<z.infer<typeof PostSchema> | null>(null);
-  const [error, setError] = useState<string | null>(null);
+export const Blog = async(): Promise<ReactElement> => {
+  const response = await fetch("https://simplist.blog/api/clvb16vqu0000syvk0rfb7pjx/last", {
+    headers: {
+      "x-api-key": process.env.SIMPLIST_API_KEY || ""
+    } as HeadersInit,
+    cache: "no-cache"
+  });
 
-  useEffect(() => {
-    const fetchData = async() => {
-      const response = await fetch("/api/last-post", { cache: "no-cache"});
-      
-      const data =  await response.json()
-      const schema = PostSchema.safeParse(data);
+  const schema = PostSchema.safeParse(await response.json());
+  if (!schema.success) return <></>;
+  const data = schema.data;
 
-      if (!schema.success) {
-        setData(null);
-        setError("Failed to fetch data");
-        return;
-      }
-
-      if (!schema.data) {
-        setData(null);
-        setError("No published posts found");
-        return;
-      }
-
-      setData(schema.data);
-    }
-
-    fetchData();
-  }, []);
-
-  if (error) return <></>
-  if (!data) return <></>
   if (data.status !== "PUBLISHED") {
     const lockedUntil = data.metadata?.find((meta) => meta.key === "lockedUntil")?.value;
 
