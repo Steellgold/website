@@ -1,52 +1,40 @@
 {
-	"name": "portfolio",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
-		"typecheck": "tsc --noEmit"
-	},
-	"devDependencies": {
-		"@bluzzi/eslint-config": "^0.8.8",
-		"@sveltejs/adapter-auto": "^1.0.3",
-		"@sveltejs/kit": "^1.20.2",
-		"@tailwindcss/line-clamp": "^0.4.4",
-		"@types/node": "^18.16.16",
-		"@typescript-eslint/eslint-plugin": "^5.59.9",
-		"@typescript-eslint/parser": "^5.59.9",
-		"autoprefixer": "^10.4.14",
-		"eslint": "^8.42.0",
-		"eslint-plugin-svelte": "^2.30.0",
-		"postcss": "^8.4.24",
-		"prisma": "^4.15.0",
-		"svelte": "^3.59.1",
-		"svelte-check": "^3.4.3",
-		"svelte-preprocess": "^4.10.7",
-		"tailwindcss": "^3.3.2",
-		"tslib": "^2.5.3",
-		"typescript": "^5.1.3",
-		"vite": "^4.3.9"
-	},
-	"type": "module",
-	"dependencies": {
-		"@sveltejs/vite-plugin-svelte": "^2.4.1",
-		"@tailwindcss/typography": "^0.5.9",
-		"@vercel/analytics": "^1.0.1",
-		"cookie-muncher": "^0.4.2",
-		"dayjs": "^1.11.8",
-		"svelte-markdown": "^0.2.3",
-		"zod": "^3.21.4"
-	},
-	"eslintConfig": {
-		"extends": "@bluzzi",
-		"rules": {
-			"camelcase": "off"
-		}
-	}
+  "name": "website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "dayjs": "^1.11.10",
+    "lucide-react": "^0.372.0",
+    "next": "14.2.2",
+    "next-contentlayer": "^0.3.4",
+    "next-mdx-remote": "^4.4.1",
+    "react": "^18",
+    "react-confetti": "^6.1.0",
+    "react-dom": "^18",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
+    "usehooks-ts": "^3.1.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.2",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
 }
