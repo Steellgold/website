@@ -1,10 +1,10 @@
 import { MDX } from "@/lib/components/mdx";
 import { Card } from "@/lib/components/ui/card";
 import { AsyncComponent } from "@/lib/components/utils/component";
-import { Metadata } from "next";
 import { z } from "zod";
 import { getMdxSource } from "@/lib/mdx.fetcher";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
+import { Metadata } from "next";
 
 type PageProps = {
   params: {
@@ -13,7 +13,8 @@ type PageProps = {
 }
 
 export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
-  const response = await fetch(`https://simplist.blog/api/${params.slug}`, {
+  const randomString = Math.random().toString(36).substring(7);
+  const response = await fetch(`https://simplist.blog/api/${params.slug}?nocache=${randomString}`, {
     headers: {
       "x-api-key": process.env.SIMPLIST_API_KEY!,
       "Cache-Control": "no-cache",
@@ -79,11 +80,11 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 }
 
 const Post: AsyncComponent<PageProps> = async ({ params }) => {
-  const response = await fetch(`https://simplist.blog/api/${params.slug}`, {
+  const randomString = Math.random().toString(36).substring(7);
+  const response = await fetch(`https://simplist.blog/api/${params.slug}?nocache=${randomString}`, {
     headers: {
       "x-api-key": process.env.SIMPLIST_API_KEY!,
-      "Cache-Control": "no-cache",
-      "If-None-Match": "",
+      "Cache-Control": "no-cache"
     }
   });
 
