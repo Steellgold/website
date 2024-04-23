@@ -1,10 +1,10 @@
 import { MDX } from "@/lib/components/mdx";
 import { Card } from "@/lib/components/ui/card";
 import { AsyncComponent } from "@/lib/components/utils/component";
-import { z } from "zod";
 import { getMdxSource } from "@/lib/mdx.fetcher";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Metadata } from "next";
+import { PostSchema } from "@/lib/types/post.type";
 
 type PageProps = {
   params: {
@@ -24,15 +24,7 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 
   const data = await response.json();
 
-  const schema = z.object({
-    id: z.string(),
-    title: z.string(),
-    slug: z.string(),
-    excerpt: z.string(),
-    content: z.string(),
-    banner: z.string(),
-    status: z.enum(["DRAFT", "PUBLISHED"]),
-  }).safeParse(data);
+  const schema = PostSchema.safeParse(data);
 
   if (!schema.success) {
     return {
@@ -57,7 +49,7 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
       type: "article",
       images: [
         {
-          url: schema.data.banner,
+          url: schema.data.banner || "",
           width: 800,
           height: 600,
           alt: schema.data.title,
@@ -69,7 +61,7 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
       description: schema.data.excerpt,
       images: [
         {
-          url: schema.data.banner,
+          url: schema.data.banner || "",
           width: 800,
           height: 600,
           alt: schema.data.title,
@@ -90,16 +82,7 @@ const Post: AsyncComponent<PageProps> = async ({ params }) => {
 
   const data = await response.json()
   
-  const schema = z.object({
-    id: z.string(),
-    title: z.string(),
-    createdAt: z.string(),
-    slug: z.string(),
-    excerpt: z.string(),
-    content: z.string(),
-    banner: z.string(),
-    status: z.enum(["DRAFT", "PUBLISHED"]),
-  }).safeParse(data);
+  const schema = PostSchema.safeParse(data);
 
   if (!schema.success) {
     return <Card>{schema.error.message}</Card>;
