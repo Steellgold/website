@@ -17,11 +17,7 @@ export const Blog = (): ReactElement => {
 
   useEffect(() => {
     const fetchData = async() => {
-      const response = await fetch("/api/last-post", {
-        headers: {
-          "Cache-Control": "no-cache"
-        }
-      });
+      const response = await fetch("/api/last-post", { cache: "no-cache"});
       
       const data =  await response.json()
       const schema = PostSchema.safeParse(data);

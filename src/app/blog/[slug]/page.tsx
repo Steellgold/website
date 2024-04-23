@@ -14,12 +14,11 @@ type PageProps = {
 
 export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
   const randomString = Math.random().toString(36).substring(7);
-  const response = await fetch(`https://simplist.blog/api/${params.slug}?nocache=${randomString}`, {
+  const response = await fetch(`https://simplist.blog/api/${params.slug}`, {
     headers: {
-      "x-api-key": process.env.SIMPLIST_API_KEY!,
-      "Cache-Control": "no-cache",
-      "If-None-Match": "",
-    } 
+      "x-api-key": process.env.SIMPLIST_API_KEY!
+    },
+    cache: "no-cache"
   });
 
   const data = await response.json();

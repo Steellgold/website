@@ -3,12 +3,11 @@ import { NextResponse } from "next/server";
 
 export const GET = async(): Promise<NextResponse> => {
   try {
-    const randomString = Math.random().toString(36).substring(7);
-    const response = await fetch("https://simplist.blog/api/clvb16vqu0000syvk0rfb7pjx/last?nocache=" + randomString, {
+    const response = await fetch("https://simplist.blog/api/clvb16vqu0000syvk0rfb7pjx/last", {
       headers: {
-        "x-api-key": process.env.SIMPLIST_API_KEY || "",
-        "Cache-Control": "no-cache"
-      } as HeadersInit
+        "x-api-key": process.env.SIMPLIST_API_KEY || ""
+      } as HeadersInit,
+      cache: "no-cache"
     });
 
     const schema = PostSchema.safeParse(await response.json());
