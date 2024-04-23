@@ -6,7 +6,13 @@ export const PostSchema = z.object({
   slug: z.string(),
   excerpt: z.string(),
   content: z.string(),
-  banner: z.string(),
+  banner: z.string().optional(),
   status: z.enum(["DRAFT", "PUBLISHED"]),
-  lockedUntil: z.string().optional(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  metadata: z.array(z.object({
+    key: z.string(),
+    type: z.enum(["string", "number", "boolean", "date", "time", "datetime"]),
+    value: z.string(),
+  })).optional(),
 });
