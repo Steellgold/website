@@ -1,3 +1,4 @@
+import { PostSchema } from "@/lib/types/post.type";
 import { NextResponse } from "next/server";
 
 export const GET = async(): Promise<NextResponse> => {
@@ -10,8 +11,25 @@ export const GET = async(): Promise<NextResponse> => {
       } as HeadersInit
     });
 
-    const data = await response.json();
-    return NextResponse.json(data);
+    const schema = PostSchema.safeParse(await response.json());
+    if (!schema.success) {
+      return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
+    }
+
+    if (schema.data.status !== "PUBLISHED") {
+      return NextResponse.json({
+        ...schema.data,
+        id: "",
+        title: "",
+        excerpt: "",
+        content: "",
+        status: "DRAFT",
+        slug: "",
+        banner: ""
+      });
+    }
+
+    return NextResponse.json(schema.data);
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
