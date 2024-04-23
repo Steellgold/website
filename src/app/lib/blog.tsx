@@ -17,22 +17,19 @@ export const Blog = (): ReactElement => {
 
   useEffect(() => {
     const fetchData = async() => {
-      const response = await fetch("/api/last-post");
+      const response = await fetch("/api/last-post?nocache=" + Math.random().toString(36).substring(7));
       const data =  await response.json()
       const schema = PostSchema.safeParse(data);
 
       if (!schema.success) {
-        console.error(schema.error.errors);
         setData(null);
         setError("Failed to fetch data");
-        console.error("Failed to fetch data");
         return;
       }
 
       if (!schema.data) {
         setData(null);
         setError("No published posts found");
-        console.error("No published posts found");
         return;
       }
 
@@ -42,7 +39,7 @@ export const Blog = (): ReactElement => {
     fetchData();
   }, []);
 
-  if (error) return <div className="text-white">An error occured: {error}</div>;
+  if (error) return <></>
   if (!data) return <></>
   if (data.status !== "PUBLISHED") {
     const lockedUntil = data.metadata?.find((meta) => meta.key === "lockedUntil")?.value;
