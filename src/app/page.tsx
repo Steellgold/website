@@ -4,6 +4,7 @@ import { Projects } from "./lib/projects";
 import { Birthday } from "@/lib/components/birthday";
 import { Blog } from "./lib/blog";
 import { DiscordPresence } from "@/lib/components/lanyard";
+import { SpotifyCard } from "@/lib/components/spotify";
 
 const Home = (): ReactElement => {
   return (
@@ -13,6 +14,8 @@ const Home = (): ReactElement => {
       <DiscordPresence />
 
       <div className="justify-center mx-auto w-5/6 lg:w-2/4 mt-3">
+        <SpotifyCard />
+
         <Projects />
 
         <Blog />
