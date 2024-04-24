@@ -2,7 +2,8 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      { hostname: "dgzmokcshopxlsimyjqx.supabase.co", protocol: "https" }
+      { hostname: "dgzmokcshopxlsimyjqx.supabase.co", protocol: "https" },
+      { hostname: "i.scdn.co", protocol: "https" },
     ]
   }
 };
