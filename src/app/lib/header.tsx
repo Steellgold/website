@@ -9,8 +9,8 @@ export const Header = (): ReactElement => {
   return (
     <section>
       <Image
-        src="/_static/images/banner_kitty.png"
-        alt="Kitty's Banner"
+        src="/_static/images/MY_CATS.jpg"
+        alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
         className={cn(
           "w-full object-cover block object-center border-black md:border-[10px] md:rounded-3xl",
           "h-[300px] lg:h-[500px] xl:h-[550px]"
