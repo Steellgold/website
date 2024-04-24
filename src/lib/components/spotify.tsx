@@ -20,7 +20,7 @@ export const SpotifyCard = async(): Promise<ReactElement> => {
           "hover:border-[#1ed760] transition-colors duration-300 hover:bg-[#1ed760]/10 hover:shadow-lg",
           "mb-3"
         )}>
-          <CardContent className="flex flex-row mt-3 -mb-2.5">
+          <CardContent className="flex flex-row mt-3 -mb-2.5 px-3">
               <Image
                 src={track.item.album.images[0].url}
                 alt="Album cover"
@@ -29,12 +29,12 @@ export const SpotifyCard = async(): Promise<ReactElement> => {
                 className="rounded-lg object-cover"
               />
             <div className="flex flex-col justify-center ml-3">
-                <h1 className="text-white text-2xl font-bold flex flex-row items-center">
+                <h1 className="text-white text-lg font-bold flex flex-row items-center">
                   <PlayingAnimation />
                   &nbsp;
                   {track.item.name}
                 </h1>
-                <p className="text-white text-lg">
+                <p className="text-white text-xs md:text-md">
                   {track.item.artists.map((artist) => artist.name).join(", ")}
                 </p>
             </div>

@@ -41,11 +41,11 @@ const Playing = styled.div`
     position: relative;
     display: flex;
     justify-content: space-between;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
   
     span {
-        width: 4px;
+        width: 3px;
         height: 100%;
         background-color: #1ED760;
         border-radius: 3px;
