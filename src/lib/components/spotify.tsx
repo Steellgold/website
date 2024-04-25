@@ -10,9 +10,13 @@ import { cn } from "@/lib/utils";
 import { z } from "zod";
 import { SpotifyTrack } from "@/lib/utils/spotify/spotify.schema";
 import { FaSpotify } from "react-icons/fa";
+import { useLanyard } from "react-use-lanyard";
 
 export const SpotifyCard = (): ReactElement => {
   const [track, setTrack] = useState<z.infer<typeof SpotifyTrack> | null>(null);
+  const { status } = useLanyard({ userId: "504392983244832780", socket: true })
+
+  const activities = status?.activities?.filter(activity => activity.name !== "Spotify");
 
   useEffect(() => {
     const fetchNowPlaying = async () => {
@@ -32,7 +36,9 @@ export const SpotifyCard = (): ReactElement => {
   if (!track) return <></>;
 
   return (
-    <Link href={track.item.external_urls.spotify}>
+    <Link href={track.item.external_urls.spotify} className={cn({
+      "col-span-2": activities?.length === 0,
+    })}>
       <Card className={cn(
         "h-full border-[2px] mb-3 group",
         "border-[#1ed760] transition-colors duration-300 bg-[#1ed760]/10 hover:shadow-lg",
