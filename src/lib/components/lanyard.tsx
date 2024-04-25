@@ -7,17 +7,19 @@ import { Card, CardContent, CardFooter } from "./ui/card";
 import Image from "next/image";
 import { cn } from "../utils";
 
-const ALLOWED_ACTIVITIES = [
+export const ALLOWED_ACTIVITIES = [
   "782685898163617802", // Visual Studio Code
   "768942376403075073", // Figma
   "926541425682829352", // Netflix
-  "610123745033584651", // Stack Overflow
-  "607587875122446359", // GitHub
-  "705139844883677224", // Amazon Prime Video
-  "802958789555781663", // Twitch
-  "463097721130188830", // YouTube
-  "630236276829716483", // Disney+
-  "844106861711196179", // Canal+
+
+  // Not configured yet
+  // "610123745033584651", // Stack Overflow
+  // "607587875122446359", // GitHub
+  // "705139844883677224", // Amazon Prime Video
+  // "802958789555781663", // Twitch
+  // "463097721130188830", // YouTube
+  // "630236276829716483", // Disney+
+  // "844106861711196179", // Canal+
 
   // TODO: Change this to enums/consts for call the IDs more easily
 ];
