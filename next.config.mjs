@@ -6,7 +6,9 @@ const nextConfig = {
       { hostname: "i.scdn.co", protocol: "https" },
       { hostname: "raw.githubusercontent.com", protocol: "https" },
       { hostname: "cdn.rcd.gg", protocol: "https" },
-      { hostname: "cdn.discordapp.com", protocol: "https" }
+      { hostname: "cdn.discordapp.com", protocol: "https" },
+      { hostname: "media.discordapp.net", protocol: "https" },
+      { hostname: "avatars.githubusercontent.com", protocol: "https" },
     ]
   }
 };
