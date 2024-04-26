@@ -22,11 +22,24 @@ export const ALLOWED_ACTIVITIES = [
   GITHUB,
 
   // Not configured yet
-  // AMAZON_PRIME_VIDEO,
   // TWITCH,
+  // AMAZON_PRIME_VIDEO,
   // DISNEY_PLUS,
   // CANAL_PLUS
 ];
+
+export const COLORS: Record<ActivityName, string> = {
+  [VS_CODE]: "#2bb0f0",
+  [FIGMA]: "#a357ff",
+  [NETFLIX]: "#e8040e",
+  [YOUTUBE]: "#ff0000",
+  [STACK_OVERFLOW]: "#f48024",
+  [GITHUB]: "#1a1e21",
+  [TWITCH]: "#000000",
+  [AMAZON_PRIME_VIDEO]: "#146eb4",
+  [DISNEY_PLUS]: "#000000",
+  [CANAL_PLUS]: "#000000",
+};
 
 export const getActivityId = (activity: Activity | ActivityName): string => {
   return typeof activity === "string" ? activity : activity.application_id ?? "";
@@ -38,15 +51,8 @@ export const isAllowedActivity = (activity: Activity): boolean => {
 
 export const getActivityCardColor = (activity: Activity): string => {
   const activityId = getActivityId(activity);
-
-  if (activityId === VS_CODE) return "border-[#2bb0f0] bg-[#2bb0f0]/10";
-  if (activityId === FIGMA) return "border-[#a357ff] bg-[#a357ff]/10";
-  if (activityId === NETFLIX) return "border-[#e8040e] bg-[#e8040e]/10";
-  if (activityId === YOUTUBE) return "border-[#ff0000] bg-[#ff0000]/10";
-  if (activityId === STACK_OVERFLOW) return "border-[#f48024] bg-[#f48024]/10";
-  if (activityId === GITHUB) return "border-[#1a1e21] bg-[#1a1e21]/10";
-
-  return "";
+  const color = COLORS?.[activityId as ActivityName];
+  return `border-[${color}] bg-[${color}]/10`;
 }
 
 export const isActivityBigImage = (activity: Activity): boolean => {
@@ -58,6 +64,7 @@ export const isActivityBigImage = (activity: Activity): boolean => {
   if (activityId === YOUTUBE) return true;
   if (activityId === STACK_OVERFLOW) return true;
   if (activityId === GITHUB) return true;
+  if (activityId === TWITCH) return true;
 
   return true;
 }
