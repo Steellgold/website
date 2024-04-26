@@ -11,6 +11,7 @@ import { z } from "zod";
 import { SpotifyTrack } from "@/lib/utils/spotify/spotify.schema";
 import { FaSpotify } from "react-icons/fa";
 import { useLanyard } from "react-use-lanyard";
+import { ExternalLink } from "lucide-react";
 
 export const SpotifyCard = (): ReactElement => {
   const [track, setTrack] = useState<z.infer<typeof SpotifyTrack> | null>(null);
@@ -43,32 +44,43 @@ export const SpotifyCard = (): ReactElement => {
         "h-full border-[2px] mb-3 group",
         "border-[#1ed760] transition-colors duration-300 bg-[#1ed760]/10 hover:shadow-lg",
       )}>
-        <CardContent className="flex flex-row items-center mt-3 -mb-5 px-3">
-          <div className="relative">
-            <Image
-              src={track.item.album.images[0].url}
-              alt="Album cover"
-              width={64}
-              height={64}
-              className="rounded-lg object-cover"
-            />
+        <div className="relative">
+          <CardContent className="flex flex-row items-center mt-3 -mb-5 px-3">
+            <div className="relative">
+              <Image
+                src={track.item.album.images[0].url}
+                alt="Album cover"
+                width={64}
+                height={64}
+                className="rounded-lg object-cover"
+              />
 
-            <div className="absolute -bottom-2 -right-2 p-1 bg-[#03160a] rounded-full transition-colors duration-300">
-              <FaSpotify className="text-green-500" />
+              <div className="absolute -bottom-2 -right-2 p-1 bg-[#03160a] rounded-full transition-colors duration-300">
+                <FaSpotify className="text-green-500" />
+              </div>
             </div>
-          </div>
-            
-          <div className="flex flex-col justify-center ml-5">
-            <h1 className="text-white text-lg font-bold flex flex-row items-center">
-              <PlayingAnimation />
-              <div className="ml-1">&nbsp;{track.item.name}</div>
-            </h1>
-            
-            <p className="text-white text-xs md:text-md">
-              {track.item.artists.map((artist) => artist.name).join(", ")}
-            </p>
-          </div>
-        </CardContent>
+              
+            <div className="flex flex-col justify-center ml-5">
+              <h1 className="text-white text-lg font-bold flex flex-row items-center">
+                <PlayingAnimation />
+                <div className="ml-1">&nbsp;{track.item.name}</div>
+              </h1>
+              
+              <p className="text-white text-xs md:text-md">
+                {track.item.artists.map((artist) => artist.name).join(", ")}
+              </p>
+            </div>
+          </CardContent>
+
+          <ExternalLink
+            className={cn(
+              "absolute -top-5 -right-2 p-1",
+              "bg-[#1ed760] text-[#03160a]",
+              "rounded-full"
+            )}
+            size={24}
+            />
+        </div>
       </Card>
     </Link>
   );
