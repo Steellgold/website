@@ -5,15 +5,12 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/c
 import { Component } from "./utils/component";
 import { ExternalLink } from "lucide-react";
 import { PropsWithChildren } from "react";
+import { CustomCard } from "./card";
 
 export const ProjectCard: Component<Project & { className?: string }> = ({ title, description, stacks, url, duration, type, className }) => {
   return (
     <SurroundLink href={url} className={cn("cursor-pointer", className)}>
-      <Card className={cn(
-        "h-full bg-[#161616] border-[2px] border-[#1a1a1a]",
-        "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]",
-        className
-      )}>
+      <CustomCard>
         <CardHeader className="p-4">
           <div className="flex justify-between items-center">
             <div className="flex flex-col">
@@ -41,7 +38,7 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
             ))}
           </div>
         </CardFooter>
-      </Card>
+      </CustomCard>
     </SurroundLink>
   );
 }
