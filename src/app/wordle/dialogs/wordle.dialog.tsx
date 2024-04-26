@@ -1,11 +1,11 @@
 "use client";
 
-import { Button } from "./ui/button";
-import { Dialog, DialogContent, DialogFooter } from "./ui/dialog";
+import { Button } from "../../../lib/components/ui/button";
+import { Dialog, DialogContent, DialogFooter } from "../../../lib/components/ui/dialog";
 import type { ReactElement } from "react";
 import Image from "next/image";
-import { useWordleStore } from "../store/wordle.store";
-import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { useWordleStore } from "../../../lib/store/wordle.store";
+import { Alert, AlertDescription, AlertTitle } from "../../../lib/components/ui/alert";
 import { Drum } from "lucide-react";
 
 export const WordleDialog = (): ReactElement => {
@@ -14,7 +14,7 @@ export const WordleDialog = (): ReactElement => {
   return (
     <Dialog defaultOpen={!hasVisitedWordle} open={!hasVisitedWordle} onClose={() => setHasVisitedWordle()}>
       <DialogContent className="max-w-xl p-0 overflow-hidden" black hiddenX>
-        <div className="aspect-video relative flex items-center">
+        <div className="aspect-video relative flex items-center mt-3">
           <Image
             src={"/_static/images/wordle.png"}
             alt="Wordle Picture"
