@@ -44,7 +44,7 @@ export const getActivityCardColor = (activity: Activity): string => {
   if (activityId === NETFLIX) return "border-[#e8040e] bg-[#e8040e]/10";
   if (activityId === YOUTUBE) return "border-[#ff0000] bg-[#ff0000]/10";
   if (activityId === STACK_OVERFLOW) return "border-[#f48024] bg-[#f48024]/10";
-  if (activityId === GITHUB) return "border-[#24292e] bg-[#24292e]/10";
+  if (activityId === GITHUB) return "border-[#1a1e21] bg-[#1a1e21]/10";
 
   return "";
 }
