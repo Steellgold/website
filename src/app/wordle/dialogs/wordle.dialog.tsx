@@ -14,7 +14,7 @@ export const WordleDialog = (): ReactElement => {
   return (
     <Dialog defaultOpen={!hasVisitedWordle} open={!hasVisitedWordle} onClose={() => setHasVisitedWordle()}>
       <DialogContent className="max-w-xl p-0 overflow-hidden" black hiddenX>
-        <div className="aspect-video relative flex items-center mt-3">
+        <div className="aspect-video relative flex items-center -mb-5">
           <Image
             src={"/_static/images/wordle.png"}
             alt="Wordle Picture"
