@@ -4,6 +4,7 @@ import "./globals.css";
 import { Component } from "@/lib/components/utils/component";
 import { PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/lib/components/providers/theme-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -23,7 +24,9 @@ const Layout: Component<PropsWithChildren> = ({ children }) => {
       <script defer src="https://supalytics.co/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
 
       <body className={cn("bg-black", nunito.className)}>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
