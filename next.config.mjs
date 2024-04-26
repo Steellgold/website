@@ -9,6 +9,8 @@ const nextConfig = {
       { hostname: "cdn.discordapp.com", protocol: "https" },
       { hostname: "media.discordapp.net", protocol: "https" },
       { hostname: "avatars.githubusercontent.com", protocol: "https" },
+      { hostname: "pbs.twimg.com", protocol: "https" },
+      { hostname: "upload.wikimedia.org", protocol: "https" },
     ]
   }
 };
