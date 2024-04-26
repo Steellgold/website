@@ -61,3 +61,19 @@ export const isActivityBigImage = (activity: Activity): boolean => {
 
   return true;
 }
+
+export const fixActivityGitHubImageLink = (activity: Activity): string => {
+  if (activity.application_id === getActivityId(GITHUB)) {
+    console.log(activity.assets?.large_image);
+
+    const link = activity.assets?.large_image.replace('mp:external/', '').split('/');
+    console.log(link);
+    if (link?.[2] == "avatars.githubusercontent.com")
+      return `https://avatars.githubusercontent.com/u/${link?.[4]}`;
+    if (link?.[2] == "cdn.rcd.gg")
+      return "https://cdn.rcd.gg/PreMiD/websites/G/GitHub/assets/logo.png";
+    return `https://${link?.[3]}/${link?.[4]}/${link?.[5]}?v=4`;
+  }
+
+  return activity.assets?.large_image ?? "";
+}
