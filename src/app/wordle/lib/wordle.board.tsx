@@ -37,6 +37,8 @@ export const WordleBoard = (): ReactElement => {
     if (e.key === "Enter") {
       if (!activePartyId) return;
       const party = getParty(activePartyId);
+      if ((party?.lines ?? [])[activeLineIndex ?? 0].some((data) => data.letter === "")) return;
+
       const result = isValidWord(party?.lines ?? [], party?.word ?? "", (activeLineIndex ?? 0));
       setLine(result);
 
