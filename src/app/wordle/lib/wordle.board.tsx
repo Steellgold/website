@@ -3,7 +3,7 @@
 import { Button } from "@/lib/components/ui/button";
 import { Component } from "@/lib/components/utils/component";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
-import { LetterStatus } from "@/lib/types/wordle.type";
+import { Letter, LetterStatus, Line } from "@/lib/types/wordle.type";
 import { cn } from "@/lib/utils";
 import { isValidWord } from "@/lib/wordle/utils";
 import { Delete, Space } from "lucide-react";
@@ -39,7 +39,7 @@ export const WordleBoard = (): ReactElement => {
           <div className="p-2">
             {party?.lines?.map((line, i) => (
               <div key={i} className="flex flex-row">
-                {line.map((data: { letter: string, status: LetterStatus }, i) => (
+                {line.map((data: Letter, i) => (
                   <Case key={i} letter={data.letter.toUpperCase()} status={data.status} />
                 ))}
               </div>
@@ -93,7 +93,7 @@ export const WordleBoard = (): ReactElement => {
   );
 }
 
-export const Case: Component<{ letter: string, status: LetterStatus }> = ({ letter, status }) => {
+export const Case: Component<Letter> = ({ letter, status }) => {
   return (
     <div className={cn(
       "border border-[2px] w-16 h-16 flex justify-center items-center", {

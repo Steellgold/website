@@ -37,12 +37,11 @@ export const Categories: {
   "human-life": 27,
 };
 
-export type Line = {
-  map(arg0: (letter: any) => any): unknown;
-  [key: number]: {
-    letter: string;
-    status: LetterStatus;
-  }[];
+export type Line = Letter[];
+
+export type Letter = {
+  letter: string;
+  status: LetterStatus;
 };
 
 export type WordleParty = {
