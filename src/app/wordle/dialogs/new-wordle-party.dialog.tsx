@@ -6,7 +6,7 @@ import { useState, type PropsWithChildren } from "react";
 import { Component } from "@/lib/components/utils/component";
 import { Label } from "@/lib/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/lib/components/ui/select";
-import { Categories, PartyDifficulty, WordCategories, WordleParty, getRandomCategory } from "@/lib/types/wordle.type";
+import { Categories, PartyDifficulty, WordCategories, WordleParty } from "@/lib/types/wordle.type";
 import { difficultyToNumber, getCategoryId, getCategoryName } from "@/lib/wordle/party";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
 import { Loader2 } from "lucide-react";
