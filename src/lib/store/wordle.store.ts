@@ -28,7 +28,7 @@ type PartyStore = {
   removeParty: (id: string) => void;
 
   // setWin: (id: string) => void;
-  // setLose: (id: string, reason: PartyEndReason) => void;
+  setLose: (id: string, reason: PartyEndReason) => void;
 
   isJokerUsed: (id: string) => boolean;
   setJokerUsed: (id: string) => void;
@@ -62,6 +62,19 @@ export const useWorldePartyStore = create(
       setJokerUsed: (id) => {
         set((state) => ({ parties: state.parties.map((party) => party.id === id ? { ...party, jokerUsed: true } : party) }));
       },
+
+      setLose: (id, reason) => {
+        set((state) => ({
+          parties: state.parties.map(
+            (party) => party.id === id ?
+              { ...party, endStatus: "lose", endReason: reason, finishedAt: Date.now().toString() }
+              : party
+            )
+          })
+        );
+        
+        set(() => ({ activePartyId: null }));
+      }
 
       // setWin: (id) => set((state) => {
       //   const party = state.parties.find((party) => party.id === id);
