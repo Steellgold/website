@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { PartyEndReason, WordleParty } from "../types/wordle.type";
+import { LetterStatus, Line, PartyEndReason, WordleParty } from "../types/wordle.type";
+import { difficultyToNumber } from "../wordle/party";
 
 type DataStore = {
   hasVisitedWordle: boolean;
@@ -20,22 +21,25 @@ export const useWordleStore = create(
 type PartyStore = {
   parties: WordleParty[];
   activePartyId: string | null;
+  activeLineIndex: number | null;
   setActivePartyId: (id: string | null) => void;
+  setActiveLineIndex: (index: number | null) => void;
 
   getParty: (id: string) => WordleParty | undefined;
 
   addParty: (party: WordleParty) => void;
   removeParty: (id: string) => void;
 
-  // setWin: (id: string) => void;
+  setWin: (id: string) => void;
   setLose: (id: string, reason: PartyEndReason) => void;
 
   isJokerUsed: (id: string) => boolean;
   setJokerUsed: (id: string) => void;
 
-  // getLine: (id: string, lineIndex: number) => { letter: string; status: string }[];
-  // addLine: (id: string, line: { letter: string; status: string }[]) => void;
-  // editLine: (id: string, lineIndex: number, line: { letter: string; status: string }[]) => void;
+  addLetter: (letter: string) => void;
+  removeLetter: () => void;
+
+  setLine: (line: Line) => void;
 };
 
 export const useWorldePartyStore = create(
@@ -43,13 +47,22 @@ export const useWorldePartyStore = create(
     (set, get) => ({
       parties: [],
       activePartyId: null,
+      activeLineIndex: 0,
       setActivePartyId: (id) => set(() => ({ activePartyId: id })),
+      setActiveLineIndex: (index) => set(() => ({ activeLineIndex: index })), 
 
       getParty: (id) => get().parties.find((party) => party.id === id),
-      // getLine: (id, lineIndex) => get().getParty(id)?.lines?.[lineIndex] || [],
 
       addParty: (party) => {
-        set((state) => ({ parties: [...state.parties, party] }));
+        set((state) => ({
+          parties: [
+            ...state.parties,
+            {
+              ...party,
+              lines: Array(party.attempts).fill().map(() => Array.from({ length: difficultyToNumber(party.difficulty) }, () => ({ letter: "", status: "unknown" }))),
+            },
+          ],
+        }));
         set(() => ({ activePartyId: party.id }));
       },
 
@@ -63,6 +76,15 @@ export const useWorldePartyStore = create(
         set((state) => ({ parties: state.parties.map((party) => party.id === id ? { ...party, jokerUsed: true } : party) }));
       },
 
+      setWin: (id) => {
+        set((state) => ({
+          parties: state.parties.map(
+            (party) => party.id === id ? { ...party, endStatus: "win", finishedAt: Date.now().toString() } : party
+          ),
+        }));
+        set(() => ({ activePartyId: null }));
+      },
+      
       setLose: (id, reason) => {
         set((state) => ({
           parties: state.parties.map(
@@ -74,41 +96,72 @@ export const useWorldePartyStore = create(
         );
         
         set(() => ({ activePartyId: null }));
-      }
+      },
+      
+      addLetter: (letter) => {
+        const lines: Line[] = get().getParty(get().activePartyId!)?.lines || [];
+        const lineIndex = get().activeLineIndex!;
 
-      // setWin: (id) => set((state) => {
-      //   const party = state.parties.find((party) => party.id === id);
-      //   if (!party) return;
+        const line = lines[lineIndex];
 
-      //   party.endStatus = "win";
-      //   party.finishedAt = Date.now();
-      // }),
+        const index = line.findIndex((l) => l.letter === "");
+        if (index === -1) return;
 
-      // setLose: (id, reason) => set((state) => {
-      //   const party = state.parties.find((party) => party.id === id);
-      //   if (!party) return;
+        line[index].letter = letter;
 
-      //   party.endStatus = "lose";
-      //   party.endReason = reason;
-      //   party.finishedAt = Date.now();
-      // }),
+        set((state) => ({
+          parties: state.parties.map((party) => party.id === state.activePartyId ? { ...party, lines } : party),
+        }));
+      },
 
-      // addLine: (id, line) => set((state) => {
-      //   const party = state.parties.find((party) => party.id === id);
-      //   if (!party) return;
+      removeLetter: () => {
+        const lines: Line[] = get().getParty(get().activePartyId!)?.lines || [];
+        const lineIndex = get().activeLineIndex!;
+        const line = lines[lineIndex];
 
-      //   party.lines = party.lines || [];
-      //   party.lines.push(line);
-      // }),
+        const lastIndex = line.length - 1;
+        for (let i = lastIndex; i >= 0; i--) {
+          if (line[i].letter !== "") {
+            line[i].letter = "";
+            break;
+          }
+        }
 
-      // editLine: (id, lineIndex, line) => set((state) => {
-      //   const party = state.parties.find((party) => party.id === id);
-      //   if (!party) return;
+        set((state) => ({
+          parties: state.parties.map((party) => party.id === state.activePartyId ? { ...party, lines } : party),
+        }));
+      },
 
-      //   party.lines = party.lines || [];
-      //   party.lines[lineIndex] = line;
-      // })
+      setLine: (line) => {
+        const lines: Line[] = get().getParty(get().activePartyId!)?.lines || [];
+        const lineIndex = get().activeLineIndex!;
+
+        lines[lineIndex] = line;
+
+        set((state) => ({
+          parties:
+            state.parties.map((party) => party.id === state.activePartyId
+              ? { ...party, lines }
+              : party
+            ),
+        }));
+      },
     }),
     { name: "wordle-party-storage" },
   ),
 );
+
+// const duplicateValidLetters = (id: string) => {
+//   const party = get().getParty(id);
+//   if (!party) return;
+
+//   const duplicatedLines = party.lines.map(line => 
+//     line.map(item => 
+//       item.status === 'good' ? { ...item, letter: item.letter + item.letter } : item
+//     )
+//   );
+
+//   set((state) => ({
+//     parties: state.parties.map((party) => party.id === id ? { ...party, lines: duplicatedLines } : party),
+//   }));
+// };

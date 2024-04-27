@@ -145,8 +145,11 @@ export const difficultyToNumber = (difficulty: PartyDifficulty): number => {
   }
 }
 
-export const getWinsCount = (parties: WordleParty[]): number => (parties ?? []).filter((party) => party.endStatus === "win").length;
+export const getWinsCount = (parties: WordleParty[]): number =>
+  (parties ?? []).filter((party) => party.endStatus === "win").length;
 
-export const getLosesCount = (parties: WordleParty[]): number => (parties ?? []).filter((party) => party.endStatus === "lose").length;
+export const getLosesCount = (parties: WordleParty[]): number =>
+  (parties ?? []).filter((party) => party.endStatus === "lose").length;
 
-export const getPlayedCount = (parties: WordleParty[]): number => (parties ?? []).length;
+export const getPlayedCount = (parties: WordleParty[]): number =>
+  (parties ?? []).length;

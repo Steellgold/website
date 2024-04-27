@@ -1,4 +1,4 @@
-export type LetterStatus = "well-placed" | "misplaced" | "not-present";
+export type LetterStatus = "well-placed" | "misplaced" | "not-present" | "unknown";
 export type PartyEndReason = "abandon" | "missed";
 export type PartyDifficulty = "five" | "six" | "seven" | "eight" | "nine" | "ten";
 
@@ -37,8 +37,18 @@ export const Categories: {
   "human-life": 27,
 };
 
+export type Line = {
+  map(arg0: (letter: any) => any): unknown;
+  [key: number]: {
+    letter: string;
+    status: LetterStatus;
+  }[];
+};
+
 export type WordleParty = {
   id: string;
+  activeLineIndex: number;
+  
   word: string;
   startedAt: string;
   finishedAt?: string;
@@ -48,11 +58,9 @@ export type WordleParty = {
 
   difficulty: PartyDifficulty;
   category: WordCategories;
+  attempts: number;
   
   jokerUsed?: boolean;
 
-  lines?: {
-    letter: string;
-    status: LetterStatus;
-  }[];
+  lines?: Line[];
 };
