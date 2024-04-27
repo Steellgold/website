@@ -8,26 +8,20 @@ type ValidPosition = {
 export const isValidWord = (letterArray: Line[], targetWord: string, lineIndexToCheck: number): ValidPosition[] => {
   const word = letterArray[lineIndexToCheck].map((letter) => letter.letter.toLowerCase()).join("");
 
-  if (word === targetWord) {
-    return [
-      { letter: word[0], status: "well-placed" },
-      { letter: word[1], status: "well-placed" },
-      { letter: word[2], status: "well-placed" },
-      { letter: word[3], status: "well-placed" },
-      { letter: word[4], status: "well-placed" }
-    ];
-  }
-
   const wordDecomposed = word.split("");
   const targetWordDecomposed = targetWord.split("");
 
-  let positions: ValidPosition[] = [
-    { letter: wordDecomposed[0], status: "unknown" },
-    { letter: wordDecomposed[1], status: "unknown" },
-    { letter: wordDecomposed[2], status: "unknown" },
-    { letter: wordDecomposed[3], status: "unknown" },
-    { letter: wordDecomposed[4], status: "unknown" }
-  ];
+  if (word === targetWord) {
+    return wordDecomposed.map((letter, index) => {
+      if (index < targetWordDecomposed.length && letter === targetWordDecomposed[index]) {
+      return { letter, status: "well-placed" };
+      } else {
+      return { letter, status: "unknown" };
+      }
+    });
+  }
+
+  let positions: ValidPosition[] = wordDecomposed.map((letter) => ({ letter, status: "unknown" }));
 
 
   let targetLetterCounts: Record<string, number> = {};
