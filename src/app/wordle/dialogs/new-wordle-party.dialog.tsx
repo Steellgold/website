@@ -105,7 +105,7 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
                 <SelectContent defaultValue="random">
                   {Object.keys(Categories).map((category) => (
                     <SelectItem key={category} value={category}>
-                      {getCategoryName(category as WordCategories)}
+                      {getCategoryName(category as WordCategories).name}
                     </SelectItem>
                   ))}
                 </SelectContent>
