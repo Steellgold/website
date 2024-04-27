@@ -26,6 +26,8 @@ export const WordleBoard = (): ReactElement => {
 
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
+  console.log(party);
+
   return (
     <>
       {isFound && <ReactConfetti width={width} height={height} recycle={false} />}
@@ -67,7 +69,7 @@ export const WordleBoard = (): ReactElement => {
               variant={"secondary"}
               className="w-full"
               disabled={
-                (party?.lines || [])[(activeLineIndex ?? 0)].every((data) => data.letter === "")
+                (party?.lines ?? [])[activeLineIndex ?? 0].length !== 5
               }
             >
               Valider ma réponse
