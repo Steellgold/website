@@ -42,7 +42,7 @@ export const WordleBoard = (): ReactElement => {
             {party?.lines?.map((line, i) => (
               <div key={i} className="flex flex-row">
                 {line.map((data: Letter, i) => (
-                  <Case key={i} letter={data.letter.toUpperCase()} status={data.status} />
+                  <Case key={i} letter={data.letter} status={data.status} />
                 ))}
               </div>
             ))}
@@ -69,7 +69,8 @@ export const WordleBoard = (): ReactElement => {
               variant={"secondary"}
               className="w-full"
               disabled={
-                (party?.lines ?? [])[activeLineIndex ?? 0].length !== 5
+                (party?.lines ?? [])[activeLineIndex ?? 1].some((data) => data.letter === "") ||
+                activeLineIndex === (party?.attempts ?? 5)
               }
             >
               Valider ma réponse
