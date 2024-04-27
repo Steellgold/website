@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const WhiteBannerWordle = () => {
   const { hasVisitedWordle } = useWordleStore();
-  if (hasVisitedWordle) return <></>;
+  if (hasVisitedWordle == true) return <></>;
 
   return (
     <div className="bg-white text-black flex items-center justify-center h-8">
