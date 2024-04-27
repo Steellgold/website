@@ -107,10 +107,6 @@ export const WordleBoard = (): ReactElement => {
             >
               Valider ma réponse
             </Button>
-
-            <p>
-              Le mot: <span className="font-bold">{party?.word}</span>
-            </p>
           </div>
         </div>
 
