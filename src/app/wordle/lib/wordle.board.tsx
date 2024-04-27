@@ -3,10 +3,10 @@
 import { Button } from "@/lib/components/ui/button";
 import { Component } from "@/lib/components/utils/component";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
-import { Letter, LetterStatus, Line } from "@/lib/types/wordle.type";
+import { Letter } from "@/lib/types/wordle.type";
 import { cn } from "@/lib/utils";
 import { isValidWord } from "@/lib/wordle/utils";
-import { Delete, Space } from "lucide-react";
+import { Delete } from "lucide-react";
 import { ReactElement, useState } from "react";
 import ReactConfetti from "react-confetti";
 import { useEventListener, useWindowSize } from "usehooks-ts";
@@ -34,7 +34,7 @@ export const WordleBoard = (): ReactElement => {
 
   const onEnter = (e: KeyboardEvent) => {
     if (ended) return;
-    
+
     if (e.key === "Enter") {
       if (!activePartyId) return;
       const party = getParty(activePartyId);
@@ -71,7 +71,9 @@ export const WordleBoard = (): ReactElement => {
       <div className="flex flex-col">
         <div className={cn(
           "border border-[#262626] rounded-lg p-5",
-          "flex flex-col sm:flex-row w-full"
+          "flex flex-col sm:flex-row w-full", {
+            "sm:flex-col": (party?.word ?? "melvynx").length > 6
+          }
         )}>
           <div className="p-2">
             {party?.lines?.map((line, i) => (
@@ -126,11 +128,19 @@ export const WordleBoard = (): ReactElement => {
                 <div className="w-5 h-5 bg-[#262626] mt-1"></div>
                 <p>Letter not found</p>
               </div>
+
+              <p>
+                word: {party?.word}
+              </p>
+
+              <p className="text-muted-foreground text-sm flex flex-row gap-2 items-center">
+                If you put multiple same letters, only the number of this letter in the word to find will be taken into
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-9 gap-2 mt-3">
+        <div className="grid grid-cols-9 gap-2 mt-3 mb-6">
           {alphabet.map((letter, i) => (
             <Button variant={"secondary"} key={i} onClick={() => addLetter(letter)}>{letter}</Button>
           ))}
