@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { LetterStatus, Line, PartyEndReason, WordleParty } from "../types/wordle.type";
-import { difficultyToNumber } from "../wordle/party";
+import { Line, PartyEndReason, WordleParty } from "../types/wordle.type";
 
 type DataStore = {
   hasVisitedWordle: boolean;
