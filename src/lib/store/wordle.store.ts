@@ -54,6 +54,7 @@ export const useWorldePartyStore = create(
       getParty: (id) => get().parties.find((party) => party.id === id),
 
       addParty: (party) => {
+        // @ts-ignore
         set((state) => ({
           parties: [
             ...state.parties,
