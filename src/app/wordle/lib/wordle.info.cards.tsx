@@ -47,7 +47,7 @@ export const WordleInfoCards = (): ReactElement => {
         </CardHeader>
 
         <CardContent className="mt-3 -mb-2 sm:mb-0 sm:-mt-3">
-          ⌛ {(dayJS(timer).diff(dayJS(party?.startedAt), "minutes"))} minutes {dayJS(timer).diff(dayJS(party?.startedAt), "seconds") % 60} seconds
+          ⌛ {(dayJS(timer).diff(dayJS(party?.startedAt), "minutes"))} minutes {dayJS(timer).diff(dayJS(party?.startedAt), "seconds") % 60} s
         </CardContent>
       </Card>
     </div>
