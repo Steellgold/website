@@ -9,7 +9,7 @@ import { isValidWord } from "@/lib/wordle/utils";
 import { Delete, Space } from "lucide-react";
 import { ReactElement, useState } from "react";
 import ReactConfetti from "react-confetti";
-import { useWindowSize } from "usehooks-ts";
+import { useEventListener, useWindowSize } from "usehooks-ts";
 import { EndedWordleDialog } from "../dialogs/wordle-ended.dialog";
 
 export const WordleBoard = (): ReactElement => {
@@ -20,13 +20,45 @@ export const WordleBoard = (): ReactElement => {
 
   const { width, height } = useWindowSize();
 
-  if (!activePartyId) return <></>;
-
-  const party = getParty(activePartyId);
-
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-  console.log(party);
+  const onKeyPress = (e: KeyboardEvent) => {
+    if (ended) return;
+    if (alphabet.includes(e.key.toUpperCase())) addLetter(e.key.toUpperCase());
+  }
+
+  const onKeyUp = (e: KeyboardEvent) => {
+    if (ended) return;
+    if (e.key === "Backspace") removeLetter();
+  }
+
+  const onEnter = (e: KeyboardEvent) => {
+    if (ended) return;
+    if (e.key === "Enter") {
+      if (!activePartyId) return;
+      const party = getParty(activePartyId);
+      const result = isValidWord(party?.lines ?? [], party?.word ?? "", (activeLineIndex ?? 0));
+      setLine(result);
+
+      if (result.every((data) => data.status === "well-placed")) {
+        setEnded(true);
+        setIsFound(true);
+      }
+
+      if (activeLineIndex === (party?.attempts ?? 5) - 1) {
+        setEnded(true);
+      } else {
+        setActiveLineIndex((activeLineIndex ?? 0) + 1);
+      }
+    }
+  }
+
+  useEventListener("keypress", onKeyPress);
+  useEventListener("keyup", onKeyUp);
+  useEventListener("keypress", onEnter);
+
+  if (!activePartyId) return <></>;
+  const party = getParty(activePartyId);
 
   return (
     <>
