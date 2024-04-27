@@ -6,7 +6,7 @@ import { useState, type PropsWithChildren } from "react";
 import { Component } from "@/lib/components/utils/component";
 import { Label } from "@/lib/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/lib/components/ui/select";
-import { Categories, PartyDifficulty, WordCategories, WordleParty } from "@/lib/types/wordle.type";
+import { Categories, PartyDifficulty, WordCategories, WordleParty, getRandomCategory } from "@/lib/types/wordle.type";
 import { difficultyToNumber, getCategoryId, getCategoryName } from "@/lib/wordle/party";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
 import { Loader2 } from "lucide-react";
@@ -17,7 +17,7 @@ import { Switch } from "@/lib/components/ui/switch";
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 
 export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children }) => {
-  const [category, setCategory] = useState<WordCategories>("school");
+  const [category, setCategory] = useState<WordCategories>("random");
   const [difficulty, setDifficulty] = useState<PartyDifficulty>("five");
   const [attempts, setAttempts] = useState<5 | 6 | 7 | 8 | 9 | 10>(5);
   const [joker, setJoker] = useState<boolean>(false);
@@ -30,12 +30,11 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
 
   const getWord = async () => {
     setLoading(true);
-    const cat = category == "random" ?
-      Object.keys(Categories)[Math.floor(Math.random() * Object.keys(Categories).length)] as WordCategories
+    const cat =  category == "random"
+      ? Object.keys(Categories)[Math.floor(Math.random() * Object.keys(Categories).length)] as WordCategories
       : category;
-    
-    console.log(getCategoryId(category));
-    const response = await fetch(`https://trouve-mot.fr/api/categorie/${getCategoryId(category)}/50`);
+
+    const response = await fetch(`https://trouve-mot.fr/api/categorie/${getCategoryId(cat)}/50`);
     const data = await response.json();
 
     const schema = z.array(z.object({
@@ -73,12 +72,7 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
   }
 
   return (
-    <Dialog onOpenChange={() => {
-      setCategory("school");
-      setDifficulty("five");
-      setAttempts(5);
-      setJoker(false);
-    }}>
+    <Dialog>
       <DialogTrigger>
         {children}
       </DialogTrigger>
