@@ -59,7 +59,7 @@ export const useWorldePartyStore = create(
             ...state.parties,
             {
               ...party,
-              lines: Array(party.attempts).fill().map(() => Array.from({ length: difficultyToNumber(party.difficulty) }, () => ({ letter: "", status: "unknown" }))),
+              lines: Array(party.attempts).map(() => Array.from({ length: difficultyToNumber(party.difficulty) }, () => ({ letter: "", status: "unknown" }))),
             },
           ],
         }));

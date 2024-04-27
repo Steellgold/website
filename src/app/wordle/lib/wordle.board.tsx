@@ -21,6 +21,7 @@ export const WordleBoard = (): ReactElement => {
   const { width, height } = useWindowSize();
 
   if (!activePartyId) return <></>;
+  if (!activeLineIndex) return <></>;
 
   const party = getParty(activePartyId);
 
@@ -49,16 +50,16 @@ export const WordleBoard = (): ReactElement => {
           <div className="p-2 w-full">
             <Button
               onClick={() => {
-                const result = isValidWord(party?.lines, party?.word, activeLineIndex);
+                const result = isValidWord(party?.lines ?? [], party?.word ?? "", activeLineIndex);
                 setLine(result);
-                
+
                 if (result.every((data) => data.status === "well-placed")) {
                   setEnded(true);
                   setIsFound(true);
                   console.log(ended, isFound);
                 }
 
-                if (activeLineIndex === party?.attempts - 1) {
+                if (activeLineIndex === (party?.attempts ?? 5) - 1) {
                   setEnded(true);
                 } else {
                   setActiveLineIndex(activeLineIndex + 1);
@@ -67,7 +68,7 @@ export const WordleBoard = (): ReactElement => {
               variant={"secondary"}
               className="w-full"
               disabled={
-                party?.lines[activeLineIndex].every((data) => data.letter === "")
+                (party?.lines || [])[activeLineIndex].every((data) => data.letter === "")
               }
             >
               Valider ma réponse
