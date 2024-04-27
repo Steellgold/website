@@ -150,18 +150,3 @@ export const useWorldePartyStore = create(
     { name: "wordle-party-storage" },
   ),
 );
-
-// const duplicateValidLetters = (id: string) => {
-//   const party = get().getParty(id);
-//   if (!party) return;
-
-//   const duplicatedLines = party.lines.map(line => 
-//     line.map(item => 
-//       item.status === 'good' ? { ...item, letter: item.letter + item.letter } : item
-//     )
-//   );
-
-//   set((state) => ({
-//     parties: state.parties.map((party) => party.id === id ? { ...party, lines: duplicatedLines } : party),
-//   }));
-// };

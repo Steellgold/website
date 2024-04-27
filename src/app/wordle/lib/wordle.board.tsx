@@ -129,10 +129,6 @@ export const WordleBoard = (): ReactElement => {
                 <p>Letter not found</p>
               </div>
 
-              <p>
-                word: {party?.word}
-              </p>
-
               <p className="text-muted-foreground text-sm flex flex-row gap-2 items-center">
                 If you put multiple same letters, only the number of this letter in the word to find will be taken into
               </p>
