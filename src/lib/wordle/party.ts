@@ -1,7 +1,9 @@
-import { WordCategories, WordleParty } from "../types/wordle.type";
+import { PartyDifficulty, WordCategories, WordleParty } from "../types/wordle.type";
 
 export const getCategoryName = (category: WordCategories): string => {
   switch (category) {
+    case "random":
+      return "🎲 Random";
     case "school":
       return "🏫 School";
     case "landscape":
@@ -58,6 +60,88 @@ export const getCategoryName = (category: WordCategories): string => {
       return "👪 Human Life";
     default:
       return "📚 Unknown";
+  }
+}
+
+export const getCategoryId = (category: WordCategories): number => {
+  switch (category) {
+    case "random":
+      return 0;
+    case "school":
+      return 1;
+    case "landscape":
+      return 2;
+    case "qualities":
+      return 3;
+    case "calculation":
+      return 4;
+    case "food":
+      return 5;
+    case "human-body":
+      return 6;
+    case "senses":
+      return 7;
+    case "interior":
+      return 8;
+    case "industry":
+      return 9;
+    case "arts":
+      return 10;
+    case "agriculture":
+      return 11;
+    case "orchard":
+      return 12;
+    case "gestures":
+      return 13;
+    case "time":
+      return 14;
+    case "clothing":
+      return 15;
+    case "sports":
+      return 16;
+    case "house":
+      return 17;
+    case "travels":
+      return 18;
+    case "animals":
+      return 19;
+    case "city":
+      return 20;
+    case "water":
+      return 21;
+    case "commerce":
+      return 22;
+    case "communication":
+      return 23;
+    case "emotions":
+      return 24;
+    case "government":
+      return 25;
+    case "army":
+      return 26;
+    case "human-life":
+      return 27;
+    default:
+      return 0;
+  }
+}
+
+export const difficultyToNumber = (difficulty: PartyDifficulty): number => {
+  switch (difficulty) {
+    case "five":
+      return 5;
+    case "six":
+      return 6;
+    case "seven":
+      return 7;
+    case "eight":
+      return 8;
+    case "nine":
+      return 9;
+    case "ten":
+      return 10;
+    default:
+      return 5;
   }
 }
 

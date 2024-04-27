@@ -1,10 +1,13 @@
 export type LetterStatus = "well-placed" | "misplaced" | "not-present";
+export type PartyEndReason = "abandon" | "missed";
 export type PartyDifficulty = "five" | "six" | "seven" | "eight" | "nine" | "ten";
 
-export type WordCategories = 
-  | "school" | "landscape" | "qualities" | "calculation" | "food" | "human-body" | "senses" | "interior" | "industry" | "arts" | "agriculture" | "orchard" | "gestures" | "time" | "clothing" | "sports" | "house" | "travels" | "animals" | "city" | "water" | "commerce" | "communication" | "emotions" | "government" | "army" | "human-life";
+export type WordCategories = "random" | "school" | "landscape" | "qualities" | "calculation" | "food" | "human-body" | "senses" | "interior" | "industry" | "arts" | "agriculture" | "orchard" | "gestures" | "time" | "clothing" | "sports" | "house" | "travels" | "animals" | "city" | "water" | "commerce" | "communication" | "emotions" | "government" | "army" | "human-life";
 
-export const Categories: { [key in WordCategories]: number } = {
+export const Categories: {
+  [key in WordCategories]: number
+} = {
+  random: 0,
   school: 1,
   landscape: 2,
   qualities: 3,
@@ -37,15 +40,19 @@ export const Categories: { [key in WordCategories]: number } = {
 export type WordleParty = {
   id: string;
   word: string;
-  startedAt: number;
-  finishedAt: number;
+  startedAt: string;
+  finishedAt?: string;
 
-  endStatus: "win" | "lose";
+  endStatus?: "win" | "lose";
+  endReason?: PartyEndReason;
 
-  lines: {
-    [key: number]: {
-      letter: string;
-      status: LetterStatus;
-    }[];
-  }[]
+  difficulty: PartyDifficulty;
+  category: WordCategories;
+  
+  jokerUsed?: boolean;
+
+  lines?: {
+    letter: string;
+    status: LetterStatus;
+  }[];
 };
