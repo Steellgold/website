@@ -2,8 +2,6 @@
 
 import { Button } from "../../../lib/components/ui/button";
 import { Dialog, DialogContent, DialogFooter } from "../../../lib/components/ui/dialog";
-import { Alert, AlertDescription, AlertTitle } from "../../../lib/components/ui/alert";
-import { Drum } from "lucide-react";
 import { Component } from "@/lib/components/utils/component";
 import { useState } from "react";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
@@ -16,7 +14,7 @@ type WordleDialogProps = {
 
 export const EndedWordleDialog: Component<WordleDialogProps> = ({ endStatus, open }) => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(open);
-  const { activePartyId, addParty, setLose, setWin } = useWorldePartyStore();
+  const { activePartyId, setLose, setWin, getParty } = useWorldePartyStore();
   if (!activePartyId) return <></>;
 
   return (
@@ -28,8 +26,13 @@ export const EndedWordleDialog: Component<WordleDialogProps> = ({ endStatus, ope
           </h2>
           <p className="text-muted-foreground mt-2">
             {endStatus === "win"
-              ? "You've successfully guessed the word!"
-              : "You've run out of attempts. Better luck next time!"}
+              ? <>You&apos;ve successfully guessed the word!</>
+              : (
+                <>
+                  <p>You&apos;ve run out of attempts. Better luck next time!</p>
+                  <p>The word was <strong>{getParty(activePartyId)?.word}</strong>.</p>
+                </>
+              )}
           </p>
 
           <DialogFooter className="mt-3">
