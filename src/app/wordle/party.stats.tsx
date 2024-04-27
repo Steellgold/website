@@ -58,7 +58,7 @@ export const WordleStatsCard = () => {
 
       <CardFooter className="justify-end">
         <NewWordlePartyDialog>
-          <Button onClick={() => console.log("Start a new party")}>
+          <Button>
             Start a new party
           </Button>
         </NewWordlePartyDialog>
