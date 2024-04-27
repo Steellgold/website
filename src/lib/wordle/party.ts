@@ -1,65 +1,195 @@
 import { PartyDifficulty, WordCategories, WordleParty } from "../types/wordle.type";
 
-export const getCategoryName = (category: WordCategories): string => {
+export const getCategoryName = (category: WordCategories): {
+  name: string;
+  nameFr?: string;
+  description?: string;
+  descriptionFr?: string;
+} => {
   switch (category) {
     case "random":
-      return "🎲 Random";
+      return {
+        name: "🎲 Random",
+        nameFr: "🎲 Aléatoire",
+        description: "A random word from any category",
+        descriptionFr: "Un mot aléatoire de n'importe quelle catégorie"
+      }
     case "school":
-      return "🏫 School";
+      return {
+        name: "🏫 School",
+        nameFr: "🏫 École",
+        description: "School, class, instruction",
+        descriptionFr: "École, classe, instruction"
+      }
     case "landscape":
-      return "🏞️ Landscape";
+      return {
+        name: "🏞️ Landscape",
+        nameFr: "🏞️ Paysages",
+        description: "Landscapes, climate, shapes",
+        descriptionFr: "Paysages, climat, formes"
+      }
     case "qualities":
-      return "🌟 Qualities";
+      return {
+        name: "🌟 Qualities",
+        nameFr: "🌟 Qualités",
+        description: "Qualities and defects",
+        descriptionFr: "Qualités et défauts"
+      }
     case "calculation":
-      return "🧮 Calculation";
+      return {
+        name: "🧮 Calculation",
+        nameFr: "🧮 Calcul",
+        description: "Calculation and measures",
+        descriptionFr: "Calcul et mesures"
+      }
     case "food":
-      return "🍔 Food";
+      return {
+        name: "🍔 Food",
+        nameFr: "🍔 Aliments",
+        description: "Food, drinks, meals",
+        descriptionFr: "Aliments, boissons, repas"
+      }
     case "human-body":
-      return "👤 Human Body";
+      return {
+        name: "👤 Human Body",
+        nameFr: "👤 Corps Humain",
+        description: "Human body",
+        descriptionFr: "Corps humain"
+      };
     case "senses":
-      return "👁️ Senses";
+      return {
+        name: "👁️ Senses",
+        nameFr: "👁️ Sens",
+        description: "Senses, will, intelligence",
+        descriptionFr: "Sens, volonté, intelligence"
+      }
     case "interior":
-      return "🏠 Interior";
+      return {
+        name: "🏠 Interior",
+        nameFr: "🏠 Intérieur",
+        description: "Interior and furniture",
+        descriptionFr: "Intérieur et mobilier"
+      }
     case "industry":
-      return "🏭 Industry";
+      return {
+        name: "🏭 Industry",
+        nameFr: "🏭 Industrie",
+        description: "Industry and work",
+        descriptionFr: "Industrie et travail"
+      }
     case "arts":
-      return "🎨 Arts";
+      return {
+        name: "🎨 Arts",
+      }
     case "agriculture":
-      return "🌾 Agriculture";
+      return {
+        name: "🌾 Agriculture",
+      }
     case "orchard":
-      return "🍎 Orchard";
+      return {
+        name: "🍎 Orchard",
+        nameFr: "🍎 Verger",
+        description: "Orchard, wood, hunting, fishing",
+        descriptionFr: "Verger, bois, chasse, pêche"
+      }
     case "gestures":
-      return "🤗 Gestures";
+      return {
+        name: "🤗 Gestures",
+        nameFr: "🤗 Gestes",
+        description: "Gestures and movements",
+        descriptionFr: "Gestes et mouvements"
+      }
     case "time":
-      return "⏰ Time";
+      return {
+        name: "⏰ Time",
+        nameFr: "⏰ Époque",
+        description: "Époque, temps, saisons",
+        descriptionFr: "Époque, temps, saisons"
+      }
     case "clothing":
-      return "👗 Clothing";
+      return {
+        name: "👗 Clothing",
+        nameFr: "👗 Vêtements",
+        description: "Clothing, toilet, ornaments",
+        descriptionFr: "Vêtements, toilette, parures"
+      }
     case "sports":
-      return "⚽ Sports";
+      return {
+        name: "⚽ Sports",
+        nameFr: "⚽ Sports",
+        description: "Sports and games",
+        descriptionFr: "Sports et jeux"
+      }
     case "house":
-      return "🏡 House";
+      return {
+        name: "🏡 House",
+        nameFr: "🏡 Maison",
+        description: "House, building",
+        descriptionFr: "Maison, bâtiment"
+      }
     case "travels":
-      return "✈️ Travels";
+      return {
+        name: "✈️ Travels",
+        nameFr: "✈️ Voyages",
+      }
     case "animals":
-      return "🐶 Animals";
+      return {
+        name: "🐶 Animals",
+        nameFr: "🐶 Animaux",
+      }
     case "city":
-      return "🏙️ City";
+      return {
+        name: "🏙️ City",
+        nameFr: "🏙️ Ville",
+        description: "City, village, universe, dimensions",
+        descriptionFr: "Ville, village, univers, dimensions"
+      }
     case "water":
-      return "🌊 Water";
+      return {
+        name: "🌊 Water",
+        nameFr: "🌊 Eaux",
+        description: "Water, minerals, plants",
+        descriptionFr: "Eaux, minéraux, végétaux"
+      }
     case "commerce":
-      return "💼 Commerce";
+      return {
+        name: "💼 Commerce",
+      }
     case "communication":
-      return "📞 Communication";
+      return {
+        name: "📞 Communication",
+      }
     case "emotions":
-      return "😊 Emotions";
+      return {
+        name: "😊 Emotions",
+        nameFr: "😊 Joies",
+        description: "Joys and sorrows",
+        descriptionFr: "Joies et peines"
+      }
     case "government":
-      return "🏛️ Government";
+      return {
+        name: "🏛️ Government",
+        nameFr: "🏛️ Gouvernement",
+        description: "Government and justice",
+        descriptionFr: "Gouvernement et justice"
+      }
     case "army":
-      return "🎖️ Army";
+      return {
+        name: "🎖️ Army",
+        nameFr: "🎖️ Armée",
+      }
     case "human-life":
-      return "👪 Human Life";
+      return {
+        name: "👪 Human Life",
+        nameFr: "👪 Vie Humaine",
+        description: "Human life, diseases, hygiene",
+        descriptionFr: "Vie humaine, maladies, hygiène"
+      };
     default:
-      return "📚 Unknown";
+      return {
+        name: "📚 Unknown",
+        nameFr: "📚 Inconnu"
+      }
   }
 }
 
