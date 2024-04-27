@@ -21,23 +21,25 @@ export const WordleInfoActions = (): ReactElement => {
 
   return (
     <div className="mt-3 flex justify-end gap-3">
-      <AlertDialog>
-        <AlertDialogTrigger disabled={isJokerUsed(activePartyId)}>
-          <Button disabled={isJokerUsed(activePartyId)}>
-            <Spade className="h-4 w-4 mr-1" />
-            {isJokerUsed(activePartyId) ? "Joker used" : "Use joker"}
-          </Button>
-        </AlertDialogTrigger>
-
-        <AlertDialogContent>
-          <p>If you use the joker, you will get a random letter for the word. Are you sure you want to use it?</p>            
-
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => setJokerUsed(activePartyId)}>Yes</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      {!isJokerUsed(activePartyId) && (
+        <AlertDialog>
+          <AlertDialogTrigger disabled={isJokerUsed(activePartyId)}>
+            <Button disabled={isJokerUsed(activePartyId)}>
+              <Spade className="h-4 w-4 mr-1" />
+              {isJokerUsed(activePartyId) ? "Joker used" : "Use joker"}
+            </Button>
+          </AlertDialogTrigger>
+      
+          <AlertDialogContent>
+            <p>If you use the joker, you will get a random letter for the word. Are you sure you want to use it?</p>            
+      
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={() => setJokerUsed(activePartyId)}>Yes</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      )}
 
       <AlertDialog>
         <AlertDialogTrigger>
