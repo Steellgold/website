@@ -33,31 +33,21 @@ export const WordleBoard = (): ReactElement => {
   }
 
   const onEnter = (e: KeyboardEvent) => {
-    console.log(0);
     if (ended) return;
-    console.log(1);
+    
     if (e.key === "Enter") {
-      console.log(2);
       if (!activePartyId) return;
-      console.log(3);
       const party = getParty(activePartyId);
-      console.log(4);
       if ((party?.lines ?? [])[activeLineIndex ?? 0].some((data) => data.letter === "")) return;
 
-      console.log(5, party?.lines, party?.word, activeLineIndex);
       const result = isValidWord(party?.lines ?? [], party?.word ?? "", (activeLineIndex ?? 0));
-      console.log(6);
       setLine(result);
 
-      console.log(7);
       if (result.every((data) => data.status === "well-placed")) {
-        console.log(8);
         setEnded(true);
-        console.log(9);
         setIsFound(true);
       }
 
-      console.log(10);
       if (activeLineIndex === (party?.attempts ?? 5) - 1) {
         setEnded(true);
       } else {
