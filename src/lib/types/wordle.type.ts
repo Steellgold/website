@@ -71,5 +71,6 @@ export type WordleParty = {
   }
   jokerEnabled: boolean;
 
+  isReadOnly: boolean;
   lines?: Line[];
 };

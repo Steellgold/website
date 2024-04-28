@@ -8,11 +8,11 @@ import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { getCategoryName } from "@/lib/wordle/party";
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/lib/components/ui/alert-dialog";
 import { Button } from "@/lib/components/ui/button";
-import { ListX } from "lucide-react";
+import { ArrowLeft, ArrowRight, ListX } from "lucide-react";
 import { useState } from "react";
 
 export const WordlePartyHistory = () => {
-  const { parties, clear } = useWorldePartyStore();
+  const { parties, clear, setActivePartyId } = useWorldePartyStore();
   const [clearOpen, setClearOpen] = useState<boolean>(false);
 
   return (
@@ -67,6 +67,9 @@ export const WordlePartyHistory = () => {
               <TableHead>Status</TableHead>
               <TableHead>Reason</TableHead>
               <TableHead>Time</TableHead>
+              <TableHead>
+                <span className="sr-only">Actions</span>
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -82,6 +85,17 @@ export const WordlePartyHistory = () => {
                   <TableHead>
                     {getTimeBetween(party.startedAt, party.finishedAt ?? "").m}m{" "}
                     {getTimeBetween(party.startedAt, party.finishedAt ?? "").s}s
+                  </TableHead>
+                  <TableHead>
+                    {party.isReadOnly && (
+                      <Button size={"sm"} variant={"outline"} onClick={() => {
+                        if (!party.isReadOnly) return;
+                        setActivePartyId(party.id);
+                      }}>
+                        Show game&nbsp;&nbsp;
+                        <ArrowRight className="h-4 w-4" />
+                      </Button>
+                    )}
                   </TableHead>
                 </TableRow>
               )

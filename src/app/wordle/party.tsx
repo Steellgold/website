@@ -9,14 +9,15 @@ import { WordleBoard } from "./lib/wordle.board";
 import { WordlePartyHistory } from "./lib/wordle.history";
 
 export const WordleParty = () => {
-  const { activePartyId } = useWorldePartyStore();
+  const { activePartyId, setActivePartyId, getParty } = useWorldePartyStore();
   if (!activePartyId) return <WordleStatsCard />
+
+  const party = getParty(activePartyId);
 
   return (
     <div>
       <WordleInfoCards />
       <WordleInfoActions />
-
       <Separator className="my-5" />
 
       <WordleBoard />

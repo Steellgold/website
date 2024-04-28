@@ -68,12 +68,22 @@ export const WordleInfoCards = (): ReactElement => {
 
       <Card>
         <CardHeader className="hidden sm:block">
-          <CardTitle>Timer</CardTitle>
+          <CardTitle>
+            {party?.isReadOnly ? "Party duration" : "Time elapsed"}
+          </CardTitle>
         </CardHeader>
 
-        <CardContent className="mt-3 -mb-2 sm:mb-0 sm:-mt-3">
-          ⌛ {(dayJS(timer).diff(dayJS(party?.startedAt), "minutes"))} minutes {dayJS(timer).diff(dayJS(party?.startedAt), "seconds") % 60} s
-        </CardContent>
+        {party?.isReadOnly ? (
+          <CardContent className="mt-3 -mb-2 sm:mb-0 sm:-mt-3">
+            ⏱️&nbsp;
+            {dayJS(party?.finishedAt).diff(dayJS(party?.startedAt), "minutes")} minutes&nbsp;
+            {dayJS(party?.finishedAt).diff(dayJS(party?.startedAt), "seconds") % 60} s
+          </CardContent>
+        ) : (
+          <CardContent className="mt-3 -mb-2 sm:mb-0 sm:-mt-3">
+            ⌛ {(dayJS(timer).diff(dayJS(party?.startedAt), "minutes"))} minutes {dayJS(timer).diff(dayJS(party?.startedAt), "seconds") % 60} s
+          </CardContent>
+        )}
       </Card>
     </div>
   );

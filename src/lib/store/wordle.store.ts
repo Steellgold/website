@@ -101,7 +101,7 @@ export const useWorldePartyStore = create(
       setWin: (id) => {
         set((state) => ({
           parties: state.parties.map(
-            (party) => party.id === id ? { ...party, endStatus: "win", finishedAt: dayJS().toISOString() } : party
+            (party) => party.id === id ? { ...party, endStatus: "win", finishedAt: dayJS().toISOString(), isReadOnly: true } : party
           ),
         }));
         set(() => ({ activePartyId: null }));
@@ -111,7 +111,7 @@ export const useWorldePartyStore = create(
         set((state) => ({
           parties: state.parties.map(
             (party) => party.id === id ?
-              { ...party, endStatus: "lose", endReason: reason, finishedAt: dayJS().toISOString() }
+              { ...party, endStatus: "lose", endReason: reason, finishedAt: dayJS().toISOString(), isReadOnly: true }
               : party
             )
           })

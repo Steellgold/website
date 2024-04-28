@@ -3,7 +3,7 @@
 import { Button } from "@/lib/components/ui/button";
 import { Component } from "@/lib/components/utils/component";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
-import { Letter } from "@/lib/types/wordle.type";
+import { Letter, WordleParty } from "@/lib/types/wordle.type";
 import { cn } from "@/lib/utils";
 import { isValidWord } from "@/lib/wordle/utils";
 import { Delete } from "lucide-react";
@@ -27,20 +27,29 @@ export const WordleBoard = (): ReactElement => {
 
   const onKeyPress = (e: KeyboardEvent) => {
     if (ended) return;
+    if (!activePartyId) return <></>;
+    const party = getParty(activePartyId);
+   
+    if (party?.isReadOnly) return;
     if (alphabet.includes(e.key.toUpperCase())) addLetter(e.key.toUpperCase());
   }
 
   const onKeyUp = (e: KeyboardEvent) => {
-    if (ended) return;
+    if (ended) return;  
+    if (!activePartyId) return <></>;
+    const party = getParty(activePartyId);
+   
+    if (party?.isReadOnly) return;
     if (e.key === "Backspace") removeLetter();
   }
 
   const onEnter = (e: KeyboardEvent) => {
     if (ended) return;
+    if (!activePartyId) return;
+    const party = getParty(activePartyId);
+    if (party?.isReadOnly) return;
 
     if (e.key === "Enter") {
-      if (!activePartyId) return;
-      const party = getParty(activePartyId);
       if ((party?.lines ?? [])[activeLineIndex ?? 0].some((data) => data.letter === "")) return;
 
       const result = isValidWord(party?.lines ?? [], party?.word ?? "", (activeLineIndex ?? 0));
@@ -119,33 +128,39 @@ export const WordleBoard = (): ReactElement => {
           </div>
 
           <div className="p-2 w-full">
-            <Button
-              onClick={() => {
-                const result = isValidWord(party?.lines ?? [], party?.word ?? "", (activeLineIndex ?? 0));
-                setLine(result);
+            {!party?.isReadOnly && (
+              <Button
+                onClick={() => {
+                  const result = isValidWord(party?.lines ?? [], party?.word ?? "", (activeLineIndex ?? 0));
+                  setLine(result);
 
-                if (result.every((data) => data.status === "well-placed")) {
-                  setEnded(true);
-                  setIsFound(true);
-                }
+                  if (result.every((data) => data.status === "well-placed")) {
+                    setEnded(true);
+                    setIsFound(true);
+                  }
 
-                if (activeLineIndex === (party?.attempts ?? 5) - 1) {
-                  setEnded(true);
-                } else {
-                  setActiveLineIndex((activeLineIndex ?? 0) + 1);
+                  if (activeLineIndex === (party?.attempts ?? 5) - 1) {
+                    setEnded(true);
+                  } else {
+                    setActiveLineIndex((activeLineIndex ?? 0) + 1);
+                  }
+                }}
+                variant={"secondary"}
+                className="w-full"
+                disabled={
+                  (party?.lines ?? [])[activeLineIndex ?? 1].some((data) => data.letter === "") ||
+                  activeLineIndex === (party?.attempts ?? 5)
                 }
-              }}
-              variant={"secondary"}
-              className="w-full"
-              disabled={
-                (party?.lines ?? [])[activeLineIndex ?? 1].some((data) => data.letter === "") ||
-                activeLineIndex === (party?.attempts ?? 5)
+              >
+                Valider ma réponse
+              </Button>
+            )}
+
+            <div className={cn(
+              "flex flex-col flex text-left justify-center gap-2", {
+                "mt-5": !party?.isReadOnly
               }
-            >
-              Valider ma réponse
-            </Button>
-
-            <div className="mt-5 flex flex-col flex text-left justify-center gap-2">
+            )}>
               <div className="flex flex-row gap-2">
                 <div className="w-5 h-5 bg-[#20603f] mt-1"></div>
                 <p>You have placed letter correctly</p>
@@ -189,15 +204,17 @@ export const WordleBoard = (): ReactElement => {
           </div>
         </div>
 
-        <div className="grid grid-cols-9 gap-2 mt-3 mb-6">
-          {alphabet.map((letter, i) => (
-            <Button variant={"secondary"} key={i} onClick={() => addLetter(letter)}>{letter}</Button>
-          ))}
+        {!party?.isReadOnly && (
+          <div className="grid grid-cols-9 gap-2 mt-3 mb-6">
+            {alphabet.map((letter, i) => (
+              <Button variant={"secondary"} key={i} onClick={() => addLetter(letter)}>{letter}</Button>
+            ))}
 
-          <Button variant={"secondary"} onClick={() => removeLetter()}>
-            <Delete className="h-4 w-4" />
-          </Button>
-        </div>
+            <Button variant={"secondary"} onClick={() => removeLetter()}>
+              <Delete className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
       </div>
     </>
   );
