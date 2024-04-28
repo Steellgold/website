@@ -19,7 +19,9 @@ export const GET = async(request: NextRequest): Promise<NextResponse> => {
     : category;
 
     
-  const response = await fetch(`https://trouve-mot.fr/api/categorie/${getCategoryId(cat)}/50`);
+  const response = await fetch(`https://trouve-mot.fr/api/categorie/${getCategoryId(cat)}/50`, {
+    cache: "no-cache"
+  });
   const data = await response.json();
 
   const schema = z.array(z.object({

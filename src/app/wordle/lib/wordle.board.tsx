@@ -20,7 +20,8 @@ export const WordleBoard = (): ReactElement => {
   const {
     activePartyId, getParty, addLetter,
     removeLetter, activeLineIndex, setLine,
-    setActiveLineIndex, setWord
+    setActiveLineIndex, setWord,
+    // setDefinition, setDefinitionUsed, isDefinitionUsed
   } = useWorldePartyStore();
   
   const [isFound, setIsFound] = useState<boolean>(false);
@@ -63,7 +64,8 @@ export const WordleBoard = (): ReactElement => {
           letterArray: party?.lines ?? [],
           targetWord: party?.word ?? "",
           lineIndexToCheck: activeLineIndex?.toString()
-        })
+        }),
+        cache: "no-cache"
       }).then(async(response) => {
         const schema = z.object({
           success: z.boolean(),
@@ -160,58 +162,83 @@ export const WordleBoard = (): ReactElement => {
 
           <div className="p-2 w-full">
             {!party?.isReadOnly && (
-              <Button
-                onClick={async() => {
-                  const response = await fetch('/api/word/check', {
-                    method: "POST",
-                    body: JSON.stringify({
-                      letterArray: party?.lines ?? [],
-                      targetWord: party?.word ?? "",
-                      lineIndexToCheck: activeLineIndex?.toString()
+              <>
+                <Button
+                  onClick={async() => {
+                    const response = await fetch('/api/word/check', {
+                      method: "POST",
+                      body: JSON.stringify({
+                        letterArray: party?.lines ?? [],
+                        targetWord: party?.word ?? "",
+                        lineIndexToCheck: activeLineIndex?.toString()
+                      }),
+                      cache: "no-cache"
                     })
-                  })
 
-                  const schema = z.object({
-                    success: z.boolean(),
-                    word: z.string().optional().nullable(),
-                    positions: z.array(z.object({
-                      letter: z.string(),
-                      status: z.string()
-                    }))
-                  }).safeParse(await response.json());
+                    const schema = z.object({
+                      success: z.boolean(),
+                      word: z.string().optional().nullable(),
+                      positions: z.array(z.object({
+                        letter: z.string(),
+                        status: z.string()
+                      }))
+                    }).safeParse(await response.json());
 
-                  if (!schema.success) {
-                    console.error(schema.error);
-                    return;
+                    if (!schema.success) {
+                      console.error(schema.error);
+                      return;
+                    }
+
+                    const { positions } = schema.data;
+
+                    setLine(positions as Line);
+                
+                    if (positions.every((data) => data.status === "well-placed")) {
+                      setEnded(true);
+                      setIsFound(true);
+                      if (schema.data.word) setWord(schema.data.word);
+                    }
+
+                    if (activeLineIndex === (party?.attempts ?? 5) - 1) {
+                      setEnded(true);
+                      setWord(await getText(party?.word ?? ""));
+                    } else {
+                      setActiveLineIndex((activeLineIndex ?? 0) + 1);
+                    }
+                  }}
+                  variant={"secondary"}
+                  className="w-full"
+                  disabled={
+                    (party?.lines ?? [])[activeLineIndex ?? 1].some((data) => data.letter === "") ||
+                    activeLineIndex === (party?.attempts ?? 5)
                   }
+                >
+                  Valider ma réponse
+                </Button>
 
-                  const { positions } = schema.data;
-
-                  setLine(positions as Line);
-              
-                  if (positions.every((data) => data.status === "well-placed")) {
-                    setEnded(true);
-                    setIsFound(true);
-                    if (schema.data.word) setWord(schema.data.word);
-                  }
-
-                  if (activeLineIndex === (party?.attempts ?? 5) - 1) {
-                    setEnded(true);
-                    setWord(await getText(party?.word ?? ""));
-                  } else {
-                    setActiveLineIndex((activeLineIndex ?? 0) + 1);
-                  }
-                }}
-                variant={"secondary"}
-                className="w-full"
-                disabled={
-                  (party?.lines ?? [])[activeLineIndex ?? 1].some((data) => data.letter === "") ||
-                  activeLineIndex === (party?.attempts ?? 5)
-                }
-              >
-                Valider ma réponse
-              </Button>
+                {/* {party?.definitionEnabled && (activeLineIndex ?? 0) >= 3 && (
+                    <Button
+                      onClick={async() => {
+                        const response = await fetch(`/api/word/def?word=${party?.word}`);
+                        const data = await response.json();
+                        console.log(data);
+                      }}
+                      variant={"secondary"}
+                      className="w-full mt-2"
+                      disabled={isDefinitionUsed(activePartyId)}
+                    >
+                      Show definition
+                    </Button>
+                )} */}
+              </>
             )}
+
+            {/* {party?.definition && (
+              <div className="mt-3">
+                <h4 className="text-lg font-bold">Definition</h4>
+                <p>{party.definition}</p>
+              </div>
+            )} */}
 
             <div className={cn(
               "flex flex-col flex text-left justify-center gap-2", {
@@ -243,20 +270,6 @@ export const WordleBoard = (): ReactElement => {
               <p className="text-muted-foreground text-sm flex flex-row gap-2 items-center">
                 If you put multiple same letters, only the number of this letter in the word to find will be taken into
               </p>
-
-              {/* {process.env.NODE_ENV === "development" && (
-                <div className={cn(
-                  "cursor-pointer flex flex-row gap-2", {
-                    "bg-[#262626]": showWord
-                  }
-                )} onClick={() => setShowWord(!showWord)}>
-                  {showWord ? (
-                    <>
-                      Word to find: <span className="text-red-50">{party?.word}</span>
-                    </>
-                  ) : <>&nbsp;&nbsp;&nbsp;&nbsp;</>}
-                </div>
-              )} */}
             </div>
           </div>
         </div>

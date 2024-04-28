@@ -5,7 +5,7 @@ import { Component } from "@/lib/components/utils/component";
 import { Label } from "@/lib/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/lib/components/ui/select";
 import { Categories, PartyDifficulty, WordCategories, WordleParty } from "@/lib/types/wordle.type";
-import { difficultyToNumber, getCategoryId, getCategoryName } from "@/lib/wordle/party";
+import { getCategoryName } from "@/lib/wordle/party";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
@@ -13,7 +13,6 @@ import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Slider } from "@/lib/components/ui/slider";
 import { Switch } from "@/lib/components/ui/switch";
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
-import { normalizeText } from "@/lib/wordle/utils";
 import { DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/lib/components/ui/dialog";
 import { Button } from "@/lib/components/ui/button";
 import { Separator } from "@/lib/components/ui/separator";
@@ -40,7 +39,10 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
       ? Object.keys(Categories)[Math.floor(Math.random() * 27)] as WordCategories
       : category;
 
-    const response = await fetch(`/api/word/gen?category=${cat}&difficulty=${difficulty}`);
+    const response = await fetch(`/api/word/gen?category=${cat}&difficulty=${difficulty}`, {
+      cache: "no-cache"
+    });
+
     const data = await response.json();
 
     const schema = z.object({
@@ -70,6 +72,8 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
       activeLineIndex: 0,
       showCategory,
       isReadOnly: false
+      // definitionEnabled: definition,
+      // definitionUsed: false
     };
     
     setActiveLineIndex(0);
