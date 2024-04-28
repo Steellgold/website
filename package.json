@@ -22,6 +22,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "cryptr": "^6.3.0",
     "dayjs": "^1.11.10",
     "larousse-searcher": "^1.0.0",
     "lucide-react": "^0.372.0",
