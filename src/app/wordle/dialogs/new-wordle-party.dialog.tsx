@@ -7,7 +7,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/lib/components/ui/ta
 import { NormalNewPartyContent } from "./new/normal";
 import { Separator } from "@/lib/components/ui/separator";
 import { DailyNewPartyContent } from "./new/daily";
-import { Badge } from "@/lib/components/ui/badge";
 
 export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children }) => {
   return (
