@@ -16,13 +16,17 @@ import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { normalizeText } from "@/lib/wordle/utils";
 import { DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/lib/components/ui/dialog";
 import { Button } from "@/lib/components/ui/button";
+import { Separator } from "@/lib/components/ui/separator";
+import { Badge } from "@/lib/components/ui/badge";
 
 export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }) => {
   const [category, setCategory] = useState<WordCategories>("random");
   const [difficulty, setDifficulty] = useState<PartyDifficulty>("five");
   const [attempts, setAttempts] = useState<5 | 6 | 7 | 8 | 9 | 10>(5);
-  const [joker, setJoker] = useState<boolean>(false);
   const [showCategory, setShowCategory] = useState<boolean>(true);
+
+  const [joker, setJoker] = useState<boolean>(false);
+  const [definition, setDefinition] = useState<boolean>(false);
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -67,7 +71,8 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
       jokerEnabled: joker,
       jokerUsed: false,
       activeLineIndex: 0,
-      showCategory
+      showCategory,
+      isReadOnly: false
     };
     
     setActiveLineIndex(0);
@@ -155,20 +160,43 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
         </div>
 
         <div className="flex flex-col space-y-2">
-          <Alert className="flex items-center justify-between">
-            <div>
-              <Label htmlFor="joker-switch">🃏 Enable Joker ?</Label>
+          <Alert className="flex flex-col">
+            <div className="flex items-center justify-between">
+              <div>
+                <Label htmlFor="joker-switch">🃏 Enable Joker</Label>
+                
+                <p className="text-muted-foreground mr-2">
+                  The Joker allows you to reveal a good placed letter in the word, but you can only use it once.
+                </p>
+              </div>
               
-              <p className="text-muted-foreground mr-2">
-                The Joker allows you to reveal a good placed letter in the word, but you can only use it once.
-              </p>
+              <Switch
+                id="joker-switch"
+                checked={joker}
+                onCheckedChange={(value) => setJoker(value)}
+              />
             </div>
-            
-            <Switch
-              id="joker-switch"
-              checked={joker}
-              onCheckedChange={(value) => setJoker(value)}
-            />
+
+            <Separator className="my-2" />
+
+            <div className="flex items-center justify-between">
+              <div>
+                <Label>
+                  📖 Enable definitions
+                  <Badge variant="outline" className="ml-2">Available soon</Badge>
+                </Label>
+                
+                <p className="text-muted-foreground mr-2">
+                  If you still haven&apos;t found the word, after half of the attempts, you can consult the definition of the word.
+                </p>
+              </div>
+
+              <Switch
+                checked={definition}
+                disabled
+                onCheckedChange={(value) => setDefinition(value)}
+              />
+            </div>
           </Alert>
         </div>
 
