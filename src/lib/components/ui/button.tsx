@@ -22,6 +22,10 @@ const buttonVariants = cva(
 
         hint: "bg-[#853290] text-white shadow-sm hover:bg-[#853290]/90",
         hintDisabled: "bg-[#501e57] text-white shadow-sm cursor-not-allowed",
+        
+        ranked: "bg-[#e0dc77] text-black shadow-sm hover:bg-[#c5c171]/90",
+        daily: "bg-[#f4c3f6] text-black shadow-sm hover:bg-[#daa8e5]/90",
+        duo: "bg-[#c4cff6] text-black shadow-sm hover:bg-[#a7b4e7]/90",
       },
       size: {
         default: "h-9 px-4 py-2",
