@@ -7,18 +7,18 @@ import { Button } from "@/lib/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/lib/components/ui/badge";
 
-export const DailyNewPartyContent: Component<PropsWithChildren> = ({ children }) => {
+export const DuoNewPartyContent: Component<PropsWithChildren> = ({ children }) => {
   return (
     <div className="mt-5">
       <DialogHeader className="mb-3">
-        <DialogTitle>Daily wordle ⌛</DialogTitle>
+        <DialogTitle>Duo mode 🎭</DialogTitle>
         <DialogDescription>
-          Guess the word of the day, without jokers!
+          Guess the word faster than your partner to win!
         </DialogDescription>
       </DialogHeader>
 
       <DialogFooter className="mt-5">
-        <Button disabled variant="daily">
+        <Button disabled variant="duo">
           Play daily <Badge variant={"secondary"} className="ml-2">Coming soon</Badge>
           <ArrowRight className="w-4 h-4 ml-2" />
         </Button>

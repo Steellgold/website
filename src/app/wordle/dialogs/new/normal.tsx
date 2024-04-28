@@ -80,7 +80,7 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
   }
 
   return (
-    <>
+    <div className="mt-5">
       <DialogHeader className="mb-3">
         <DialogTitle>Start a new Wordle party</DialogTitle>
         <DialogDescription>Ooh, a new party! 🎉</DialogDescription>
@@ -194,6 +194,6 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
           Start party
         </Button>
       </DialogFooter>
-    </>
+    </div>
   );
 };
