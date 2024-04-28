@@ -15,6 +15,7 @@ import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Slider } from "@/lib/components/ui/slider";
 import { Switch } from "@/lib/components/ui/switch";
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
+import { normalizeText } from "@/lib/wordle/utils";
 
 export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children }) => {
   const [category, setCategory] = useState<WordCategories>("random");
@@ -59,7 +60,7 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
       id: Math.random().toString(36).substring(7),
       category: cat,
       difficulty,
-      word: word.name.replace(/é/g, "e").replace(/è/g, "e").replace(/à/g, "a").replace(/ç/g, "c"),
+      word: normalizeText(word.name),
       startedAt: dayJS().toISOString(),
       attempts,
       jokerUsed: !joker,
