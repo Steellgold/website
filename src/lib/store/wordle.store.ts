@@ -42,6 +42,8 @@ type PartyStore = {
   setLine: (line: Line) => void;
 
   clear: () => void;
+
+  refresh: () => void;
 };
 
 export const useWorldePartyStore = create(
@@ -152,6 +154,13 @@ export const useWorldePartyStore = create(
 
       clear: () => {
         set(() => ({ parties: [], activePartyId: null, activeLineIndex: 0 }));
+      },
+
+      refresh() {
+        // set the active party id to null, so the board will be empty
+        set(() => ({
+          activePartyId: null
+        }));
       },
     }),
     { name: "wordle-party-storage" },

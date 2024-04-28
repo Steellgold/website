@@ -22,6 +22,7 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
   const [difficulty, setDifficulty] = useState<PartyDifficulty>("five");
   const [attempts, setAttempts] = useState<5 | 6 | 7 | 8 | 9 | 10>(5);
   const [joker, setJoker] = useState<boolean>(false);
+  const [showCategory, setShowCategory] = useState<boolean>(true);
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -64,7 +65,8 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
       startedAt: dayJS().toISOString(),
       attempts,
       jokerUsed: !joker,
-      activeLineIndex: 0
+      activeLineIndex: 0,
+      showCategory
     };
     
     setActiveLineIndex(0);
@@ -86,25 +88,36 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
 
         <div className="space-y-4 mt-3 sm:-mt-0">
           <div className="flex flex-col space-y-2">
-            <Alert className="flex items-center justify-between">
-              <Label>Category:</Label>
+            <Alert className="flex flex-col space-y-2">
+              <div className="flex items-center justify-between">
+                <Label>Category:</Label>
+                
+                <Select defaultValue="random" onValueChange={(value) => {
+                  console.log(value, category);
+                  setCategory(value as WordCategories);
+                  console.log(category);
+                }}>
+                  <SelectTrigger className="w-[60%]">
+                    <SelectValue placeholder="Select a category" />
+                  </SelectTrigger>
+                  <SelectContent defaultValue="random">
+                    {Object.keys(Categories).map((category) => (
+                      <SelectItem key={category} value={category}>
+                        {getCategoryName(category as WordCategories).name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
 
-              <Select defaultValue="random" onValueChange={(value) => {
-                console.log(value, category);
-                setCategory(value as WordCategories);
-                console.log(category);
-              }}>
-                <SelectTrigger className="w-[60%]">
-                  <SelectValue placeholder="Select a category" />
-                </SelectTrigger>
-                <SelectContent defaultValue="random">
-                  {Object.keys(Categories).map((category) => (
-                    <SelectItem key={category} value={category}>
-                      {getCategoryName(category as WordCategories).name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <Alert className="flex items-center justify-between">
+                <Label>Show the category ?</Label>
+
+                <Switch
+                  checked={showCategory}
+                  onCheckedChange={(value) => setShowCategory(value)}
+                />
+              </Alert>
             </Alert>
           </div>
 

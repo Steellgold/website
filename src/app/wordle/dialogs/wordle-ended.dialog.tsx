@@ -14,46 +14,51 @@ type WordleDialogProps = {
 
 export const EndedWordleDialog: Component<WordleDialogProps> = ({ endStatus, open }) => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(open);
-  const { activePartyId, setLose, setWin, getParty } = useWorldePartyStore();
+  const { activePartyId, setLose, setWin, getParty, refresh } = useWorldePartyStore();
+
   if (!activePartyId) return <></>;
 
+
   return (
-    <Dialog defaultOpen={dialogOpen} open={dialogOpen} onOpenChange={() => setDialogOpen(!dialogOpen)}>
-      <DialogContent className="max-w-xl p-0 overflow-hidden">
-        <div className="p-5">
-          <h2 className="text-2xl font-semibold">
-            {endStatus === "win" ? "Congratulations!" : "Game Over"}
-          </h2>
-          <p className="text-muted-foreground mt-2">
-            {endStatus === "win"
-              ? <>You&apos;ve successfully guessed the word!</>
-              : (
-                <>
-                  <p>You&apos;ve run out of attempts. Better luck next time!</p>
-                  <p>The word was <strong>{getParty(activePartyId)?.word}</strong>.</p>
-                </>
-              )}
-          </p>
+    <>
+      <Dialog defaultOpen={dialogOpen} open={dialogOpen} onOpenChange={() => setDialogOpen(!dialogOpen)}>
+        <DialogContent className="max-w-xl p-0 overflow-hidden">
+          <div className="p-5">
+            <h2 className="text-2xl font-semibold">
+              {endStatus === "win" ? "Congratulations!" : "Game Over"}
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              {endStatus === "win"
+                ? <>You&apos;ve successfully guessed the word!</>
+                : (
+                  <>
+                    <p>You&apos;ve run out of attempts. Better luck next time!</p>
+                    <p>The word was <strong>{getParty(activePartyId)?.word}</strong>.</p>
+                  </>
+                )}
+            </p>
 
-          <DialogFooter className="mt-3">
-            <Button onClick={() => {
-              if (endStatus === "win") {
-                setWin(activePartyId);
-              } else {
-                setLose(activePartyId, "missed");
-              }
-            }}>
-              Close
-            </Button>
-
-            <NewWordlePartyDialog>
-              <Button>
-                Play again
+            <DialogFooter className="mt-3">
+              <Button variant={"outline"} size={"sm"} onClick={() => {
+                if (endStatus === "win") {
+                  setWin(activePartyId);
+                } else {
+                  setLose(activePartyId, "missed");
+                }
+              }}>
+                Close
               </Button>
-            </NewWordlePartyDialog>
-          </DialogFooter>
-        </div>
-      </DialogContent>
-    </Dialog>
+
+              <Button variant="default" size={"sm"} onClick={() => {
+                setDialogOpen(false);
+                refresh();
+              }}>
+                Go again
+              </Button>
+            </DialogFooter>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };

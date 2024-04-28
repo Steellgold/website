@@ -12,7 +12,7 @@ import { WordlePartyHistory } from "./lib/history";
 
 export const WordleStatsCard = () => {
   const { parties } = useWorldePartyStore();
-
+  
   return (
     <div>
       <CustomCard noHover active>
@@ -59,7 +59,7 @@ export const WordleStatsCard = () => {
         </CardContent>
 
         <CardFooter className="justify-end">
-          <NewWordlePartyDialog>
+          <NewWordlePartyDialog> 
             <Button>
               Start a new party
             </Button>
