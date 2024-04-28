@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Line, PartyEndReason, WordleParty } from "../types/wordle.type";
 import { dayJS } from "../utils/dayjs/day-js";
+import { diffToNum } from "../wordle/utils";
 
 type DataStore = {
   hasVisitedWordle: boolean;
@@ -42,6 +43,7 @@ type PartyStore = {
 
   addLetter: (letter: string) => void;
   removeLetter: () => void;
+  setWord: (word: string) => void;
 
   setLine: (line: Line) => void;
 
@@ -68,7 +70,9 @@ export const useWorldePartyStore = create(
             ...state.parties,
             {
               ...party,
-              lines: Array.from({ length: party.attempts }, () => Array.from({ length: party.word.length }, () => ({ letter: "", status: "unknow" }))),
+              lines: Array.from({
+                length: party.attempts
+              }, () => Array.from({ length: diffToNum(party.difficulty) }, () => ({ letter: "", status: "unknow" }))),
             },
           ],
         }));
@@ -169,12 +173,22 @@ export const useWorldePartyStore = create(
         }));
       },
 
+      setWord: (word) => {
+        const party = get().getParty(get().activePartyId!);
+        if (!party) return;
+
+        set((state) => ({
+          parties: state.parties.map((party) => party.id === state.activePartyId ? {
+            ...party, word: word
+          } : party),
+        }));
+      },
+
       clear: () => {
         set(() => ({ parties: [], activePartyId: null, activeLineIndex: 0 }));
       },
 
       refresh() {
-        // set the active party id to null, so the board will be empty
         set(() => ({
           activePartyId: null
         }));

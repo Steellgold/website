@@ -40,22 +40,19 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
       ? Object.keys(Categories)[Math.floor(Math.random() * 27)] as WordCategories
       : category;
 
-    const response = await fetch(`https://trouve-mot.fr/api/categorie/${getCategoryId(cat)}/50`);
+    const response = await fetch(`/api/word/gen?category=${cat}&difficulty=${difficulty}`);
     const data = await response.json();
 
-    const schema = z.array(z.object({
-      name: z.string(),
-      categorie: z.string()
-    })).safeParse(data);
+    const schema = z.object({
+      success: z.boolean(),
+      word: z.string()
+    }).safeParse(data);
 
     if (!schema.success) {
       return;
     }
 
-    const words = schema.data;
-    const word = words.find((word) => word.name.length === difficultyToNumber(difficulty));
-
-    if (!word) {
+    if (!schema.data.success) {
       setError(true);
       setLoading(false);
       return;
@@ -65,7 +62,7 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
       id: Math.random().toString(36).substring(7),
       category: cat,
       difficulty,
-      word: normalizeText(word.name),
+      word: schema.data.word,
       startedAt: dayJS().toISOString(),
       attempts,
       jokerEnabled: joker,

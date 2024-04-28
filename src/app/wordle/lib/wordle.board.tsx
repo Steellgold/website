@@ -3,9 +3,9 @@
 import { Button } from "@/lib/components/ui/button";
 import { Component } from "@/lib/components/utils/component";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
-import { Letter, WordleParty } from "@/lib/types/wordle.type";
+import { Letter, Line, WordleParty } from "@/lib/types/wordle.type";
 import { cn } from "@/lib/utils";
-import { isValidWord } from "@/lib/wordle/utils";
+import { diffToNum, isValidWord } from "@/lib/wordle/utils";
 import { Delete } from "lucide-react";
 import { ReactElement, useState } from "react";
 import ReactConfetti from "react-confetti";
@@ -13,13 +13,18 @@ import { useEventListener, useWindowSize } from "usehooks-ts";
 import { EndedWordleDialog } from "../dialogs/wordle-ended.dialog";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
 import Image from "next/image";
+import { z } from "zod";
+import { getText } from "@/lib/wordle/cryptr.server";
 
 export const WordleBoard = (): ReactElement => {
-  const { activePartyId, getParty, addLetter, removeLetter, activeLineIndex, setLine, setActiveLineIndex } = useWorldePartyStore();
+  const {
+    activePartyId, getParty, addLetter,
+    removeLetter, activeLineIndex, setLine,
+    setActiveLineIndex, setWord
+  } = useWorldePartyStore();
   
   const [isFound, setIsFound] = useState<boolean>(false);
   const [ended, setEnded] = useState<boolean>(false);
-  const [showWord, setShowWord] = useState<boolean>(false);
 
   const { width, height } = useWindowSize();
 
@@ -52,19 +57,45 @@ export const WordleBoard = (): ReactElement => {
     if (e.key === "Enter") {
       if ((party?.lines ?? [])[activeLineIndex ?? 0].some((data) => data.letter === "")) return;
 
-      const result = isValidWord(party?.lines ?? [], party?.word ?? "", (activeLineIndex ?? 0));
-      setLine(result);
+      fetch('/api/word/check', {
+        method: "POST",
+        body: JSON.stringify({
+          letterArray: party?.lines ?? [],
+          targetWord: party?.word ?? "",
+          lineIndexToCheck: activeLineIndex?.toString()
+        })
+      }).then(async(response) => {
+        const schema = z.object({
+          success: z.boolean(),
+          word: z.string().optional().nullable(),
+          positions: z.array(z.object({
+            letter: z.string(),
+            status: z.string()
+          }))
+        }).safeParse(await response.json());
 
-      if (result.every((data) => data.status === "well-placed")) {
-        setEnded(true);
-        setIsFound(true);
-      }
+        if (!schema.success) {
+          console.error(schema.error);
+          return;
+        }
 
-      if (activeLineIndex === (party?.attempts ?? 5) - 1) {
-        setEnded(true);
-      } else {
-        setActiveLineIndex((activeLineIndex ?? 0) + 1);
-      }
+        const { positions } = schema.data;
+
+        setLine(positions as Line);
+    
+        if (positions.every((data) => data.status === "well-placed")) {
+          setEnded(true);
+          setIsFound(true);
+          if (schema.data.word) setWord(schema.data.word);
+        }
+
+        if (activeLineIndex === (party?.attempts ?? 5) - 1) {
+          setEnded(true);
+          setWord(await getText(party?.word ?? ""));
+        } else {
+          setActiveLineIndex((activeLineIndex ?? 0) + 1);
+        }
+      });
     }
   }
 
@@ -84,7 +115,7 @@ export const WordleBoard = (): ReactElement => {
         <div className={cn(
           "border border-[#262626] rounded-lg p-5",
           "flex flex-col sm:flex-row w-full", {
-            "sm:flex-col": (party?.word ?? "melvynx").length > 6
+            "sm:flex-col": (diffToNum(party?.difficulty ?? "five") ?? "melvynx") > 6
           }
         )}>
           <div className="p-2">
@@ -130,17 +161,43 @@ export const WordleBoard = (): ReactElement => {
           <div className="p-2 w-full">
             {!party?.isReadOnly && (
               <Button
-                onClick={() => {
-                  const result = isValidWord(party?.lines ?? [], party?.word ?? "", (activeLineIndex ?? 0));
-                  setLine(result);
+                onClick={async() => {
+                  const response = await fetch('/api/word/check', {
+                    method: "POST",
+                    body: JSON.stringify({
+                      letterArray: party?.lines ?? [],
+                      targetWord: party?.word ?? "",
+                      lineIndexToCheck: activeLineIndex?.toString()
+                    })
+                  })
 
-                  if (result.every((data) => data.status === "well-placed")) {
+                  const schema = z.object({
+                    success: z.boolean(),
+                    word: z.string().optional().nullable(),
+                    positions: z.array(z.object({
+                      letter: z.string(),
+                      status: z.string()
+                    }))
+                  }).safeParse(await response.json());
+
+                  if (!schema.success) {
+                    console.error(schema.error);
+                    return;
+                  }
+
+                  const { positions } = schema.data;
+
+                  setLine(positions as Line);
+              
+                  if (positions.every((data) => data.status === "well-placed")) {
                     setEnded(true);
                     setIsFound(true);
+                    if (schema.data.word) setWord(schema.data.word);
                   }
 
                   if (activeLineIndex === (party?.attempts ?? 5) - 1) {
                     setEnded(true);
+                    setWord(await getText(party?.word ?? ""));
                   } else {
                     setActiveLineIndex((activeLineIndex ?? 0) + 1);
                   }
@@ -187,7 +244,7 @@ export const WordleBoard = (): ReactElement => {
                 If you put multiple same letters, only the number of this letter in the word to find will be taken into
               </p>
 
-              {process.env.NODE_ENV === "development" && (
+              {/* {process.env.NODE_ENV === "development" && (
                 <div className={cn(
                   "cursor-pointer flex flex-row gap-2", {
                     "bg-[#262626]": showWord
@@ -199,7 +256,7 @@ export const WordleBoard = (): ReactElement => {
                     </>
                   ) : <>&nbsp;&nbsp;&nbsp;&nbsp;</>}
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>

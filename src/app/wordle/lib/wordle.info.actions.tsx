@@ -8,13 +8,16 @@ import { Button } from "@/lib/components/ui/button";
 import { ArrowLeft, Spade, Trash2 } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogTrigger } from "@/lib/components/ui/alert-dialog";
 import { joker } from "@/lib/wordle/utils";
+import { getText } from "../../../lib/wordle/cryptr.server";
+import { z } from "zod";
+import { Line } from "@/lib/types/wordle.type";
 
 export const WordleInfoActions = (): ReactElement => {
   const {
       activePartyId, activeLineIndex, getParty,
       isJokerUsed, setJokerUsed, setLose,
       setLine, setJoker, removeParty,
-      setActivePartyId
+      setActivePartyId, setWord
   } = useWorldePartyStore();
   
   const [_, setTimer] = useState<string>(dayJS().toISOString());
@@ -97,8 +100,27 @@ export const WordleInfoActions = (): ReactElement => {
           
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={() => {
-                    const jokerLetter = joker(party?.lines ?? [], party?.word ?? "", activeLineIndex ?? 0);
+                  <AlertDialogAction onClick={async() => {
+                    const response = await fetch(`/api/word/joker`, {
+                      method: "POST",
+                      body: JSON.stringify({
+                        letterArray: party?.lines ?? [],
+                        targetWord: party?.word ?? "",
+                        lineIndexToCheck: activeLineIndex?.toString()
+                      })
+                    });
+
+                    const schema = z.object({
+                      success: z.boolean(),
+                      line: z.array(z.object({
+                        letter: z.string(),
+                        status: z.string()
+                      }))
+                    }).safeParse(await response.json());
+                    
+                    if (!schema.success) return;
+                    const jokerLetter = schema.data.line as Line;
+                    
                     setLine(jokerLetter);
                     setJokerUsed(activePartyId);
                     setJoker(activePartyId, activeLineIndex ?? 0, jokerLetter.findIndex((data) => data.status == "hint"));
@@ -123,7 +145,10 @@ export const WordleInfoActions = (): ReactElement => {
 
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => setLose(activePartyId, "abandon")}>Yes</AlertDialogAction>
+            <AlertDialogAction onClick={async() => {
+              setWord(await getText(party?.word ?? ""));
+              setLose(activePartyId, "abandon")
+            }}>Yes</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
