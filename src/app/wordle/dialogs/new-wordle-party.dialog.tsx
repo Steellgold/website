@@ -140,7 +140,7 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
               />
             </Alert>
           </div>
-
+{/* 
           <div className="flex flex-col space-y-2">
             <Alert className="flex items-center justify-between">
               <div>
@@ -155,7 +155,7 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
                 onCheckedChange={(value) => setJoker(value)}
               />
             </Alert>
-          </div>
+          </div> */}
 
           {error && (
             <Alert variant={"destructive"}>

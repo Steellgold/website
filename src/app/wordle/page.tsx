@@ -20,10 +20,6 @@ const Wordle = () => {
         <div className="mt-5">
           <WordleParty />
         </div>
-
-        <div className="mt-5">
-          <WordlePartyHistory />
-        </div>
       </div>
     </>
   )
