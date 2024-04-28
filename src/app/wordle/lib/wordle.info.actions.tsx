@@ -7,9 +7,10 @@ import { useEffect, useState } from "react";
 import { Button } from "@/lib/components/ui/button";
 import { Spade, Trash2 } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogTrigger } from "@/lib/components/ui/alert-dialog";
+import { joker } from "@/lib/wordle/utils";
 
 export const WordleInfoActions = (): ReactElement => {
-  const { activePartyId, getParty, isJokerUsed, setJokerUsed, setLose } = useWorldePartyStore();
+  const { activePartyId, activeLineIndex, getParty, isJokerUsed, setJokerUsed, setLose, setLine, setJoker } = useWorldePartyStore();
   const [timer, setTimer] = useState<string>(dayJS().toISOString());
 
   useEffect(() => {
@@ -18,27 +19,42 @@ export const WordleInfoActions = (): ReactElement => {
   }, []);
 
   if (!activePartyId) return <></>;
+  const party = getParty(activePartyId);
 
   return (
     <div className="mt-3 flex justify-end gap-3">
-      {!isJokerUsed(activePartyId) && (
-        <AlertDialog>
-          <AlertDialogTrigger disabled={isJokerUsed(activePartyId)}>
-            <Button disabled={isJokerUsed(activePartyId)}>
+      {party?.jokerEnabled && (
+        <>
+          {isJokerUsed(activePartyId) ? (
+            <Button variant={"hintDisabled"} onClick={() => setJokerUsed(activePartyId)}>
               <Spade className="h-4 w-4 mr-1" />
-              {isJokerUsed(activePartyId) ? "Joker used" : "Use joker"}
+              Joker used
             </Button>
-          </AlertDialogTrigger>
-      
-          <AlertDialogContent>
-            <p>If you use the joker, you will get a random letter for the word. Are you sure you want to use it?</p>            
-      
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={() => setJokerUsed(activePartyId)}>Yes</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+          ) : (
+            <AlertDialog>
+              <AlertDialogTrigger disabled={isJokerUsed(activePartyId)}>
+                <Button variant={"hint"} disabled={isJokerUsed(activePartyId)}>
+                  <Spade className="h-4 w-4 mr-1" />
+                  {isJokerUsed(activePartyId) ? "Joker used" : "Use joker"}
+                </Button>
+              </AlertDialogTrigger>
+          
+              <AlertDialogContent>
+                <p>If you use the joker, you will get a random letter for the word. Are you sure you want to use it?</p>            
+          
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={() => {
+                    const jokerLetter = joker(party?.lines ?? [], party?.word ?? "", activeLineIndex ?? 0);
+                    setLine(jokerLetter);
+                    setJokerUsed(activePartyId);
+                    setJoker(activePartyId, activeLineIndex ?? 0, jokerLetter.findIndex((data) => data.status == "hint"));
+                  }}>Yes</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          )}
+        </>
       )}
 
       <AlertDialog>
