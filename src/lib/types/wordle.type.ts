@@ -1,4 +1,4 @@
-export type LetterStatus = "well-placed" | "misplaced" | "not-present" | "unknown";
+export type LetterStatus = "well-placed" | "misplaced" | "not-present" | "unknown" | "joker";	
 export type PartyEndReason = "abandon" | "missed";
 export type PartyDifficulty = "five" | "six" | "seven" | "eight" | "nine" | "ten";
 
@@ -56,7 +56,10 @@ export type WordleParty = {
   endReason?: PartyEndReason;
 
   difficulty: PartyDifficulty;
+  
   category: WordCategories;
+  showCategory: boolean;
+
   attempts: number;
   
   jokerUsed?: boolean;

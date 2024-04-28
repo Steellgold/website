@@ -109,15 +109,17 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
                   </SelectContent>
                 </Select>
               </div>
+              
+              {category == "random" && (
+                <Alert className="flex items-center justify-between">
+                  <Label>Show the category ?</Label>
 
-              <Alert className="flex items-center justify-between">
-                <Label>Show the category ?</Label>
-
-                <Switch
-                  checked={showCategory}
-                  onCheckedChange={(value) => setShowCategory(value)}
-                />
-              </Alert>
+                  <Switch
+                    checked={showCategory}
+                    onCheckedChange={(value) => setShowCategory(value)}
+                  />
+                </Alert>
+              )}
             </Alert>
           </div>
 
