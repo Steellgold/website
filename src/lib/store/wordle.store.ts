@@ -47,6 +47,8 @@ type PartyStore = {
 
   setLine: (line: Line) => void;
 
+  setFinishedAt: (id: string) => void;
+
   clear: () => void;
 
   refresh: () => void;
@@ -122,6 +124,14 @@ export const useWorldePartyStore = create(
         );
         
         set(() => ({ activePartyId: null }));
+      },
+
+      setFinishedAt: (id) => {
+        set((state) => ({
+          parties: state.parties.map(
+            (party) => party.id === id ? { ...party, finishedAt: dayJS().toISOString() } : party
+          ),
+        }));
       },
       
       addLetter: (letter) => {

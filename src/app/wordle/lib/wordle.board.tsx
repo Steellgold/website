@@ -20,8 +20,7 @@ export const WordleBoard = (): ReactElement => {
   const {
     activePartyId, getParty, addLetter,
     removeLetter, activeLineIndex, setLine,
-    setActiveLineIndex, setWord,
-    // setDefinition, setDefinitionUsed, isDefinitionUsed
+    setActiveLineIndex, setWord, setFinishedAt
   } = useWorldePartyStore();
   
   const [isFound, setIsFound] = useState<boolean>(false);
@@ -88,12 +87,14 @@ export const WordleBoard = (): ReactElement => {
         if (positions.every((data) => data.status === "well-placed")) {
           setEnded(true);
           setIsFound(true);
+          setFinishedAt(activePartyId);
           if (schema.data.word) setWord(schema.data.word);
         }
 
         if (activeLineIndex === (party?.attempts ?? 5) - 1) {
           setEnded(true);
           setWord(await getText(party?.word ?? ""));
+          setFinishedAt(activePartyId);
         } else {
           setActiveLineIndex((activeLineIndex ?? 0) + 1);
         }
@@ -215,30 +216,8 @@ export const WordleBoard = (): ReactElement => {
                 >
                   Valider ma réponse
                 </Button>
-
-                {/* {party?.definitionEnabled && (activeLineIndex ?? 0) >= 3 && (
-                    <Button
-                      onClick={async() => {
-                        const response = await fetch(`/api/word/def?word=${party?.word}`);
-                        const data = await response.json();
-                        console.log(data);
-                      }}
-                      variant={"secondary"}
-                      className="w-full mt-2"
-                      disabled={isDefinitionUsed(activePartyId)}
-                    >
-                      Show definition
-                    </Button>
-                )} */}
               </>
             )}
-
-            {/* {party?.definition && (
-              <div className="mt-3">
-                <h4 className="text-lg font-bold">Definition</h4>
-                <p>{party.definition}</p>
-              </div>
-            )} */}
 
             <div className={cn(
               "flex flex-col flex text-left justify-center gap-2", {

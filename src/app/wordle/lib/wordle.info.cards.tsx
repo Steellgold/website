@@ -69,11 +69,11 @@ export const WordleInfoCards = (): ReactElement => {
       <Card>
         <CardHeader className="hidden sm:block">
           <CardTitle>
-            {party?.isReadOnly ? "Party duration" : "Time elapsed"}
+            {party?.isReadOnly || party?.finishedAt !== null ? "Party duration" : "Time elapsed"}
           </CardTitle>
         </CardHeader>
 
-        {party?.isReadOnly ? (
+        {party?.isReadOnly || party?.finishedAt !== null ? (
           <CardContent className="mt-3 -mb-2 sm:mb-0 sm:-mt-3">
             ⏱️&nbsp;
             {dayJS(party?.finishedAt).diff(dayJS(party?.startedAt), "minutes")} minutes&nbsp;
