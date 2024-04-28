@@ -299,7 +299,7 @@ export const Case: Component<Letter> = ({ letter, status, isJoker }) => {
         "bg-[#853290]": status === "hint" || isJoker
       }
     )}>
-      {letter}
+      {letter && letter.toUpperCase()}
     </div>
   );
 }
