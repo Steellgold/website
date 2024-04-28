@@ -8,7 +8,7 @@ import { CustomCard } from "@/lib/components/card";
 import { AlignLeft, Crown, Snail } from "lucide-react";
 import { Button } from "@/lib/components/ui/button";
 import { NewWordlePartyDialog } from "./dialogs/new-wordle-party.dialog";
-import { WordlePartyHistory } from "./lib/history";
+import { WordlePartyHistory } from "./lib/wordle.history";
 
 export const WordleStatsCard = () => {
   const { parties } = useWorldePartyStore();

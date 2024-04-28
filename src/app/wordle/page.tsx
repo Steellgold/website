@@ -1,7 +1,6 @@
 import { WordleDialog } from "@/app/wordle/dialogs/wordle.dialog"
 import Image from "next/image";
 import { WordleParty } from "./party";
-import { WordlePartyHistory } from "./lib/history";
 
 const Wordle = () => {
   return (
