@@ -18,6 +18,13 @@ export const EndedWordleDialog: Component<WordleDialogProps> = ({ endStatus, ope
 
   if (!activePartyId) return <></>;
 
+  const setStatus = () => {
+    if (endStatus === "win") {
+      setWin(activePartyId);
+    } else {
+      setLose(activePartyId, "missed");
+    }
+  }
 
   return (
     <>
@@ -40,11 +47,7 @@ export const EndedWordleDialog: Component<WordleDialogProps> = ({ endStatus, ope
 
             <DialogFooter className="mt-3">
               <Button variant={"outline"} size={"sm"} onClick={() => {
-                if (endStatus === "win") {
-                  setWin(activePartyId);
-                } else {
-                  setLose(activePartyId, "missed");
-                }
+                setStatus();
               }}>
                 Close
               </Button>
@@ -52,6 +55,7 @@ export const EndedWordleDialog: Component<WordleDialogProps> = ({ endStatus, ope
               <Button variant="default" size={"sm"} onClick={() => {
                 setDialogOpen(false);
                 refresh();
+                setStatus();
               }}>
                 Go again
               </Button>
