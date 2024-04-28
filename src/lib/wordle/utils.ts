@@ -99,3 +99,15 @@ export const normalizeText = (word: string): string => {
       .replace(/ñ/g, "n")
       .replace(/[^a-zA-Z0-9]/g, '');
 }
+
+export const diffToNum = (dif: string) => {
+  switch (dif) {
+    case "five": return 5;
+    case "six": return 6;
+    case "seven": return 7;
+    case "eight": return 8;
+    case "nine": return 9;
+    case "ten": return 10;
+    default: return 5;
+  }
+}
