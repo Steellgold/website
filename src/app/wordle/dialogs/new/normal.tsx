@@ -72,8 +72,6 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
       activeLineIndex: 0,
       showCategory,
       isReadOnly: false
-      // definitionEnabled: definition,
-      // definitionUsed: false
     };
     
     setActiveLineIndex(0);
@@ -175,27 +173,6 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
                 id="joker-switch"
                 checked={joker}
                 onCheckedChange={(value) => setJoker(value)}
-              />
-            </div>
-
-            <Separator className="my-2" />
-
-            <div className="flex items-center justify-between">
-              <div>
-                <Label>
-                  📖 Enable definitions
-                  <Badge variant="outline" className="ml-2">Available soon</Badge>
-                </Label>
-                
-                <p className="text-muted-foreground mr-2">
-                  If you still haven&apos;t found the word, after half of the attempts, you can consult the definition of the word.
-                </p>
-              </div>
-
-              <Switch
-                checked={definition}
-                disabled
-                onCheckedChange={(value) => setDefinition(value)}
               />
             </div>
           </Alert>
