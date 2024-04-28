@@ -1,4 +1,4 @@
-export type LetterStatus = "well-placed" | "misplaced" | "not-present" | "unknown" | "joker";	
+export type LetterStatus = "well-placed" | "misplaced" | "not-present" | "unknown" | "hint";	
 export type PartyEndReason = "abandon" | "missed";
 export type PartyDifficulty = "five" | "six" | "seven" | "eight" | "nine" | "ten";
 
@@ -42,6 +42,7 @@ export type Line = Letter[];
 export type Letter = {
   letter: string;
   status: LetterStatus;
+  isJoker?: boolean;
 };
 
 export type WordleParty = {
@@ -63,6 +64,12 @@ export type WordleParty = {
   attempts: number;
   
   jokerUsed?: boolean;
+  joker?: {
+    letter: string;
+    lineIndex: number;
+    letterIndex: number;
+  }
+  jokerEnabled: boolean;
 
   lines?: Line[];
 };

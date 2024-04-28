@@ -36,6 +36,10 @@ type PartyStore = {
   isJokerUsed: (id: string) => boolean;
   setJokerUsed: (id: string) => void;
 
+  setJokerEnabled: (id: string, enabled: boolean) => void;
+  isJokerEnabled: (id: string) => boolean;
+  setJoker: ( id: string, lineIndex: number, letterIndex: number ) => void;
+
   addLetter: (letter: string) => void;
   removeLetter: () => void;
 
@@ -79,6 +83,19 @@ export const useWorldePartyStore = create(
       isJokerUsed: (id) => !!get().getParty(id)?.jokerUsed,
       setJokerUsed: (id) => {
         set((state) => ({ parties: state.parties.map((party) => party.id === id ? { ...party, jokerUsed: true } : party) }));
+      },
+
+      isJokerEnabled: (id) => !!get().getParty(id)?.jokerEnabled,
+      setJokerEnabled: (id, enabled) => {
+        set((state) => ({ parties: state.parties.map((party) => party.id === id ? { ...party, jokerEnabled: enabled } : party) }));
+      },
+      setJoker: (id, lineIndex, letterIndex) => {
+        set((state) => ({
+          parties: state.parties.map((party) => party.id === id ? {
+            ...party,
+            joker: { letter: (party.lines ?? [])[lineIndex][letterIndex].letter, lineIndex, letterIndex },
+          } : party),
+        }));
       },
 
       setWin: (id) => {
