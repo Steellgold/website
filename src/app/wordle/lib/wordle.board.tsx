@@ -11,12 +11,15 @@ import { ReactElement, useState } from "react";
 import ReactConfetti from "react-confetti";
 import { useEventListener, useWindowSize } from "usehooks-ts";
 import { EndedWordleDialog } from "../dialogs/wordle-ended.dialog";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
+import Image from "next/image";
 
 export const WordleBoard = (): ReactElement => {
   const { activePartyId, getParty, addLetter, removeLetter, activeLineIndex, setLine, setActiveLineIndex } = useWorldePartyStore();
   
   const [isFound, setIsFound] = useState<boolean>(false);
   const [ended, setEnded] = useState<boolean>(false);
+  const [showWord, setShowWord] = useState<boolean>(false);
 
   const { width, height } = useWindowSize();
 
@@ -76,10 +79,40 @@ export const WordleBoard = (): ReactElement => {
           }
         )}>
           <div className="p-2">
-            {party?.lines?.map((line, i) => (
-              <div key={i} className="flex flex-row">
+            {party?.lines?.map((line, l) => (
+              <div key={l} className="flex flex-row">
                 {line.map((data: Letter, i) => (
-                  <Case key={i} letter={data.letter} status={data.status} />
+                  <>
+                    {
+                      (
+                        party?.jokerEnabled &&
+                        party.joker?.lineIndex === l &&
+                        party.joker?.letterIndex === i
+                      ) ? (
+                      <TooltipProvider delayDuration={100}>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <div className="relative">
+                              <Case key={i} {...data} isJoker />
+                              <Image
+                                src="/_static/images/joker2.png"
+                                alt="Joker"
+                                width={64}
+                                height={64}
+                                quality={100}
+                                className="absolute -top-2 -right-3 w-10 h-10 rotate-12"
+                              />
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>This letter comes from the joker card</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    ) : (
+                      <Case key={i} {...data} />
+                    )}
+                  </>
                 ))}
               </div>
             ))}
@@ -94,7 +127,6 @@ export const WordleBoard = (): ReactElement => {
                 if (result.every((data) => data.status === "well-placed")) {
                   setEnded(true);
                   setIsFound(true);
-                  console.log(ended, isFound);
                 }
 
                 if (activeLineIndex === (party?.attempts ?? 5) - 1) {
@@ -129,15 +161,30 @@ export const WordleBoard = (): ReactElement => {
                 <p>Letter not found</p>
               </div>
 
-              {process.env.NEXT_PUBLIC_ENV == "dev" && (
-                <div className="flex flex-row gap-2 bg-[#262626]">
-                  <p>The word is {party?.word}</p>
+              {party?.jokerEnabled && (
+                <div className="flex flex-row gap-2">
+                  <div className="w-5 h-5 bg-[#853290] mt-1"></div>
+                  <p>Letter from joker</p>
                 </div>
               )}
 
               <p className="text-muted-foreground text-sm flex flex-row gap-2 items-center">
                 If you put multiple same letters, only the number of this letter in the word to find will be taken into
               </p>
+
+              {process.env.NODE_ENV === "development" && (
+                <div className={cn(
+                  "cursor-pointer flex flex-row gap-2", {
+                    "bg-[#262626]": showWord
+                  }
+                )} onClick={() => setShowWord(!showWord)}>
+                  {showWord ? (
+                    <>
+                      Word to find: <span className="text-red-50">{party?.word}</span>
+                    </>
+                  ) : <>&nbsp;&nbsp;&nbsp;&nbsp;</>}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -156,12 +203,13 @@ export const WordleBoard = (): ReactElement => {
   );
 }
 
-export const Case: Component<Letter> = ({ letter, status }) => {
+export const Case: Component<Letter> = ({ letter, status, isJoker }) => {
   return (
     <div className={cn(
       "border border-[2px] w-16 h-16 flex justify-center items-center", {
-        "bg-[#20603f]": status == "well-placed",
-        "bg-[#ff6a41]/70": status === "misplaced"
+        "bg-[#20603f]": status == "well-placed" && !isJoker,
+        "bg-[#ff6a41]/70": status === "misplaced",
+        "bg-[#853290]": status === "hint" || isJoker
       }
     )}>
       {letter}
