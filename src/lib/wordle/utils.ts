@@ -38,6 +38,41 @@ export const isValidWord = (letterArray: Line[], targetWord: string, lineIndexTo
   return positions;
 }
 
+export const joker = (letterArray: Line[], targetWord: string, lineIndexToCheck: number): Line => {
+  const currentLine = letterArray[lineIndexToCheck];
+  const lettersUsed = new Set<string>();
+  let hintLetter: string | null = null;
+
+  letterArray.forEach((line) => {
+    line.forEach((entry) => {
+      if (entry.status === 'well-placed') {
+        lettersUsed.add(entry.letter.toLowerCase());
+      }
+    });
+  });
+
+  const targetWordDecomposed = targetWord.toLowerCase().split('');
+  for (const letter of targetWordDecomposed) {
+    if (!lettersUsed.has(letter)) {
+      hintLetter = letter;
+      break;
+    }
+  }
+
+  if (!hintLetter) {
+    return currentLine;
+  }
+
+  const hintLetterIndex = targetWordDecomposed.indexOf(hintLetter);
+  const newLine = currentLine.map((entry, index) => {
+    if (index === hintLetterIndex) {
+      return { letter: hintLetter, status: 'hint' };
+    }
+    return entry;
+  });
+
+  return newLine as Line;
+}
 
 export const containsLetter = (letterArray: Line[], letter: string): boolean => {
   return letterArray.some((line) => line.some((data) => data.letter === letter));
