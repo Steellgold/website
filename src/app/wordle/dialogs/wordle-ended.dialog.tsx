@@ -5,7 +5,6 @@ import { Dialog, DialogContent, DialogFooter } from "../../../lib/components/ui/
 import { Component } from "@/lib/components/utils/component";
 import { useState } from "react";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
-import { NewWordlePartyDialog } from "./new-wordle-party.dialog";
 
 type WordleDialogProps = {
   endStatus: "win" | "lose";
