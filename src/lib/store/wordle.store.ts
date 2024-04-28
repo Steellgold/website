@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Line, PartyEndReason, WordleParty } from "../types/wordle.type";
+import { dayJS } from "../utils/dayjs/day-js";
 
 type DataStore = {
   hasVisitedWordle: boolean;
@@ -39,6 +40,8 @@ type PartyStore = {
   removeLetter: () => void;
 
   setLine: (line: Line) => void;
+
+  clear: () => void;
 };
 
 export const useWorldePartyStore = create(
@@ -79,7 +82,7 @@ export const useWorldePartyStore = create(
       setWin: (id) => {
         set((state) => ({
           parties: state.parties.map(
-            (party) => party.id === id ? { ...party, endStatus: "win", finishedAt: Date.now().toString() } : party
+            (party) => party.id === id ? { ...party, endStatus: "win", finishedAt: dayJS().toISOString() } : party
           ),
         }));
         set(() => ({ activePartyId: null }));
@@ -89,7 +92,7 @@ export const useWorldePartyStore = create(
         set((state) => ({
           parties: state.parties.map(
             (party) => party.id === id ?
-              { ...party, endStatus: "lose", endReason: reason, finishedAt: Date.now().toString() }
+              { ...party, endStatus: "lose", endReason: reason, finishedAt: dayJS().toISOString() }
               : party
             )
           })
@@ -145,6 +148,10 @@ export const useWorldePartyStore = create(
               : party
             ),
         }));
+      },
+
+      clear: () => {
+        set(() => ({ parties: [], activePartyId: null, activeLineIndex: 0 }));
       },
     }),
     { name: "wordle-party-storage" },
