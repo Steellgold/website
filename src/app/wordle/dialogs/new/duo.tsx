@@ -19,7 +19,7 @@ export const DuoNewPartyContent: Component<PropsWithChildren> = ({ children }) =
 
       <DialogFooter className="mt-5">
         <Button disabled variant="duo">
-          Play daily <Badge variant={"secondary"} className="ml-2">Coming soon</Badge>
+          Play duo <Badge variant={"secondary"} className="ml-2">Coming soon</Badge>
           <ArrowRight className="w-4 h-4 ml-2" />
         </Button>
       </DialogFooter>
