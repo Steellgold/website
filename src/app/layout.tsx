@@ -21,7 +21,9 @@ export const viewport: Viewport = {
 const Layout: Component<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
-      <script defer src="https://supalytics.co/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
+      {process.env.NEXT_PUBLIC_ENV !== "dev" && (
+        <script defer src="https://supalytics.co/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
+      )}
 
       <body className={cn("bg-black", nunito.className)}>
         <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
