@@ -64,17 +64,17 @@ export const WordleSettingsHome = () => {
         <CardContent>
           <div className="flex items-center space-x-2">
             <Image src={
-              user && user.avatar
-                ? user.avatar
+              user && user.name
+                ? "https://api.dicebear.com/8.x/fun-emoji/png?seed=" + user.name
                 : "https://api.dicebear.com/8.x/icons/png?icon=emojiSmile&backgroundColor=262626"
             } width={32} height={32} alt="Avatar" className="rounded-full" />
-            <Input placeholder="Your name" />
+            <Input placeholder="Your name" value={user ? user.name : ""} disabled />
           </div>
         </CardContent>
 
         <CardFooter className="flex justify-between">
           <p className="text-xs text-muted-foreground/35">
-            User ID: {Math.random().toString(36).substring(7)}
+            User ID: {user ? user.id : "No user"}
           </p>
 
           <Button variant="secondary" size="sm" disabled>
