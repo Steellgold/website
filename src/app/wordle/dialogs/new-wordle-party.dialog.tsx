@@ -12,8 +12,12 @@ import Image from "next/image";
 import { DailyNewPartyContent } from "./new/daily";
 import { DuoNewPartyContent } from "./new/duo";
 
-export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children }) => {
-  const [choose, setChoose] = useState<"normal" | "ranked" | "daily" | "duo">("normal");
+type NewWordlePartyDialogProps = {
+  mode: "normal" | "ranked" | "daily" | "duo";
+};
+
+export const NewWordlePartyDialog: Component<PropsWithChildren & NewWordlePartyDialogProps> = ({ children, mode }) => {
+  const [choose, setChoose] = useState<"normal" | "ranked" | "daily" | "duo">(mode);
 
   return (
     <Dialog onOpenChange={(open) => !open && setChoose("normal")}>
@@ -46,35 +50,16 @@ export const NewWordlePartyDialog: Component<PropsWithChildren> = ({ children })
           </div>
         )}
 
-        <div className={cn({
-          "p-5": choose !== "normal",
-        })}>
-          <Tabs defaultValue="normal" onValueChange={(value) => setChoose(value as any)}>
-            <TabsList>
-              <TabsTrigger value="normal">Normal</TabsTrigger>
-              <TabsTrigger value="ranked">Ranked</TabsTrigger>
-              <TabsTrigger value="daily">Daily</TabsTrigger>
-              <TabsTrigger value="duo">Duo</TabsTrigger>
-            </TabsList>
-
-            <Separator className="my-3" />
-            
-            <TabsContent value="normal">
-              <NormalNewPartyContent />
-            </TabsContent>
-
-            <TabsContent value="ranked">
-              <RankedNewPartyContent />
-            </TabsContent>
-
-            <TabsContent value="daily">
-              <DailyNewPartyContent />
-            </TabsContent>
-
-            <TabsContent value="duo">
-              <DuoNewPartyContent />
-            </TabsContent>
-          </Tabs>
+        <div className={cn({ "p-5": choose !== "normal" })}>
+          {choose === "normal" ? (
+            <NormalNewPartyContent />
+          ) : choose === "ranked" ? (
+            <RankedNewPartyContent />
+          ) : choose === "daily" ? (
+            <DailyNewPartyContent />
+          ) : choose === "duo" ? (
+            <DuoNewPartyContent />
+          ) : null}
         </div>
       </DialogContent>
     </Dialog>
