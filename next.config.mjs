@@ -11,6 +11,7 @@ const nextConfig = {
       { hostname: "avatars.githubusercontent.com", protocol: "https" },
       { hostname: "pbs.twimg.com", protocol: "https" },
       { hostname: "upload.wikimedia.org", protocol: "https" },
+      { hostname: "api.dicebear.com", protocol: "https" },
     ]
   }
 };
