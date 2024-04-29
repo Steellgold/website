@@ -4,6 +4,7 @@ import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { Cross2Icon } from "@radix-ui/react-icons"
 import { cn } from "@/lib/utils"
+import { ScrollArea } from "./scroll-area"
 
 const Dialog = DialogPrimitive.Root
 
@@ -45,7 +46,10 @@ const DialogContent = React.forwardRef<
       )}
       {...props}
     >
-      {children}
+      <ScrollArea className="max-h-[calc(100vh-3rem)] overflow-y-auto">
+        {children}
+      </ScrollArea>
+      
       <DialogPrimitive.Close className={cn(
         "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground", { "text-black": black, "hidden": props.hiddenX }
       )}>
@@ -63,7 +67,7 @@ const DialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
+      "flex flex-col space-y-1.5 text-center text-left",
       className
     )}
     {...props}

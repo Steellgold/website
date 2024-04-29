@@ -11,6 +11,7 @@ const alertVariants = cva(
         default: "bg-background text-foreground",
         destructive:
           "border-[#e23235]/50 text-[#e23235] dark:border-[#e23235] [&>svg]:text-[#e23235]",
+        questCompleted: "border-[#2e8b57]/50 text-[#2e8b57] dark:border-[#2e8b57]",
       },
     },
     defaultVariants: {
