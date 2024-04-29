@@ -1,6 +1,7 @@
 export type LetterStatus = "well-placed" | "misplaced" | "not-present" | "unknown" | "hint";	
 export type PartyEndReason = "abandon" | "missed";
 export type PartyDifficulty = "five" | "six" | "seven" | "eight" | "nine" | "ten";
+export type PartyType = "normal" | "ranked" | "duo" | "daily";
 
 export type WordCategories = "random" | "school" | "landscape" | "qualities" | "calculation" | "food" | "human-body" | "senses" | "interior" | "industry" | "arts" | "agriculture" | "orchard" | "gestures" | "time" | "clothing" | "sports" | "house" | "travels" | "animals" | "city" | "water" | "commerce" | "communication" | "emotions" | "government" | "army" | "human-life";
 
