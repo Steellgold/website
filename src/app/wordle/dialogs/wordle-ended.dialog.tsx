@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
 
 type WordleDialogProps = {
-  endStatus: "win" | "lose";
+  endStatus: "win" | "lose" | "time";
   open: boolean;
 };
 
