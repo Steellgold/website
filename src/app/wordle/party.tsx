@@ -27,23 +27,22 @@ export const WordleParty = () => {
     return (
       <WordleLayout
         imageSrc={
-          choose === "normal"
-            ? "/_static/images/wordle_title.png"
-              : choose === "ranked"
-                ? "/_static/images/wordle_title_ranked.png"
-                  : choose === "daily"
-                    ? "/_static/images/wordle_title_daily.png"
-                      : "/_static/images/wordle_title.png"
+          choose === "normal" ? "/_static/images/wordle_title.png"
+              : choose === "ranked" ? "/_static/images/wordle_title_ranked.png"
+                  : choose === "daily" ? "/_static/images/wordle_title_daily.png"
+                      : choose === "duo" ? "/_static/images/wordle_title_duo.png"
+                          : choose === "settings" ? "/_static/images/settings.png"
+          : "/_static/images/wordle_title.png"
         }
         imageAlt={`Wordle ${choose}`}
       >
         <Tabs defaultValue="normal" onValueChange={(value) => setChoose(value as PartyType)}>
           <TabsList className="flex justify-center">
             <TabsTrigger value="normal">Normal</TabsTrigger>
-            <TabsTrigger value="ranked" disabled={!user}>Ranked</TabsTrigger>
+            <TabsTrigger value="ranked" disabled>Ranked</TabsTrigger>
             <TabsTrigger value="daily" disabled>Daily</TabsTrigger>
-            <TabsTrigger value="duo" disabled={!user}>Duo</TabsTrigger>
-            <TabsTrigger value="settings">
+            <TabsTrigger value="duo" disabled>Duo</TabsTrigger>
+            <TabsTrigger value="settings" disabled>
               <Settings size={16} />&nbsp;
               Settings
             </TabsTrigger>
@@ -76,12 +75,12 @@ export const WordleParty = () => {
   if (!party) return <p>Party not found</p>;
 
   return (
-    <div>
+    <WordleLayout>
       <WordleInfoCards />
       <WordleInfoActions />
       <Separator className="my-5" />
 
       <WordleBoard />
-    </div>
+    </WordleLayout>
   )
 }
