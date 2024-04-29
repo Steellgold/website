@@ -1,15 +1,84 @@
 import { CustomCard } from "@/lib/components/card"
-import { WordleStatsCard } from "../../party.stats"
 import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/components/ui/card"
 import { Badge } from "@/lib/components/ui/badge"
-import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert"
+import { Alert, AlertDescription } from "@/lib/components/ui/alert"
 import { Separator } from "@/lib/components/ui/separator"
-import { getCategoryId, getCategoryName } from "@/lib/wordle/party"
+import { getCategoryName } from "@/lib/wordle/party"
 import { Button } from "@/lib/components/ui/button"
-import { ArrowLeft, ArrowRight, Check, ShoppingBag, X } from "lucide-react"
+import { ArrowRight, ShoppingBag, X } from "lucide-react"
 import { NewWordlePartyDialog } from "../../dialogs/new-wordle-party.dialog"
+import { Quests } from "./lib/normal.quests"
+import { Suspense } from "react"
+import { QuestsLoading } from "./lib/loading"
+import { useWorldePartyStore } from "@/lib/store/wordle.store"
+import { stat } from "fs"
+import { dayJS } from "@/lib/utils/dayjs/day-js"
 
 export const WordleNormalHome = () => {
+  const { parties, setActivePartyId } = useWorldePartyStore();
+
+  const getStats = (): {
+    total: number;
+    wins: number;
+    loses: number;
+    rate: {
+      w: string;
+      l: string;
+    };
+    bestTime: {
+      time: string;
+      partyId: string;
+    };
+    mostPlayedCategory: string;
+  } => {
+    const totalWins = parties.filter(p => p.endStatus === "win").length;
+    const totalLoses = parties.filter(p => p.endStatus === "lose" || p.endReason === "abandon").length;
+
+    const categories = parties.map(p => p.category);
+    const mostPlayedCategory = categories.sort((a, b) =>
+      categories.filter(v => v === a).length - categories.filter(v => v === b).length
+    ).pop();
+
+    let rate = { w: "0", l: "0" };
+    if (parties.length > 0) rate = { w: `${Math.floor(totalWins / parties.length * 100)}`, l: `${Math.floor(totalLoses / parties.length * 100)}` }
+
+    let bestTime: number = 0;
+    let bestPartyId: string = "";
+    parties.forEach(p => {
+      if (!p.startedAt || !p.finishedAt) return;
+      if (p.endStatus !== "win") return;
+      const start = dayJS(p.startedAt).unix();
+      const end = dayJS(p.finishedAt).unix();
+      const time = end - start;
+      if (time < bestTime || bestTime === 0) {
+        bestTime = time;
+        bestPartyId = p.id;
+      }
+    });
+
+    const formatTime = (time: number) => {
+      const minutes = Math.floor(time / 60);
+      const seconds = time - minutes * 60;
+      return `${minutes}m ${seconds}s`;
+    }
+
+    return {
+      total: parties.length,
+      wins: totalWins,
+      loses: totalLoses,
+      rate,
+      mostPlayedCategory: mostPlayedCategory ? getCategoryName(mostPlayedCategory).name : "No category played yet",
+      bestTime: {
+        time: formatTime(bestTime),
+        partyId: bestPartyId
+      }
+    }
+  }
+
+  const stats = getStats();
+
+  console.log(stats);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
       <CustomCard noHover>
@@ -33,30 +102,38 @@ export const WordleNormalHome = () => {
 
           <Alert>
             <AlertDescription>
-              <Badge variant={"outline"}>136</Badge> games played
+              <Badge variant={"outline"}>{stats.total}</Badge> games played
             </AlertDescription>
           </Alert>
 
           <Alert>
             <AlertDescription className="flex justify-between">
-              <Badge variant={"outline"}>17 wins &nbsp;({Math.floor(17 / 136 * 100)}%)</Badge>
+              <Badge variant={"success"}>{stats.wins} wins &nbsp;({stats.rate.w}%)</Badge>
 
               <Separator className="my-3 w-3/12" />
 
-              <Badge variant={"outline"}>119 loses &nbsp;({Math.floor(119 / 136 * 100)}%)</Badge>
+              <Badge variant={"fail"}>{stats.loses} loses &nbsp;({stats.rate.l}%)</Badge>
             </AlertDescription>
           </Alert>
 
           <Alert>
             <AlertDescription>
-              <Badge variant={"outline"}>{getCategoryName("school").name}</Badge> category played the most
+              {stats.mostPlayedCategory === "No category played yet" ? (
+                <p>{stats.mostPlayedCategory}</p>
+              ) : (
+                <>
+                  <Badge variant={"outline"}>{stats.mostPlayedCategory}</Badge> category played the most
+                </>
+              )}
             </AlertDescription>
           </Alert>
 
           <Alert>
             <AlertDescription className="flex justify-between items-center">
-              <div>Best time: <Badge variant={"outline"}>03m 45s</Badge></div>
-              <Button variant={"outline"} size={"sm"}>Show game <ArrowRight size={16} /></Button>
+              <div>Best time: <Badge variant={"outline"}>{stats.bestTime.time}</Badge></div>
+              <Button variant={"outline"} size={"sm"} onClick={() => {
+                setActivePartyId(stats.bestTime.partyId);
+              }}>Show game <ArrowRight size={16} /></Button>
             </AlertDescription>
           </Alert>
         </CardContent>
@@ -69,24 +146,12 @@ export const WordleNormalHome = () => {
         </CardHeader>
 
         <CardContent className="flex flex-col gap-2">
-          {[
-            "Complete a game in less than 5 minutes",
-            "Complete a game without using any hints",
-            "Find the word in less than 3 tries"
-          ].map((quest, i) => (
-            <Alert key={i} variant={i == 0 ? "questCompleted" : "default"}>
-              {i == 0 ? <Check size={16} color="#2e8b57" /> : <X size={16} />}
-              <AlertTitle>
-                {i == 0 ?
-                  <>Quest completed! &nbsp;<Badge variant={"questCompleted"}>+50 🪙</Badge></> :
-                  <>Complete to earn &nbsp;<Badge variant={"outline"}>{Math.floor(Math.random() * 100)}  🪙</Badge></>}
-              </AlertTitle>
-              <AlertDescription>{quest}</AlertDescription>
-            </Alert>
-          ))}
+          <Suspense fallback={<QuestsLoading />}>
+            <Quests />
+          </Suspense>
         </CardContent>
 
-        <CardFooter className="flex justify-end">
+        <CardFooter className="flex justify-end gap-2">
           <NewWordlePartyDialog mode={"normal"}>
             <Button variant={"default"} size={"sm"}>Start a new game</Button>
           </NewWordlePartyDialog>
