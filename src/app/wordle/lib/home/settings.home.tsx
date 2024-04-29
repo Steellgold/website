@@ -1,16 +1,13 @@
 import { CustomCard } from "@/lib/components/card"
-import { WordleStatsCard } from "../../party.stats"
 import { CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/components/ui/card"
 import { Badge } from "@/lib/components/ui/badge"
-import { Checkbox } from "@/lib/components/ui/checkbox"
 import { Label } from "@/lib/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/lib/components/ui/radio-group"
-import { Alert, AlertDescription } from "@/lib/components/ui/alert"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip"
 import { Input } from "@/lib/components/ui/input"
 import Image from "next/image"
 import { Button } from "@/lib/components/ui/button"
-import { RefreshCcw, Save } from "lucide-react"
+import { Save } from "lucide-react"
 import { useWordleUserStore } from "@/lib/store/wordle.user.store"
 
 export const WordleSettingsHome = () => {

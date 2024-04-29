@@ -1,26 +1,22 @@
 "use client";
 
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
-import { WordleStatsCard } from "./party.stats";
 import { Separator } from "@/lib/components/ui/separator";
 import { WordleInfoCards } from "./lib/party/wordle.info.cards";
 import { WordleInfoActions } from "./lib/party/wordle.info.actions";
 import { WordleBoard } from "./lib/party/wordle.board";
-import { WordlePartyHistory } from "./lib/party/wordle.history";
-import { useWordleUserStore } from "@/lib/store/wordle.user.store";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/lib/components/ui/tabs";
 import { PartyType } from "@/lib/types/wordle.type";
 import { useState } from "react";
 import { WordleLayout } from "./lib/party/wordle.layout";
 import { WordleNormalHome } from "./lib/home/normal.home";
-import { Settings, Settings2 } from "lucide-react";
+import { Settings } from "lucide-react";
 import { WordleSettingsHome } from "./lib/home/settings.home";
 
 type ExtraPartyType = PartyType | "settings"
 
 export const WordleParty = () => {
-  const { activePartyId, setActivePartyId, getParty } = useWorldePartyStore();
-  const { user } = useWordleUserStore();
+  const { activePartyId, getParty } = useWorldePartyStore();
   const [choose, setChoose] = useState<ExtraPartyType>("normal");
   
   if (!activePartyId){

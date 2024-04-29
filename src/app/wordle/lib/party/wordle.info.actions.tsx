@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { Button } from "@/lib/components/ui/button";
 import { ArrowLeft, Spade, Trash2 } from "lucide-react";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogFooter, AlertDialogTrigger } from "@/lib/components/ui/alert-dialog";
-import { joker } from "@/lib/wordle/utils";
 import { getText } from "../../../../lib/wordle/cryptr.server";
 import { z } from "zod";
 import { Line } from "@/lib/types/wordle.type";

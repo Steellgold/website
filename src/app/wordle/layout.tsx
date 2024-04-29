@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Nunito } from "next/font/google";
 import { Component } from "@/lib/components/utils/component";
 import { PropsWithChildren } from "react";
-
-const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Wordle - Guess the word",

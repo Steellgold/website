@@ -2,13 +2,13 @@
 
 import { CustomCard } from "@/lib/components/card"
 import { CardContent, CardDescription, CardHeader, CardTitle } from "@/lib/components/ui/card"
-import { Table, TableBody, TableCaption, TableFooter, TableHead, TableHeader, TableRow } from "@/lib/components/ui/table"
+import { Table, TableBody, TableCaption, TableHead, TableHeader, TableRow } from "@/lib/components/ui/table"
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { getCategoryName } from "@/lib/wordle/party";
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/lib/components/ui/alert-dialog";
 import { Button } from "@/lib/components/ui/button";
-import { ArrowLeft, ArrowRight, ListX } from "lucide-react";
+import { ArrowRight, ListX } from "lucide-react";
 import { useState } from "react";
 
 export const WordlePartyHistory = () => {

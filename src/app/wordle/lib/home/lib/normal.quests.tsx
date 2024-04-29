@@ -11,7 +11,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { Badge } from "@/lib/components/ui/badge";
 import { Award, Check, X } from "lucide-react";
 import { Button } from "@/lib/components/ui/button";
-import { generateQuest } from "../../../../../lib/wordle/actions/generate.quest.action";
 import { Component } from "@/lib/components/utils/component";
 import { Progress } from "@/lib/components/ui/progress";
 

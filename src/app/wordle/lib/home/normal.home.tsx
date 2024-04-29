@@ -11,7 +11,6 @@ import { Quests } from "./lib/normal.quests"
 import { Suspense } from "react"
 import { QuestsLoading } from "./lib/loading"
 import { useWorldePartyStore } from "@/lib/store/wordle.store"
-import { stat } from "fs"
 import { dayJS } from "@/lib/utils/dayjs/day-js"
 
 export const WordleNormalHome = () => {
@@ -77,8 +76,6 @@ export const WordleNormalHome = () => {
 
   const stats = getStats();
 
-  console.log(stats);
-
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
       <CustomCard noHover>
@@ -90,8 +87,8 @@ export const WordleNormalHome = () => {
         <CardContent className="flex flex-col gap-2">
           <Alert>
             <AlertDescription className="flex justify-between items-center">
-              <div>You have <Badge variant={"outline"}>168 🪙</Badge></div>
-              <Button variant={"secondary"} size={"realSm"}>
+              <div>You have <Badge variant={"outline"}>0 🪙</Badge></div>
+              <Button variant={"secondary"} size={"realSm"} disabled>
                 <ShoppingBag size={13} className="mr-1" />
                 Open shop
               </Button>

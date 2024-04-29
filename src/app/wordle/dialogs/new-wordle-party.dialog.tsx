@@ -3,9 +3,7 @@
 import { Dialog, DialogContent, DialogTrigger } from "../../../lib/components/ui/dialog";
 import { useState, type PropsWithChildren } from "react";
 import { Component } from "@/lib/components/utils/component";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/lib/components/ui/tabs";
 import { NormalNewPartyContent } from "./new/normal";
-import { Separator } from "@/lib/components/ui/separator";
 import { RankedNewPartyContent } from "./new/ranked";
 import { cn } from "@/lib/utils";
 import Image from "next/image";

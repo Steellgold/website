@@ -3,9 +3,9 @@
 import { Button } from "@/lib/components/ui/button";
 import { Component } from "@/lib/components/utils/component";
 import { useWorldePartyStore } from "@/lib/store/wordle.store";
-import { Letter, Line, WordleParty } from "@/lib/types/wordle.type";
+import { Letter, Line } from "@/lib/types/wordle.type";
 import { cn } from "@/lib/utils";
-import { diffToNum, isValidWord } from "@/lib/wordle/utils";
+import { diffToNum } from "@/lib/wordle/utils";
 import { Delete } from "lucide-react";
 import { ReactElement, useState } from "react";
 import ReactConfetti from "react-confetti";

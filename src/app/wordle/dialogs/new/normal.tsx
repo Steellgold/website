@@ -15,8 +15,6 @@ import { Switch } from "@/lib/components/ui/switch";
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/lib/components/ui/dialog";
 import { Button } from "@/lib/components/ui/button";
-import { Separator } from "@/lib/components/ui/separator";
-import { Badge } from "@/lib/components/ui/badge";
 
 export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }) => {
   const [category, setCategory] = useState<WordCategories>("random");
