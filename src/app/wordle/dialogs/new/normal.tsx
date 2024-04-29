@@ -124,11 +124,11 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
 
         <div className="flex flex-col space-y-2">
           <Alert className="flex items-center justify-between">
-            <Label>Choose the difficulty:</Label>
+            <Label>Difficulty:</Label>
             
             <Select defaultValue="five" onValueChange={(value) => setDifficulty(value as PartyDifficulty)}>
               <SelectTrigger className="w-[60%]">
-                <SelectValue placeholder="Select a difficulty" />
+                <SelectValue placeholder="Difficulty" />
               </SelectTrigger>
               
               <SelectContent defaultValue="five">
@@ -145,7 +145,7 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
 
         <div>
           <Alert className="flex flex-col space-y-3">
-            <Label>Choose the number of attempts (Selected: {attempts}):</Label>
+            <Label>Number of attempts ({attempts}):</Label>
             
             <Slider
               defaultValue={[5]}
@@ -164,8 +164,8 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
               <div>
                 <Label htmlFor="joker-switch">🃏 Enable Joker</Label>
                 
-                <p className="text-muted-foreground mr-2">
-                  The Joker allows you to reveal a good placed letter in the word, but you can only use it once.
+                <p className="text-muted-foreground mr-3 sm:text-base">
+                  Reveal a good placed letter in the word, you can only use it <strong>once</strong>.
                 </p>
               </div>
               
@@ -188,7 +188,7 @@ export const NormalNewPartyContent: Component<PropsWithChildren> = ({ children }
         )}
       </div>
 
-      <DialogFooter className="sm:mt-3">
+      <DialogFooter className="mt-3">
         <Button disabled={loading} onClick={() => getWord()}>
           {loading && <><Loader2 className="w-4 h-4 animate-spin" /> &nbsp;</>}
           Start party
