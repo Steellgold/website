@@ -1,13 +1,14 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Line, PartyEndReason, WordleParty } from "../types/wordle.type";
-import { dayJS } from "../utils/dayjs/day-js";
-import { diffToNum } from "../wordle/utils";
-import { WordleUser } from "../types/wordle.user.type";
+import { PartyType } from "../types/wordle.type";
+import { Lang, WordleUser } from "../types/wordle.user.type";
 
 type DataStore = {
   user: WordleUser | null;
   setUser: (user: WordleUser) => void;
+
+  setInterfaceLang: (lang: Lang) => void;
+  setDefaultGame: (game: Exclude<PartyType, "daily">) => void;
 };
 
 export const useWordleUserStore = create(
@@ -15,6 +16,10 @@ export const useWordleUserStore = create(
     (set) => ({
       user: null,
       setUser: (user: WordleUser) => set(() => ({ user })),
+      setInterfaceLang: (lang: Lang) =>
+          set((state) => ({ user: { ...state.user!, preferences: { ...state.user!.preferences, interface: lang } } })),
+      setDefaultGame: (game: Exclude<PartyType, "daily">) =>
+          set((state) => ({ user: { ...state.user!, preferences: { ...state.user!.preferences, defaultGame: game } } })),
     }),
     { name: "wordle-visited-storage" },
   ),
