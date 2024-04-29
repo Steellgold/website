@@ -17,7 +17,7 @@ export const WordlePartyHistory = () => {
 
   return (
     <CustomCard noHover active>
-      <CardHeader className="flex flex-row justify-between">
+      <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
         <div className="flex flex-col">
           <CardTitle>Histories of your parties</CardTitle>
           <CardDescription>Check your party history</CardDescription>
@@ -62,8 +62,8 @@ export const WordlePartyHistory = () => {
           )}
           <TableHeader>
             <TableRow>
-              <TableHead className="w-[150px]">Category</TableHead>
-              <TableHead className="w-[100px]">Word</TableHead>
+              <TableHead >Category</TableHead>
+              <TableHead>Word</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Reason</TableHead>
               <TableHead>Time</TableHead>

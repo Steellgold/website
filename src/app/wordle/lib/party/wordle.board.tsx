@@ -10,7 +10,7 @@ import { Delete } from "lucide-react";
 import { ReactElement, useState } from "react";
 import ReactConfetti from "react-confetti";
 import { useEventListener, useWindowSize } from "usehooks-ts";
-import { EndedWordleDialog } from "../dialogs/wordle-ended.dialog";
+import { EndedWordleDialog } from "../../dialogs/wordle-ended.dialog";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
 import Image from "next/image";
 import { z } from "zod";
