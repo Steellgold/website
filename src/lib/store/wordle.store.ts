@@ -129,8 +129,8 @@ export const useWorldePartyStore = create(
       setFinishedAt: (id) => {
         set((state) => ({
           parties: state.parties.map(
-            (party) => party.id === id ? { ...party, finishedAt: dayJS().toISOString() } : party
-          ),
+            (party) => party.id === id ? { ...party, finishedAt: dayJS().toISOString(), isReadOnly: true } : party
+          )
         }));
       },
       

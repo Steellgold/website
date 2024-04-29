@@ -14,13 +14,21 @@ type DataStore = {
 export const useWordleUserStore = create(
   persist<DataStore>(
     (set) => ({
-      user: null,
+      user: {
+        id: Math.random().toString(36).substring(7),
+        preferences: {
+          interface: "ENGLISH",
+          defaultGame: "normal",
+          defaultCategory: "random"
+        },
+        name: "Guest"
+      },
       setUser: (user: WordleUser) => set(() => ({ user })),
       setInterfaceLang: (lang: Lang) =>
           set((state) => ({ user: { ...state.user!, preferences: { ...state.user!.preferences, interface: lang } } })),
       setDefaultGame: (game: Exclude<PartyType, "daily">) =>
           set((state) => ({ user: { ...state.user!, preferences: { ...state.user!.preferences, defaultGame: game } } })),
     }),
-    { name: "wordle-visited-storage" },
+    { name: "wordle-user" }
   ),
 );

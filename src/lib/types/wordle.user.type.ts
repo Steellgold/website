@@ -5,8 +5,8 @@ export type WordleUser = {
   id: string;
   avatar?: string;
 
-  isOnline: boolean;
-  isPlaying: boolean;
+  isOnline?: boolean;
+  isPlaying?: boolean;
 
   preferences: Preferences;
 };
