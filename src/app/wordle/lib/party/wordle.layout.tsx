@@ -13,7 +13,7 @@ export const WordleLayout: Component<PropsWithChildren & LayoutProps> = ({ child
     <>
       <WordleDialog />
 
-      <div className="justify-center mx-auto w-full px-4 sm:px-0 sm:w-5/6 mt-5 sm:mt-10 md:mt-20">
+      <div className="justify-center mx-auto w-full px-4 sm:px-0 sm:w-5/6 md:w-5/6 lg:w-5/6 xl:w-6/12 mt-5 sm:mt-10 md:mt-20">
         <Image
           src={imageSrc ?? "/_static/images/wordle_title.png"}
           alt={imageAlt ?? "Wordle"}
