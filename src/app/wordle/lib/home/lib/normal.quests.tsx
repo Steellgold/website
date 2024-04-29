@@ -66,14 +66,15 @@ export const Quests = (): ReactElement => {
             variant={"outline"}
             size={"sm"}
             className="mt-2"
+            disabled
             onClick={async() => {
-              const quest = await generateQuest({ userId: user?.id ?? "" });
-              setQuest(quest);
-              setIsNewUser(false);
-              console.log("quest", quest);
+              // const quest = await generateQuest({ userId: user?.id ?? "" });
+              // setQuest(quest);
+              // setIsNewUser(false);
+              // console.log("quest", quest);
             }}
           >
-            Get started &nbsp;<Award size={14} />
+            Get started &nbsp;<Award size={14} /> <Badge variant={"outline"}>Coming soon</Badge>
           </Button>
         </AlertDescription>
       </Alert>
