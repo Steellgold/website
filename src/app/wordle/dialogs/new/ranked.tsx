@@ -6,9 +6,13 @@ import { DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/li
 import { Button } from "@/lib/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Badge } from "@/lib/components/ui/badge";
+import { useWordleUserStore } from "@/lib/store/wordle.user.store";
+import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
+import { Label } from "@/lib/components/ui/label";
+import { Input } from "@/lib/components/ui/input";
 
 export const RankedNewPartyContent: Component<PropsWithChildren> = ({ children }) => {
-  // const { user } = useWordleUserStore();
+  const { user } = useWordleUserStore();
 
   return (
     <div className="mt-5">
@@ -19,9 +23,9 @@ export const RankedNewPartyContent: Component<PropsWithChildren> = ({ children }
         </DialogDescription>
       </DialogHeader>
 
-        {/* {!user && (
-          <Alert>
-            <AlertTitle>Sign in</AlertTitle>
+        {!user && (
+          <Alert className="p-4">
+            <AlertTitle className="text-lg">You are not identified</AlertTitle>
             <AlertDescription>
               Just enter your name to start playing ranked games.
             </AlertDescription>
@@ -34,14 +38,16 @@ export const RankedNewPartyContent: Component<PropsWithChildren> = ({ children }
               <Button variant={"ranked"}>Sign in <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </div>
           </Alert>
-        )} */}
+        )}
 
-      <DialogFooter className="mt-5">
-        <Button disabled variant="ranked">
-          Play ranked <Badge variant={"secondary"} className="ml-2">Coming soon</Badge>
-          <ArrowRight className="w-4 h-4 ml-2" />
-        </Button>
-      </DialogFooter>
+      {user && (
+        <DialogFooter className="mt-5">
+          <Button disabled variant="ranked">
+            Play ranked <Badge variant={"secondary"} className="ml-2">Coming soon</Badge>
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </DialogFooter>
+      )}
     </div>
   );
 };
