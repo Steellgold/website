@@ -6,12 +6,10 @@ import { Blog } from "./lib/blog";
 import { SpotifyCard } from "@/lib/components/spotify";
 import { DiscordPresence } from "@/lib/components/lanyard";
 import { cn } from "@/lib/utils";
-import { WhiteBannerWordle } from "./wordle.alert";
 
 const Home = (): ReactElement => {
   return (
     <>
-      <WhiteBannerWordle />
       <Header />
       <Birthday />
 
