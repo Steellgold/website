@@ -15,12 +15,14 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/
 import Image from "next/image";
 import { z } from "zod";
 import { getText } from "@/lib/wordle/cryptr.server";
+import { dayJS } from "@/lib/utils/dayjs/day-js";
 
 export const WordleBoard = (): ReactElement => {
   const {
     activePartyId, getParty, addLetter,
     removeLetter, activeLineIndex, setLine,
-    setActiveLineIndex, setWord, setFinishedAt
+    setActiveLineIndex, setWord, setFinishedAt,
+    removeParty
   } = useWorldePartyStore();
   
   const [isFound, setIsFound] = useState<boolean>(false);
@@ -101,6 +103,16 @@ export const WordleBoard = (): ReactElement => {
       });
     }
   }
+
+  setInterval(() => {
+    if (!activePartyId) return;
+    const party = getParty(activePartyId);
+    if (!party) return;
+
+    if (dayJS().diff(dayJS(party.startedAt), "hours") >= 1) {
+      removeParty(activePartyId);
+    }
+  }, 1000);
 
   useEventListener("keypress", onKeyPress);
   useEventListener("keyup", onKeyUp);
