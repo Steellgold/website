@@ -77,8 +77,8 @@ export const WordleNormalHome = () => {
   const stats = getStats();
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-      <CustomCard noHover>
+    <div className="flex flex-col lg:flex-row gap-4 w-full">
+    <CustomCard noHover className="lg:w-1/2">
         <CardHeader>
           <CardTitle>Statistics</CardTitle>
           <CardDescription>Check your statistics for this game mode</CardDescription>
@@ -127,16 +127,26 @@ export const WordleNormalHome = () => {
 
           <Alert>
             <AlertDescription className="flex justify-between items-center">
-              <div>Best time: <Badge variant={"outline"}>{stats.bestTime.time}</Badge></div>
-              <Button variant={"outline"} size={"sm"} onClick={() => {
-                setActivePartyId(stats.bestTime.partyId);
-              }}>Show game <ArrowRight size={16} /></Button>
+              {stats.bestTime.partyId ? <div>Best time: <Badge variant={"outline"}>{stats.bestTime.time}</Badge></div>
+               : <div>Best time: <Badge variant={"outline"}>No played yet</Badge></div>}
+
+              {stats.bestTime.partyId ? (
+                <Button variant={"outline"} size={"sm"} onClick={() => {
+                  setActivePartyId(stats.bestTime.partyId);
+                }}>
+                  Show game <ArrowRight size={16} />
+                </Button>
+              ) : (
+                <NewWordlePartyDialog mode={"normal"}>
+                  <Button variant={"outline"} size={"realSm"}>Start a new game</Button>
+                </NewWordlePartyDialog>
+              )}
             </AlertDescription>
           </Alert>
         </CardContent>
       </CustomCard>
 
-      <CustomCard noHover>
+      <CustomCard noHover className="lg:w-1/2">
         <CardHeader>
           <CardTitle>🕹️ Play</CardTitle>
           <CardDescription>Click on the button below to start a new game</CardDescription>

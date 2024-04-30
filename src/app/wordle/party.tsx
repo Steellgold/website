@@ -12,6 +12,7 @@ import { WordleLayout } from "./lib/party/wordle.layout";
 import { WordleNormalHome } from "./lib/home/normal.home";
 import { Settings } from "lucide-react";
 import { WordleSettingsHome } from "./lib/home/settings.home";
+import { WordleRankedHome } from "./lib/home/ranked.home";
 
 type ExtraPartyType = PartyType | "settings"
 
@@ -35,10 +36,10 @@ export const WordleParty = () => {
         <Tabs defaultValue="normal" onValueChange={(value) => setChoose(value as PartyType)}>
           <TabsList className="flex justify-center">
             <TabsTrigger value="normal">Normal</TabsTrigger>
-            <TabsTrigger value="ranked" disabled>Ranked</TabsTrigger>
+            <TabsTrigger value="ranked">Ranked</TabsTrigger>
             <TabsTrigger value="daily" disabled>Daily</TabsTrigger>
             <TabsTrigger value="duo" disabled>Duo</TabsTrigger>
-            <TabsTrigger value="settings" disabled>
+            <TabsTrigger value="settings">
               <Settings size={16} />&nbsp;
               Settings
             </TabsTrigger>
@@ -51,6 +52,7 @@ export const WordleParty = () => {
           </TabsContent>
 
           <TabsContent value="ranked">
+            <WordleRankedHome />
           </TabsContent>
 
           <TabsContent value="daily">
