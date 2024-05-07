@@ -14,3 +14,5 @@ const middleware = async(req): Promise<NextResponse> => {
     },
   })
 }
+
+export default middleware;
