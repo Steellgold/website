@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-export const runtime = "edge"
-
 export async function GET(req: Request) {
   const response = await fetch("https://ipapi.co/json/");
   const ipData = await response.json();
