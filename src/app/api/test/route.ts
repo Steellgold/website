@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async({ geo, headers }: NextRequest): Promise<NextResponse> => {
+export const GET = async({ geo, headers, ip }: NextRequest): Promise<NextResponse> => {
   const data = await fetch("https://ipapi.co/json/");
 
   return NextResponse.json({
-    xForwardedFor: headers.get("x-forwarded-for"),
-    remoteAddress: headers.get("x-real-ip"),
-    requestIp: headers.get("x-request-ip"),
-    requestheaderIp: headers.get('request-ip'),
+    ip,
+    headers,
     geo,
-    data: await data.json()
+    data: await data.json(),
+    dataButWithFromVercel: (await fetch(`https://ipapi.co/${ip}/json/`)).json(),
   });
 }
