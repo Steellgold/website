@@ -1,15 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async(req: NextRequest): Promise<NextResponse> => {
-  console.log("Request Headers", req);
+export const runtime = 'edge';
 
-  return NextResponse.json({
-    ip: req.ip || "No IP",
-    test: {
-      0: req.ip,
-      1: req.headers,
-      2: req.geo
-    }
-    // dataButWithFromVercel: (await fetch(`https://ipapi.co/${ip}/json/`)).json(),
+export const GET = async(req: NextRequest): Promise<NextResponse> => {
+  const data = await fetch(`https://ipapi.co/json/`);
+
+  return NextResponse.json(data || {
+    error: 'No data found'
   });
 }
