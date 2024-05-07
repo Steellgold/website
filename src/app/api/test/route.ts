@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export const runtime = 'edge';
-
-export const GET = async(req: NextRequest): Promise<NextResponse> => {
-  const data = await fetch(`https://ipapi.co/json/`);
-
-  return NextResponse.json(data || {
-    error: 'No data found'
-  });
+export async function GET(req: Request) {
+  const data = {
+    ok: true,
+    ip: req.headers.get("x-real-ip") ?? "127.0.0.1",
+    message: "Hello from the API",
+  };
+  
+  return new NextResponse(JSON.stringify(data, null, 2));
 }
