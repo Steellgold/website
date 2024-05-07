@@ -5,6 +5,9 @@ export const GET = async({ geo, headers }: NextRequest): Promise<NextResponse> =
 
   return NextResponse.json({
     xForwardedFor: headers.get("x-forwarded-for"),
+    remoteAddress: headers.get("x-real-ip"),
+    requestIp: headers.get("x-request-ip"),
+    requestheaderIp: headers.get('request-ip'),
     geo,
     data: await data.json()
   });
