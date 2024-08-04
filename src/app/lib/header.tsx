@@ -2,7 +2,7 @@
 
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { useLang } from "@/lib/hooks/lang.store";
-import { useViewMode } from "@/lib/hooks/mode.store";
+import { useInitializeViewMode, useViewMode } from "@/lib/hooks/mode.store";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Cake, Github, Instagram, Linkedin, Twitter } from "lucide-react";
@@ -11,6 +11,7 @@ import { ReactElement } from "react";
 
 export const Header = (): ReactElement => {
   const { viewMode } = useViewMode();
+  useInitializeViewMode()
   const { lang } = useLang();
 
   return (
