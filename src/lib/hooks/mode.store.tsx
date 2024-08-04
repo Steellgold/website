@@ -19,7 +19,10 @@ export const useInitializeViewMode = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       console.log(window.location.hostname);
-      const defaultViewMode: ViewMode = window.location.hostname === 'gaetanhus.fr' ? 'cv' : 'normal';
+      const defaultViewMode: ViewMode = (
+        window.location.hostname === 'gaetanhus.fr' ||
+        window.location.hostname === 'www.gaetanhus.fr'
+      ) ? 'cv' : 'normal';
       setViewMode(defaultViewMode);
       console.log(`Default view mode: ${defaultViewMode}`);
     }
