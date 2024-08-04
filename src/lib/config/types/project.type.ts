@@ -12,5 +12,11 @@ export type Project = {
     end?: Dayjs;
   }
   url?: string;
+  urls?: Link[];
   stacks: Stack[];
+}
+
+type Link = {
+  title: string;
+  url: string;
 }
