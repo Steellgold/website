@@ -6,6 +6,8 @@ import { Blog } from "./lib/blog";
 import { SpotifyCard } from "@/lib/components/spotify";
 import { DiscordPresence } from "@/lib/components/lanyard";
 import { cn } from "@/lib/utils";
+import { CVButton } from "@/lib/components/cvButton";
+import { MadeWith } from "@/lib/components/maded";
 
 const Home = (): ReactElement => {
   return (
@@ -23,9 +25,11 @@ const Home = (): ReactElement => {
 
         <Blog />
 
-        <div className="mt-7 mb-7">
-          <p className="text-white text-center">Made with ❤️ by Gaëtan</p>
+        <div className="absolute right-0 top-0 p-5">
+          <CVButton />
         </div>
+
+        <MadeWith />
       </div>
     </>
   );
