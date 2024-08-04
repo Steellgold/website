@@ -33,38 +33,38 @@ export const Header = (): ReactElement => {
         <Image
           alt="profile"
           className={cn(
-            "-mt-16 h-32 w-32 rounded-lg border-black border-[5px] transform transition-all hover:scale-110"
+            "-mt-16 h-32 w-32 rounded-lg transform transition-all hover:scale-110", {
+              "border-black border-[5px] hover:border-[3.5px]": viewMode == "normal",
+            }
           )}
-          src="/_static/images/me.jpeg"
+          src={viewMode == "normal" ? "/_static/images/me.jpeg" : "/_static/images/me_cv.jpg"}
           width={128}
           height={128}
         />
 
-        {viewMode == "normal" && (
-          <div className="flex flex-col justify-center ml-auto sm:bg-[#161616] sm:rounded-lg sm:shadow-lg sm:overflow-hidden">
-            <ul className="flex flex-row justify-end text-white gap-2 p-2">
+        <div className="flex flex-col justify-center ml-auto sm:bg-[#161616] sm:rounded-lg sm:shadow-lg sm:overflow-hidden">
+          <ul className="flex flex-row justify-end text-white gap-2 p-2">
+            <div className="flex gap-2">
+              <a href="https://github.com/Steellgold" className="block hover:text-white transition-all hover:rotate-12">
+                <Github size={18} strokeWidth={2} />
+              </a>
 
-              <div className="flex gap-2">
-                <a href="https://github.com/Steellgold" className="block hover:text-white transition-all hover:rotate-12">
-                  <Github size={18} strokeWidth={2} />
-                </a>
-
-                <a href="https://linkedin.com/in/gaetanhus" className="block hover:text-blue-600 transition-all hover:-rotate-12">
-                  <Linkedin size={18} strokeWidth={2} />
-                </a>
-              </div>
+              <a href="https://linkedin.com/in/gaetanhus" className="block hover:text-blue-600 transition-all hover:-rotate-12">
+                <Linkedin size={18} strokeWidth={2} />
+              </a>
+            </div>
               
-              <div className="flex gap-2">
-                <a href="https://instagram.com/steellgold" className="block hover:text-pink-600 transition-all hover:rotate-12">
-                  <Instagram size={18} strokeWidth={2} />
-                </a>
-                <a href="https://twitter.com/Steellgold" className="block hover:text-blue-600 transition-all hover:-rotate-12">
-                  <Twitter size={18} strokeWidth={2} />
-                </a>
-              </div>
-            </ul>
-          </div>
-        )}
+            <div className="flex gap-2">
+              <a href="https://instagram.com/steellgold" className="block hover:text-pink-600 transition-all hover:rotate-12">
+                <Instagram size={18} strokeWidth={2} />
+              </a>
+              
+              <a href="https://twitter.com/Steellgold" className="block hover:text-blue-600 transition-all hover:-rotate-12">
+                <Twitter size={18} strokeWidth={2} />
+              </a>
+            </div>
+          </ul>
+        </div>
       </div>
 
       <div className="pt-3 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
@@ -79,11 +79,11 @@ export const Header = (): ReactElement => {
         <p className="text-1xl pt-1 text-left">
           {viewMode == "normal"
             ? <>I&apos;m a full-stack developer, working with TypeScript.</>
-            : <>I have 19 years old and I am a full-stack developer on TypeScript.</>
+            : <>I have {dayJS().diff("2004-10-14", "years")} years old and I am a full-stack developer on TypeScript.</>
           }
         </p>
 
-        {dayJS().format("MM-DD") === "10-14" && (
+        {dayJS().format("MM-DD") === "10-14" && viewMode == "normal" && (
           <Alert className="mt-3">
             <Cake className="h-4 w-4" />
             <AlertTitle>It&apos;s my birthday, i&apos;m {dayJS().diff("2004-10-14", "years")} years old!</AlertTitle>
