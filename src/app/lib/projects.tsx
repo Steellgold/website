@@ -27,14 +27,12 @@ export const Projects = (): ReactElement => {
 
     <div className={cn("gap-3", {
       "grid": viewMode == "normal",
-      "md:grid-cols-2": projects.length > 1 && viewMode == "normal",
+      "md:grid-cols-2": projects.length > 1,
     })}>
       {projects.map((project, index) => (
-        <div key={project.title}>
-          <ProjectCard {...project} className={cn({
-            "md:col-span-2": isOdd && index === projects.length - 1 && viewMode == "normal"
-          })} /> 
-        </div>
+        <ProjectCard {...project} key={project.title} className={cn({
+          "md:col-span-2": isOdd && index === projects.length - 1
+        })} /> 
       ))}
     </div>
   </>;

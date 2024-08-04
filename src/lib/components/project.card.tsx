@@ -15,6 +15,7 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
 
   return (
     <SurroundLink href={url} className={cn("cursor-pointer", className)}>
+      {viewMode == "cv" && <div className="mt-2.5"></div>}
       <CustomCard>
         <CardHeader className="p-4">
           <div className="flex justify-between items-center">
