@@ -75,7 +75,7 @@ export const Header = (): ReactElement => {
         </p>
 
         <h1 className="text-5xl font-bold text-left">
-          {viewMode == "normal" ? "Gaëtan H" : "Gaëtan Huszovits"}
+          {viewMode == "normal" ? "Gaëtan" : "Gaëtan Huszovits"}
         </h1>
         
         <p className="text-1xl pt-1 text-left">
