@@ -6,8 +6,8 @@ import { Blog } from "./lib/blog";
 import { SpotifyCard } from "@/lib/components/spotify";
 import { DiscordPresence } from "@/lib/components/lanyard";
 import { cn } from "@/lib/utils";
-import { CVButtons } from "@/lib/components/cvButton";
 import { MadeWith } from "@/lib/components/maded";
+import { Buttons } from "@/lib/components/buttons";
 
 const Home = (): ReactElement => {
   return (
@@ -25,9 +25,9 @@ const Home = (): ReactElement => {
 
         <Blog />
 
-        {/* <div className="absolute right-0 top-0 p-5">
-          <CVButtons />
-        </div> */}
+        <div className="absolute right-0 top-0 p-5">
+          <Buttons />
+        </div>
 
         <MadeWith />
       </div>
