@@ -71,7 +71,10 @@ export const Header = (): ReactElement => {
 
       <div className="pt-3 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
         <p className="text-1xl pt-1 text-left">
-          {viewMode == "normal" ? "Hello, I'm" : "Hi, I'm"}
+          {viewMode == "normal"
+            ? lang == "en" ? "Hello, I'm" : "Bonjour, je suis"
+            : lang == "en" ? "Hi, I'm" : "Salut, je suis"
+          }
         </p>
 
         <h1 className="text-5xl font-bold text-left">
