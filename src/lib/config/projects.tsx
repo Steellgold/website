@@ -1,8 +1,38 @@
+import { Separator } from "../components/ui/separator";
 import { dayJS } from "../utils/dayjs/day-js";
-import { DiscordJS, NextJS, OpenAI, PostgreSQL, Prisma, Railway, Redis, Stripe, Supabase, TailwindCSS, Typescript, Vercel } from "./stacks";
+import { DiscordJS, Flowbite, NextJS, OpenAI, PostgreSQL, Prisma, Railway, Redis, Stripe, Supabase, SvelteKit, TailwindCSS, Typescript, uiShadcn, Vercel } from "./stacks";
 import { Project } from "./types/project.type";
 
 export const projects: Project[] = [
+  {
+    title: "Linkfy",
+    description: "Link shortener with analytics and custom links.",
+    cvDescription: <>
+      <p>• Linkfy is a link shortener that allows users to shorten links and share them with others.</p>
+      <p className="mt-1">• It was my serious first open-source project, I learned how to use TypeScript with SvelteKit and how to deploy applications on Vercel.</p>
+      <p className="mt-1">• It was on this project that I discovered Supabase, I learned how to use TailwindCSS and how to make REST APIs or use Prisma with PostgreSQL.</p>
+      <p className="mt-1">• During the activity period of Linkfy, the site had more than <span className="text-yellow-100">~500 shortened links</span>.</p>
+      
+      <Separator className="mt-3" />
+
+      <p className="mt-3">• Despite the failure of this project, I learned a lot of things, and the most important thing is that I have to secure my APIs, because I realized too late that anyone could use the API routes to modify the shortened links of anyone.</p>
+    </>,
+    type: "open-source",
+    duration: {
+      start: dayJS("01-15-2023")
+    },
+    stacks: [
+      Typescript,
+      SvelteKit,
+      TailwindCSS,
+      Vercel,
+      Prisma,
+      PostgreSQL,
+      Supabase,
+      Flowbite
+    ],
+    url: "https://github.com/Steellgold/svelte-linkfy"
+  },
   {
     title: "Tweeets", 
     description: "Tweet generator with AI, powered by OpenAI.",
@@ -24,7 +54,8 @@ export const projects: Project[] = [
       Prisma,
       PostgreSQL,
       Supabase,
-      Stripe
+      Stripe,
+      uiShadcn
     ],
     url: "https://tweeets.app"
   },
@@ -48,7 +79,8 @@ export const projects: Project[] = [
       Prisma,
       PostgreSQL,
       Supabase,
-      Redis
+      Redis,
+      uiShadcn
     ],
     url: "https://simplist.blog"
   },
