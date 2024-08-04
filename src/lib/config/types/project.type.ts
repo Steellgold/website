@@ -4,8 +4,14 @@ import { ReactElement } from "react";
 
 export type Project = {
   title: string;
-  description: string;
-  cvDescription?: ReactElement | string;
+  description: {
+    en: ReactElement | string;
+    fr: ReactElement | string
+  };
+  cvDescription?: {
+    en: ReactElement | string;
+    fr: ReactElement | string;
+  };
   type: "open-source" | "pro";
   duration: {
     start: Dayjs;

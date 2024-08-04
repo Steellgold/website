@@ -1,6 +1,7 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
+import { useLang } from "@/lib/hooks/lang.store";
 import { useViewMode } from "@/lib/hooks/mode.store";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
@@ -10,6 +11,7 @@ import { ReactElement } from "react";
 
 export const Header = (): ReactElement => {
   const { viewMode } = useViewMode();
+  const { lang } = useLang();
 
   return (
     <section>
@@ -78,16 +80,24 @@ export const Header = (): ReactElement => {
         
         <p className="text-1xl pt-1 text-left">
           {viewMode == "normal"
-            ? <>I&apos;m a full-stack developer, working with TypeScript.</>
-            : <>I have {dayJS().diff("2004-10-14", "years")} years old and I am a full-stack developer on TypeScript.</>
+            ? <>{lang == "en" ? <>I&apos;m a full-stack developer, working with TypeScript.</>
+              : <>Je suis un développeur full-stack, travaillant avec TypeScript.</>}</>
+
+            : <>{lang == "en" ? <>I have {dayJS().diff("2004-10-14", "years")} years old and I am a full-stack developer on TypeScript.</>
+              : <>J&apos;ai {dayJS().diff("2004-10-14", "years")} ans et je suis un développeur full-stack sur TypeScript.</>}</>
           }
         </p>
 
         {dayJS().format("MM-DD") === "10-14" && viewMode == "normal" && (
           <Alert className="mt-3">
             <Cake className="h-4 w-4" />
-            <AlertTitle>It&apos;s my birthday, i&apos;m {dayJS().diff("2004-10-14", "years")} years old!</AlertTitle>
-            <AlertDescription>Confetti is falling from the sky!</AlertDescription>
+            {lang == "en" ? <>
+              <AlertTitle>It&apos;s my birthday, i&apos;m {dayJS().diff("2004-10-14", "years")} years old!</AlertTitle>
+              <AlertDescription>Confetti is falling from the sky!</AlertDescription>
+            </> : <>
+              <AlertTitle>C&apos;est mon anniversaire, j&apos;ai {dayJS().diff("2004-10-14", "years")} ans!</AlertTitle>
+              <AlertDescription>Des confettis tombent du ciel!</AlertDescription>
+            </>}
           </Alert>
         )}
       </div>

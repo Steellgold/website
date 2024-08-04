@@ -2,6 +2,7 @@
 
 import { ProjectCard } from "@/lib/components/project.card";
 import { projects } from "@/lib/config/projects";
+import { useLang } from "@/lib/hooks/lang.store";
 import { useViewMode } from "@/lib/hooks/mode.store";
 import { cn } from "@/lib/utils";
 import { ReactElement } from "react";
@@ -9,6 +10,7 @@ import { ReactElement } from "react";
 export const Projects = (): ReactElement => {
 
   const { viewMode } = useViewMode();
+  const { lang } = useLang();
 
   const isOdd = projects.length % 2 !== 0;
 
@@ -16,11 +18,14 @@ export const Projects = (): ReactElement => {
     {viewMode == "cv" && (
       <div className="rounded-lg shadow-lg mt-4 mb-1.5">
         <h2 className="text-white text-xl font-bold">
-          Here are my latest realizations
+          {lang == "en" ? "Here are my latest realizations" : "Voici mes dernières réalisations"}
         </h2>
 
         <p className="text-white text-sm">
-          I am a developer and I like to create projects to learn new things. Here are some of my latest and best projects.
+          {lang == "en"
+            ? "I am a developer and I like to create projects to learn new things. Here are some of my latest and best projects."
+            : "Je suis un développeur et j'aime créer des projets pour apprendre de nouvelles choses. Voici quelques-uns de mes derniers et meilleurs projets."
+          }
         </p>
       </div>
     )}

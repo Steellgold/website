@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { Separator } from "@/lib/components/ui/separator";
+import { useLang } from "@/lib/hooks/lang.store";
 import { PostSchema } from "@/lib/types/post.type";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
@@ -7,6 +8,7 @@ import { Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactElement } from "react";
+import { NotNowText } from "./not-now";
 
 export const Blog = async(): Promise<ReactElement> => {
   const response = await fetch("https://simplist.blog/api/clvb16vqu0000syvk0rfb7pjx/last", {
@@ -35,9 +37,7 @@ export const Blog = async(): Promise<ReactElement> => {
             <CardContent className="h-60 relative">
               <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 text-white">
                 <Lock size={24} />
-                <p className="text-sm text-center">
-                  A new post is here, but it won&apos;t be released until {dayJS(lockedUntil).format("D MMMM YYYY")}, be patient!
-                </p>
+                <NotNowText lockedUntil={lockedUntil} />
               </div>
             </CardContent>
           </Card>

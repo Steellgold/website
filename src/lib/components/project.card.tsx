@@ -9,9 +9,11 @@ import { ExternalLink } from "lucide-react";
 import { PropsWithChildren } from "react";
 import { CustomCard } from "./card";
 import { useViewMode } from "../hooks/mode.store";
+import { useLang } from "../hooks/lang.store";
 
 export const ProjectCard: Component<Project & { className?: string }> = ({ title, description, cvDescription, stacks, url, duration, type, className }) => {
   const { viewMode } = useViewMode();
+  const { lang } = useLang();
 
   return (
     <SurroundLink href={url} className={cn("cursor-pointer", className)}>
@@ -33,7 +35,9 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
             {type === "pro" && <span className="text-[#181b20] bg-[#f5f1de] px-2 py-1 rounded-md text-xs">Pro</span>}
           </div>
 
-          {viewMode == "cv" && cvDescription ? <CardDescription>{cvDescription}</CardDescription> : <CardDescription>{description}</CardDescription>}
+          {viewMode == "cv" && cvDescription ?
+            <CardDescription>{cvDescription[lang]}</CardDescription>
+            : <CardDescription>{description[lang]}</CardDescription>}
         </CardHeader>
 
         <CardFooter className="p-4">
