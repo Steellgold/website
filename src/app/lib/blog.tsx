@@ -1,29 +1,40 @@
+"use client";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { Separator } from "@/lib/components/ui/separator";
-import { useLang } from "@/lib/hooks/lang.store";
 import { PostSchema } from "@/lib/types/post.type";
 import { cn } from "@/lib/utils";
-import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Lock } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { NotNowText } from "./not-now";
 
-export const Blog = async(): Promise<ReactElement> => {
-  const response = await fetch("https://simplist.blog/api/clvb16vqu0000syvk0rfb7pjx/last", {
-    headers: {
-      "x-api-key": process.env.SIMPLIST_API_KEY!
-    } as HeadersInit,
-    cache: "no-cache"
-  });
+export const Blog = (): ReactElement => {
+  const [data, setData] = useState<any>(null);
 
-  const schema = PostSchema.safeParse(await response.json());
-  if (!schema.success) return <></>;
-  const data = schema.data;
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/blog/fetch");
+
+      if (!response.ok) {
+        console.error('Failed to fetch data');
+        return;
+      }
+
+      const schema = PostSchema.safeParse(await response.json());
+      if (!schema.success) return;
+      setData(schema.data);
+    };
+
+    console.log("Fetching blog data...");
+    fetchData();
+  }, []);
+
+  if (!data) return <></>;
 
   if (data.status !== "PUBLISHED") {
-    const lockedUntil = data.metadata?.find((meta) => meta.key === "lockedUntil")?.value;
+    const lockedUntil = data.metadata?.find((meta: { key: string; }) => meta.key === "lockedUntil")?.value;
 
     if (lockedUntil) {
       return (
@@ -43,7 +54,7 @@ export const Blog = async(): Promise<ReactElement> => {
           </Card>
         </>
       )
-    };
+    }
 
     return <></>;
   }
@@ -51,7 +62,7 @@ export const Blog = async(): Promise<ReactElement> => {
   return (
     <>
       <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
-      <Link href={`/blog/${data.slug}`} passHref prefetch={data.status === "PUBLISHED"}>
+      <Link href={`/blog/${data.slug}`} passHref>
         <Card className={cn(
           "bg-[#161616] border-[2px] border-[#1a1a1a]",
           "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]"
@@ -74,4 +85,4 @@ export const Blog = async(): Promise<ReactElement> => {
       </Link>
     </>
   );
-}
+};

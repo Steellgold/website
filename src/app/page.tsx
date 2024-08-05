@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactElement } from "react";
 import { Header } from "./lib/header";
 import { Projects } from "./lib/projects";
@@ -8,8 +10,11 @@ import { DiscordPresence } from "@/lib/components/lanyard";
 import { cn } from "@/lib/utils";
 import { MadeWith } from "@/lib/components/maded";
 import { Buttons } from "@/lib/components/buttons";
+import { useViewMode } from "@/lib/hooks/mode.store";
 
 const Home = (): ReactElement => {
+  const { viewMode } = useViewMode();
+
   return (
     <>
       <Header />
@@ -22,8 +27,8 @@ const Home = (): ReactElement => {
         </div>
 
         <Projects />
-
-        <Blog />
+        
+        {viewMode === "normal" && <Blog />}
 
         <div className="absolute right-0 top-0 p-5">
           <Buttons />
