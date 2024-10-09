@@ -19,7 +19,8 @@ export const projects: Project[] = [
         
         <Separator className="mt-3" />
 
-        <p className="mt-3">• Despite the failure of this project, I learned a lot of things, and the most important thing is that I have to secure my APIs, because I realized too late that anyone could use the API routes to modify the shortened links of anyone.</p>
+        <p className="mt-3">• Despite the failure of this project, I learned a lot of things, and the most important thing is that I have to secure my APIs, because I realized too late that anyone could use the API routes to modify the shortened links of anyone.</p>,
+        <p className="mt-1">• And I recently (October 2024) took over the project under NextJS, I fixed the security flaws and added new features as well as a new design.</p>
       </>,
       fr: <>
         <p>• Linkfy est un raccourcisseur de liens qui permet aux utilisateurs de raccourcir des liens et de les partager avec d&apos;autres.</p>
@@ -29,7 +30,8 @@ export const projects: Project[] = [
         
         <Separator className="mt-3" />
 
-        <p className="mt-3">• Malgré l&apos;échec de ce projet, j&apos;ai appris beaucoup de choses, et la chose la plus importante est que je dois sécuriser mes APIs, car j&apos;ai réalisé trop tard que n&apos;importe qui pouvait utiliser les routes API pour modifier les liens raccourcis de n&apos;importe qui.</p>
+        <p className="mt-3">• Malgré l&apos;échec de ce projet, j&apos;ai appris beaucoup de choses, et la chose la plus importante est que je dois sécuriser mes APIs, car j&apos;ai réalisé trop tard que n&apos;importe qui pouvait utiliser les routes API pour modifier les liens raccourcis de n&apos;importe qui.</p>,
+        <p className="mt-1">• Et j&apos;ai récemment (octobre 2024) repris le projet sous NextJS, j&apos;ai corrigé les failles de sécurité et j&apos;ai ajouté de nouvelles fonctionnalités ainsi qu&apos;un nouveau design.</p>
       </>
     },
     type: "open-source",
@@ -129,7 +131,7 @@ export const projects: Project[] = [
       en: <>
         <p>• Bottly is a Discord bot that allows users to ask questions, chat or generate text using the OpenAI GPT-3 or GPT-4 model.</p>
         <p className="mt-1">• During the development of Bottly, I learned how to use TypeScript with Discord.js, I also learned how to use the OpenAI API to integrate AI models into the bot.</p>
-        <p>• Durant toute la periode d&apos;activité de Bottly, le bot à eu plus de <span className="text-yellow-100">~5000 questions</span> posées par les utilisateurs. </p>
+        <p>• During the activity period of Bottly, the bot had more than <span className="text-yellow-100">~5000 questions</span> asked by users.</p>
       </>,
       fr: <>
         <p>• Bottly est un bot Discord qui permet aux utilisateurs de poser des questions, discuter ou générer du texte en utilisant le modèle OpenAI GPT-3 ou GPT-4.</p>
