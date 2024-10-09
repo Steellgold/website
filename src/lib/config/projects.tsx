@@ -30,7 +30,7 @@ export const projects: Project[] = [
         
         <Separator className="mt-3" />
 
-        <p className="mt-3">• Malgré l&apos;échec de ce projet, j&apos;ai appris beaucoup de choses, et la chose la plus importante est que je dois sécuriser mes APIs, car j&apos;ai réalisé trop tard que n&apos;importe qui pouvait utiliser les routes API pour modifier les liens raccourcis de n&apos;importe qui.</p>,
+        <p className="mt-3">• Malgré l&apos;échec de ce projet, j&apos;ai appris beaucoup de choses, et la chose la plus importante est que je dois sécuriser mes APIs, car j&apos;ai réalisé trop tard que n&apos;importe qui pouvait utiliser les routes API pour modifier les liens raccourcis de n&apos;importe qui.</p>
         <p className="mt-1">• Et j&apos;ai récemment (octobre 2024) repris le projet sous NextJS, j&apos;ai corrigé les failles de sécurité et j&apos;ai ajouté de nouvelles fonctionnalités ainsi qu&apos;un nouveau design.</p>
       </>
     },
