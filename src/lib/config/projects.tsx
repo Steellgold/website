@@ -19,7 +19,7 @@ export const projects: Project[] = [
         
         <Separator className="mt-3" />
 
-        <p className="mt-3">• Despite the failure of this project, I learned a lot of things, and the most important thing is that I have to secure my APIs, because I realized too late that anyone could use the API routes to modify the shortened links of anyone.</p>,
+        <p className="mt-3">• Despite the failure of this project, I learned a lot of things, and the most important thing is that I have to secure my APIs, because I realized too late that anyone could use the API routes to modify the shortened links of anyone.</p>
         <p className="mt-1">• And I recently (October 2024) took over the project under NextJS, I fixed the security flaws and added new features as well as a new design.</p>
       </>,
       fr: <>
