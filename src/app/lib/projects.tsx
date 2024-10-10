@@ -2,9 +2,10 @@
 
 import { ProjectCard } from "@/lib/components/project.card";
 import { projects } from "@/lib/config/projects";
-import { useLang } from "@/lib/hooks/lang.store";
-import { useViewMode } from "@/lib/hooks/mode.store";
+import { useLang } from "@/lib/stores/lang.store";
+import { useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { ReactElement } from "react";
 
 export const Projects = (): ReactElement => {
@@ -18,14 +19,19 @@ export const Projects = (): ReactElement => {
     {viewMode == "cv" && (
       <div className="rounded-lg shadow-lg mt-4 mb-1.5">
         <h2 className="text-white text-xl font-bold">
-          {lang == "en" ? "Here are my latest realizations" : "Voici mes dernières réalisations"}
+          {lang == "en" ? "My projects and my journey" : "Mes projets et mon parcours"}
         </h2>
 
-        <p className="text-white text-sm">
-          {lang == "en"
-            ? "I am a developer and I like to create projects to learn new things. Here are some of my latest and best projects."
-            : "Je suis un développeur et j'aime créer des projets pour apprendre de nouvelles choses. Voici quelques-uns de mes derniers et meilleurs projets."
-          }
+        <p className="text-white text-sm mt-1 text-white/80">
+          {lang == "en" ? <>
+            <p>My journey into development began with a passion for creating my own Minecraft server back in 2016 using PHP with <Link className="text-[#f5f1de] hover:underline" href={"https://github.com/pmmp/PocketMine-MP"}>PocketMine-MP</Link> on mobile.</p>
+            <p className="mt-2">
+              It wasn&apos;t until 2017, when I got my first computer, that I started doing more serious work—still within the Minecraft world. I created and sold numerous plugins (around a hundred in total, ranging from 4 to 60 euros each depending on complexity, time, ect), which taught me how to <span className="text-[#f5f1de]">listen to clients</span> and <span className="text-[#f5f1de]">target their needs</span>.
+            </p>
+            <p className="mt-2">In 2020, I shifted my focus entirely to web development, starting with <span className="text-[#f5f1de]">SvelteKit</span> by building linkfy.fr and my  <Link className="text-[#f5f1de] hover:underline" href={"https://old.steellgold.fr/"}>old portfolio</Link>. Later, I transitioned to Next.js and discovered Supabase, both of which have become my favorites, and I use them whenever I can.</p>
+            <p className="mt-2">I love discovering new technologies, especially within the TypeScript ecosystem, and I&apos;m always participating in new hackathons organized by Supabase 🚀.</p>
+          </>
+          : <></>}
         </p>
       </div>
     )}

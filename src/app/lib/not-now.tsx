@@ -1,7 +1,7 @@
 "use client";
 
 import { Component } from "@/lib/components/utils/component";
-import { useLang } from "@/lib/hooks/lang.store";
+import { useLang } from "@/lib/stores/lang.store";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 
 type NotNowTextProps = {

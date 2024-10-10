@@ -10,7 +10,7 @@ import { DiscordPresence } from "@/lib/components/lanyard";
 import { cn } from "@/lib/utils";
 import { MadeWith } from "@/lib/components/maded";
 import { Buttons } from "@/lib/components/buttons";
-import { useViewMode } from "@/lib/hooks/mode.store";
+import { useViewMode } from "@/lib/stores/mode.store";
 
 const Home = (): ReactElement => {
   const { viewMode } = useViewMode();
