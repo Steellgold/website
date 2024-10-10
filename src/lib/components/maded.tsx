@@ -1,6 +1,6 @@
 "use client";
 
-import { useViewMode } from "../hooks/mode.store";
+import { useViewMode } from "../stores/mode.store";
 
 export const MadeWith = () => {
   const { viewMode } = useViewMode();

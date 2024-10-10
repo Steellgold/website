@@ -7,7 +7,7 @@ import { Card, CardContent, CardFooter } from "./ui/card";
 import Image from "next/image";
 import { cn } from "../utils";
 import { AMAZON_PRIME_VIDEO, DISNEY_PLUS, GITHUB, NETFLIX, STACK_OVERFLOW, X, fixActivityGitHubImageLink, getActivityCardColor, getActivityId, isActivityBigImage, isAllowedActivity } from "./presences.consts";
-import { useViewMode } from "../hooks/mode.store";
+import { useViewMode } from "../stores/mode.store";
 
 export const DiscordPresence = (): ReactElement | ReactElement[] => {
   const { loading, status } = useLanyard({ userId: "504392983244832780", socket: true })

@@ -1,7 +1,7 @@
 "use client";
 
-import { useLang } from "../hooks/lang.store";
-import { useViewMode } from "../hooks/mode.store";
+import { useLang } from "../stores/lang.store";
+import { useViewMode } from "../stores/mode.store";
 import { Button } from "./ui/button";
 
 export const Buttons = () => {

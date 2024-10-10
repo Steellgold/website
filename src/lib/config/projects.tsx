@@ -19,7 +19,7 @@ export const projects: Project[] = [
         
         <Separator className="mt-3" />
 
-        <p className="mt-3">• Despite the failure of this project, I learned a lot of things, and the most important thing is that I have to secure my APIs, because I realized too late that anyone could use the API routes to modify the shortened links of anyone.</p>
+        <p className="mt-3">• Thanks to this project, I learned a lot, especially the importance of securing my APIs to prevent any abusive use of the API routes to modify the shortened links.</p>
         <p className="mt-1">• And I recently (October 2024) took over the project under NextJS, I fixed the security flaws and added new features as well as a new design.</p>
       </>,
       fr: <>
@@ -30,7 +30,7 @@ export const projects: Project[] = [
         
         <Separator className="mt-3" />
 
-        <p className="mt-3">• Malgré l&apos;échec de ce projet, j&apos;ai appris beaucoup de choses, et la chose la plus importante est que je dois sécuriser mes APIs, car j&apos;ai réalisé trop tard que n&apos;importe qui pouvait utiliser les routes API pour modifier les liens raccourcis de n&apos;importe qui.</p>
+        <p className="mt-3">• Grâce à ce projet, j&apos;ai appris énormément, notamment l&apos;importance de sécuriser mes APIs afin de prévenir toute utilisation abusive des routes API pour modifier les liens de raccourcissement.</p>
         <p className="mt-1">• Et j&apos;ai récemment (octobre 2024) repris le projet sous NextJS, j&apos;ai corrigé les failles de sécurité et j&apos;ai ajouté de nouvelles fonctionnalités ainsi qu&apos;un nouveau design.</p>
       </>
     },
@@ -48,7 +48,7 @@ export const projects: Project[] = [
       Supabase,
       Flowbite
     ],
-    url: "https://github.com/Steellgold/svelte-linkfy"
+    url: "https://github.com/Steellgold/svelte-linkfy",
   },
   {
     title: "Tweeets", 
@@ -84,7 +84,9 @@ export const projects: Project[] = [
       Stripe,
       uiShadcn
     ],
-    url: "https://tweeets.app"
+    url: "https://tweeets.app",
+    isHighlighted: true,
+    highlightUrl: "https://supabase.com/blog/launch-week-8-hackathon-winners#winner-1"
   },
   {
     title: "Simplist",

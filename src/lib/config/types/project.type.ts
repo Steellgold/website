@@ -20,6 +20,9 @@ export type Project = {
   url?: string;
   urls?: Link[];
   stacks: Stack[];
+
+  isHighlighted?: boolean;
+  highlightUrl?: string;
 }
 
 type Link = {
