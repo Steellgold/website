@@ -8,17 +8,17 @@ import { Component } from "./utils/component";
 import { ExternalLink } from "lucide-react";
 import { PropsWithChildren } from "react";
 import { CustomCard } from "./card";
-import { useViewMode } from "../hooks/mode.store";
-import { useLang } from "../hooks/lang.store";
+import { useViewMode } from "../stores/mode.store";
+import { useLang } from "../stores/lang.store";
 
-export const ProjectCard: Component<Project & { className?: string }> = ({ title, description, cvDescription, stacks, url, duration, type, className }) => {
+export const ProjectCard: Component<Project & { className?: string }> = ({ title, description, cvDescription, stacks, url, duration, type, className, isHighlighted, highlightUrl }) => {
   const { viewMode } = useViewMode();
   const { lang } = useLang();
 
   return (
-    <SurroundLink href={url} className={cn("cursor-pointer", className)}>
+    <SurroundLink href={url} className={cn("cursor-pointer relative z-0", className)}>
       {viewMode == "cv" && <div className="mt-2.5"></div>}
-      <CustomCard>
+      <CustomCard highlight={isHighlighted}>
         <CardHeader className="p-4">
           <div className="flex justify-between items-center">
             <div className="flex flex-col">
@@ -33,6 +33,24 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
             </div>
             
             {type === "pro" && <span className="text-[#181b20] bg-[#f5f1de] px-2 py-1 rounded-md text-xs">Pro</span>}
+
+            {isHighlighted && (
+              <>
+                {highlightUrl ? (
+                  <Link href={highlightUrl} target="_blank" onClick={(e) => e.stopPropagation()} className="relative z-[1000]">
+                    <span className="text-[#333] bg-[#f5f1de] px-2 py-1 rounded-md text-xs flex items-center gap-1">
+                      {lang === "en" ? "Prized project 🏆" : "Projet primé 🏆"}
+                      <ExternalLink className="h-3" />
+                    </span>
+                  </Link>
+                ) : (
+                  <span className="text-[#333] bg-[#f5f1de] px-2 py-1 rounded-md text-xs">
+                    {lang === "en" ? "Prized project 🏆" : "Projet primé 🏆"}
+                  </span>
+                )}
+              </>
+            )}
+
           </div>
 
           {viewMode == "cv" && cvDescription ?

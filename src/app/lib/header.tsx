@@ -1,11 +1,12 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
-import { useLang } from "@/lib/hooks/lang.store";
-import { useInitializeViewMode, useViewMode } from "@/lib/hooks/mode.store";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
+import { useLang } from "@/lib/stores/lang.store";
+import { useInitializeViewMode, useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
-import { Cake, Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Cake, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
 import Image from "next/image";
 import { ReactElement } from "react";
 
@@ -48,23 +49,79 @@ export const Header = (): ReactElement => {
         <div className="flex flex-col justify-center ml-auto sm:bg-[#161616] sm:rounded-lg sm:shadow-lg sm:overflow-hidden">
           <ul className="flex flex-row justify-end text-white gap-2 p-2">
             <div className="flex gap-2">
-              <a href="https://github.com/Steellgold" className="block hover:text-white transition-all hover:rotate-12">
-                <Github size={18} strokeWidth={2} />
-              </a>
+              <TooltipProvider delayDuration={100}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <a href="https://github.com/Steellgold" className="block hover:text-white transition-all hover:rotate-12">
+                      <Github size={18} strokeWidth={2} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    GitHub
+                  </TooltipContent>
+                </Tooltip>
 
-              <a href="https://linkedin.com/in/gaetanhus" className="block hover:text-blue-600 transition-all hover:-rotate-12">
-                <Linkedin size={18} strokeWidth={2} />
-              </a>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <a href="https://linkedin.com/in/gaetanhus" className="block hover:text-blue-600 transition-all hover:-rotate-12">
+                      <Linkedin size={18} strokeWidth={2} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    LinkedIn
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger>
+                    <a href="https://www.malt.fr/profile/gaetanhuszovits" className="block hover:text-[#fc5757] transition-all hover:rotate-12">
+                      <ExternalLink size={18} strokeWidth={2} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Malt (Freelance)
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger>
+                    <a href="mailto:pro@gaetanhus.fr" className="block hover:text-red-600 transition-all hover:rotate-12">
+                      <Mail size={18} strokeWidth={2} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Email
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
               
-            <div className="flex gap-2">
-              <a href="https://instagram.com/steellgold" className="block hover:text-pink-600 transition-all hover:rotate-12">
-                <Instagram size={18} strokeWidth={2} />
-              </a>
-              
-              <a href="https://twitter.com/Steellgold" className="block hover:text-blue-600 transition-all hover:-rotate-12">
-                <Twitter size={18} strokeWidth={2} />
-              </a>
+            <div className={cn("flex gap-2", {
+              "hidden": viewMode == "cv"
+            })}>
+              <TooltipProvider delayDuration={100}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <a href="https://twitter.com/Steellgold" className="block hover:text-blue-600 transition-all hover:rotate-12">
+                      <Twitter size={18} strokeWidth={2} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Twitter
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger>
+                    <a href="https://instagram.com/steellgold" className="block hover:text-pink-600 transition-all hover:-rotate-12">
+                      <Instagram size={18} strokeWidth={2} />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Instagram
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </ul>
         </div>
@@ -78,17 +135,20 @@ export const Header = (): ReactElement => {
           }
         </p>
 
-        <h1 className="text-5xl font-bold text-left">
-          {viewMode == "normal" ? "Gaëtan" : "Gaëtan Huszovits"}
+        <h1 className="flex flex-row items-center gap-2">
+          <span className="text-5xl font-bold">{viewMode == "normal" ? "Gaëtan" : "Gaëtan Huszovits"}</span>
+          {viewMode == "cv" && <span className="hidden sm:flex text-[#f0f0f0] bg-[#333] px-2 py-1 rounded-md mt-2.5 text-xs gap-1 items-center">
+            <MapPin className="h-3 w-3" /> Kingersheim, France
+          </span>}
         </h1>
         
         <p className="text-1xl pt-1 text-left">
           {viewMode == "normal"
             ? <>{lang == "en" ? <>I&apos;m a full-stack developer, working with TypeScript.</>
               : <>Je suis un développeur full-stack, travaillant avec TypeScript.</>}</>
-
-            : <>{lang == "en" ? <>I have {dayJS().diff("2004-10-14", "years")} years old and I am a full-stack developer on TypeScript.</>
-              : <>J&apos;ai {dayJS().diff("2004-10-14", "years")} ans et je suis un développeur full-stack sur TypeScript.</>}</>
+            
+            : <>{lang == "en" ? <>I have {dayJS().diff("2004-10-14", "years")} years old and I am a full-stack developer with <span className="text-yellow-100">NextJS</span>, and <span className="text-yellow-100">TypeScript</span>.</>
+              : <>J&apos;ai {dayJS().diff("2004-10-14", "years")} ans et je suis un développeur full-stack, avec React avec <span className="text-yellow-100">NextJS</span>, et <span className="text-yellow-100">TypeScript</span>.</>}</>
           }
         </p>
 
