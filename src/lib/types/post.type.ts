@@ -6,7 +6,7 @@ export const PostSchema = z.object({
   slug: z.string(),
   excerpt: z.string(),
   content: z.string(),
-  banner: z.string().optional(),
+  banner: z.string().nullable(),
   status: z.enum(["DRAFT", "PUBLISHED"]),
   createdAt: z.string(),
   updatedAt: z.string(),
