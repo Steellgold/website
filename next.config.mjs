@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { hostname: "dgzmokcshopxlsimyjqx.supabase.co", protocol: "https" },
+      { hostname: "xjgmgvvxdtpgkymqpvnz.supabase.co", protocol: "https" },
       { hostname: "i.scdn.co", protocol: "https" },
       { hostname: "raw.githubusercontent.com", protocol: "https" },
       { hostname: "cdn.rcd.gg", protocol: "https" },

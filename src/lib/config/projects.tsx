@@ -86,7 +86,7 @@ export const projects: Project[] = [
     ],
     url: "https://tweeets.app",
     isHighlighted: true,
-    highlightUrl: "https://supabase.com/blog/launch-week-8-hackathon-winners#winner-1"
+    highlightUrl: "https://supabase.com/blog/launch-week-8-hackathon-winners#best-use-of-ai"
   },
   {
     title: "Simplist",

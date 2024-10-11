@@ -1,10 +1,14 @@
-import { MDX } from "@/lib/components/mdx";
 import { Card } from "@/lib/components/ui/card";
 import { AsyncComponent } from "@/lib/components/utils/component";
-import { getMdxSource } from "@/lib/mdx.fetcher";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Metadata } from "next";
 import { PostSchema } from "@/lib/types/post.type";
+import { CalendarIcon } from "lucide-react";
+
+import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
+import Image from "next/image";
 
 type PageProps = {
   params: {
@@ -22,7 +26,6 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
   });
 
   const data = await response.json();
-
   const schema = PostSchema.safeParse(data);
 
   if (!schema.success) {
@@ -89,28 +92,64 @@ const Post: AsyncComponent<PageProps> = async ({ params }) => {
 
   if (schema.data.status === "DRAFT") return <></>;
 
-  const postData = await getMdxSource(schema.data.content);
-
   return (
-    <>
-      <div className="flex flex-col items-center justify-center px-2">
-        <div className="m-auto w-full text-center md:w-7/12">
-          <p className="m-auto my-5 w-10/12 text-sm font-light text-stone-400 md:text-base">
-            {dayJS(schema.data.createdAt).format("MMMM D, YYYY")}
-          </p>
-          <h1 className="mb-10 text-sm md:text-3xl font-bold text-white">
-            {data.title}
-          </h1>
-          <p className="text-md m-auto w-10/12 text-stone-400 md:text-lg">
-            {data.description}
-          </p>
-        </div>
-      </div>
+    <article className="max-w-4xl mx-auto px-4 py-8">
+      <Image
+        src={data.banner}
+        alt="Image d'illustration de l'article"
+        width={800}
+        height={400}
+        className="rounded-lg mb-8"
+      />
 
-      <div className="m-auto w-11/12">
-        <MDX source={postData} />
+      <header className="mb-8">
+        <h1 className="text-3xl font-bold text-center">{data.title}</h1>
+        <div className="flex items-center justify-center space-x-4">
+          <span className="flex items-center">
+            <CalendarIcon className="w-4 h-4 mr-2" />
+            {dayJS(data.createdAt).format("MMMM D, YYYY")}
+          </span>
+        </div>
+      </header>
+
+      <div className="prose prose-invert prose-lg max-w-none">
+        <ReactMarkdown
+          components={{
+            h1: ({node, ...props}) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
+            h2: ({node, ...props}) => <h2 className="text-2xl font-semibold mt-6 mb-3" {...props} />,
+            p: ({node, ...props}) => <p className="mb-4" {...props} />,
+            ul: ({node, ...props}) => <ul className="list-disc list-inside mb-4" {...props} />,
+            ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-4" {...props} />,
+            li: ({node, ...props}) => <li className="mb-1" {...props} />,
+            a: ({node, ...props}) => <a className="text-[#3182ce] hover:underline" {...props} />,
+            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary pl-4 italic my-4" {...props} />,
+            // eslint-disable-next-line @next/next/no-img-element
+            img: ({node, ...props}) => <img className="rounded-lg" {...props} alt="illustration image" />,
+            code({node, inline, className, children, ...props}) {
+              const match = /language-(\w+)/.exec(className || '')
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  // @ts-ignore
+                  style={atomDark}
+                  language={match[1]}
+                  PreTag="div"
+                  className="rounded-md my-4"
+                  {...props}
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code className="bg-muted text-muted-foreground px-1 py-0.5 rounded" {...props}>
+                  {children}
+                </code>
+              )
+            }
+          }}
+        >
+          {schema.data.content}
+        </ReactMarkdown>
       </div>
-    </>
+    </article>
   );
 }
 
