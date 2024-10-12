@@ -9,10 +9,10 @@ export type Project = {
     fr: ReactElement | string
   };
   cvDescription?: {
-    en: ReactElement | string;
-    fr: ReactElement | string;
+    en: ReactElement;
+    fr: ReactElement;
   };
-  type: "open-source" | "pro";
+  type: "open-source" | "pro" | "team";
   duration: {
     start: Dayjs;
     end?: Dayjs;

@@ -1,6 +1,6 @@
 import { Separator } from "../components/ui/separator";
 import { dayJS } from "../utils/dayjs/day-js";
-import { DiscordJS, Flowbite, NextJS, OpenAI, PostgreSQL, Prisma, Railway, Redis, Stripe, Supabase, SvelteKit, TailwindCSS, Typescript, uiShadcn, Vercel } from "./stacks";
+import { DiscordJS, Flowbite, NextJS, OpenAI, PHP, PocketMine, PostgreSQL, Prisma, Railway, Redis, Stripe, Supabase, SvelteKit, TailwindCSS, Typescript, uiShadcn, Vercel } from "./stacks";
 import { Project } from "./types/project.type";
 
 export const projects: Project[] = [
@@ -161,5 +161,45 @@ export const projects: Project[] = [
       { title: "Discord Application Directory", url: "https://discord.com/application-directory/1076862546658738236" },
       { title: "GitHub Repository", url: "https://github.com/bottlycorp" }
     ]
+  },
+  {
+    title: "Wapy",
+    description: {
+      en: "A Minecraft Bedrock Edition, PvP Factions server.",
+      fr: "Un serveur Minecraft Bedrock Edition, PvP Factions."
+    },
+    cvDescription: {
+      fr: <>
+        <p className="mt-1">• Le projet Wapy a été lancé en 2022 par une équipe de passionnés souhaitant offrir une alternative aux serveurs PVP Faction classiques. Dès le début, le but était de proposer un serveur original et immersif, tout en mettant en avant des mécaniques de jeu inédites.</p>
+        <p className="mt-1">• En 2023, le projet a connu une pause, principalement due à un manque de motivation et de disponibilité de la part de l'équipe. Après plusieurs mois de travail intensif, le projet est resté en veille pendant un moment. Bien que cette pause ait ralenti le développement, elle a permis à l'équipe de se ressourcer et de réfléchir à de nouvelles idées.</p>
+        <p className="mt-1">• En 2024, la motivation est revenue plus forte que jamais. Grâce à de nouvelles inspirations et à l'envie de donner vie au projet, l'équipe a repris le développement de Wapy avec détermination. Depuis, nous travaillons d'arrache-pied chaque jour pour vous
+          proposer une expérience de jeu toujours plus enrichissante, en ajoutant de nouvelles fonctionnalités et en perfectionnant chaque détail du serveur.</p>
+        <p className="mt-1">• Nous sommes plus que jamais engagés à faire de Wapy un serveur de référence dans le monde des PVP Faction, et nous sommes impatients de partager cette aventure avec vous !</p>
+      </>,
+      en: <>
+        <p className="mt-1">• The Wapy project was launched in 2022 by a team of enthusiasts wishing to offer an alternative to classic PVP Faction servers. From the beginning, the goal was to offer an original and immersive server, while highlighting new game mechanics.</p>
+        <p className="mt-1">• In 2023, the project experienced a pause, mainly due to a lack of motivation and availability on the part of the team. After several months of intensive work, the project remained on hold for a while. Although this break slowed down development, it allowed the team to recharge and think about new ideas.</p>
+        <p className="mt-1">• In 2024, motivation returned stronger than ever. Thanks to new inspirations and the desire to bring the project to life, the team resumed the development of Wapy with determination. Since then, we have been working hard every day to offer you an ever more enriching gaming experience, adding new features and perfecting every detail of the server.</p>
+        <p className="mt-1">• We are more committed than ever to making Wapy a reference server in the world of PVP Faction, and we are looking forward to sharing this adventure with you!</p>
+      </>
+    },
+    type: "team",
+    duration: {
+      start: dayJS("12-25-2020")
+    },
+    stacks: [
+      PocketMine,
+      PHP,
+      Typescript,
+      NextJS,
+      TailwindCSS,
+      Vercel,
+      Railway,
+      Redis,
+      PostgreSQL,
+      Prisma,
+      Stripe,
+    ],
+    url: "https://github.com/WapyMC"
   }
 ];

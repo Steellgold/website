@@ -29,5 +29,8 @@ export const GraphQL: Stack = { name: "GraphQL", icon: "graphql" };
 export const AuthJS: Stack = { name: "Auth JS", icon: "authjs" };
 export const NextAuth: Stack = { name: "NextAuth", icon: "authjs" };
 
+export const PocketMine: Stack = { name: "PocketMine", icon: "pocketmine" };
+export const PHP: Stack = { name: "PHP", icon: "php" };
+
 export const uiShadcn: Stack = { name: "ui-shadcn", icon: "uishadcn" };
 export const Flowbite: Stack = { name: "Flowbite", icon: "flowbite" };

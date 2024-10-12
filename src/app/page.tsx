@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { MadeWith } from "@/lib/components/maded";
 import { Buttons } from "@/lib/components/buttons";
 import { useViewMode } from "@/lib/stores/mode.store";
+import { AIChatBubble } from "@/lib/components/chat-buble";
 
 const Home = (): ReactElement => {
   const { viewMode } = useViewMode();
@@ -34,6 +35,7 @@ const Home = (): ReactElement => {
           <Buttons />
         </div>
 
+        <AIChatBubble />
         <MadeWith />
       </div>
     </>

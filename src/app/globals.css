@@ -74,3 +74,23 @@
       @apply bg-background text-foreground;
     }
   }
+
+  /* Webkit browsers like Chrome, Safari */
+  .chat-messages::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .chat-messages::-webkit-scrollbar-thumb {
+    background-color: #282828;
+    border-radius: 3px;
+  }
+
+  /* Firefox */
+  .chat-messages {
+    scrollbar-width: thin;
+    scrollbar-color: #282828 transparent;
+  }

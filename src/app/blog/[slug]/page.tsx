@@ -122,7 +122,7 @@ const Post: AsyncComponent<PageProps> = async ({ params }) => {
             h5: ({node, ...props}) => <h5 className="text-base font-semibold mt-4 mb-2" {...props} />,
             h6: ({node, ...props}) => <h6 className="text-sm font-semibold mt-4 mb-2" {...props} />,
             p: ({node, ...props}) => <p className="mb-4" {...props} />,
-            hr: ({node, ...props}) => <Separator className="my-8" />,            
+            hr: ({node, ...props}) => <Separator className="my-8" />,
             ul: ({node, ...props}) => <ul className="list-disc list-inside mb-4" {...props} />,
             ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-4" {...props} />,
             li: ({node, ...props}) => <li className="mb-1" {...props} />,
