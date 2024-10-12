@@ -171,8 +171,8 @@ export const projects: Project[] = [
     cvDescription: {
       fr: <>
         <p className="mt-1">• Le projet Wapy a été lancé en 2022 par une équipe de passionnés souhaitant offrir une alternative aux serveurs PVP Faction classiques. Dès le début, le but était de proposer un serveur original et immersif, tout en mettant en avant des mécaniques de jeu inédites.</p>
-        <p className="mt-1">• En 2023, le projet a connu une pause, principalement due à un manque de motivation et de disponibilité de la part de l'équipe. Après plusieurs mois de travail intensif, le projet est resté en veille pendant un moment. Bien que cette pause ait ralenti le développement, elle a permis à l'équipe de se ressourcer et de réfléchir à de nouvelles idées.</p>
-        <p className="mt-1">• En 2024, la motivation est revenue plus forte que jamais. Grâce à de nouvelles inspirations et à l'envie de donner vie au projet, l'équipe a repris le développement de Wapy avec détermination. Depuis, nous travaillons d'arrache-pied chaque jour pour vous
+        <p className="mt-1">• En 2023, le projet a connu une pause, principalement due à un manque de motivation et de disponibilité de la part de l&apos;équipe. Après plusieurs mois de travail intensif, le projet est resté en veille pendant un moment. Bien que cette pause ait ralenti le développement, elle a permis à l&apos;équipe de se ressourcer et de réfléchir à de nouvelles idées.</p>
+        <p className="mt-1">• En 2024, la motivation est revenue plus forte que jamais. Grâce à de nouvelles inspirations et à l&apos;envie de donner vie au projet, l&apos;équipe a repris le développement de Wapy avec détermination. Depuis, nous travaillons d&apos;arrache-pied chaque jour pour vous
           proposer une expérience de jeu toujours plus enrichissante, en ajoutant de nouvelles fonctionnalités et en perfectionnant chaque détail du serveur.</p>
         <p className="mt-1">• Nous sommes plus que jamais engagés à faire de Wapy un serveur de référence dans le monde des PVP Faction, et nous sommes impatients de partager cette aventure avec vous !</p>
       </>,
