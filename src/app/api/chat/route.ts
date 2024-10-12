@@ -3,6 +3,8 @@ import { dayJS } from '@/lib/utils/dayjs/day-js';
 import { openai } from '@ai-sdk/openai';
 import { streamText, convertToCoreMessages } from 'ai';
 import { ReactElement } from 'react';
+import { ipAddress } from "@vercel/functions";
+import { ratelimit } from '@/lib/upstash';
 
 const extractTextFromReactElement = (element: ReactElement): string => {
   if (typeof element === "string") {
@@ -23,7 +25,10 @@ const extractTextFromReactElement = (element: ReactElement): string => {
 export const maxDuration = 30;
 
 let prompt = `
-  Tu est moi, Gaëtan tu doit répondre au question posé par l'utilisateur comme si tu était moi donc tu répond à la première personne (je) et tu doit répondre dans la langue de l'utilisateur.
+  Tu est moi, Gaëtan tu doit répondre au question posé par l'utilisateur comme si tu était moi donc tu répond à la première personne (je).
+
+  Si la personne parle en anglais tu peut répondre en anglais, si elle parle en français tu doit répondre en français. (Ou dans la langue dans laquelle la question est posée)
+
   Tu ne doit effectuer aucune action qui ne rentre pas dans le cadre de la conversation au tour de moi (mes projets, ect)
   Par exemple tu ne peut peut pas répondre à "Quel est la capital de la France" car cela ne concerne pas ma personne directement.
 
@@ -69,10 +74,10 @@ prompt += `
   - Twitter: [@Steellgold](https://twitter.com/Steellgold)
   - Instagram: [@steellgold](https://www.instagram.com/steellgold/)
   
-  Réseaux professionnels:
+  Réseaux et contacts professionnels:
   - LinkedIn: [Gaëtan Huszovits](https://www.linkedin.com/in/gaetanhus/)
   - Malt (Freelance): [Gaëtan Huszovits](https://www.malt.fr/profile/gaetanhuszovits)
-  - Email: [pro@gaetanhus.fr](mailto:pro@gaetanhus.fr)
+  - Email: pro@gaetanhus.fr
 `;
 
 prompt += `
@@ -100,7 +105,12 @@ prompt += `
   Voilà, j'espère que cela te donnera assez d'informations pour répondre aux questions des utilisateurs!
 `;
 
-export async function POST(req: Request) {
+export const POST = async(req: Request) => {
+  const { success }  = await ratelimit.limit(ipAddress(req) ?? "localhost");
+  if (!success) {
+    return new Response("Too many requests", { status: 429 });
+  }
+
   const { messages } = await req.json();
 
   const result = await streamText({

@@ -36,8 +36,8 @@ export const AIChatBubble = () => {
 
   const renderContent = (text: string) => {
     let replaced = text.replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">ici</a>'
+      /\[(.*?)\]\((.*?)\)/g,
+      "<a href='$2' target='_blank' class='text-blue-400 hover:underline'>$1</a>"
     );
 
     replaced = replaced.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
@@ -54,6 +54,9 @@ export const AIChatBubble = () => {
             "fixed inset-0 rounded-none": deviceType === "Mobile",
             "mb-3 w-full sm:w-[400px] h-full sm:h-[42rem]": deviceType !== "Mobile"
           })}
+          style={{
+            border: '1px solid #282828',
+          }}
         >
           <div className="flex justify-between items-center p-4 border-b border-[#282828]">
             <h2 className="text-lg font-semibold flex items-center gap-2">
@@ -99,8 +102,8 @@ export const AIChatBubble = () => {
                 <Separator className="border-[#282828] w-[30%] mx-auto" />
 
                 <p className="text-sm text-gray-400 text-center">
-                  {lang === "fr" ? <>Ceci est un chatbot alimenté par <strong>OpenAI GPT 4o mini</strong>, il aussi entièrement personnalisé pour répondre à des questions sur moi et mes projets, donc n&apos;hésitez pas à poser des questions!</>
-                  : <>This is a chatbot powered by <strong>OpenAI GPT 4o mini</strong>, it&apos;s also fully customized to answer questions about me and my projects, so feel free to ask questions!</>}
+                  {lang === "fr" ? <>Ceci est un chatbot alimenté par <strong>GPT 4o mini</strong>, il aussi entièrement personnalisé pour répondre à des questions sur moi et mes projets, donc n&apos;hésitez pas à poser des questions!</>
+                  : <>This is a chatbot powered by <strong>GPT 4o mini</strong>, it&apos;s also fully customized to answer questions about me and my projects, so feel free to ask questions!</>}
                 </p>
               </div>
             ) : (
@@ -131,7 +134,10 @@ export const AIChatBubble = () => {
                 onChange={handleInputChange}
                 onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
                 placeholder="Type a message..."
-                className="flex-1 bg-[#100E0E] border border-[#282828] rounded-l-lg p-2 focus:outline-none"
+                className={cn("flex-1 bg-[#100E0E] border border-[#282828] rounded-l-lg p-2 focus:outline-none", {
+                  "opacity-50": isLoading
+                })}
+                disabled={isLoading}
                 style={{
                   boxShadow: 'inset 1px -1px 32.7px 0px #242424',
                 }}
@@ -144,10 +150,20 @@ export const AIChatBubble = () => {
                   <CircleStop size={20} />
                 </button>
               ) : (
-                <button onClick={handleSubmit} className="bg-[#100E0E] border border-[#282828] rounded-r-lg p-2 hover:bg-[#1a1818] transition-colors" style={{
-                  boxShadow: 'inset 1px -1px 32.7px 0px #242424',
-                }}>
-                  <Send size={20} />
+                <button
+                  onClick={handleSubmit}
+                  className={cn("bg-[#100E0E] border border-[#282828] rounded-r-lg p-2 hover:bg-[#1a1818] transition-colors", {
+                    "opacity-50": isLoading
+                  })}
+                  style={{
+                    boxShadow: 'inset 1px -1px 32.7px 0px #242424',
+                  }}
+                  disabled={!input}
+                >
+                  <Send size={20} className={cn({
+                    "text-gray-400": !input,
+                    "text-white": input
+                  })} />
                 </button>
               )}
             </div>
@@ -157,7 +173,7 @@ export const AIChatBubble = () => {
 
       <button
         onClick={toggleChat}
-        className={cn("bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors", {
+        className={cn("bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors border border-[#282828]", {
           "hidden": deviceType === "Mobile" && isOpen
         })}
         style={{
