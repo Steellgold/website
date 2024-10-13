@@ -9,10 +9,11 @@ import { useDetectDevice } from "../hooks/use-detect-device";
 import { Separator } from "./ui/separator";
 
 const defaultQuestions: { french: string, english: string }[] = [
-  { french: "Quel est ta stack favoris?", english: "What is your favorite stack?" },
-  { french: "Depuis quand tu développes?", english: "Since when do you develop?" },
-  { french: "Présente toi en quelques mots", english: "Introduce yourself in a few words" },
-  { french: "As tu des projets primés à toi ou en équipe?", english: "Do you have any prized projects of your own or in a team?" },
+  { french: "Quels projets as-tu réalisés récemment ?", english: "What projects have you recently completed?" },
+  { french: "Quelles sont tes compétences principales en développement ?", english: "What are your main development skills?" },
+  { french: "Peux-tu me parler de ton parcours professionnel et de tes expériences passées ?", english: "Can you tell me about your professional background and past experiences?" },
+  { french: "Quels sont tes objectifs professionnels pour l'avenir ?", english: "What are your professional goals for the future?" },
+  { french: "As-tu des passions ou des hobbies en dehors du développement ?", english: "Do you have any passions or hobbies outside of development?" },
 ]
 
 export const AIChatBubble = () => {
