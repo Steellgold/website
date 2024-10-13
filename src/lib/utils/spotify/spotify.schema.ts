@@ -83,3 +83,39 @@ export const SpotifyTrack = z.object({
   }),
   is_playing: z.boolean(),
 });
+
+const ImageSchema = z.object({
+  url: z.string().url(),
+});
+
+const ArtistSchema = z.object({
+  name: z.string(),
+  external_urls: z.object({
+    spotify: z.string().url(),
+  }),
+  images: z.array(ImageSchema).optional()
+});
+
+const TrackSchema = z.object({
+  name: z.string(),
+  artists: z.array(ArtistSchema),
+  external_urls: z.object({
+    spotify: z.string().url(),
+  }),
+  album: z.object({
+    images: z.array(ImageSchema),
+  }).optional()
+});
+
+export const TopItemsSchema = z.object({
+  tracks: z.object({
+    last_7_days: z.array(TrackSchema),
+    last_3_months: z.array(TrackSchema),
+    all_time: z.array(TrackSchema),
+  }),
+  artists: z.object({
+    last_7_days: z.array(ArtistSchema),
+    last_3_months: z.array(ArtistSchema),
+    all_time: z.array(ArtistSchema),
+  }),
+});

@@ -5,7 +5,6 @@ import { ReactElement, useEffect, useState } from "react";
 import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
 import PlayingAnimation from "@/lib/utils/spotify/playing-icon";
-import { Separator } from "./ui/separator";
 import { cn } from "@/lib/utils";
 import { z } from "zod";
 import { SpotifyTrack } from "@/lib/utils/spotify/spotify.schema";
