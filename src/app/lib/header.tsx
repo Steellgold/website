@@ -41,7 +41,7 @@ export const Header = (): ReactElement => {
               "border-black border-[5px] hover:border-[3.5px]": viewMode == "normal",
             }
           )}
-          src={viewMode == "normal" ? "/_static/images/me.jpeg" : "/_static/images/me_cv.jpg"}
+          src={"/_static/images/me.jpeg"}
           width={128}
           height={128}
         />
