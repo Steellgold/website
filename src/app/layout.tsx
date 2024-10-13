@@ -12,7 +12,7 @@ const nunito = Nunito({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Gaëtan | Full-stack Developer",
   applicationName: "Gaëtan's Portfolio",
-  description: "19. Indie Hacker | Full-stack developper",
+  description: "20. Indie Hacker | Full-stack developper", // 20 years old !!!!!!!
 };
 
 export const viewport: Viewport = {
