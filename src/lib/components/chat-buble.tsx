@@ -11,8 +11,8 @@ import { Separator } from "./ui/separator";
 const defaultQuestions: { french: string, english: string }[] = [
   { french: "Quel est ta stack favoris?", english: "What is your favorite stack?" },
   { french: "Depuis quand tu développes?", english: "Since when do you develop?" },
-  { french: "Quels sont tes projets en cours?", english: "What are your current projects?" },
-  { french: "Présente toi en quelques mots", english: "Introduce yourself in a few words" }
+  { french: "Présente toi en quelques mots", english: "Introduce yourself in a few words" },
+  { french: "As tu des projets primés à toi ou en équipe?", english: "Do you have any prized projects of your own or in a team?" },
 ]
 
 export const AIChatBubble = () => {
@@ -47,12 +47,12 @@ export const AIChatBubble = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 flex flex-col items-end">
+    <div className="fixed bottom-4 right-4 flex flex-col items-end z-[400]">
       {isOpen && (
         <div
           className={cn("bg-[#100E0E] text-white rounded-lg overflow-hidden flex flex-col motion-preset-blur-up", {
             "fixed inset-0 rounded-none": deviceType === "Mobile",
-            "mb-3 w-full sm:w-[400px] h-full sm:h-[42rem]": deviceType !== "Mobile"
+            "mb-3 w-full sm:w-[500px] h-full sm:h-[42rem]": deviceType !== "Mobile"
           })}
           style={{
             border: '1px solid #282828',
@@ -64,6 +64,18 @@ export const AIChatBubble = () => {
             </h2>
 
             <div className="flex space-x-2">
+              {/* <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
+                messages.push({
+                  content: "Conversation exported to https://steellgold.fr/?chat=EZd2z",
+                  id: "exported-" + Date.now(),
+                  role: "system",
+                })
+
+                setMessages([...messages]);
+              }}>
+                <Link2 size={20} />
+              </button> */}
+
               <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => setMessages([])}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-broom">
                   <path d="m13 11 9-9"/>
@@ -108,20 +120,33 @@ export const AIChatBubble = () => {
               </div>
             ) : (
               messages.map((message, index) => (
-                <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div
-                    className={cn("max-w-[100%] p-3 rounded-lg bg-[#100E0E]")}
-                    style={{
-                      boxShadow: "inset 1px -1px 32.7px 0px #242424",
-                      border: "1px solid #282828",
-                    }}
-                  >
-                    <div
-                      className="whitespace-pre-wrap"
-                      dangerouslySetInnerHTML={{ __html: renderContent(message.content) }}
-                    />
-                  </div>
-                </div>
+                <>
+                  {message.role === "system" && message.content.includes("export") ? (
+                    <div className="flex justify-center items-center flex items-center text-center space-x-2 text-gray-400">
+                      {/* <div className="flex flex-col items-center gap-1">
+                        {lang === "fr"
+                          ? <>Lien d&apos;exportation généré et copié dans le presse-papier</>
+                          : <>Export link generated and copied to clipboard</>
+                        }
+                      </div> */}
+                    </div>
+                  ) : (
+                    <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+                      <div
+                        className={cn("max-w-[100%] p-3 rounded-lg bg-[#100E0E]")}
+                        style={{
+                          boxShadow: "inset 1px -1px 32.7px 0px #242424",
+                          border: "1px solid #282828",
+                        }}
+                      >
+                        <div
+                          className="whitespace-pre-wrap"
+                          dangerouslySetInnerHTML={{ __html: renderContent(message.content) }}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </>
               ))
             )}
             <div ref={chatEndRef} />
