@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Bot, CircleStop, Send, X } from "lucide-react";
+import { Bot, CircleStop, Copy, Maximize, Minimize, Send, X } from "lucide-react";
 import { useLang } from "../stores/lang.store";
 import { cn } from "../utils";
 import { useChat } from "ai/react";
 import { useDetectDevice } from "../hooks/use-detect-device";
 import { Separator } from "./ui/separator";
+import dayjs from "dayjs";
+import { toast } from "sonner";
 
 const defaultQuestions: { french: string, english: string }[] = [
   { french: "Quels projets as-tu réalisés récemment ?", english: "What projects have you recently completed?" },
@@ -19,6 +21,7 @@ const defaultQuestions: { french: string, english: string }[] = [
 export const AIChatBubble = () => {
   const { deviceType } = useDetectDevice();
   const { messages, input, handleInputChange, handleSubmit, setInput, setMessages, stop, isLoading } = useChat();
+  const [maximized, setMaximized] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { lang } = useLang();
 
@@ -37,9 +40,11 @@ export const AIChatBubble = () => {
 
   const renderContent = (text: string) => {
     let replaced = text.replace(
-      /\[(.*?)\]\((.*?)\)/g,
-      "<a href='$2' target='_blank' class='text-blue-400 hover:underline'>$1</a>"
+      /- \!\[(.*?)\]\((.*?)\)\s*-\s*(.*?)(\n|$)/g,
+      `<div class='flex items-center gap-2 -mt-4 -mb-3'><img src='$2' alt='$1' style='width: 60px; height: 60px; border-radius: 0.5rem;' /> <span>$3</span></div>`
     );
+
+    replaced = replaced.replace(/\[(.*?)\]\((.*?)\)/g, "<a href='$2' target='_blank' class='text-blue-400 hover:underline'>$1</a>");
 
     replaced = replaced.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
     replaced = replaced.replace(/#{1,6} (.*?)(\n|$)/g, "<h1 class='text-xl font-semibold'>$1</h1>");
@@ -53,7 +58,8 @@ export const AIChatBubble = () => {
         <div
           className={cn("bg-[#100E0E] text-white rounded-lg overflow-hidden flex flex-col motion-preset-blur-up", {
             "fixed inset-0 rounded-none": deviceType === "Mobile",
-            "mb-3 w-full sm:w-[500px] h-full sm:h-[42rem]": deviceType !== "Mobile"
+            "mb-3 w-full sm:w-[500px] h-full sm:h-[42rem]": deviceType !== "Mobile",
+            "sm:h-[calc(100vh-10rem)] sm:w-[calc(100vw-10rem)]": maximized && deviceType !== "Mobile",
           })}
           style={{
             border: '2px solid #282828',
@@ -77,6 +83,14 @@ export const AIChatBubble = () => {
               }}>
                 <Link2 size={20} />
               </button> */}
+
+              {deviceType == "Desktop" && (
+                <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
+                  setMaximized(!maximized);
+                }}>
+                  {maximized ?<Minimize size={20} /> : <Maximize size={20} />}
+                </button>
+              )}
 
               <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
                 if (isLoading) {
@@ -146,17 +160,62 @@ export const AIChatBubble = () => {
                     </div>
                   ) : (
                     <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+                      {/* {message.role === "assistant" && (
+                        <div>
+                          <div className="flex justify-center items-center p-2 rounded-lg bg-[#100E0E] text-white mr-2" style={{
+                            boxShadow: 'inset 1px -1px 32.7px 0px #242424',
+                            border: '1px solid #282828',
+                          }}>
+                            <Bot size={24} />
+                          </div>
+                        </div>
+                      )} */}
+
                       <div
-                        className={cn("max-w-[100%] p-3 rounded-lg bg-[#100E0E]")}
+                        className={cn("max-w-max p-2.5 rounded-lg bg-[#100E0E]")}
                         style={{
                           boxShadow: "inset 1px -1px 32.7px 0px #242424",
                           border: "1px solid #282828",
                         }}
                       >
-                        <div
-                          className="whitespace-pre-wrap"
-                          dangerouslySetInnerHTML={{ __html: renderContent(message.content) }}
-                        />
+                        {message.toolInvocations ? (
+                          <div className="flex flex-col items-center gap-2">
+                            <p className="text-gray-400 text-sm text-center">
+                              {lang === "fr" ? "J'ai besoin d'utiliser les outils suivants" : "I need to use the following tools"}:
+                              &nbsp;
+                              {message.toolInvocations.map((tool, index) => (
+                                <span key={index} className="font-semibold bg-blue-500 cursor-pointer text-[#100E0E] rounded-md px-2 py-1 text-xs">
+                                  {tool.toolName}
+                                </span>
+                              ))}
+                            </p>
+                          </div>
+                        ) : (
+                          <div
+                            className="whitespace-pre-wrap"
+                            dangerouslySetInnerHTML={{ __html: renderContent(message.content) }}
+                          />
+                          // <p className="whitespace-pre-wrap">{message.content}</p>
+                          // <MarkdownPlease content={message.content} />
+                        )}
+
+                        {message.role === "assistant" && !isLoading && !message.toolInvocations && (
+                          <div className="flex items-center gap-2 mt-2">
+                            <button
+                              className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1"
+                              onClick={() => {
+                                navigator.clipboard.writeText(message.content);
+                                toast.success("Message copied to clipboard");
+                              }}
+                            >
+                              <Copy size={16} />
+                            </button>
+
+                            <span className="text-xs text-gray-400">
+                              {dayjs(message.createdAt).format("HH:mm")}
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}

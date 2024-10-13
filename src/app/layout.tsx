@@ -5,6 +5,7 @@ import { Component } from "@/lib/components/utils/component";
 import { PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/lib/components/providers/theme-provider";
+import { Toaster } from "sonner";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -27,6 +28,8 @@ const Layout: Component<PropsWithChildren> = ({ children }) => {
         )}
         
         <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+          <Toaster />
+
           {children}
         </ThemeProvider>
       </body>

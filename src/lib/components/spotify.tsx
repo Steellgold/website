@@ -20,7 +20,7 @@ export const SpotifyCard = (): ReactElement => {
 
   useEffect(() => {
     const fetchNowPlaying = async () => {
-      const track = await fetch("/api/now-playing");
+      const track = await fetch("/api/music/now-playing");
 
       const res = await track.json();
       if (res.error) return setTrack(null);

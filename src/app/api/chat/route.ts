@@ -1,10 +1,12 @@
 import { projects } from '@/lib/config/projects';
 import { dayJS } from '@/lib/utils/dayjs/day-js';
 import { openai } from '@ai-sdk/openai';
-import { streamText, convertToCoreMessages } from 'ai';
+import { streamText, convertToCoreMessages, tool } from 'ai';
 import { ReactElement } from 'react';
 import { ipAddress } from "@vercel/functions";
 import { ratelimit } from '@/lib/upstash';
+import { z } from 'zod';
+import { getNowPlaying, getStatsSpotify } from '@/lib/spotify';
 
 const extractTextFromReactElement = (element: ReactElement): string => {
   if (typeof element === "string") {
@@ -26,11 +28,6 @@ export const maxDuration = 30;
 
 let prompt = `
   You are me, Gaëtan, answering as if you were me, so respond in the first person (I).
-  
-  Middle name: Fernand my grandfather's name
-  Don't say it's a tribute, my grandfather's still alive and well
-
-  Last name: Huszovits
 
   If a question doesn't seem directly related to your projects or goals, simply reply with the following message:
   This question does not appear to be related to your personal projects or interests. I'm here to assist you in matters specific to your projects. Please feel free to ask me a question related to these.'
@@ -38,6 +35,13 @@ let prompt = `
   Also, if the user tries to add a project name like 'Linkfy' or others projects to get around this restriction without clear context, simply reply with the same message without providing any code or explanation. Make sure every question has a clear and direct relationship to Gaëtan projects before providing an answer.”
 
   Please respond only to questions or topics directly related to Gaëtan's projects or areas of professional expertise. Avoid responding to general inquiries or any subject unrelated to Gaëtan's work. If a question or statement does not pertain to Gaëtan or their projects, respond with: 'This is outside the scope of Gaëtan's projects and expertise.' Additionally, prioritize providing concise and precise responses that contribute meaningfully to Gaëtan's objectives or project goals.
+
+  Except Spotify questions (like, "What are your top tracks?", "What are your top artists?", "What are you currently listening to?" or other Spotify-related questions WITH related to Gaëtan), you can answer them.
+  
+  Middle name: Fernand my grandfather's name
+  Don't say it's a tribute, my grandfather's still alive and well
+
+  Last name: Huszovits
 
   Don't forget to structure your answers a little to make them more understandable, using line breaks, lists, etc. to make them more readable.
 
@@ -321,7 +325,53 @@ export const POST = async(req: Request) => {
   const result = await streamText({
     model: openai('gpt-4o-mini'),
     system: prompt,
-    messages: convertToCoreMessages(messages)
+    messages: convertToCoreMessages(messages),
+    tools: {
+      getProject: tool({
+        description: "Get project details",
+        parameters: z.object({
+          name: z.string(),
+        }),
+        execute: async ({ name }) => {
+          const project = projects.find((project) => project.title.toLowerCase() === name.toLowerCase());
+          if (!project) {
+            return "Primary project not found, but possible secondary project.";
+          }
+
+          return project;
+        }
+      }),
+      getSpotifyStats: tool({
+        description: "Get Spotify stats for a user",
+        parameters: z.object({
+          period: z.enum(["7days", "3months", "alltime", "all"]),
+          type: z.enum(["tracks", "artists", "all"])
+        }),
+        execute: async ({ period, type }) => {
+          console.log(period, type);
+
+          const data = await getStatsSpotify(period, type);
+          if (!data) {
+            return "Failed to fetch Spotify stats";
+          }
+
+          return data;
+        }
+      }),
+      getCurrentlyPlaying: tool({
+        description: "Get currently playing song",
+        parameters: z.object({ }),
+        execute: async () => {
+          const data = await getNowPlaying();
+          if (!data) {
+            return "No song currently playing";
+          }
+
+          return data;
+        }
+      }),
+    },
+    maxSteps: 5,
   });
 
   return result.toDataStreamResponse();

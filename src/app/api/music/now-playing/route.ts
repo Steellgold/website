@@ -17,6 +17,8 @@ export const GET = async(): Promise<NextResponse> => {
   const data = await playingEndpoint();
   const track = await data.json();
 
+  console.log(track);
+
   try {
     if (!track || !track.is_playing) {
       return NextResponse.json({ error: "No track playing" }, { status: 404 });
