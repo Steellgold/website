@@ -56,7 +56,8 @@ export const AIChatBubble = () => {
             "mb-3 w-full sm:w-[500px] h-full sm:h-[42rem]": deviceType !== "Mobile"
           })}
           style={{
-            border: '1px solid #282828',
+            border: '2px solid #282828',
+            boxShadow: 'inset 1px -1px 32.7px 0px #242424'
           }}
         >
           <div className="flex justify-between items-center p-4 border-b border-[#282828]">
@@ -77,7 +78,12 @@ export const AIChatBubble = () => {
                 <Link2 size={20} />
               </button> */}
 
-              <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => setMessages([])}>
+              <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
+                if (isLoading) {
+                  stop();
+                }
+                setMessages([]);
+              }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-broom">
                   <path d="m13 11 9-9"/>
                   <path d="M14.6 12.6c.8.8.9 2.1.2 3L10 22l-8-8 6.4-4.8c.9-.7 2.2-.6 3 .2Z"/>
@@ -86,7 +92,14 @@ export const AIChatBubble = () => {
                 </svg>
               </button>
 
-              <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={toggleChat}>
+              <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
+                if (isLoading) {
+                  stop();
+                }
+
+                setMessages([]);
+                setIsOpen(false);
+              }}>
                 <X size={20} />
               </button>
             </div>
@@ -203,8 +216,7 @@ export const AIChatBubble = () => {
           "hidden": deviceType === "Mobile" && isOpen
         })}
         style={{
-          boxShadow: 'inset 1px -1px 32.7px 0px #242424',
-          border: '1px solid #282828',
+          boxShadow: 'inset 1px -1px 10px 0px #242424',
         }}
       >
         <Bot size={24} />
