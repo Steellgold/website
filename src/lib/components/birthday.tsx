@@ -12,9 +12,10 @@ export const Birthday = (): ReactElement => {
   if (date === "10-14") {
     return (
       <Confetti
-        width={width}
+        width={width - 50}
         height={height}
-        numberOfPieces={300}
+        numberOfPieces={3000}
+        recycle={false}
       />
     )
   }
