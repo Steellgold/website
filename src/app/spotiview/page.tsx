@@ -62,7 +62,11 @@ export default function SpotifyStatsPage() {
         <p>{lang === "fr" ? "Enfin.. pas trop quand même." : "Well.. not too much"}</p>
       </div>
 
-      <div className="flex justify-end mb-2">
+      <div className="flex justify-end mb-2 gap-2">
+        <Link href={"/"} className={buttonVariants({ variant: "outline", size: "sm"})}>
+          {lang === "fr" ? "Retour" : "Back"}
+        </Link>
+
         <Select onValueChange={setSelectedPeriod} defaultValue={selectedPeriod}>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Select period" />
