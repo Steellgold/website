@@ -22,10 +22,12 @@ const Home = (): ReactElement => {
       <Birthday />
 
       <div className="justify-center mx-auto w-5/6 lg:w-2/4 mt-3 mb-3">
-        <div className={cn("grid gap-3 md:grid-cols-2 mb-3")}>
-          <SpotifyCard />
-          <DiscordPresence />
-        </div>
+        {viewMode == "cv" &&  (
+          <div className={cn("grid gap-3 md:grid-cols-2 mb-3")}>
+            <SpotifyCard />
+            <DiscordPresence />
+          </div>
+        )}
 
         <Projects />
         
