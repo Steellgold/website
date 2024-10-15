@@ -72,18 +72,6 @@ export const AIChatBubble = () => {
             </h2>
 
             <div className="flex space-x-2">
-              {/* <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
-                messages.push({
-                  content: "Conversation exported to https://steellgold.fr/?chat=EZd2z",
-                  id: "exported-" + Date.now(),
-                  role: "system",
-                })
-
-                setMessages([...messages]);
-              }}>
-                <Link2 size={20} />
-              </button> */}
-
               {deviceType == "Desktop" && (
                 <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
                   setMaximized(!maximized);
@@ -160,17 +148,6 @@ export const AIChatBubble = () => {
                     </div>
                   ) : (
                     <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                      {/* {message.role === "assistant" && (
-                        <div>
-                          <div className="flex justify-center items-center p-2 rounded-lg bg-[#100E0E] text-white mr-2" style={{
-                            boxShadow: 'inset 1px -1px 32.7px 0px #242424',
-                            border: '1px solid #282828',
-                          }}>
-                            <Bot size={24} />
-                          </div>
-                        </div>
-                      )} */}
-
                       <div
                         className={cn("max-w-max p-2.5 rounded-lg bg-[#100E0E]")}
                         style={{
@@ -195,8 +172,6 @@ export const AIChatBubble = () => {
                             className="whitespace-pre-wrap"
                             dangerouslySetInnerHTML={{ __html: renderContent(message.content) }}
                           />
-                          // <p className="whitespace-pre-wrap">{message.content}</p>
-                          // <MarkdownPlease content={message.content} />
                         )}
 
                         {message.role === "assistant" && !isLoading && !message.toolInvocations && (
@@ -271,7 +246,7 @@ export const AIChatBubble = () => {
 
       <button
         onClick={toggleChat}
-        className={cn("bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors border border-[#282828]", {
+        className={cn("flex gap-2 mr-2 ml-2 bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors border border-[#282828]", {
           "hidden": deviceType === "Mobile" && isOpen
         })}
         style={{
@@ -279,6 +254,9 @@ export const AIChatBubble = () => {
         }}
       >
         <Bot size={24} />
+        <span className="font-semibold">
+          {lang === "fr" ? "Parler avec mon moi virtuel" : "Talk to my virtual self"}
+        </span>
       </button>
     </div>
   )
