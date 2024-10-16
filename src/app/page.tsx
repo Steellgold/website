@@ -12,6 +12,7 @@ import { MadeWith } from "@/lib/components/maded";
 import { Buttons } from "@/lib/components/buttons";
 import { useViewMode } from "@/lib/stores/mode.store";
 import { AIChatBubble } from "@/lib/components/chat-buble";
+import { Cats } from "./lib/cats";
 
 const Home = (): ReactElement => {
   const { viewMode } = useViewMode();
@@ -31,6 +32,7 @@ const Home = (): ReactElement => {
 
         <Projects />
         
+        {viewMode === "normal" && <Cats />}
         {viewMode === "normal" && <Blog />}
 
         <div className="absolute right-0 top-0 p-5">
