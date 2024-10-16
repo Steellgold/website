@@ -71,14 +71,14 @@ export const SpotifyCard = (): ReactElement => {
             </div>
           </CardContent>
 
-          <ExternalLink
+          {/* <ExternalLink
             className={cn(
               "absolute -top-5 -right-2 p-1",
               "bg-[#1ed760] text-[#03160a]",
               "rounded-full"
             )}
             size={24}
-            />
+          /> */}
         </div>
       </Card>
     </Link>

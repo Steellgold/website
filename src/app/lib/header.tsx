@@ -1,13 +1,15 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
+import { Button, buttonVariants } from "@/lib/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
 import { useLang } from "@/lib/stores/lang.store";
 import { useInitializeViewMode, useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
-import { Cake, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
+import { Cake, Cat, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { ReactElement } from "react";
 
 export const Header = (): ReactElement => {
@@ -18,17 +20,27 @@ export const Header = (): ReactElement => {
   return (
     <section>
       {viewMode == "normal" && (
-        <Image
-          src="/_static/images/MY_CATS.jpg"
-          alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
-          className={cn(
-            "w-full object-cover block object-center border-black md:border-[10px] md:rounded-3xl",
-            "h-[300px] lg:h-[500px] xl:h-[550px]"
-          )}
-          quality={100}
-          width={3000}
-          height={1810}
-        />
+        <div className="relative">
+          <Image
+            src="/_static/images/MY_CATS.jpg"
+            alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
+            className={cn(
+              "w-full object-cover block object-center border-black md:border-[10px] md:rounded-3xl",
+              "h-[300px] lg:h-[500px] xl:h-[550px]"
+            )}
+            quality={100}
+            width={3000}
+            height={1810}
+          />
+
+          <Link
+            className={buttonVariants({ variant: "outline", size: "icon", className: "absolute bottom-0 right-0 mb-5 mr-5" })}
+            href={"/#cats"}
+            style={{ boxShadow: "inset 1px -1px 10.7px 0px #242424" }}
+          >
+            <Cat size={20} />
+          </Link>
+        </div>
       )}
 
       {viewMode == "cv" && <div className="w-full h-[100px] lg:h-[100px] xl:h-[100px]" />}

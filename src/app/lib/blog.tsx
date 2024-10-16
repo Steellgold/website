@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/lib/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { Separator } from "@/lib/components/ui/separator";
 import { PostSchema } from "@/lib/types/post.type";
 import { cn } from "@/lib/utils";
@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactElement, useEffect, useState } from "react";
 import { NotNowText } from "./not-now";
+import { dayJS } from "@/lib/utils/dayjs/day-js";
 
 export const Blog = (): ReactElement => {
   const [data, setData] = useState<any>(null);
@@ -62,25 +63,30 @@ export const Blog = (): ReactElement => {
   return (
     <>
       <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
+
       <Link href={`/blog/${data.slug}`} passHref>
-        <Card className={cn(
-          "bg-[#161616] border-[2px] border-[#1a1a1a]",
-          "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]"
-        )}>
+        <Card style={{ boxShadow: "inset 1px -1px 10.7px 0px #242424" }}>
           <CardHeader>
             <CardTitle className="text-[#f0f0f0]">{data.title}</CardTitle>
             <CardDescription>{data.excerpt}</CardDescription>
           </CardHeader>
 
-          <CardContent>
+          <CardContent className="relative h-40 md:h-72 mx-5">
             <Image
               src={data.banner || ""}
               alt={data.title}
               className="object-cover object-center rounded-lg"
-              width={1920}
-              height={1080}
+              fill
             />
           </CardContent>
+
+          <div className="my-5" />
+
+          <CardFooter>
+            <CardDescription>
+              Published on {dayJS(data.createdAt).format("DD MMM YYYY")}
+            </CardDescription>
+          </CardFooter>
         </Card>
       </Link>
     </>

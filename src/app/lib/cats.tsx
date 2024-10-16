@@ -22,7 +22,7 @@ const images: Image[] = [
 
 export const Cats = (): ReactElement => {
   return (
-    <section>
+    <section id="cats">
       <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
 
       <div className="flex flex-col items-center mb-7">
