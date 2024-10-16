@@ -22,7 +22,7 @@ const Home = (): ReactElement => {
       <Header />
       <Birthday />
 
-      <div className="justify-center mx-auto w-5/6 lg:w-2/4 mt-3 mb-3">
+      <div className="justify-center mx-auto w-[90%] lg:w-[52%] mt-5 mb-5">
         {viewMode == "normal" &&  (
           <div className={cn("grid gap-3 md:grid-cols-2 mb-3")}>
             <SpotifyCard />
@@ -32,8 +32,8 @@ const Home = (): ReactElement => {
 
         <Projects />
         
-        {viewMode === "normal" && <Cats />}
         {viewMode === "normal" && <Blog />}
+        {viewMode === "normal" && <Cats />}
 
         <div className="absolute right-0 top-0 p-5">
           <Buttons />

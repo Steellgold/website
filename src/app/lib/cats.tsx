@@ -26,7 +26,7 @@ export const Cats = (): ReactElement => {
       <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
 
       <div className="flex flex-col items-center mb-7">
-        <p className="text-lg">Here are my beautiful cats! They are so cute and amazing! I love them so much! 😻</p>
+        <p className="text-lg text-center">Here are my beautiful cats! They are so cute and amazing! I love them so much! 😻</p>
       </div>
       
       <div className="grid auto-rows-[192px] grid-cols-3 gap-2">

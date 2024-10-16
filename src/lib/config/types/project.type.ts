@@ -26,6 +26,7 @@ export type Project = {
 }
 
 type Link = {
+  icon?: ReactElement;
   title: string;
   url: string;
 }

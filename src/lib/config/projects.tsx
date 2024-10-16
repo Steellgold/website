@@ -1,3 +1,4 @@
+import { AppWindow, Github } from "lucide-react";
 import { Separator } from "../components/ui/separator";
 import { dayJS } from "../utils/dayjs/day-js";
 import { DiscordJS, Flowbite, NextJS, OpenAI, PHP, PocketMine, PostgreSQL, Prisma, Railway, Redis, Stripe, Supabase, SvelteKit, TailwindCSS, Typescript, uiShadcn, Vercel } from "./stacks";
@@ -49,6 +50,11 @@ export const projects: Project[] = [
       Flowbite
     ],
     url: "https://github.com/Steellgold/svelte-linkfy",
+    urls: [
+      { title: "Website", url: "https://linkfy.fr", icon: <AppWindow className="w-4 h-4" /> },
+      { title: "GitHub Repository", url: "https://github.com/Steellgold/linkfy", icon: <Github className="w-4 h-4" /> },
+      { title: "Legacy NextJS Version", url: "https://github.com/Steellgold/linkfy-nextjs-legacy", icon: <Github className="w-4 h-4" /> }
+    ]
   },
   {
     title: "Tweeets", 
