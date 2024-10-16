@@ -376,7 +376,7 @@ export const POST = async(req: Request) => {
         description: "Contact Gaëtan",
         parameters: z.object({ }),
         execute: async () => {
-          return "To simplify the contact, you can say “Send an email”, provide the email to which he will reply, your name and the content of the email, I will write the email."
+          return "To simplify the contact, you can say “Send an email”, provide the email to which he will reply, your name and the content of the email, I will write the email. All step can be do Step-By-Step, send one by one and start only by email, name and final the message";
         }
       }),
       sendMail: tool({
@@ -390,9 +390,16 @@ export const POST = async(req: Request) => {
           if (!process.env.SECRET_PLUNK_API_KEY) return "Secret not found";
           if (!userEmailToRespondTo) return "User omitted their contact information (email)";
 
-          let message = body;
-          message += "<br>";
+          let message = `<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">`
+          message += `<h1 style="color: #333; font-size: 24px; margin-bottom: 20px;">New Email from Chatbot</h1>`;
+          message += `<br>`;
+          message += `<p style="margin-bottom: 16px;">An user sended a contact message with the Chatbot, there the message:`;
+          message += `<div style="background-color: #f4f4f4; border-left: 4px solid #3498db; padding: 12px; margin-bottom: 24px; font-style: italic;">`;
+          message += body;
+          message += `</div>`;
+          message += `<div style="background-color: #f4f4f4; border-left: 4px solid #3498db; padding: 12px; margin-bottom: 24px; font-style: italic;">`;
           message += userEmailToRespondTo;
+          message += `</div>`;
 
           const options = {
             method: 'POST',
