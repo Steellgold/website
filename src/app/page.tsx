@@ -22,7 +22,9 @@ const Home = (): ReactElement => {
       <Header />
       <Birthday />
 
-      <div className="justify-center mx-auto w-[90%] lg:w-[52%] mt-5 mb-5">
+      <div className={cn("justify-center mx-auto w-[90%] lg:w-[52%] mt-5 mb-5", {
+        "w-5/6 lg:w-2/4" : viewMode == "cv",
+      })}>
         {viewMode == "normal" &&  (
           <div className={cn("grid gap-3 md:grid-cols-2 mb-3")}>
             <SpotifyCard />

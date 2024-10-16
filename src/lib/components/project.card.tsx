@@ -18,7 +18,7 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
   return (
     // <SurroundLink href={url} className={cn("cursor-pointer relative z-0", className)}>
       // {viewMode == "cv" && <div className="mt-2.5"></div>}
-      <Card className={cn(className, { "mt-2.5": viewMode == "cv" })} style={{ boxShadow: "inset 1px -1px 10.7px 0px #242424" }}>
+      <Card className={cn(className, { "mt-4": viewMode == "cv" })} style={{ boxShadow: "inset 1px -1px 10.7px 0px #242424" }}>
         <Link href={url ?? ""} passHref>
           <CardHeader className="p-4">
             <div className="flex justify-between items-center">
