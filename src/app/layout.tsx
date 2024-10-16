@@ -12,7 +12,34 @@ const nunito = Nunito({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Gaëtan | Full-stack Developer",
   applicationName: "Gaëtan's Portfolio",
-  description: "20. Indie Hacker | Full-stack developper", // 20 years old !!!!!!!
+  description: "20. Indie Hacker | Full-stack developper",
+  openGraph: {
+    title: "Gaëtan | Full-stack Developer",
+    description: "20. Indie Hacker | Full-stack developper",
+    type: "website",
+    url: "https://gaetanhus.fr",
+    siteName: "Gaëtan | Full-stack Developer",
+    images: [
+      {
+        url: "https://gaetanhus.fr/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Gaëtan's Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    images: [
+      {
+        url: "https://gaetanhus.fr/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Gaëtan's Portfolio",
+      },
+    ],
+    title: "Gaëtan | Full-stack Developer",
+    description: "20. Indie Hacker | Full-stack developper"
+  },
 };
 
 export const viewport: Viewport = {
