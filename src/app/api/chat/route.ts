@@ -372,6 +372,48 @@ export const POST = async(req: Request) => {
           return data;
         }
       }),
+      contact: tool({
+        description: "Contact Gaëtan",
+        parameters: z.object({ }),
+        execute: async () => {
+          return "To simplify the contact, you can say “Send an email”, provide the email to which he will reply, your name and the content of the email, I will write the email."
+        }
+      }),
+      sendMail: tool({
+        description: "Send an email to Gaëtan",
+        parameters: z.object({
+          body: z.string(),
+          name: z.string().optional(),
+          userEmailToRespondTo: z.string().refine((value) => value.includes("@") && value.includes("."), { message: "Invalid email" })
+        }),
+        execute: async ({ userEmailToRespondTo, body, name }) => {
+          if (!process.env.SECRET_PLUNK_API_KEY) return "Secret not found";
+          if (!userEmailToRespondTo) return "User omitted their contact information (email)";
+
+          let message = body;
+          message += "<br>";
+          message += userEmailToRespondTo;
+
+          const options = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + process.env.SECRET_PLUNK_API_KEY},
+            body: JSON.stringify({
+              to: "gaetanhus@gmail.com",
+              body: message,
+              subject: "Message from Chatbot",
+              from: "contact@steellgold.fr",
+              name: name ?? "Chatbot"
+            })
+          };
+          
+          fetch('https://api.useplunk.com/v1/send', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
+
+          return "Email sent to Gaëtan"
+        }
+      }),
     },
     maxSteps: 5,
   });

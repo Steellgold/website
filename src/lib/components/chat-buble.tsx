@@ -1,21 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Bot, CircleStop, Copy, Maximize, Minimize, Send, X } from "lucide-react";
+import { Bot, CircleStop, Copy, Mail, Mailbox, Maximize, Minimize, Send, X } from "lucide-react";
 import { useLang } from "../stores/lang.store";
 import { cn } from "../utils";
-import { useChat } from "ai/react";
+import { Message, useChat } from "ai/react";
 import { useDetectDevice } from "../hooks/use-detect-device";
 import { Separator } from "./ui/separator";
 import dayjs from "dayjs";
 import { toast } from "sonner";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 
 const defaultQuestions: { french: string, english: string }[] = [
   { french: "Quels projets as-tu réalisés récemment ?", english: "What projects have you recently completed?" },
   { french: "Quelles sont tes compétences principales en développement ?", english: "What are your main development skills?" },
   { french: "Peux-tu me parler de ton parcours professionnel et de tes expériences passées ?", english: "Can you tell me about your professional background and past experiences?" },
   { french: "Quels sont tes objectifs professionnels pour l'avenir ?", english: "What are your professional goals for the future?" },
-  { french: "As-tu des passions ou des hobbies en dehors du développement ?", english: "Do you have any passions or hobbies outside of development?" },
+  { french: "As-tu des passions ou des hobbies en dehors du développement ?", english: "Do you have any passions or hobbies outside of development?" }
 ]
 
 export const AIChatBubble = () => {
@@ -244,20 +245,50 @@ export const AIChatBubble = () => {
         </div>
       )}
 
-      <button
-        onClick={toggleChat}
-        className={cn("flex gap-2 mr-2 ml-2 bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors border border-[#282828]", {
-          "hidden": deviceType === "Mobile" && isOpen
-        })}
-        style={{
-          boxShadow: 'inset 1px -1px 10px 0px #242424',
-        }}
-      >
-        <Bot size={24} />
-        <span className="font-semibold">
-          {lang === "fr" ? "Parler avec mon moi virtuel" : "Talk to my virtual self"}
-        </span>
-      </button>
+      <div className={cn("flex flex-row gap-2", {
+        "hidden": deviceType === "Mobile" && isOpen
+      })}>
+        <TooltipProvider delayDuration={300}>
+          <Tooltip>
+            <TooltipTrigger>
+              <button
+                onClick={() => {
+                  if (!isOpen) toggleChat();
+                  setInput(lang === "fr" ? "Je veut te contacter" : "I want to contact you");
+                }}
+                className={cn("bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors border border-[#282828]")}
+                style={{
+                  boxShadow: 'inset 1px -1px 10px 0px #242424',
+                }}
+              >
+                <Mail size={24} />
+              </button>
+            </TooltipTrigger>
+
+            <TooltipContent>
+              {lang === "fr" ? "Contacter moi via le Chatbot" : "Contact me via the Chatbot"}
+            </TooltipContent>
+          </Tooltip>
+
+          <Tooltip>
+            <TooltipTrigger>
+              <button
+                onClick={toggleChat}
+                className={cn("bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors border border-[#282828]")}
+                style={{
+                  boxShadow: 'inset 1px -1px 10px 0px #242424',
+                }}
+              >
+                <Bot size={24} />
+              </button>
+            </TooltipTrigger>
+
+            <TooltipContent>
+              {lang == "fr" ? "Ouvrir le Chatbot" : "Open Chatbot"}
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
     </div>
   )
 }

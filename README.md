@@ -9,7 +9,7 @@ This repository contains the source code for my personal portfolio website, deve
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) - utility CSS framework with custom configurations.
 - **State Management**: [Zustand](https://zustand.surge.sh/) - for lightweight and scalable state management.
 - **UI Components**: Radix UI for accessible and customizable interface elements.
-- **APIs**: Integration with external services like Spotify, Simplist, OpenAI, and Upstash for various features.
+- **APIs**: Integration with external services like Spotify, Simplist, OpenAI, Plunk, and Upstash for various features.
 
 ## 🔧 API Integrations and Environment Keys
 
@@ -22,6 +22,7 @@ SPOTIFY_REFRESH_TOKEN=<Your Spotify Refresh Token>
 SIMPLIST_API_KEY=<Your Simplist API Key>
 OPENAI_API_KEY=<Your OpenAI API Key>
 UPSTASH_REDIS_REST_TOKEN=<Your Upstash Redis Token>
+SECRET_PLUNK_API_KEY=<Your Plunk API Key>
 ```
 
 ### Integration Descriptions
@@ -30,6 +31,7 @@ UPSTASH_REDIS_REST_TOKEN=<Your Upstash Redis Token>
 - **Simplist**: A blogging service that lets me post and retrieve blog articles via their API. For more information, visit [Simplist](https://simplist.blog/).
 - **OpenAI**: Integrated for an interactive chatbot, using OpenAI to generate automated responses.
 - **Upstash**: Used for rate limiting and server-side Redis data management, ensuring optimal performance.
+- **Plunk**: Used for sending mails, say to chatbot "Contact Gaëtan" to send me an email!
 
 ## 🚀 Running Locally
 
