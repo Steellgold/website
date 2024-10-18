@@ -11,9 +11,16 @@ const Page = () => {
 
   const resolveShortLink = async (url: string) => {
     try {
-      const response = await fetch(url, { method: 'HEAD', redirect: 'follow' });
-      return response.url;
+      const response = await fetch(`https://amazon-link-production.up.railway.app/resolve-url?url=${encodeURIComponent(url)}`);
+      // const response = await fetch(`http://localhost:3001/resolve-url?url=${encodeURIComponent(url)}`);
+      if (!response.ok) {
+        throw new Error('Failed to resolve URL');
+      }
+      const data = await response.json();
+      console.log('Resolved URL:', data.resolvedUrl);
+      return data.resolvedUrl;
     } catch (error) {
+      console.error('Error resolving link:', error);
       throw new Error('Unable to resolve short link');
     }
   };
@@ -24,7 +31,6 @@ const Page = () => {
 
       if (parsedUrl.hostname === 'amzn.eu') {
         const resolvedUrl = await resolveShortLink(url);
-        console.log('Resolved URL:', resolvedUrl);
         parsedUrl = new URL(resolvedUrl);
       }
 
@@ -36,21 +42,34 @@ const Page = () => {
         parsedUrl.hostname = parsedUrl.hostname.replace('.com', '.fr');
       }
 
+      parsedUrl.search = '';
       parsedUrl.searchParams.append('tag', 'gaetanhus-21');
 
+      console.log('Processed Link:', parsedUrl.toString());
       return parsedUrl.toString();
     } catch (err) {
+      console.error('Error processing link:', err);
       throw new Error('Invalid URL');
     }
   };
 
   const handleProcess = async () => {
     try {
+      if (!inputLink) {
+        toast.error('Please enter a valid URL');
+        return;
+      }
+
       const processedLink = await processLink(inputLink);
-      console.log(processedLink);
-      window.open(processedLink, '_blank');
-      toast.success('Redirecting to processed link...');
+      if (processedLink) {
+        console.log('Redirecting to:', processedLink);
+        window.open(processedLink, '_blank');
+        toast.success('Redirecting to processed link...');
+      } else {
+        toast.error('Failed to process the link');
+      }
     } catch (err) {
+      console.error('Error in handleProcess:', err);
       toast.error('Invalid Amazon URL. Please check and try again.');
     }
   };
@@ -79,7 +98,7 @@ const Page = () => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
