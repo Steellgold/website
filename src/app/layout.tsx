@@ -6,6 +6,7 @@ import { PropsWithChildren } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/lib/components/providers/theme-provider";
 import { Toaster } from "sonner";
+import localFont from "next/font/local";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -46,11 +47,23 @@ export const viewport: Viewport = {
   themeColor: "#15803D",
 };
 
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
+
 const Layout: Component<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={cn("bg-black", nunito.className)} id="cv-section">
-        {process.env.NEXT_PUBLIC_ENV !== "dev" && (
+      <body className={`bg-black ${geistSans.variable} ${geistMono.variable} antialiased`}>
+      {process.env.NEXT_PUBLIC_ENV !== "dev" && (
           <script defer src="https://supalytics.co/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
         )}
         
