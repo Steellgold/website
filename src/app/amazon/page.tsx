@@ -9,31 +9,51 @@ import { toast } from 'sonner'
 const Page = () => {
   const [inputLink, setInputLink] = useState('');
 
-  const processLink = (url: string) => {
+  const resolveShortLink = async (url: string) => {
     try {
-      const parsedUrl = new URL(url)
-      if (!parsedUrl.hostname.includes('amazon')) toast.error('Invalid Amazon URL. Please check and try again.')
-      if (!parsedUrl.hostname.includes('.fr')) parsedUrl.hostname = parsedUrl.hostname.replace('.com', '.fr')
-
-      parsedUrl.search = ''
-      parsedUrl.searchParams.append('tag', 'gaetanhus-21')
-
-      return parsedUrl.toString()
-    } catch (err) {
-      throw new Error('Invalid URL')
+      const response = await fetch(url, { method: 'HEAD', redirect: 'follow' });
+      return response.url;
+    } catch (error) {
+      throw new Error('Unable to resolve short link');
     }
-  }
+  };
 
-  const handleProcess = () => {
+  const processLink = async (url: string) => {
     try {
-      const processedLink = processLink(inputLink)
-      console.log(processedLink)
-      window.open(processedLink, '_blank')
-      toast.success('Redirecting to processed link...')
+      let parsedUrl = new URL(url);
+
+      if (parsedUrl.hostname === 'amzn.eu') {
+        const resolvedUrl = await resolveShortLink(url);
+        console.log('Resolved URL:', resolvedUrl);
+        parsedUrl = new URL(resolvedUrl);
+      }
+
+      if (!parsedUrl.hostname.includes('amazon')) {
+        toast.error('Invalid Amazon URL. Please check and try again.');
+        return;
+      }
+      if (!parsedUrl.hostname.includes('.fr')) {
+        parsedUrl.hostname = parsedUrl.hostname.replace('.com', '.fr');
+      }
+
+      parsedUrl.searchParams.append('tag', 'gaetanhus-21');
+
+      return parsedUrl.toString();
     } catch (err) {
-      toast.error('Invalid Amazon URL. Please check and try again.')
+      throw new Error('Invalid URL');
     }
-  }
+  };
+
+  const handleProcess = async () => {
+    try {
+      const processedLink = await processLink(inputLink);
+      console.log(processedLink);
+      window.open(processedLink, '_blank');
+      toast.success('Redirecting to processed link...');
+    } catch (err) {
+      toast.error('Invalid Amazon URL. Please check and try again.');
+    }
+  };
 
   return (
     <Card className="w-full max-w-3xl mx-auto mt-8">
