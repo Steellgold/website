@@ -5,9 +5,11 @@ import { Button } from '@/lib/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/lib/components/ui/card'
 import { Input } from '@/lib/components/ui/input'
 import { toast } from 'sonner'
+import { Loader2 } from 'lucide-react'
 
 const Page = () => {
-  const [inputLink, setInputLink] = useState('');
+  const [inputLink, setInputLink] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const resolveShortLink = async (url: string) => {
     try {
@@ -38,16 +40,18 @@ const Page = () => {
         toast.error('Invalid Amazon URL. Please check and try again.');
         return;
       }
+
       if (!parsedUrl.hostname.includes('.fr')) {
         parsedUrl.hostname = parsedUrl.hostname.replace('.com', '.fr');
+        toast.warning('Switching to Amazon France...');
       }
 
-      parsedUrl.search = '';
       parsedUrl.searchParams.append('tag', 'gaetanhus-21');
 
-      console.log('Processed Link:', parsedUrl.toString());
+      setLoading(false);
       return parsedUrl.toString();
     } catch (err) {
+      setLoading(false);
       console.error('Error processing link:', err);
       throw new Error('Invalid URL');
     }
@@ -60,16 +64,16 @@ const Page = () => {
         return;
       }
 
+      setLoading(true);
       const processedLink = await processLink(inputLink);
+
       if (processedLink) {
-        console.log('Redirecting to:', processedLink);
         window.open(processedLink, '_blank');
         toast.success('Redirecting to processed link...');
       } else {
         toast.error('Failed to process the link');
       }
     } catch (err) {
-      console.error('Error in handleProcess:', err);
       toast.error('Invalid Amazon URL. Please check and try again.');
     }
   };
@@ -79,7 +83,7 @@ const Page = () => {
       <CardHeader>
         <CardTitle>Amazon Link Processor</CardTitle>
         <CardDescription>
-          Entrer un lien de produit Amazon pour rediriger avec l&apos;ID partenaire <code>gaetanhus-21</code> et la langue sélectionnée.
+          Entrer un lien de produit Amazon pour rediriger avec l&apos;ID partenaire <code className="bg-gray-100 text-gray-800 p-1 rounded">gaetanhus-21</code> et la langue sélectionnée.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -93,7 +97,10 @@ const Page = () => {
               className="flex-grow"
             />
 
-            <Button onClick={handleProcess}>Process & Go</Button>
+            <Button onClick={handleProcess} disabled={loading}>
+              {loading && <Loader2 className="w-5 h-5 mr-2 animate-spin" />}
+              {loading ? "Processing..." : "Process & Go"}
+            </Button>
           </div>
         </div>
       </CardContent>
