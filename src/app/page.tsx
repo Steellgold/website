@@ -15,14 +15,14 @@ import { AIChatBubble } from "@/lib/components/chat-buble";
 import { Cats } from "./lib/cats";
 import { Button } from "@/lib/components/ui/button";
 import { useLang } from "@/lib/stores/lang.store";
+import { useHostname } from "@/lib/hooks/use-hostname";
 
 const Home = (): ReactElement => {
-  const { viewMode } = useViewMode();
+  const { viewMode, setViewMode } = useViewMode();
   const { lang, setLang } = useLang();
+  const hostname = useHostname();
 
-  const triggerPrint = () => {
-    window.print();
-  };  
+  const triggerPrint = () => window.print();
 
   return (
     <>
@@ -59,6 +59,12 @@ const Home = (): ReactElement => {
             <Button onClick={triggerPrint} variant="outline" size="sm">
               Download as PDF
             </Button>
+
+            {hostname == "steellgold.fr" || hostname == "localhost" && (
+              <Button onClick={() => setViewMode("normal")} variant={"outline"} size={"sm"}>
+                Portfolio
+              </Button>
+            )}
           </div>
         )}
 

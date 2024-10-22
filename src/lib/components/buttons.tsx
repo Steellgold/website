@@ -17,7 +17,7 @@ export const Buttons = () => {
     </Link>
 
     <Button onClick={() => setViewMode(viewMode == "normal" ? "cv" : "normal")} variant={"outline"} size={"sm"}>
-      {viewMode == "normal" ? "View the CV" : "View the Portfolio"}
+      {viewMode == "normal" ? "CV" : "Portfolio"}
     </Button>
 
     <Button onClick={() => setLang(lang == "en" ? "fr" : "en")} variant={"outline"} size={"sm"}>
