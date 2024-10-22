@@ -12,6 +12,53 @@ import Image from "next/image";
 import Link from "next/link";
 import { ReactElement } from "react";
 
+type SocialLink = {
+  href: string;
+  icon: ReactElement;
+  title: string;
+  showOnCv?: boolean;
+  className?: string;
+}
+
+const SocialLinks: SocialLink[] = [ {
+    href: "https://github.com/Steellgold",
+    icon: <Github size={18} strokeWidth={2} />,
+    title: "GitHub",
+    className: "hover:text-white transition-all hover:rotate-12",
+    showOnCv: true
+  }, {
+    href: "https://linkedin.com/in/gaetanhus",
+    icon: <Linkedin size={18} strokeWidth={2} />,
+    title: "LinkedIn",
+    className: "hover:text-blue-600 transition-all hover:-rotate-12",
+    showOnCv: true
+  }, {
+    href: "https://www.malt.fr/profile/gaetanhuszovits",
+    icon: <ExternalLink size={18} strokeWidth={2} />,
+    title: "Malt (Freelance)",
+    className: "hover:text-[#fc5757] transition-all hover:rotate-12",
+    showOnCv: true
+  }, {
+    href: "mailto:pro@gaetanhus.fr",
+    icon: <Mail size={18} strokeWidth={2} />,
+    title: "Email",
+    className: "hover:text-red-600 transition-all hover:rotate-12",
+    showOnCv: true
+  }, {
+    href: "https://twitter.com/Steellgold",
+    icon: <Twitter size={18} strokeWidth={2} />,
+    title: "Twitter",
+    className: "hover:text-blue-600 transition-all hover:rotate-12",
+    showOnCv: false
+  }, {
+    href: "https://instagram.com/steellgold",
+    icon: <Instagram size={18} strokeWidth={2} />,
+    title: "Instagram",
+    className: "hover:text-pink-600 transition-all hover:-rotate-12",
+    showOnCv: false
+  }
+]
+
 export const Header = (): ReactElement => {
   const { viewMode } = useViewMode();
   useInitializeViewMode()
@@ -53,7 +100,7 @@ export const Header = (): ReactElement => {
               "border-black border-[5px] hover:border-[3.5px]": viewMode == "normal",
             }
           )}
-          src={"/_static/images/me.jpeg"}
+          src={"/_static/images/me2.jpg"}
           width={128}
           height={128}
         />
@@ -62,49 +109,18 @@ export const Header = (): ReactElement => {
           <ul className="flex flex-row justify-end text-white gap-2 p-2">
             <div className="flex gap-2">
               <TooltipProvider delayDuration={100}>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <a href="https://github.com/Steellgold" className="block hover:text-white transition-all hover:rotate-12">
-                      <Github size={18} strokeWidth={2} />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    GitHub
-                  </TooltipContent>
-                </Tooltip>
-
-                <Tooltip>
-                  <TooltipTrigger>
-                    <a href="https://linkedin.com/in/gaetanhus" className="block hover:text-blue-600 transition-all hover:-rotate-12">
-                      <Linkedin size={18} strokeWidth={2} />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    LinkedIn
-                  </TooltipContent>
-                </Tooltip>
-
-                <Tooltip>
-                  <TooltipTrigger>
-                    <a href="https://www.malt.fr/profile/gaetanhuszovits" className="block hover:text-[#fc5757] transition-all hover:rotate-12">
-                      <ExternalLink size={18} strokeWidth={2} />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    Malt (Freelance)
-                  </TooltipContent>
-                </Tooltip>
-
-                <Tooltip>
-                  <TooltipTrigger>
-                    <a href="mailto:pro@gaetanhus.fr" className="block hover:text-red-600 transition-all hover:rotate-12">
-                      <Mail size={18} strokeWidth={2} />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    Email
-                  </TooltipContent>
-                </Tooltip>
+                {SocialLinks.filter((link) => link.showOnCv === true).map((link) => (
+                  <Tooltip key={link.href}>
+                    <TooltipTrigger>
+                      <Link href={link.href} passHref className={cn("block", link.className)}>
+                        {link.icon}
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      {link.title}
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
               </TooltipProvider>
             </div>
               
@@ -112,27 +128,18 @@ export const Header = (): ReactElement => {
               "hidden": viewMode == "cv"
             })}>
               <TooltipProvider delayDuration={100}>
-                <Tooltip>
-                  <TooltipTrigger>
-                    <a href="https://twitter.com/Steellgold" className="block hover:text-blue-600 transition-all hover:rotate-12">
-                      <Twitter size={18} strokeWidth={2} />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    Twitter
-                  </TooltipContent>
-                </Tooltip>
-
-                <Tooltip>
-                  <TooltipTrigger>
-                    <a href="https://instagram.com/steellgold" className="block hover:text-pink-600 transition-all hover:-rotate-12">
-                      <Instagram size={18} strokeWidth={2} />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    Instagram
-                  </TooltipContent>
-                </Tooltip>
+                {SocialLinks.filter((link) => link.showOnCv !== true).map((link) => (
+                  <Tooltip key={link.href}>
+                    <TooltipTrigger>
+                      <Link href={link.href} passHref className={cn("block", link.className)}>
+                        {link.icon}
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      {link.title}
+                    </TooltipContent>
+                  </Tooltip>
+                ))}
               </TooltipProvider>
             </div>
           </ul>

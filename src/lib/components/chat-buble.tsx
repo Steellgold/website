@@ -10,6 +10,7 @@ import { Separator } from "./ui/separator";
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import { useViewMode } from "../stores/mode.store";
 
 const defaultQuestions: { french: string, english: string }[] = [
   { french: "Quels projets as-tu réalisés récemment ?", english: "What projects have you recently completed?" },
@@ -24,6 +25,7 @@ export const AIChatBubble = () => {
   const { messages, input, handleInputChange, handleSubmit, setInput, setMessages, stop, isLoading } = useChat();
   const [maximized, setMaximized] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { viewMode } = useViewMode();
   const { lang } = useLang();
 
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -54,7 +56,7 @@ export const AIChatBubble = () => {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 flex flex-col items-end z-[400]">
+    <div className="fixed bottom-4 right-4 flex flex-col items-end z-[400] no-print">
       {isOpen && (
         <div
           className={cn("bg-[#100E0E] text-white rounded-lg overflow-hidden flex flex-col motion-preset-blur-up", {
@@ -270,7 +272,7 @@ export const AIChatBubble = () => {
             </TooltipContent>
           </Tooltip>
 
-          <Tooltip>
+          {viewMode == "normal" && <Tooltip>
             <TooltipTrigger>
               <button
                 onClick={toggleChat}
@@ -286,7 +288,7 @@ export const AIChatBubble = () => {
             <TooltipContent>
               {lang == "fr" ? "Ouvrir le Chatbot" : "Open Chatbot"}
             </TooltipContent>
-          </Tooltip>
+          </Tooltip>}
         </TooltipProvider>
       </div>
     </div>

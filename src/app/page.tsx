@@ -13,9 +13,16 @@ import { Buttons } from "@/lib/components/buttons";
 import { useViewMode } from "@/lib/stores/mode.store";
 import { AIChatBubble } from "@/lib/components/chat-buble";
 import { Cats } from "./lib/cats";
+import { Button } from "@/lib/components/ui/button";
+import { useLang } from "@/lib/stores/lang.store";
 
 const Home = (): ReactElement => {
   const { viewMode } = useViewMode();
+  const { lang, setLang } = useLang();
+
+  const triggerPrint = () => {
+    window.print();
+  };  
 
   return (
     <>
@@ -37,13 +44,37 @@ const Home = (): ReactElement => {
         {viewMode === "normal" && <Blog />}
         {viewMode === "normal" && <Cats />}
 
-        <div className="absolute right-0 top-0 p-5">
-          <Buttons />
-        </div>
+        {viewMode == "normal" && (
+          <div className="absolute right-0 top-0 p-5">
+            <Buttons />
+          </div>
+        )}
+
+        {viewMode == "cv" && (
+          <div className="absolute right-0 top-0 p-5 flex gap-2 no-print">
+            <Button onClick={() => setLang(lang == "en" ? "fr" : "en")} variant={"outline"} size={"sm"}>
+              {lang == "en" ? "🇫🇷" : "🇺🇸"}
+            </Button>
+
+            <Button onClick={triggerPrint} variant="outline" size="sm">
+              Download as PDF
+            </Button>
+          </div>
+        )}
 
         <AIChatBubble />
         <MadeWith />
       </div>
+
+      <style jsx global>{`
+        @media print {
+          body {
+            zoom: ${lang === "fr" ? "0.68" : "0.7"};
+            margin: 0;
+            padding: 0;
+          }
+        }
+      `}</style>
     </>
   );
 }

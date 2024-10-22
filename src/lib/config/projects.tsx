@@ -7,9 +7,10 @@ import { Project } from "./types/project.type";
 export const projects: Project[] = [
   {
     title: "Linkfy",
+    showOnCv: true,
     description: {
-      en: "Link shortener with analytics and custom links.",
-      fr: "Raccourcisseur de liens avec des analyses et des liens personnalisés"
+      en: "Link shortener with analytics, custom domains or link-tree like pages.",
+      fr: "Raccourcisseur de liens avec analytics, domaines personnalisés ou pages de type link-tree."
     },
     cvDescription: {
       en: <>
@@ -58,9 +59,10 @@ export const projects: Project[] = [
   },
   {
     title: "Tweeets", 
+    showOnCv: true,
     description: {
-      en: "Tweet generator with AI, powered by OpenAI.",
-      fr: "Générateur de tweets avec IA, alimenté par OpenAI."
+      en: "Tweet generator with AI, powered by OpenAI with emotions, tones, and other features.",
+      fr: "Générateur de tweets avec IA, avec émotions, tons et d'autres fonctionnalités."
     },
     cvDescription: {
       en: <>
@@ -96,6 +98,7 @@ export const projects: Project[] = [
   },
   {
     title: "Simplist",
+    showOnCv: true,
     description: {
       en: "A blog platform that allows users to post articles and retrieve them using the API.",
       fr: "Une plateforme de blog qui permet aux utilisateurs de publier des articles et de les récupérer en utilisant l&apos;API."
@@ -131,9 +134,10 @@ export const projects: Project[] = [
   },
   {
     title: "Bottly",
+    showOnCv: true,
     description: {
-      en: "An Discord bot allow users ask questions to ChatGPT",
-      fr: "Un bot Discord permettant aux utilisateurs de poser des questions"
+      en: "An Discord bot allow users ask questions to OpenAI GPT-3.5 in commands or thread directly (discuss, chat, generate text).",
+      fr: "Un bot Discord permet aux utilisateurs de poser des questions à OpenAI en commandes ou dans un salon de discussion"
     },
     cvDescription: {
       en: <>
@@ -170,6 +174,7 @@ export const projects: Project[] = [
   },
   {
     title: "Wapy",
+    showOnCv: false,
     description: {
       en: "A Minecraft Bedrock Edition, PvP Factions server.",
       fr: "Un serveur Minecraft Bedrock Edition, PvP Factions."

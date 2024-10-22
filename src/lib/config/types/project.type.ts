@@ -23,6 +23,8 @@ export type Project = {
 
   isHighlighted?: boolean;
   highlightUrl?: string;
+
+  showOnCv?: boolean;
 }
 
 type Link = {
