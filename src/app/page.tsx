@@ -60,7 +60,7 @@ const Home = (): ReactElement => {
               Download as PDF
             </Button>
 
-            {hostname == "steellgold" || hostname == "localhost" && (
+            {hostname.includes("steellgold") || hostname == "localhost" && (
               <Button onClick={() => setViewMode("normal")} variant={"outline"} size={"sm"}>
                 Portfolio
               </Button>
