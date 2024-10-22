@@ -72,8 +72,8 @@ export const Header = (): ReactElement => {
             src="/_static/images/MY_CATS.jpg"
             alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
             className={cn(
-              "w-full object-cover block object-center border-black md:border-[10px] md:rounded-3xl",
-              "h-[300px] lg:h-[500px] xl:h-[550px]"
+              "w-full object-cover block object-center border-[#0a0a0a] md:border-[10px] md:rounded-3xl",
+              "h-[250px] lg:h-[350px] xl:h-[400px]"
             )}
             quality={100}
             width={3000}
@@ -97,7 +97,7 @@ export const Header = (): ReactElement => {
           alt="profile"
           className={cn(
             "-mt-16 h-32 w-32 rounded-lg transform transition-all hover:scale-110", {
-              "border-black border-[5px] hover:border-[3.5px]": viewMode == "normal",
+              "border-[#0a0a0a] border-[5px] hover:border-[3.5px]": viewMode == "normal",
             }
           )}
           src={"/_static/images/me2.jpg"}
