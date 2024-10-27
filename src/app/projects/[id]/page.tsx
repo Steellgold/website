@@ -11,7 +11,7 @@ import { ArrowLeft, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { cloneElement } from "react";
+import { cloneElement, use } from "react";
 
 type Params = {
   params: {
@@ -19,7 +19,13 @@ type Params = {
   }
 }
 
-const Page: Component<Params> = ({ params: { id } }) => {
+const Page: Component<Params> = props => {
+  const params = use(props.params);
+
+  const {
+    id
+  } = params;
+
   const router = useRouter();
   const { lang } = useLang();
 

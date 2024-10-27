@@ -9,12 +9,13 @@ import { Separator } from "@/lib/components/ui/separator";
 import { MarkdownPlease } from "@/lib/mdx";
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
-export const generateMetadata = async ({ params }: PageProps): Promise<Metadata> => {
+export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
+  const params = await props.params;
   const randomString = Math.random().toString(36).substring(7);
   const response = await fetch(`https://simplist.blog/api/${params.slug}`, {
     headers: {
@@ -71,7 +72,8 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
   }
 }
 
-const Post: AsyncComponent<PageProps> = async ({ params }) => {
+const Post: AsyncComponent<PageProps> = async props => {
+  const params = await props.params;
   const randomString = Math.random().toString(36).substring(7);
   const response = await fetch(`https://simplist.blog/api/${params.slug}?nocache=${randomString}`, {
     headers: {
@@ -81,7 +83,7 @@ const Post: AsyncComponent<PageProps> = async ({ params }) => {
   });
 
   const data = await response.json()
-  
+
   const schema = PostSchema.safeParse(data);
 
   if (!schema.success) {

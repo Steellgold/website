@@ -1,7 +1,7 @@
 import { useEffect, useState, type RefObject } from "react";
 
 export default function useHover(
-  ref: RefObject<Element>,
+  ref: RefObject<Element | null>,
   enabled: boolean = true,
 ): boolean {
   if (process.env.NODE_ENV === "development") {

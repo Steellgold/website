@@ -44,7 +44,7 @@ export const MarkdownPlease: Component<{ content: string }> = ({ content }) => (
           <code className="bg-muted text-muted-foreground px-1 py-0.5 rounded" {...props}>
             {children}
           </code>
-        )
+        );
       }
     }}
   >

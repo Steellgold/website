@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -42,15 +42,15 @@
     "framer-motion": "^11.11.9",
     "larousse-searcher": "^1.0.0",
     "lucide-react": "^0.372.0",
-    "next": "14.2.10",
+    "next": "15.0.1",
     "next-contentlayer": "^0.3.4",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.3.0",
     "prisma": "^5.13.0",
     "querystring": "^0.2.1",
-    "react": "^18",
+    "react": "19.0.0-rc-69d4b800-20241021",
     "react-confetti": "^6.1.0",
-    "react-dom": "^18",
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
     "react-icons": "^5.1.0",
     "react-markdown": "^9.0.1",
     "react-syntax-highlighter": "^15.5.0",
@@ -66,13 +66,19 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "@types/react-syntax-highlighter": "^15.5.13",
     "eslint": "^8",
-    "eslint-config-next": "14.2.2",
+    "eslint-config-next": "15.0.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@19.0.0-rc.1",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    }
   }
 }
