@@ -21,6 +21,7 @@ const Home = (): ReactElement => {
   const { viewMode, setViewMode } = useViewMode();
   const { lang, setLang } = useLang();
   const hostname = useHostname();
+  console.log(hostname);
 
   const triggerPrint = () => window.print();
 
