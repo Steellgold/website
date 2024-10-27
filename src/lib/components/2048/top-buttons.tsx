@@ -9,7 +9,7 @@ import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const E2048_TopButtons = (): ReactElement => {
-  const { lang } = useLang();
+  const { lang, setLang } = useLang();
 
   return (
     <div className={cn(
@@ -29,6 +29,16 @@ export const E2048_TopButtons = (): ReactElement => {
             {lang === "en" ? "Back to portfolio" : "Retour au portfolio"}
           </span>
         </Link>
+      </Button>
+
+      
+      <Button
+        onClick={() => setLang(lang == "en" ? "fr" : "en")}
+        variant={"outline"}
+        size={"icon"}
+        className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg transition-all"
+      >
+        {lang == "en" ? "🇫🇷" : "🇺🇸"}
       </Button>
 
       <ThemeSwitcher />

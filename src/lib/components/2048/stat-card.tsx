@@ -4,6 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { cn } from "@/lib/utils";
 import { use2048 } from "./hooks/use-2048";
+import { useLang } from "@/lib/stores/lang.store";
 
 const ScoreCaseStyle = cn(
   "bg-[#e4e0d1]/50 dark:bg-gray-800/50 p-1",
@@ -14,6 +15,7 @@ const ScoreCaseStyle = cn(
 
 export const E2048_StatsCard = (): ReactElement => {
   const { bestScore, score, startedTime } = use2048();
+  const { lang } = useLang();
   
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -46,13 +48,15 @@ export const E2048_StatsCard = (): ReactElement => {
         </div>
 
         <div className={ScoreCaseStyle}>
-          <span className="text-sm font-extrabold opacity-65">BEST</span>
+          <span className="text-sm font-extrabold opacity-65">
+            {lang === "en" ? "BEST" : "MEILLEUR"}
+          </span>
           <span className="text-xl font-bold -mt-1">{bestScore}</span>
         </div>
       </div>
 
       <div className="text-xs opacity-50 bg-[#e4e0d1]/50 dark:bg-gray-800/50 p-1 rounded-full px-4">
-        Game started for {days > 0 ? `${days}d ` : ""}{hours > 0 ? `${hours}h ` : ""}{minutes > 0 ? `${minutes}m ` : ""}{seconds}s
+        {lang === "en" ? "Game started for" : "Partie commencée il y a"} {days > 0 ? `${days}d ` : ""}{hours > 0 ? `${hours}h ` : ""}{minutes > 0 ? `${minutes}m ` : ""}{seconds}s
       </div>
     </div>
   );
