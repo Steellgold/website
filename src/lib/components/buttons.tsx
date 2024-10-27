@@ -5,8 +5,9 @@ import { useLang } from "../stores/lang.store";
 import { useViewMode } from "../stores/mode.store";
 import { Button, buttonVariants } from "./ui/button";
 import { FaSpotify } from "react-icons/fa";
-import { Grid3X3 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Grid3X3 } from "lucide-react";
 import { ThemeSwitcher } from "./theme-switcher";
+import { Separator } from "./ui/separator";
 
 export const Buttons = () => {
   const { viewMode, setViewMode } = useViewMode();
@@ -23,14 +24,16 @@ export const Buttons = () => {
       <span className="hidden sm:block">2048</span>
     </Link>
 
-    <Button onClick={() => setViewMode(viewMode == "normal" ? "cv" : "normal")} variant={"outline"} size={"sm"}>
-      {viewMode == "normal" ? "CV" : "Portfolio"}
-    </Button>
+    <Separator orientation="vertical" className="h-5" />
 
     <Button onClick={() => setLang(lang == "en" ? "fr" : "en")} variant={"outline"} size={"sm"}>
       {lang == "en" ? "🇫🇷" : "🇺🇸"}
     </Button>
-
+    
     <ThemeSwitcher roundedFull={false} size="sm" isHome />
+
+    <Button onClick={() => setViewMode("cv")} variant={"outline"} size={"sm"}>
+      CV <ArrowRight className="w-4 h-4 ml-1" />
+    </Button>
   </div>;
 };

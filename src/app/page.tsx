@@ -15,6 +15,8 @@ import { AIChatBubble } from "@/lib/components/chat-buble";
 import { Cats } from "./lib/cats";
 import { Button } from "@/lib/components/ui/button";
 import { useLang } from "@/lib/stores/lang.store";
+import { ThemeSwitcher } from "@/lib/components/theme-switcher";
+import { ArrowRight } from "lucide-react";
 
 const Home = (): ReactElement => {
   const { viewMode, setViewMode } = useViewMode();
@@ -50,16 +52,18 @@ const Home = (): ReactElement => {
 
         {viewMode == "cv" && (
           <div className="absolute right-0 top-0 p-5 flex gap-2 no-print">
-            <Button onClick={() => setViewMode("normal")} variant={"outline"} size={"sm"}>
-              Portfolio
-            </Button>
-
             <Button onClick={() => setLang(lang == "en" ? "fr" : "en")} variant={"outline"} size={"sm"}>
               {lang == "en" ? "🇫🇷" : "🇺🇸"}
             </Button>
 
             <Button onClick={triggerPrint} variant="outline" size="sm">
               Download as PDF
+            </Button>
+
+            <ThemeSwitcher roundedFull={false} size="sm" isHome />
+            
+            <Button onClick={() => setViewMode("normal")} variant={"outline"} size={"sm"}>
+              Portfolio <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
           </div>
         )}
@@ -71,7 +75,7 @@ const Home = (): ReactElement => {
       <style jsx global>{`
         @media print {
           body {
-            zoom: ${lang === "fr" ? "0.68" : "0.7"};
+            zoom: ${lang === "fr" ? "0.67" : "0.69"};
             margin: 0;
             padding: 0;
           }
