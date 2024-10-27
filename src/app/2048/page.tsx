@@ -68,8 +68,8 @@ const Page = (): ReactElement => {
       <ThemeSwitcher />
       
       <div className={cn(
-        "fixed top-0 left-0 right-0 flex justify-center items-center p-4 flex flex-row gap-2", {
-          "opacity-10": gameHovered
+        "fixed top-0 left-0 right-0 flex justify-center items-center p-4 flex flex-row gap-2 transition-opacity duration-100", {
+          "opacity-5": gameHovered
         }
       )}>
         <div className={ScoreCaseStyle}>
@@ -85,8 +85,12 @@ const Page = (): ReactElement => {
 
       <div className="flex-grow flex flex-col items-center justify-center">
         <div className="relative">
-          <div className={`p-3 rounded-2xl bg-[#e4e0d1] dark:bg-gray-800 shadow-lg select-none`}>
-            <div className={`grid gap-4`} style={{ gridTemplateColumns: `repeat(${settings.gridSize}, minmax(0, 1fr))` }} ref={gameRef}>
+          <div className={cn(
+            "p-3 rounded-2xl bg-[#e4e0d1] dark:bg-gray-800 shadow-lg select-none transition-colors duration-100", {
+              "border-2 border-[#000001]/30 dark:border-gray-600": gameHovered,
+            }
+          )} ref={gameRef}>
+            <div className={`grid gap-4`} style={{ gridTemplateColumns: `repeat(${settings.gridSize}, minmax(0, 1fr))` }}>
               {board.map((tile, index) => (
                 <div
                   key={index}
@@ -120,8 +124,8 @@ const Page = (): ReactElement => {
 
       {/* Start */}
       <div className={cn(
-        "fixed bottom-0 left-0 right-0 flex justify-center items-center p-4", {
-          "opacity-10": gameHovered
+        "fixed bottom-0 left-0 right-0 flex justify-center items-center p-4 transition-opacity duration-100", {
+          "opacity-5": gameHovered
         }
       )}>
         <div className="flex flex-col items-center justify-center bg-[#e4e0d1] dark:bg-gray-800 p-2 rounded-xl shadow-lg">
