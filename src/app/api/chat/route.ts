@@ -2,7 +2,7 @@ import { projects } from '@/lib/config/projects';
 import { dayJS } from '@/lib/utils/dayjs/day-js';
 import { openai } from '@ai-sdk/openai';
 import { streamText, convertToCoreMessages, tool } from 'ai';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { ipAddress } from "@vercel/functions";
 import { ratelimit } from '@/lib/upstash';
 import { z } from 'zod';
@@ -13,16 +13,16 @@ const extractTextFromReactElement = (element: ReactElement): string => {
     return element;
   }
 
-  if (Array.isArray(element)) {
-    return element.map(extractTextFromReactElement).join("");
-  }
+  const childrenArray = React.Children.toArray((element.props as { children?: React.ReactNode })?.children);
 
-  if (element.props && element.props.children) {
-    return extractTextFromReactElement(element.props.children);
-  }
-
-  return "";
-}
+  return childrenArray
+    .map(child => {
+      if (typeof child === "string") return child;
+      if (React.isValidElement(child)) return extractTextFromReactElement(child);
+      return "";
+    })
+    .join("");
+};
 
 export const maxDuration = 30;
 
