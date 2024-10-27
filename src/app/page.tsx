@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Header } from "./lib/header";
 import { Projects } from "./lib/projects";
 import { Birthday } from "@/lib/components/birthday";
@@ -20,8 +20,18 @@ import { useHostname } from "@/lib/hooks/use-hostname";
 const Home = (): ReactElement => {
   const { viewMode, setViewMode } = useViewMode();
   const { lang, setLang } = useLang();
+
   const hostname = useHostname();
-  console.log(hostname);
+  
+  const [showPortfolioButton, setShowPortfolioButton] = useState(false);
+  useEffect(() => {
+    if (hostname == "wwww.steellgold.fr"
+      || hostname == "steellgold.fr"
+      || hostname == "localhost") {
+      setShowPortfolioButton(true);
+    }
+  }, [hostname]);
+
 
   const triggerPrint = () => window.print();
 
@@ -61,10 +71,7 @@ const Home = (): ReactElement => {
               Download as PDF
             </Button>
 
-            {
-              hostname == "wwww.steellgold.fr"
-              || hostname == "steellgold.fr"
-              || hostname == "localhost" && (
+            {showPortfolioButton && (
               <Button onClick={() => setViewMode("normal")} variant={"outline"} size={"sm"}>
                 Portfolio
               </Button>

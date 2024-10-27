@@ -6,6 +6,7 @@ import { useViewMode } from "../stores/mode.store";
 import { Button, buttonVariants } from "./ui/button";
 import { FaSpotify } from "react-icons/fa";
 import { Grid3X3 } from "lucide-react";
+import { ThemeSwitcher } from "./theme-switcher";
 
 export const Buttons = () => {
   const { viewMode, setViewMode } = useViewMode();
@@ -29,5 +30,7 @@ export const Buttons = () => {
     <Button onClick={() => setLang(lang == "en" ? "fr" : "en")} variant={"outline"} size={"sm"}>
       {lang == "en" ? "🇫🇷" : "🇺🇸"}
     </Button>
+
+    <ThemeSwitcher roundedFull={false} size="sm" isHome />
   </div>;
 };
