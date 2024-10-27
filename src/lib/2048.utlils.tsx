@@ -20,7 +20,7 @@ const getTileColor = (value: number) => {
     case 262144: return "bg-[#641E16] text-[#F2F2F2] dark:bg-[#000000]"; // Is it at least possible to get there?
     case 524288: return "bg-[#510000] text-[#F2F2F2] dark:bg-[#000000]";  // I don't know, but for sure I won't get there.
     case 1048576: return "bg-[#3E0000] text-[#F2F2F2] dark:bg-[#000000]"; // I'm not that good at this game.
-    default: return "bg-[#F2F2F2] dark:bg-[#272f3b]";
+    default: return "bg-[#ece9dc] dark:bg-[#272f3b]";
   }
 };
 
