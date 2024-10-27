@@ -1,7 +1,7 @@
 import { E2048_Board } from "@/lib/components/2048/board";
 import { E2048_StartButton } from "@/lib/components/2048/start-button";
 import { E2048_StatsCard } from "@/lib/components/2048/stat-card";
-import { ThemeSwitcher } from "@/lib/components/theme-switcher";
+import { E2048_TopButtons } from "@/lib/components/2048/top-buttons";
 import { Button } from "@/lib/components/ui/button";
 import { Separator } from "@/lib/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -10,7 +10,7 @@ import { History, Undo } from "lucide-react";
 const Page = () => {
   return (
     <div className="flex min-h-screen bg-[#faf8f0] dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <ThemeSwitcher />
+      <E2048_TopButtons />
       <E2048_StatsCard />
 
       <div className="flex-grow flex flex-col items-center justify-center">
