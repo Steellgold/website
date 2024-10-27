@@ -1,7 +1,6 @@
-import { E2048_Board, E2048_SkeletonBard } from "@/lib/components/2048/board";
+import { E2048_Board } from "@/lib/components/2048/board";
 import { E2048_StartButton } from "@/lib/components/2048/start-button";
 import { E2048_StatsCard } from "@/lib/components/2048/stat-card";
-import { ClientOnly } from "@/lib/components/client-only";
 import { ThemeSwitcher } from "@/lib/components/theme-switcher";
 import { Button } from "@/lib/components/ui/button";
 import { Separator } from "@/lib/components/ui/separator";
@@ -21,9 +20,7 @@ const Page = () => {
               // "border-2 border-[#000001]/30 dark:border-gray-600": gameHovered,
             }
           )}>
-            <ClientOnly fallback={<E2048_SkeletonBard />}>
-              <E2048_Board />
-            </ClientOnly>
+            <E2048_Board />
           </div>
         </div>
       </div>
@@ -35,7 +32,6 @@ const Page = () => {
       )}>
         <div className="flex flex-row items-center justify-center gap-2 bg-[#e4e0d1] dark:bg-gray-800 p-2 rounded-xl shadow-lg">
           <E2048_StartButton />
-
 
           <Separator orientation="vertical" className="bg-white/10 h-8" />
 
