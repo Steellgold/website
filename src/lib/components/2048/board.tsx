@@ -6,6 +6,12 @@ import { cn } from "@/lib/utils";
 import { getTileColor } from "@/lib/2048.utlils";
 import { ClientOnly } from "../client-only";
 
+const CaseSizeStyle = cn(
+  "w-14 h-14",
+  "sm:w-20 sm:h-20",
+  "md:w-24 md:h-24"
+);
+
 export const E2048_Board = (): ReactElement => {
   const { board, gridSize } = use2048();
   const [hoveredTileValue, setHoveredTileValue] = useState<number | null>(null);
@@ -14,11 +20,19 @@ export const E2048_Board = (): ReactElement => {
   const handleMouseLeaveTile = () => setHoveredTileValue(null);
 
   return (
-    <div className={cn("grid gap-2.5 transition-all duration-100")} style={{ gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))` }}>
+    <div className={cn(
+      "gap-1",
+      "sm:gap-2",
+      "md:gap-2.5",
+      "grid transition-all duration-100"
+    )} style={{ gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))` }}>
       <ClientOnly fallback={(
         <>
           {(new Array(16)).fill(0).map((_, index) => (
-            <div key={index} className="w-24 h-24 flex items-center justify-center text-2xl font-bold rounded-xl">
+            <div key={index} className={cn(
+              CaseSizeStyle,
+              "flex items-center justify-center text-2xl font-bold rounded-xl transition-all duration-100 cursor-zoom"
+            )}>
               <span className="text-3xl font-bold hidden">0</span>
             </div>
           ))}
@@ -29,7 +43,8 @@ export const E2048_Board = (): ReactElement => {
             key={index}
             className={
               cn(
-                "w-24 h-24 flex items-center justify-center text-2xl font-bold rounded-xl transition-all duration-100 cursor-zoom",
+                CaseSizeStyle,
+                "flex items-center justify-center text-2xl font-bold rounded-xl transition-all duration-100 cursor-zoom",
                 getTileColor(tile), {
                   "opacity-20": hoveredTileValue !== null && tile !== hoveredTileValue
                 }

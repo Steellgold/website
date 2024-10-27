@@ -6,12 +6,17 @@ import { useLang } from "@/lib/stores/lang.store";
 import { Button, buttonVariants } from "../ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const E2048_TopButtons = (): ReactElement => {
   const { lang } = useLang();
 
   return (
-    <div className="fixed top-4 right-4 z-50 flex gap-2 items-center">
+    <div className={cn(
+      "right-1 flex-col gap-1",
+      "sm:right-4 sm:flex-row sm:gap-1.5",
+      "fixed top-4 z-50 flex items-center"
+    )}>
       <Button
         asChild
         size={"sm"}
@@ -20,7 +25,7 @@ export const E2048_TopButtons = (): ReactElement => {
       >
         <Link href={"/"} className="flex items-center gap-1">
           <ArrowLeft className="h-4 w-4" />
-          <span>
+          <span className="hidden sm:block">
             {lang === "en" ? "Back to portfolio" : "Retour au portfolio"}
           </span>
         </Link>
