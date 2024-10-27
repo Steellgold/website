@@ -15,24 +15,11 @@ import { AIChatBubble } from "@/lib/components/chat-buble";
 import { Cats } from "./lib/cats";
 import { Button } from "@/lib/components/ui/button";
 import { useLang } from "@/lib/stores/lang.store";
-import { useHostname } from "@/lib/hooks/use-hostname";
 
 const Home = (): ReactElement => {
   const { viewMode, setViewMode } = useViewMode();
   const { lang, setLang } = useLang();
-
-  const hostname = useHostname();
   
-  const [showPortfolioButton, setShowPortfolioButton] = useState(false);
-  useEffect(() => {
-    if (hostname == "wwww.steellgold.fr"
-      || hostname == "steellgold.fr"
-      || hostname == "localhost") {
-      setShowPortfolioButton(true);
-    }
-  }, [hostname]);
-
-
   const triggerPrint = () => window.print();
 
   return (
@@ -63,6 +50,10 @@ const Home = (): ReactElement => {
 
         {viewMode == "cv" && (
           <div className="absolute right-0 top-0 p-5 flex gap-2 no-print">
+            <Button onClick={() => setViewMode("normal")} variant={"outline"} size={"sm"}>
+              Portfolio
+            </Button>
+
             <Button onClick={() => setLang(lang == "en" ? "fr" : "en")} variant={"outline"} size={"sm"}>
               {lang == "en" ? "🇫🇷" : "🇺🇸"}
             </Button>
@@ -70,12 +61,6 @@ const Home = (): ReactElement => {
             <Button onClick={triggerPrint} variant="outline" size="sm">
               Download as PDF
             </Button>
-
-            {showPortfolioButton && (
-              <Button onClick={() => setViewMode("normal")} variant={"outline"} size={"sm"}>
-                Portfolio
-              </Button>
-            )}
           </div>
         )}
 
