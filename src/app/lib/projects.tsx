@@ -22,7 +22,7 @@ export const Projects = (): ReactElement => {
           {lang == "en" ? "My projects and my journey" : "Mes projets et mon parcours"}
         </h2>
 
-        <p className="text-[#262626] dark:text-white text-sm font-normal mt-2 text-white/80">
+        <p className="text-[#262626] dark:text-white text-sm font-normal mt-2">
           {lang == "en" ? <>
             <p className="mt-3">My journey into development began with a passion for creating my own Minecraft server back in 2016 using PHP with <HiglightedLink href={"https://github.com/pmmp/PocketMine-MP"}>PocketMine-MP</HiglightedLink> on mobile.</p>
             <p className="mt-3">
