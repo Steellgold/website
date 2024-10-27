@@ -64,7 +64,7 @@ export const AIChatBubble = () => {
         <div
           className={cn("bg-[#f8f8f8] dark:bg-[#100E0E] dark:text-white rounded-lg overflow-hidden flex flex-col motion-preset-blur-up", {
             "fixed inset-0 rounded-none": deviceType === "Mobile",
-            "mb-3 w-full sm:w-[500px] h-full sm:h-[42rem]": deviceType !== "Mobile",
+            "mb-3 w-full sm:w-[500px] h-full": deviceType !== "Mobile",
             "sm:h-[calc(100vh-10rem)] sm:w-[calc(100vw-10rem)]": maximized && deviceType !== "Mobile",
           })}
           style={{
