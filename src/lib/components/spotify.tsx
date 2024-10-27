@@ -60,12 +60,12 @@ export const SpotifyCard = (): ReactElement => {
             </div>
               
             <div className="flex flex-col justify-center ml-5">
-              <h1 className="text-white text-lg font-bold flex flex-row items-center">
+              <h1 className="dark:text-white text-lg font-bold flex flex-row items-center">
                 <PlayingAnimation />
                 <div className="ml-1">&nbsp;{track.item.name}</div>
               </h1>
               
-              <p className="text-white text-xs md:text-md">
+              <p className="dark:text-white text-xs md:text-md">
                 {track.item.artists.map((artist) => artist.name).join(", ")}
               </p>
             </div>

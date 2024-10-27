@@ -9,7 +9,7 @@ export const MadeWith = () => {
 
   return (
     <div className="mt-7 mb-7">
-      <p className="text-white text-center">Made with ❤️ by Gaëtan</p>
+      <p className="dark:text-white text-center">Made with ❤️ by Gaëtan</p>
     </div>
   );
 };

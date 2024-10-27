@@ -11,6 +11,7 @@ import dayjs from "dayjs";
 import { toast } from "sonner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 import { useViewMode } from "../stores/mode.store";
+import { useTheme } from "next-themes";
 
 const defaultQuestions: { french: string, english: string }[] = [
   { french: "Quels projets as-tu réalisés récemment ?", english: "What projects have you recently completed?" },
@@ -26,7 +27,9 @@ export const AIChatBubble = () => {
   const [maximized, setMaximized] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { viewMode } = useViewMode();
+
   const { lang } = useLang();
+  const { theme } = useTheme();
 
   const chatEndRef = useRef<HTMLDivElement>(null);
 
@@ -59,31 +62,31 @@ export const AIChatBubble = () => {
     <div className="fixed bottom-4 right-4 flex flex-col items-end z-[400] no-print">
       {isOpen && (
         <div
-          className={cn("bg-[#100E0E] text-white rounded-lg overflow-hidden flex flex-col motion-preset-blur-up", {
+          className={cn("bg-[#f8f8f8] dark:bg-[#100E0E] dark:text-white rounded-lg overflow-hidden flex flex-col motion-preset-blur-up", {
             "fixed inset-0 rounded-none": deviceType === "Mobile",
             "mb-3 w-full sm:w-[500px] h-full sm:h-[42rem]": deviceType !== "Mobile",
             "sm:h-[calc(100vh-10rem)] sm:w-[calc(100vw-10rem)]": maximized && deviceType !== "Mobile",
           })}
           style={{
-            border: '2px solid #282828',
-            boxShadow: 'inset 1px -1px 32.7px 0px #242424'
+            border: theme == "dark" ? "2px solid #282828" : "2px solid #F3F3F3",
+            boxShadow: theme == "dark" ? "inset 1px -1px 32.7px 0px #242424" : ""
           }}
         >
-          <div className="flex justify-between items-center p-4 border-b border-[#282828]">
+          <div className="flex justify-between items-center p-4 border-b dark:border-[#282828]">
             <h2 className="text-lg font-semibold flex items-center gap-2">
               Gaëtan <span className="bg-[#282828] text-[#F3F3F3] rounded-md px-2 py-1 text-xs">Mini Bot</span>
             </h2>
 
             <div className="flex space-x-2">
               {deviceType == "Desktop" && (
-                <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
+                <button className="hover:text-gray-400 dark:text-gray-400 dark:hover:text-white dark:hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
                   setMaximized(!maximized);
                 }}>
                   {maximized ?<Minimize size={20} /> : <Maximize size={20} />}
                 </button>
               )}
 
-              <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
+              <button className="hover:text-gray-400 dark:text-gray-400 dark:hover:text-white dark:hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
                 if (isLoading) {
                   stop();
                 }
@@ -97,7 +100,7 @@ export const AIChatBubble = () => {
                 </svg>
               </button>
 
-              <button className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
+              <button className="hover:text-gray-400 dark:text-gray-400 dark:hover:text-white dark:hover:bg-[#1a1818] rounded-md p-1" onClick={() => {
                 if (isLoading) {
                   stop();
                 }
@@ -120,9 +123,9 @@ export const AIChatBubble = () => {
                         setInput(lang === "fr" ? question.french : question.english);
                         handleSubmit();
                       }}
-                      className="w-full bg-[#100E0E] border border-[#282828] rounded-lg p-3 text-left hover:bg-[#1a1818] transition-colors"
+                      className="bg-[#F3F3F3] hover:bg-[#e6e5e5] w-full dark:bg-[#100E0E] border dark:border-[#282828] rounded-lg p-3 text-left dark:hover:bg-[#1a1818] transition-colors"
                       style={{
-                        boxShadow: 'inset 1px -1px 32.7px 0px #242424',
+                        boxShadow: theme == "dark" ? "inset 1px -1px 32.7px 0px #242424" : "",
                       }}
                     >
                       {lang === "fr" ? question.french : question.english}
@@ -130,9 +133,9 @@ export const AIChatBubble = () => {
                   ))}
                 </div>
 
-                <Separator className="border-[#282828] w-[30%] mx-auto" />
+                <Separator className="dark:border-[#282828] w-[30%] mx-auto" />
 
-                <p className="text-sm text-gray-400 text-center">
+                <p className="text-sm dark:text-gray-400 text-center">
                   {lang === "fr" ? <>Ceci est un chatbot alimenté par <strong>GPT 4o mini</strong>, il aussi entièrement personnalisé pour répondre à des questions sur moi et mes projets, donc n&apos;hésitez pas à poser des questions!</>
                   : <>This is a chatbot powered by <strong>GPT 4o mini</strong>, it&apos;s also fully customized to answer questions about me and my projects, so feel free to ask questions!</>}
                 </p>
@@ -141,7 +144,7 @@ export const AIChatBubble = () => {
               messages.map((message, index) => (
                 <>
                   {message.role === "system" && message.content.includes("export") ? (
-                    <div className="flex justify-center items-center flex items-center text-center space-x-2 text-gray-400">
+                    <div className="flex justify-center items-center flex items-center text-center space-x-2 dark:text-gray-400">
                       {/* <div className="flex flex-col items-center gap-1">
                         {lang === "fr"
                           ? <>Lien d&apos;exportation généré et copié dans le presse-papier</>
@@ -152,10 +155,10 @@ export const AIChatBubble = () => {
                   ) : (
                     <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                       <div
-                        className={cn("max-w-max p-2.5 rounded-lg bg-[#100E0E]")}
+                        className={cn("max-w-max p-2.5 rounded-lg dark:bg-[#100E0E]")}
                         style={{
-                          boxShadow: "inset 1px -1px 32.7px 0px #242424",
-                          border: "1px solid #282828",
+                          boxShadow: theme == "dark" ? "inset 1px -1px 32.7px 0px #242424" : "",
+                          border: theme == "dark" ? "2px solid #282828" : "2px solid #e6e5e5",
                         }}
                       >
                         {message.toolInvocations ? (
@@ -164,7 +167,7 @@ export const AIChatBubble = () => {
                               {lang === "fr" ? "J'ai besoin d'utiliser les outils suivants" : "I need to use the following tools"}:
                               &nbsp;
                               {message.toolInvocations.map((tool, index) => (
-                                <span key={index} className="font-semibold bg-blue-500 cursor-pointer text-[#100E0E] rounded-md px-2 py-1 text-xs">
+                                <span key={index} className="font-semibold bg-blue-500 cursor-pointer dark:text-[#100E0E] rounded-md px-2 py-1 text-xs">
                                   {tool.toolName}
                                 </span>
                               ))}
@@ -180,7 +183,7 @@ export const AIChatBubble = () => {
                         {message.role === "assistant" && !isLoading && !message.toolInvocations && (
                           <div className="flex items-center gap-2 mt-2">
                             <button
-                              className="text-gray-400 hover:text-white hover:bg-[#1a1818] rounded-md p-1"
+                              className="dark:text-gray-400 dark:hover:text-white dark:hover:bg-[#1a1818] rounded-md p-1"
                               onClick={() => {
                                 navigator.clipboard.writeText(message.content);
                                 toast.success("Message copied to clipboard");
@@ -189,7 +192,7 @@ export const AIChatBubble = () => {
                               <Copy size={16} />
                             </button>
 
-                            <span className="text-xs text-gray-400">
+                            <span className="text-xs dark:text-gray-400">
                               {dayjs(message.createdAt).format("HH:mm")}
                             </span>
                           </div>
@@ -202,7 +205,7 @@ export const AIChatBubble = () => {
             )}
             <div ref={chatEndRef} />
           </div>
-          <div className="p-4 border-t border-[#282828]">
+          <div className="p-4 border-t dark:border-[#282828]">
             <div className="flex">
               <input
                 type="text"
@@ -210,35 +213,35 @@ export const AIChatBubble = () => {
                 onChange={handleInputChange}
                 onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
                 placeholder="Type a message..."
-                className={cn("flex-1 bg-[#100E0E] border border-[#282828] rounded-l-lg p-2 focus:outline-none", {
+                className={cn("flex-1 bg-[#F3F3F3] dark:bg-[#100E0E] border dark:border-[#282828] rounded-l-lg p-2 focus:outline-none", {
                   "opacity-50": isLoading
                 })}
                 disabled={isLoading}
                 style={{
-                  boxShadow: 'inset 1px -1px 32.7px 0px #242424',
+                  boxShadow: theme == "dark" ? "inset 1px -1px 32.7px 0px #242424" : "",
                 }}
               />
 
               {isLoading ? (
-                <button className="bg-[#100E0E] border border-[#282828] rounded-r-lg p-2" style={{
-                  boxShadow: 'inset 1px -1px 32.7px 0px #242424',
+                <button className="dark:bg-[#100E0E] border dark:border-[#282828] rounded-r-lg p-2" style={{
+                  boxShadow: theme == "dark" ? "inset 1px -1px 32.7px 0px #242424" : "",
                 }} onClick={stop}>
                   <CircleStop size={20} />
                 </button>
               ) : (
                 <button
                   onClick={handleSubmit}
-                  className={cn("bg-[#100E0E] border border-[#282828] rounded-r-lg p-2 hover:bg-[#1a1818] transition-colors", {
+                  className={cn("dark:bg-[#100E0E] border dark:border-[#282828] rounded-r-lg p-2 dark:hover:bg-[#1a1818] transition-colors", {
                     "opacity-50": isLoading
                   })}
                   style={{
-                    boxShadow: 'inset 1px -1px 32.7px 0px #242424',
+                    boxShadow: theme == "dark" ? "inset 1px -1px 32.7px 0px #242424" : "",
                   }}
                   disabled={!input}
                 >
                   <Send size={20} className={cn({
-                    "text-gray-400": !input,
-                    "text-white": input
+                    "dark:text-gray-400": !input,
+                    "dark:text-white": input
                   })} />
                 </button>
               )}
@@ -258,9 +261,11 @@ export const AIChatBubble = () => {
                   if (!isOpen) toggleChat();
                   setInput(lang === "fr" ? "Je veut te contacter" : "I want to contact you");
                 }}
-                className={cn("bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors border border-[#282828]")}
+                className={cn(
+                  "dark:bg-[#100E0E] dark:text-white rounded-full p-3 shadow-lg dark:hover:bg-[#1a1818] transition-colors border dark:border-[#282828]"
+                )}
                 style={{
-                  boxShadow: 'inset 1px -1px 10px 0px #242424',
+                  boxShadow: theme == "dark" ? "inset 1px -1px 32.7px 0px #242424" : "",
                 }}
               >
                 <Mail size={24} />
@@ -276,9 +281,11 @@ export const AIChatBubble = () => {
             <TooltipTrigger>
               <button
                 onClick={toggleChat}
-                className={cn("bg-[#100E0E] text-white rounded-full p-3 shadow-lg hover:bg-[#1a1818] transition-colors border border-[#282828]")}
+                className={cn(
+                  "dark:bg-[#100E0E] dark:text-white rounded-full p-3 shadow-lg dark:hover:bg-[#1a1818] transition-colors border dark:border-[#282828]"
+                )}
                 style={{
-                  boxShadow: 'inset 1px -1px 10px 0px #242424',
+                  boxShadow: theme == "dark" ? "inset 1px -1px 32.7px 0px #242424" : "",
                 }}
               >
                 <Bot size={24} />

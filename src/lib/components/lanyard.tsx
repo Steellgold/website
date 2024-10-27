@@ -56,12 +56,12 @@ const PresenceCard: Component<{ activity: Activity }> = ({ activity }) => {
         </div>
           
         <div className="flex flex-col justify-center ml-3">
-          <h1 className="text-white text-lg font-bold flex flex-row items-center">
+          <h1 className="dark:text-white text-lg font-bold flex flex-row items-center">
             <h1>{activity.name}</h1>
           </h1>
           
-          {activity.details && <p className="text-white text-xs md:text-md">{activity.details}</p>}
-          {activity.state && <p className="text-white text-xs md:text-md">{activity.state}</p>}
+          {activity.details && <p className="dark:text-white text-xs md:text-md">{activity.details}</p>}
+          {activity.state && <p className="dark:text-white text-xs md:text-md">{activity.state}</p>}
         </div>
       </CardContent>
     </Card>

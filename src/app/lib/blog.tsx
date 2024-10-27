@@ -10,9 +10,11 @@ import Link from "next/link";
 import { ReactElement, useEffect, useState } from "react";
 import { NotNowText } from "./not-now";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
+import { useTheme } from "next-themes";
 
 export const Blog = (): ReactElement => {
   const [data, setData] = useState<any>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,12 +64,12 @@ export const Blog = (): ReactElement => {
 
   return (
     <>
-      <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
+      <Separator className="my-7 bg-[#cacaca] dark:bg-[#1a1a1a] w-[90%] mx-auto" />
 
       <Link href={`/blog/${data.slug}`} passHref>
-        <Card style={{ boxShadow: "inset 1px -1px 10.7px 0px #242424" }}>
+        <Card style={{ boxShadow: theme == "dark" ? "inset 1px -1px 10.7px 0px #242424" : "" }}>
           <CardHeader>
-            <CardTitle className="text-[#f0f0f0]">{data.title}</CardTitle>
+            <CardTitle className="dark:text-[#f0f0f0]">{data.title}</CardTitle>
             <CardDescription>{data.excerpt}</CardDescription>
           </CardHeader>
 

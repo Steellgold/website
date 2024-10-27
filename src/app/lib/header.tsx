@@ -3,11 +3,13 @@
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { Button, buttonVariants } from "@/lib/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
+import { HiglightedSpan } from "@/lib/config/projects";
 import { useLang } from "@/lib/stores/lang.store";
 import { useInitializeViewMode, useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Cake, Cat, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactElement } from "react";
@@ -24,7 +26,7 @@ const SocialLinks: SocialLink[] = [ {
     href: "https://github.com/Steellgold",
     icon: <Github size={18} strokeWidth={2} />,
     title: "GitHub",
-    className: "hover:text-white transition-all hover:rotate-12",
+    className: "dark:hover:text-white transition-all hover:rotate-12",
     showOnCv: true
   }, {
     href: "https://linkedin.com/in/gaetanhus",
@@ -72,21 +74,13 @@ export const Header = (): ReactElement => {
             src="/_static/images/MY_CATS.jpg"
             alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
             className={cn(
-              "w-full object-cover block object-center border-[#0a0a0a] md:border-[10px] md:rounded-3xl",
+              "w-full object-cover block object-center border-white dark:border-[#0a0a0a] md:border-[10px] md:rounded-3xl",
               "h-[250px] lg:h-[350px] xl:h-[400px]"
             )}
             quality={100}
             width={3000}
             height={1810}
           />
-
-          <Link
-            className={buttonVariants({ variant: "outline", size: "icon", className: "absolute bottom-0 right-0 mb-5 mr-5" })}
-            href={"/#cats"}
-            style={{ boxShadow: "inset 1px -1px 10.7px 0px #242424" }}
-          >
-            <Cat size={20} />
-          </Link>
         </div>
       )}
 
@@ -97,7 +91,7 @@ export const Header = (): ReactElement => {
           alt="profile"
           className={cn(
             "-mt-16 h-32 w-32 rounded-lg transform transition-all hover:scale-110", {
-              "border-[#0a0a0a] border-[5px] hover:border-[3.5px]": viewMode == "normal",
+              "border-white dark:border-[#0a0a0a] border-[5px] hover:border-[3.5px]": viewMode == "normal",
             }
           )}
           src={"/_static/images/me2.jpg"}
@@ -105,8 +99,8 @@ export const Header = (): ReactElement => {
           height={128}
         />
 
-        <div className="flex flex-col justify-center ml-auto sm:bg-[#161616] sm:rounded-lg sm:shadow-lg sm:overflow-hidden">
-          <ul className="flex flex-row justify-end text-white gap-2 p-2">
+        <div className="flex flex-col justify-center ml-auto bg-[#f8f8f8] border dark:border-0 sm:dark:bg-[#161616] sm:rounded-lg sm:dark:shadow-lg sm:overflow-hidden">
+          <ul className="flex flex-row justify-end dark:text-white gap-2 p-2">
             <div className="flex gap-2">
               <TooltipProvider delayDuration={100}>
                 {SocialLinks.filter((link) => link.showOnCv === true).map((link) => (
@@ -146,7 +140,7 @@ export const Header = (): ReactElement => {
         </div>
       </div>
 
-      <div className="pt-3 text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
+      <div className="pt-3 dark:text-white flex flex-col justify-center mx-auto w-5/6 lg:w-2/4">
         <p className="text-1xl pt-1 text-left">
           {viewMode == "normal"
             ? lang == "en" ? "Hi, I'm" : "Salut, je suis"
@@ -166,8 +160,8 @@ export const Header = (): ReactElement => {
             ? <>{lang == "en" ? <>I&apos;m a full-stack developer, working with TypeScript.</>
               : <>Je suis un développeur full-stack, travaillant avec TypeScript.</>}</>
             
-            : <>{lang == "en" ? <>I have {dayJS().diff("2004-10-14", "years")} years old and I am a full-stack developer with <span className="text-yellow-100">NextJS</span>, and <span className="text-yellow-100">TypeScript</span>.</>
-              : <>J&apos;ai {dayJS().diff("2004-10-14", "years")} ans et je suis un développeur full-stack, avec React avec <span className="text-yellow-100">NextJS</span>, et <span className="text-yellow-100">TypeScript</span>.</>}</>
+            : <>{lang == "en" ? <>I have {dayJS().diff("2004-10-14", "years")} years old and I am a full-stack developer with <HiglightedSpan>NextJS</HiglightedSpan>, and <HiglightedSpan>TypeScript</HiglightedSpan>.</>
+              : <>J&apos;ai {dayJS().diff("2004-10-14", "years")} ans et je suis un développeur full-stack, avec React avec <HiglightedSpan>NextJS</HiglightedSpan>, et <HiglightedSpan>TypeScript</HiglightedSpan>.</>}</>
           }
         </p>
 

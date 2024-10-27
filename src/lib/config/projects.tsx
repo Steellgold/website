@@ -3,6 +3,21 @@ import { Separator } from "../components/ui/separator";
 import { dayJS } from "../utils/dayjs/day-js";
 import { DiscordJS, Flowbite, NextJS, OpenAI, PHP, PocketMine, PostgreSQL, Prisma, Railway, Redis, Stripe, Supabase, SvelteKit, TailwindCSS, Typescript, uiShadcn, Vercel } from "./stacks";
 import { Project } from "./types/project.type";
+import { Component } from "../components/utils/component";
+import { PropsWithChildren } from "react";
+import Link from "next/link";
+
+export const HiglightedSpan: Component<PropsWithChildren> = ({ children }) => (
+  <span className="bg-[#f5f1de] text-[#262626] dark:bg-[#262626] dark:text-[#eff0b9] px-1 py-0.5 rounded-md">
+    {children}
+  </span>
+);
+
+export const HiglightedLink: Component<PropsWithChildren & { href: string }> = ({ children, href }) => (
+  <Link className="bg-[#f5f1de] text-[#262626] dark:bg-[#262626] dark:text-[#eff0b9] px-1 py-0.5 rounded-md hover:underline" href={href} passHref>
+    {children}
+  </Link>
+);
 
 export const projects: Project[] = [
   {
@@ -17,7 +32,7 @@ export const projects: Project[] = [
         <p>• Linkfy is a link shortener that allows users to shorten links and share them with others.</p>
         <p className="mt-1">• It was my serious first open-source project, I learned how to use TypeScript with SvelteKit and how to deploy applications on Vercel.</p>
         <p className="mt-1">• It was on this project that I discovered Supabase, I learned how to use TailwindCSS and how to make REST APIs or use Prisma with PostgreSQL.</p>
-        <p className="mt-1">• During the activity period of Linkfy, the site had more than <span className="text-yellow-100">~500 shortened links</span>.</p>
+        <p className="mt-1">• During the activity period of Linkfy, the site had more than <HiglightedSpan>~500 shortened links</HiglightedSpan>.</p>
         
         <Separator className="mt-3" />
 
@@ -28,7 +43,7 @@ export const projects: Project[] = [
         <p>• Linkfy est un raccourcisseur de liens qui permet aux utilisateurs de raccourcir des liens et de les partager avec d&apos;autres.</p>
         <p className="mt-1">• C&apos;était mon premier projet open-source sérieux, j&apos;ai appris à utiliser TypeScript avec SvelteKit et comment déployer des applications sur Vercel.</p>
         <p className="mt-1">• C&apos;est sur ce projet que j&apos;ai découvert Supabase, j&apos;ai appris à utiliser TailwindCSS et comment faire des APIs REST ou utiliser Prisma avec PostgreSQL.</p>
-        <p className="mt-1">• Durant toute la periode d&apos;activité de Linkfy, le site à eu plus de <span className="text-yellow-100">~500 liens raccourcis</span>.</p>
+        <p className="mt-1">• Durant toute la periode d&apos;activité de Linkfy, le site à eu plus de <HiglightedSpan>~500 liens raccourcis</HiglightedSpan>.</p>
         
         <Separator className="mt-3" />
 
@@ -67,13 +82,13 @@ export const projects: Project[] = [
     cvDescription: {
       en: <>
         <p>• Tweeets is a tweet generator powered by OpenAI, it allows users to generate tweets using the GPT-3 or GPT-4 model.</p>
-        <p className="mt-1">• It was a project I made for the <span className="text-yellow-100">2023 Supabase Hackathon</span>, thanks to this project I was able to learn how to use OpenAI and integrate AI models into my projects.</p>
-        <p className="mt-1">• This project was <span className="text-yellow-100">awarded</span> the first place in the <span className="text-yellow-100">Best use of AI</span> section of the hackathon 🎉</p>
+        <p className="mt-1">• It was a project I made for the <HiglightedSpan>2023 Supabase Hackathon</HiglightedSpan>, thanks to this project I was able to learn how to use OpenAI and integrate AI models into my projects.</p>
+        <p className="mt-1">• This project was <HiglightedSpan>awarded</HiglightedSpan> the first place in the <HiglightedSpan>Best use of AI</HiglightedSpan> section of the hackathon 🎉</p>
       </>,
       fr: <>
         <p>• Tweeets est un générateur de tweets alimenté par OpenAI, il permet aux utilisateurs de générer des tweets en utilisant le modèle GPT-3 ou GPT-4.</p>
-        <p className="mt-1">• C&apos;était un projet que j&apos;ai réalisé pour le <span className="text-yellow-100">Supabase Hackathon 2023</span>, grâce à ce projet j&apos;ai pu apprendre à utiliser OpenAI et intégrer des modèles d&apos;IA dans mes projets.</p>
-        <p className="mt-1">• Ce projet a été <span className="text-yellow-100">récompensé</span> la première place dans la section <span className="text-yellow-100">Meilleure utilisation de l&apos;IA</span> du hackathon 🎉</p>
+        <p className="mt-1">• C&apos;était un projet que j&apos;ai réalisé pour le <HiglightedSpan>Supabase Hackathon 2023</HiglightedSpan>, grâce à ce projet j&apos;ai pu apprendre à utiliser OpenAI et intégrer des modèles d&apos;IA dans mes projets.</p>
+        <p className="mt-1">• Ce projet a été <HiglightedSpan>récompensé</HiglightedSpan> la première place dans la section <HiglightedSpan>Meilleure utilisation de l&apos;IA</HiglightedSpan> du hackathon 🎉</p>
       </>
     },
     type: "open-source",
@@ -143,12 +158,12 @@ export const projects: Project[] = [
       en: <>
         <p>• Bottly is a Discord bot that allows users to ask questions, chat or generate text using the OpenAI GPT-3 or GPT-4 model.</p>
         <p className="mt-1">• During the development of Bottly, I learned how to use TypeScript with Discord.js, I also learned how to use the OpenAI API to integrate AI models into the bot.</p>
-        <p>• During the activity period of Bottly, the bot had more than <span className="text-yellow-100">~5000 questions</span> asked by users.</p>
+        <p>• During the activity period of Bottly, the bot had more than <HiglightedSpan>~5000 questions</HiglightedSpan> asked by users.</p>
       </>,
       fr: <>
         <p>• Bottly est un bot Discord qui permet aux utilisateurs de poser des questions, discuter ou générer du texte en utilisant le modèle OpenAI GPT-3 ou GPT-4.</p>
         <p className="mt-1">• Durant le développement de Bottly, j&apos;ai appris à utiliser TypeScript avec Discord.js, j&apos;ai également appris à utiliser l&apos;API OpenAI pour intégrer des modèles d&apos;IA dans le bot.</p>
-        <p>• Durant toute la periode d&apos;activité de Bottly, le bot à eu plus de <span className="text-yellow-100">~5000 questions</span> posées par les utilisateurs. </p>
+        <p>• Durant toute la periode d&apos;activité de Bottly, le bot à eu plus de <HiglightedSpan>~5000 questions</HiglightedSpan> posées par les utilisateurs. </p>
       </>
     },
     type: "open-source",

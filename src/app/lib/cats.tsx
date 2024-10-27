@@ -23,7 +23,7 @@ const images: Image[] = [
 export const Cats = (): ReactElement => {
   return (
     <section id="cats">
-      <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
+      <Separator className="my-7 bg-[#cacaca] dark:bg-[#1a1a1a] w-[90%] mx-auto" />
 
       <div className="flex flex-col items-center mb-7">
         <p className="text-lg text-center">Here are my beautiful cats! They are so cute and amazing! I love them so much! 😻</p>
