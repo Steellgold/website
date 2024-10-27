@@ -5,14 +5,15 @@ import { ReactElement, useState } from "react";
 import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, AlertDialogTitle, AlertDialogTrigger } from "@/lib/components/ui/alert-dialog";
 import { Component } from "../utils/component";
 import { Grid3X3 } from "lucide-react";
+import { use2048 } from "./hooks/use-2048";
 
-type StartButtonProps = {
-  status: "gameOver" | "started" | "notStarted";
-  initializeBoard: () => void;
-};
+type Status = "gameOver" | "started" | "notStarted";
 
-export const E2048_StartButton: Component<StartButtonProps> = ({ status, initializeBoard }) => {
+export const E2048_StartButton = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
+  const { gameOver, board, initializeBoard } = use2048();
+
+  const status: Status = gameOver ? "gameOver" : board.some((tile) => tile !== 0) ? "started" : "notStarted";
 
   if (status === "notStarted") {
     return (
@@ -50,7 +51,7 @@ export const E2048_StartButton: Component<StartButtonProps> = ({ status, initial
           </Button>
 
           <Button onClick={() => {
-            initializeBoard();
+            initializeBoard(4, true);
             setIsOpen(false);
           }}>
             <Grid3X3 className="w-4 h-4 mr-2" />
