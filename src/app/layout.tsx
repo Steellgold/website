@@ -38,11 +38,11 @@ export const metadata: Metadata = {
     ],
     title: "Gaëtan | Full-stack Developer",
     description: "20. Indie Hacker | Full-stack developper"
-  },
+  }
 };
 
 export const viewport: Viewport = {
-  themeColor: "#15803D",
+  themeColor: "#15803D"
 };
 
 const Layout: Component<PropsWithChildren> = ({ children }) => {
