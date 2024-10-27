@@ -28,6 +28,8 @@ const Page = (): ReactElement => {
   const gameRef = useRef(null);
   const gameHovered = useHover(gameRef);
 
+  const [hoveredTileValue, setHoveredTileValue] = useState<number | null>(null);
+
   const [settings, setSettings] = useState<Settings>({
     gridSize: 4,
     score: 0,
@@ -44,7 +46,7 @@ const Page = (): ReactElement => {
 
       if (emptyTiles.length > 0) {
         const randomIndex = emptyTiles[Math.floor(Math.random() * emptyTiles.length)]
-        currentBoard[randomIndex] = Math.random() < 0.9 ? 2 : 4
+        currentBoard[randomIndex] = Math.random() < 0.9 ? 2 : 4 // 90% chance for 2, 10% chance for 4
       }
     }
   }
@@ -62,6 +64,9 @@ const Page = (): ReactElement => {
       startedTime: Date.now()
     })
   }
+
+  const handleMouseEnterTile = (value: number) => value !== 0 && setHoveredTileValue(value);
+  const handleMouseLeaveTile = () => setHoveredTileValue(null);
 
   return (
     <div className="flex min-h-screen bg-[#faf8f0] dark:bg-gray-900 text-gray-900 dark:text-gray-100">
@@ -97,9 +102,13 @@ const Page = (): ReactElement => {
                   className={
                     cn(
                       "w-24 h-24 flex items-center justify-center text-2xl font-bold rounded-xl transition-all duration-100 cursor-zoom",
-                      getTileColor(tile)
+                      getTileColor(tile), {
+                        "opacity-20": hoveredTileValue !== null && tile !== hoveredTileValue
+                      }
                     )
                   }
+                  onMouseEnter={() => handleMouseEnterTile(tile)}
+                  onMouseLeave={handleMouseLeaveTile}
                 >
                   <span className={cn("text-3xl font-bold", { "hidden": tile === 0 })}>{tile}</span>
                 </div>
