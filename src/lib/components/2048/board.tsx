@@ -16,7 +16,7 @@ const CaseSizeStyle = cn(
 export const E2048_Board = (): ReactElement => {
   const { board, gridSize, handleMove } = use2048();
   const [hoveredTileValue, setHoveredTileValue] = useState<number | null>(null);
-
+  
   const handleMouseEnterTile = (value: number) => value !== 0 && setHoveredTileValue(value);
   const handleMouseLeaveTile = () => setHoveredTileValue(null);
 

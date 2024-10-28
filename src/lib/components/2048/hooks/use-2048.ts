@@ -72,10 +72,104 @@ const addNewTile = (board: number[], count: number = 1, direction?: "up" | "down
   }
 };
 
+const moveBoard = (board: number[], direction: "up" | "down" | "left" | "right"): number[] => {
+  const size = Math.sqrt(board.length);
+  let score = 0;
+  let newBoard = [...board];
+
+  const move = (index: number) => {
+    let currentIndex = index;
+    let targetIndex = index;
+    while (targetIndex % size > 0 && newBoard[targetIndex - 1] === 0) {
+      targetIndex--;
+    }
+    if (targetIndex !== currentIndex) {
+      newBoard[targetIndex] = newBoard[currentIndex];
+      newBoard[currentIndex] = 0;
+      currentIndex = targetIndex;
+    }
+    if (targetIndex % size > 0 && newBoard[targetIndex - 1] === newBoard[targetIndex]) {
+      newBoard[targetIndex - 1] *= 2;
+      score += newBoard[targetIndex - 1];
+      newBoard[targetIndex] = 0;
+    }
+  };
+
+  if (direction === "left") {
+    for (let i = 0; i < newBoard.length; i++) {
+      if (newBoard[i] !== 0) move(i);
+    }
+  } else if (direction === "right") {
+    for (let i = newBoard.length - 1; i >= 0; i--) {
+      if (newBoard[i] !== 0) {
+        let currentIndex = i;
+        let targetIndex = i;
+        while (targetIndex % size < size - 1 && newBoard[targetIndex + 1] === 0) {
+          targetIndex++;
+        }
+        if (targetIndex !== currentIndex) {
+          newBoard[targetIndex] = newBoard[currentIndex];
+          newBoard[currentIndex] = 0;
+          currentIndex = targetIndex;
+        }
+        if (targetIndex % size < size - 1 && newBoard[targetIndex + 1] === newBoard[targetIndex]) {
+          newBoard[targetIndex + 1] *= 2;
+          score += newBoard[targetIndex + 1];
+          newBoard[targetIndex] = 0;
+        }
+      }
+    }
+  } else if (direction === "up") {
+    for (let i = 0; i < newBoard.length; i++) {
+      if (newBoard[i] !== 0) {
+        let currentIndex = i;
+        let targetIndex = i;
+        while (targetIndex >= size && newBoard[targetIndex - size] === 0) {
+          targetIndex -= size;
+        }
+        if (targetIndex !== currentIndex) {
+          newBoard[targetIndex] = newBoard[currentIndex];
+          newBoard[currentIndex] = 0;
+          currentIndex = targetIndex;
+        }
+        if (targetIndex >= size && newBoard[targetIndex - size] === newBoard[targetIndex]) {
+          newBoard[targetIndex - size] *= 2;
+          score += newBoard[targetIndex - size];
+          newBoard[targetIndex] = 0;
+        }
+      }
+    }
+  } else if (direction === "down") {
+    for (let i = newBoard.length - 1; i >= 0; i--) {
+      if (newBoard[i] !== 0) {
+        let currentIndex = i;
+        let targetIndex = i;
+        while (targetIndex < newBoard.length - size && newBoard[targetIndex + size] === 0) {
+          targetIndex += size;
+        }
+        if (targetIndex !== currentIndex) {
+          newBoard[targetIndex] = newBoard[currentIndex];
+          newBoard[currentIndex] = 0;
+          currentIndex = targetIndex;
+        }
+        if (targetIndex < newBoard.length - size && newBoard[targetIndex + size] === newBoard[targetIndex]) {
+          newBoard[targetIndex + size] *= 2;
+          score += newBoard[targetIndex + size];
+          newBoard[targetIndex] = 0;
+        }
+      }
+    }
+  }
+
+
+  addNewTile(newBoard, 1, direction);
+  return newBoard;
+};
+
 export const use2048 = create<GameState>()(
   persist(
     (set, get) => ({
-      board: initialBoard(4),
+      board: [],
       score: 0,
       bestScore: 0,
       gridSize: 4,
@@ -96,31 +190,15 @@ export const use2048 = create<GameState>()(
       },
 
       handleMove: (direction: "up" | "down" | "left" | "right") => {
-        const { board, gridSize, score } = get();
-        if (board.every(tile => tile !== 0)) {
-          set({ gameOver: true });
-          return;
-        }
+        const { board, gridSize } = get();
 
         let newBoard: number[] = [...board];
-        switch (direction) {
-          case "up":
-            newBoard = handleUpMove(newBoard, gridSize);
-            break;
-          case "down":
-            newBoard = handleDownMove(newBoard, gridSize);
-            break;
-          case "left":
-            newBoard = handleLeftMove(newBoard, gridSize);
-            break;
-          case "right":
-            newBoard = handleRightMove(newBoard, gridSize);
-            break;
-          default:
-            break;
-        }
+        newBoard = moveBoard(
+          newBoard, direction
+        );
 
         const newScore = newBoard.reduce((acc, tile) => acc + tile, 0);
+
         set((state) => ({
           board: newBoard,
           score: newScore,
@@ -170,102 +248,16 @@ export const use2048 = create<GameState>()(
   )
 );
 
-const handleRightMove = (currentBoard: number[], gridSize: number): number[] => {
-  let moved = false
-  for (let i = 0; i < currentBoard.length; i += gridSize) {
-    for (let j = i + gridSize - 2; j >= i; j--) {
-      if (currentBoard[j] !== 0) {
-        let col = j
-        while (col < i + gridSize - 1 && currentBoard[col + 1] === 0) {
-          currentBoard[col + 1] = currentBoard[col]
-          currentBoard[col] = 0
-          col++
-          moved = true
-        }
-        if (col < i + gridSize - 1 && currentBoard[col + 1] === currentBoard[col]) {
-          currentBoard[col + 1] *= 2
-          currentBoard[col] = 0
-          moved = true
-        }
-      }
+const canMove = (board: number[]): boolean => {
+  const size = Math.sqrt(board.length);
+  for (let i = 0; i < board.length; i++) {
+    if (board[i] === 0) return true;
+    if (
+      (i % size < size - 1 && board[i] === board[i + 1]) ||
+      (i < board.length - size && board[i] === board[i + size])
+    ) {
+      return true;
     }
   }
-
-  if (moved) addNewTile(currentBoard)
-  return currentBoard;
-}
-
-const handleLeftMove = (currentBoard: number[], gridSize: number): number[] => {
-  let moved = false
-  for (let i = 0; i < currentBoard.length; i += gridSize) {
-    for (let j = i + 1; j < i + gridSize; j++) {
-      if (currentBoard[j] !== 0) {
-        let col = j
-        while (col > i && currentBoard[col - 1] === 0) {
-          currentBoard[col - 1] = currentBoard[col]
-          currentBoard[col] = 0
-          col--
-          moved = true
-        }
-        if (col > i && currentBoard[col - 1] === currentBoard[col]) {
-          currentBoard[col - 1] *= 2
-          currentBoard[col] = 0
-          moved = true
-        }
-      }
-    }
-  }
-
-  if (moved) addNewTile(currentBoard)
-  return currentBoard;
-}
-
-const handleDownMove = (currentBoard: number[], gridSize: number): number[] => {
-  let moved = false
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = gridSize * (gridSize - 1) + i; j >= i; j -= gridSize) {
-      if (currentBoard[j] !== 0) {
-        let row = j
-        while (row < gridSize * (gridSize - 1) && currentBoard[row + gridSize] === 0) {
-          currentBoard[row + gridSize] = currentBoard[row]
-          currentBoard[row] = 0
-          row += gridSize
-          moved = true
-        }
-        if (row < gridSize * (gridSize - 1) && currentBoard[row + gridSize] === currentBoard[row]) {
-          currentBoard[row + gridSize] *= 2
-          currentBoard[row] = 0
-          moved = true
-        }
-      }
-    }
-  }
-
-  if (moved) addNewTile(currentBoard)
-  return currentBoard;
-}
-
-const handleUpMove = (currentBoard: number[], gridSize: number): number[] => {
-  let moved = false
-  for (let i = 0; i < gridSize; i++) {
-    for (let j = i + gridSize; j < gridSize * gridSize; j += gridSize) {
-      if (currentBoard[j] !== 0) {
-        let row = j
-        while (row > gridSize && currentBoard[row - gridSize] === 0) {
-          currentBoard[row - gridSize] = currentBoard[row]
-          currentBoard[row] = 0
-          row -= gridSize
-          moved = true
-        }
-        if (row > gridSize && currentBoard[row - gridSize] === currentBoard[row]) {
-          currentBoard[row - gridSize] *= 2
-          currentBoard[row] = 0
-          moved = true
-        }
-      }
-    }
-  }
-
-  if (moved) addNewTile(currentBoard)
-  return currentBoard;
-}
+  return false;
+};
