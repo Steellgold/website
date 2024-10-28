@@ -35,15 +35,39 @@ const initialBoard = (size: number) => {
   return board;
 };
 
-const addNewTile = (board: number[], count: number = 1) => {
+const addNewTile = (board: number[], count: number = 1, direction?: "up" | "down" | "left" | "right") => {
+  const gridSize = Math.sqrt(board.length);
+  const possiblePositions = [];
+
+  if (!direction) {
+    possiblePositions.push(...[...Array(gridSize)].map((_, i) => i)); // T
+    possiblePositions.push(...[...Array(gridSize)].map((_, i) => (gridSize - 1) * gridSize + i)); // B
+    possiblePositions.push(...[...Array(gridSize)].map((_, i) => i * gridSize)); // L
+    possiblePositions.push(...[...Array(gridSize)].map((_, i) => i * gridSize + (gridSize - 1))); // R
+  } else {
+    switch (direction) {
+      case "up":
+        possiblePositions.push(...[...Array(gridSize)].map((_, i) => (gridSize - 1) * gridSize + i));
+        break;
+      case "down":
+        possiblePositions.push(...[...Array(gridSize)].map((_, i) => i)); // T
+        break;
+      case "left":
+        possiblePositions.push(...[...Array(gridSize)].map((_, i) => i * gridSize + (gridSize - 1))); // R
+        break;
+      case "right":
+        possiblePositions.push(...[...Array(gridSize)].map((_, i) => i * gridSize)); // L
+        break;
+    }
+  }
+
+  const emptyTiles = possiblePositions.filter(index => board[index] === 0);
+
   for (let i = 0; i < count; i++) {
-    const emptyTiles = board.reduce((acc: number[], curr, index) => {
-      if (curr === 0) acc.push(index);
-      return acc;
-    }, []);
     if (emptyTiles.length > 0) {
       const randomIndex = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
       board[randomIndex] = Math.random() < 0.9 ? 2 : 4;
+      emptyTiles.splice(emptyTiles.indexOf(randomIndex), 1);
     }
   }
 };

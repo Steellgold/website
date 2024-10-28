@@ -85,9 +85,9 @@ export const E2048_Board = (): ReactElement => {
           {(new Array(16)).fill(0).map((_, index) => (
             <div key={index} className={cn(
               CaseSizeStyle,
-              "flex items-center justify-center text-2xl font-bold rounded-xl transition-all duration-100 cursor-zoom"
+              "flex items-center justify-center text-2xl font-bold rounded-xl transition-all duration-100"
             )}>
-              <span className="text-3xl font-bold hidden">0</span>
+              <span className="hidden">0</span>
             </div>
           ))}
         </>
@@ -98,7 +98,7 @@ export const E2048_Board = (): ReactElement => {
             className={
               cn(
                 CaseSizeStyle,
-                "flex items-center justify-center text-2xl font-bold rounded-xl transition-all duration-100 cursor-zoom",
+                "flex items-center justify-center text-2xl font-bold rounded-sm transition-all duration-100",
                 getTileColor(tile), {
                   "opacity-20": hoveredTileValue !== null && tile !== hoveredTileValue
                 }
