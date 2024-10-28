@@ -1,10 +1,11 @@
 "use client";
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { use2048 } from "./hooks/use-2048";
 import { cn } from "@/lib/utils";
 import { getTileColor } from "@/lib/2048.utlils";
 import { ClientOnly } from "../client-only";
+import useTouchScreenSwipe from "@/lib/hooks/use-touch-screen-wipe";
 
 const CaseSizeStyle = cn(
   "w-14 h-14",
@@ -13,11 +14,64 @@ const CaseSizeStyle = cn(
 );
 
 export const E2048_Board = (): ReactElement => {
-  const { board, gridSize } = use2048();
+  const { board, gridSize, handleMove } = use2048();
   const [hoveredTileValue, setHoveredTileValue] = useState<number | null>(null);
 
   const handleMouseEnterTile = (value: number) => value !== 0 && setHoveredTileValue(value);
   const handleMouseLeaveTile = () => setHoveredTileValue(null);
+
+  const value = useTouchScreenSwipe();
+
+  useEffect(() => {
+    if (value.direction) {
+      switch (value.direction) {
+        case "up":
+          handleMove("up")
+          break
+        case "down":
+          handleMove("down")
+          break
+        case "left":
+          handleMove("left")
+          break
+        case "right":
+          handleMove("right")
+          break;
+        default:
+          break
+      }
+
+      console.log(value.direction)
+    }
+  }, [value, handleMove])
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      switch (event.key) {
+        case "ArrowUp":
+          console.log("up")
+          handleMove("up");
+          break;
+        case "ArrowDown":
+          handleMove("down");
+          break;
+        case "ArrowLeft":
+          handleMove("left");
+          break;
+        case "ArrowRight":
+          handleMove("right");
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleMove]);
 
   return (
     <div className={cn(

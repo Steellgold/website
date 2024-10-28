@@ -71,7 +71,38 @@ export const use2048 = create<GameState>()(
         }
       },
 
-      handleMove: () => {},
+      handleMove: (direction: "up" | "down" | "left" | "right") => {
+        const { board, gridSize, score } = get();
+        if (board.every(tile => tile !== 0)) {
+          set({ gameOver: true });
+          return;
+        }
+
+        let newBoard: number[] = [...board];
+        switch (direction) {
+          case "up":
+            newBoard = handleUpMove(newBoard, gridSize);
+            break;
+          case "down":
+            newBoard = handleDownMove(newBoard, gridSize);
+            break;
+          case "left":
+            newBoard = handleLeftMove(newBoard, gridSize);
+            break;
+          case "right":
+            newBoard = handleRightMove(newBoard, gridSize);
+            break;
+          default:
+            break;
+        }
+
+        const newScore = newBoard.reduce((acc, tile) => acc + tile, 0);
+        set((state) => ({
+          board: newBoard,
+          score: newScore,
+          bestScore: Math.max(newScore, state.bestScore),
+        }));
+      },
 
       resetGame: () => {
         const { board, score, startedTime } = get();
@@ -114,3 +145,103 @@ export const use2048 = create<GameState>()(
     }
   )
 );
+
+const handleRightMove = (currentBoard: number[], gridSize: number): number[] => {
+  let moved = false
+  for (let i = 0; i < currentBoard.length; i += gridSize) {
+    for (let j = i + gridSize - 2; j >= i; j--) {
+      if (currentBoard[j] !== 0) {
+        let col = j
+        while (col < i + gridSize - 1 && currentBoard[col + 1] === 0) {
+          currentBoard[col + 1] = currentBoard[col]
+          currentBoard[col] = 0
+          col++
+          moved = true
+        }
+        if (col < i + gridSize - 1 && currentBoard[col + 1] === currentBoard[col]) {
+          currentBoard[col + 1] *= 2
+          currentBoard[col] = 0
+          moved = true
+        }
+      }
+    }
+  }
+
+  if (moved) addNewTile(currentBoard)
+  return currentBoard;
+}
+
+const handleLeftMove = (currentBoard: number[], gridSize: number): number[] => {
+  let moved = false
+  for (let i = 0; i < currentBoard.length; i += gridSize) {
+    for (let j = i + 1; j < i + gridSize; j++) {
+      if (currentBoard[j] !== 0) {
+        let col = j
+        while (col > i && currentBoard[col - 1] === 0) {
+          currentBoard[col - 1] = currentBoard[col]
+          currentBoard[col] = 0
+          col--
+          moved = true
+        }
+        if (col > i && currentBoard[col - 1] === currentBoard[col]) {
+          currentBoard[col - 1] *= 2
+          currentBoard[col] = 0
+          moved = true
+        }
+      }
+    }
+  }
+
+  if (moved) addNewTile(currentBoard)
+  return currentBoard;
+}
+
+const handleDownMove = (currentBoard: number[], gridSize: number): number[] => {
+  let moved = false
+  for (let i = 0; i < gridSize; i++) {
+    for (let j = gridSize * (gridSize - 1) + i; j >= i; j -= gridSize) {
+      if (currentBoard[j] !== 0) {
+        let row = j
+        while (row < gridSize * (gridSize - 1) && currentBoard[row + gridSize] === 0) {
+          currentBoard[row + gridSize] = currentBoard[row]
+          currentBoard[row] = 0
+          row += gridSize
+          moved = true
+        }
+        if (row < gridSize * (gridSize - 1) && currentBoard[row + gridSize] === currentBoard[row]) {
+          currentBoard[row + gridSize] *= 2
+          currentBoard[row] = 0
+          moved = true
+        }
+      }
+    }
+  }
+
+  if (moved) addNewTile(currentBoard)
+  return currentBoard;
+}
+
+const handleUpMove = (currentBoard: number[], gridSize: number): number[] => {
+  let moved = false
+  for (let i = 0; i < gridSize; i++) {
+    for (let j = i + gridSize; j < gridSize * gridSize; j += gridSize) {
+      if (currentBoard[j] !== 0) {
+        let row = j
+        while (row > gridSize && currentBoard[row - gridSize] === 0) {
+          currentBoard[row - gridSize] = currentBoard[row]
+          currentBoard[row] = 0
+          row -= gridSize
+          moved = true
+        }
+        if (row > gridSize && currentBoard[row - gridSize] === currentBoard[row]) {
+          currentBoard[row - gridSize] *= 2
+          currentBoard[row] = 0
+          moved = true
+        }
+      }
+    }
+  }
+
+  if (moved) addNewTile(currentBoard)
+  return currentBoard;
+}
