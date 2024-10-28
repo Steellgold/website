@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { getTileColor } from "@/lib/2048.utlils";
 import { ClientOnly } from "../client-only";
 import useTouchScreenSwipe from "@/lib/hooks/use-touch-screen-wipe";
+import { E2048_Tile } from "./tile";
 
 const CaseSizeStyle = cn(
   "w-14 h-14",
@@ -93,22 +94,13 @@ export const E2048_Board = (): ReactElement => {
         </>
       )}>
         {board.map((tile, index) => (
-          <div
+          <E2048_Tile
             key={index}
-            className={
-              cn(
-                CaseSizeStyle,
-                "flex items-center justify-center text-2xl font-bold rounded-sm transition-all duration-100",
-                getTileColor(tile), {
-                  "opacity-20": hoveredTileValue !== null && tile !== hoveredTileValue
-                }
-              )
-            }
+            isHovered={hoveredTileValue !== null && tile !== hoveredTileValue}
+            number={tile}
             onMouseEnter={() => handleMouseEnterTile(tile)}
             onMouseLeave={handleMouseLeaveTile}
-          >
-            <span className={cn("text-3xl font-bold", { "hidden": tile === 0 })}>{tile}</span>
-          </div>
+          />
         ))}
       </ClientOnly>
     </div>

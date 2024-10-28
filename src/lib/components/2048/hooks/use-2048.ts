@@ -15,6 +15,7 @@ type GameState = {
   gameOver: boolean;
   
   history: GameHistory[];
+  tiles: Record<number, number>;
   
   initializeBoard: (size?: number, force?: boolean) => void;
   handleMove: (direction: "up" | "down" | "left" | "right") => void;
@@ -38,6 +39,7 @@ const initialBoard = (size: number) => {
 const addNewTile = (board: number[], count: number = 1, direction?: "up" | "down" | "left" | "right") => {
   const gridSize = Math.sqrt(board.length);
   const possiblePositions = [];
+  const { tiles } = use2048.getState();
 
   if (!direction) {
     possiblePositions.push(...[...Array(gridSize)].map((_, i) => i)); // T
@@ -66,16 +68,22 @@ const addNewTile = (board: number[], count: number = 1, direction?: "up" | "down
   for (let i = 0; i < count; i++) {
     if (emptyTiles.length > 0) {
       const randomIndex = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
-      board[randomIndex] = Math.random() < 0.9 ? 2 : 4;
+      const newValue = Math.random() < 0.9 ? 2 : 4;
+      board[randomIndex] = newValue;
+
+      tiles[newValue] = (tiles[newValue] || 0) + 1;
       emptyTiles.splice(emptyTiles.indexOf(randomIndex), 1);
     }
   }
+
+  use2048.setState({ tiles });
 };
 
 const moveBoard = (board: number[], direction: "up" | "down" | "left" | "right"): number[] => {
   const size = Math.sqrt(board.length);
   let score = 0;
   let newBoard = [...board];
+  const { tiles } = use2048.getState();
 
   const move = (index: number) => {
     let currentIndex = index;
@@ -89,9 +97,12 @@ const moveBoard = (board: number[], direction: "up" | "down" | "left" | "right")
       currentIndex = targetIndex;
     }
     if (targetIndex % size > 0 && newBoard[targetIndex - 1] === newBoard[targetIndex]) {
-      newBoard[targetIndex - 1] *= 2;
-      score += newBoard[targetIndex - 1];
+      const newValue = newBoard[targetIndex - 1] * 2;
+      newBoard[targetIndex - 1] = newValue;
+      score += newValue;
       newBoard[targetIndex] = 0;
+
+      tiles[newValue] = (tiles[newValue] || 0) + 1;
     }
   };
 
@@ -161,7 +172,7 @@ const moveBoard = (board: number[], direction: "up" | "down" | "left" | "right")
     }
   }
 
-
+  use2048.setState({ tiles });
   addNewTile(newBoard, 1, direction);
   return newBoard;
 };
@@ -176,6 +187,7 @@ export const use2048 = create<GameState>()(
       gameOver: false,
       startedTime: null,
       history: [],
+      tiles: {},
 
       initializeBoard: (size = 4, force = false) => {
         if (force || get().board.every(tile => tile === 0)) {
@@ -190,7 +202,7 @@ export const use2048 = create<GameState>()(
       },
 
       handleMove: (direction: "up" | "down" | "left" | "right") => {
-        const { board, gridSize } = get();
+        const { board } = get();
 
         let newBoard: number[] = [...board];
         newBoard = moveBoard(
@@ -203,26 +215,24 @@ export const use2048 = create<GameState>()(
           board: newBoard,
           score: newScore,
           bestScore: Math.max(newScore, state.bestScore),
+          gameOver: !canMove(newBoard),
         }));
       },
 
       resetGame: () => {
         const { board, score, startedTime } = get();
         const endDate = dayJS();
-        const tilesCount = board.reduce((acc: Record<number, number>, tile) => {
-          if (tile) acc[tile] = (acc[tile] || 0) + 1;
-          return acc;
-        }, {});
         
         set((state) => ({
           history: [
             ...state.history,
-            { tiles: tilesCount, finalScore: score, startDate: startedTime || dayJS(), endDate },
+            { finalScore: score, startDate: startedTime || dayJS(), endDate, tiles: state.tiles },
           ],
           board: initialBoard(state.gridSize),
           score: 0,
           gameOver: false,
           startedTime: dayJS(),
+          tiles: {},
         }));
       },
 

@@ -14,7 +14,7 @@ const ScoreCaseStyle = cn(
 );
 
 export const E2048_StatsCard = (): ReactElement => {
-  const { bestScore, score, startedTime } = use2048();
+  const { bestScore, score, startedTime, gameOver } = use2048();
   const { lang } = useLang();
   
   const [seconds, setSeconds] = useState(0);
@@ -55,8 +55,17 @@ export const E2048_StatsCard = (): ReactElement => {
         </div>
       </div>
 
-      <div className="text-xs opacity-50 bg-[#e4e0d1]/50 dark:bg-gray-800/50 p-1 rounded-full px-4">
-        {lang === "en" ? "Game started for" : "Partie commencée il y a"} {days > 0 ? `${days}d ` : ""}{hours > 0 ? `${hours}h ` : ""}{minutes > 0 ? `${minutes}m ` : ""}{seconds}s
+      <div className="transition-all duration-100">
+        {!gameOver ? (
+          <div className="text-xs bg-[#e4e0d1]/50 dark:bg-gray-800/50 p-1 rounded-full px-4">
+            {lang === "en" ? "Game started for" : "Partie commencée il y a"}&nbsp;
+            {days > 0 ? `${days}d ` : ""}{hours > 0 ? `${hours}h ` : ""}{minutes > 0 ? `${minutes}m ` : ""}{seconds}s
+          </div>
+        ) : (
+          <div className="text-xs bg-[#ec988f]/50 dark:bg-red-500/50 p-1 rounded-full px-4">
+            {lang === "en" ? "Game Over" : "Partie terminée"}
+          </div>
+        )}
       </div>
     </div>
   );
