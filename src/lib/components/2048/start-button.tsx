@@ -12,7 +12,7 @@ type Status = "gameOver" | "started" | "notStarted";
 export const E2048_StartButton = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { gameOver, board, initializeBoard } = use2048();
+  const { gameOver, board, initializeBoard, resetGame } = use2048();
   const { lang } = useLang();
 
   const status: Status = gameOver ? "gameOver" : board.some((tile) => tile !== 0) ? "started" : "notStarted";
@@ -71,7 +71,7 @@ export const E2048_StartButton = (): ReactElement => {
           </Button>
 
           <Button onClick={() => {
-            initializeBoard(4, true);
+            resetGame("restart");
             setIsOpen(false);
           }}>
             <Grid3X3 className="w-4 h-4 mr-2" />

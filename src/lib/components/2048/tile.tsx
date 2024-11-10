@@ -18,7 +18,7 @@ export const E2048_Tile: Component<E2048_TileProps> = ({
   return (
     <div
       className={
-        cn("flex items-center justify-center text-2xl font-bold rounded-sm transition-all duration-100",
+        cn("flex items-center justify-center text-2xl font-bold rounded-sm transition-all duration-100 select-none",
           getTileColor(number), {
             "opacity-20": isHovered,
             "w-14 h-14": !isInfo,
@@ -31,9 +31,10 @@ export const E2048_Tile: Component<E2048_TileProps> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <span className={cn("text-3xl font-bold", {
-        "hidden": number === 0,
-        "text-sm": isInfo
+      <span className={cn(
+        "text-3xl font-bold", {
+          "hidden": number === 0,
+          "text-sm": isInfo
         })}
       >
           {number}

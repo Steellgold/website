@@ -14,7 +14,7 @@ import { Book, BookX, Undo } from "lucide-react";
 import { useState } from "react";
 
 const Page = () => {
-  const { gameOver, resetGame } = use2048();
+  const { gameOver, resetGame, undoMove, undosAvailable } = use2048();
   const [showGameInfo, setShowGameInfo] = useState(false);
 
   return (
@@ -58,7 +58,7 @@ const Page = () => {
             {showGameInfo ? <BookX size={24} /> : <Book size={24} />}
           </Button>
 
-          <Button size={"icon"} className="p-2" disabled>
+          <Button size={"icon"} className="p-2" disabled={undosAvailable === 0} onClick={undoMove}>
             <Undo />
           </Button>
         </div>
