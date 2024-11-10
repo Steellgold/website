@@ -24,7 +24,7 @@ export const Content2048Page = () => {
   if (board.length == 0) return <HP2048 />;
 
   return (   
-    <div className="flex min-h-screen bg-[#faf8f0] dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="overflow-y-hidden flex min-h-screen bg-[#faf8f0] dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <E2048_TopButtons />
       <E2048_StatsCard />
 
@@ -33,7 +33,7 @@ export const Content2048Page = () => {
           {gameOver && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/50 dark:bg-black/50 z-10">
               <h1 className="text-4xl font-bold">Game Over</h1>
-              <Button onClick={() => resetGame()}>Try Again</Button>
+              <Button onClick={() => resetGame("gameOver")}>Try Again</Button>
             </div>
           )}
           <div className={cn(
