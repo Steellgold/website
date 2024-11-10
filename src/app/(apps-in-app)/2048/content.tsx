@@ -21,6 +21,7 @@ export const Content2048Page = () => {
   const [showGameInfo, setShowGameInfo] = useState(false);
   const { lang } = useLang();
 
+  // THis is the wrost way to do this, but j'ai la flemme ok?
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
