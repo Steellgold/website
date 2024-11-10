@@ -3,6 +3,7 @@
 import { E2048_Board } from "@/lib/components/2048/board";
 import { E2048_GameInfo } from "@/lib/components/2048/game-info";
 import { E2048_History } from "@/lib/components/2048/history";
+import { use2048 } from "@/lib/components/2048/hooks/use-2048";
 import { E2048_StartButton } from "@/lib/components/2048/start-button";
 import { E2048_StatsCard } from "@/lib/components/2048/stat-card";
 import { E2048_TopButtons } from "@/lib/components/2048/top-buttons";
@@ -13,6 +14,7 @@ import { Book, BookX, Undo } from "lucide-react";
 import { useState } from "react";
 
 const Page = () => {
+  const { gameOver, resetGame } = use2048();
   const [showGameInfo, setShowGameInfo] = useState(false);
 
   return (
@@ -20,11 +22,17 @@ const Page = () => {
       <E2048_TopButtons />
       <E2048_StatsCard />
 
-      <div className="flex-grow flex flex-col items-center justify-center -mt-12 sm:-mt-24 md:-mt-36">
+      <div className={cn("flex-grow flex flex-col items-center justify-center -mt-12 sm:-mt-24 md:-mt-36")}>
         <div className="relative flex flex-row gap-2">
+          {gameOver && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/50 dark:bg-black/50 z-10">
+              <h1 className="text-4xl font-bold">Game Over</h1>
+              <Button onClick={() => resetGame()}>Try Again</Button>
+            </div>
+          )}
           <div className={cn(
             "p-3 rounded-lg bg-[#e4e0d1] dark:bg-gray-800 shadow-lg select-none transition-colors duration-100", {
-              // "border-2 border-[#000001]/30 dark:border-gray-600": gameHovered,
+              "opacity-30": gameOver
             }
           )}>
             <E2048_Board />
@@ -43,9 +51,9 @@ const Page = () => {
           <E2048_StartButton />
 
           <Separator orientation="vertical" className="bg-white/10 h-8" />
-            
+
           <E2048_History />
-          
+
           <Button size={"icon"} className="p-2" onClick={() => setShowGameInfo(!showGameInfo)}>
             {showGameInfo ? <BookX size={24} /> : <Book size={24} />}
           </Button>
