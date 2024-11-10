@@ -11,7 +11,7 @@ import { Button } from "@/lib/components/ui/button";
 import { Separator } from "@/lib/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { Book, BookX, Undo } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HP2048 } from "./hp";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
 import { useLang } from "@/lib/stores/lang.store";
@@ -21,10 +21,17 @@ export const Content2048Page = () => {
   const [showGameInfo, setShowGameInfo] = useState(false);
   const { lang } = useLang();
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   if (board.length == 0) return <HP2048 />;
 
   return (   
-    <div className="overflow-y-hidden flex min-h-screen bg-[#faf8f0] dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="flex min-h-screen bg-[#faf8f0] dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <E2048_TopButtons />
       <E2048_StatsCard />
 
