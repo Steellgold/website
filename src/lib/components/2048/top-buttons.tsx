@@ -26,7 +26,7 @@ export const E2048_TopButtons = (): ReactElement => {
         <Link href={"/"} className="flex items-center gap-1">
           <ArrowLeft className="h-4 w-4" />
           <span className="hidden sm:block">
-            {lang === "en" ? "Back to portfolio" : "Retour au portfolio"}
+            {lang === "en" ? "Back" : "Retour"}
           </span>
         </Link>
       </Button>
