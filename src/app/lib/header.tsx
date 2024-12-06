@@ -99,7 +99,7 @@ export const Header = (): ReactElement => {
           height={128}
         />
 
-        <div className="flex flex-col justify-center ml-auto bg-[#f8f8f8] border dark:border-0 sm:dark:bg-[#161616] sm:rounded-lg sm:dark:shadow-lg sm:overflow-hidden">
+        <div className="flex flex-col justify-center ml-auto bg-[#f8f8f8] border dark:border-0 dark:bg-[#161616] sm:rounded-lg dark:shadow-lg sm:overflow-hidden">
           <ul className="flex flex-row justify-end dark:text-white gap-2 p-2">
             <div className="flex gap-2">
               <TooltipProvider delayDuration={100}>
