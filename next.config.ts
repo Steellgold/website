@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
       { hostname: "pbs.twimg.com", protocol: "https" },
       { hostname: "upload.wikimedia.org", protocol: "https" },
       { hostname: "api.dicebear.com", protocol: "https" },
+      { hostname: "cdns3.royaleapi.com", protocol: "https" },
+      { hostname: "cdn.royaleapi.com", protocol: "https" },
+      { hostname: "api-assets.clashroyale.com" },
     ]
   }
 };

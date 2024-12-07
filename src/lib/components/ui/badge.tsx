@@ -18,6 +18,8 @@ const badgeVariants = cva(
 
         success: "border-[#2e8b57] text-[#2e8b57] bg-transparent",
         fail: "border-[#8b2e2e] text-[#8b2e2e] bg-transparent",
+
+        clasbroyal: "border-transparent bg-blue-500 text-white shadow",
       },
     },
     defaultVariants: {

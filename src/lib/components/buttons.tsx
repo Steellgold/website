@@ -5,7 +5,7 @@ import { useLang } from "../stores/lang.store";
 import { useViewMode } from "../stores/mode.store";
 import { Button, buttonVariants } from "./ui/button";
 import { FaSpotify } from "react-icons/fa";
-import { ArrowRight, ArrowUpRight, Grid3X3 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Crown, Grid3X3 } from "lucide-react";
 import { ThemeSwitcher } from "./theme-switcher";
 import { Separator } from "./ui/separator";
 
@@ -17,6 +17,11 @@ export const Buttons = () => {
     <Link className={buttonVariants({ variant: "outline", size: "sm", className: "flex items-center gap-1.5" })} href="/spotiview">
       <FaSpotify className="text-green-500" size={16} />
       <span className="hidden sm:block">Spotiview</span>
+    </Link>
+
+    <Link className={buttonVariants({ variant: "outline", size: "sm", className: "flex items-center gap-1.5" })} href="/clashroyal">
+      <Crown className="text-blue-500" size={16} />
+      <span className="hidden sm:block">Clash Royal</span>
     </Link>
 
     <Link className={buttonVariants({ variant: "outline", size: "sm", className: "flex items-center gap-1.5" })} href="/2048">
