@@ -19,11 +19,6 @@ export const Buttons = () => {
       <span className="hidden sm:block">Spotiview</span>
     </Link>
 
-    <Link className={buttonVariants({ variant: "outline", size: "sm", className: "flex items-center gap-1.5" })} href="/clashroyal">
-      <Crown className="text-blue-500" size={16} />
-      <span className="hidden sm:block">Clash Royal</span>
-    </Link>
-
     <Link className={buttonVariants({ variant: "outline", size: "sm", className: "flex items-center gap-1.5" })} href="/2048">
       <Grid3X3 className="text-yellow-500" size={16} />
       <span className="hidden sm:block">2048</span>
