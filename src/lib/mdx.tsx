@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Separator } from "./components/ui/separator";
+import { ImageZoom } from "./components/ui/image-zoom";
 
 export const MarkdownPlease: Component<{ content: string }> = ({ content }) => (
   <ReactMarkdown
@@ -21,7 +22,18 @@ export const MarkdownPlease: Component<{ content: string }> = ({ content }) => (
       a: ({node, ...props}) => <a className="text-[#3182ce] hover:underline" {...props} />,
       blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary pl-4 italic my-4" {...props} />,
       // eslint-disable-next-line @next/next/no-img-element
-      img: ({node, ...props}) => <img className="rounded-lg" {...props} alt="illustration image" />,
+      // img: ({node, ...props}) => <div className="flex flex-row justify-center">
+      //   <img className="rounded-lg" {...props} alt="illustration image" />
+      // </div>,
+      img: ({node, ...props}) => (
+        <ImageZoom
+          alt="illustration image"
+          src={props.src}
+          width={900}
+          height={500}
+          className="rounded-lg"
+        />
+      ),
       i: ({node, ...props}) => <i className="italic" {...props} />,
       b: ({node, ...props}) => <b className="font-bold" {...props} />,
       strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
