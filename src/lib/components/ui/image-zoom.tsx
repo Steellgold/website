@@ -32,6 +32,7 @@ export function ImageZoom({ src, alt, width, height, className }: ImageZoomProps
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            // @ts-ignore className does not exist ??
             className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
             onClick={toggleZoom}
           >
@@ -39,6 +40,7 @@ export function ImageZoom({ src, alt, width, height, className }: ImageZoomProps
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
+              // @ts-ignore className does not exist ??
               className="relative max-h-full max-w-full overflow-auto"
               onClick={(e: { stopPropagation: () => any }) => e.stopPropagation()}
             >
