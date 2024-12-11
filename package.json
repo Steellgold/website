@@ -36,6 +36,7 @@
     "@vercel/functions": "^1.4.2",
     "@vercel/postgres": "^0.8.0",
     "ai": "^3.4.9",
+    "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "1.0.0",

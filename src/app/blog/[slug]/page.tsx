@@ -8,6 +8,7 @@ import Image from "next/image";
 import { Separator } from "@/lib/components/ui/separator";
 import { MarkdownPlease } from "@/lib/mdx";
 import { BackToBlogButton } from "../_components/back-blog";
+import { ConfettiReadComponent } from "../_components/confetti-readed";
 
 type PageProps = {
   params: Promise<{
@@ -102,6 +103,8 @@ const Post: AsyncComponent<PageProps> = async props => {
         //   createdAt: dayJS(schema.data.createdAt).format("DD MMM YYYY")
         // }}
       />
+
+      <ConfettiReadComponent />
 
       <article className="max-w-4xl mx-auto px-4 py-8">
         <Image
