@@ -96,10 +96,11 @@ const Post: AsyncComponent<PageProps> = async props => {
   return (
     <>
       <BackToBlogButton
-        data={{
-          title: schema.data.title,
-          createdAt: dayJS(schema.data.createdAt).format("DD MMM YYYY")
-        }}
+        onlyButton
+        // data={{
+        //   title: schema.data.title,
+        //   createdAt: dayJS(schema.data.createdAt).format("DD MMM YYYY")
+        // }}
       />
 
       <article className="max-w-4xl mx-auto px-4 py-8">
