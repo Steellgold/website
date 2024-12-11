@@ -2,8 +2,9 @@ import { PostSchema } from "@/lib/types/post.type";
 import { NextResponse } from "next/server";
 
 export const GET = async(): Promise<NextResponse> => {
+  const org = process.env.SIMPLIST_ORG_ID;
   try {
-    const response = await fetch("https://simplist.blog/api/clvb16vqu0000syvk0rfb7pjx/last", {
+    const response = await fetch(`https://simplist.blog/api/${org}/last`, {
       headers: {
         "x-api-key": process.env.SIMPLIST_API_KEY || ""
       } as HeadersInit,

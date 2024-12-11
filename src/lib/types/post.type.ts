@@ -16,3 +16,5 @@ export const PostSchema = z.object({
     value: z.string(),
   })).optional(),
 });
+
+export const PostsSchema = z.array(PostSchema);
