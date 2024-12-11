@@ -11,6 +11,9 @@ const languageNames: {
 } = {
   ts: "TypeScript",
   js: "JavaScript",
+  tsx: "TypeScript React",
+  jsx: "JavaScript React",
+  prisma: "Prisma",
   py: "Python",
   html: "HTML",
   css: "CSS",
