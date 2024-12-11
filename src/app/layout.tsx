@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Nunito } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Component } from "@/lib/components/utils/component";
 import { PropsWithChildren } from "react";
 import { ThemeProvider } from "@/lib/components/providers/theme-provider";
 import { Toaster } from "sonner";
 
-const nunito = Nunito({ subsets: ["latin"] });
+const monterserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Gaëtan | Full-stack Developer",
@@ -48,7 +48,7 @@ export const viewport: Viewport = {
 const Layout: Component<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={`rounded-lg ${nunito.className} antialiased`}>
+      <body className={`rounded-lg ${monterserrat.className} antialiased`}>
         {process.env.NEXT_PUBLIC_ENV !== "dev" && (
           <script defer src="https://supalytics.co/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
         )}
