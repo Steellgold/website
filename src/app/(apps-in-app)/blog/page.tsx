@@ -3,10 +3,11 @@ import { ReactElement } from "react";
 import { Card } from "@/lib/components/ui/card";
 import { BlogHeaderComponent } from "./_components/header";
 import { BlogPostCard } from "@/lib/components/blog.card";
+import { cn } from "@/lib/utils";
+import { z } from "zod";
 
 const Posts = async (): Promise<ReactElement> => {
   const org = process.env.SIMPLIST_ORG_ID;
-  const randomString = Math.random().toString(36).substring(7);
   const response = await fetch(`https://simplist.blog/api/${org}/posts`, {
     headers: {
       "x-api-key": process.env.SIMPLIST_API_KEY!,
