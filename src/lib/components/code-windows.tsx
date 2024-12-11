@@ -33,7 +33,7 @@ type CodeWindowProps = {
 
 export const CodeWindow: Component<CodeWindowProps> = ({ language, textCode, children }): ReactElement => {
   const name = languageNames[language] || language;
-  const [_, copy] = useCopyToClipboard();
+  const [copiedText, copy] = useCopyToClipboard();
 
   return (
     <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-black/70 my-4 hover:border-black/50 hover:dark:border-gray-300/15 transition-all duration-200">
@@ -45,19 +45,29 @@ export const CodeWindow: Component<CodeWindowProps> = ({ language, textCode, chi
           </span>
         </div>
 
-        <Clipboard
-          onClick={() => {
-            toast("Copied to clipboard", {
-              icon: <ClipboardCheck className="w-5 h-5" />,
-              duration: 2000,
-            });
+        {copiedText ? (
+          <ClipboardCheck className="w-5 h-5 ml-2 text-gray-500 dark:text-gray-400" />
+        ) : (
+          <Clipboard
+            onClick={() => {
+              toast("Copied to clipboard", {
+                icon: <ClipboardCheck className="w-5 h-5" />,
+                duration: 2000,
+              });
 
-            copy(textCode);
-          }}
-          className="w-5 h-5 ml-2 text-gray-500 dark:text-gray-400 cursor-pointer"
-        />
+              copy(textCode);
+
+              setTimeout(() => {
+                copy("");
+              }, 2000);
+            }}
+            className="w-5 h-5 ml-2 text-gray-500 dark:text-gray-400 cursor-pointer"
+          />
+        )}
       </div>
-      <div className="p-4 bg-white dark:bg-black/25">{children}</div>
+      <div className="p-4 bg-white dark:bg-black/25 selection:bg-gray-100 dark:selection:bg-blue-400/20">
+        {children}
+      </div>
     </div>
   )
 }
