@@ -4,6 +4,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Separator } from "./components/ui/separator";
 import { ImageZoom } from "./components/ui/image-zoom";
+import { CodeWindow } from "./components/code-windows";
 
 export const MarkdownPlease: Component<{ content: string }> = ({ content }) => (
   <ReactMarkdown
@@ -22,9 +23,6 @@ export const MarkdownPlease: Component<{ content: string }> = ({ content }) => (
       a: ({node, ...props}) => <a className="text-[#3182ce] hover:underline" {...props} />,
       blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary pl-4 italic my-4" {...props} />,
       // eslint-disable-next-line @next/next/no-img-element
-      // img: ({node, ...props}) => <div className="flex flex-row justify-center">
-      //   <img className="rounded-lg" {...props} alt="illustration image" />
-      // </div>,
       img: ({node, ...props}) => (
         <ImageZoom
           alt="illustration image"
@@ -42,16 +40,24 @@ export const MarkdownPlease: Component<{ content: string }> = ({ content }) => (
       code({node, inline, className, children, ...props}) {
         const match = /language-(\w+)/.exec(className || '')
         return !inline && match ? (
-          <SyntaxHighlighter
-            // @ts-ignore
-            style={atomDark}
-            language={match[1]}
-            PreTag="div"
-            className="rounded-md my-4"
-            {...props}
-          >
-            {String(children).replace(/\n$/, '')}
-          </SyntaxHighlighter>
+          <CodeWindow language={match[1]} textCode={String(children).replace(/\n$/, '')}>
+            <SyntaxHighlighter
+              style={{
+                ...atomDark,
+                'pre[class*="language-"]': {
+                  ...atomDark['pre[class*="language-"]'],
+                  background: 'transparent',
+                  padding: '0',
+                  margin: '0',
+                },
+              }}
+              language={match[1]}
+              PreTag="div"
+              {...props}
+            >
+              {String(children).replace(/\n$/, '')}
+            </SyntaxHighlighter>
+          </CodeWindow>
         ) : (
           <code className="bg-muted text-muted-foreground px-1 py-0.5 rounded" {...props}>
             {children}
