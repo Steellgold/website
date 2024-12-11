@@ -50,7 +50,7 @@ const Layout: Component<PropsWithChildren> = ({ children }) => {
     <html lang="en">
       <body className={`rounded-lg ${monterserrat.className} antialiased`}>
         {process.env.NEXT_PUBLIC_ENV !== "dev" && (
-          <script defer src="https://supalytics.co/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
+          <script defer src="https://www.woyage.app/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
         )}
         
         <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
