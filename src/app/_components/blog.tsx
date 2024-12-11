@@ -45,7 +45,7 @@ export const Blog = (): ReactElement => {
           <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
 
           <p className="text-center text-white text-sm">
-            You can go to the articles page to see the other articles I&apos;ve published so far. <a href="/blog" className="text-blue-500">Go to the articles page</a>
+            You can go to the articles page to see the other articles I&apos;ve published so far. <Link href="/blog" className="text-blue-500">Go to the articles page</Link>
           </p>
 
           <Card className={cn(
