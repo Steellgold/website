@@ -1,10 +1,10 @@
 "use client";
 
-import { ReactElement, useEffect, useState } from "react";
-import { Header } from "./lib/header";
-import { Projects } from "./lib/projects";
+import { ReactElement } from "react";
+import { Header } from "./_components/header";
+import { Projects } from "./_components/projects";
 import { Birthday } from "@/lib/components/birthday";
-import { Blog } from "./lib/blog";
+import { Blog } from "./_components/blog";
 import { SpotifyCard } from "@/lib/components/spotify";
 import { DiscordPresence } from "@/lib/components/lanyard";
 import { cn } from "@/lib/utils";
@@ -12,7 +12,7 @@ import { MadeWith } from "@/lib/components/maded";
 import { Buttons } from "@/lib/components/buttons";
 import { useViewMode } from "@/lib/stores/mode.store";
 import { AIChatBubble } from "@/lib/components/chat-buble";
-import { Cats } from "./lib/cats";
+import { Cats } from "./_components/cats";
 import { Button } from "@/lib/components/ui/button";
 import { useLang } from "@/lib/stores/lang.store";
 import { ThemeSwitcher } from "@/lib/components/theme-switcher";
