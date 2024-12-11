@@ -20,6 +20,7 @@ SPOTIFY_CLIENT_ID=<Your Spotify Client ID>
 SPOTIFY_CLIENT_SECRET=<Your Spotify Client Secret>
 SPOTIFY_REFRESH_TOKEN=<Your Spotify Refresh Token>
 SIMPLIST_API_KEY=<Your Simplist API Key>
+SIMPLIST_ORG_ID=<Your Simplist Org ID>
 OPENAI_API_KEY=<Your OpenAI API Key>
 UPSTASH_REDIS_REST_TOKEN=<Your Upstash Redis Token>
 SECRET_PLUNK_API_KEY=<Your Plunk API Key>
