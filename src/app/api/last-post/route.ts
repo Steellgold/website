@@ -10,7 +10,7 @@ export const GET = async(): Promise<NextResponse> => {
       } as HeadersInit,
       cache: "no-cache"
     });
-
+    
     const schema = PostSchema.safeParse(await response.json());
     if (!schema.success) {
       return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
