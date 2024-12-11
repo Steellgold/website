@@ -68,6 +68,25 @@ export const CodeWindow: Component<CodeWindowProps> = ({ language, textCode, chi
       <div className="p-4 bg-white dark:bg-black/25 selection:bg-gray-100 dark:selection:bg-blue-400/20">
         {children}
       </div>
+
+      {/* TODO, maybe set as default on the global app? */}
+      <style jsx>
+        {`
+          ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;  
+          }
+
+          ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background: #0f0f0f;
+            border-radius: 10px;
+          }
+        `}
+      </style>
     </div>
   )
 }
