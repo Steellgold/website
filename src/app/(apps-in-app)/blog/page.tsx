@@ -1,18 +1,13 @@
-import { Metadata } from "next";
 import { PostSchema, PostsSchema } from "@/lib/types/post.type";
 import { ReactElement } from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/components/ui/card";
+import { Card } from "@/lib/components/ui/card";
 import { BlogHeaderComponent } from "./_components/header";
-import Link from "next/link";
-import Image from "next/image";
-import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { BlogPostCard } from "@/lib/components/blog.card";
-import { z } from "zod";
-import { cn } from "@/lib/utils";
 
 const Posts = async (): Promise<ReactElement> => {
+  const org = process.env.SIMPLIST_ORG_ID;
   const randomString = Math.random().toString(36).substring(7);
-  const response = await fetch(`https://simplist.blog/api/cm4ifsrhz000023hyrozb7778/posts`, {
+  const response = await fetch(`https://simplist.blog/api/${org}/posts`, {
     headers: {
       "x-api-key": process.env.SIMPLIST_API_KEY!,
       "Cache-Control": "no-cache"
