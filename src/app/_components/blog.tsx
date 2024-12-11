@@ -44,6 +44,10 @@ export const Blog = (): ReactElement => {
         <>
           <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
 
+          <p className="text-center text-white text-sm">
+            You can go to the articles page to see the other articles I've published so far. <a href="/blog" className="text-blue-500">Go to the articles page</a>
+          </p>
+
           <Card className={cn(
             "bg-[#161616] border-[2px] border-[#1a1a1a]",
             "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]"
@@ -65,6 +69,10 @@ export const Blog = (): ReactElement => {
   return (
     <>
       <Separator className="my-7 bg-[#cacaca] dark:bg-[#1a1a1a] w-[90%] mx-auto" />
+
+      <p className="mb-5 text-[#333] dark:text-[#f0f0f0]">
+        Here is the latest article I published on my blog. You can see the others by <Link href="/blog" className="text-blue-500 hover:underline">clicking here</Link>.
+      </p>
 
       <Link href={`/blog/${data.slug}`} passHref>
         <Card style={{ boxShadow: theme == "dark" ? "inset 1px -1px 10.7px 0px #242424" : "" }}>

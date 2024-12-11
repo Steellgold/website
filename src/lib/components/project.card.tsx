@@ -35,27 +35,28 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
                   {duration.start.format("DD MMM YYYY")} → {duration.end ? duration.end.format("DD MMM YYYY") : "Today"}
                 </CardDescription>
               </div>
-              
-              {type === "pro" && <span className="text-[#181b20] bg-[#f5f1de] px-2 py-1 rounded-md text-xs">Pro</span>}
-              {type === "team" && <span className="text-[#181b20] bg-[#e1f5de] px-2 py-1 rounded-md text-xs">Team project</span>}
 
-              {isHighlighted && (
-                <>
-                  {highlightUrl ? (
-                    <Link href={highlightUrl} target="_blank" onClick={(e) => e.stopPropagation()} className="relative z-[100]">
-                      <span className="text-[#333] bg-[#f5f1de] px-2 py-1 rounded-md text-xs flex items-center gap-1">
+              <div className="flex flex-row gap-1">
+                {type === "pro" && <span className="text-[#181b20] bg-[#f5f1de] px-2 py-1 rounded-md text-xs">Pro</span>}
+                {type === "team" && <span className="text-[#181b20] bg-[#e1f5de] px-2 py-1 rounded-md text-xs">Team project</span>}
+
+                {isHighlighted && (
+                  <>
+                    {highlightUrl ? (
+                      <Link href={highlightUrl} target="_blank" onClick={(e) => e.stopPropagation()} className="relative z-[100]">
+                        <span className="text-[#333] bg-[#f5f1de] px-2 py-1 rounded-md text-xs flex items-center gap-1">
+                          {lang === "en" ? "Prized project 🏆" : "Projet primé 🏆"}
+                          <ExternalLink className="h-3" />
+                        </span>
+                      </Link>
+                    ) : (
+                      <span className="text-[#333] bg-[#f5f1de] px-2 py-1 rounded-md text-xs">
                         {lang === "en" ? "Prized project 🏆" : "Projet primé 🏆"}
-                        <ExternalLink className="h-3" />
                       </span>
-                    </Link>
-                  ) : (
-                    <span className="text-[#333] bg-[#f5f1de] px-2 py-1 rounded-md text-xs">
-                      {lang === "en" ? "Prized project 🏆" : "Projet primé 🏆"}
-                    </span>
-                  )}
-                </>
-              )}
-
+                    )}
+                  </>
+                )}
+              </div>
             </div>
 
             {viewMode == "cv" && cvDescription ?

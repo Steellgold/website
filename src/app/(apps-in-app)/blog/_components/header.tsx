@@ -2,8 +2,6 @@
 
 import { Button } from "@/lib/components/ui/button";
 import { useLang } from "@/lib/stores/lang.store";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
 import { ReactElement } from "react";
 import { BackToBlogButton } from "./back-blog";
 
@@ -14,6 +12,7 @@ export const BlogHeaderComponent = (): ReactElement => {
     <>
       <BackToBlogButton
         onlyButton
+        backHome={true}
       />
 
       <header className="text-center mt-10">

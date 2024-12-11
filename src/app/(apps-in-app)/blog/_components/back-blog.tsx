@@ -4,12 +4,11 @@ import { Button } from "@/lib/components/ui/button";
 import { useLang } from "@/lib/stores/lang.store";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { ReactElement } from "react";
-import { ScrollProgressBar } from "./post-scrollbar";
 import { Component } from "@/lib/components/utils/component";
 
 type BackToBlogButtonProps = {
   onlyButton?: boolean;
+  backHome?: boolean;
 
   data?: {
     title?: string;
@@ -17,7 +16,7 @@ type BackToBlogButtonProps = {
   }
 };
 
-const BackButton = (): ReactElement => {
+const BackButton: Component<{ backHome: boolean }> = ({ backHome }) => {
   const { lang } = useLang();
 
   return (
@@ -27,7 +26,11 @@ const BackButton = (): ReactElement => {
       variant={"outline"}
       className="shadow-lg transition-all absolute -right-0 top-0 m-3 z-[8888]"
     >
-      <Link href={"/blog"} className="flex items-center gap-1">
+      <Link
+        href={
+          backHome ? "/" : "/blog"
+        }
+        className="flex items-center gap-1">
         <ArrowLeft className="h-4 w-4" />
         <span className="hidden sm:block">
           {lang === "en" ? "Back" : "Retour"}
@@ -37,8 +40,8 @@ const BackButton = (): ReactElement => {
   );
 }
 
-export const BackToBlogButton: Component<BackToBlogButtonProps> = ({ onlyButton, data }) => {
-  if (onlyButton) return <BackButton />;
+export const BackToBlogButton: Component<BackToBlogButtonProps> = ({ onlyButton, backHome = false, data }) => {
+  if (onlyButton) return <BackButton backHome={backHome} />;
 
   return (
     <>
@@ -52,7 +55,7 @@ export const BackToBlogButton: Component<BackToBlogButtonProps> = ({ onlyButton,
           </div>
         )}
 
-        <BackButton />
+        <BackButton backHome={backHome} />
       </div>
 
       <div className="h-14" />
