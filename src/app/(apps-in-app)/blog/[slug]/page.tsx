@@ -7,6 +7,7 @@ import { CalendarIcon } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "@/lib/components/ui/separator";
 import { MarkdownPlease } from "@/lib/mdx";
+import { BackToBlogButton } from "../_components/back-blog";
 
 type PageProps = {
   params: Promise<{
@@ -93,29 +94,38 @@ const Post: AsyncComponent<PageProps> = async props => {
   if (schema.data.status === "DRAFT") return <></>;
 
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
-      <Image
-        src={data.banner}
-        alt="Image d'illustration de l'article"
-        width={800}
-        height={400}
-        className="rounded-lg mb-8"
+    <>
+      <BackToBlogButton
+        data={{
+          title: schema.data.title,
+          createdAt: dayJS(schema.data.createdAt).format("DD MMM YYYY")
+        }}
       />
 
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-center">{data.title}</h1>
-        <div className="flex items-center justify-center space-x-4">
-          <span className="flex items-center">
-            <CalendarIcon className="w-4 h-4 mr-2" />
-            {dayJS(data.createdAt).format("MMMM D, YYYY")}
-          </span>
-        </div>
-      </header>
+      <article className="max-w-4xl mx-auto px-4 py-8">
+        <Image
+          src={data.banner}
+          alt="Image d'illustration de l'article"
+          width={800}
+          height={400}
+          className="rounded-lg mb-8"
+        />
 
-      <div className="prose prose-invert prose-lg max-w-none">
-        <MarkdownPlease content={data.content} />
-      </div>
-    </article>
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-center">{data.title}</h1>
+          <div className="flex items-center justify-center space-x-4">
+            <span className="flex items-center">
+              <CalendarIcon className="w-4 h-4 mr-2" />
+              {dayJS(data.createdAt).format("MMMM D, YYYY")}
+            </span>
+          </div>
+        </header>
+
+        <div className="prose prose-invert prose-lg max-w-none">
+          <MarkdownPlease content={data.content} />
+        </div>
+      </article>
+    </>
   );
 }
 
