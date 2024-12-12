@@ -75,7 +75,8 @@ export const Blog = (): ReactElement => {
       </p>
 
       <Link href={`/blog/${data.slug}`} passHref>
-        <Card style={{ boxShadow: theme == "dark" ? "inset 1px -1px 10.7px 0px #242424" : "" }}>
+        {/* <Card style={{ boxShadow: theme == "dark" ? "inset 1px -1px 10.7px 0px #242424" : "" }}> */}
+        <Card>
           <CardHeader>
             <CardTitle className="dark:text-[#f0f0f0]">{data.title}</CardTitle>
             <CardDescription>{data.excerpt}</CardDescription>

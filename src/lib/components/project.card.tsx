@@ -21,9 +21,12 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
   return (
     <>
       {viewMode == "cv" && <div className="mt-2.5"></div>}
-      <Card className={cn(className, { "mt-4": viewMode == "cv" })} style={{ boxShadow: theme == "dark" ? "inset 1px -1px 10.7px 0px #242424" : "" }}>
+      <Card className={cn(...[
+        "transition-colors duration-300",
+        className
+      ], { "mt-4": viewMode == "cv" })}>
         <Link href={url ?? ""} passHref>
-          <CardHeader className="p-4">
+          <CardHeader className="p-5">
             <div className="flex justify-between items-center">
               <div className="flex flex-col">
                 <CardTitle className={cn("text-[#1f1f1f] dark:text-[#f0f0f0]", { "flex items-center": url !== "" })}>
@@ -64,7 +67,7 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
               : <CardDescription>{description[lang]}</CardDescription>}
           </CardHeader>
 
-          <CardFooter className="p-4">
+          <CardFooter className="p-5">
             <div className="flex flex-wrap gap-1">
               {stacks.map((stack) => (
                 <span key={stack.name} className="dark:text-[#f0f0f0] bg-[#f1f1f1] dark:bg-[#333] px-2 py-1 rounded-md text-xs">
