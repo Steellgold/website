@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { Button } from "@/lib/components/ui/button";
 import { Input } from "@/lib/components/ui/input";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/lib/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/lib/components/ui/dialog";
+import { confettiFireworks } from "@/lib/components/confetti";
 
 const GuessPage = () => {
   const [secret, setSecret] = useState<number>(0);
@@ -12,14 +13,15 @@ const GuessPage = () => {
 
   const [message, setMessage] = useState("");
   const [attempts, setAttempts] = useState<number>(0);
+  
   const [ended, setEnded] = useState(false);
 
   const [dialogOpen, setDialogOpen] = useState(false);
-
+  
   useEffect(() => {
     gameStart(100)
   }, [])
-
+  
   const gameStart = (max: number) => {
     setSecret(Math.floor(Math.random() * max) + 1)
     setValue("")
@@ -41,7 +43,8 @@ const GuessPage = () => {
 
     if (curr === secret) {
       setMessage(`Hooray! You guessed the number in ${attempts + 1} attempts.`)
-      setEnded(true)
+      setEnded(true);
+      confettiFireworks();
     } else if (curr < secret) {
       setMessage('Too low. Try a higher number.')
     } else {
