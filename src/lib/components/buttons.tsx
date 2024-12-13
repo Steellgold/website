@@ -5,7 +5,7 @@ import { useLang } from "../stores/lang.store";
 import { useViewMode } from "../stores/mode.store";
 import { Button } from "./ui/button";
 import { FaSpotify } from "react-icons/fa";
-import { ArrowRight, ArrowUpRight, Ellipsis, Files, FilesIcon, GraduationCap, Grid3X3 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Binary, Ellipsis, Files, FilesIcon, GraduationCap, Grid3X3 } from "lucide-react";
 import { ThemeSwitcher } from "./theme-switcher";
 import React, { ReactElement } from "react";
 
@@ -40,7 +40,14 @@ export const Buttons = (): ReactElement => {
               <span className="ml-2">2048</span>
             </Link>
           </DropdownMenuItem>
-          
+
+          <DropdownMenuItem asChild>
+            <Link href="/guess">
+              <Binary size={16} />
+              <span className="ml-2">Guess</span>
+            </Link>
+          </DropdownMenuItem>
+
           <DropdownMenuItem asChild>
             <Link href="/spotiview">
               <FaSpotify size={16} />
