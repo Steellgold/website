@@ -193,10 +193,10 @@ const GuessPage = () => {
 
             <CardFooter className="p-3 -mt-4 select-none">
               <span className="text-xs text-muted-foreground">
-                {round.start.format("DD MMM")}&nbsp;&bull;&nbsp;
-                {round.start.format("HH:mm:ss")}
+                {dayJS(round.start).format("DD MMM")}&nbsp;&bull;&nbsp;
+                {dayJS(round.start).format("HH:mm:ss")}
                 &nbsp;&rarr;&nbsp;
-                {round.end.format("HH:mm:ss")}
+                {dayJS(round.end).format("HH:mm:ss")}
               </span>
             </CardFooter>
           </Card>
