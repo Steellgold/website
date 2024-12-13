@@ -83,6 +83,7 @@ const GuessPage = () => {
       setMessage(`Hooray! You guessed the number in ${attempts + 1} attempts.`)
       setEnded(true);
       confettiFireworks();
+      setTested([]);
 
       addRound({
         secret,
