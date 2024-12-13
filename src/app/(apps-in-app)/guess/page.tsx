@@ -30,6 +30,8 @@ const GuessPage = () => {
   const [secret, setSecret] = useState<number>(0);
   const [value, setValue] = useState("");
 
+  const [tested, setTested] = useState<number[]>([]);
+
   const [started, setStarted] = useState<null | Dayjs>(null);
   
   const [elapsed, setElapsed] = useState<null | number>(null);
@@ -67,13 +69,15 @@ const GuessPage = () => {
   }
 
   const verifierSupposition = () => {
-    const curr = parseInt(value)
+    const curr = parseInt(value);
+
     if (isNaN(curr)) {
       setMessage('Please enter a valid number.')
       return
     }
 
-    setAttempts(attempts + 1)
+    setAttempts(attempts + 1);
+    setTested([...tested, curr])
 
     if (curr === secret) {
       setMessage(`Hooray! You guessed the number in ${attempts + 1} attempts.`)
@@ -132,17 +136,23 @@ const GuessPage = () => {
           </div>
         </CardContent>
         
-        <CardFooter className="flex justify-between -mt-3.5">
-          {elapsed && elapsed > 0 && secret !== 0 &&
-            <Badge variant="outline">
-              Elapsed time:
-              {elapsed > 60 && ` ${Math.floor(elapsed / 60)} min`}
-              {elapsed > 60 && elapsed % 60 !== 0 && ' '}
-              {elapsed % 60} sec
-            </Badge>
-          }
+        <CardFooter className="w-full flex flex-col -mt-3.5">
+          <div className="flex flex-row w-full  justify-between">
+            {elapsed && elapsed > 0 && secret !== 0 &&
+              <Badge variant="outline">
+                Elapsed time:&nbsp;
+                {elapsed > 60 && ` ${Math.floor(elapsed / 60)} min`}
+                {elapsed > 60 && elapsed % 60 !== 0 && ' '}
+                {elapsed % 60} sec
+              </Badge>
+            }
 
-          <Badge variant="outline">Attempts: {attempts}</Badge>
+            <Badge variant="outline">Attempts: {attempts}</Badge>
+          </div>
+
+          <div className="flex flex-row gap-1 justify-end w-full">
+            {tested.length > 0 && <Badge variant="outline">Tested: {tested.join(", ")}</Badge>}
+          </div>
         </CardFooter>
       </Card>
       
