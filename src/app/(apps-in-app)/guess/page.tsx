@@ -72,7 +72,7 @@ const GuessPage = () => {
               disabled={ended}
             />
             <p className="text-sm">{message}</p>
-            <p className="text-sm">Nombre de tentatives : {attempts}</p>
+            {!ended && <p className="text-sm">Attempts: {attempts}</p>}
           </div>
         </CardContent>
         <CardFooter className="flex justify-between">
