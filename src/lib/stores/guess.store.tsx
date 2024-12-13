@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 import { useEffect } from 'react';
+import { Dayjs } from 'dayjs';
+import { persist } from 'zustand/middleware';
 
 export type DifficultyLevel = "easy" | "medium" | "hard" | "god";
 
@@ -10,9 +12,12 @@ export const numMaxByDifficulty: Record<DifficultyLevel, number> = {
   god: 10000,
 };
 
-type GuessRound = {
+export type GuessRound = {
   secret: number;
   elapsed: number;
+  
+  start: Dayjs;
+  end: Dayjs;
 
   attempts: number;
   difficulty: DifficultyLevel;
@@ -28,32 +33,38 @@ type GuessStore = {
   played: (difficulty: DifficultyLevel) => number;
 };
 
-export const useGuess = create<GuessStore>((set, get) => ({
-  history: null,
-  addRound: (round) => set((state) => ({
-    history: state.history ? [...state.history, round] : [round],
-  })),
-  clearHistory: () => set({ history: null }),
-  
-  guessRate: (difficulty) => {
-    const rounds = get().history?.filter((round) => round.difficulty === difficulty);
-    if (!rounds) return null;
+export const useGuess = create<GuessStore>()(
+  persist(
+    (set, get) => ({
+      history: null,
+      addRound: (round: GuessRound) =>
+        set((state) => ({
+          history: state.history ? [...state.history, round] : [round],
+        })),
+      clearHistory: () => set({ history: null }),
 
-    const total = rounds.reduce((acc, round) => acc + round.attempts, 0);
-    const totalRounds = rounds.length;
+      guessRate: (difficulty: DifficultyLevel) => {
+        const rounds = get().history?.filter((round) => round.difficulty === difficulty);
+        if (!rounds) return null;
 
-    return total / totalRounds;
-  },
+        const total = rounds.reduce((acc, round) => acc + round.attempts, 0);
+        const totalRounds = rounds.length;
 
-  bestTime: (difficulty) => {
-    const rounds = get().history?.filter((round) => round.difficulty === difficulty);
-    if (!rounds) return null;
+        return total / totalRounds;
+      },
 
-    return rounds.reduce((acc, round) => Math.min(acc, round.elapsed), Infinity);
-  },
+      bestTime: (difficulty: DifficultyLevel) => {
+        const rounds = get().history?.filter((round) => round.difficulty === difficulty);
+        if (!rounds) return null;
 
-  played: (difficulty) => {
-    const rounds = get().history?.filter((round) => round.difficulty === difficulty);
-    return rounds ? rounds.length : 0;
-  },
-}));
+        return rounds.reduce((acc, round) => Math.min(acc, round.elapsed), Infinity);
+      },
+
+      played: (difficulty: DifficultyLevel) => {
+        const rounds = get().history?.filter((round) => round.difficulty === difficulty);
+        return rounds ? rounds.length : 0;
+      },
+    }),
+    { name: "guess-storage", getStorage: () => localStorage }
+  )
+);

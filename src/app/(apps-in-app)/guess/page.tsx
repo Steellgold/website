@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { Button } from "@/lib/components/ui/button";
 import { Input } from "@/lib/components/ui/input";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/lib/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/lib/components/ui/dialog";
 import { confettiFireworks } from "@/lib/components/confetti";
-import { DifficultyLevel, numMaxByDifficulty, useGuess } from "@/lib/stores/guess.store";
+import { DifficultyLevel, GuessRound, numMaxByDifficulty, useGuess } from "@/lib/stores/guess.store";
 import { Badge } from "@/lib/components/ui/badge";
 import { Flame, Joystick, Play, Timer } from "lucide-react";
+import { Separator } from "@/lib/components/ui/separator";
+import { Dayjs, dayJS } from "@/lib/utils/dayjs/day-js";
 
 type Difficulty = {
   name: DifficultyLevel;
@@ -27,6 +29,8 @@ const GuessPage = () => {
   const [difficulty, setDifficulty] = useState<DifficultyLevel>("easy");
   const [secret, setSecret] = useState<number>(0);
   const [value, setValue] = useState("");
+
+  const [started, setStarted] = useState<null | Dayjs>(null);
   
   const [elapsed, setElapsed] = useState<null | number>(null);
 
@@ -52,13 +56,14 @@ const GuessPage = () => {
   const gameStart = (max: DifficultyLevel) => {
     setDifficulty(max)
     setSecret(Math.floor(Math.random() * numMaxByDifficulty[max]) + 1)
-    console.log(secret, numMaxByDifficulty[max])
+
     setValue("")
-    setMessage('Try a number between 1 and ' + max + '.')
+    setMessage('Try a number between 1 and ' + numMaxByDifficulty[max] + '.')
     setAttempts(0);
     setEnded(false);
     setDialogOpen(false);
     setElapsed(0);
+    setStarted(dayJS());
   }
 
   const verifierSupposition = () => {
@@ -80,6 +85,8 @@ const GuessPage = () => {
         elapsed: elapsed || 0,
         attempts: attempts + 1,
         difficulty,
+        start: started ?? dayJS(),
+        end: dayJS(),
       })
     } else if (curr < secret) {
       setMessage('Too low. Try a higher number.')
@@ -90,101 +97,168 @@ const GuessPage = () => {
     setValue('')
   }
 
-  return (
+  return <>
     <div className="flex flex-col items-center justify-center h-full mt-4">
-      {elapsed && elapsed > 0 && <h1 className="text-md mb-4">Elapsed time: {elapsed} seconds</h1>}
-
       <Card className="w-[450px]">
         <CardHeader className="flex flex-row justify-between items-center">
           <div className="flex flex-col">
-            <CardTitle>Guessing the Number ({secret})</CardTitle>
-            <CardDescription>Guess the number between 1 and 100</CardDescription>
+            <CardTitle>Guessing the Number</CardTitle>
+            <CardDescription>
+              Let's play a game! Guess the number between 1 and {numMaxByDifficulty[difficulty] || 100}.
+            </CardDescription>
           </div>
 
           <Button onClick={() => setDialogOpen(true)} variant="outline">New game</Button>
         </CardHeader>
+
         <CardContent>
-          <div className="space-y-4">
-            <Input
-              type="number"
-              placeholder="Try a number"
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && verifierSupposition()}
-              disabled={ended || !secret}
-            />
-            <p className="text-sm">{message}</p>
-            {!ended && <p className="text-sm">Attempts: {attempts}</p>}
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-row gap-1">
+              <Input
+                type="number"
+                placeholder="Try a number"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && verifierSupposition()}
+                disabled={ended || !secret}
+              />
+
+              <Button onClick={verifierSupposition} disabled={ended || secret === 0}>Tester</Button>
+            </div>
+
+            {message && <p className="text-left">{message}</p>}
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button onClick={verifierSupposition} disabled={ended}>
-            Tester 
-          </Button>
+        
+        <CardFooter className="flex justify-between -mt-3.5">
+          {elapsed && elapsed > 0 && secret !== 0 &&
+            <Badge variant="outline">
+              Elapsed time:
+              {elapsed > 60 && ` ${Math.floor(elapsed / 60)} min`}
+              {elapsed > 60 && elapsed % 60 !== 0 && ' '}
+              {elapsed % 60} sec
+            </Badge>
+          }
 
-          <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <DialogContent className="w-[450px]"> {/* h-[290px] */}
-              <DialogHeader>
-                <DialogTitle>New game</DialogTitle>
-                <DialogDescription>Choose the range of numbers</DialogDescription>
-              </DialogHeader>
-
-              <div className="flex flex-col gap-1 mt-2">
-                {diffLevels.map((level) => {
-                  const playedCount = played(level.name)
-                  const best = bestTime(level.name)
-                  const rate = guessRate(level.name)
-
-                  return (
-                    <Card key={level.name} className="flex flex-row justify-between items-center p-1">
-                      <CardHeader className="flex flex-row justify-between items-center w-full p-3">
-                        <div className="flex flex-col">
-                          <CardTitle className="mb-0.5">
-                            {level.name.charAt(0).toUpperCase() + level.name.slice(1)}
-                            <span className="font-light ml-1">
-                              (1-{level.max})
-                            </span>
-                          </CardTitle>
-
-                          {playedCount > 0 ? (
-                            <CardDescription>
-                              <Badge variant={"outline"}>
-                                <Joystick className="w-3 h-3 mr-1" />
-                                {playedCount} played
-                              </Badge>
-
-                              {best &&
-                                <Badge variant={"outline"}>
-                                  <Timer className="w-3 h-3 mr-1" />
-                                  {best} seconds
-                                </Badge>
-                              }
-
-                              {rate &&
-                                <Badge variant={"outline"}>
-                                  <Flame className="w-3 h-3 mr-1" />
-                                  {rate.toFixed(2)} avg. attps
-                                </Badge>
-                              }
-                            </CardDescription>
-                          ) : (
-                            <CardDescription>Never played</CardDescription>
-                          )}
-                        </div>
-                        <Button onClick={() => gameStart(level.name)} variant="outline" size="icon">
-                          <Play className="w-4 h-4" />
-                        </Button>
-                      </CardHeader>
-                    </Card>
-                  )
-                })}
-              </div>
-            </DialogContent>
-          </Dialog>
+          <Badge variant="outline">Attempts: {attempts}</Badge>
         </CardFooter>
       </Card>
+      
+      <Separator className="my-4" />
+
+      <div className="flex flex-col gap-2">
+        <p className="text-left text-sm">
+          <span className="font-semibold">Game histories</span>
+          &nbsp;&bull;&nbsp;
+          {history && history.length > 0 ? `${history.length} rounds` : "No rounds played yet."}
+        </p>
+
+        {history && history.length > 0 && history.map((round: GuessRound, index: number) => (
+          <Card key={index} className="w-[450px]">
+            <CardHeader className="p-3">
+              <CardDescription className="flex flex-row justify-between -mb-1">
+                Secret number: {round.secret}
+
+                <div className="flex flex-row gap-1">
+                  <Badge variant="outline">
+                    <Flame className="w-3 h-3 mr-1" />
+                    {round.attempts} attempts
+                  </Badge>
+
+                  <Badge variant="outline">
+                    <Timer className="w-3 h-3 mr-1" />
+                    {elapsedTime(round.elapsed)}
+                  </Badge>
+
+                  <Badge variant="outline">
+                    <Joystick className="w-3 h-3 mr-1" />
+                    {round.difficulty.charAt(0).toUpperCase() + round.difficulty.slice(1)}
+                  </Badge>
+                </div>
+              </CardDescription> 
+            </CardHeader>
+
+            <CardFooter className="p-3 -mt-4 select-none">
+              <span className="text-xs text-muted-foreground">
+                {round.start.format("DD' MMMM")}&nbsp;&bull;&nbsp;
+                {round.start.format("HH:mm:ss")}
+                &nbsp;&rarr;&nbsp;
+                {round.end.format("HH:mm:ss")}
+              </span>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
     </div>
-  )
+
+    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+      <DialogContent className="w-[450px]"> {/* h-[290px] */}
+        <DialogHeader>
+          <DialogTitle>New game</DialogTitle>
+          <DialogDescription>Choose the range of numbers</DialogDescription>
+        </DialogHeader>
+
+        <div className="flex flex-col gap-1 mt-2">
+          {diffLevels.map((level) => {
+            const playedCount = played(level.name)
+            const best = bestTime(level.name)
+            const rate = guessRate(level.name)
+
+            return (
+              <Card key={level.name} className="flex flex-row justify-between items-center p-1">
+                <CardHeader className="flex flex-row justify-between items-center w-full p-3">
+                  <div className="flex flex-col">
+                    <CardTitle className="mb-0.5">
+                      {level.name.charAt(0).toUpperCase() + level.name.slice(1)}
+                      <span className="font-light ml-1">
+                        (1-{level.max})
+                      </span>
+                    </CardTitle>
+
+                    {playedCount > 0 ? (
+                      <CardDescription>
+                        <Badge variant={"outline"}>
+                          <Joystick className="w-3 h-3 mr-1" />
+                          {playedCount} played
+                        </Badge>
+
+                        {best &&
+                          <Badge variant={"outline"}>
+                            <Timer className="w-3 h-3 mr-1" />
+                            {best} seconds
+                          </Badge>
+                        }
+
+                        {rate &&
+                          <Badge variant={"outline"}>
+                            <Flame className="w-3 h-3 mr-1" />
+                            {rate.toFixed(2)} avg. attps
+                          </Badge>
+                        }
+                      </CardDescription>
+                    ) : (
+                      <CardDescription>Never played</CardDescription>
+                    )}
+                  </div>
+                  <Button onClick={() => gameStart(level.name)} variant="outline" size="icon">
+                    <Play className="w-4 h-4" />
+                  </Button>
+                </CardHeader>
+              </Card>
+            )
+          })}
+        </div>
+      </DialogContent>
+    </Dialog>
+  </>
+}
+
+const elapsedTime = (time: number): string => {
+  if (time < 60) {
+    return `${time} sec`
+  } else {
+    return `${Math.floor(time / 60)} min ${time % 60} sec`
+  }
 }
 
 export default GuessPage;
