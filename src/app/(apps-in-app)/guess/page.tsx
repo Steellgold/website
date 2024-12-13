@@ -123,7 +123,9 @@ const GuessPage = () => {
                 disabled={ended || !secret}
               />
 
-              <Button onClick={verifierSupposition} disabled={ended || secret === 0}>Tester</Button>
+              <Button onClick={verifierSupposition} disabled={ended || secret === 0}>
+                Enter
+              </Button>
             </div>
 
             {message && <p className="text-left">{message}</p>}
@@ -180,7 +182,7 @@ const GuessPage = () => {
 
             <CardFooter className="p-3 -mt-4 select-none">
               <span className="text-xs text-muted-foreground">
-                {round.start.format("DD' MMMM")}&nbsp;&bull;&nbsp;
+                {round.start.format("DD MMM")}&nbsp;&bull;&nbsp;
                 {round.start.format("HH:mm:ss")}
                 &nbsp;&rarr;&nbsp;
                 {round.end.format("HH:mm:ss")}
