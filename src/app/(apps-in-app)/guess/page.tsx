@@ -104,7 +104,7 @@ const GuessPage = () => {
           <div className="flex flex-col">
             <CardTitle>Guessing the Number</CardTitle>
             <CardDescription>
-              Let's play a game! Guess the number between 1 and {numMaxByDifficulty[difficulty] || 100}.
+              Let&apos;s play a game! Guess the number between 1 and {numMaxByDifficulty[difficulty] || 100}.
             </CardDescription>
           </div>
 
