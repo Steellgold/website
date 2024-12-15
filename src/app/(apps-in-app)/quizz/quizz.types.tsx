@@ -15,13 +15,13 @@ export enum TagEnum {
   PHILOSOPHY = "PHILOSOPHY",
   TECHNOLOGY = "TECHNOLOGY",
   SOCIETY = "SOCIETY",
-  RELIGION = "RELIGION"
+  RELIGION = "RELIGION",
+  VIDEOGAMES = "VIDEOGAMES",
 }
 
 export type Tag = {
   names: Record<string, string>;
   enum: TagEnum;
-  color: string;
   icon: ReactElement;
 }
 
@@ -37,20 +37,21 @@ export type Question = {
 }
 
 export const tags: Tag[] = [
-  { names: { fr: "Géographie", en: "Geography" }, color: "#3182ce", icon: <Globe2 />, enum: TagEnum.GEOGRAPHY },
-  { names: { fr: "Histoire", en: "History" }, color: "#f59e0b", icon: <ScrollText />, enum: TagEnum.HISTORY },
-  { names: { fr: "Science", en: "Science" }, color: "#10b981", icon: <TestTubeDiagonal />, enum: TagEnum.SCIENCE },
-  { names: { fr: "Littérature", en: "Literature" }, color: "#f59e0b", icon: <Book />, enum: TagEnum.LITERATURE },
-  { names: { fr: "Art", en: "Art" }, color: "#10b981", icon: <Pencil />, enum: TagEnum.ART },
-  { names: { fr: "Musique", en: "Music" }, color: "#f59e0b", icon: <Disc3 />, enum: TagEnum.MUSIC },
-  { names: { fr: "Cinéma", en: "Cinema" }, color: "#10b981", icon: <Clapperboard />, enum: TagEnum.CINEMA },
-  { names: { fr: "Sports", en: "Sports" }, color: "#f59e0b", icon: <Bike />, enum: TagEnum.SPORTS },
-  { names: { fr: "Politique", en: "Politics" }, color: "#10b981", icon: <Vote />, enum: TagEnum.POLITICS },
-  { names: { fr: "Économie", en: "Economy" }, color: "#f59e0b", icon: <Coins />, enum: TagEnum.ECONOMY },
-  { names: { fr: "Philosophie", en: "Philosophy" }, color: "#10b981", icon: <Slash />, enum: TagEnum.PHILOSOPHY },
-  { names: { fr: "Technologie", en: "Technology" }, color: "#10b981", icon: <Cpu />, enum: TagEnum.TECHNOLOGY },
-  { names: { fr: "Société", en: "Society" }, color: "#f59e0b", icon: <Users />, enum: TagEnum.SOCIETY },
-  { names: { fr: "Religion", en: "Religion" }, color: "#10b981", icon: <BookHeart />, enum: TagEnum.RELIGION }
+  { names: { fr: "Géographie", en: "Geography" }, icon: <Globe2 />, enum: TagEnum.GEOGRAPHY },
+  { names: { fr: "Histoire", en: "History" }, icon: <ScrollText />, enum: TagEnum.HISTORY },
+  { names: { fr: "Science", en: "Science" }, icon: <TestTubeDiagonal />, enum: TagEnum.SCIENCE },
+  { names: { fr: "Littérature", en: "Literature" }, icon: <Book />, enum: TagEnum.LITERATURE },
+  { names: { fr: "Art", en: "Art" }, icon: <Pencil />, enum: TagEnum.ART },
+  { names: { fr: "Musique", en: "Music" }, icon: <Disc3 />, enum: TagEnum.MUSIC },
+  { names: { fr: "Cinéma", en: "Cinema" }, icon: <Clapperboard />, enum: TagEnum.CINEMA },
+  { names: { fr: "Sports", en: "Sports" }, icon: <Bike />, enum: TagEnum.SPORTS },
+  { names: { fr: "Politique", en: "Politics" }, icon: <Vote />, enum: TagEnum.POLITICS },
+  { names: { fr: "Économie", en: "Economy" }, icon: <Coins />, enum: TagEnum.ECONOMY },
+  { names: { fr: "Philosophie", en: "Philosophy" }, icon: <Slash />, enum: TagEnum.PHILOSOPHY },
+  { names: { fr: "Technologie", en: "Technology" }, icon: <Cpu />, enum: TagEnum.TECHNOLOGY },
+  { names: { fr: "Société", en: "Society" }, icon: <Users />, enum: TagEnum.SOCIETY },
+  { names: { fr: "Religion", en: "Religion" }, icon: <BookHeart />, enum: TagEnum.RELIGION },
+  { names: { fr: "Jeux vidéo", en: "Video Games" }, icon: <BookHeart />, enum: TagEnum.VIDEOGAMES },
 ];
 
 export const questions: Question[] = [
@@ -1457,8 +1458,8 @@ export const questions: Question[] = [
     },
     correct: 0,
     explanation: {
-      en: "Herman Melville wrote 'Moby-Dick', published in 1851.",
-      fr: "Herman Melville a écrit 'Moby-Dick', publié en 1851."
+      en: "'Moby-Dick' is a novel written by Herman Melville, published in 1851. It is a story about the voyage of the whaling ship Pequod, led by Captain Ahab, who is obsessed with hunting the giant white whale Moby Dick.",
+      fr: "'Moby-Dick' est un roman écrit par Herman Melville, publié en 1851. C'est l'histoire du voyage du baleinier Pequod, dirigé par le capitaine Achab, qui est obsédé par la chasse à la grande baleine blanche Moby Dick."
     },
     tags: [TagEnum.LITERATURE],
   },
@@ -1746,5 +1747,3461 @@ export const questions: Question[] = [
       fr: "Le terme 'Surréalisme' a été inventé par le poète français Guillaume Apollinaire en 1917."
     },
     tags: [TagEnum.ART],
+  },
+  {
+    id: "2af50dc8-cd65-40cc-8864-5349078b0dfb", // 1
+    difficulty: 5,
+    question: { en: "Which international body protects children's rights?", fr: "Quel organisme international est chargé de la protection des droits de l'enfant ?" },
+    answers: {
+      en: ["UNICEF", "UNESCO", "WHO", "ILO"],
+      fr: ["UNICEF", "UNESCO", "OMS", "OIT"]
+    },
+    correct: 0,
+    explanation: {
+      en: "UNICEF is the UN agency for children's rights.",
+      fr: "L'UNICEF est l'agence de l'ONU chargée des droits de l'enfant."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "4903a5aa-d70a-4cb3-bb78-409722cd22bf", // 2
+    difficulty: 6,
+    question: { en: "Which social movement marked France in 1968?", fr: "Quel mouvement social a marqué la France en 1968 ?" },
+    answers: {
+      en: ["May 68 events", "Paris Commune", "1848 Revolution", "Canuts revolt"],
+      fr: ["Les événements de Mai 68", "La Commune de Paris", "La Révolution de 1848", "La révolte des Canuts"]
+    },
+    correct: 0,
+    explanation: {
+      en: "May '68 was a major social upheaval in France.",
+      fr: "Les événements de Mai 68 furent un important soulèvement social en France."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "87db08b7-64e0-4f88-a2e8-d25f407ceff6", // 3
+    difficulty: 2,
+    question: { en: "What is the legal age of majority in France?", fr: "Quel est l'âge de la majorité légale en France ?" },
+    answers: {
+      en: ["18", "16", "21", "20"],
+      fr: ["18 ans", "16 ans", "21 ans", "20 ans"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The age of majority in France is 18.",
+      fr: "La majorité légale en France est fixée à 18 ans."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "49ec8ae1-cbb7-4932-bb50-31b8f7d92e0f", // 4
+    difficulty: 7,
+    question: { en: "Which sociological concept refers to geographic mobility for work?", fr: "Quel concept sociologique désigne la mobilité géographique des individus cherchant un emploi ?" },
+    answers: {
+      en: ["Migration", "Tourism", "Sedentism", "Nomadism"],
+      fr: ["La migration", "Le tourisme", "La sédentarité", "Le nomadisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Migration often occurs in search of work.",
+      fr: "La migration survient souvent dans la recherche d'un emploi."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "b143c1e2-02e0-4d01-8381-48f0ea6dd46c", // 5
+    difficulty: 3,
+    question: { en: "What term describes equal chances for men and women?", fr: "Quel terme décrit l'égalité des chances entre les hommes et les femmes ?" },
+    answers: {
+      en: ["Gender equality", "Matriarchy", "Patriarchy", "Segregation"],
+      fr: ["L'égalité de genre", "Le matriarcat", "Le patriarcat", "La ségrégation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Gender equality ensures equal rights for men and women.",
+      fr: "L'égalité de genre vise à garantir les mêmes droits aux hommes et aux femmes."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "709eb4c3-3dce-4fe5-9b15-908f52d612c1", // 6
+    difficulty: 4,
+    question: { en: "What is the term for the concentration of population in large megacities?", fr: "Comment nomme-t-on le phénomène de concentration urbaine dans de grandes mégapoles ?" },
+    answers: {
+      en: ["Urbanization", "Rural life", "Eco-village", "Decentralization"],
+      fr: ["L'urbanisation", "La ruralité", "L'éco-village", "La décentralisation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Urbanization is the growth of cities.",
+      fr: "L'urbanisation est l'accroissement des villes."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "054c13c2-6b78-4349-823a-f02d0454cf18", // 7
+    difficulty: 5,
+    question: { en: "What term refers to favoring someone due to their ethnic origin?", fr: "Quel terme désigne le fait de favoriser un individu en raison de son origine ethnique ?" },
+    answers: {
+      en: ["Racism", "Sexism", "Ageism", "Classism"],
+      fr: ["Le racisme", "Le sexisme", "L'âgisme", "Le classisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Racism is discrimination based on ethnicity.",
+      fr: "Le racisme est une discrimination fondée sur l'origine ethnique."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "1cd99b68-95a9-4a49-8319-b37bc4cfe548", // 8
+    difficulty: 4,
+    question: { en: "Which indicator measures education, life expectancy, and income in a country?", fr: "Quel indicateur mesure le niveau d'éducation, d'espérance de vie et de revenu d'un pays ?" },
+    answers: {
+      en: ["HDI", "GDP", "CPI", "Literacy rate"],
+      fr: ["L'IDH (Indice de Développement Humain)", "Le PIB", "L'IPC", "Le taux d'alphabétisation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The HDI combines health, education, and income.",
+      fr: "L'IDH combine santé, éducation et revenu."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "8bd09b85-6eb4-4138-b415-b9b74fc0fe20", // 9
+    difficulty: 1,
+    question: { en: "What is the study of human populations and their characteristics?", fr: "Comment appelle-t-on l'étude des populations humaines et de leurs caractéristiques ?" },
+    answers: {
+      en: ["Demography", "Sociology", "Anthropology", "Psychology"],
+      fr: ["La démographie", "La sociologie", "L'anthropologie", "La psychologie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Demography studies population structure.",
+      fr: "La démographie étudie la structure des populations."
+    },
+    tags: ["SOCIETY"],
+  },
+  {
+    id: "891b53eb-3898-4611-8f12-e449269d8515", // 10
+    difficulty: 3,
+    question: { en: "What is discrimination based on age called?", fr: "Quel terme désigne la discrimination basée sur l'âge d'un individu ?" },
+    answers: {
+      en: ["Ageism", "Sexism", "Racism", "Xenophobia"],
+      fr: ["L'âgisme", "Le sexisme", "Le racisme", "La xénophobie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Ageism discriminates against age groups.",
+      fr: "L'âgisme discrimine selon l'âge."
+    },
+    tags: ["SOCIETY"],
+  },
+
+  // TECHNOLOGIE (TagEnum.TECHNOLOGY) x10
+  {
+    id: "9147b1db-1c66-476f-9704-4129a06ca618", // 11
+    difficulty: 2,
+    question: { en: "Which main language is used alongside HTML and CSS for web development?", fr: "Quel est le langage principal utilisé pour le développement de pages Web, aux côtés du HTML et du CSS ?" },
+    answers: {
+      en: ["JavaScript", "Python", "Java", "C++"],
+      fr: ["JavaScript", "Python", "Java", "C++"]
+    },
+    correct: 0,
+    explanation: {
+      en: "JavaScript is essential in web pages.",
+      fr: "JavaScript est essentiel dans les pages Web."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "468a0f9b-7e93-442a-9cbd-a1daefc487c5", // 12
+    difficulty: 3,
+    question: { en: "Which connected device is mainly used to track sports activity and heart rate?", fr: "Quel objet connecté est principalement utilisé pour suivre l'activité sportive et la fréquence cardiaque ?" },
+    answers: {
+      en: ["Smartwatch", "VR headset", "Tablet", "Smartphone"],
+      fr: ["La montre connectée", "Le casque de réalité virtuelle", "La tablette", "Le smartphone"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Smartwatches measure heart rate and steps.",
+      fr: "La montre connectée mesure la fréquence cardiaque et les pas."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "1db052b7-a5f3-4de8-b189-9d3cb5fe6a9b", // 13
+    difficulty: 4,
+    question: { en: "What concept describes storing and accessing data remotely via the Internet?", fr: "Quel concept informatique décrit le stockage et l'accès aux données sur des serveurs distants via Internet ?" },
+    answers: {
+      en: ["Cloud computing", "Machine learning", "Big data", "Virtualization"],
+      fr: ["Le cloud computing", "Le machine learning", "Le big data", "La virtualisation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Cloud computing uses remote servers.",
+      fr: "Le cloud computing utilise des serveurs distants."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "0139f7b7-1d78-408c-b35b-433c94c7aa38", // 14
+    difficulty: 5,
+    question: { en: "Which open-source mobile OS was originally developed by Android Inc.?", fr: "Quel système d'exploitation mobile open source a été développé à l'origine par Android Inc. ?" },
+    answers: {
+      en: ["Android", "iOS", "Windows Phone", "BlackBerry OS"],
+      fr: ["Android", "iOS", "Windows Phone", "BlackBerry OS"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Android is an open-source mobile OS.",
+      fr: "Android est un système d'exploitation mobile open source."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "363c45db-3db3-4c83-9743-5bd91917ffc7", // 15
+    difficulty: 6,
+    question: { en: "What do we call a malicious program designed to harm a computer system?", fr: "Quel terme désigne un programme malveillant conçu pour endommager ou exploiter des failles dans un système informatique ?" },
+    answers: {
+      en: ["Malware", "Freeware", "Shareware", "Adware"],
+      fr: ["Un malware", "Un freeware", "Un shareware", "Un adware"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Malware includes viruses, trojans, etc.",
+      fr: "Un malware inclut virus, chevaux de Troie, etc."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "da098199-3e89-4303-8caa-e187aa7f3042", // 16
+    difficulty: 1,
+    question: { en: "What is the French acronym for Artificial Intelligence?", fr: "Quel acronyme désigne l'intelligence artificielle ?" },
+    answers: {
+      en: ["IA", "AR", "VR", "IoT"],
+      fr: ["IA", "AR", "VR", "IoT"]
+    },
+    correct: 0,
+    explanation: {
+      en: "IA stands for Intelligence Artificielle.",
+      fr: "IA signifie Intelligence Artificielle."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "f2f2117a-81d8-43b0-9cd2-193f0044be75", // 17
+    difficulty: 2,
+    question: { en: "What is the name of the global network of interconnected computers?", fr: "Quel est le nom du réseau mondial d'ordinateurs interconnectés ?" },
+    answers: {
+      en: ["Internet", "Intranet", "Ethernet", "Extranet"],
+      fr: ["Internet", "Intranet", "Ethernet", "Extranet"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Internet connects billions of devices.",
+      fr: "Internet connecte des milliards d'appareils."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "2919363a-0099-450c-8cb4-e39287405c80", // 18
+    difficulty: 4,
+    question: { en: "Which field focuses on analyzing massive datasets?", fr: "Quel domaine de l'informatique se concentre sur l'analyse et le traitement des données massives ?" },
+    answers: {
+      en: ["Big data", "Cryptography", "Software engineering", "Microcomputing"],
+      fr: ["Le big data", "La cryptographie", "Le génie logiciel", "La micro-informatique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Big data deals with large data sets.",
+      fr: "Le big data traite de vastes ensembles de données."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "18eae736-70b5-4f7e-838f-83971b81c831", // 19
+    difficulty: 2,
+    question: { en: "Which standard protocol is used for transferring web pages?", fr: "Quel est le protocole standard pour transférer des pages Web sur Internet ?" },
+    answers: {
+      en: ["HTTP", "FTP", "SMTP", "DNS"],
+      fr: ["HTTP", "FTP", "SMTP", "DNS"]
+    },
+    correct: 0,
+    explanation: {
+      en: "HTTP is used to transfer webpages.",
+      fr: "HTTP est utilisé pour transférer des pages Web."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+  {
+    id: "b4c94504-db3e-4226-b6fb-7f1acca724b4", // 20
+    difficulty: 3,
+    question: { en: "What concept refers to simulating a real environment in a virtual world?", fr: "Quel concept décrit la reproduction d'un environnement réel dans un monde virtuel, souvent à l'aide d'un casque spécial ?" },
+    answers: {
+      en: ["Virtual reality", "Augmented reality", "Domotics", "Robotics"],
+      fr: ["La réalité virtuelle", "La réalité augmentée", "La domotique", "La robotique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "VR simulates a real-world environment.",
+      fr: "La réalité virtuelle simule un environnement réel."
+    },
+    tags: ["TECHNOLOGY"],
+  },
+
+  // ECONOMIE (TagEnum.ECONOMY) x10
+  {
+    id: "8982423f-ae1d-465f-b1b9-e18501f23bc3", // 21
+    difficulty: 2,
+    question: { en: "Which indicator measures the total goods and services produced by a country?", fr: "Quel indicateur économique mesure la production de biens et services d'un pays sur une période donnée ?" },
+    answers: {
+      en: ["GDP", "HDI", "GNP", "CPI"],
+      fr: ["Le PIB (Produit Intérieur Brut)", "L'IDH", "Le PNB", "L'IPC"]
+    },
+    correct: 0,
+    explanation: {
+      en: "GDP measures economic output.",
+      fr: "Le PIB mesure la production économique."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "a318921d-6d0d-4b19-b3c9-640d6a62d1fd", // 22
+    difficulty: 3,
+    question: { en: "What do we call a general increase in prices?", fr: "Quel terme décrit la hausse générale des prix des biens et services dans une économie ?" },
+    answers: {
+      en: ["Inflation", "Deflation", "Stagflation", "Recession"],
+      fr: ["L'inflation", "La déflation", "La stagflation", "La récession"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Inflation is a rise in prices.",
+      fr: "L'inflation est une augmentation générale des prix."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "6c68acc9-e274-4c01-b1b6-8f86511bd997", // 23
+    difficulty: 5,
+    question: { en: "Which institution sets monetary policy in the Eurozone?", fr: "Quelle institution est responsable de la politique monétaire au sein de la zone euro ?" },
+    answers: {
+      en: ["ECB", "Bank of France", "Bank of England", "World Bank"],
+      fr: ["La Banque centrale européenne (BCE)", "La Banque de France", "La Banque d'Angleterre", "La Banque mondiale"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The ECB sets the Eurozone’s monetary policy.",
+      fr: "La BCE définit la politique monétaire de la zone euro."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "cf65db80-37fb-425f-b809-960445b320b0", // 24
+    difficulty: 6,
+    question: { en: "Which economic theory advocates minimal state intervention in markets?", fr: "Quel est le nom de la théorie économique qui prône la non-intervention de l'État dans les marchés ?" },
+    answers: {
+      en: ["Economic liberalism", "Keynesianism", "Marxism", "Protectionism"],
+      fr: ["Le libéralisme économique", "Le keynésianisme", "Le marxisme", "Le protectionnisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Liberalism favors free markets.",
+      fr: "Le libéralisme économique favorise les marchés libres."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "da9dad58-70e2-416a-8690-84abb0e2aacf", // 25
+    difficulty: 4,
+    question: { en: "What term describes a long period of economic slowdown and high unemployment?", fr: "Quel terme désigne une période prolongée de ralentissement économique et de forte hausse du chômage ?" },
+    answers: {
+      en: ["Economic depression", "Growth", "Boom", "Expansion"],
+      fr: ["La dépression économique", "La croissance", "Le boom économique", "L'expansion"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A depression is a severe downturn.",
+      fr: "Une dépression est une forte baisse de l'activité économique."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "b162a558-25d8-4116-b217-cc9b3bf4d7a6", // 26
+    difficulty: 7,
+    question: { en: "Which international institution loans money to developing countries?", fr: "Quelle institution internationale octroie des prêts aux pays en développement pour lutter contre la pauvreté ?" },
+    answers: {
+      en: ["World Bank", "IMF", "WTO", "ECB"],
+      fr: ["La Banque mondiale", "Le FMI", "L'OMC", "La BCE"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The World Bank gives loans to reduce poverty.",
+      fr: "La Banque mondiale accorde des prêts pour réduire la pauvreté."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "2e150a61-c9f5-422a-af35-cdc9a8b33f46", // 27
+    difficulty: 5,
+    question: { en: "What is the difference between a country's imports and exports called?", fr: "Comment appelle-t-on la différence entre les importations et les exportations d'un pays ?" },
+    answers: {
+      en: ["Trade balance", "GDP", "Exchange rate", "Public debt"],
+      fr: ["La balance commerciale", "Le PIB", "Le taux de change", "La dette publique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The trade balance is exports minus imports.",
+      fr: "La balance commerciale est la différence entre exportations et importations."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "8977aaaf-eb3f-43ae-8a24-97444df3f76c", // 28
+    difficulty: 4,
+    question: { en: "Which international body aims to facilitate trade?", fr: "Quel organisme international a pour but de faciliter le commerce entre les pays ?" },
+    answers: {
+      en: ["WTO", "IMF", "OECD", "ILO"],
+      fr: ["L'Organisation mondiale du commerce (OMC)", "Le FMI", "L'OCDE", "L'OIT"]
+    },
+    correct: 0,
+    explanation: {
+      fr: "L’Organisation mondiale du commerce (OMC) encadre le commerce international en établissant des règles communes à ses pays membres. Créée en 1995 par l’Accord de Marrakech, elle succède au GATT. Grâce à ce cadre réglementaire, l’OMC facilite la régulation des échanges commerciaux et la résolution des différends entre États membres.",
+      en: "The World Trade Organization (WTO) regulates international trade by establishing common rules among its member countries. Created in 1995 by the Marrakesh Agreement, it succeeded the GATT. Through this regulatory framework, the WTO facilitates the regulation of trade and the resolution of disputes between member states."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "0cb99024-1267-4224-a1a4-4d38b453ad72", // 29
+    difficulty: 6,
+    question: { en: "What do we call the inability of a borrower to repay debt?", fr: "Quel terme décrit l'incapacité d'un emprunteur à rembourser sa dette ?" },
+    answers: {
+      en: ["Default", "Inflation", "Sovereign debt", "Devaluation"],
+      fr: ["Le défaut de paiement", "L'inflation", "La dette souveraine", "La dévaluation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Default occurs when debt can't be repaid.",
+      fr: "Le défaut de paiement survient lorsqu'on ne peut plus rembourser sa dette."
+    },
+    tags: ["ECONOMY"],
+  },
+  {
+    id: "5d4fe8fa-a3dd-4bd7-a377-11f7e410bbf8", // 30
+    difficulty: 2,
+    question: { en: "What is the common currency used by most EU countries?", fr: "Quel est le nom de la monnaie commune utilisée par la majorité des pays de l'Union européenne ?" },
+    answers: {
+      en: ["Euro", "Dollar", "Pound", "Swiss franc"],
+      fr: ["L'euro", "Le dollar", "La livre sterling", "Le franc suisse"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The euro is the common currency.",
+      fr: "L'euro est la monnaie commune de la zone euro."
+    },
+    tags: ["ECONOMY"],
+  },
+
+  // SCIENCE (TagEnum.SCIENCE) x10
+  {
+    id: "0efacd66-fc30-473c-9435-de31e8a0704b", // 31
+    difficulty: 2,
+    question: { en: "Which subatomic particle carries a negative charge?", fr: "Quelle est la particule subatomique portant une charge négative ?" },
+    answers: {
+      en: ["Electron", "Proton", "Neutron", "Quark"],
+      fr: ["L'électron", "Le proton", "Le neutron", "Le quark"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Electrons have a negative charge.",
+      fr: "L'électron possède une charge négative."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "333ecc29-7b55-4a45-997d-d46b413d4955", // 32
+    difficulty: 4,
+    question: { en: "What optical phenomenon separates white light into a spectrum of colors?", fr: "Quel phénomène optique explique la séparation de la lumière blanche en un spectre de couleurs ?" },
+    answers: {
+      en: ["Dispersion", "Reflection", "Refraction", "Diffraction"],
+      fr: ["La dispersion", "La réflexion", "La réfraction", "La diffraction"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Dispersion splits light into colors.",
+      fr: "La dispersion décompose la lumière blanche en couleurs."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "75ec1cc4-d50e-4195-93a3-19f9e97ff22d", // 33
+    difficulty: 3,
+    question: { en: "Which molecule is the main energy source for living cells?", fr: "Quelle molécule est la principale source d'énergie pour les cellules vivantes ?" },
+    answers: {
+      en: ["Glucose", "CO2", "Nitrogen", "Methane"],
+      fr: ["Le glucose", "Le dioxyde de carbone", "L'azote", "Le méthane"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Glucose is the main energy source.",
+      fr: "Le glucose est la principale source d'énergie des cellules."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "4e1e4a4e-1dfa-47dd-a3c6-23025c9b7111", // 34
+    difficulty: 5,
+    question: { en: "Which scientist proposed the theory of special relativity in 1905?", fr: "Quel scientifique a proposé la théorie de la relativité restreinte en 1905 ?" },
+    answers: {
+      en: ["Albert Einstein", "Isaac Newton", "Niels Bohr", "Galileo"],
+      fr: ["Albert Einstein", "Isaac Newton", "Niels Bohr", "Galilée"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Einstein introduced special relativity.",
+      fr: "Einstein a introduit la relativité restreinte."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "94f7cc38-8edc-419f-b5b8-dc667b1dea65", // 35
+    difficulty: 1,
+    question: { en: "Which science studies living beings and their environment?", fr: "Comment appelle-t-on la science qui étudie les êtres vivants et leur environnement ?" },
+    answers: {
+      en: ["Biology", "Chemistry", "Physics", "Geology"],
+      fr: ["La biologie", "La chimie", "La physique", "La géologie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Biology studies living organisms.",
+      fr: "La biologie étudie les êtres vivants."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "2c02b1be-e694-416d-a73c-8fbc74e456ea", // 36
+    difficulty: 2,
+    question: { en: "Which organ pumps blood in the human body?", fr: "Quel organe est responsable du pompage du sang dans le corps humain ?" },
+    answers: {
+      en: ["Heart", "Liver", "Kidney", "Lung"],
+      fr: ["Le cœur", "Le foie", "Le rein", "Le poumon"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The heart pumps blood.",
+      fr: "Le cœur pompe le sang."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "beb4300b-39bf-4e05-866b-a47f745d6fd7", // 37
+    difficulty: 3,
+    question: { en: "Which planet is closest to the Sun?", fr: "Quelle est la planète la plus proche du Soleil ?" },
+    answers: {
+      en: ["Mercury", "Venus", "Earth", "Mars"],
+      fr: ["Mercure", "Vénus", "Terre", "Mars"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Mercury is closest to the Sun.",
+      fr: "Mercure est la plus proche du Soleil."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "d7ddd71a-7267-4c66-b7cf-50eea517b5eb", // 38
+    difficulty: 6,
+    question: { en: "What natural phenomenon occurs when meteoroids burn in the atmosphere?", fr: "Quel phénomène naturel correspond à la chute de météorites traversant l'atmosphère ?" },
+    answers: {
+      en: ["Shooting stars", "Auroras", "Eclipses", "Rainbows"],
+      fr: ["Les étoiles filantes", "Les aurores boréales", "Les éclipses", "Les arcs-en-ciel"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Shooting stars are meteors.",
+      fr: "Les étoiles filantes sont des météores."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "2bac0d18-a821-4e2e-9d07-fa787c06ab17", // 39
+    difficulty: 2,
+    question: { en: "Which gas is most abundant in Earth's atmosphere?", fr: "Quel gaz est le plus abondant dans l'atmosphère terrestre ?" },
+    answers: {
+      en: ["Nitrogen", "Oxygen", "CO2", "Argon"],
+      fr: ["L'azote", "L'oxygène", "Le dioxyde de carbone", "L'argon"]
+    },
+    correct: 0,
+    explanation: {
+      en: "About 78% of air is nitrogen.",
+      fr: "Environ 78% de l'air est composé d'azote."
+    },
+    tags: ["SCIENCE"],
+  },
+  {
+    id: "9e4eaed6-84ae-4259-9ec4-49deeb4ffa63", // 40
+    difficulty: 4,
+    question: { en: "What is a group of stars forming a pattern in the sky called?", fr: "Quel nom donne-t-on à un groupement d'étoiles formant une figure particulière dans le ciel ?" },
+    answers: {
+      en: ["Constellation", "Galaxy", "Nebula", "Globular cluster"],
+      fr: ["Une constellation", "Une galaxie", "Une nébuleuse", "Un amas globulaire"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A constellation is a star pattern.",
+      fr: "Une constellation est un motif d'étoiles."
+    },
+    tags: ["SCIENCE"],
+  },
+
+  // HISTOIRE (TagEnum.HISTORY) x10
+  {
+    id: "d19da6c3-43e0-46b0-83e1-b2a175be461f", // 41
+    difficulty: 3,
+    question: { en: "Which revolution began in France in 1789?", fr: "Quelle révolution a commencé en 1789 en France ?" },
+    answers: {
+      en: ["French Revolution", "American Revolution", "Industrial Revolution", "Russian Revolution"],
+      fr: ["La Révolution française", "La Révolution américaine", "La Révolution industrielle", "La Révolution russe"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The French Revolution started in 1789.",
+      fr: "La Révolution française débuta en 1789."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "5bc9820f-fb8a-4e15-9ee6-182ea49fef9c", // 42
+    difficulty: 5,
+    question: { en: "Who was the first Roman Emperor?", fr: "Qui était le premier empereur romain ?" },
+    answers: {
+      en: ["Augustus", "Julius Caesar", "Nero", "Caligula"],
+      fr: ["Auguste", "Jules César", "Néron", "Caligula"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Augustus was the first Roman Emperor.",
+      fr: "Auguste fut le premier empereur romain."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "57091688-0e0f-45b5-9286-976ee2141af2", // 43
+    difficulty: 6,
+    question: { en: "Which treaty ended WWI in 1919?", fr: "Quel traité signé en 1919 a mis fin à la Première Guerre mondiale ?" },
+    answers: {
+      en: ["Treaty of Versailles", "Brest-Litovsk", "Trianon", "Sevres"],
+      fr: ["Le traité de Versailles", "Le traité de Brest-Litovsk", "Le traité de Trianon", "Le traité de Sèvres"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Treaty of Versailles ended WWI.",
+      fr: "Le traité de Versailles mit fin à la Première Guerre mondiale."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "55b01c03-0c64-41d2-93f8-763e66de9012", // 44
+    difficulty: 4,
+    question: { en: "Which Italian explorer 'discovered' America in 1492?", fr: "Quel explorateur italien est connu pour avoir 'découvert' l'Amérique en 1492 ?" },
+    answers: {
+      en: ["Christopher Columbus", "Vasco da Gama", "Magellan", "Amerigo Vespucci"],
+      fr: ["Christophe Colomb", "Vasco de Gama", "Fernand de Magellan", "Amerigo Vespucci"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Columbus arrived in the Americas in 1492.",
+      fr: "Christophe Colomb arriva en Amérique en 1492."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "5cd2199a-3719-4585-ae33-4f154ed83dab", // 45
+    difficulty: 3,
+    question: { en: "Which revolution led to the independence of the United States?", fr: "Quelle révolution a conduit à l'indépendance des États-Unis ?" },
+    answers: {
+      en: ["American War of Independence", "French Revolution", "Russian Revolution", "Wars of the Roses"],
+      fr: ["La Guerre d'Indépendance américaine", "La Révolution française", "La Révolution russe", "La Guerre des Deux-Roses"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The American War of Independence (1775-1783).",
+      fr: "La Guerre d'Indépendance américaine (1775-1783)."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "24845ffe-4a23-4c6a-81a2-73f50013b6f6", // 46
+    difficulty: 2,
+    question: { en: "Which French military leader crowned himself emperor in 1804?", fr: "Qui était le chef militaire français couronné empereur en 1804 ?" },
+    answers: {
+      en: ["Napoleon Bonaparte", "Louis XIV", "Charlemagne", "Philip II"],
+      fr: ["Napoléon Bonaparte", "Louis XIV", "Charlemagne", "Philippe Auguste"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Napoleon crowned himself Emperor in 1804.",
+      fr: "Napoléon Bonaparte s'est couronné Empereur en 1804."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "7789d85b-2a2b-43ed-9e00-41debcc52a01", // 47
+    difficulty: 4,
+    question: { en: "Which wall, a symbol of the Cold War, fell in 1989?", fr: "Quel mur, symbole de la Guerre froide, est tombé en 1989 ?" },
+    answers: {
+      en: ["Berlin Wall", "Trench Wall", "Great Wall of China", "Wall of Federates"],
+      fr: ["Le mur de Berlin", "Le mur de la Tranchée", "La Grande Muraille de Chine", "Le mur des Fédérés"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Berlin Wall fell in 1989.",
+      fr: "Le mur de Berlin est tombé en 1989."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "41a7a41c-9455-46ed-bc72-81f649b663df", // 48
+    difficulty: 1,
+    question: { en: "Which ancient civilization built the Giza pyramids?", fr: "Quelle civilisation ancienne a construit les pyramides de Gizeh ?" },
+    answers: {
+      en: ["Ancient Egypt", "Ancient Greece", "Mayas", "Romans"],
+      fr: ["L'Égypte antique", "La Grèce antique", "Les Mayas", "Les Romains"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The pyramids of Giza were built by ancient Egyptians.",
+      fr: "Les Égyptiens de l'Antiquité ont construit les pyramides de Gizeh."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "264eb2a8-9212-42e6-bea0-d15211a2eb52", // 49
+    difficulty: 5,
+    question: { en: "Which pre-Columbian empire was centered in present-day Peru?", fr: "Quel empire précolombien était centré sur l'actuel Pérou ?" },
+    answers: {
+      en: ["Inca Empire", "Aztec Empire", "Maya Empire", "Toltec Empire"],
+      fr: ["L'Empire inca", "L'Empire aztèque", "L'Empire maya", "L'Empire tolteque"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Inca Empire was in the Andes region.",
+      fr: "L'Empire inca s'étendait dans la région andine."
+    },
+    tags: ["HISTORY"],
+  },
+  {
+    id: "ace2105a-a0e1-45bb-a3a2-daea7343f410", // 50
+    difficulty: 3,
+    question: { en: "What happened on July 14, 1789, in France?", fr: "Quel événement historique s'est produit le 14 juillet 1789 en France ?" },
+    answers: {
+      en: ["Storming of the Bastille", "Tuileries take", "Tennis Court Oath", "Flight to Varennes"],
+      fr: ["La prise de la Bastille", "La prise des Tuileries", "Le Serment du Jeu de Paume", "La fuite à Varennes"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Bastille was stormed, a key event.",
+      fr: "La prise de la Bastille fut un événement clé de la Révolution française."
+    },
+    tags: ["HISTORY"],
+  },
+
+  // GEOGRAPHIE (TagEnum.GEOGRAPHY) x10
+  {
+    id: "d125f7e4-7d61-4e94-a23e-e2bfae61b870", // 51
+    difficulty: 2,
+    question: { en: "What is the largest hot desert in the world?", fr: "Quel est le plus grand désert chaud du monde ?" },
+    answers: {
+      en: ["Sahara", "Gobi", "Kalahari", "Sonora"],
+      fr: ["Le Sahara", "Le Gobi", "Le Kalahari", "Le Sonora"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Sahara is the largest hot desert.",
+      fr: "Le Sahara est le plus grand désert chaud."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "fef197f9-1ae8-4245-86fc-295a83837cff", // 52
+    difficulty: 3,
+    question: { en: "Which country has the largest area in the world?", fr: "Quel pays possède la plus grande superficie au monde ?" },
+    answers: {
+      en: ["Russia", "Canada", "China", "USA"],
+      fr: ["La Russie", "Le Canada", "La Chine", "Les États-Unis"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Russia is the largest by area.",
+      fr: "La Russie est le pays le plus vaste."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "0ef59484-0ca4-468e-bc8f-852cfcec42e2", // 53
+    difficulty: 4,
+    question: { en: "Which continent hosts the Amazon rainforest?", fr: "Quel continent abrite la plus grande forêt tropicale, l'Amazonie ?" },
+    answers: {
+      en: ["South America", "Africa", "Asia", "Oceania"],
+      fr: ["L'Amérique du Sud", "L'Afrique", "L'Asie", "L'Océanie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Amazon is in South America.",
+      fr: "L'Amazonie se trouve en Amérique du Sud."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "e004ebd9-57e4-45eb-b060-d2b1eec2d23e", // 54
+    difficulty: 3,
+    question: { en: "Which river is considered the longest in the world?", fr: "Quel fleuve est le plus long du monde ?" },
+    answers: {
+      en: ["Nile", "Amazon", "Yangtze", "Mississippi"],
+      fr: ["Le Nil", "L'Amazone", "Le Yangtsé", "Le Mississippi"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Nile is often considered the longest.",
+      fr: "Le Nil est souvent considéré comme le plus long fleuve."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "6ebb2ed5-53a3-4383-9d90-c9851593fb18", // 55
+    difficulty: 5,
+    question: { en: "Which mountain range is the highest in the world?", fr: "Quelle chaîne de montagnes est la plus élevée du monde ?" },
+    answers: {
+      en: ["Himalayas", "Andes", "Alps", "Rockies"],
+      fr: ["L'Himalaya", "Les Andes", "Les Alpes", "Les Rocheuses"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Himalayas contain Mount Everest.",
+      fr: "L'Himalaya abrite le mont Everest."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "59dfd54c-931e-4076-86cb-15164e7ca57c", // 56
+    difficulty: 6,
+    question: { en: "Which sea is bordered by Egypt, Sudan, Eritrea, and Djibouti?", fr: "Quelle mer est bordée par l'Égypte, le Soudan, l'Érythrée et Djibouti, entre autres ?" },
+    answers: {
+      en: ["Red Sea", "Black Sea", "Caspian Sea", "Arabian Sea"],
+      fr: ["La mer Rouge", "La mer Noire", "La mer Caspienne", "La mer d'Arabie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Red Sea is located between Africa and Asia.",
+      fr: "La mer Rouge se situe entre l'Afrique et l'Asie."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "a125d94b-73c5-4125-9ae1-6a7c186ba6dc", // 57
+    difficulty: 3,
+    question: { en: "Which country consists of over 17,000 islands, including Java and Sumatra?", fr: "Quel pays est composé de plus de 17 000 îles, dont Java et Sumatra ?" },
+    answers: {
+      en: ["Indonesia", "Philippines", "Japan", "Maldives"],
+      fr: ["L'Indonésie", "Les Philippines", "Le Japon", "Les Maldives"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Indonesia is an archipelago with over 17,000 islands.",
+      fr: "L'Indonésie est un archipel de plus de 17 000 îles."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "f043d10d-42b4-4b78-97b1-cf3dbc6454ae", // 58
+    difficulty: 2,
+    question: { en: "Which language is the most spoken in Brazil?", fr: "Quelle langue est la plus parlée au Brésil ?" },
+    answers: {
+      en: ["Portuguese", "Spanish", "English", "French"],
+      fr: ["Le portugais", "L'espagnol", "L'anglais", "Le français"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Portuguese is the official language of Brazil.",
+      fr: "Le portugais est la langue officielle du Brésil."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "ff272f56-562c-4678-ba4b-1e83d326dcc6", // 59
+    difficulty: 4,
+    question: { en: "Which strait separates Europe from Africa?", fr: "Quel détroit sépare l'Europe de l'Afrique ?" },
+    answers: {
+      en: ["Strait of Gibraltar", "Bering Strait", "Magellan Strait", "Malacca Strait"],
+      fr: ["Le détroit de Gibraltar", "Le détroit de Béring", "Le détroit de Magellan", "Le détroit de Malacca"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Strait of Gibraltar separates Europe and Africa.",
+      fr: "Le détroit de Gibraltar sépare l'Europe de l'Afrique."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "6ad0f641-f216-4261-9f44-269d39144534", // 60
+    difficulty: 5,
+    question: { en: "Which capital city lies on the Danube River?", fr: "Quelle capitale se trouve au bord du fleuve Danube ?" },
+    answers: {
+      en: ["Budapest", "Rome", "London", "Madrid"],
+      fr: ["Budapest", "Rome", "Londres", "Madrid"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Budapest is located on the Danube.",
+      fr: "Budapest est située sur le Danube."
+    },
+    tags: ["GEOGRAPHY"],
+  },
+  {
+    id: "bad79087-db97-4ab9-85d2-cc39c4e90988",
+    difficulty: 4,
+    question: {
+      en: "Who wrote the philosophical work 'Beyond Good and Evil'?",
+      fr: "Qui a écrit l'œuvre philosophique 'Par-delà le bien et le mal' ?"
+    },
+    answers: {
+      en: ["Friedrich Nietzsche", "Arthur Schopenhauer", "Immanuel Kant", "Georg Wilhelm Friedrich Hegel"],
+      fr: ["Friedrich Nietzsche", "Arthur Schopenhauer", "Immanuel Kant", "Georg Wilhelm Friedrich Hegel"]
+    },
+    correct: 0,
+    explanation: {
+      en: "'Beyond Good and Evil' was written by the German philosopher Friedrich Nietzsche and published in 1886.",
+      fr: "'Par-delà le bien et le mal' a été écrit par le philosophe allemand Friedrich Nietzsche et publié en 1886."
+    },
+    tags: [TagEnum.PHILOSOPHY],
+  },
+  {
+    id: "95ca2419-1488-4ab8-86c4-3aeadcdf43fb",
+    difficulty: 2,
+    question: {
+      en: "Which musical instrument is famous for its use by Jimi Hendrix?",
+      fr: "Quel instrument de musique est célèbre pour avoir été utilisé par Jimi Hendrix ?"
+    },
+    answers: {
+      en: ["Electric guitar", "Piano", "Violin", "Saxophone"],
+      fr: ["La guitare électrique", "Le piano", "Le violon", "Le saxophone"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Jimi Hendrix was renowned for his innovative and virtuoso electric guitar playing.",
+      fr: "Jimi Hendrix était réputé pour son jeu de guitare électrique innovant et virtuose."
+    },
+    tags: [TagEnum.MUSIC],
+  },
+  {
+    id: "fd5f0650-7579-4131-b54e-cf58945568b5",
+    difficulty: 5,
+    question: {
+      en: "What is the name of the space telescope launched by NASA to observe distant galaxies and stars?",
+      fr: "Quel est le nom du télescope spatial lancé par la NASA pour observer les galaxies et étoiles lointaines ?"
+    },
+    answers: {
+      en: ["Hubble Space Telescope", "James Webb Observatory", "Kepler Telescope", "Chandra X-Ray Telescope"],
+      fr: ["Le télescope spatial Hubble", "L’observatoire James Webb", "Le télescope Kepler", "Le télescope Chandra"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Hubble Space Telescope, launched in 1990, has provided unparalleled images of distant celestial objects.",
+      fr: "Le télescope spatial Hubble, lancé en 1990, a fourni des images sans précédent d'objets célestes lointains."
+    },
+    tags: [TagEnum.SCIENCE],
+  },
+  {
+    id: "dee90fdb-c99c-4050-947c-5d7407cd5b19",
+    difficulty: 3,
+    question: {
+      en: "In which country is Mount Kilimanjaro located?",
+      fr: "Dans quel pays se trouve le Mont Kilimandjaro ?"
+    },
+    answers: {
+      en: ["Tanzania", "Kenya", "Uganda", "Rwanda"],
+      fr: ["La Tanzanie", "Le Kenya", "L'Ouganda", "Le Rwanda"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Mount Kilimanjaro, Africa’s highest peak, is located in Tanzania.",
+      fr: "Le Mont Kilimandjaro, le plus haut sommet d'Afrique, se trouve en Tanzanie."
+    },
+    tags: [TagEnum.GEOGRAPHY],
+  },
+  {
+    id: "67fc5bd8-a411-4c8e-b32f-7fdc4658924a",
+    difficulty: 6,
+    question: {
+      en: "Which Italian director directed the film 'La Dolce Vita'?",
+      fr: "Quel réalisateur italien a réalisé le film 'La Dolce Vita' ?"
+    },
+    answers: {
+      en: ["Federico Fellini", "Luchino Visconti", "Michelangelo Antonioni", "Sergio Leone"],
+      fr: ["Federico Fellini", "Luchino Visconti", "Michelangelo Antonioni", "Sergio Leone"]
+    },
+    correct: 0,
+    explanation: {
+      en: "'La Dolce Vita' (1960) was directed by Federico Fellini, a key figure in Italian cinema.",
+      fr: "'La Dolce Vita' (1960) a été réalisé par Federico Fellini, une figure majeure du cinéma italien."
+    },
+    tags: [TagEnum.CINEMA],
+  },
+  {
+    id: "44a1464f-3b02-4e8c-a643-7ba5c5a11a4a",
+    difficulty: 4,
+    question: {
+      en: "Who wrote the novel 'Crime and Punishment'?",
+      fr: "Qui a écrit le roman 'Crime et Châtiment' ?"
+    },
+    answers: {
+      en: ["Fyodor Dostoevsky", "Leo Tolstoy", "Ivan Turgenev", "Nikolai Gogol"],
+      fr: ["Fiodor Dostoïevski", "Léon Tolstoï", "Ivan Tourgueniev", "Nicolas Gogol"]
+    },
+    correct: 0,
+    explanation: {
+      en: "'Crime and Punishment' is a novel by the Russian author Fyodor Dostoevsky, published in 1866.",
+      fr: "'Crime et Châtiment' est un roman de l'écrivain russe Fiodor Dostoïevski, publié en 1866."
+    },
+    tags: [TagEnum.LITERATURE],
+  },
+  {
+    id: "b07bb7f4-7e1f-4f7a-9a4a-360c5e3dbca2",
+    difficulty: 2,
+    question: {
+      en: "In a computer, which component is responsible for executing instructions?",
+      fr: "Dans un ordinateur, quel composant est responsable de l'exécution des instructions ?"
+    },
+    answers: {
+      en: ["CPU", "RAM", "Hard Drive", "GPU"],
+      fr: ["Le CPU", "La RAM", "Le disque dur", "Le GPU"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The CPU (Central Processing Unit) executes instructions and processes data in a computer.",
+      fr: "Le CPU (Central Processing Unit) exécute les instructions et traite les données dans un ordinateur."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "bb263d1b-1409-4c60-bd2a-27a70b11223b",
+    difficulty: 7,
+    question: {
+      en: "Who is traditionally considered the 'father' of the Jewish, Christian, and Islamic faiths?",
+      fr: "Qui est traditionnellement considéré comme le 'père' des religions juive, chrétienne et islamique ?"
+    },
+    answers: {
+      en: ["Abraham", "Moses", "Noah", "Isaac"],
+      fr: ["Abraham", "Moïse", "Noé", "Isaac"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Abraham is regarded as a patriarch in Judaism, Christianity, and Islam.",
+      fr: "Abraham est considéré comme un patriarche dans le judaïsme, le christianisme et l'islam."
+    },
+    tags: [TagEnum.RELIGION],
+  },
+  {
+    id: "2f1c00d4-a991-4d62-a67d-0c90248d88db",
+    difficulty: 3,
+    question: {
+      en: "Which empire did Genghis Khan establish in the 13th century?",
+      fr: "Quel empire Gengis Khan a-t-il fondé au XIIIe siècle ?"
+    },
+    answers: {
+      en: ["The Mongol Empire", "The Ottoman Empire", "The Persian Empire", "The Byzantine Empire"],
+      fr: ["L'Empire mongol", "L'Empire ottoman", "L'Empire perse", "L'Empire byzantin"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Genghis Khan founded the Mongol Empire, which became the largest contiguous land empire in history.",
+      fr: "Gengis Khan fonda l'Empire mongol, qui devint le plus grand empire terrestre contigu de l'histoire."
+    },
+    tags: [TagEnum.HISTORY],
+  },
+  {
+    id: "9547b6b1-b6ea-4fa5-9843-3da3d91f9c03",
+    difficulty: 5,
+    question: {
+      en: "Which famous Italian sculptor created the statue of 'David'?",
+      fr: "Quel célèbre sculpteur italien a réalisé la statue du 'David' ?"
+    },
+    answers: {
+      en: ["Michelangelo", "Donatello", "Bernini", "Cellini"],
+      fr: ["Michel-Ange", "Donatello", "Le Bernin", "Cellini"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Michelangelo created the marble statue of 'David' between 1501 and 1504.",
+      fr: "Michel-Ange a sculpté le 'David' en marbre entre 1501 et 1504."
+    },
+    tags: [TagEnum.ART],
+  },
+  {
+    id: "8d6e01c6-d5c8-477c-9b69-8abfe806e075",
+    difficulty: 3,
+    question: {
+      en: "In 2020 which event led to the postponement of the Tokyo Summer Olympics?",
+      fr: "En 2020, quel événement a conduit au report des Jeux olympiques d'été de Tokyo ?"
+    },
+    answers: {
+      en: ["COVID-19 pandemic", "Economic crisis", "Political unrest", "Natural disaster"],
+      fr: ["La pandémie de COVID-19", "La crise économique", "Les troubles politiques", "La catastrophe naturelle"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The COVID-19 pandemic led to the postponement of the Tokyo Summer Olympics from 2020 to 2021.",
+      fr: "La pandémie de COVID-19 a conduit au report des Jeux olympiques d'été de Tokyo de 2020 à 2021."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "9ba43944-2bb5-4042-9ba7-884b1b1d8a0b",
+    difficulty: 2,
+    question: {
+      en: "On 2024 Games Awards wich game won the 'Most anticipated game' award?",
+      fr: "Aux Game Awards 2024 quel jeu a remporté le prix du 'Jeu le plus attendu' ?"
+    },
+    answers: {
+      en: ["Grand Theft Auto VI", "The Elder Scrolls VI", "Cyberpunk 2077", "Halo Infinite"],
+      fr: ["Grand Theft Auto VI", "The Elder Scrolls VI", "Cyberpunk 2077", "Halo Infinite"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Grand Theft Auto VI won the 'Most anticipated game' award at the 2024 Game Awards.",
+      fr: "Grand Theft Auto VI a remporté le prix du 'Jeu le plus attendu' aux Game Awards 2024."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "ea760cbd-bdbc-4f4c-913e-17123d1e7d01",
+    difficulty: 3,
+    question: {
+      en: "Which body of the United Nations is responsible for maintaining international peace and security?",
+      fr: "Quel organe de l'ONU est chargé du maintien de la paix et de la sécurité internationales ?"
+    },
+    answers: {
+      en: ["The Security Council", "The General Assembly", "The Secretariat", "The Economic and Social Council"],
+      fr: ["Le Conseil de sécurité", "L'Assemblée générale", "Le Secrétariat", "Le Conseil économique et social"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The UN Security Council is primarily responsible for maintaining international peace and security.",
+      fr: "Le Conseil de sécurité de l'ONU est principalement responsable du maintien de la paix et de la sécurité internationales."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "1984b8f4-e3b3-4759-bbc1-037c37c27190",
+    difficulty: 4,
+    question: {
+      en: "Which political ideology advocates a classless society and the abolition of private property?",
+      fr: "Quelle idéologie politique prône une société sans classes et l'abolition de la propriété privée ?"
+    },
+    answers: {
+      en: ["Communism", "Fascism", "Liberalism", "Conservatism"],
+      fr: ["Le communisme", "Le fascisme", "Le libéralisme", "Le conservatisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Communism, as theorized by Karl Marx and Friedrich Engels, aims to create a classless, stateless society.",
+      fr: "Le communisme, théorisé par Karl Marx et Friedrich Engels, vise une société sans classes et sans État."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "f20dcf56-2f78-4819-9c53-ae2105c1bacf",
+    difficulty: 5,
+    question: {
+      en: "What is the supreme law of the United States?",
+      fr: "Quelle est la loi suprême des États-Unis ?"
+    },
+    answers: {
+      en: ["The Constitution", "The Declaration of Independence", "The Bill of Rights", "The Federalist Papers"],
+      fr: ["La Constitution", "La Déclaration d'Indépendance", "La Déclaration des Droits (Bill of Rights)", "Les Federalist Papers"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The U.S. Constitution is the highest law of the United States.",
+      fr: "La Constitution des États-Unis est la loi suprême du pays."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "14ef1229-b71c-4a35-9ad1-b9ec5edca4b0",
+    difficulty: 2,
+    question: {
+      en: "What term describes a system in which power is divided between a central authority and constituent units?",
+      fr: "Quel terme décrit un système où le pouvoir est partagé entre une autorité centrale et des entités constitutives ?"
+    },
+    answers: {
+      en: ["Federalism", "Unitary", "Confederation", "Monarchy"],
+      fr: ["Le fédéralisme", "L'État unitaire", "La confédération", "La monarchie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Federalism divides power between national and state governments.",
+      fr: "Le fédéralisme divise le pouvoir entre le niveau national et les États ou provinces."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "ae82b3b6-a6a8-4c3c-bc29-a2945221fd7a",
+    difficulty: 6,
+    question: {
+      en: "Which international organization was founded in 1949 as a military alliance to counter the Soviet Union?",
+      fr: "Quelle organisation internationale, fondée en 1949, est une alliance militaire destinée à contrer l'Union soviétique ?"
+    },
+    answers: {
+      en: ["NATO", "Warsaw Pact", "European Union", "ASEAN"],
+      fr: ["L'OTAN", "Le Pacte de Varsovie", "L'Union européenne", "L'ASEAN"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The North Atlantic Treaty Organization was created in 1949.",
+      fr: "L'OTAN (Organisation du Traité de l'Atlantique Nord) a été créée en 1949."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "62e96674-762b-4ff3-a510-5ec775ef803a",
+    difficulty: 3,
+    question: {
+      en: "Which political system is characterized by a single ruler who holds all power, often inherited?",
+      fr: "Quel système politique est caractérisé par un seul dirigeant détenant tout le pouvoir, souvent héréditaire ?"
+    },
+    answers: {
+      en: ["Absolute monarchy", "Republic", "Democracy", "Oligarchy"],
+      fr: ["La monarchie absolue", "La république", "La démocratie", "L'oligarchie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "An absolute monarchy invests power in one monarch.",
+      fr: "Une monarchie absolue confère tout le pouvoir à un seul monarque."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "7cfccc67-cea7-4e2e-8b57-d5bdc098fb7b",
+    difficulty: 4,
+    question: {
+      en: "Which treaty established the European Union in 1993?",
+      fr: "Quel traité, entré en vigueur en 1993, a établi l'Union européenne ?"
+    },
+    answers: {
+      en: ["The Maastricht Treaty", "The Treaty of Rome", "The Treaty of Lisbon", "The Treaty of Paris"],
+      fr: ["Le Traité de Maastricht", "Le Traité de Rome", "Le Traité de Lisbonne", "Le Traité de Paris"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Maastricht Treaty created the EU in 1993.",
+      fr: "Le Traité de Maastricht a créé l'UE en 1993."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "dd2c5f19-264f-4b3a-80bb-f9d4c8708796",
+    difficulty: 5,
+    question: {
+      en: "Which concept refers to the right of a people to choose their own government?",
+      fr: "Quel concept fait référence au droit d'un peuple de choisir son propre gouvernement ?"
+    },
+    answers: {
+      en: ["Self-determination", "Nationalism", "Imperialism", "Colonialism"],
+      fr: ["L'autodétermination", "Le nationalisme", "L'impérialisme", "Le colonialisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Self-determination is a key principle in international law.",
+      fr: "L'autodétermination est un principe clé du droit international."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "5fa447ef-c642-4e70-8d4a-ea12c767da12",
+    difficulty: 2,
+    question: {
+      en: "In a parliamentary democracy, who is typically the head of government?",
+      fr: "Dans une démocratie parlementaire, qui est généralement le chef du gouvernement ?"
+    },
+    answers: {
+      en: ["Prime Minister", "President", "Monarch", "Governor"],
+      fr: ["Le Premier ministre", "Le Président", "Le Monarque", "Le Gouverneur"]
+    },
+    correct: 0,
+    explanation: {
+      en: "In parliamentary systems, the Prime Minister leads the government.",
+      fr: "Dans les systèmes parlementaires, le Premier ministre dirige le gouvernement."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "06bacfaa-3ddb-4443-bf21-ebc5fe18f425",
+    difficulty: 7,
+    question: {
+      en: "Which term describes a government ruled by a small group of elites?",
+      fr: "Quel terme décrit un gouvernement dirigé par un petit groupe d'élites ?"
+    },
+    answers: {
+      en: ["Oligarchy", "Plutocracy", "Theocracy", "Democracy"],
+      fr: ["L'oligarchie", "La ploutocratie", "La théocratie", "La démocratie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "An oligarchy is controlled by a few powerful people.",
+      fr: "Une oligarchie est contrôlée par un petit groupe de personnes puissantes."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "abbc72e6-cb58-4494-aec3-e3d90c0d9ce6",
+    difficulty: 4,
+    question: {
+      en: "Which philosopher is known for the concept of the 'social contract' in political theory?",
+      fr: "Quel philosophe est connu pour le concept de 'contrat social' en théorie politique ?"
+    },
+    answers: {
+      en: ["Jean-Jacques Rousseau", "Thomas Hobbes", "John Locke", "Immanuel Kant"],
+      fr: ["Jean-Jacques Rousseau", "Thomas Hobbes", "John Locke", "Immanuel Kant"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Rousseau developed the idea of the social contract.",
+      fr: "Rousseau a développé l'idée du contrat social."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "3ea811d4-a912-41fa-9df3-9c951cf86930",
+    difficulty: 5,
+    question: {
+      en: "What name is given to the ideology that emphasizes free markets, limited government, and individual liberty?",
+      fr: "Quel nom est donné à l'idéologie mettant l'accent sur le libre marché, un gouvernement limité et la liberté individuelle ?"
+    },
+    answers: {
+      en: ["Classical liberalism", "Socialism", "Anarchism", "Mercantilism"],
+      fr: ["Le libéralisme classique", "Le socialisme", "L'anarchisme", "Le mercantilisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Classical liberalism values individual freedom and minimal state intervention.",
+      fr: "Le libéralisme classique valorise la liberté individuelle et une intervention étatique minimale."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "a9464cb9-82a4-4cdb-8627-97f2f6193f66",
+    difficulty: 6,
+    question: {
+      en: "Which body in the United Kingdom is the lower house of Parliament?",
+      fr: "Quelle est la chambre basse du Parlement du Royaume-Uni ?"
+    },
+    answers: {
+      en: ["House of Commons", "House of Lords", "Privy Council", "Scottish Parliament"],
+      fr: ["La Chambre des communes", "La Chambre des lords", "Le Conseil privé", "Le Parlement écossais"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The House of Commons is the UK's lower house.",
+      fr: "La Chambre des communes est la chambre basse du Parlement britannique."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "749bc723-a1fb-47fa-a01c-e3f6dac9a605",
+    difficulty: 3,
+    question: {
+      en: "What political system vests the supreme power in the people, who exercise it directly or through elected representatives?",
+      fr: "Quel système politique confère le pouvoir suprême au peuple, qui l'exerce directement ou par des représentants élus ?"
+    },
+    answers: {
+      en: ["Democracy", "Totalitarianism", "Monarchy", "Theocracy"],
+      fr: ["La démocratie", "Le totalitarisme", "La monarchie", "La théocratie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Democracy is rule by the people.",
+      fr: "La démocratie est le gouvernement du peuple."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "2ccdd867-b4d0-43cd-8c2f-8075916ba6dd",
+    difficulty: 8,
+    question: {
+      en: "Which ancient Greek city-state is often considered the birthplace of democracy?",
+      fr: "Quelle cité-État grecque antique est souvent considérée comme le berceau de la démocratie ?"
+    },
+    answers: {
+      en: ["Athens", "Sparta", "Thebes", "Corinth"],
+      fr: ["Athènes", "Sparte", "Thèbes", "Corinthe"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Athens introduced early forms of direct democracy.",
+      fr: "Athènes a introduit les premières formes de démocratie directe."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "bb01fd52-f926-4c63-b938-7e26761acba1",
+    difficulty: 4,
+    question: {
+      en: "Which document, signed in 1215, limited the powers of the English monarch?",
+      fr: "Quel document, signé en 1215, limita les pouvoirs du monarque anglais ?"
+    },
+    answers: {
+      en: ["Magna Carta", "Bill of Rights", "Petition of Right", "Act of Settlement"],
+      fr: ["La Magna Carta", "La Déclaration des Droits", "La Pétition des Droits", "L'Acte d'établissement"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Magna Carta is a cornerstone of constitutional governance.",
+      fr: "La Magna Carta est une pierre angulaire de la gouvernance constitutionnelle."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "fcebac3a-9d56-4b79-a27c-e2ebaa6079eb",
+    difficulty: 5,
+    question: {
+      en: "Which term refers to a policy of extending a country's power and influence through diplomacy or military force?",
+      fr: "Quel terme désigne une politique d'expansion de la puissance et de l'influence d'un pays par la diplomatie ou la force militaire ?"
+    },
+    answers: {
+      en: ["Imperialism", "Isolationism", "Neutrality", "Disarmament"],
+      fr: ["L'impérialisme", "L'isolationnisme", "La neutralité", "Le désarmement"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Imperialism often involves colonization and empire-building.",
+      fr: "L'impérialisme implique souvent la colonisation et la construction d'empires."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "b20994bb-90f8-45ed-bd5f-79a30b3c2831",
+    difficulty: 3,
+    question: {
+      en: "Which principle divides government authority into legislative, executive, and judicial branches?",
+      fr: "Quel principe divise l'autorité gouvernementale en trois branches : législative, exécutive et judiciaire ?"
+    },
+    answers: {
+      en: ["Separation of powers", "Checks and balances", "Federalism", "Rule of law"],
+      fr: ["La séparation des pouvoirs", "Le système de freins et contrepoids", "Le fédéralisme", "L'État de droit"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Montesquieu championed separation of powers.",
+      fr: "Montesquieu a défendu la séparation des pouvoirs."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "c3d7b398-fa96-4572-a9a4-55ee3145cdb3",
+    difficulty: 6,
+    question: {
+      en: "What term describes the absence of government and absolute freedom of the individual?",
+      fr: "Quel terme décrit l'absence de gouvernement et la liberté absolue de l'individu ?"
+    },
+    answers: {
+      en: ["Anarchy", "Democracy", "Theocracy", "Bureaucracy"],
+      fr: ["L'anarchie", "La démocratie", "La théocratie", "La bureaucratie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Anarchy refers to a state without governing authority.",
+      fr: "L'anarchie renvoie à une situation sans autorité gouvernementale."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "756d958a-362c-47b7-9eb3-e862785d7209",
+    difficulty: 5,
+    question: {
+      en: "Which political ideology seeks to maintain traditional institutions and is resistant to sudden change?",
+      fr: "Quelle idéologie politique vise à maintenir les institutions traditionnelles et résiste aux changements brusques ?"
+    },
+    answers: {
+      en: ["Conservatism", "Socialism", "Anarchism", "Communism"],
+      fr: ["Le conservatisme", "Le socialisme", "L'anarchisme", "Le communisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Conservatism values tradition and stability.",
+      fr: "Le conservatisme valorise la tradition et la stabilité."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "944b6262-56af-49dc-9a1f-af333274c80d",
+    difficulty: 4,
+    question: {
+      en: "What is the name of the collective decision-making body of the European Union composed of member states' leaders?",
+      fr: "Quel est le nom de l'organe décisionnel collectif de l'UE composé des dirigeants des États membres ?"
+    },
+    answers: {
+      en: ["European Council", "European Commission", "European Parliament", "Council of the EU"],
+      fr: ["Le Conseil européen", "La Commission européenne", "Le Parlement européen", "Le Conseil de l'UE"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The European Council is made up of the heads of state or government of EU members.",
+      fr: "Le Conseil européen réunit les chefs d'État ou de gouvernement des États membres de l'UE."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "8f19f219-f6a5-4c46-946d-06105903db54",
+    difficulty: 7,
+    question: {
+      en: "Which Latin American revolutionary leader helped liberate Venezuela, Colombia, Ecuador, Peru, and Bolivia?",
+      fr: "Quel leader révolutionnaire latino-américain a contribué à libérer le Venezuela, la Colombie, l'Équateur, le Pérou et la Bolivie ?"
+    },
+    answers: {
+      en: ["Simón Bolívar", "José de San Martín", "Che Guevara", "Pancho Villa"],
+      fr: ["Simón Bolívar", "José de San Martín", "Che Guevara", "Pancho Villa"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Simón Bolívar was instrumental in the independence of several South American countries.",
+      fr: "Simón Bolívar a joué un rôle clé dans l'indépendance de plusieurs pays d'Amérique du Sud."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "bbd80bc7-a25f-4544-8df6-6888a0978a15",
+    difficulty: 3,
+    question: {
+      en: "Which branch of government is typically responsible for interpreting laws?",
+      fr: "Quelle branche du gouvernement est généralement chargée d'interpréter les lois ?"
+    },
+    answers: {
+      en: ["Judiciary", "Executive", "Legislative", "Bureaucracy"],
+      fr: ["Le pouvoir judiciaire", "Le pouvoir exécutif", "Le pouvoir législatif", "La bureaucratie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The judiciary interprets and applies the law.",
+      fr: "Le pouvoir judiciaire interprète et applique la loi."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "ea2bf7a6-3ea8-4cef-9f30-fc9826f7ef36",
+    difficulty: 6,
+    question: {
+      en: "Which political ideology aims to establish a society based on common ownership and the absence of social classes?",
+      fr: "Quelle idéologie politique vise à établir une société fondée sur la propriété commune et l'absence de classes sociales ?"
+    },
+    answers: {
+      en: ["Communism", "Fascism", "Liberalism", "Social democracy"],
+      fr: ["Le communisme", "Le fascisme", "Le libéralisme", "La social-démocratie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Communism seeks to eliminate classes and private property.",
+      fr: "Le communisme cherche à éliminer les classes sociales et la propriété privée."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "54b775ec-e4a7-4f8c-9656-e750c98b7ae8",
+    difficulty: 5,
+    question: {
+      en: "Which American political doctrine asserted US opposition to European colonization in the Americas?",
+      fr: "Quelle doctrine politique américaine affirmait l'opposition des États-Unis à la colonisation européenne dans les Amériques ?"
+    },
+    answers: {
+      en: ["The Monroe Doctrine", "The Truman Doctrine", "The Marshall Plan", "The Roosevelt Corollary"],
+      fr: ["La doctrine Monroe", "La doctrine Truman", "Le plan Marshall", "Le corollaire Roosevelt"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Monroe Doctrine (1823) opposed European interference in the Americas.",
+      fr: "La doctrine Monroe (1823) s'opposait à l'ingérence européenne dans les Amériques."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "f2637407-bac5-4c13-9d18-f08cd1bd4a57",
+    difficulty: 4,
+    question: {
+      en: "Which concept in politics refers to the rule of law rather than of individuals?",
+      fr: "Quel concept en politique fait référence à la primauté de la loi plutôt qu'au pouvoir des individus ?"
+    },
+    answers: {
+      en: ["Rule of law", "Divine right", "Patronage", "Nepotism"],
+      fr: ["L'État de droit", "Le droit divin", "Le clientélisme", "Le népotisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The rule of law ensures that all, including leaders, are subject to the law.",
+      fr: "L'État de droit garantit que tous, y compris les dirigeants, sont soumis à la loi."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "696ff909-5334-47eb-9bd1-574ebe9c4467",
+    difficulty: 8,
+    question: {
+      en: "Which political regime is characterized by total state control, a single party, and suppression of opposition?",
+      fr: "Quel régime politique se caractérise par un contrôle total de l'État, un parti unique et la répression de l'opposition ?"
+    },
+    answers: {
+      en: ["Totalitarianism", "Constitutional monarchy", "Liberal democracy", "Anarchism"],
+      fr: ["Le totalitarisme", "La monarchie constitutionnelle", "La démocratie libérale", "L'anarchisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Totalitarian regimes control all aspects of life.",
+      fr: "Les régimes totalitaires contrôlent tous les aspects de la vie."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "40995cd0-69fc-4af8-844c-56b556288991",
+    difficulty: 2,
+    question: {
+      en: "Which global intergovernmental organization replaced the League of Nations in 1945?",
+      fr: "Quelle organisation intergouvernementale mondiale a remplacé la Société des Nations en 1945 ?"
+    },
+    answers: {
+      en: ["The United Nations", "NATO", "The OAU", "The European Union"],
+      fr: ["L'Organisation des Nations Unies (ONU)", "L'OTAN", "L'OUA", "L'Union européenne"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The UN was established in 1945 to promote peace and cooperation.",
+      fr: "L'ONU fut créée en 1945 pour promouvoir la paix et la coopération."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "b78b269c-b0f1-4c2e-9dac-9f3fa547859d",
+    difficulty: 5,
+    question: {
+      en: "Which French philosopher’s ideas influenced the separation of powers concept?",
+      fr: "Les idées de quel philosophe français ont influencé le concept de séparation des pouvoirs ?"
+    },
+    answers: {
+      en: ["Montesquieu", "Voltaire", "Rousseau", "Diderot"],
+      fr: ["Montesquieu", "Voltaire", "Rousseau", "Diderot"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Montesquieu's 'Spirit of the Laws' shaped modern political structures.",
+      fr: "L'Esprit des lois de Montesquieu a façonné les structures politiques modernes."
+    },
+    tags: [TagEnum.POLITICS],
+  },
+  {
+    id: "942b37ec-c75f-4480-aee2-7dd34950c7b1",
+    difficulty: 7,
+    question: {
+      en: "Which term denotes the right to vote in political elections?",
+      fr: "Quel terme désigne le droit de voter aux élections politiques ?"
+    },
+    answers: {
+      en: ["Suffrage", "Mandate", "Census", "Veto"],
+      fr: ["Le suffrage", "Le mandat", "Le recensement", "Le veto"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Suffrage is the right to vote in elections.",
+      fr: "Le suffrage est le droit de vote lors des élections."
+    },
+    tags: [TagEnum.POLITICS],
+  }
+];
+
+// 50 Questions: TECHNOLOGY
+const newTechnologyQuestions: Question[] = [
+  {
+    id: "9aaa24cc-857b-4122-9f44-bfe43aa16154",
+    difficulty: 3,
+    question: {
+      en: "Which protocol is primarily used to send emails from a mail client to a mail server?",
+      fr: "Quel protocole est principalement utilisé pour envoyer des e-mails d'un client de messagerie à un serveur ?"
+    },
+    answers: {
+      en: ["SMTP", "POP3", "IMAP", "HTTP"],
+      fr: ["SMTP", "POP3", "IMAP", "HTTP"]
+    },
+    correct: 0,
+    explanation: {
+      en: "SMTP (Simple Mail Transfer Protocol) is used for sending emails.",
+      fr: "SMTP (Simple Mail Transfer Protocol) est utilisé pour l'envoi d'e-mails."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "1eec608d-361b-4fc7-bd67-bdfd3115b68b",
+    difficulty: 4,
+    question: {
+      en: "Which programming language is primarily used for iOS app development alongside Swift?",
+      fr: "Quel langage de programmation est principalement utilisé pour le développement iOS aux côtés de Swift ?"
+    },
+    answers: {
+      en: ["Objective-C", "Java", "C#", "Kotlin"],
+      fr: ["Objective-C", "Java", "C#", "Kotlin"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Before Swift, Objective-C was the main language for iOS development.",
+      fr: "Avant Swift, Objective-C était le langage principal pour le développement iOS."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "81acc0b3-27ef-4c50-bec6-cd73aac6e314",
+    difficulty: 2,
+    question: {
+      en: "What does 'USB' stand for?",
+      fr: "Que signifie 'USB' ?"
+    },
+    answers: {
+      en: ["Universal Serial Bus", "Universal System Board", "Unified Service Bus", "Ultra Speed Bus"],
+      fr: ["Universal Serial Bus", "Universal System Board", "Unified Service Bus", "Ultra Speed Bus"]
+    },
+    correct: 0,
+    explanation: {
+      en: "USB stands for Universal Serial Bus.",
+      fr: "USB signifie Universal Serial Bus."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "6b6f182d-cdb1-4a15-86bc-a88b4c8e064a",
+    difficulty: 5,
+    question: {
+      en: "Which company developed the Android operating system before being acquired by Google?",
+      fr: "Quelle société a développé le système d'exploitation Android avant d'être rachetée par Google ?"
+    },
+    answers: {
+      en: ["Android Inc.", "Apple", "Nokia", "BlackBerry"],
+      fr: ["Android Inc.", "Apple", "Nokia", "BlackBerry"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Android Inc. was acquired by Google in 2005.",
+      fr: "Android Inc. a été rachetée par Google en 2005."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "06363e67-8f12-4e42-9f28-a3460cd2ce39",
+    difficulty: 3,
+    question: {
+      en: "What is the main markup language for creating web pages?",
+      fr: "Quel est le principal langage de balisage pour créer des pages Web ?"
+    },
+    answers: {
+      en: ["HTML", "CSS", "XML", "PHP"],
+      fr: ["HTML", "CSS", "XML", "PHP"]
+    },
+    correct: 0,
+    explanation: {
+      en: "HTML defines the structure of web pages.",
+      fr: "HTML définit la structure des pages Web."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "98efefaa-634c-4d9a-9104-a2bcf1451095",
+    difficulty: 2,
+    question: {
+      en: "Which company is famous for the Windows operating system?",
+      fr: "Quelle entreprise est célèbre pour le système d'exploitation Windows ?"
+    },
+    answers: {
+      en: ["Microsoft", "Apple", "Google", "IBM"],
+      fr: ["Microsoft", "Apple", "Google", "IBM"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Microsoft developed Windows.",
+      fr: "Microsoft a développé Windows."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "8d41a436-4170-4c39-99b3-79cde7b28528",
+    difficulty: 4,
+    question: {
+      en: "What does 'CPU' stand for?",
+      fr: "Que signifie 'CPU' ?"
+    },
+    answers: {
+      en: ["Central Processing Unit", "Computer Peripheral Unit", "Core Programming Utility", "Central Power Unit"],
+      fr: ["Central Processing Unit", "Computer Peripheral Unit", "Core Programming Utility", "Central Power Unit"]
+    },
+    correct: 0,
+    explanation: {
+      en: "CPU is the brain of the computer.",
+      fr: "Le CPU est le cerveau de l'ordinateur."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "f6f5d1d0-7f3e-4d81-bbb3-cced314b7bec",
+    difficulty: 5,
+    question: {
+      en: "Which language is widely used for data analysis and machine learning?",
+      fr: "Quel langage est largement utilisé pour l'analyse de données et le machine learning ?"
+    },
+    answers: {
+      en: ["Python", "Ruby", "C", "Fortran"],
+      fr: ["Python", "Ruby", "C", "Fortran"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Python is popular in data science.",
+      fr: "Python est populaire en data science."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "4aa2a6b0-bd1e-4d41-a776-b95105c391f0",
+    difficulty: 3,
+    question: {
+      en: "Which protocol secures data between a web server and a browser?",
+      fr: "Quel protocole sécurise les données entre un serveur Web et un navigateur ?"
+    },
+    answers: {
+      en: ["HTTPS", "FTP", "Telnet", "HTTP"],
+      fr: ["HTTPS", "FTP", "Telnet", "HTTP"]
+    },
+    correct: 0,
+    explanation: {
+      en: "HTTPS adds encryption (TLS) to HTTP.",
+      fr: "HTTPS ajoute le chiffrement (TLS) au HTTP."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "851535cd-d3df-4a14-ba13-ef6ebf9b5718",
+    difficulty: 1,
+    question: {
+      en: "What does 'RAM' stand for?",
+      fr: "Que signifie 'RAM' ?"
+    },
+    answers: {
+      en: ["Random Access Memory", "Read-Access Memory", "Rapid Action Module", "Runtime Allocation Memory"],
+      fr: ["Random Access Memory", "Read-Access Memory", "Rapid Action Module", "Runtime Allocation Memory"]
+    },
+    correct: 0,
+    explanation: {
+      en: "RAM is volatile memory in computers.",
+      fr: "La RAM est une mémoire volatile dans les ordinateurs."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "58909bda-b15c-4cb5-9d72-e5a26902cf6e",
+    difficulty: 4,
+    question: {
+      en: "Which OS is known for its open-source nature and penguin mascot (Tux)?",
+      fr: "Quel système d'exploitation est connu pour son caractère open-source et sa mascotte pingouin (Tux)?"
+    },
+    answers: {
+      en: ["Linux", "Windows", "macOS", "Unix"],
+      fr: ["Linux", "Windows", "macOS", "Unix"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Linux is open-source and uses Tux.",
+      fr: "Linux est open-source et utilise Tux."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "fa3f8b83-3797-4774-9a03-b3f866ceaec2",
+    difficulty: 6,
+    question: {
+      en: "Which database language is used to manage relational databases?",
+      fr: "Quel langage de base de données est utilisé pour gérer les bases relationnelles ?"
+    },
+    answers: {
+      en: ["SQL", "NoSQL", "JSON", "XML"],
+      fr: ["SQL", "NoSQL", "JSON", "XML"]
+    },
+    correct: 0,
+    explanation: {
+      en: "SQL manages and queries relational databases.",
+      fr: "SQL gère et interroge les bases de données relationnelles."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "d7c0764b-a74a-4cb6-ac60-294fc48b825c",
+    difficulty: 3,
+    question: {
+      en: "Which global system uses satellites to determine geographical location?",
+      fr: "Quel système global utilise des satellites pour déterminer une position géographique ?"
+    },
+    answers: {
+      en: ["GPS", "NFC", "Bluetooth", "Wi-Fi"],
+      fr: ["Le GPS", "NFC", "Bluetooth", "Wi-Fi"]
+    },
+    correct: 0,
+    explanation: {
+      en: "GPS provides location coordinates.",
+      fr: "Le GPS fournit des coordonnées de localisation."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "2c4a2274-73c9-4ef2-8310-2c8e59197bce",
+    difficulty: 5,
+    question: {
+      en: "Which concept refers to a network of physical objects connected to the internet?",
+      fr: "Quel concept désigne un réseau d'objets physiques connectés à Internet ?"
+    },
+    answers: {
+      en: ["Internet of Things (IoT)", "Cloud computing", "Machine learning", "Big data"],
+      fr: ["L'Internet des objets (IoT)", "Le cloud computing", "Le machine learning", "Le big data"]
+    },
+    correct: 0,
+    explanation: {
+      en: "IoT connects devices online.",
+      fr: "L'IoT connecte des appareils en ligne."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "b7e3171a-3c70-45b2-b7f2-b9169410e713",
+    difficulty: 4,
+    question: {
+      en: "Which company developed the iPhone?",
+      fr: "Quelle entreprise a développé l'iPhone ?"
+    },
+    answers: {
+      en: ["Apple", "Samsung", "Nokia", "Huawei"],
+      fr: ["Apple", "Samsung", "Nokia", "Huawei"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Apple released the first iPhone in 2007.",
+      fr: "Apple a lancé le premier iPhone en 2007."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "4e6f4076-de80-43ef-b216-02ae6c85e8c3",
+    difficulty: 3,
+    question: {
+      en: "What does 'URL' stand for?",
+      fr: "Que signifie 'URL' ?"
+    },
+    answers: {
+      en: ["Uniform Resource Locator", "Universal Resource Link", "Unified Reference Label", "Universal Routing Line"],
+      fr: ["Uniform Resource Locator", "Universal Resource Link", "Unified Reference Label", "Universal Routing Line"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A URL identifies a web resource.",
+      fr: "Une URL identifie une ressource web."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "8e7c02e9-4398-4bd7-a169-0a0106449f0f",
+    difficulty: 2,
+    question: {
+      en: "Which technology is used to create virtual currencies like Bitcoin?",
+      fr: "Quelle technologie est utilisée pour créer des monnaies virtuelles comme le Bitcoin ?"
+    },
+    answers: {
+      en: ["Blockchain", "Cloud computing", "Quantum computing", "3D printing"],
+      fr: ["La blockchain", "Le cloud computing", "L'informatique quantique", "L'impression 3D"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Blockchain underpins cryptocurrencies.",
+      fr: "La blockchain sous-tend les cryptomonnaies."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "041948ca-a6d8-4f16-9c7f-d3c9c6a86b86",
+    difficulty: 5,
+    question: {
+      en: "Which language is primarily used for styling web pages?",
+      fr: "Quel langage est principalement utilisé pour la mise en forme des pages Web ?"
+    },
+    answers: {
+      en: ["CSS", "HTML", "JavaScript", "SQL"],
+      fr: ["CSS", "HTML", "JavaScript", "SQL"]
+    },
+    correct: 0,
+    explanation: {
+      en: "CSS (Cascading Style Sheets) styles the layout.",
+      fr: "Le CSS (Cascading Style Sheets) gère la mise en forme."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "1f93af88-6eeb-48c2-a7c9-925920aa3b84",
+    difficulty: 4,
+    question: {
+      en: "Which open-source version control system is widely used by developers?",
+      fr: "Quel système de contrôle de version open-source est largement utilisé par les développeurs ?"
+    },
+    answers: {
+      en: ["Git", "SVN", "Mercurial", "CVS"],
+      fr: ["Git", "SVN", "Mercurial", "CVS"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Git is a distributed version control system.",
+      fr: "Git est un système de contrôle de version distribué."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "f3f0e6f4-07ed-4084-8d6d-5267eb18a196",
+    difficulty: 6,
+    question: {
+      en: "Which technology giant is known for the search engine Chrome and the Android OS?",
+      fr: "Quel géant de la technologie est connu pour le moteur de recherche Chrome et le système Android ?"
+    },
+    answers: {
+      en: ["Google", "Apple", "Microsoft", "Amazon"],
+      fr: ["Google", "Apple", "Microsoft", "Amazon"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Google develops Chrome and Android.",
+      fr: "Google développe Chrome et Android."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "ebb67175-7eef-4a3c-869c-f3359087b105",
+    difficulty: 5,
+    question: {
+      en: "Which markup language is used to format scientific documents and math equations?",
+      fr: "Quel langage de balisage est utilisé pour formater des documents scientifiques et des équations mathématiques ?"
+    },
+    answers: {
+      en: ["LaTeX", "Markdown", "YAML", "R Markdown"],
+      fr: ["LaTeX", "Markdown", "YAML", "R Markdown"]
+    },
+    correct: 0,
+    explanation: {
+      en: "LaTeX is common in academic publishing.",
+      fr: "LaTeX est courant dans l'édition académique."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "d521a6c8-fbaa-4b78-b98b-98e604ab83ad",
+    difficulty: 7,
+    question: {
+      en: "Which methodology focuses on iterative development, customer feedback, and small rapid releases?",
+      fr: "Quelle méthodologie se concentre sur le développement itératif, le feedback client et des sorties rapides et fréquentes ?"
+    },
+    answers: {
+      en: ["Agile", "Waterfall", "Spiral", "V-Model"],
+      fr: ["Agile", "Waterfall", "Spiral", "V-Model"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Agile emphasizes flexibility and iteration.",
+      fr: "L'Agile met l'accent sur la flexibilité et l'itération."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "6613bec6-1e2d-4f1d-9ee8-81faa154024b",
+    difficulty: 4,
+    question: {
+      en: "Which type of malware encrypts a user's files and demands ransom?",
+      fr: "Quel type de malware chiffre les fichiers d'un utilisateur et exige une rançon ?"
+    },
+    answers: {
+      en: ["Ransomware", "Spyware", "Adware", "Trojan"],
+      fr: ["Le ransomware", "Le spyware", "L'adware", "Le cheval de Troie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Ransomware encrypts files for ransom.",
+      fr: "Le ransomware chiffre les fichiers pour demander une rançon."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "373b8819-044d-4f1a-b3f4-f86034d1d7ab",
+    difficulty: 5,
+    question: {
+      en: "Which company developed the PlayStation gaming console?",
+      fr: "Quelle entreprise a développé la console de jeu PlayStation ?"
+    },
+    answers: {
+      en: ["Sony", "Nintendo", "Microsoft", "Sega"],
+      fr: ["Sony", "Nintendo", "Microsoft", "Sega"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Sony launched the first PlayStation in 1994.",
+      fr: "Sony a lancé la première PlayStation en 1994."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "2cf70b22-9237-4568-8c7b-7e62fd8c550d",
+    difficulty: 3,
+    question: {
+      en: "What does 'GPU' stand for?",
+      fr: "Que signifie 'GPU' ?"
+    },
+    answers: {
+      en: ["Graphics Processing Unit", "General Processing Unit", "Global Power Unit", "Graphic Protocol Utility"],
+      fr: ["Graphics Processing Unit", "General Processing Unit", "Global Power Unit", "Graphic Protocol Utility"]
+    },
+    correct: 0,
+    explanation: {
+      en: "GPU handles graphics rendering.",
+      fr: "Le GPU gère le rendu graphique."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "f6d90480-1bdf-4abb-b63b-63e4eb2ae6d7",
+    difficulty: 4,
+    question: {
+      en: "Which device converts digital signals to analog and vice versa for internet access over telephone lines?",
+      fr: "Quel appareil convertit les signaux numériques en signaux analogiques et inversement pour l'accès à Internet via les lignes téléphoniques ?"
+    },
+    answers: {
+      en: ["Modem", "Router", "Switch", "Hub"],
+      fr: ["Le modem", "Le routeur", "Le commutateur (switch)", "Le concentrateur (hub)"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The modem modulates and demodulates signals.",
+      fr: "Le modem module et démodule les signaux."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "9c313a1e-3e0b-44c2-974c-0449014bbf04",
+    difficulty: 6,
+    question: {
+      en: "Which concept involves delivering computing services over the internet, including storage and processing?",
+      fr: "Quel concept implique la fourniture de services informatiques sur Internet, y compris le stockage et le traitement ?"
+    },
+    answers: {
+      en: ["Cloud computing", "Edge computing", "Fog computing", "Grid computing"],
+      fr: ["Le cloud computing", "L'edge computing", "Le fog computing", "Le grid computing"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Cloud computing provides on-demand resources.",
+      fr: "Le cloud computing offre des ressources à la demande."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "a3537010-2df3-4594-b389-228dce3ed3e2",
+    difficulty: 5,
+    question: {
+      en: "Which language was developed at Sun Microsystems and is known for its portability on the JVM?",
+      fr: "Quel langage, développé par Sun Microsystems, est connu pour sa portabilité sur la JVM ?"
+    },
+    answers: {
+      en: ["Java", "C++", "C", "Ruby"],
+      fr: ["Java", "C++", "C", "Ruby"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Java runs on the Java Virtual Machine.",
+      fr: "Java s'exécute sur la JVM."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "1b79e365-a31b-4fbb-a7ab-a6af8db524ac",
+    difficulty: 3,
+    question: {
+      en: "Which electronics company is known for the Galaxy line of smartphones?",
+      fr: "Quelle entreprise d'électronique est connue pour sa gamme de smartphones Galaxy ?"
+    },
+    answers: {
+      en: ["Samsung", "Huawei", "Xiaomi", "LG"],
+      fr: ["Samsung", "Huawei", "Xiaomi", "LG"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Samsung produces the Galaxy series.",
+      fr: "Samsung produit la série Galaxy."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "05a729d3-b76a-4ee9-9ba7-507480338616",
+    difficulty: 2,
+    question: {
+      en: "What does 'IoT' stand for?",
+      fr: "Que signifie 'IoT' ?"
+    },
+    answers: {
+      en: ["Internet of Things", "Internet of Tools", "Integration of Technology", "Interface of Transmission"],
+      fr: ["Internet of Things (Internet des objets)", "Internet of Tools", "Integration of Technology", "Interface of Transmission"]
+    },
+    correct: 0,
+    explanation: {
+      en: "IoT connects everyday devices.",
+      fr: "L'IoT connecte des appareils du quotidien."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "91614c09-5f89-4ad6-910d-cf9b6b8fa72d",
+    difficulty: 4,
+    question: {
+      en: "Which web browser was developed by Mozilla?",
+      fr: "Quel navigateur Web a été développé par Mozilla ?"
+    },
+    answers: {
+      en: ["Firefox", "Chrome", "Safari", "Edge"],
+      fr: ["Firefox", "Chrome", "Safari", "Edge"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Firefox is Mozilla's browser.",
+      fr: "Firefox est le navigateur de Mozilla."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "672684db-1f82-4143-9372-5bde2f050826",
+    difficulty: 6,
+    question: {
+      en: "Which database model stores data as JSON-like documents?",
+      fr: "Quel modèle de base de données stocke les données sous forme de documents JSON ?"
+    },
+    answers: {
+      en: ["NoSQL document databases", "Relational databases", "Graph databases", "Key-value stores"],
+      fr: ["Les bases NoSQL de type document", "Les bases relationnelles", "Les bases orientées graphe", "Les bases clé-valeur"]
+    },
+    correct: 0,
+    explanation: {
+      en: "NoSQL document stores use JSON-like formats.",
+      fr: "Les bases de données NoSQL documentaires utilisent des formats JSON."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "df2bc068-30af-4f7e-9fc7-c644f84b7b43",
+    difficulty: 7,
+    question: {
+      en: "Which cryptographic protocol provides secure communication over a computer network, widely used in HTTPS?",
+      fr: "Quel protocole cryptographique fournit une communication sécurisée sur un réseau informatique, largement utilisé dans HTTPS ?"
+    },
+    answers: {
+      en: ["TLS", "SSH", "SCP", "IPSec"],
+      fr: ["TLS", "SSH", "SCP", "IPSec"]
+    },
+    correct: 0,
+    explanation: {
+      en: "TLS (Transport Layer Security) secures web traffic.",
+      fr: "TLS (Transport Layer Security) sécurise le trafic Web."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "d518c4d2-cbb8-4263-b4a9-9a2b346da723",
+    difficulty: 8,
+    question: {
+      en: "Which field of AI involves training models to learn from data without being explicitly programmed?",
+      fr: "Quel domaine de l'IA implique d'entraîner des modèles à apprendre à partir de données sans programmation explicite ?"
+    },
+    answers: {
+      en: ["Machine learning", "Expert systems", "Robotics", "Symbolic AI"],
+      fr: ["Le machine learning", "Les systèmes experts", "La robotique", "L'IA symbolique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Machine learning allows systems to learn patterns from data.",
+      fr: "Le machine learning permet aux systèmes d'apprendre des modèles à partir de données."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "de1f980e-74d0-454e-b62c-1d607c7142c0",
+    difficulty: 5,
+    question: {
+      en: "Which agile framework uses 'sprints' and 'scrums' to organize work?",
+      fr: "Quel cadre agile utilise des 'sprints' et des 'scrums' pour organiser le travail ?"
+    },
+    answers: {
+      en: ["Scrum", "Kanban", "Lean", "XP (Extreme Programming)"],
+      fr: ["Scrum", "Kanban", "Lean", "XP (Extreme Programming)"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Scrum uses iterative sprints and daily scrums.",
+      fr: "Scrum utilise des sprints itératifs et des scrums quotidiens."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "4109bb64-0f84-45ac-bfc9-bb0acaf3a83b",
+    difficulty: 4,
+    question: {
+      en: "Which language is known as a low-level language closely related to machine code?",
+      fr: "Quel langage est considéré comme un langage de bas niveau proche du code machine?"
+    },
+    answers: {
+      en: ["Assembly", "C", "Java", "Python"],
+      fr: ["L'assembleur (Assembly)", "C", "Java", "Python"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Assembly is a low-level language.",
+      fr: "L'assembleur est un langage de bas niveau."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "d9f8f1aa-7e4f-46ba-b18d-b64fc33eb1ab",
+    difficulty: 6,
+    question: {
+      en: "Which company is known for the Macintosh computers and macOS?",
+      fr: "Quelle entreprise est connue pour les ordinateurs Macintosh et macOS?"
+    },
+    answers: {
+      en: ["Apple", "Microsoft", "IBM", "Dell"],
+      fr: ["Apple", "Microsoft", "IBM", "Dell"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Apple developed the Macintosh.",
+      fr: "Apple a développé le Macintosh."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "2c9fcb4e-63bd-42df-9594-969265d70523",
+    difficulty: 7,
+    question: {
+      en: "Which approach to software development emphasizes infrastructure as code and continuous integration/deployment?",
+      fr: "Quelle approche du développement logiciel met l'accent sur l'infrastructure en tant que code et l'intégration/déploiement continus?"
+    },
+    answers: {
+      en: ["DevOps", "MDA", "RAD", "Waterfall"],
+      fr: ["Le DevOps", "MDA", "RAD", "Le Waterfall"]
+    },
+    correct: 0,
+    explanation: {
+      en: "DevOps integrates development and operations.",
+      fr: "Le DevOps intègre le développement et les opérations."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "65d42345-4611-4bf2-b59a-9f966eeaa305",
+    difficulty: 3,
+    question: {
+      en: "Which lightweight markup language is popular for documentation on platforms like GitHub?",
+      fr: "Quel langage de balisage léger est populaire pour la documentation sur des plateformes comme GitHub?"
+    },
+    answers: {
+      en: ["Markdown", "HTML", "LaTeX", "XML"],
+      fr: ["Le Markdown", "HTML", "LaTeX", "XML"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Markdown is common in README files.",
+      fr: "Le Markdown est courant dans les fichiers README."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "5b1b9a93-cd89-48a7-b618-66f8ac562760",
+    difficulty: 4,
+    question: {
+      en: "What does 'LAN' stand for?",
+      fr: "Que signifie 'LAN' ?"
+    },
+    answers: {
+      en: ["Local Area Network", "Large Access Node", "Linear Array Network", "Logical Address Notation"],
+      fr: ["Local Area Network (réseau local)", "Large Access Node", "Linear Array Network", "Logical Address Notation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "LAN refers to a local network of connected devices.",
+      fr: "Un LAN désigne un réseau local d'appareils connectés."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "f9f07736-a914-4a60-b893-f5ad16c98ff9",
+    difficulty: 5,
+    question: {
+      en: "Which software development model follows a linear and sequential approach?",
+      fr: "Quel modèle de développement logiciel suit une approche linéaire et séquentielle ?"
+    },
+    answers: {
+      en: ["Waterfall", "Agile", "Scrum", "Kanban"],
+      fr: ["Le modèle en cascade (Waterfall)", "Agile", "Scrum", "Kanban"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Waterfall completes each phase before moving on.",
+      fr: "Le Waterfall termine chaque phase avant de passer à la suivante."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "2d373282-9f5b-44a7-8f41-1a8fd3a36318",
+    difficulty: 6,
+    question: {
+      en: "Which company created the programming language Go (Golang)?",
+      fr: "Quelle entreprise a créé le langage de programmation Go (Golang) ?"
+    },
+    answers: {
+      en: ["Google", "Microsoft", "Apple", "Amazon"],
+      fr: ["Google", "Microsoft", "Apple", "Amazon"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Go was developed at Google.",
+      fr: "Go a été développé chez Google."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "d65068c1-e7df-46c1-a67c-9c42c40ef784",
+    difficulty: 7,
+    question: {
+      en: "Which term describes running multiple operating systems on one physical machine?",
+      fr: "Quel terme décrit l'exécution de plusieurs systèmes d'exploitation sur une seule machine physique ?"
+    },
+    answers: {
+      en: ["Virtualization", "Emulation", "Containerization", "Parallel computing"],
+      fr: ["La virtualisation", "L'émulation", "La containerisation", "Le calcul parallèle"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Virtualization uses hypervisors for multiple OS instances.",
+      fr: "La virtualisation utilise des hyperviseurs pour exécuter plusieurs OS."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "ea41bf52-6fa2-4a5a-b49a-aec3bb832840",
+    difficulty: 8,
+    question: {
+      en: "Which concept in AI focuses on building systems that simulate human conversation?",
+      fr: "Quel concept en IA se concentre sur la création de systèmes simulant la conversation humaine?"
+    },
+    answers: {
+      en: ["Chatbots", "Computer vision", "Reinforcement learning", "Expert systems"],
+      fr: ["Les chatbots", "La vision par ordinateur", "L'apprentissage par renforcement", "Les systèmes experts"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Chatbots simulate human dialogue.",
+      fr: "Les chatbots simulent le dialogue humain."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "66f5e985-5030-4aea-bf56-d6595a2c0737",
+    difficulty: 2,
+    question: {
+      en: "Which device provides wireless networking using radio waves?",
+      fr: "Quel appareil fournit un réseau sans fil utilisant des ondes radio?"
+    },
+    answers: {
+      en: ["Wi-Fi router", "Modem", "Ethernet switch", "Firewall"],
+      fr: ["Le routeur Wi-Fi", "Le modem", "Le commutateur Ethernet", "Le pare-feu"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A Wi-Fi router enables wireless internet.",
+      fr: "Un routeur Wi-Fi permet une connexion sans fil."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "f7183f33-3f6e-4028-ba98-46ced5ab57af",
+    difficulty: 5,
+    question: {
+      en: "Which principle in programming states that code should have only one reason to change?",
+      fr: "Quel principe en programmation stipule qu'un morceau de code ne devrait avoir qu'une seule raison de changer?"
+    },
+    answers: {
+      en: ["Single Responsibility Principle", "Open-Closed Principle", "Liskov Substitution Principle", "Dependency Inversion Principle"],
+      fr: ["Le principe de responsabilité unique", "Le principe ouvert-fermé", "Le principe de substitution de Liskov", "Le principe d'inversion de dépendance"]
+    },
+    correct: 0,
+    explanation: {
+      en: "SRP is one of the SOLID principles.",
+      fr: "Le SRP est un des principes SOLID."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "b272d620-0218-4112-bf59-b86efbfa4c04",
+    difficulty: 6,
+    question: {
+      en: "Which distributed version control hosting service is known for 'pull requests' and 'forks'?",
+      fr: "Quel service d'hébergement de contrôle de version distribué est connu pour les 'pull requests' et 'forks'?"
+    },
+    answers: {
+      en: ["GitHub", "GitLab", "Bitbucket", "SourceForge"],
+      fr: ["GitHub", "GitLab", "Bitbucket", "SourceForge"]
+    },
+    correct: 0,
+    explanation: {
+      en: "GitHub popularized pull requests.",
+      fr: "GitHub a popularisé les pull requests."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "86776d0f-e037-4f90-a2c4-c5b425bed8f2",
+    difficulty: 4,
+    question: {
+      en: "Which era of computing uses AI and machine learning to create intelligent applications?",
+      fr: "Quelle ère de l'informatique utilise l'IA et le machine learning pour créer des applications intelligentes?"
+    },
+    answers: {
+      en: ["Cognitive computing", "Cloud computing", "Mobile computing", "Mainframe computing"],
+      fr: ["L'informatique cognitive", "Le cloud computing", "L'informatique mobile", "L'informatique mainframe"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Cognitive computing involves AI-driven apps.",
+      fr: "L'informatique cognitive implique des applications IA."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "9f6ff98b-44d7-4e1b-9399-b68fc1381594",
+    difficulty: 7,
+    question: {
+      en: "Which software practice involves releasing code changes into production in small batches frequently?",
+      fr: "Quelle pratique logicielle consiste à déployer souvent des modifications de code en petites quantités en production?"
+    },
+    answers: {
+      en: ["Continuous delivery", "Continuous integration", "Continuous refactoring", "Continuous modeling"],
+      fr: ["La livraison continue", "L'intégration continue", "Le refactoring continu", "La modélisation continue"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Continuous delivery aims for frequent releases.",
+      fr: "La livraison continue vise des déploiements fréquents."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  },
+  {
+    id: "7a50f891-e879-4ac2-bc23-3a1b906e34dd",
+    difficulty: 3,
+    question: {
+      en: "What does 'HTTP' stand for?",
+      fr: "Que signifie 'HTTP' ?"
+    },
+    answers: {
+      en: ["HyperText Transfer Protocol", "HyperText Transmission Protocol", "High Tech Transfer Protocol", "Host Transfer Text Protocol"],
+      fr: ["HyperText Transfer Protocol", "HyperText Transmission Protocol", "High Tech Transfer Protocol", "Host Transfer Text Protocol"]
+    },
+    correct: 0,
+    explanation: {
+      en: "HTTP is the foundation of web data communication.",
+      fr: "HTTP est la base de la communication de données sur le Web."
+    },
+    tags: [TagEnum.TECHNOLOGY],
+  }
+];
+
+// 20 Questions: SPORTS
+const newSportsQuestions: Question[] = [
+  {
+    id: "ef1147c9-85a9-4c85-8f05-4fca1997ab23",
+    difficulty: 2,
+    question: {
+      en: "In soccer (football), how many players does each team have on the field?",
+      fr: "Au football, combien de joueurs chaque équipe a-t-elle sur le terrain ?"
+    },
+    answers: {
+      en: ["11", "10", "9", "12"],
+      fr: ["11", "10", "9", "12"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Each football team fields 11 players.",
+      fr: "Chaque équipe de football aligne 11 joueurs."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "726c1c3c-973f-4ee9-bd04-f8c402dd41d8",
+    difficulty: 3,
+    question: {
+      en: "In which sport is the term 'home run' used?",
+      fr: "Dans quel sport utilise-t-on le terme 'home run' ?"
+    },
+    answers: {
+      en: ["Baseball", "Cricket", "Rugby", "Basketball"],
+      fr: ["Le baseball", "Le cricket", "Le rugby", "Le basket-ball"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A home run is when the batter rounds all bases.",
+      fr: "Un home run se produit lorsque le batteur parcourt toutes les bases."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "c254c19f-7a1d-4d6f-a1d7-39b94d6f55b1",
+    difficulty: 4,
+    question: {
+      en: "Which country traditionally hosts the Wimbledon tennis tournament?",
+      fr: "Quel pays accueille traditionnellement le tournoi de tennis de Wimbledon ?"
+    },
+    answers: {
+      en: ["England", "France", "USA", "Australia"],
+      fr: ["L'Angleterre", "La France", "Les États-Unis", "L'Australie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Wimbledon takes place in London, England.",
+      fr: "Wimbledon se déroule à Londres, en Angleterre."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "8029837a-e1ab-4f16-8aa1-2d5a9c84eb5d",
+    difficulty: 3,
+    question: {
+      en: "How many points is a touchdown worth in American football (excluding the extra point)?",
+      fr: "Combien de points vaut un touchdown au football américain (sans le point supplémentaire) ?"
+    },
+    answers: {
+      en: ["6", "3", "7", "2"],
+      fr: ["6", "3", "7", "2"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A touchdown is worth 6 points.",
+      fr: "Un touchdown vaut 6 points."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "baf8f835-d886-4ee6-80aa-6b7ca0abaf30",
+    difficulty: 5,
+    question: {
+      en: "Which sport uses a shuttlecock?",
+      fr: "Quel sport utilise un volant (shuttlecock) ?"
+    },
+    answers: {
+      en: ["Badminton", "Tennis", "Table tennis", "Squash"],
+      fr: ["Le badminton", "Le tennis", "Le tennis de table", "Le squash"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Badminton is played with a shuttlecock.",
+      fr: "Le badminton se joue avec un volant."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "ce63d387-7dbf-4a87-8d86-9ed917154044",
+    difficulty: 4,
+    question: {
+      en: "In basketball, how many points is a shot made from behind the arc worth?",
+      fr: "Au basket-ball, combien de points vaut un tir réussi depuis derrière la ligne à trois points ?"
+    },
+    answers: {
+      en: ["3", "2", "1", "4"],
+      fr: ["3", "2", "1", "4"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A three-point shot is worth 3 points.",
+      fr: "Un tir à trois points vaut 3 points."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "7482439c-8fd4-4628-9d31-423e344adc2b",
+    difficulty: 6,
+    question: {
+      en: "Which country won the most FIFA World Cup titles in men's football as of 2023?",
+      fr: "Quel pays a remporté le plus de Coupes du Monde de la FIFA en football masculin en 2023 ?"
+    },
+    answers: {
+      en: ["Brazil", "Germany", "Italy", "Argentina"],
+      fr: ["Le Brésil", "L'Allemagne", "L'Italie", "L'Argentine"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Brazil has won 5 titles.",
+      fr: "Le Brésil a remporté 5 titres."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "3ca74d8f-0dc4-4046-841d-9bf2a1c3d343",
+    difficulty: 2,
+    question: {
+      en: "In which sport would you find the Fosbury Flop technique?",
+      fr: "Dans quel sport trouve-t-on la technique du Fosbury Flop ?"
+    },
+    answers: {
+      en: ["High jump (Athletics)", "Pole vault", "Long jump", "Gymnastics"],
+      fr: ["Le saut en hauteur (athlétisme)", "Le saut à la perche", "Le saut en longueur", "La gymnastique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Fosbury Flop revolutionized the high jump.",
+      fr: "Le Fosbury Flop a révolutionné le saut en hauteur."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "fa3e5197-8bb8-46e4-a2c5-4a91a5153ede",
+    difficulty: 3,
+    question: {
+      en: "In rugby union, how many points is a try worth?",
+      fr: "Au rugby à XV, combien de points vaut un essai ?"
+    },
+    answers: {
+      en: ["5", "3", "4", "2"],
+      fr: ["5", "3", "4", "2"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A try is worth 5 points.",
+      fr: "Un essai vaut 5 points."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "21585b30-0c4c-4f97-9a60-d98408419363",
+    difficulty: 4,
+    question: {
+      en: "Which sport features the Masters Tournament at Augusta National?",
+      fr: "Quel sport présente le Masters Tournament à Augusta National ?"
+    },
+    answers: {
+      en: ["Golf", "Tennis", "Cricket", "Snooker"],
+      fr: ["Le golf", "Le tennis", "Le cricket", "Le snooker"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Masters is a major golf tournament.",
+      fr: "Le Masters est un tournoi majeur de golf."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "1c0875e0-887b-44a3-9c8e-0115a3863842",
+    difficulty: 5,
+    question: {
+      en: "In which sport do players use a mallet to hit a ball through hoops?",
+      fr: "Dans quel sport les joueurs utilisent-ils un maillet pour frapper une balle à travers des arceaux ?"
+    },
+    answers: {
+      en: ["Croquet", "Polo", "Field hockey", "Bocce"],
+      fr: ["Le croquet", "Le polo", "Le hockey sur gazon", "La bocce"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Croquet involves mallets and hoops.",
+      fr: "Le croquet implique des maillets et des arceaux."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "a914f6e8-13bb-4993-9ae2-92d92ebde957",
+    difficulty: 3,
+    question: {
+      en: "What is the maximum score in a single frame of snooker if achieved from the break?",
+      fr: "Quel est le score maximum en une seule manche de snooker, s'il est réalisé dès la casse ?"
+    },
+    answers: {
+      en: ["147", "155", "180", "100"],
+      fr: ["147", "155", "180", "100"]
+    },
+    correct: 0,
+    explanation: {
+      en: "147 is the maximum break in snooker.",
+      fr: "147 est le break maximal au snooker."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "4ec5641a-5d93-49aa-a6a3-3fef7f96000c",
+    difficulty: 4,
+    question: {
+      en: "In which sport is the Ryder Cup contested?",
+      fr: "Dans quel sport la Ryder Cup est-elle disputée ?"
+    },
+    answers: {
+      en: ["Golf", "Rugby", "Cricket", "Tennis"],
+      fr: ["Le golf", "Le rugby", "Le cricket", "Le tennis"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Ryder Cup is a golf competition between Europe and the USA.",
+      fr: "La Ryder Cup est une compétition de golf entre l'Europe et les États-Unis."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "33b9541e-2193-4bda-879e-01850bdc8714",
+    difficulty: 2,
+    question: {
+      en: "How many players are on a basketball court for one team at a time?",
+      fr: "Combien de joueurs d'une même équipe sont sur un terrain de basket-ball en même temps ?"
+    },
+    answers: {
+      en: ["5", "6", "7", "4"],
+      fr: ["5", "6", "7", "4"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Each basketball team fields 5 players.",
+      fr: "Chaque équipe de basket-ball aligne 5 joueurs."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "d91cb1e7-5bc5-45af-9b1f-8f1c70bedac1",
+    difficulty: 5,
+    question: {
+      en: "Which motor racing event is held annually in Monaco?",
+      fr: "Quel événement de course automobile se tient chaque année à Monaco ?"
+    },
+    answers: {
+      en: ["Monaco Grand Prix", "Indianapolis 500", "24 Hours of Le Mans", "Daytona 500"],
+      fr: ["Le Grand Prix de Monaco", "Les 500 miles d'Indianapolis", "Les 24 Heures du Mans", "Le Daytona 500"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Monaco Grand Prix is a famous Formula One race.",
+      fr: "Le Grand Prix de Monaco est une course de Formule 1 célèbre."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "037eedc3-888f-4cf1-bff8-5615ff7d5730",
+    difficulty: 4,
+    question: {
+      en: "In cricket, what is the name of the player who delivers the ball to the batsman?",
+      fr: "Au cricket, comment appelle-t-on le joueur qui lance la balle au batteur ?"
+    },
+    answers: {
+      en: ["Bowler", "Batsman", "Wicket-keeper", "Fielder"],
+      fr: ["Le bowler", "Le batsman", "Le wicket-keeper", "Le fielder"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The bowler delivers the ball.",
+      fr: "Le bowler lance la balle."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "81c74d76-f9b3-40c1-9bf5-cc6213efd659",
+    difficulty: 6,
+    question: {
+      en: "In which sport is the term 'checkmate' used?",
+      fr: "Dans quel sport utilise-t-on le terme 'échec et mat' ?"
+    },
+    answers: {
+      en: ["Chess", "Boxing", "Fencing", "Judo"],
+      fr: ["Les échecs", "La boxe", "L'escrime", "Le judo"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Checkmate is a chess term.",
+      fr: "Échec et mat est un terme utilisé aux échecs."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "b0aff939-cda9-4315-8a95-84289949ef4d",
+    difficulty: 2,
+    question: {
+      en: "What is the term for three strikes in a row in bowling?",
+      fr: "Quel est le terme pour trois strikes consécutifs au bowling ?"
+    },
+    answers: {
+      en: ["Turkey", "Hat-trick", "Triple", "Birdie"],
+      fr: ["Un turkey", "Un hat-trick", "Un triple", "Un birdie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Three strikes in bowling is called a turkey.",
+      fr: "Trois strikes consécutifs au bowling s'appellent un 'turkey'."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "cbb2fdfd-cbf2-4d84-b9e9-88b38df1bcec",
+    difficulty: 7,
+    question: {
+      en: "Which Olympic sport involves athletes performing routines on apparatus such as rings and pommel horse?",
+      fr: "Quel sport olympique implique des athlètes effectuant des routines sur des agrès tels que les anneaux et le cheval d'arçons ?"
+    },
+    answers: {
+      en: ["Artistic gymnastics", "Rhythmic gymnastics", "Diving", "Acrobatic gymnastics"],
+      fr: ["La gymnastique artistique", "La gymnastique rythmique", "Le plongeon", "La gymnastique acrobatique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Artistic gymnastics uses various apparatus.",
+      fr: "La gymnastique artistique utilise divers agrès."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "742b5f29-598a-4112-b02d-08fc9ee8eebf",
+    difficulty: 3,
+    question: {
+      en: "In which sport do teams compete for the Stanley Cup?",
+      fr: "Dans quel sport les équipes se disputent-elles la Coupe Stanley ?"
+    },
+    answers: {
+      en: ["Ice hockey", "Field hockey", "Basketball", "Baseball"],
+      fr: ["Le hockey sur glace", "Le hockey sur gazon", "Le basket-ball", "Le baseball"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Stanley Cup is awarded in NHL ice hockey.",
+      fr: "La Coupe Stanley est décernée en hockey sur glace (LNH)."
+    },
+    tags: [TagEnum.SPORTS],
+  },
+  {
+    id: "0ebffcf3-3cc1-4881-9395-3a446e635656",
+    difficulty: 3,
+    question: {
+      en: "Which company created the Super Mario series?",
+      fr: "Quelle entreprise a créé la série Super Mario ?"
+    },
+    answers: {
+      en: ["Nintendo", "Sega", "Sony", "Microsoft"],
+      fr: ["Nintendo", "Sega", "Sony", "Microsoft"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Nintendo introduced Mario in the 1980s.",
+      fr: "Nintendo a introduit Mario dans les années 1980."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "b591be48-7e1d-43aa-9491-c88d534dd4a6",
+    difficulty: 4,
+    question: {
+      en: "Which character wields the Master Sword in 'The Legend of Zelda' series?",
+      fr: "Quel personnage manie l'Épée de Légende dans la série 'The Legend of Zelda' ?"
+    },
+    answers: {
+      en: ["Link", "Zelda", "Ganon", "Impa"],
+      fr: ["Link", "Zelda", "Ganon", "Impa"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Link is the hero who wields the Master Sword.",
+      fr: "Link est le héros qui manie l'Épée de Légende."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "052544c5-6712-4311-b2fc-a7dfb2dad94d",
+    difficulty: 5,
+    question: {
+      en: "Which company created the PlayStation console?",
+      fr: "Quelle entreprise a créé la console PlayStation ?"
+    },
+    answers: {
+      en: ["Sony", "Nintendo", "Sega", "Atari"],
+      fr: ["Sony", "Nintendo", "Sega", "Atari"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Sony released the original PlayStation in 1994.",
+      fr: "Sony a lancé la PlayStation originale en 1994."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "f2804c9f-8b77-4d03-bc70-2b00257457f4",
+    difficulty: 2,
+    question: {
+      en: "In 'Minecraft', what material is needed to craft a wooden pickaxe?",
+      fr: "Dans 'Minecraft', quel matériau est nécessaire pour fabriquer une pioche en bois ?"
+    },
+    answers: {
+      en: ["Wooden planks and sticks", "Iron and sticks", "Stone and sticks", "Diamond and sticks"],
+      fr: ["Des planches de bois et des bâtons", "Du fer et des bâtons", "De la pierre et des bâtons", "Du diamant et des bâtons"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A wooden pickaxe is crafted from wooden planks and sticks.",
+      fr: "Une pioche en bois se fabrique avec des planches de bois et des bâtons."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "db7d5135-38a4-4aaf-bb44-513141f9c5c0",
+    difficulty: 6,
+    question: {
+      en: "Which 1990s video game featured a plumber jumping on turtles and collecting coins?",
+      fr: "Quel jeu vidéo des années 1990 mettait en scène un plombier sautant sur des tortues et récoltant des pièces ?"
+    },
+    answers: {
+      en: ["Super Mario World", "Crash Bandicoot", "Sonic the Hedgehog", "Donkey Kong Country"],
+      fr: ["Super Mario World", "Crash Bandicoot", "Sonic the Hedgehog", "Donkey Kong Country"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Super Mario World, released for the SNES, starred Mario.",
+      fr: "Super Mario World, sorti sur SNES, mettait en vedette Mario."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "f1d1e6a2-54af-4fc6-a5f1-c63cf97f8424",
+    difficulty: 3,
+    question: {
+      en: "Which game is known for the phrase 'Finish Him!'?",
+      fr: "Quel jeu est connu pour la phrase 'Finish Him!' ?"
+    },
+    answers: {
+      en: ["Mortal Kombat", "Street Fighter", "Tekken", "Killer Instinct"],
+      fr: ["Mortal Kombat", "Street Fighter", "Tekken", "Killer Instinct"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Mortal Kombat popularized the 'Finish Him!' prompt.",
+      fr: "Mortal Kombat a popularisé la phrase 'Finish Him!'"
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "1d7f54ab-1dd7-4417-9ff8-d98e29918e91",
+    difficulty: 5,
+    question: {
+      en: "What is the name of the hero in the 'Halo' series?",
+      fr: "Quel est le nom du héros dans la série 'Halo' ?"
+    },
+    answers: {
+      en: ["Master Chief", "Marcus Fenix", "Commander Shepard", "Gordon Freeman"],
+      fr: ["Le Major (Master Chief)", "Marcus Fenix", "Le Commandant Shepard", "Gordon Freeman"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Master Chief Petty Officer John-117 is Halo’s protagonist.",
+      fr: "Le Major John-117, connu sous le nom de Master Chief, est le protagoniste de Halo."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "b8d9dc38-0cd1-4fe7-92b9-54058f58912c",
+    difficulty: 4,
+    question: {
+      en: "In 'Pokémon', which creature is known as the Electric-type mascot of the series?",
+      fr: "Dans 'Pokémon', quelle créature est connue comme la mascotte de type Électrik de la série ?"
+    },
+    answers: {
+      en: ["Pikachu", "Charmander", "Bulbasaur", "Eevee"],
+      fr: ["Pikachu", "Salamèche", "Bulbizarre", "Évoli"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Pikachu is the iconic Electric-type Pokémon.",
+      fr: "Pikachu est le Pokémon de type Électrik emblématique."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "d0c69210-4f7d-4a13-b443-905aa0a3d64f",
+    difficulty: 7,
+    question: {
+      en: "Which developer is known for the 'Final Fantasy' series?",
+      fr: "Quel développeur est connu pour la série 'Final Fantasy' ?"
+    },
+    answers: {
+      en: ["Square Enix", "Capcom", "Konami", "Bandai Namco"],
+      fr: ["Square Enix", "Capcom", "Konami", "Bandai Namco"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Square Enix, formerly Squaresoft, created Final Fantasy.",
+      fr: "Square Enix, anciennement Squaresoft, a créé Final Fantasy."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "20d39b02-6375-42fb-88c2-d5ef14599f71",
+    difficulty: 6,
+    question: {
+      en: "Which console was known as the first Nintendo home console launched worldwide?",
+      fr: "Quelle console est connue pour avoir été la première console de salon Nintendo lancée mondialement ?"
+    },
+    answers: {
+      en: ["Nintendo Entertainment System (NES)", "Super Nintendo (SNES)", "Nintendo 64", "Famicom (Japan-only at first)"],
+      fr: ["La Nintendo Entertainment System (NES)", "La Super Nintendo (SNES)", "La Nintendo 64", "La Famicom (initialement qu’au Japon)"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The NES introduced Nintendo to a global home console market.",
+      fr: "La NES a introduit Nintendo sur le marché mondial des consoles de salon."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "1f7f7d07-5863-4f1e-a54a-1f9c36685dd4",
+    difficulty: 3,
+    question: {
+      en: "Which racing game series features 'Blue Shells' and 'Rainbow Road'?",
+      fr: "Quelle série de jeux de course présente des 'Carapaces bleues' et le 'Route Arc-en-ciel' ?"
+    },
+    answers: {
+      en: ["Mario Kart", "Crash Team Racing", "F-Zero", "Gran Turismo"],
+      fr: ["Mario Kart", "Crash Team Racing", "F-Zero", "Gran Turismo"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Mario Kart is known for Blue Shells and Rainbow Road tracks.",
+      fr: "Mario Kart est célèbre pour ses Carapaces bleues et son circuit Route Arc-en-ciel."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "1e9caf33-67bc-4fb7-b297-5e43b5c4c155",
+    difficulty: 8,
+    question: {
+      en: "Which game features a post-apocalyptic world with vault dwellers and the Brotherhood of Steel?",
+      fr: "Quel jeu met en scène un monde post-apocalyptique avec des habitants d'abris (vault dwellers) et la Confrérie de l'Acier ?"
+    },
+    answers: {
+      en: ["Fallout", "Metro 2033", "The Last of Us", "Wasteland"],
+      fr: ["Fallout", "Metro 2033", "The Last of Us", "Wasteland"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Fallout is known for its vaults and the Brotherhood of Steel.",
+      fr: "Fallout est connu pour ses abris et la Confrérie de l'Acier."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "5ab3d86d-3375-4f32-8b6c-afb852ed3e6a",
+    difficulty: 5,
+    question: {
+      en: "Which company created the arcade classic 'Pac-Man'?",
+      fr: "Quelle entreprise a créé le classique d'arcade 'Pac-Man' ?"
+    },
+    answers: {
+      en: ["Namco", "Taito", "Atari", "Sega"],
+      fr: ["Namco", "Taito", "Atari", "Sega"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Namco created Pac-Man in 1980.",
+      fr: "Namco a créé Pac-Man en 1980."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "3799ee75-bcfa-45ab-9b9c-ec6897bb9626",
+    difficulty: 7,
+    question: {
+      en: "In 'The Elder Scrolls V: Skyrim', what are the half-human, half-beast creatures called who can transform under the full moon?",
+      fr: "Dans 'The Elder Scrolls V: Skyrim', comment appelle-t-on les créatures mi-humaines mi-bêtes qui peuvent se transformer à la pleine lune ?"
+    },
+    answers: {
+      en: ["Werewolves", "Vampires", "Gargoyles", "Spriggans"],
+      fr: ["Les loups-garous", "Les vampires", "Les gargouilles", "Les spriggans"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Werewolves appear as part-human, part-wolf in Skyrim.",
+      fr: "Les loups-garous sont mi-humains mi-loups dans Skyrim."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "5f4f2fe4-57ea-434f-a7a4-0876fc5a4e31",
+    difficulty: 6,
+    question: {
+      en: "Which Valve game involves solving puzzles with a portal gun?",
+      fr: "Quel jeu de Valve consiste à résoudre des énigmes avec un pistolet à portails ?"
+    },
+    answers: {
+      en: ["Portal", "Half-Life", "Team Fortress 2", "Left 4 Dead"],
+      fr: ["Portal", "Half-Life", "Team Fortress 2", "Left 4 Dead"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Portal challenges players with physics-based puzzles.",
+      fr: "Portal met les joueurs au défi avec des énigmes basées sur la physique."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "dd01d511-bff7-45a4-b0ba-6da2baa7221b",
+    difficulty: 4,
+    question: {
+      en: "Which iconic British archaeologist is the protagonist of the 'Tomb Raider' series?",
+      fr: "Quel archéologue britannique iconique est le protagoniste de la série 'Tomb Raider' ?"
+    },
+    answers: {
+      en: ["Lara Croft", "Nathan Drake", "Chloe Frazer", "Aloy"],
+      fr: ["Lara Croft", "Nathan Drake", "Chloe Frazer", "Aloy"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Lara Croft is the protagonist of Tomb Raider.",
+      fr: "Lara Croft est la protagoniste de Tomb Raider."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "d3d4aa38-bb33-4bdf-a0bb-91fcd36e701e",
+    difficulty: 2,
+    question: {
+      en: "In 'Animal Crossing', what is the name of the raccoon who manages the player’s home loans?",
+      fr: "Dans 'Animal Crossing', quel est le nom du raton laveur qui gère les prêts immobiliers du joueur ?"
+    },
+    answers: {
+      en: ["Tom Nook", "Isabelle", "Blathers", "K.K. Slider"],
+      fr: ["Tom Nook", "Isabelle", "Thibou (Blathers)", "Kéké Laglisse (K.K. Slider)"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Tom Nook handles your home expansions and loans.",
+      fr: "Tom Nook gère vos prêts et agrandissements de maison."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "af31a64f-3152-4fd2-8320-f6bf83d70d82",
+    difficulty: 8,
+    question: {
+      en: "Which horror franchise features animatronic characters in a pizzeria setting?",
+      fr: "Quelle franchise d'horreur met en scène des personnages animatroniques dans une pizzeria ?"
+    },
+    answers: {
+      en: ["Five Nights at Freddy’s", "Resident Evil", "Silent Hill", "Amnesia"],
+      fr: ["Five Nights at Freddy’s", "Resident Evil", "Silent Hill", "Amnesia"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Five Nights at Freddy’s involves haunted animatronics in a pizzeria.",
+      fr: "Five Nights at Freddy’s met en scène des animatroniques hantées dans une pizzeria."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "d6f20ac4-2235-46a9-8ce6-97c84dfb8755",
+    difficulty: 5,
+    question: {
+      en: "In 'League of Legends', what are the AI-controlled creatures that march down lanes called?",
+      fr: "Dans 'League of Legends', comment appelle-t-on les créatures contrôlées par l'IA qui avancent dans les couloirs (lanes) ?"
+    },
+    answers: {
+      en: ["Minions", "Creeps", "Golems", "Wraiths"],
+      fr: ["Les sbires", "Les creeps", "Les golems", "Les spectres"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Minions march down the lanes in League of Legends.",
+      fr: "Les sbires avancent dans les lanes dans League of Legends."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "24ce315c-bf58-486c-a010-f97b223516d5",
+    difficulty: 6,
+    question: {
+      en: "Which fighting game series is famous for characters like Ryu and Chun-Li?",
+      fr: "Quelle série de jeux de combat est célèbre pour des personnages comme Ryu et Chun-Li ?"
+    },
+    answers: {
+      en: ["Street Fighter", "Tekken", "Mortal Kombat", "King of Fighters"],
+      fr: ["Street Fighter", "Tekken", "Mortal Kombat", "King of Fighters"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Street Fighter features iconic fighters Ryu and Chun-Li.",
+      fr: "Street Fighter met en scène les combattants emblématiques Ryu et Chun-Li."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "bd8e6f81-5644-4381-b7c3-50d0eabd2f62",
+    difficulty: 4,
+    question: {
+      en: "Which open-world RPG from CD Projekt RED features Geralt of Rivia?",
+      fr: "Quel RPG en monde ouvert de CD Projekt RED met en scène Geralt de Riv ?"
+    },
+    answers: {
+      en: ["The Witcher 3: Wild Hunt", "Cyberpunk 2077", "Dragon Age: Inquisition", "Skyrim"],
+      fr: ["The Witcher 3: Wild Hunt", "Cyberpunk 2077", "Dragon Age: Inquisition", "Skyrim"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Witcher 3 follows Geralt’s adventures.",
+      fr: "The Witcher 3 suit les aventures de Geralt."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "67da2579-f94f-44a9-bdf8-87ae9dcb2e2d",
+    difficulty: 3,
+    question: {
+      en: "In 'Overwatch', which character is known for wielding a rocket launcher and shouting 'Justice rains from above!'?",
+      fr: "Dans 'Overwatch', quel personnage est connu pour manier un lance-roquettes et crier 'Justice rains from above!' (La justice tombe du ciel !) ?"
+    },
+    answers: {
+      en: ["Pharah", "D.Va", "Mercy", "Tracer"],
+      fr: ["Pharah", "D.Va", "Mercy", "Tracer"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Pharah launches rockets from the sky.",
+      fr: "Pharah tire des roquettes depuis les airs."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "2349a923-748a-4d19-bf38-00a68cc12b0f",
+    difficulty: 7,
+    question: {
+      en: "Which game series revolves around hunting large monsters with a variety of crafted weapons?",
+      fr: "Quelle série de jeux est centrée sur la chasse à de grands monstres avec une variété d'armes artisanales ?"
+    },
+    answers: {
+      en: ["Monster Hunter", "Dauntless", "Dark Souls", "Dragons Dogma"],
+      fr: ["Monster Hunter", "Dauntless", "Dark Souls", "Dragon's Dogma"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Monster Hunter focuses on slaying huge creatures.",
+      fr: "Monster Hunter se concentre sur la traque et l'abattage de gigantesques créatures."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "3732fbd9-a171-4ec2-8739-cd0ff68b4f1d",
+    difficulty: 6,
+    question: {
+      en: "In 'Metal Gear Solid', what is the name of the stealth operative known as 'Solid'?",
+      fr: "Dans 'Metal Gear Solid', quel est le nom de l'agent infiltré connu sous le nom de 'Solid' ?"
+    },
+    answers: {
+      en: ["Solid Snake", "Liquid Snake", "Big Boss", "Raiden"],
+      fr: ["Solid Snake", "Liquid Snake", "Big Boss", "Raiden"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Solid Snake is the main stealth operative.",
+      fr: "Solid Snake est l'agent d'infiltration principal."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "9c2a2c73-ec8e-4ed1-8dea-2b7b57eb0faa",
+    difficulty: 8,
+    question: {
+      en: "Which platformer game by Playdead features a boy navigating monochromatic environments filled with traps?",
+      fr: "Quel jeu de plateforme de Playdead met en scène un garçon évoluant dans des environnements monochromes remplis de pièges ?"
+    },
+    answers: {
+      en: ["Limbo", "Inside", "Fez", "Braid"],
+      fr: ["Limbo", "Inside", "Fez", "Braid"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Limbo is a monochrome puzzle-platformer by Playdead.",
+      fr: "Limbo est un jeu de plateforme-puzzle monochrome de Playdead."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "5c26f7e3-784f-4c87-83d2-2f7f8c02875b",
+    difficulty: 5,
+    question: {
+      en: "In 'Assassin’s Creed', which order opposes the Assassins?",
+      fr: "Dans 'Assassin’s Creed', quel ordre s'oppose aux Assassins ?"
+    },
+    answers: {
+      en: ["Templars", "Samurai", "Spartans", "Knights of the Round"],
+      fr: ["Les Templiers", "Les samouraïs", "Les Spartiates", "Les Chevaliers de la Table Ronde"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Templars are the main antagonistic order.",
+      fr: "Les Templiers sont l'ordre antagoniste principal."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "27464b77-a3a2-47cc-a2ae-e93932d12193",
+    difficulty: 3,
+    question: {
+      en: "Which game involves building defenses against hordes of zombies, often paired with the phrase 'Save the World'?",
+      fr: "Quel jeu implique de construire des défenses contre des hordes de zombies, souvent associé à l'expression 'Save the World' (Sauver le monde) ?"
+    },
+    answers: {
+      en: ["Fortnite", "Plants vs. Zombies", "Call of Duty: Zombies", "Left 4 Dead"],
+      fr: ["Fortnite", "Plants vs. Zombies", "Call of Duty: Zombies", "Left 4 Dead"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Fortnite’s 'Save the World' mode involves building fortifications against undead husks.",
+      fr: "Le mode 'Save the World' de Fortnite implique de construire des fortifications contre des créatures zombies."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "1be860be-db8b-4440-8ad2-e5ab850f69e8",
+    difficulty: 6,
+    question: {
+      en: "Which indie game allows players to explore a vast universe of procedurally generated planets?",
+      fr: "Quel jeu indépendant permet aux joueurs d'explorer un vaste univers de planètes générées procéduralement ?"
+    },
+    answers: {
+      en: ["No Man’s Sky", "Stardew Valley", "Terraria", "Subnautica"],
+      fr: ["No Man’s Sky", "Stardew Valley", "Terraria", "Subnautica"]
+    },
+    correct: 0,
+    explanation: {
+      en: "No Man’s Sky features a virtually infinite universe.",
+      fr: "No Man’s Sky propose un univers pratiquement infini."
+    },
+    tags: [TagEnum.VIDEOGAMES],
+  },
+  {
+    id: "9d06b686-daf3-45b5-892b-3f6a7ceb5c92",
+    difficulty: 4,
+    question: {
+      en: "In 'Grand Theft Auto V', what is the name of the fictional city inspired by Los Angeles?",
+      fr: "Dans 'Grand Theft Auto V', quel est le nom de la ville fictive inspirée de Los Angeles ?"
+    },
+    answers: {
+      en: ["Los Santos", "Vice City", "Liberty City", "San Fierro"],
+      fr: ["Los Santos", "Vice City", "Liberty City", "San Fierro"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Los Santos is the GTA V city based on L.A.",
+      fr: "Los Santos est la ville de GTA V inspirée de Los Angeles."
+    },
+    tags: [TagEnum.VIDEOGAMES],
   }
 ];
