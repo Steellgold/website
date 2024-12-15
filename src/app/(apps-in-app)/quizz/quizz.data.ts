@@ -3225,7 +3225,7 @@ const p7: Question[] = [
   }
 ]
 
-const pVideoGames: Question[] = [
+const p8: Question[] = [
   {
     id: "9ba43944-2bb5-4042-9ba7-884b1b1d8a0b",
     difficulty: 2,
@@ -3577,5 +3577,6 @@ export const questions: Question[] = [
   ...p4,
   ...p5,
   ...p6,
-  ...p7
+  ...p7,
+  ...p8
 ]
