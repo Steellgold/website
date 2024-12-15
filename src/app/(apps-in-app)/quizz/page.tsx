@@ -2,13 +2,15 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { cloneElement, ReactElement, useEffect, useState } from "react";
-import { Question, questions, tags } from "./quizz.types";
+import { Question, tags } from "./quizz.types";
+import { questions } from "./quizz.data";
 import { Button } from "@/lib/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { Angry, Smile } from "lucide-react";
 import { Badge } from "@/lib/components/ui/badge";
 import { useLang } from "@/lib/stores/lang.store";
 import { Buttons } from "@/lib/components/buttons";
+import { cn } from "@/lib/utils";
 
 type AvailableLangs = keyof Question["question"];
 
@@ -140,17 +142,17 @@ const Page = (): ReactElement => {
         </CardHeader>
         <CardContent>
           <h2 className="text-xl font-semibold mb-4">{currentQuestion?.question[lang]}</h2>
-          <div className="space-y-2">
+          <div className="flex flex-col gap-2">
             {currentQuestion?.answers[lang].map((answer, index) => (
               <Button
                 key={index}
-                className="w-full"
+                className={cn("w-full", !answered ? "last:-mb-5" : "last:mb-0" )}
                 onClick={() => clickAnswer(index)}
                 variant={
                   answered ? (index === currentQuestion?.correct ?
                       "quizzCorrect" :
                       index === selected ? "quizzSelectedIncorrect" :
-                      "quizzIncorrect"
+                      "outline"
                     ) : "default"}
               >
                 {answer}
