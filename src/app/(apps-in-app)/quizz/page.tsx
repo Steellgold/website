@@ -7,70 +7,107 @@ import { Button } from "@/lib/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { Angry, Smile } from "lucide-react";
 import { Badge } from "@/lib/components/ui/badge";
+import { useLang } from "@/lib/stores/lang.store";
+import { Buttons } from "@/lib/components/buttons";
 
-const shuffleAnswers = (answers: string[], correctIndex: number): [string[], number] => {
-  const shuffled = [...answers];
-  const correctAnswer = shuffled[correctIndex];
+type AvailableLangs = keyof Question["question"];
+
+const shuffleAnswersForAllLanguages = (
+  allAnswers: Record<AvailableLangs, string[]>,
+  correctIndex: number
+): { answers: Record<AvailableLangs, string[]>; correct: number } => {
+  const referenceAnswers = allAnswers["fr"];
+  const shuffledIndices = [...referenceAnswers.keys()];
   
-  for (let i = shuffled.length - 1; i > 0; i--) {
+  for (let i = shuffledIndices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    [shuffledIndices[i], shuffledIndices[j]] = [shuffledIndices[j], shuffledIndices[i]];
   }
-  
-  const newCorrectIndex = shuffled.indexOf(correctAnswer);
-  return [shuffled, newCorrectIndex];
+
+  const originalCorrectIndex = correctIndex;
+  const newCorrectIndex = shuffledIndices.indexOf(originalCorrectIndex);
+
+  const newAnswers: Record<AvailableLangs, string[]> = {} as any;
+  for (const langKey in allAnswers) {
+    const lang = langKey as AvailableLangs;
+    newAnswers[lang] = shuffledIndices.map(i => allAnswers[lang][i]);
+  }
+
+  return { answers: newAnswers, correct: newCorrectIndex };
 };
 
 const Page = (): ReactElement => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [passedQuestions, setPassedQuestions] = useState<string[]>([]);
+  const { lang } = useLang();
 
   const [score, setScore] = useState(0);
-
   const [answered, setAnswered] = useState<"CORRECT" | "INCORRECT" | false>(false);
-
-  useEffect(() => {
-    questions.sort(() => Math.random() - 0.5);
-    const firstQuestion = questions[0];
-    const [shuffledAnswers, newCorrectIndex] = shuffleAnswers(firstQuestion.answers["fr"], firstQuestion.correct);
-    setCurrentQuestion({
-      ...firstQuestion,
-      answers: { ...firstQuestion.answers, fr: shuffledAnswers },
-      correct: newCorrectIndex
-    });
-  }, []);
 
   const clickAnswer = (index: number) => {
     if (answered) return;
     if (!currentQuestion) return;
 
-    if (index === currentQuestion?.correct) {
+    if (index === currentQuestion.correct) {
       setScore(score + 1);
       setAnswered("CORRECT");
     } else {
       setAnswered("INCORRECT");
     }
 
-    setPassedQuestions([...passedQuestions, currentQuestion?.id]);
-  }
+    setPassedQuestions([...passedQuestions, currentQuestion.id]);
+  };
 
   const nextQuestion = () => {
-    const nextQuestion = questions.find((question) => !passedQuestions.includes(question.id));
-    if (nextQuestion) {
-      const [shuffledAnswers, newCorrectIndex] = shuffleAnswers(nextQuestion.answers["fr"], nextQuestion.correct);
+    const remainingQuestions = questions.filter((question) => !passedQuestions.includes(question.id));
+    if (remainingQuestions.length > 0) {
+      const shuffledRemaining = [...remainingQuestions].sort(() => Math.random() - 0.5);
+      const nextQuestion = shuffledRemaining[0];
+
+      const { answers, correct } = shuffleAnswersForAllLanguages(nextQuestion.answers, nextQuestion.correct);
+
       setCurrentQuestion({
         ...nextQuestion,
-        answers: { ...nextQuestion.answers, fr: shuffledAnswers },
-        correct: newCorrectIndex
+        answers: answers,
+        correct: correct
       });
     } else {
       setCurrentQuestion(null);
     }
     setAnswered(false);
+  };
+
+  if (!currentQuestion && passedQuestions.length === questions.length) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <p>You finished the quizz! Your score is {score}/{questions.length}.</p>
+      </div>
+    );
+  }
+
+  if (!currentQuestion) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <Buttons showTopButton={false} />
+
+        <Card className="w-full max-w-2xl">
+          <CardHeader>
+            <CardTitle>Quizz</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>Click the button to start the quizz!</p>
+          </CardContent>
+          <CardFooter>
+            <Button onClick={nextQuestion} className="w-full">Start</Button>
+          </CardFooter>
+        </Card>
+      </div>
+    );
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
+      <Buttons showTopButton={false} />
 
       <Card className="w-full max-w-2xl">
         <CardHeader>
@@ -85,7 +122,7 @@ const Page = (): ReactElement => {
                     <Badge key={index}>
                       {/* @ts-ignore */}
                       {cloneElement(ctag?.icon, { className: "h-4 w-4 mr-2" })}
-                      {ctag.names["fr"]}
+                      {ctag.names[lang]}
                     </Badge>
                   )
                 })}
@@ -94,33 +131,45 @@ const Page = (): ReactElement => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <h2 className="text-xl font-semibold mb-4">{currentQuestion?.question["fr"]}</h2>
+          <h2 className="text-xl font-semibold mb-4">{currentQuestion?.question[lang]}</h2>
           <div className="space-y-2">
-            {currentQuestion?.answers["fr"].map((answer, index) => (
+            {currentQuestion?.answers[lang].map((answer, index) => (
               <Button
                 key={index}
                 className="w-full"
                 onClick={() => clickAnswer(index)}
                 variant={answered ? (index === currentQuestion?.correct ? "quizzCorrect" : "quizzIncorrect") : "default"}
-              >{answer}</Button>
+              >
+                {answer}
+              </Button>
             ))}
           </div>
 
-          <div className="my-4" />
+          {answered && <div className="my-4" />}
 
           {answered && (
-            <Alert>
+            <Alert className="-mb-2">
               {answered === "CORRECT" ? <Smile className="h-4 w-4" /> : <Angry className="h-4 w-4" />}
-              <AlertTitle>{answered === "CORRECT" ? "Headshot!" : "Missed!"}</AlertTitle>
+              
+              <AlertTitle>
+                {answered === "CORRECT" ?
+                  lang === "en" ? "Headshot!" : "Dans le mille !" :
+                  lang === "en" ? "Missed!" : "Raté !"
+                }
+              </AlertTitle>
+
               <AlertDescription>
-                {currentQuestion?.explanation["fr"]}
+                {currentQuestion?.explanation[lang]}
               </AlertDescription>
             </Alert>
           )}
         </CardContent>
 
         <CardFooter>
-          {answered && <Button onClick={nextQuestion} className="w-full">Next question</Button>}
+          {answered && (
+            <Button onClick={nextQuestion} className="w-full">
+              {lang === "fr" ? "Question suivante" : "Next question"}
+            </Button>)}
         </CardFooter>
       </Card>
     </div>
