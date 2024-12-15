@@ -631,8 +631,8 @@ export const questions: Question[] = [
     },
     correct: 0,
     explanation: {
-      en: "India recently overtook China as the world's most populous country.",
-      fr: "L'Inde a récemment dépassé la Chine comme pays le plus peuplé du monde."
+      en: "India recently surpassed China to become the world's most populous country, with approximately 1.428 billion people, while China has 1.426 billion. This growth is due to a younger Indian population and higher birth rates.",
+      fr: "L'Inde a récemment dépassé la Chine pour devenir le pays le plus peuplé du monde, avec environ 1,428 milliard d'habitants, tandis que la Chine en compte 1,426 milliard. Cette croissance s'explique par une population indienne plus jeune et des taux de natalité plus élevés."
     },
     tags: [TagEnum.SOCIETY]
   },
