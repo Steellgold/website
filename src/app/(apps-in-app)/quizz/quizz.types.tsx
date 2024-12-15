@@ -54,7 +54,7 @@ export const tags: Tag[] = [
   { names: { fr: "Jeux vidéo", en: "Video Games" }, icon: <BookHeart />, enum: TagEnum.VIDEOGAMES },
 ];
 
-export const questions: Question[] = [
+const old_data: Question[] = [
   {
     id: "9a18ce6d-9409-4ad3-91c1-c4a6570842e4",
     difficulty: 3,
