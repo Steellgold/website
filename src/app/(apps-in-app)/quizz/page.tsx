@@ -43,6 +43,7 @@ const Page = (): ReactElement => {
 
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState<"CORRECT" | "INCORRECT" | false>(false);
+  const [selected, setSelected] = useState<number | null>(null);
 
   const clickAnswer = (index: number) => {
     if (answered) return;
@@ -50,12 +51,13 @@ const Page = (): ReactElement => {
 
     if (index === currentQuestion.correct) {
       setScore(score + 1);
+      setPassedQuestions([...passedQuestions, currentQuestion.id]);
       setAnswered("CORRECT");
     } else {
       setAnswered("INCORRECT");
     }
 
-    setPassedQuestions([...passedQuestions, currentQuestion.id]);
+    setSelected(index);
   };
 
   const nextQuestion = () => {
@@ -111,23 +113,29 @@ const Page = (): ReactElement => {
 
       <Card className="w-full max-w-2xl">
         <CardHeader>
-          <CardDescription className="-mb-4">
-            {currentQuestion && (
-              <>
-                {currentQuestion.tags.map((tag, index) => {
-                  const ctag = tags.find((t) => t.enum === tag);
-                  if (!ctag) return null;
+          <CardDescription className="-mb-4 flex flex-row justify-between">
+            <div>
+              {currentQuestion && (
+                <>
+                  {currentQuestion.tags.map((tag, index) => {
+                    const ctag = tags.find((t) => t.enum === tag);
+                    if (!ctag) return null;
 
-                  return (
-                    <Badge key={index}>
-                      {/* @ts-ignore */}
-                      {cloneElement(ctag?.icon, { className: "h-4 w-4 mr-2" })}
-                      {ctag.names[lang]}
-                    </Badge>
-                  )
-                })}
-              </>
-            )}
+                    return (
+                      <Badge key={index}>
+                        {/* @ts-ignore */}
+                        {cloneElement(ctag?.icon, { className: "h-4 w-4 mr-2" })}
+                        {ctag.names[lang]}
+                      </Badge>
+                    )
+                  })}
+                </>
+              )}
+            </div>
+
+            <Badge>
+              {score}/{questions.length}
+            </Badge>
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -138,7 +146,12 @@ const Page = (): ReactElement => {
                 key={index}
                 className="w-full"
                 onClick={() => clickAnswer(index)}
-                variant={answered ? (index === currentQuestion?.correct ? "quizzCorrect" : "quizzIncorrect") : "default"}
+                variant={
+                  answered ? (index === currentQuestion?.correct ?
+                      "quizzCorrect" :
+                      index === selected ? "quizzSelectedIncorrect" :
+                      "quizzIncorrect"
+                    ) : "default"}
               >
                 {answer}
               </Button>
