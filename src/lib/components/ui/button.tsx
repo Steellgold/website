@@ -23,6 +23,10 @@ const buttonVariants = cva(
         easy: "bg-green-500 text-white shadow-sm hover:bg-green-600",
         medium: "bg-yellow-500 text-white shadow-sm hover:bg-yellow-600",
         hard: "bg-red-500 text-white shadow-sm hover:bg-red-600",
+
+        quizzCorrect: "bg-green-500 shadow-sm hover:bg-green-600 text-[#1A202C]",
+        quizzIncorrect:
+          "bg-primary/40 text-primary-foreground shadow",
       },
       size: {
         default: "h-9 px-4 py-2",
