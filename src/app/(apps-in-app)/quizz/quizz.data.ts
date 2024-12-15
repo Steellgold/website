@@ -1971,8 +1971,1266 @@ const p3: Question[] = [
   }
 ]
 
+const p4: Question[] = [
+  {
+    id: "4903a5aa-d70a-4cb3-bb78-409722cd22bf",
+    difficulty: 6,
+    question: {
+      en: "Which social movement marked France in 1968?",
+      fr: "Quel mouvement social a marqué la France en 1968 ?"
+    },
+    answers: {
+      en: ["May 68 events", "Paris Commune", "1848 Revolution", "Canuts revolt"],
+      fr: ["Les événements de Mai 68", "La Commune de Paris", "La Révolution de 1848", "La révolte des Canuts"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The May 1968 events in France were a period of civil unrest, involving student protests, general strikes, and occupations of universities and factories. They profoundly influenced French society, politics, and culture.",
+      fr: "Les événements de Mai 68 en France furent une période de contestation sociale, marquée par des manifestations étudiantes, des grèves générales et l'occupation d'universités et d'usines. Ils ont profondément influencé la société, la politique et la culture françaises."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "87db08b7-64e0-4f88-a2e8-d25f407ceff6",
+    difficulty: 2,
+    question: {
+      en: "What is the legal age of majority in France?",
+      fr: "Quel est l'âge de la majorité légale en France ?"
+    },
+    answers: {
+      en: ["18", "16", "21", "20"],
+      fr: ["18 ans", "16 ans", "21 ans", "20 ans"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The age of majority in France is 18 years. At this age, individuals acquire full legal rights and responsibilities, including the right to vote and enter into contracts.",
+      fr: "L'âge de la majorité légale en France est de 18 ans. À cet âge, les individus obtiennent la pleine capacité juridique ainsi que tous les droits et responsabilités, dont le droit de vote et la possibilité de signer des contrats."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "49ec8ae1-cbb7-4932-bb50-31b8f7d92e0f",
+    difficulty: 7,
+    question: {
+      en: "Which sociological concept refers to geographic mobility for work?",
+      fr: "Quel concept sociologique désigne la mobilité géographique des individus cherchant un emploi ?"
+    },
+    answers: {
+      en: ["Migration", "Tourism", "Sedentism", "Nomadism"],
+      fr: ["La migration", "Le tourisme", "La sédentarité", "Le nomadisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Migration refers to the movement of people from one place to another, often in search of better job opportunities or living conditions. It can shape demographics, economies, and cultures.",
+      fr: "La migration désigne le déplacement des individus d'un lieu à un autre, souvent à la recherche de meilleures opportunités d'emploi ou de conditions de vie. Elle influe sur la démographie, l'économie et la culture."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "b143c1e2-02e0-4d01-8381-48f0ea6dd46c",
+    difficulty: 3,
+    question: {
+      en: "What term describes equal chances for men and women?",
+      fr: "Quel terme décrit l'égalité des chances entre les hommes et les femmes ?"
+    },
+    answers: {
+      en: ["Gender equality", "Matriarchy", "Patriarchy", "Segregation"],
+      fr: ["L'égalité de genre", "Le matriarcat", "Le patriarcat", "La ségrégation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Gender equality refers to providing equal rights, responsibilities, and opportunities to individuals of all genders. It seeks to eliminate discrimination and bias based on gender.",
+      fr: "L'égalité de genre vise à garantir les mêmes droits, responsabilités et opportunités à toutes les personnes, quels que soient leur sexe ou leur genre. Elle cherche à éliminer les discriminations et les préjugés basés sur le genre."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "709eb4c3-3dce-4fe5-9b15-908f52d612c1",
+    difficulty: 4,
+    question: {
+      en: "What is the term for the concentration of population in large megacities?",
+      fr: "Comment nomme-t-on le phénomène de concentration urbaine dans de grandes mégapoles ?"
+    },
+    answers: {
+      en: ["Urbanization", "Rural life", "Eco-village", "Decentralization"],
+      fr: ["L'urbanisation", "La ruralité", "L'éco-village", "La décentralisation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Urbanization is the process where an increasing proportion of a population lives in urban areas, often attracted by economic opportunities, services, and infrastructure.",
+      fr: "L'urbanisation est le processus par lequel une proportion croissante de la population s'installe dans des zones urbaines, souvent attirée par les opportunités économiques, les services et les infrastructures."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "054c13c2-6b78-4349-823a-f02d0454cf18",
+    difficulty: 5,
+    question: {
+      en: "What term refers to favoring someone due to their ethnic origin?",
+      fr: "Quel terme désigne le fait de favoriser un individu en raison de son origine ethnique ?"
+    },
+    answers: {
+      en: ["Racism", "Sexism", "Ageism", "Classism"],
+      fr: ["Le racisme", "Le sexisme", "L'âgisme", "Le classisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Racism refers to discrimination or prejudice based on a person’s race or ethnicity. It can manifest in personal biases, institutional practices, and social structures.",
+      fr: "Le racisme désigne la discrimination ou les préjugés fondés sur la race ou l'origine ethnique d'une personne. Il se manifeste dans les biais individuels, les pratiques institutionnelles et les structures sociales."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "1cd99b68-95a9-4a49-8319-b37bc4cfe548",
+    difficulty: 4,
+    question: {
+      en: "Which indicator measures education, life expectancy, and income in a country?",
+      fr: "Quel indicateur mesure le niveau d'éducation, d'espérance de vie et de revenu d'un pays ?"
+    },
+    answers: {
+      en: ["HDI", "GDP", "CPI", "Literacy rate"],
+      fr: ["L'IDH (Indice de Développement Humain)", "Le PIB", "L'IPC", "Le taux d'alphabétisation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Human Development Index (HDI) measures a country's average achievements in health (life expectancy), education, and income, providing a more holistic view of development than GDP alone.",
+      fr: "L'Indice de Développement Humain (IDH) évalue les performances moyennes d'un pays en matière de santé (espérance de vie), d'éducation et de revenu, offrant une vision plus globale du développement que le PIB seul."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "8bd09b85-6eb4-4138-b415-b9b74fc0fe20",
+    difficulty: 1,
+    question: {
+      en: "What is the study of human populations and their characteristics?",
+      fr: "Comment appelle-t-on l'étude des populations humaines et de leurs caractéristiques ?"
+    },
+    answers: {
+      en: ["Demography", "Sociology", "Anthropology", "Psychology"],
+      fr: ["La démographie", "La sociologie", "L'anthropologie", "La psychologie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Demography is the statistical study of populations, examining size, structure, and distribution, as well as changes due to birth, migration, and aging.",
+      fr: "La démographie est l'étude statistique des populations, examinant leur taille, leur structure et leur répartition, ainsi que les changements dus aux naissances, aux migrations et au vieillissement."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "891b53eb-3898-4611-8f12-e449269d8515",
+    difficulty: 3,
+    question: {
+      en: "What is discrimination based on age called?",
+      fr: "Quel terme désigne la discrimination basée sur l'âge d'un individu ?"
+    },
+    answers: {
+      en: ["Ageism", "Sexism", "Racism", "Xenophobia"],
+      fr: ["L'âgisme", "Le sexisme", "Le racisme", "La xénophobie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Ageism is discrimination against individuals based on their age. It can affect both older and younger people, influencing employment, health care, and social attitudes.",
+      fr: "L'âgisme est la discrimination envers les individus en raison de leur âge. Il peut toucher aussi bien les personnes âgées que les plus jeunes, influençant l'emploi, les soins de santé et les attitudes sociales."
+    },
+    tags: ["SOCIETY"]
+  },
+  {
+    id: "9147b1db-1c66-476f-9704-4129a06ca618",
+    difficulty: 2,
+    question: {
+      en: "Which main language is used alongside HTML and CSS for web development?",
+      fr: "Quel est le langage principal utilisé pour le développement de pages Web, aux côtés du HTML et du CSS ?"
+    },
+    answers: {
+      en: ["JavaScript", "Python", "Java", "C++"],
+      fr: ["JavaScript", "Python", "Java", "C++"]
+    },
+    correct: 0,
+    explanation: {
+      en: "JavaScript is the primary scripting language used alongside HTML and CSS to create interactive and dynamic web pages.",
+      fr: "JavaScript est le langage de script principal utilisé avec HTML et CSS pour créer des pages Web interactives et dynamiques."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "468a0f9b-7e93-442a-9cbd-a1daefc487c5",
+    difficulty: 3,
+    question: {
+      en: "Which connected device is mainly used to track sports activity and heart rate?",
+      fr: "Quel objet connecté est principalement utilisé pour suivre l'activité sportive et la fréquence cardiaque ?"
+    },
+    answers: {
+      en: ["Smartwatch", "VR headset", "Tablet", "Smartphone"],
+      fr: ["La montre connectée", "Le casque de réalité virtuelle", "La tablette", "Le smartphone"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A smartwatch is commonly used to track physical activity, heart rate, and other health metrics, often syncing with mobile apps to provide insights and goals.",
+      fr: "Une montre connectée est couramment utilisée pour suivre l'activité physique, la fréquence cardiaque et d'autres paramètres de santé, se synchronisant souvent avec des applications mobiles pour fournir des analyses et fixer des objectifs."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "1db052b7-a5f3-4de8-b189-9d3cb5fe6a9b",
+    difficulty: 4,
+    question: {
+      en: "What concept describes storing and accessing data remotely via the Internet?",
+      fr: "Quel concept informatique décrit le stockage et l'accès aux données sur des serveurs distants via Internet ?"
+    },
+    answers: {
+      en: ["Cloud computing", "Machine learning", "Big data", "Virtualization"],
+      fr: ["Le cloud computing", "Le machine learning", "Le big data", "La virtualisation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Cloud computing allows users to access and store data on remote servers rather than local machines, offering scalability, flexibility, and cost-efficiency.",
+      fr: "Le cloud computing permet aux utilisateurs d'accéder à et de stocker des données sur des serveurs distants au lieu de leurs machines locales, offrant évolutivité, flexibilité et efficacité en termes de coûts."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "0139f7b7-1d78-408c-b35b-433c94c7aa38",
+    difficulty: 5,
+    question: {
+      en: "Which open-source mobile OS was originally developed by Android Inc.?",
+      fr: "Quel système d'exploitation mobile open source a été développé à l'origine par Android Inc. ?"
+    },
+    answers: {
+      en: ["Android", "iOS", "Windows Phone", "BlackBerry OS"],
+      fr: ["Android", "iOS", "Windows Phone", "BlackBerry OS"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Android is an open-source mobile operating system originally developed by Android Inc. and acquired by Google, now powering billions of devices worldwide.",
+      fr: "Android est un système d'exploitation mobile open source initialement développé par Android Inc. puis racheté par Google, alimentant aujourd'hui des milliards d'appareils à travers le monde."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "363c45db-3db3-4c83-9743-5bd91917ffc7",
+    difficulty: 6,
+    question: {
+      en: "What do we call a malicious program designed to harm a computer system?",
+      fr: "Quel terme désigne un programme malveillant conçu pour endommager ou exploiter des failles dans un système informatique ?"
+    },
+    answers: {
+      en: ["Malware", "Freeware", "Shareware", "Adware"],
+      fr: ["Un malware", "Un freeware", "Un shareware", "Un adware"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Malware (malicious software) includes viruses, trojans, worms, and other harmful code that can compromise security, steal data, or disrupt systems.",
+      fr: "Un malware (logiciel malveillant) inclut virus, chevaux de Troie, vers et autres codes nuisibles pouvant compromettre la sécurité, voler des données ou perturber les systèmes."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "da098199-3e89-4303-8caa-e187aa7f3042",
+    difficulty: 1,
+    question: {
+      en: "What is the French acronym for Artificial Intelligence?",
+      fr: "Quel acronyme désigne l'intelligence artificielle ?"
+    },
+    answers: {
+      en: ["IA", "AR", "VR", "IoT"],
+      fr: ["IA", "AR", "VR", "IoT"]
+    },
+    correct: 0,
+    explanation: {
+      en: "IA is the French acronym for 'Intelligence Artificielle', which translates to Artificial Intelligence (AI) in English.",
+      fr: "IA est l'acronyme de 'Intelligence Artificielle', correspondant au terme anglais Artificial Intelligence (AI)."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "f2f2117a-81d8-43b0-9cd2-193f0044be75",
+    difficulty: 2,
+    question: {
+      en: "What is the name of the global network of interconnected computers?",
+      fr: "Quel est le nom du réseau mondial d'ordinateurs interconnectés ?"
+    },
+    answers: {
+      en: ["Internet", "Intranet", "Ethernet", "Extranet"],
+      fr: ["Internet", "Intranet", "Ethernet", "Extranet"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Internet is a global network connecting millions of computers, enabling communication, information exchange, and commerce worldwide.",
+      fr: "Internet est un réseau mondial reliant des millions d'ordinateurs, permettant la communication, l'échange d'informations et le commerce à l'échelle planétaire."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "2919363a-0099-450c-8cb4-e39287405c80",
+    difficulty: 4,
+    question: {
+      en: "Which field focuses on analyzing massive datasets?",
+      fr: "Quel domaine de l'informatique se concentre sur l'analyse et le traitement des données massives ?"
+    },
+    answers: {
+      en: ["Big data", "Cryptography", "Software engineering", "Microcomputing"],
+      fr: ["Le big data", "La cryptographie", "Le génie logiciel", "La micro-informatique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Big data deals with extremely large and complex data sets, applying advanced analytics to reveal patterns, trends, and associations, often using machine learning.",
+      fr: "Le big data traite des ensembles de données extrêmement volumineux et complexes, en appliquant des analyses avancées pour révéler des schémas, des tendances et des corrélations, souvent à l'aide du machine learning."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "18eae736-70b5-4f7e-838f-83971b81c831",
+    difficulty: 2,
+    question: {
+      en: "Which standard protocol is used for transferring web pages?",
+      fr: "Quel est le protocole standard pour transférer des pages Web sur Internet ?"
+    },
+    answers: {
+      en: ["HTTP", "FTP", "SMTP", "DNS"],
+      fr: ["HTTP", "FTP", "SMTP", "DNS"]
+    },
+    correct: 0,
+    explanation: {
+      en: "HTTP (HyperText Transfer Protocol) is the standard protocol for transferring web pages. It underlies the World Wide Web, enabling browsers to request and display pages.",
+      fr: "HTTP (HyperText Transfer Protocol) est le protocole standard pour transférer des pages Web. Il sous-tend le World Wide Web, permettant aux navigateurs de demander et d'afficher des pages."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "b4c94504-db3e-4226-b6fb-7f1acca724b4",
+    difficulty: 3,
+    question: {
+      en: "What concept refers to simulating a real environment in a virtual world?",
+      fr: "Quel concept décrit la reproduction d'un environnement réel dans un monde virtuel, souvent à l'aide d'un casque spécial ?"
+    },
+    answers: {
+      en: ["Virtual reality", "Augmented reality", "Domotics", "Robotics"],
+      fr: ["La réalité virtuelle", "La réalité augmentée", "La domotique", "La robotique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Virtual reality (VR) immerses users in a computer-generated environment that mimics real-life experiences, often using a headset and motion tracking.",
+      fr: "La réalité virtuelle (VR) plonge l'utilisateur dans un environnement généré par ordinateur qui imite des expériences réelles, généralement à l'aide d'un casque et d'un suivi de mouvements."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "8982423f-ae1d-465f-b1b9-e18501f23bc3",
+    difficulty: 2,
+    question: {
+      en: "Which indicator measures the total goods and services produced by a country?",
+      fr: "Quel indicateur économique mesure la production de biens et services d'un pays sur une période donnée ?"
+    },
+    answers: {
+      en: ["GDP", "HDI", "GNP", "CPI"],
+      fr: ["Le PIB (Produit Intérieur Brut)", "L'IDH", "Le PNB", "L'IPC"]
+    },
+    correct: 0,
+    explanation: {
+      en: "GDP (Gross Domestic Product) measures the monetary value of all goods and services produced within a country’s borders over a specific time period.",
+      fr: "Le PIB (Produit Intérieur Brut) mesure la valeur monétaire de tous les biens et services produits à l'intérieur des frontières d'un pays sur une période donnée."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "a318921d-6d0d-4b19-b3c9-640d6a62d1fd",
+    difficulty: 3,
+    question: {
+      en: "What do we call a general increase in prices?",
+      fr: "Quel terme décrit la hausse générale des prix des biens et services dans une économie ?"
+    },
+    answers: {
+      en: ["Inflation", "Deflation", "Stagflation", "Recession"],
+      fr: ["L'inflation", "La déflation", "La stagflation", "La récession"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Inflation is the general rise in prices over time, reducing the purchasing power of money and affecting consumers, businesses, and economies.",
+      fr: "L'inflation est la hausse générale et continue des prix au fil du temps, diminuant le pouvoir d'achat de la monnaie et affectant consommateurs, entreprises et économies."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "6c68acc9-e274-4c01-b1b6-8f86511bd997",
+    difficulty: 5,
+    question: {
+      en: "Which institution sets monetary policy in the Eurozone?",
+      fr: "Quelle institution est responsable de la politique monétaire au sein de la zone euro ?"
+    },
+    answers: {
+      en: ["ECB", "Bank of France", "Bank of England", "World Bank"],
+      fr: ["La Banque centrale européenne (BCE)", "La Banque de France", "La Banque d'Angleterre", "La Banque mondiale"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The European Central Bank (ECB) sets monetary policy for the Eurozone, maintaining price stability and overseeing the Euro currency.",
+      fr: "La Banque centrale européenne (BCE) définit la politique monétaire de la zone euro, maintenant la stabilité des prix et supervisant la monnaie unique, l'euro."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "cf65db80-37fb-425f-b809-960445b320b0",
+    difficulty: 6,
+    question: {
+      en: "Which economic theory advocates minimal state intervention in markets?",
+      fr: "Quel est le nom de la théorie économique qui prône la non-intervention de l'État dans les marchés ?"
+    },
+    answers: {
+      en: ["Economic liberalism", "Keynesianism", "Marxism", "Protectionism"],
+      fr: ["Le libéralisme économique", "Le keynésianisme", "Le marxisme", "Le protectionnisme"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Economic liberalism favors free markets with minimal state intervention, believing that competition and individual initiative lead to optimal outcomes.",
+      fr: "Le libéralisme économique favorise les marchés libres avec une intervention minimale de l'État, estimant que la concurrence et l'initiative individuelle aboutissent à des résultats optimaux."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "da9dad58-70e2-416a-8690-84abb0e2aacf",
+    difficulty: 4,
+    question: {
+      en: "What term describes a long period of economic slowdown and high unemployment?",
+      fr: "Quel terme désigne une période prolongée de ralentissement économique et de forte hausse du chômage ?"
+    },
+    answers: {
+      en: ["Economic depression", "Growth", "Boom", "Expansion"],
+      fr: ["La dépression économique", "La croissance", "Le boom économique", "L'expansion"]
+    },
+    correct: 0,
+    explanation: {
+      en: "An economic depression is a severe and prolonged downturn in economic activity, characterized by high unemployment, low output, and reduced consumer spending.",
+      fr: "Une dépression économique est une baisse sévère et prolongée de l'activité économique, caractérisée par un chômage élevé, une faible production et une baisse de la consommation."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "b162a558-25d8-4116-b217-cc9b3bf4d7a6",
+    difficulty: 7,
+    question: {
+      en: "Which international institution loans money to developing countries?",
+      fr: "Quelle institution internationale octroie des prêts aux pays en développement pour lutter contre la pauvreté ?"
+    },
+    answers: {
+      en: ["World Bank", "IMF", "WTO", "ECB"],
+      fr: ["La Banque mondiale", "Le FMI", "L'OMC", "La BCE"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The World Bank provides loans and grants to developing countries, aiming to reduce poverty and foster sustainable development.",
+      fr: "La Banque mondiale accorde des prêts et des subventions aux pays en développement, visant à réduire la pauvreté et favoriser un développement durable."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "2e150a61-c9f5-422a-af35-cdc9a8b33f46",
+    difficulty: 5,
+    question: {
+      en: "What is the difference between a country's imports and exports called?",
+      fr: "Comment appelle-t-on la différence entre les importations et les exportations d'un pays ?"
+    },
+    answers: {
+      en: ["Trade balance", "GDP", "Exchange rate", "Public debt"],
+      fr: ["La balance commerciale", "Le PIB", "Le taux de change", "La dette publique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The trade balance is the difference between a country's exports and imports. A positive trade balance (surplus) occurs when exports exceed imports, and a negative one (deficit) when imports surpass exports.",
+      fr: "La balance commerciale est la différence entre les exportations et les importations d'un pays. Une balance commerciale positive (excédent) se produit lorsque les exportations dépassent les importations, et une balance négative (déficit) dans le cas inverse."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "8977aaaf-eb3f-43ae-8a24-97444df3f76c",
+    difficulty: 4,
+    question: {
+      en: "Which international body aims to facilitate trade?",
+      fr: "Quel organisme international a pour but de faciliter le commerce entre les pays ?"
+    },
+    answers: {
+      en: ["WTO", "IMF", "OECD", "ILO"],
+      fr: ["L'Organisation mondiale du commerce (OMC)", "Le FMI", "L'OCDE", "L'OIT"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The World Trade Organization (WTO) sets global rules for international trade, aiming to reduce tariffs, settle disputes, and promote open and fair markets.",
+      fr: "L'Organisation mondiale du commerce (OMC) établit des règles internationales pour le commerce, visant à réduire les tarifs douaniers, résoudre les différends et promouvoir des marchés ouverts et équitables."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "0cb99024-1267-4224-a1a4-4d38b453ad72",
+    difficulty: 6,
+    question: {
+      en: "What do we call the inability of a borrower to repay debt?",
+      fr: "Quel terme décrit l'incapacité d'un emprunteur à rembourser sa dette ?"
+    },
+    answers: {
+      en: ["Default", "Inflation", "Sovereign debt", "Devaluation"],
+      fr: ["Le défaut de paiement", "L'inflation", "La dette souveraine", "La dévaluation"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A default occurs when a borrower cannot meet the required payments on their debt. It can have serious consequences for creditworthiness and market stability.",
+      fr: "Le défaut de paiement survient lorsqu'un emprunteur ne peut pas honorer ses échéances de remboursement. Il peut avoir de graves conséquences sur la solvabilité et la stabilité des marchés."
+    },
+    tags: ["ECONOMY"]
+  },
+  {
+    id: "5d4fe8fa-a3dd-4bd7-a377-11f7e410bbf8",
+    difficulty: 2,
+    question: {
+      en: "What is the common currency used by most EU countries?",
+      fr: "Quel est le nom de la monnaie commune utilisée par la majorité des pays de l'Union européenne ?"
+    },
+    answers: {
+      en: ["Euro", "Dollar", "Pound", "Swiss franc"],
+      fr: ["L'euro", "Le dollar", "La livre sterling", "Le franc suisse"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Euro is the common currency used by the Eurozone countries within the European Union, facilitating trade, travel, and economic coordination.",
+      fr: "L'euro est la monnaie commune utilisée par les pays de la zone euro au sein de l'Union européenne, facilitant le commerce, les déplacements et la coordination économique."
+    },
+    tags: ["ECONOMY"]
+  }
+]
+
+const p5: Question[] = [
+  {
+    id: "0efacd66-fc30-473c-9435-de31e8a0704b",
+    difficulty: 2,
+    question: {
+      en: "Which subatomic particle carries a negative charge?",
+      fr: "Quelle est la particule subatomique portant une charge négative ?"
+    },
+    answers: {
+      en: ["Electron", "Proton", "Neutron", "Quark"],
+      fr: ["L'électron", "Le proton", "Le neutron", "Le quark"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The electron is a subatomic particle with a negative electric charge. It orbits the atomic nucleus and plays a crucial role in chemical bonding, electricity, and magnetism.",
+      fr: "L'électron est une particule subatomique de charge électrique négative. Il gravite autour du noyau atomique et joue un rôle essentiel dans les liaisons chimiques, l'électricité et le magnétisme."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "333ecc29-7b55-4a45-997d-d46b413d4955",
+    difficulty: 4,
+    question: {
+      en: "What optical phenomenon separates white light into a spectrum of colors?",
+      fr: "Quel phénomène optique explique la séparation de la lumière blanche en un spectre de couleurs ?"
+    },
+    answers: {
+      en: ["Dispersion", "Reflection", "Refraction", "Diffraction"],
+      fr: ["La dispersion", "La réflexion", "La réfraction", "La diffraction"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Dispersion is the optical phenomenon by which white light is separated into its constituent colors when passing through a medium like a prism. Each wavelength is refracted at a slightly different angle.",
+      fr: "La dispersion est le phénomène optique par lequel la lumière blanche se sépare en ses couleurs constitutives lorsqu'elle traverse un milieu comme un prisme. Chaque longueur d'onde est réfractée sous un angle légèrement différent."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "75ec1cc4-d50e-4195-93a3-19f9e97ff22d",
+    difficulty: 3,
+    question: {
+      en: "Which molecule is the main energy source for living cells?",
+      fr: "Quelle molécule est la principale source d'énergie pour les cellules vivantes ?"
+    },
+    answers: {
+      en: ["Glucose", "CO2", "Nitrogen", "Methane"],
+      fr: ["Le glucose", "Le dioxyde de carbone", "L'azote", "Le méthane"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Glucose (a simple sugar) is a primary energy source for living cells. It is broken down during cellular respiration to produce ATP, the energy currency of the cell.",
+      fr: "Le glucose (un sucre simple) est une source d'énergie primordiale pour les cellules vivantes. Il est dégradé lors de la respiration cellulaire pour produire de l'ATP, la monnaie énergétique de la cellule."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "4e1e4a4e-1dfa-47dd-a3c6-23025c9b7111",
+    difficulty: 5,
+    question: {
+      en: "Which scientist proposed the theory of special relativity in 1905?",
+      fr: "Quel scientifique a proposé la théorie de la relativité restreinte en 1905 ?"
+    },
+    answers: {
+      en: ["Albert Einstein", "Isaac Newton", "Niels Bohr", "Galileo"],
+      fr: ["Albert Einstein", "Isaac Newton", "Niels Bohr", "Galilée"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Albert Einstein proposed the theory of special relativity in 1905. It introduced concepts such as the constancy of the speed of light and the relativity of simultaneity, fundamentally altering our understanding of space and time.",
+      fr: "Albert Einstein a proposé la théorie de la relativité restreinte en 1905. Cette théorie introduit des concepts tels que la constance de la vitesse de la lumière et la relativité de la simultanéité, modifiant radicalement notre compréhension de l'espace et du temps."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "94f7cc38-8edc-419f-b5b8-dc667b1dea65",
+    difficulty: 1,
+    question: {
+      en: "Which science studies living beings and their environment?",
+      fr: "Comment appelle-t-on la science qui étudie les êtres vivants et leur environnement ?"
+    },
+    answers: {
+      en: ["Biology", "Chemistry", "Physics", "Geology"],
+      fr: ["La biologie", "La chimie", "La physique", "La géologie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Biology is the science that studies living organisms, their structure, function, growth, evolution, and interactions with their environment.",
+      fr: "La biologie est la science qui étudie les êtres vivants, leur structure, leur fonctionnement, leur croissance, leur évolution et leurs interactions avec leur environnement."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "2c02b1be-e694-416d-a73c-8fbc74e456ea",
+    difficulty: 2,
+    question: {
+      en: "Which organ is responsible for pumping blood in the human body?",
+      fr: "Quel organe est responsable du pompage du sang dans le corps humain ?"
+    },
+    answers: {
+      en: ["Heart", "Liver", "Kidneys", "Lungs"],
+      fr: ["Le cœur", "Le foie", "Les reins", "Les poumons"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The heart pumps blood throughout the body, delivering oxygen and nutrients to cells and removing waste products. It is a vital organ essential to circulation and life.",
+      fr: "Le cœur pompe le sang à travers le corps, fournissant de l'oxygène et des nutriments aux cellules tout en éliminant les déchets. C'est un organe vital essentiel à la circulation et à la vie."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "beb4300b-39bf-4e05-866b-a47f745d6fd7",
+    difficulty: 3,
+    question: {
+      en: "Which planet is closest to the Sun?",
+      fr: "Quelle est la planète la plus proche du Soleil ?"
+    },
+    answers: {
+      en: ["Mercury", "Venus", "Earth", "Mars"],
+      fr: ["Mercure", "Vénus", "Terre", "Mars"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Mercury is the planet closest to the Sun. Due to its proximity, it experiences extreme temperature variations and has a very thin atmosphere.",
+      fr: "Mercure est la planète la plus proche du Soleil. En raison de sa proximité, elle subit d'importantes variations de température et possède une atmosphère très ténue."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "d7ddd71a-7267-4c66-b7cf-50eea517b5eb",
+    difficulty: 6,
+    question: {
+      en: "What natural phenomenon occurs when meteoroids burn in the atmosphere?",
+      fr: "Quel phénomène naturel correspond à la chute de météorites traversant l'atmosphère ?"
+    },
+    answers: {
+      en: ["Shooting stars", "Auroras", "Eclipses", "Rainbows"],
+      fr: ["Les étoiles filantes", "Les aurores", "Les éclipses", "Les arcs-en-ciel"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Shooting stars (meteors) are produced when meteoroids enter the Earth's atmosphere and burn due to friction, creating a bright streak of light.",
+      fr: "Les étoiles filantes (météores) se produisent lorsque des météoroïdes pénètrent dans l'atmosphère terrestre et brûlent sous l'effet de la friction, formant une traînée lumineuse."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "2bac0d18-a821-4e2e-9d07-fa787c06ab17",
+    difficulty: 2,
+    question: {
+      en: "Which gas is most abundant in Earth's atmosphere?",
+      fr: "Quel gaz est le plus abondant dans l'atmosphère terrestre ?"
+    },
+    answers: {
+      en: ["Nitrogen", "Oxygen", "CO2", "Argon"],
+      fr: ["L'azote", "L'oxygène", "Le dioxyde de carbone", "L'argon"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Nitrogen makes up about 78% of the Earth's atmosphere, making it the most abundant gas. Oxygen is the second most abundant.",
+      fr: "L'azote compose environ 78% de l'atmosphère terrestre, en faisant le gaz le plus abondant. L'oxygène est le deuxième gaz le plus abondant."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "9e4eaed6-84ae-4259-9ec4-49deeb4ffa63",
+    difficulty: 4,
+    question: {
+      en: "What is a group of stars forming a pattern in the sky called?",
+      fr: "Quel nom donne-t-on à un groupement d'étoiles formant une figure particulière dans le ciel ?"
+    },
+    answers: {
+      en: ["Constellation", "Galaxy", "Nebula", "Globular cluster"],
+      fr: ["Une constellation", "Une galaxie", "Une nébuleuse", "Un amas globulaire"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A constellation is a group of stars forming a recognizable pattern as seen from Earth. Different cultures throughout history have named and interpreted these patterns.",
+      fr: "Une constellation est un groupe d'étoiles formant un motif reconnaissable depuis la Terre. Différentes cultures au fil de l'histoire ont nommé et interprété ces motifs."
+    },
+    tags: ["SCIENCE"]
+  },
+  {
+    id: "d19da6c3-43e0-46b0-83e1-b2a175be461f",
+    difficulty: 3,
+    question: {
+      en: "Which revolution began in France in 1789?",
+      fr: "Quelle révolution a commencé en 1789 en France ?"
+    },
+    answers: {
+      en: ["French Revolution", "American Revolution", "Industrial Revolution", "Russian Revolution"],
+      fr: ["La Révolution française", "La Révolution américaine", "La Révolution industrielle", "La Révolution russe"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The French Revolution began in 1789, drastically transforming French society and influencing political thought and revolutions worldwide.",
+      fr: "La Révolution française a débuté en 1789, transformant radicalement la société française et influençant la pensée politique ainsi que d'autres révolutions à travers le monde."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "5bc9820f-fb8a-4e15-9ee6-182ea49fef9c",
+    difficulty: 5,
+    question: {
+      en: "Who was the first Roman Emperor?",
+      fr: "Qui était le premier empereur romain ?"
+    },
+    answers: {
+      en: ["Augustus", "Julius Caesar", "Nero", "Caligula"],
+      fr: ["Auguste", "Jules César", "Néron", "Caligula"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Augustus (Octavian) became the first Roman Emperor in 27 BC. His reign initiated the Roman Empire and the Pax Romana, a long period of relative peace and stability.",
+      fr: "Auguste (Octavien) est devenu le premier empereur romain en 27 av. J.-C. Son règne a inauguré l'Empire romain et la Pax Romana, une longue période de paix et de stabilité relative."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "57091688-0e0f-45b5-9286-976ee2141af2",
+    difficulty: 6,
+    question: {
+      en: "Which treaty ended WWI in 1919?",
+      fr: "Quel traité signé en 1919 a mis fin à la Première Guerre mondiale ?"
+    },
+    answers: {
+      en: ["Treaty of Versailles", "Brest-Litovsk", "Trianon", "Sevres"],
+      fr: ["Le traité de Versailles", "Le traité de Brest-Litovsk", "Le traité de Trianon", "Le traité de Sèvres"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Treaty of Versailles, signed in 1919, ended World War I. It imposed harsh reparations on Germany and reshaped Europe’s political landscape.",
+      fr: "Le traité de Versailles, signé en 1919, mit fin à la Première Guerre mondiale. Il imposa de lourdes réparations à l'Allemagne et redessina la carte politique de l'Europe."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "55b01c03-0c64-41d2-93f8-763e66de9012",
+    difficulty: 4,
+    question: {
+      en: "Which Italian explorer 'discovered' America in 1492?",
+      fr: "Quel explorateur italien est connu pour avoir 'découvert' l'Amérique en 1492 ?"
+    },
+    answers: {
+      en: ["Christopher Columbus", "Vasco da Gama", "Magellan", "Amerigo Vespucci"],
+      fr: ["Christophe Colomb", "Vasco de Gama", "Fernand de Magellan", "Amerigo Vespucci"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Christopher Columbus, sailing for Spain, reached the Americas in 1492. Although indigenous peoples already inhabited the lands, his arrival marked a pivotal moment in world history.",
+      fr: "Christophe Colomb, naviguant pour le compte de l'Espagne, atteignit l'Amérique en 1492. Bien que des peuples autochtones y vivaient déjà, son arrivée marqua un moment clé dans l'histoire mondiale."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "5cd2199a-3719-4585-ae33-4f154ed83dab",
+    difficulty: 3,
+    question: {
+      en: "Which revolution led to the independence of the United States?",
+      fr: "Quelle révolution a conduit à l'indépendance des États-Unis ?"
+    },
+    answers: {
+      en: ["American War of Independence", "French Revolution", "Russian Revolution", "Wars of the Roses"],
+      fr: ["La Guerre d'Indépendance américaine", "La Révolution française", "La Révolution russe", "La Guerre des Deux-Roses"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The American War of Independence (1775–1783) freed the thirteen colonies from British rule and led to the founding of the United States.",
+      fr: "La Guerre d'Indépendance américaine (1775–1783) a libéré les treize colonies de la tutelle britannique et conduit à la fondation des États-Unis."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "24845ffe-4a23-4c6a-81a2-73f50013b6f6",
+    difficulty: 2,
+    question: {
+      en: "Which French military leader crowned himself emperor in 1804?",
+      fr: "Qui était le chef militaire français couronné empereur en 1804 ?"
+    },
+    answers: {
+      en: ["Napoleon Bonaparte", "Louis XIV", "Charlemagne", "Philip II"],
+      fr: ["Napoléon Bonaparte", "Louis XIV", "Charlemagne", "Philippe II"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Napoleon Bonaparte crowned himself Emperor of the French in 1804. He instituted numerous reforms and led a series of wars that reshaped Europe before his downfall.",
+      fr: "Napoléon Bonaparte s'est couronné Empereur des Français en 1804. Il initia de nombreuses réformes et mena une série de guerres qui redessinèrent l'Europe avant sa chute."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "7789d85b-2a2b-43ed-9e00-41debcc52a01",
+    difficulty: 4,
+    question: {
+      en: "Which wall, a symbol of the Cold War, fell in 1989?",
+      fr: "Quel mur, symbole de la Guerre froide, est tombé en 1989 ?"
+    },
+    answers: {
+      en: ["Berlin Wall", "Trench Wall", "Great Wall of China", "Wall of Federates"],
+      fr: ["Le mur de Berlin", "Le mur de la Tranchée", "La Grande Muraille de Chine", "Le mur des Fédérés"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Berlin Wall fell in 1989, symbolizing the end of the Cold War and paving the way for German reunification and major geopolitical changes in Europe.",
+      fr: "Le mur de Berlin est tombé en 1989, symbolisant la fin de la Guerre froide et ouvrant la voie à la réunification allemande ainsi qu'à d'importants changements géopolitiques en Europe."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "41a7a41c-9455-46ed-bc72-81f649b663df",
+    difficulty: 1,
+    question: {
+      en: "Which ancient civilization built the Giza pyramids?",
+      fr: "Quelle civilisation ancienne a construit les pyramides de Gizeh ?"
+    },
+    answers: {
+      en: ["Ancient Egypt", "Ancient Greece", "Mayas", "Romans"],
+      fr: ["L'Égypte antique", "La Grèce antique", "Les Mayas", "Les Romains"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Giza pyramids were built by the ancient Egyptians around 2500 BC. They served as monumental tombs for pharaohs and are among the most iconic structures in human history.",
+      fr: "Les pyramides de Gizeh ont été construites par les Égyptiens de l'Antiquité vers 2500 av. J.-C. Servant de tombes monumentales pour les pharaons, elles figurent parmi les constructions les plus emblématiques de l'histoire humaine."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "264eb2a8-9212-42e6-bea0-d15211a2eb52",
+    difficulty: 5,
+    question: {
+      en: "Which pre-Columbian empire was centered in present-day Peru?",
+      fr: "Quel empire précolombien était centré sur l'actuel Pérou ?"
+    },
+    answers: {
+      en: ["Inca Empire", "Aztec Empire", "Maya Empire", "Toltec Empire"],
+      fr: ["L'Empire inca", "L'Empire aztèque", "L'Empire maya", "L'Empire tolteque"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Inca Empire was centered in the Andes region of present-day Peru. Before Spanish conquest, it was the largest empire in pre-Columbian America, known for advanced engineering and agriculture.",
+      fr: "L'Empire inca était centré dans la région des Andes, sur le territoire de l'actuel Pérou. Avant la conquête espagnole, c'était le plus grand empire de l'Amérique précolombienne, renommé pour son ingénierie et son agriculture avancées."
+    },
+    tags: ["HISTORY"]
+  },
+  {
+    id: "ace2105a-a0e1-45bb-a3a2-daea7343f410",
+    difficulty: 3,
+    question: {
+      en: "What happened on July 14, 1789, in France?",
+      fr: "Quel événement historique s'est produit le 14 juillet 1789 en France ?"
+    },
+    answers: {
+      en: ["Storming of the Bastille", "Tuileries take", "Tennis Court Oath", "Flight to Varennes"],
+      fr: ["La prise de la Bastille", "La prise des Tuileries", "Le Serment du Jeu de Paume", "La fuite à Varennes"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Storming of the Bastille on July 14, 1789, marked a key moment of the French Revolution, symbolizing the end of absolute monarchy and the rise of the people's power.",
+      fr: "La prise de la Bastille le 14 juillet 1789 fut un moment clé de la Révolution française, symbolisant la fin de la monarchie absolue et l'ascension du pouvoir populaire."
+    },
+    tags: ["HISTORY"]
+  }
+]
+
+const p6: Question[] = [
+  {
+    id: "9aaa24cc-857b-4122-9f44-bfe43aa16154",
+    difficulty: 3,
+    question: {
+      en: "Which protocol is primarily used to send emails from a mail client to a mail server?",
+      fr: "Quel protocole est principalement utilisé pour envoyer des e-mails d'un client de messagerie à un serveur ?"
+    },
+    answers: {
+      en: ["SMTP", "POP3", "IMAP", "HTTP"],
+      fr: ["SMTP", "POP3", "IMAP", "HTTP"]
+    },
+    correct: 0,
+    explanation: {
+      en: "SMTP (Simple Mail Transfer Protocol) is the standard protocol for sending emails. It ensures messages are properly routed from a mail client to the recipient’s mail server.",
+      fr: "SMTP (Simple Mail Transfer Protocol) est le protocole standard pour l'envoi d'e-mails. Il garantit que les messages sont correctement transmis d'un client de messagerie au serveur de messagerie du destinataire."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "1eec608d-361b-4fc7-bd67-bdfd3115b68b",
+    difficulty: 4,
+    question: {
+      en: "Which programming language is primarily used for iOS app development alongside Swift?",
+      fr: "Quel langage de programmation est principalement utilisé pour le développement iOS aux côtés de Swift ?"
+    },
+    answers: {
+      en: ["Objective-C", "Java", "C#", "Kotlin"],
+      fr: ["Objective-C", "Java", "C#", "Kotlin"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Before Swift’s introduction, Objective-C was the main language for iOS development. Although Swift is now preferred, legacy projects and some libraries still use Objective-C.",
+      fr: "Avant l'arrivée de Swift, Objective-C était le langage principal pour le développement iOS. Bien que Swift soit désormais privilégié, certains projets et bibliothèques reposent encore sur Objective-C."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "81acc0b3-27ef-4c50-bec6-cd73aac6e314",
+    difficulty: 2,
+    question: {
+      en: "What does 'USB' stand for?",
+      fr: "Que signifie 'USB' ?"
+    },
+    answers: {
+      en: ["Universal Serial Bus", "Universal System Board", "Unified Service Bus", "Ultra Speed Bus"],
+      fr: ["Universal Serial Bus", "Universal System Board", "Unified Service Bus", "Ultra Speed Bus"]
+    },
+    correct: 0,
+    explanation: {
+      en: "USB stands for Universal Serial Bus, a standard for connecting devices to computers, enabling data transfer and power supply with ease.",
+      fr: "USB signifie Universal Serial Bus, une norme pour connecter des périphériques à des ordinateurs, facilitant le transfert de données et l'alimentation électrique."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "6b6f182d-cdb1-4a15-86bc-a88b4c8e064a",
+    difficulty: 5,
+    question: {
+      en: "Which company developed the Android operating system before being acquired by Google?",
+      fr: "Quelle société a développé le système d'exploitation Android avant d'être rachetée par Google ?"
+    },
+    answers: {
+      en: ["Android Inc.", "Apple", "Nokia", "BlackBerry"],
+      fr: ["Android Inc.", "Apple", "Nokia", "BlackBerry"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Android Inc. developed the Android OS, and Google acquired it in 2005. The open-source platform now powers the majority of smartphones worldwide.",
+      fr: "Android Inc. a développé le système d'exploitation Android, avant que Google ne le rachète en 2005. Cette plateforme open source équipe aujourd'hui la majorité des smartphones dans le monde."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "06363e67-8f12-4e42-9f28-a3460cd2ce39",
+    difficulty: 3,
+    question: {
+      en: "What is the main markup language for creating web pages?",
+      fr: "Quel est le principal langage de balisage pour créer des pages Web ?"
+    },
+    answers: {
+      en: ["HTML", "CSS", "XML", "PHP"],
+      fr: ["HTML", "CSS", "XML", "PHP"]
+    },
+    correct: 0,
+    explanation: {
+      en: "HTML (HyperText Markup Language) defines the structure and content of a webpage. Together with CSS and JavaScript, it forms the foundation of most websites.",
+      fr: "HTML (HyperText Markup Language) définit la structure et le contenu d'une page Web. Associé au CSS et au JavaScript, il constitue la base de la plupart des sites Internet."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "98efefaa-634c-4d9a-9104-a2bcf1451095",
+    difficulty: 2,
+    question: {
+      en: "Which company is famous for the Windows operating system?",
+      fr: "Quelle entreprise est célèbre pour le système d'exploitation Windows ?"
+    },
+    answers: {
+      en: ["Microsoft", "Apple", "Google", "IBM"],
+      fr: ["Microsoft", "Apple", "Google", "IBM"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Microsoft is known for developing the Windows OS, one of the most widely used operating systems on personal computers.",
+      fr: "Microsoft est connue pour avoir développé le système d'exploitation Windows, l'un des plus utilisés sur les ordinateurs personnels."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "8d41a436-4170-4c39-99b3-79cde7b28528",
+    difficulty: 4,
+    question: {
+      en: "What does 'CPU' stand for?",
+      fr: "Que signifie 'CPU' ?"
+    },
+    answers: {
+      en: ["Central Processing Unit", "Computer Peripheral Unit", "Core Programming Utility", "Central Power Unit"],
+      fr: ["Central Processing Unit", "Computer Peripheral Unit", "Core Programming Utility", "Central Power Unit"]
+    },
+    correct: 0,
+    explanation: {
+      en: "CPU stands for Central Processing Unit, the core component of a computer that executes instructions and processes data.",
+      fr: "CPU signifie Central Processing Unit, le composant central d'un ordinateur qui exécute les instructions et traite les données."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "f6f5d1d0-7f3e-4d81-bbb3-cced314b7bec",
+    difficulty: 5,
+    question: {
+      en: "Which language is widely used for data analysis and machine learning?",
+      fr: "Quel langage est largement utilisé pour l'analyse de données et le machine learning ?"
+    },
+    answers: {
+      en: ["Python", "Ruby", "C", "Fortran"],
+      fr: ["Python", "Ruby", "C", "Fortran"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Python is popular in data science and machine learning due to its extensive libraries (like NumPy, pandas, TensorFlow) and readable syntax.",
+      fr: "Python est populaire en data science et machine learning grâce à ses nombreuses bibliothèques (NumPy, pandas, TensorFlow) et sa syntaxe claire."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "4aa2a6b0-bd1e-4d41-a776-b95105c391f0",
+    difficulty: 3,
+    question: {
+      en: "Which protocol secures data between a web server and a browser?",
+      fr: "Quel protocole sécurise les données entre un serveur Web et un navigateur ?"
+    },
+    answers: {
+      en: ["HTTPS", "FTP", "Telnet", "HTTP"],
+      fr: ["HTTPS", "FTP", "Telnet", "HTTP"]
+    },
+    correct: 0,
+    explanation: {
+      en: "HTTPS (HTTP Secure) adds encryption (TLS/SSL) to the standard HTTP protocol, ensuring that data exchanged is private and protected.",
+      fr: "HTTPS (HTTP Secure) ajoute un chiffrement (TLS/SSL) au protocole HTTP standard, garantissant que les données échangées sont privées et protégées."
+    },
+    tags: ["TECHNOLOGY"]
+  },
+  {
+    id: "851535cd-d3df-4a14-ba13-ef6ebf9b5718",
+    difficulty: 1,
+    question: {
+      en: "What does 'RAM' stand for?",
+      fr: "Que signifie 'RAM' ?"
+    },
+    answers: {
+      en: ["Random Access Memory", "Read-Access Memory", "Rapid Action Module", "Runtime Allocation Memory"],
+      fr: ["Random Access Memory", "Read-Access Memory", "Rapid Action Module", "Runtime Allocation Memory"]
+    },
+    correct: 0,
+    explanation: {
+      en: "RAM stands for Random Access Memory. It is a volatile form of computer memory that temporarily stores data for quick read and write access.",
+      fr: "RAM signifie Random Access Memory. Il s'agit d'une mémoire volatile de l'ordinateur qui stocke temporairement les données, permettant un accès rapide en lecture et en écriture."
+    },
+    tags: ["TECHNOLOGY"]
+  }
+]
+
+const p7: Question[] = [
+  {
+    id: "ef1147c9-85a9-4c85-8f05-4fca1997ab23",
+    difficulty: 2,
+    question: {
+      en: "In soccer (football), how many players does each team have on the field?",
+      fr: "Au football, combien de joueurs chaque équipe a-t-elle sur le terrain ?"
+    },
+    answers: {
+      en: ["11", "10", "9", "12"],
+      fr: ["11", "10", "9", "12"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Each soccer team fields 11 players at once, including the goalkeeper. The game involves strategy, teamwork, and skill, making it the world’s most popular sport.",
+      fr: "Chaque équipe de football aligne 11 joueurs sur le terrain, y compris le gardien de but. Le jeu implique stratégie, esprit d'équipe et habileté, ce qui en fait le sport le plus populaire au monde."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "726c1c3c-973f-4ee9-bd04-f8c402dd41d8",
+    difficulty: 3,
+    question: {
+      en: "In which sport is the term 'home run' used?",
+      fr: "Dans quel sport utilise-t-on le terme 'home run' ?"
+    },
+    answers: {
+      en: ["Baseball", "Cricket", "Rugby", "Basketball"],
+      fr: ["Le baseball", "Le cricket", "Le rugby", "Le basket-ball"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A home run is used in baseball. It occurs when a batter hits the ball out of the field of play in fair territory, allowing them to round all bases and score.",
+      fr: "Le terme 'home run' est utilisé au baseball. Il se produit lorsqu'un batteur frappe la balle hors du terrain en zone valable, lui permettant ainsi de parcourir toutes les bases et de marquer un point."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "c254c19f-7a1d-4d6f-a1d7-39b94d6f55b1",
+    difficulty: 4,
+    question: {
+      en: "Which country traditionally hosts the Wimbledon tennis tournament?",
+      fr: "Quel pays accueille traditionnellement le tournoi de tennis de Wimbledon ?"
+    },
+    answers: {
+      en: ["England", "France", "USA", "Australia"],
+      fr: ["L'Angleterre", "La France", "Les États-Unis", "L'Australie"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Wimbledon, one of the four Grand Slam tennis tournaments, takes place in England, at the All England Club. It’s known for its grass courts and strict dress code.",
+      fr: "Wimbledon, l'un des quatre tournois du Grand Chelem de tennis, se déroule en Angleterre, au All England Club. Il est réputé pour ses courts en gazon et son code vestimentaire strict."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "8029837a-e1ab-4f16-8aa1-2d5a9c84eb5d",
+    difficulty: 3,
+    question: {
+      en: "How many points is a touchdown worth in American football (excluding the extra point)?",
+      fr: "Combien de points vaut un touchdown au football américain (sans le point supplémentaire) ?"
+    },
+    answers: {
+      en: ["6", "3", "7", "2"],
+      fr: ["6", "3", "7", "2"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A touchdown in American football is worth 6 points. After scoring a touchdown, teams can attempt extra points (1 or 2) to increase their score.",
+      fr: "Un touchdown au football américain vaut 6 points. Après avoir marqué un touchdown, les équipes peuvent tenter des points supplémentaires (1 ou 2) pour augmenter leur score."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "baf8f835-d886-4ee6-80aa-6b7ca0abaf30",
+    difficulty: 5,
+    question: {
+      en: "Which sport uses a shuttlecock?",
+      fr: "Quel sport utilise un volant (shuttlecock) ?"
+    },
+    answers: {
+      en: ["Badminton", "Tennis", "Table tennis", "Squash"],
+      fr: ["Le badminton", "Le tennis", "Le tennis de table", "Le squash"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Badminton is played with a shuttlecock (or birdie) and rackets. Players hit the shuttlecock back and forth over a net, aiming to prevent it from touching the ground.",
+      fr: "Le badminton se joue avec un volant (shuttlecock) et des raquettes. Les joueurs s'échangent le volant au-dessus d'un filet, cherchant à l'empêcher de toucher le sol."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "ce63d387-7dbf-4a87-8d86-9ed917154044",
+    difficulty: 4,
+    question: {
+      en: "In basketball, how many points is a shot made from behind the arc worth?",
+      fr: "Au basket-ball, combien de points vaut un tir réussi depuis derrière la ligne à trois points ?"
+    },
+    answers: {
+      en: ["3", "2", "1", "4"],
+      fr: ["3", "2", "1", "4"]
+    },
+    correct: 0,
+    explanation: {
+      en: "A three-point shot in basketball is worth 3 points. Shots taken inside the arc are worth 2 points, and free throws are worth 1 point.",
+      fr: "Un tir à trois points au basket-ball vaut 3 points. Les tirs effectués à l'intérieur de la ligne valent 2 points et les lancers francs 1 point."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "7482439c-8fd4-4628-9d31-423e344adc2b",
+    difficulty: 6,
+    question: {
+      en: "Which country won the most FIFA World Cup titles in men's football as of 2023?",
+      fr: "Quel pays a remporté le plus de Coupes du Monde de la FIFA en football masculin en 2023 ?"
+    },
+    answers: {
+      en: ["Brazil", "Germany", "Italy", "Argentina"],
+      fr: ["Le Brésil", "L'Allemagne", "L'Italie", "L'Argentine"]
+    },
+    correct: 0,
+    explanation: {
+      en: "Brazil has won the most FIFA World Cup titles, with a total of five. They are renowned for their skillful play and have produced many legendary footballers.",
+      fr: "Le Brésil a remporté le plus de Coupes du Monde de football masculin, avec cinq titres. Renommé pour son jeu technique, il a produit de nombreux footballeurs légendaires."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "3ca74d8f-0dc4-4046-841d-9bf2a1c3d343",
+    difficulty: 2,
+    question: {
+      en: "In which sport would you find the Fosbury Flop technique?",
+      fr: "Dans quel sport trouve-t-on la technique du Fosbury Flop ?"
+    },
+    answers: {
+      en: ["High jump (Athletics)", "Pole vault", "Long jump", "Gymnastics"],
+      fr: ["Le saut en hauteur (athlétisme)", "Le saut à la perche", "Le saut en longueur", "La gymnastique"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Fosbury Flop is a high jump technique where the athlete arches their back and clears the bar head-first and back down. Invented by Dick Fosbury, it revolutionized the event.",
+      fr: "Le Fosbury Flop est une technique de saut en hauteur où l'athlète arque son dos et franchit la barre tête la première, le dos tourné vers la barre. Inventée par Dick Fosbury, elle a révolutionné cette épreuve."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "fa3e5197-8bb8-46e4-a2c5-4a91a5153ede",
+    difficulty: 3,
+    question: {
+      en: "In rugby union, how many points is a try worth?",
+      fr: "Au rugby à XV, combien de points vaut un essai ?"
+    },
+    answers: {
+      en: ["5", "3", "4", "2"],
+      fr: ["5", "3", "4", "2"]
+    },
+    correct: 0,
+    explanation: {
+      en: "In rugby union, a try is worth 5 points. After scoring a try, a conversion kick can add an additional 2 points.",
+      fr: "Au rugby à XV, un essai vaut 5 points. Après avoir marqué un essai, une transformation peut ajouter 2 points supplémentaires."
+    },
+    tags: ["SPORTS"]
+  },
+  {
+    id: "21585b30-0c4c-4f97-9a60-d98408419363",
+    difficulty: 4,
+    question: {
+      en: "Which sport features the Masters Tournament at Augusta National?",
+      fr: "Quel sport présente le Masters Tournament à Augusta National ?"
+    },
+    answers: {
+      en: ["Golf", "Tennis", "Cricket", "Snooker"],
+      fr: ["Le golf", "Le tennis", "Le cricket", "Le snooker"]
+    },
+    correct: 0,
+    explanation: {
+      en: "The Masters is a major golf tournament held annually at Augusta National Golf Club in Georgia, USA. It is one of the four major championships in men's professional golf.",
+      fr: "Le Masters est un tournoi majeur de golf qui se tient chaque année à l'Augusta National Golf Club, en Géorgie (États-Unis). Il fait partie des quatre tournois majeurs du golf professionnel masculin."
+    },
+    tags: ["SPORTS"]
+  }
+]
+
 export const questions: Question[] = [
   ...p1,
   ...p2,
   ...p3,
+  ...p4,
+  ...p5,
+  ...p6,
+  ...p7
 ]

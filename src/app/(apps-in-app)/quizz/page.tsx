@@ -91,7 +91,7 @@ const Page = (): ReactElement => {
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="mt-14 md:min-h-screen flex items-center md:justify-center md:mt-0 p-4">
         <Buttons showTopButton={false} />
 
         <Card className="w-full max-w-2xl">
@@ -110,7 +110,7 @@ const Page = (): ReactElement => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="mt-14 md:min-h-screen flex items-center md:justify-center md:mt-0 p-4">
       <Buttons showTopButton={false} />
 
       <Card className="w-full max-w-2xl">
