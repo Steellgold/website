@@ -1,6 +1,6 @@
 import { Question, TagEnum } from "./quizz.types"
 
-const p1: Question[] = [
+export const questions: Question[] = [
   {
     id: "9a18ce6d-9409-4ad3-91c1-c4a6570842e4",
     difficulty: 3,
@@ -510,10 +510,7 @@ const p1: Question[] = [
       fr: "Canberra est la capitale de l'Australie, choisie en 1908 comme compromis entre les villes rivales de Sydney et Melbourne. C'est une ville planifiée, réputée pour ses institutions nationales et ses nombreux espaces verts."
     },
     tags: [TagEnum.GEOGRAPHY]
-  }
-]
-
-const p2: Question[] = [
+  },
   {
     id: "06b73302-f372-4ca2-8992-7f0eaf0e5f45",
     difficulty: 6,
@@ -1023,10 +1020,7 @@ const p2: Question[] = [
       fr: "Isaac Newton a formulé la loi de la gravitation universelle à la fin du XVIIe siècle, expliquant comment toutes les masses s'attirent mutuellement. Cette loi a révolutionné la compréhension du mouvement et de la mécanique céleste."
     },
     tags: [TagEnum.SCIENCE]
-  }
-]
-
-const p3: Question[] = [
+  },
   {
     id: "522a98b4-87f3-49b5-b5c4-c55acac97a60",
     difficulty: 7,
@@ -1859,10 +1853,7 @@ const p3: Question[] = [
       fr: "L'UNICEF (Fonds des Nations Unies pour l'enfance) est l'agence de l'ONU chargée de protéger les droits de l'enfant, de fournir une aide humanitaire et d'assurer l'éducation et les soins de santé des enfants dans le monde."
     },
     tags: [TagEnum.SOCIETY]
-  }
-]
-
-const p4: Question[] = [
+  },
   {
     id: "4903a5aa-d70a-4cb3-bb78-409722cd22bf",
     difficulty: 6,
@@ -2355,10 +2346,7 @@ const p4: Question[] = [
       fr: "L'euro est la monnaie commune utilisée par les pays de la zone euro au sein de l'Union européenne, facilitant le commerce, les déplacements et la coordination économique."
     },
     tags: [TagEnum.ECONOMY]
-  }
-]
-
-const p5: Question[] = [
+  },
   {
     id: "0efacd66-fc30-473c-9435-de31e8a0704b",
     difficulty: 2,
@@ -2698,10 +2686,7 @@ const p5: Question[] = [
       fr: "La prise de la Bastille le 14 juillet 1789 fut un moment clé de la Révolution française, symbolisant la fin de la monarchie absolue et l'ascension du pouvoir populaire."
     },
     tags: [TagEnum.HISTORY]
-  }
-]
-
-const p6: Question[] = [
+  },
   {
     id: "9aaa24cc-857b-4122-9f44-bfe43aa16154",
     difficulty: 3,
@@ -2871,10 +2856,7 @@ const p6: Question[] = [
       fr: "RAM signifie Random Access Memory. Il s'agit d'une mémoire volatile de l'ordinateur qui stocke temporairement les données, permettant un accès rapide en lecture et en écriture."
     },
     tags: [TagEnum.TECHNOLOGY]
-  }
-]
-
-const p7: Question[] = [
+  },
   {
     id: "ef1147c9-85a9-4c85-8f05-4fca1997ab23",
     difficulty: 2,
@@ -3044,10 +3026,7 @@ const p7: Question[] = [
       fr: "Le Masters est un tournoi majeur de golf qui se tient chaque année à l'Augusta National Golf Club, en Géorgie (États-Unis). Il fait partie des quatre tournois majeurs du golf professionnel masculin."
     },
     tags: [TagEnum.SPORTS]
-  }
-]
-
-const p8: Question[] = [
+  },
   {
     id: "9ba43944-2bb5-4042-9ba7-884b1b1d8a0b",
     difficulty: 2,
@@ -3370,16 +3349,2283 @@ const p8: Question[] = [
       fr: "'Five Nights at Freddy’s' consiste à survivre plusieurs nuits dans une pizzeria peuplée d'animatroniques hantées."
     },
     tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a20aedda-3247-4a1a-b4d8-5359c466f98c",
+    difficulty: 7,
+    question: {
+      en: "What is the main alloying element in stainless steel?",
+      fr: "Quel est l'élément d'alliage principal dans l'acier inoxydable ?"
+    },
+    answers: {
+      en: ["Chromium", "Carbon", "Nickel", "Manganese"],
+      fr: ["Le chrome", "Le carbone", "Le nickel", "Le manganèse"]
+    },
+    explanation: {
+      en: "Stainless steel contains at least 10.5% chromium, which forms a thin oxide layer on the surface, preventing rust.",
+      fr: "L'acier inoxydable contient au moins 10,5 % de chrome. Cet élément forme une fine couche d'oxyde en surface, empêchant la formation de rouille."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "a2f606ee-2e71-4afb-8c99-71c29d121fdd",
+    difficulty: 4,
+    question: {
+      en: "Which African country has never been colonized?",
+      fr: "Quel pays africain n'a jamais été colonisé ?"
+    },
+    answers: {
+      en: ["Ethiopia", "Kenya", "Ghana", "Morocco"],
+      fr: ["L'Éthiopie", "Le Kenya", "Le Ghana", "Le Maroc"]
+    },
+    explanation: {
+      en: "Ethiopia is widely recognized as having maintained its sovereignty during the Scramble for Africa, though it faced an Italian invasion in the 20th century.",
+      fr: "L'Éthiopie est largement reconnue comme ayant conservé sa souveraineté pendant la colonisation de l'Afrique, même si elle a subi une invasion italienne au XXe siècle."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "9726c164-a992-4d98-8c93-7cc0c6f2e0b5",
+    difficulty: 8,
+    question: {
+      en: "Which ancient civilization constructed Machu Picchu?",
+      fr: "Quelle civilisation ancienne a construit le Machu Picchu ?"
+    },
+    answers: {
+      en: ["Inca", "Maya", "Aztec", "Olmec"],
+      fr: ["Les Incas", "Les Mayas", "Les Aztèques", "Les Olmèques"]
+    },
+    explanation: {
+      en: "Machu Picchu was built by the Inca civilization in the 15th century. Situated in the Andes Mountains, it is a UNESCO World Heritage Site.",
+      fr: "Le Machu Picchu a été construit par la civilisation inca au XVe siècle. Situé dans la cordillère des Andes, il est aujourd'hui classé au patrimoine mondial de l'UNESCO."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "954b9c48-1f6d-4b1d-9b10-c6b0b636c950",
+    difficulty: 4,
+    question: {
+      en: "Which river is the longest in South America?",
+      fr: "Quel est le fleuve le plus long d'Amérique du Sud ?"
+    },
+    answers: {
+      en: ["Amazon", "Paraná", "Orinoco", "Magdalena"],
+      fr: ["L'Amazone", "Le Paraná", "L'Orénoque", "Le Magdalena"]
+    },
+    explanation: {
+      en: "The Amazon is the longest river in South America, stretching over 6,400 km.",
+      fr: "L'Amazone est le fleuve le plus long d'Amérique du Sud, dépassant 6 400 km."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "61d94c9f-be70-49c0-a67d-f23d128f8aa0",
+    difficulty: 3,
+    question: {
+      en: "Which country has the largest number of islands in the world?",
+      fr: "Quel pays possède le plus grand nombre d'îles au monde ?"
+    },
+    answers: {
+      en: ["Sweden", "Indonesia", "Philippines", "Canada"],
+      fr: ["La Suède", "L'Indonésie", "Les Philippines", "Le Canada"]
+    },
+    explanation: {
+      en: "Sweden is often considered to have the most islands, with over 200,000 islands in its territory.",
+      fr: "La Suède est souvent considérée comme le pays ayant le plus d'îles, avec plus de 200 000 îles sur son territoire."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "f6b013d2-6a8f-4c70-9ac3-0221b675511f",
+    difficulty: 5,
+    question: {
+      en: "In which mountain range is Mount Everest located?",
+      fr: "Dans quelle chaîne de montagnes se trouve le mont Everest ?"
+    },
+    answers: {
+      en: ["Himalayas", "Andes", "Rockies", "Alps"],
+      fr: ["L'Himalaya", "Les Andes", "Les Rocheuses", "Les Alpes"]
+    },
+    explanation: {
+      en: "Mount Everest, the world's highest peak, is located in the Himalayas on the border between Nepal and China.",
+      fr: "Le mont Everest, le plus haut sommet du monde, se situe dans l'Himalaya, à la frontière entre le Népal et la Chine."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "0f9a651f-ad0c-4817-89d5-6702ca78eb17",
+    difficulty: 6,
+    question: {
+      en: "What is the capital of Nigeria?",
+      fr: "Quelle est la capitale du Nigeria ?"
+    },
+    answers: {
+      en: ["Abuja", "Lagos", "Kano", "Ibadan"],
+      fr: ["Abuja", "Lagos", "Kano", "Ibadan"]
+    },
+    explanation: {
+      en: "The capital of Nigeria is Abuja, chosen in 1991 to replace Lagos.",
+      fr: "La capitale du Nigeria est Abuja, choisie en 1991 pour remplacer Lagos."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "fdf3b25d-a77c-44fb-8440-58751413cf86",
+    difficulty: 3,
+    question: {
+      en: "Which desert covers most of northern Africa?",
+      fr: "Quel désert recouvre la majeure partie du nord de l'Afrique ?"
+    },
+    answers: {
+      en: ["Sahara", "Kalahari", "Namib", "Gobi"],
+      fr: ["Le Sahara", "Le Kalahari", "Le Namib", "Le Gobi"]
+    },
+    explanation: {
+      en: "The Sahara Desert is the largest hot desert in the world and covers most of northern Africa.",
+      fr: "Le Sahara est le plus grand désert chaud du monde et recouvre la majeure partie de l'Afrique du Nord."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "2bf5a359-df51-4b66-8b05-62bfadf2d4bf",
+    difficulty: 4,
+    question: {
+      en: "What is the capital of Mongolia?",
+      fr: "Quelle est la capitale de la Mongolie ?"
+    },
+    answers: {
+      en: ["Ulaanbaatar", "Astana", "Tashkent", "Vladivostok"],
+      fr: ["Oulan-Bator", "Astana", "Tachkent", "Vladivostok"]
+    },
+    explanation: {
+      en: "Ulaanbaatar (Oulan-Bator) is the capital and largest city of Mongolia.",
+      fr: "Oulan-Bator est la capitale et la plus grande ville de Mongolie."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "4d329d1c-e1cb-4664-b063-5d8128dd7e65",
+    difficulty: 5,
+    question: {
+      en: "Which country owns Greenland?",
+      fr: "À quel pays appartient le Groenland ?"
+    },
+    answers: {
+      en: ["Denmark", "Canada", "Norway", "Iceland"],
+      fr: ["Le Danemark", "Le Canada", "La Norvège", "L'Islande"]
+    },
+    explanation: {
+      en: "Greenland is an autonomous territory within the Kingdom of Denmark.",
+      fr: "Le Groenland est un territoire autonome au sein du Royaume du Danemark."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "83eb5ffc-7228-4dbd-bf6a-4ca4fc52d4bc",
+    difficulty: 6,
+    question: {
+      en: "What is the largest freshwater lake by surface area?",
+      fr: "Quel est le plus grand lac d'eau douce au monde par superficie ?"
+    },
+    answers: {
+      en: ["Lake Superior", "Lake Victoria", "Caspian Sea", "Lake Huron"],
+      fr: ["Le lac Supérieur", "Le lac Victoria", "La mer Caspienne", "Le lac Huron"]
+    },
+    explanation: {
+      en: "Lake Superior, in North America, is generally considered the largest freshwater lake by surface area.",
+      fr: "Le lac Supérieur, en Amérique du Nord, est généralement considéré comme le plus grand lac d'eau douce par superficie."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "f1ae3130-2cb9-4ea3-8f0d-ce5b71585387",
+    difficulty: 4,
+    question: {
+      en: "Which river flows through the Grand Canyon?",
+      fr: "Quel fleuve traverse le Grand Canyon ?"
+    },
+    answers: {
+      en: ["Colorado River", "Mississippi River", "Missouri River", "Columbia River"],
+      fr: ["Le fleuve Colorado", "Le Mississippi", "Le Missouri", "Le Columbia"]
+    },
+    explanation: {
+      en: "The Colorado River carved out the Grand Canyon over millions of years.",
+      fr: "Le fleuve Colorado a creusé le Grand Canyon au cours de millions d'années."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "9d3bdad9-32ff-4639-a363-8e1d80e0ae02",
+    difficulty: 7,
+    question: {
+      en: "Which European country is home to the Carpathian Mountains?",
+      fr: "Quel pays européen abrite une grande partie des Carpates ?"
+    },
+    answers: {
+      en: ["Romania", "Switzerland", "Sweden", "Spain"],
+      fr: ["La Roumanie", "La Suisse", "La Suède", "L'Espagne"]
+    },
+    explanation: {
+      en: "Romania hosts a significant portion of the Carpathian Mountains, a mountain range in Central and Eastern Europe.",
+      fr: "La Roumanie abrite une grande partie des Carpates, une chaîne de montagnes d'Europe centrale et orientale."
+    },
+    tags: [TagEnum.GEOGRAPHY]
+  },
+  {
+    id: "5e0f6f49-e63a-4e68-8abe-7a85e2e77ebc",
+    difficulty: 7,
+    question: {
+      en: "Which operation was the Allied invasion of Normandy in WWII?",
+      fr: "Quelle opération correspond au débarquement allié en Normandie pendant la Seconde Guerre mondiale ?"
+    },
+    answers: {
+      en: ["Operation Overlord", "Operation Barbarossa", "Operation Market Garden", "Operation Torch"],
+      fr: ["L'Opération Overlord", "L'Opération Barbarossa", "L'Opération Market Garden", "L'Opération Torch"]
+    },
+    explanation: {
+      en: "Operation Overlord began on June 6, 1944 (D-Day), marking the start of the liberation of Western Europe.",
+      fr: "L'Opération Overlord a débuté le 6 juin 1944 (Jour J), marquant le début de la libération de l'Europe de l'Ouest."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "c1acbf3f-5ff9-4e40-9901-9fca3962b4a2",
+    difficulty: 5,
+    question: {
+      en: "What was the primary language of the Roman Empire?",
+      fr: "Quelle était la langue principale de l'Empire romain ?"
+    },
+    answers: {
+      en: ["Latin", "Greek", "Hebrew", "Aramaic"],
+      fr: ["Le latin", "Le grec", "L'hébreu", "L'araméen"]
+    },
+    explanation: {
+      en: "Latin was the principal language of the Roman Empire, especially in administration and law.",
+      fr: "Le latin était la langue principale de l'Empire romain, notamment dans l'administration et le droit."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "6a85f64b-f611-41bd-bbc1-6de99a7bbfe5",
+    difficulty: 8,
+    question: {
+      en: "During the Middle Ages, what system structured European society around lords, vassals, and serfs?",
+      fr: "Au Moyen Âge, quel système structurant la société européenne reposait sur les seigneurs, les vassaux et les serfs ?"
+    },
+    answers: {
+      en: ["Feudalism", "Capitalism", "Mercantilism", "Democracy"],
+      fr: ["Le féodalisme", "Le capitalisme", "Le mercantilisme", "La démocratie"]
+    },
+    explanation: {
+      en: "Feudalism was the dominant social and economic system in medieval Europe.",
+      fr: "Le féodalisme était le système social et économique dominant dans l'Europe médiévale."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "4ee5fdb2-c7a0-47a4-9863-64a463537d8e",
+    difficulty: 6,
+    question: {
+      en: "Which prehistoric period is known for the use of stone tools before metalworking?",
+      fr: "Quelle période préhistorique est connue pour l'utilisation d'outils en pierre avant la métallurgie ?"
+    },
+    answers: {
+      en: ["Stone Age", "Bronze Age", "Iron Age", "Neolithic Revolution"],
+      fr: ["L'Âge de pierre", "L'Âge du bronze", "L'Âge du fer", "La révolution néolithique"]
+    },
+    explanation: {
+      en: "The Stone Age preceded the use of metals, where stone, wood, and bone tools were common.",
+      fr: "L'Âge de pierre précède l'utilisation des métaux, où les outils en pierre, en bois et en os étaient courants."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "676090c4-6025-4eec-96e2-cc317c1d8dab",
+    difficulty: 7,
+    question: {
+      en: "What event in 476 AD is commonly associated with the fall of the Western Roman Empire?",
+      fr: "Quel événement, survenu en 476 apr. J.-C., est généralement associé à la chute de l'Empire romain d'Occident ?"
+    },
+    answers: {
+      en: ["Deposition of Romulus Augustulus", "Sack of Rome by Alaric", "Division of the Empire by Theodosius", "Battle of Adrianople"],
+      fr: ["La déposition de Romulus Augustulus", "Le sac de Rome par Alaric", "La division de l'Empire par Théodose", "La bataille d'Andrinople"]
+    },
+    explanation: {
+      en: "In 476 AD, the last Western Roman Emperor, Romulus Augustulus, was deposed, symbolizing the end of the Western Roman Empire.",
+      fr: "En 476 apr. J.-C., le dernier empereur romain d'Occident, Romulus Augustulus, fut déposé, symbolisant la fin de l'Empire romain d'Occident."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "bd34e1f3-5c6e-4cba-8bd3-7e66c0c6ee56",
+    difficulty: 4,
+    question: {
+      en: "Which Neolithic revolution allowed humans to settle and form civilizations?",
+      fr: "Quelle révolution néolithique a permis aux humains de s'installer et de former des civilisations ?"
+    },
+    answers: {
+      en: ["Agricultural Revolution", "Industrial Revolution", "Scientific Revolution", "Green Revolution"],
+      fr: ["La révolution agricole", "La révolution industrielle", "La révolution scientifique", "La révolution verte"]
+    },
+    explanation: {
+      en: "The Agricultural (Neolithic) Revolution marked the shift from nomadic hunting-gathering to settled farming communities.",
+      fr: "La révolution agricole (néolithique) a marqué la transition du nomadisme à la sédentarisation grâce à l'agriculture."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "a04eeb56-8bc5-4b9b-bba1-47331d3b2bb5",
+    difficulty: 5,
+    question: {
+      en: "What prehistoric era preceded the Neolithic period?",
+      fr: "Quelle ère préhistorique a précédé la période néolithique ?"
+    },
+    answers: {
+      en: ["Paleolithic", "Mesolithic", "Chalcolithic", "Iron Age"],
+      fr: ["Le Paléolithique", "Le Mésolithique", "Le Chalcolithique", "L'Âge du fer"]
+    },
+    explanation: {
+      en: "The Paleolithic era (Old Stone Age) came before the Neolithic, characterized by stone tools and hunter-gatherer societies.",
+      fr: "Le Paléolithique (Âge de la pierre ancienne) précède le Néolithique, caractérisé par des outils en pierre et des sociétés de chasseurs-cueilleurs."
+    },
+    tags: [TagEnum.HISTORY]
+  },
+  {
+    id: "ae5f62d7-8911-4f07-9b43-3b0ecf667506",
+    difficulty: 3,
+    question: {
+      en: "During which era did dinosaurs dominate the Earth?",
+      fr: "Au cours de quelle ère les dinosaures ont-ils dominé la Terre ?"
+    },
+    answers: {
+      en: ["Mesozoic", "Cenozoic", "Paleozoic", "Proterozoic"],
+      fr: ["Le Mésozoïque", "Le Cénozoïque", "Le Paléozoïque", "Le Protérozoïque"]
+    },
+    explanation: {
+      en: "Dinosaurs dominated during the Mesozoic Era (Triassic, Jurassic, Cretaceous).",
+      fr: "Les dinosaures ont dominé pendant l'ère mésozoïque (Trias, Jurassique, Crétacé)."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "2e384b3b-5b08-4d1b-b979-b52abd66c52d",
+    difficulty: 4,
+    question: {
+      en: "Which period is known for the rise of large sauropod dinosaurs?",
+      fr: "Quelle période est connue pour l'essor des grands dinosaures sauropodes ?"
+    },
+    answers: {
+      en: ["Jurassic", "Triassic", "Cretaceous", "Devonian"],
+      fr: ["Le Jurassique", "Le Trias", "Le Crétacé", "Le Dévonien"]
+    },
+    explanation: {
+      en: "The Jurassic period saw the rise of large sauropods like Brachiosaurus and Diplodocus.",
+      fr: "Le Jurassique a vu l'essor de grands sauropodes tels que le Brachiosaurus et le Diplodocus."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "2b7fd8b2-5de7-4b30-9bed-68a6da61379c",
+    difficulty: 5,
+    question: {
+      en: "Which dinosaur is famous for its three horns on the face?",
+      fr: "Quel dinosaure est célèbre pour ses trois cornes sur le visage ?"
+    },
+    answers: {
+      en: ["Triceratops", "Stegosaurus", "Velociraptor", "Pachycephalosaurus"],
+      fr: ["Le Triceratops", "Le Stégosaure", "Le Vélociraptor", "Le Pachycéphalosaure"]
+    },
+    explanation: {
+      en: "Triceratops had three distinctive horns and a large bony frill.",
+      fr: "Le Triceratops possédait trois cornes distinctives et une large collerette osseuse."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "e939e2ca-276e-46e8-a7f9-be7bdecc4965",
+    difficulty: 4,
+    question: {
+      en: "Which small, fast predator is known from the Late Cretaceous and often depicted in popular media?",
+      fr: "Quel petit prédateur rapide du Crétacé supérieur est souvent représenté dans les médias populaires ?"
+    },
+    answers: {
+      en: ["Velociraptor", "Allosaurus", "Tyrannosaurus", "Spinosaurus"],
+      fr: ["Le Vélociraptor", "L'Allosaurus", "Le Tyrannosaurus", "Le Spinosaurus"]
+    },
+    explanation: {
+      en: "Velociraptor, featured in movies like Jurassic Park, was a small, swift predator.",
+      fr: "Le Vélociraptor, présent dans des films comme Jurassic Park, était un petit prédateur agile."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "bb91590a-6ec1-42a2-b4a6-4b1f82f61193",
+    difficulty: 6,
+    question: {
+      en: "Which dinosaur had a distinctive sail-like structure on its back formed by elongated spines?",
+      fr: "Quel dinosaure possédait une structure en forme de voile sur son dos, formée par des épines allongées ?"
+    },
+    answers: {
+      en: ["Spinosaurus", "Iguanodon", "Parasaurolophus", "Carnotaurus"],
+      fr: ["Le Spinosaurus", "L'Iguanodon", "Le Parasaurolophus", "Le Carnotaure"]
+    },
+    explanation: {
+      en: "Spinosaurus had elongated neural spines on its back, forming a sail-like structure.",
+      fr: "Le Spinosaurus possédait de longues épines neurales sur le dos, formant une sorte de voile."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "fe7c0e3f-257d-439a-8f7c-957f3d0b0c9c",
+    difficulty: 3,
+    question: {
+      en: "What is the largest known carnivorous dinosaur?",
+      fr: "Quel est le plus grand dinosaure carnivore connu ?"
+    },
+    answers: {
+      en: ["Spinosaurus", "Tyrannosaurus Rex", "Allosaurus", "Giganotosaurus"],
+      fr: ["Le Spinosaurus", "Le Tyrannosaurus Rex", "L'Allosaurus", "Le Giganotosaurus"]
+    },
+    explanation: {
+      en: "Spinosaurus is currently considered among the largest known carnivorous dinosaurs.",
+      fr: "Le Spinosaurus est actuellement considéré comme l'un des plus grands dinosaures carnivores connus."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "51f17967-23e0-4cfa-ba99-dfcb5aa96a54",
+    difficulty: 4,
+    question: {
+      en: "Which period followed the Jurassic and saw the last dinosaurs before the mass extinction?",
+      fr: "Quelle période a suivi le Jurassique et vu les derniers dinosaures avant l'extinction de masse ?"
+    },
+    answers: {
+      en: ["Cretaceous", "Triassic", "Permian", "Silurian"],
+      fr: ["Le Crétacé", "Le Trias", "Le Permien", "Le Silurien"]
+    },
+    explanation: {
+      en: "The Cretaceous period ended with the mass extinction event that wiped out the dinosaurs.",
+      fr: "Le Crétacé s'est terminé par l'extinction de masse qui a éliminé les dinosaures."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "264696f1-04f2-4a53-83d7-01d6fd0daa22",
+    difficulty: 5,
+    question: {
+      en: "Which dinosaur is known for the large, bony plates along its back?",
+      fr: "Quel dinosaure est connu pour les grandes plaques osseuses disposées le long de son dos ?"
+    },
+    answers: {
+      en: ["Stegosaurus", "Triceratops", "Ankylosaurus", "Diplodocus"],
+      fr: ["Le Stégosaure", "Le Triceratops", "L'Ankylosaure", "Le Diplodocus"]
+    },
+    explanation: {
+      en: "Stegosaurus had distinctive plates along its back that may have been used for display or temperature regulation.",
+      fr: "Le Stégosaure possédait des plaques sur son dos, pouvant servir à la régulation thermique ou à la parade."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "0d7b21bc-9320-4f06-ad4c-3ea7576f2a7a",
+    difficulty: 4,
+    question: {
+      en: "Which group of animals are considered the closest living relatives to dinosaurs?",
+      fr: "Quel groupe d'animaux est considéré comme le plus proche parent vivant des dinosaures ?"
+    },
+    answers: {
+      en: ["Birds", "Crocodiles", "Lizards", "Mammals"],
+      fr: ["Les oiseaux", "Les crocodiles", "Les lézards", "Les mammifères"]
+    },
+    explanation: {
+      en: "Birds are now recognized as the closest living relatives of dinosaurs.",
+      fr: "Les oiseaux sont aujourd'hui reconnus comme les plus proches parents vivants des dinosaures."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "8d895255-ad70-42f3-a82b-b8e11e8fe5ab",
+    difficulty: 6,
+    question: {
+      en: "What event is widely accepted as causing the mass extinction of dinosaurs 66 million years ago?",
+      fr: "Quel événement est largement accepté comme ayant causé l'extinction massive des dinosaures il y a 66 millions d'années ?"
+    },
+    answers: {
+      en: ["Asteroid impact", "Volcanic eruption", "Global cooling", "Disease pandemic"],
+      fr: ["L'impact d'un astéroïde", "Une éruption volcanique", "Un refroidissement global", "Une pandémie"]
+    },
+    explanation: {
+      en: "A large asteroid impact is believed to have triggered the Cretaceous-Paleogene extinction event.",
+      fr: "On pense qu'un impact d'astéroïde a déclenché l'extinction du Crétacé-Paléogène."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "28842f7c-e1f5-4d7d-940e-7e6c906de4c0",
+    difficulty: 5,
+    question: {
+      en: "Which dinosaur name means 'Tyrant Lizard King'?",
+      fr: "Quel dinosaure porte un nom signifiant 'Roi des lézards tyrans' ?"
+    },
+    answers: {
+      en: ["Tyrannosaurus Rex", "Allosaurus", "Giganotosaurus", "Ceratosaurus"],
+      fr: ["Le Tyrannosaurus Rex", "L'Allosaurus", "Le Giganotosaurus", "Le Cératosaure"]
+    },
+    explanation: {
+      en: "Tyrannosaurus Rex literally means 'Tyrant Lizard King'.",
+      fr: "Tyrannosaurus Rex signifie littéralement 'Roi des lézards tyrans'."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "b1c6fc4f-7c73-4b2d-a329-5e4f464358d4",
+    difficulty: 7,
+    question: {
+      en: "What kind of diet did the Diplodocus have?",
+      fr: "Quel type de régime alimentaire avait le Diplodocus ?"
+    },
+    answers: {
+      en: ["Herbivorous", "Carnivorous", "Omnivorous", "Insectivorous"],
+      fr: ["Herbivore", "Carnivore", "Omnivore", "Insectivore"]
+    },
+    explanation: {
+      en: "Diplodocus was an herbivorous sauropod that fed on plants.",
+      fr: "Le Diplodocus était un sauropode herbivore se nourrissant de plantes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "fd66aba6-3611-4443-aa79-3402c097a7f1",
+    difficulty: 5,
+    question: {
+      en: "Which dinosaur had a distinctive crest on its head, possibly used for communication?",
+      fr: "Quel dinosaure avait une crête distincte sur la tête, possiblement utilisée pour la communication ?"
+    },
+    answers: {
+      en: ["Parasaurolophus", "Iguanodon", "Corythosaurus", "Gallimimus"],
+      fr: ["Le Parasaurolophus", "L'Iguanodon", "Le Corythosaurus", "Le Gallimimus"]
+    },
+    explanation: {
+      en: "Parasaurolophus had a long, hollow crest believed to produce resonant sounds.",
+      fr: "Le Parasaurolophus avait une longue crête creuse permettant probablement d'émettre des sons résonnants."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "0fd4f821-08bf-48c0-baea-4e02c8523fa9",
+    difficulty: 4,
+    question: {
+      en: "Were all dinosaurs cold-blooded?",
+      fr: "Tous les dinosaures étaient-ils à sang froid ?"
+    },
+    answers: {
+      en: ["No, recent research suggests a range of metabolic strategies", "Yes, all were cold-blooded", "Yes, all were warm-blooded", "No, they were all warm-blooded"],
+      fr: ["Non, des recherches récentes suggèrent une gamme de stratégies métaboliques", "Oui, tous étaient à sang froid", "Oui, tous étaient à sang chaud", "Non, ils étaient tous à sang chaud"]
+    },
+    explanation: {
+      en: "Recent studies suggest dinosaurs had varied metabolic rates, not strictly cold-blooded like modern reptiles.",
+      fr: "Des études récentes indiquent que les dinosaures avaient des métabolismes variés, pas strictement à sang froid comme les reptiles actuels."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "86f45a90-39df-45c4-9d87-ec616888b1c2",
+    difficulty: 6,
+    question: {
+      en: "Which dinosaur is known as one of the earliest known bird-like dinosaurs?",
+      fr: "Quel dinosaure est connu comme l'un des premiers dinosaures à ressembler aux oiseaux ?"
+    },
+    answers: {
+      en: ["Archaeopteryx", "Microraptor", "Deinonychus", "Compsognathus"],
+      fr: ["L'Archaeopteryx", "Le Microraptor", "Le Deinonychus", "Le Compsognathus"]
+    },
+    explanation: {
+      en: "Archaeopteryx is often considered a transitional fossil between non-avian dinosaurs and birds.",
+      fr: "L'Archaeopteryx est souvent considéré comme un fossile de transition entre les dinosaures non-aviens et les oiseaux."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "cd3583ec-cb48-4afa-9a97-3dbb8c60e21f",
+    difficulty: 5,
+    question: {
+      en: "Which dinosaurs are known for their club-like tail?",
+      fr: "Quels dinosaures sont connus pour leur queue en forme de massue ?"
+    },
+    answers: {
+      en: ["Ankylosaurs", "Stegosaurs", "Hadrosaurs", "Ceratosaurians"],
+      fr: ["Les ankylosaures", "Les stégosaures", "Les hadrosaures", "Les cératosauriens"]
+    },
+    explanation: {
+      en: "Ankylosaurs had heavily armored bodies and clubbed tails for defense.",
+      fr: "Les ankylosaures possédaient un corps fortement blindé et une queue munie d'une massue, utilisée pour la défense."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "bc378bee-5e36-442a-a747-726864176c76",
+    difficulty: 7,
+    question: {
+      en: "Which dinosaur name means 'Double Beam', referring to its double-rowed chevron bones?",
+      fr: "Quel dinosaure porte un nom signifiant 'Double Poutre', en référence à ses os en chevron disposés en double rangée ?"
+    },
+    answers: {
+      en: ["Diplodocus", "Brachiosaurus", "Apatosaurus", "Camptosaurus"],
+      fr: ["Le Diplodocus", "Le Brachiosaure", "L'Apatosaurus", "Le Camptosaurus"]
+    },
+    explanation: {
+      en: "Diplodocus means 'Double Beam', named for its double-rowed chevron bones on the underside of its tail.",
+      fr: "Diplodocus signifie 'Double Poutre', nommé ainsi en raison de ses os en chevron disposés en double rangée sous sa queue."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "5e295525-ccf2-42d2-95fb-f66fb105ee68",
+    difficulty: 6,
+    question: {
+      en: "What type of evidence do scientists primarily use to study dinosaurs?",
+      fr: "De quel type de preuves les scientifiques se servent-ils principalement pour étudier les dinosaures ?"
+    },
+    answers: {
+      en: ["Fossils", "Genetic samples", "Living descendants", "Ancient drawings"],
+      fr: ["Les fossiles", "Les échantillons génétiques", "Les descendants vivants", "Les dessins anciens"]
+    },
+    explanation: {
+      en: "Scientists study dinosaur fossils, including bones and footprints, to learn about their appearance and behavior.",
+      fr: "Les scientifiques étudient les fossiles de dinosaures, y compris les os et les empreintes, pour comprendre leur apparence et leur comportement."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "6ebad27f-c78e-4230-9810-c1584224ca0f",
+    difficulty: 4,
+    question: {
+      en: "Were all dinosaurs gigantic in size?",
+      fr: "Tous les dinosaures étaient-ils gigantesques ?"
+    },
+    answers: {
+      en: ["No, some were as small as modern birds", "Yes, all were huge", "Yes, all exceeded elephant size", "No, all were smaller than humans"],
+      fr: ["Non, certains étaient aussi petits que des oiseaux modernes", "Oui, tous étaient immenses", "Oui, tous dépassaient la taille d'un éléphant", "Non, tous étaient plus petits qu'un humain"]
+    },
+    explanation: {
+      en: "Not all dinosaurs were huge; some were quite small, comparable to modern birds.",
+      fr: "Tous les dinosaures n'étaient pas gigantesques ; certains étaient très petits, comparables à des oiseaux modernes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "0ff12a1b-9d3a-4a9c-b07e-d1f98a9ae2ea",
+    difficulty: 5,
+    question: {
+      en: "What is the psychological phenomenon where a stationary light in a dark room appears to move?",
+      fr: "Quel phénomène psychologique fait qu'une lumière fixe dans une pièce sombre semble bouger ?"
+    },
+    answers: {
+      en: ["Autokinetic effect", "Stroboscopic effect", "Motion parallax", "Troxler fading"],
+      fr: ["L'effet autocinétique", "L'effet stroboscopique", "La parallaxe de mouvement", "La disparition de Troxler"]
+    },
+    explanation: {
+      en: "The autokinetic effect is when a small, stationary light source in a dark environment appears to drift.",
+      fr: "L'effet autocinétique est lorsqu'une petite source lumineuse immobile dans l'obscurité semble se déplacer."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "0ad5fe8d-d63d-4af2-bf30-9b2f8cfbf53f",
+    difficulty: 3,
+    question: {
+      en: "Which illusion makes two identical lines appear to be of different lengths due to arrow-like ends?",
+      fr: "Quelle illusion fait apparaître deux lignes identiques de longueurs différentes à cause de terminaisons en forme de flèches ?"
+    },
+    answers: {
+      en: ["Müller-Lyer illusion", "Ponzo illusion", "Ebbinghaus illusion", "Zöllner illusion"],
+      fr: ["L'illusion de Müller-Lyer", "L'illusion de Ponzo", "L'illusion d'Ebbinghaus", "L'illusion de Zöllner"]
+    },
+    explanation: {
+      en: "The Müller-Lyer illusion uses arrow-like endings to make lines appear longer or shorter.",
+      fr: "L'illusion de Müller-Lyer utilise des terminaisons en flèche pour donner l'impression que les lignes ont des longueurs différentes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "35da8f0f-02a6-4f39-9132-1a6cd5aad2fa",
+    difficulty: 4,
+    question: {
+      en: "What phenomenon causes a stationary image to fade if you stare at one point long enough?",
+      fr: "Quel phénomène fait disparaître graduellement une image immobile lorsqu'on fixe un point suffisamment longtemps ?"
+    },
+    answers: {
+      en: ["Troxler fading", "Afterimage effect", "Mach bands", "Hermann grid illusion"],
+      fr: ["La disparition de Troxler", "L'image rémanente", "Les bandes de Mach", "L'illusion de la grille de Hermann"]
+    },
+    explanation: {
+      en: "Troxler fading occurs when unchanging stimuli in peripheral vision fade out after prolonged fixation.",
+      fr: "La disparition de Troxler se produit lorsque des stimuli immuables dans la vision périphérique s'effacent après une fixation prolongée."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "f9ff7a0e-2e5b-4ed1-9b8c-92cbb5213ddb",
+    difficulty: 6,
+    question: {
+      en: "Which sense is primarily responsible for detecting chemical stimuli in foods and beverages?",
+      fr: "Quel sens est principalement responsable de la détection des stimuli chimiques dans les aliments et les boissons ?"
+    },
+    answers: {
+      en: ["Taste", "Sight", "Hearing", "Touch"],
+      fr: ["Le goût", "La vue", "L'ouïe", "Le toucher"]
+    },
+    explanation: {
+      en: "Taste receptors on the tongue detect chemical compounds, enabling us to perceive sweetness, bitterness, etc.",
+      fr: "Les récepteurs gustatifs sur la langue détectent les composés chimiques, permettant de percevoir le sucré, l'amer, etc."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "30ad9b1a-4f4b-4d66-866e-20480e2069a3",
+    difficulty: 5,
+    question: {
+      en: "What is the term for the subjective phenomenon where one sensory input can involuntarily trigger another sense?",
+      fr: "Quel est le terme pour le phénomène subjectif où une stimulation sensorielle en déclenche involontairement une autre ?"
+    },
+    answers: {
+      en: ["Synesthesia", "Sensory adaptation", "Cross-modal binding", "Multisensory integration"],
+      fr: ["La synesthésie", "L'adaptation sensorielle", "La liaison transmodale", "L'intégration multisensorielle"]
+    },
+    explanation: {
+      en: "Synesthesia is a condition where stimulation of one sense leads to experiences in another sense, like seeing colors when hearing sounds.",
+      fr: "La synesthésie est une condition où la stimulation d'un sens provoque des perceptions dans un autre sens, par exemple voir des couleurs en entendant des sons."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "c543bc12-f3fc-4480-b4d3-ad7180084728",
+    difficulty: 3,
+    question: {
+      en: "Which illusion involves a grid of black squares and white lines where gray spots appear at intersections?",
+      fr: "Quelle illusion implique une grille de carrés noirs et de lignes blanches, où des taches grises apparaissent aux intersections ?"
+    },
+    answers: {
+      en: ["Hermann grid illusion", "Müller-Lyer illusion", "Ehrenstein illusion", "Café wall illusion"],
+      fr: ["L'illusion de la grille de Hermann", "L'illusion de Müller-Lyer", "L'illusion d'Ehrenstein", "L'illusion du mur de café"]
+    },
+    explanation: {
+      en: "The Hermann grid illusion makes gray spots appear at intersections due to lateral inhibition in the visual system.",
+      fr: "L'illusion de la grille de Hermann fait apparaître des taches grises aux intersections à cause de l'inhibition latérale dans le système visuel."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "f4f7347b-7284-4d5a-9c59-874e8c712502",
+    difficulty: 4,
+    question: {
+      en: "What is the phenomenon where prolonged exposure to a certain smell reduces the ability to detect it?",
+      fr: "Quel est le phénomène où une exposition prolongée à une odeur diminue la capacité de la percevoir ?"
+    },
+    answers: {
+      en: ["Olfactory adaptation", "Habituation", "Gustatory fatigue", "Sensory overload"],
+      fr: ["L'adaptation olfactive", "L'habituation", "La fatigue gustative", "La surcharge sensorielle"]
+    },
+    explanation: {
+      en: "Olfactory adaptation causes a scent to fade from our perception after continuous exposure.",
+      fr: "L'adaptation olfactive fait disparaître progressivement une odeur de notre perception après une exposition continue."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "2d47b708-8d70-4fab-b07e-f1659069dfa2",
+    difficulty: 5,
+    question: {
+      en: "Which visual phenomenon explains why we can see continuous motion in rapidly displayed still images?",
+      fr: "Quel phénomène visuel explique que l'on perçoive un mouvement continu dans une succession rapide d'images fixes ?"
+    },
+    answers: {
+      en: ["Persistence of vision", "Saccadic masking", "Inattentional blindness", "Change blindness"],
+      fr: ["La persistance rétinienne", "Le masquage saccadique", "L'aveuglement inattentionnel", "L'aveuglement au changement"]
+    },
+    explanation: {
+      en: "Persistence of vision allows the brain to blend discrete images into a continuous motion sequence.",
+      fr: "La persistance rétinienne permet au cerveau de fusionner des images distinctes pour créer une impression de mouvement continu."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "f7584bd0-9740-4ffc-b106-9ae3cc8ccfb7",
+    difficulty: 6,
+    question: {
+      en: "In auditory perception, what is it called when a constant sound fades from awareness after a while?",
+      fr: "En perception auditive, comment appelle-t-on le fait qu'un son constant s'estompe de la conscience après un certain temps ?"
+    },
+    answers: {
+      en: ["Auditory adaptation", "Auditory hallucination", "Masking effect", "Doppler effect"],
+      fr: ["L'adaptation auditive", "L'hallucination auditive", "L'effet de masquage", "L'effet Doppler"]
+    },
+    explanation: {
+      en: "Auditory adaptation makes a continuous sound less noticeable after prolonged exposure.",
+      fr: "L'adaptation auditive rend un son continu moins perceptible après une exposition prolongée."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "7af10f6e-7cc3-45f6-8fe1-69b2e68f2ebc",
+    difficulty: 7,
+    question: {
+      en: "What term describes the ability of different senses to influence each other's perception, such as taste and smell?",
+      fr: "Quel terme décrit la capacité de différents sens à influencer la perception l'un de l'autre, comme le goût et l'odorat ?"
+    },
+    answers: {
+      en: ["Cross-modal interaction", "Monosensory integration", "Sensory isolation", "Unimodal processing"],
+      fr: ["L'interaction transmodale", "L'intégration monosensorielle", "L'isolation sensorielle", "Le traitement unimodal"]
+    },
+    explanation: {
+      en: "Cross-modal interaction occurs when one sense affects the perception of another, like aroma enhancing the perception of taste.",
+      fr: "L'interaction transmodale se produit lorsqu'un sens influence la perception d'un autre, comme l'arôme qui améliore la perception du goût."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "75cdad51-9ada-4b59-b097-fadcce781d9f",
+    difficulty: 5,
+    question: {
+      en: "Which illusion involves parallel lines that seem to diverge due to a zigzag pattern?",
+      fr: "Quelle illusion implique des lignes parallèles qui semblent diverger en raison d'un motif en zigzag ?"
+    },
+    answers: {
+      en: ["Zöllner illusion", "Poggendorff illusion", "Hering illusion", "Café wall illusion"],
+      fr: ["L'illusion de Zöllner", "L'illusion de Poggendorff", "L'illusion de Hering", "L'illusion du mur de café"]
+    },
+    explanation: {
+      en: "The Zöllner illusion makes parallel lines appear as if they are diverging or converging due to short intersecting lines.",
+      fr: "L'illusion de Zöllner fait paraître des lignes parallèles comme divergentes ou convergentes à cause de petites lignes transversales."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "0e377317-1abc-44ef-9132-67832c2bfe18",
+    difficulty: 6,
+    question: {
+      en: "What phenomenon describes focusing so intently on one stimulus that you fail to notice another obvious stimulus?",
+      fr: "Quel phénomène décrit le fait d'être si concentré sur un stimulus qu'on ne remarque pas un autre stimulus évident ?"
+    },
+    answers: {
+      en: ["Inattentional blindness", "Motion blindness", "Color constancy", "Perceptual constancy"],
+      fr: ["L'aveuglement inattentionnel", "La cécité au mouvement", "La constance des couleurs", "La constance perceptive"]
+    },
+    explanation: {
+      en: "Inattentional blindness occurs when attention is focused narrowly, causing us to miss other salient information.",
+      fr: "L'aveuglement inattentionnel se produit lorsque l'attention est focalisée de façon étroite, nous faisant rater d'autres informations importantes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "0fb96025-aabf-4ccc-9c94-d8b853d11536",
+    difficulty: 4,
+    question: {
+      en: "Which term refers to the brain's ability to maintain a stable perception of an object despite changes in lighting or angle?",
+      fr: "Quel terme désigne la capacité du cerveau à maintenir une perception stable d'un objet malgré des changements de lumière ou d'angle ?"
+    },
+    answers: {
+      en: ["Perceptual constancy", "Figure-ground segmentation", "Change blindness", "Simultaneous contrast"],
+      fr: ["La constance perceptive", "La segmentation figure-fond", "L'aveuglement au changement", "Le contraste simultané"]
+    },
+    explanation: {
+      en: "Perceptual constancy allows us to see objects as unchanging even under varying conditions.",
+      fr: "La constance perceptive nous permet de percevoir les objets comme invariants malgré des conditions changeantes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "c642f31a-9807-4b4f-8f45-c0f08dcd3f35",
+    difficulty: 7,
+    question: {
+      en: "What is it called when the mind fills in gaps in a visual image to form a complete picture?",
+      fr: "Comment appelle-t-on le fait que l'esprit comble les vides dans une image visuelle pour former une figure complète ?"
+    },
+    answers: {
+      en: ["Closure", "Continuity", "Proximity", "Similarity"],
+      fr: ["La clôture", "La continuité", "La proximité", "La similarité"]
+    },
+    explanation: {
+      en: "Closure is a Gestalt principle where the brain completes incomplete shapes or patterns.",
+      fr: "La clôture est un principe gestaltiste où le cerveau complète spontanément des formes incomplètes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "5d9b22ee-84cb-4fe9-92f0-6cd262c372ea",
+    difficulty: 4,
+    question: {
+      en: "Which country is famous for originating sushi?",
+      fr: "De quel pays le sushi est-il originaire ?"
+    },
+    answers: {
+      en: ["Japan", "China", "Korea", "Thailand"],
+      fr: ["Le Japon", "La Chine", "La Corée", "La Thaïlande"]
+    },
+    explanation: {
+      en: "Sushi originated in Japan, a cuisine involving vinegar-seasoned rice and fish.",
+      fr: "Le sushi est originaire du Japon, une cuisine associant du riz vinaigré et du poisson."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "73105d38-08f5-4785-ab5a-ef1a783dbe19",
+    difficulty: 5,
+    question: {
+      en: "Which cheese is traditionally used on a classic Margherita pizza?",
+      fr: "Quel fromage est traditionnellement utilisé sur une pizza Margherita classique ?"
+    },
+    answers: {
+      en: ["Mozzarella", "Cheddar", "Parmesan", "Gouda"],
+      fr: ["La mozzarella", "Le cheddar", "Le parmesan", "Le gouda"]
+    },
+    explanation: {
+      en: "A classic Margherita pizza uses fresh mozzarella, tomatoes, and basil.",
+      fr: "Une pizza Margherita classique utilise de la mozzarella fraîche, des tomates et du basilic."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "924ba9d8-e5b5-4bc3-bbdd-e24750ebd3bc",
+    difficulty: 4,
+    question: {
+      en: "Which country is known for producing Champagne?",
+      fr: "Quel pays est connu pour produire le Champagne ?"
+    },
+    answers: {
+      en: ["France", "Italy", "Spain", "Germany"],
+      fr: ["La France", "L'Italie", "L'Espagne", "L'Allemagne"]
+    },
+    explanation: {
+      en: "Champagne is a sparkling wine produced in the Champagne region of France.",
+      fr: "Le Champagne est un vin effervescent produit dans la région du même nom, en France."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "30c49c80-0c52-4cf3-a858-de4bb2727ce1",
+    difficulty: 5,
+    question: {
+      en: "Which country is famous for tapas, small savory dishes often served with drinks?",
+      fr: "Quel pays est réputé pour les tapas, de petites portions salées souvent servies avec des boissons ?"
+    },
+    answers: {
+      en: ["Spain", "Portugal", "Greece", "Morocco"],
+      fr: ["L'Espagne", "Le Portugal", "La Grèce", "Le Maroc"]
+    },
+    explanation: {
+      en: "Tapas originated in Spain as small plates served with wine or beer.",
+      fr: "Les tapas sont originaires d'Espagne, servies en petites portions avec du vin ou de la bière."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "61ec6746-2a91-4e57-89d0-d6da93266d74",
+    difficulty: 6,
+    question: {
+      en: "Which Middle Eastern dish is made from chickpeas, tahini, lemon juice, and garlic?",
+      fr: "Quel plat du Moyen-Orient est fait à base de pois chiches, de tahini, de jus de citron et d'ail ?"
+    },
+    answers: {
+      en: ["Hummus", "Baba Ganoush", "Falafel", "Tabbouleh"],
+      fr: ["Le houmous", "Le baba ganoush", "Le falafel", "Le taboulé"]
+    },
+    explanation: {
+      en: "Hummus is a popular Middle Eastern dip made from chickpeas and sesame paste (tahini).",
+      fr: "Le houmous est une préparation populaire au Moyen-Orient à base de pois chiches et de pâte de sésame (tahini)."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "0f35058c-5f54-4463-9f96-d4c7c8c07fc4",
+    difficulty: 3,
+    question: {
+      en: "Espresso, cappuccino, and latte are associated with which beverage?",
+      fr: "Espresso, cappuccino et latte sont associés à quelle boisson ?"
+    },
+    answers: {
+      en: ["Coffee", "Tea", "Juice", "Wine"],
+      fr: ["Le café", "Le thé", "Le jus", "Le vin"]
+    },
+    explanation: {
+      en: "Espresso, cappuccino, and latte are all coffee-based beverages.",
+      fr: "L'espresso, le cappuccino et le latte sont tous des boissons à base de café."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "a85e6405-0823-4ae7-b78a-6befbf136771",
+    difficulty: 5,
+    question: {
+      en: "What is the French term for a small, rich pastry made from choux dough filled with cream?",
+      fr: "Quel est le terme français pour une petite pâtisserie à base de pâte à choux garnie de crème ?"
+    },
+    answers: {
+      en: ["Profiterole", "Macaron", "Éclair", "Madeleine"],
+      fr: ["La profiterole", "Le macaron", "L'éclair", "La madeleine"]
+    },
+    explanation: {
+      en: "Profiteroles are small choux pastries filled with cream and often topped with chocolate sauce.",
+      fr: "Les profiteroles sont de petites pâtisseries en pâte à choux, garnies de crème et souvent nappées de sauce au chocolat."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "cb4597f4-2191-4ec2-aef4-3cf0af204bd6",
+    difficulty: 4,
+    question: {
+      en: "Which Italian dish is made from arborio rice cooked slowly in broth until creamy?",
+      fr: "Quel plat italien est préparé à partir de riz arborio cuit lentement dans un bouillon jusqu'à obtenir une texture crémeuse ?"
+    },
+    answers: {
+      en: ["Risotto", "Polenta", "Focaccia", "Gnocchi"],
+      fr: ["Le risotto", "La polenta", "La focaccia", "Les gnocchi"]
+    },
+    explanation: {
+      en: "Risotto is an Italian dish where arborio rice is slowly simmered in broth.",
+      fr: "Le risotto est un plat italien où le riz arborio est cuit lentement dans un bouillon."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "059c451b-f0a5-440d-be36-e09aa06c1243",
+    difficulty: 6,
+    question: {
+      en: "Which fermented soybean paste is a staple seasoning in Japanese cuisine?",
+      fr: "Quelle pâte de soja fermentée est un ingrédient de base de la cuisine japonaise ?"
+    },
+    answers: {
+      en: ["Miso", "Tamari", "Natto", "Mirin"],
+      fr: ["Le miso", "Le tamari", "Le natto", "Le mirin"]
+    },
+    explanation: {
+      en: "Miso is a fermented soybean paste used widely in Japanese soups and sauces.",
+      fr: "Le miso est une pâte de soja fermentée utilisée largement dans les soupes et sauces japonaises."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "3bc00c75-40dd-41dc-8fef-907d90e540c7",
+    difficulty: 7,
+    question: {
+      en: "What French term refers to a meal featuring multiple small courses, often served in sequence?",
+      fr: "Quel terme français désigne un repas composé de nombreux petits plats servis successivement ?"
+    },
+    answers: {
+      en: ["Degustation", "Table d'hôte", "Prix fixe", "A la carte"],
+      fr: ["La dégustation", "La table d'hôte", "Le prix fixe", "À la carte"]
+    },
+    explanation: {
+      en: "A 'degustation' menu consists of multiple small portions designed to provide a variety of flavors.",
+      fr: "Un menu 'dégustation' est composé de nombreuses petites portions pour offrir une variété de saveurs."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "9ff61bc1-8bf1-47e5-9f64-63e81464dd85",
+    difficulty: 4,
+    question: {
+      en: "In which country is couscous a traditional dish?",
+      fr: "Dans quel pays le couscous est-il un plat traditionnel ?"
+    },
+    answers: {
+      en: ["Morocco", "Egypt", "Lebanon", "Iran"],
+      fr: ["Le Maroc", "L'Égypte", "Le Liban", "L'Iran"]
+    },
+    explanation: {
+      en: "Couscous is a traditional staple in North African cuisine, particularly in Morocco.",
+      fr: "Le couscous est un plat traditionnel de l'Afrique du Nord, particulièrement au Maroc."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "ff7bbab4-2032-4a9b-a885-9d75b0b8d536",
+    difficulty: 5,
+    question: {
+      en: "What is the Japanese ritualized form of preparing and serving tea called?",
+      fr: "Comment s'appelle la forme ritualisée japonaise de préparation et de service du thé ?"
+    },
+    answers: {
+      en: ["Chanoyu", "Cha Dao", "Gongfu Cha", "Chado (Sado)"],
+      fr: ["Le Chanoyu", "Le Cha Dao", "Le Gongfu Cha", "Le Chado (Sado)"]
+    },
+    explanation: {
+      en: "Chanoyu or Chado is the Japanese tea ceremony focusing on precision, aesthetics, and spirituality.",
+      fr: "Le Chanoyu ou Chado est la cérémonie du thé japonaise, centrée sur la précision, l'esthétique et la spiritualité."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "c651c9d9-2c9d-4e23-93cb-fd907bb26952",
+    difficulty: 6,
+    question: {
+      en: "Which European country is renowned for Parma ham and Parmigiano Reggiano cheese?",
+      fr: "Quel pays européen est renommé pour le jambon de Parme et le Parmigiano Reggiano ?"
+    },
+    answers: {
+      en: ["Italy", "France", "Spain", "Switzerland"],
+      fr: ["L'Italie", "La France", "L'Espagne", "La Suisse"]
+    },
+    explanation: {
+      en: "Italy is famous for Parma ham (Prosciutto di Parma) and Parmigiano Reggiano cheese.",
+      fr: "L'Italie est célèbre pour le jambon de Parme (Prosciutto di Parma) et le Parmigiano Reggiano."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "211dd08a-a539-48e4-8fa5-32fcea65770c",
+    difficulty: 4,
+    question: {
+      en: "What is the name of the traditional Argentine method of preparing and grilling meat?",
+      fr: "Quel est le nom de la méthode traditionnelle argentine de préparation et de grillade de la viande ?"
+    },
+    answers: {
+      en: ["Asado", "Churrasco", "Barbacoa", "Parrillada"],
+      fr: ["L'asado", "Le churrasco", "La barbacoa", "La parrillada"]
+    },
+    explanation: {
+      en: "Asado is a traditional Argentine technique of grilling meat over an open fire.",
+      fr: "L'asado est une technique traditionnelle argentine de cuisson de la viande sur un feu de bois."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "3f252b3e-e9f2-46ec-afae-5106fefb91cb",
+    difficulty: 5,
+    question: {
+      en: "Which North African dish is made with semolina granules and served with stew?",
+      fr: "Quel plat d'Afrique du Nord est fait de semoule de blé dur et servi avec un ragoût ?"
+    },
+    answers: {
+      en: ["Couscous", "Tajine", "Briouat", "Harira"],
+      fr: ["Le couscous", "Le tajine", "Le briouat", "La harira"]
+    },
+    explanation: {
+      en: "Couscous is steamed semolina served with a meat or vegetable stew.",
+      fr: "Le couscous est de la semoule de blé dur cuite à la vapeur, servie avec un ragoût de viande ou de légumes."
+    },
+    tags: [TagEnum.SOCIETY]
+  },
+  {
+    id: "7081d2a4-4b7e-4ea2-9bd7-d371e419f82c",
+    difficulty: 4,
+    question: {
+      en: "Which company invented the World Wide Web?",
+      fr: "Quelle institution a vu naître le World Wide Web ?"
+    },
+    answers: {
+      en: ["CERN", "MIT", "Bell Labs", "IBM"],
+      fr: ["Le CERN", "Le MIT", "Les Bell Labs", "IBM"]
+    },
+    explanation: {
+      en: "Tim Berners-Lee invented the World Wide Web at CERN in 1989.",
+      fr: "Tim Berners-Lee a inventé le World Wide Web au CERN en 1989."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "89bbfc91-ef5a-47e7-80f3-4704d980691e",
+    difficulty: 5,
+    question: {
+      en: "Which programming language was developed by James Gosling at Sun Microsystems?",
+      fr: "Quel langage de programmation a été développé par James Gosling chez Sun Microsystems ?"
+    },
+    answers: {
+      en: ["Java", "C++", "Python", "Ruby"],
+      fr: ["Java", "C++", "Python", "Ruby"]
+    },
+    explanation: {
+      en: "Java was created by James Gosling at Sun Microsystems in the mid-1990s.",
+      fr: "Java a été créé par James Gosling chez Sun Microsystems au milieu des années 1990."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "efbbb6ae-5596-4d53-bf52-08c9633bbf7f",
+    difficulty: 4,
+    question: {
+      en: "Which early computer scientist is known for the concept of the Turing machine?",
+      fr: "Quel informaticien précurseur est connu pour le concept de la machine de Turing ?"
+    },
+    answers: {
+      en: ["Alan Turing", "John von Neumann", "Konrad Zuse", "Charles Babbage"],
+      fr: ["Alan Turing", "John von Neumann", "Konrad Zuse", "Charles Babbage"]
+    },
+    explanation: {
+      en: "Alan Turing devised the Turing machine, a fundamental concept in theoretical computer science.",
+      fr: "Alan Turing a conçu la machine de Turing, un concept fondamental en informatique théorique."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "5807b074-3dfc-4af1-9a57-dd7b3c176d59",
+    difficulty: 6,
+    question: {
+      en: "Which programming language is known for its use in machine learning and data science?",
+      fr: "Quel langage de programmation est connu pour son utilisation en apprentissage automatique et en data science ?"
+    },
+    answers: {
+      en: ["Python", "C", "Fortran", "Assembly"],
+      fr: ["Python", "C", "Fortran", "L'assembleur"]
+    },
+    explanation: {
+      en: "Python has extensive libraries like NumPy, pandas, TensorFlow, making it popular in data science.",
+      fr: "Python dispose de bibliothèques étendues (NumPy, pandas, TensorFlow) le rendant populaire en data science."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "c8f4b4d3-3d14-4f3d-9f56-3d58f471da05",
+    difficulty: 4,
+    question: {
+      en: "Which device revolutionized personal computing in 1977 from Apple?",
+      fr: "Quel appareil d'Apple, sorti en 1977, a révolutionné l'informatique personnelle ?"
+    },
+    answers: {
+      en: ["Apple II", "Apple I", "Macintosh", "Lisa"],
+      fr: ["L'Apple II", "L'Apple I", "Le Macintosh", "La Lisa"]
+    },
+    explanation: {
+      en: "The Apple II, released in 1977, was one of the first highly successful personal computers.",
+      fr: "L'Apple II, sorti en 1977, fut l'un des premiers ordinateurs personnels à grand succès."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "a3ec653d-a2cc-4f60-973c-4c3f15fca304",
+    difficulty: 5,
+    question: {
+      en: "Which language, created by Guido van Rossum, emphasizes readability and simplicity?",
+      fr: "Quel langage, créé par Guido van Rossum, met l'accent sur la lisibilité et la simplicité ?"
+    },
+    answers: {
+      en: ["Python", "Perl", "JavaScript", "Ruby"],
+      fr: ["Python", "Perl", "JavaScript", "Ruby"]
+    },
+    explanation: {
+      en: "Python was designed with readability and simplicity in mind.",
+      fr: "Python a été conçu pour être lisible et simple d'utilisation."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "d84a12f7-adac-4b74-ae25-f0df89c58d41",
+    difficulty: 4,
+    question: {
+      en: "Which term refers to technology embedded in everyday objects, enabling them to connect and exchange data?",
+      fr: "Quel terme désigne la technologie intégrée dans les objets du quotidien, leur permettant de se connecter et d'échanger des données ?"
+    },
+    answers: {
+      en: ["Internet of Things (IoT)", "Cloud Computing", "Machine Learning", "Blockchain"],
+      fr: ["L'Internet des objets (IoT)", "L'informatique en nuage", "Le machine learning", "La blockchain"]
+    },
+    explanation: {
+      en: "IoT refers to inter-networking everyday devices so they can communicate.",
+      fr: "L'IoT (Internet des objets) fait référence au réseau d'objets quotidiens connectés qui échangent des données."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "aa47ebb8-36a1-4d94-9c2d-048c1df086b8",
+    difficulty: 6,
+    question: {
+      en: "Which company developed the microprocessor that powered the original IBM PC?",
+      fr: "Quelle entreprise a développé le microprocesseur qui alimentait l'IBM PC original ?"
+    },
+    answers: {
+      en: ["Intel", "AMD", "Motorola", "Zilog"],
+      fr: ["Intel", "AMD", "Motorola", "Zilog"]
+    },
+    explanation: {
+      en: "The original IBM PC used the Intel 8088 microprocessor.",
+      fr: "L'IBM PC original utilisait le microprocesseur Intel 8088."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "2e66a340-9a47-4c9a-a17d-7375a0bbff33",
+    difficulty: 4,
+    question: {
+      en: "Which concept refers to delivering computing services over the internet on-demand?",
+      fr: "Quel concept désigne la fourniture de services informatiques à la demande via Internet ?"
+    },
+    answers: {
+      en: ["Cloud computing", "Grid computing", "Edge computing", "Quantum computing"],
+      fr: ["L'informatique en nuage (cloud computing)", "Le calcul en grille", "Le calcul en périphérie", "Le calcul quantique"]
+    },
+    explanation: {
+      en: "Cloud computing provides resources like storage and servers over the internet.",
+      fr: "L'informatique en nuage offre des ressources (stockage, serveurs) via Internet."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "8b1c31ce-2e1b-4772-85e2-04f8df7cd246",
+    difficulty: 7,
+    question: {
+      en: "Which cryptographic technology underpins cryptocurrencies like Bitcoin?",
+      fr: "Quelle technologie cryptographique sous-tend les cryptomonnaies comme le Bitcoin ?"
+    },
+    answers: {
+      en: ["Blockchain", "Public key infrastructure", "Quantum encryption", "SHA-256 hashing alone"],
+      fr: ["La blockchain", "L'infrastructure à clé publique", "Le chiffrement quantique", "Le hachage SHA-256 seul"]
+    },
+    explanation: {
+      en: "Blockchain is a decentralized ledger technology that supports Bitcoin.",
+      fr: "La blockchain est un registre décentralisé qui soutient le Bitcoin."
+    },
+    tags: [TagEnum.TECHNOLOGY]
+  },
+  {
+    id: "b6c97415-b1ce-46f1-80c3-928ddcbd9b7e",
+    difficulty: 3,
+    question: {
+      en: "Which planet is known for its extensive ring system?",
+      fr: "Quelle planète est connue pour son vaste système d'anneaux ?"
+    },
+    answers: {
+      en: ["Saturn", "Jupiter", "Neptune", "Uranus"],
+      fr: ["Saturne", "Jupiter", "Neptune", "Uranus"]
+    },
+    explanation: {
+      en: "Saturn is famous for its prominent ring system, visible even with small telescopes.",
+      fr: "Saturne est célèbre pour son système d'anneaux proéminent, visible avec de petits télescopes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "bb004089-197c-4c37-bf83-7f2af35e66d1",
+    difficulty: 4,
+    question: {
+      en: "What is the name of our galaxy?",
+      fr: "Quel est le nom de notre galaxie ?"
+    },
+    answers: {
+      en: ["Milky Way", "Andromeda", "Whirlpool", "Sombrero"],
+      fr: ["La Voie lactée", "Andromède", "Le Tourbillon", "Le Sombrero"]
+    },
+    explanation: {
+      en: "Our Solar System lies in the Milky Way galaxy.",
+      fr: "Notre système solaire se situe dans la Voie lactée."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "df963d2e-2985-4100-ac78-c54242b2089e",
+    difficulty: 5,
+    question: {
+      en: "Which dwarf planet lies in the asteroid belt between Mars and Jupiter?",
+      fr: "Quelle planète naine se trouve dans la ceinture d'astéroïdes entre Mars et Jupiter ?"
+    },
+    answers: {
+      en: ["Ceres", "Pluto", "Eris", "Haumea"],
+      fr: ["Cérès", "Pluton", "Éris", "Hauméa"]
+    },
+    explanation: {
+      en: "Ceres is the largest object in the asteroid belt and is classified as a dwarf planet.",
+      fr: "Cérès est le plus grand objet de la ceinture d'astéroïdes et est classée comme planète naine."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "1edc2c2a-854e-416c-9a26-2ce9aacbdd43",
+    difficulty: 6,
+    question: {
+      en: "What are the dark patches on the Moon's surface called?",
+      fr: "Comment appelle-t-on les zones sombres à la surface de la Lune ?"
+    },
+    answers: {
+      en: ["Maria", "Craters", "Rilles", "Regolith"],
+      fr: ["Les maria", "Les cratères", "Les rima", "Le régolithe"]
+    },
+    explanation: {
+      en: "The dark plains on the Moon are called 'maria' (Latin for 'seas'), formed by ancient volcanic eruptions.",
+      fr: "Les plaines sombres de la Lune s'appellent les 'maria' (latin pour 'mers'), formées par d'anciennes éruptions volcaniques."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "d25c4f7c-c1e0-445b-aad5-1611863b8709",
+    difficulty: 7,
+    question: {
+      en: "Which planet has the fastest winds in the solar system?",
+      fr: "Quelle planète possède les vents les plus rapides du système solaire ?"
+    },
+    answers: {
+      en: ["Neptune", "Jupiter", "Saturn", "Uranus"],
+      fr: ["Neptune", "Jupiter", "Saturne", "Uranus"]
+    },
+    explanation: {
+      en: "Neptune's winds can reach speeds of over 2,000 km/h, making them the fastest.",
+      fr: "Les vents de Neptune peuvent dépasser 2 000 km/h, en faisant les plus rapides."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "95b5b1db-c4cd-4e58-be8c-796df1026ace",
+    difficulty: 5,
+    question: {
+      en: "What phenomenon occurs when the Moon passes directly between the Sun and Earth?",
+      fr: "Quel phénomène se produit lorsque la Lune passe directement entre le Soleil et la Terre ?"
+    },
+    answers: {
+      en: ["Solar eclipse", "Lunar eclipse", "Transits of Venus", "Aurora"],
+      fr: ["L'éclipse solaire", "L'éclipse lunaire", "Le transit de Vénus", "L'aurore"]
+    },
+    explanation: {
+      en: "A solar eclipse occurs when the Moon aligns with the Sun and Earth, blocking the Sun's light.",
+      fr: "Une éclipse solaire se produit lorsque la Lune s'aligne entre le Soleil et la Terre, bloquant la lumière du Soleil."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "0d66cb67-c1ab-42d3-a607-3f6dace6cf32",
+    difficulty: 4,
+    question: {
+      en: "What name is given to a star's explosive death?",
+      fr: "Quel nom donne-t-on à la mort explosive d'une étoile ?"
+    },
+    answers: {
+      en: ["Supernova", "Nova", "Quasar", "Nebula"],
+      fr: ["Une supernova", "Une nova", "Un quasar", "Une nébuleuse"]
+    },
+    explanation: {
+      en: "A supernova is a massive star's explosive death, outshining entire galaxies briefly.",
+      fr: "Une supernova est la mort explosive d'une étoile massive, brillant plus qu'une galaxie entière pendant un court moment."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "6670746e-272a-4f19-9e47-2f2c35879667",
+    difficulty: 3,
+    question: {
+      en: "Which is the largest planet in the Solar System?",
+      fr: "Quelle est la plus grande planète du système solaire ?"
+    },
+    answers: {
+      en: ["Jupiter", "Saturn", "Earth", "Neptune"],
+      fr: ["Jupiter", "Saturne", "La Terre", "Neptune"]
+    },
+    explanation: {
+      en: "Jupiter is the largest planet in our Solar System, over 11 times Earth's diameter.",
+      fr: "Jupiter est la plus grande planète de notre système solaire, plus de 11 fois le diamètre de la Terre."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "b8ac37d1-e9a5-4fdd-9adf-21bcd9f09360",
+    difficulty: 6,
+    question: {
+      en: "What are the two main types of planets in our Solar System?",
+      fr: "Quels sont les deux types principaux de planètes dans notre système solaire ?"
+    },
+    answers: {
+      en: ["Terrestrial and gas giants", "Dwarf and rogue planets", "Comets and asteroids", "Hot Jupiters and super-Earths"],
+      fr: ["Les planètes telluriques et les géantes gazeuses", "Les planètes naines et les planètes errantes", "Les comètes et les astéroïdes", "Les Jupiters chaudes et les super-Terres"]
+    },
+    explanation: {
+      en: "Inner terrestrial planets (rocky) and outer gas giants make up our system.",
+      fr: "On distingue les planètes telluriques internes (rocheuses) et les géantes gazeuses externes dans notre système."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "00fa8dc7-00fc-4236-9a2e-7b593eff8aff",
+    difficulty: 7,
+    question: {
+      en: "What phenomenon occurs when charged particles from the Sun interact with Earth's magnetosphere?",
+      fr: "Quel phénomène se produit lorsque des particules chargées du Soleil interagissent avec la magnétosphère terrestre ?"
+    },
+    answers: {
+      en: ["Aurora", "Solar eclipse", "Meteor shower", "Comet tail"],
+      fr: ["L'aurore", "L'éclipse solaire", "La pluie de météores", "La queue de comète"]
+    },
+    explanation: {
+      en: "Auroras (northern/southern lights) occur when solar wind particles excite atmospheric gases.",
+      fr: "Les aurores (boréales/australes) se produisent lorsque le vent solaire excite les gaz de l'atmosphère terrestre."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "ae2e893d-36da-4554-a213-0edc895dc6fd",
+    difficulty: 5,
+    question: {
+      en: "Which galaxy is the closest spiral galaxy to the Milky Way?",
+      fr: "Quelle est la galaxie spirale la plus proche de la Voie lactée ?"
+    },
+    answers: {
+      en: ["Andromeda", "Triangulum", "Large Magellanic Cloud", "Whirlpool"],
+      fr: ["Andromède", "Le Triangle", "Le Grand Nuage de Magellan", "Le Tourbillon"]
+    },
+    explanation: {
+      en: "The Andromeda Galaxy is the nearest major spiral galaxy to the Milky Way.",
+      fr: "La galaxie d'Andromède est la plus proche grande galaxie spirale de la Voie lactée."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "d81d6783-3d88-4e11-bb04-9b73fca15745",
+    difficulty: 4,
+    question: {
+      en: "What is a comet primarily composed of?",
+      fr: "De quoi une comète est-elle principalement composée ?"
+    },
+    answers: {
+      en: ["Ice and dust", "Hot plasma", "Solid iron", "Sulfuric acid"],
+      fr: ["De glace et de poussière", "De plasma chaud", "De fer solide", "D'acide sulfurique"]
+    },
+    explanation: {
+      en: "Comets are often described as 'dirty snowballs' of ice and dust.",
+      fr: "Les comètes sont souvent décrites comme des 'boules de neige sales' de glace et de poussière."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "4208f857-bb5c-43d1-a14f-85526a1a796e",
+    difficulty: 3,
+    question: {
+      en: "Which celestial event involves numerous meteors appearing to radiate from one point in the sky?",
+      fr: "Quel événement céleste implique l'apparition de nombreuses météores semblant provenir d'un même point dans le ciel ?"
+    },
+    answers: {
+      en: ["Meteor shower", "Eclipse", "Supernova", "Solstice"],
+      fr: ["Une pluie de météores", "Une éclipse", "Une supernova", "Un solstice"]
+    },
+    explanation: {
+      en: "Meteor showers occur when Earth passes through debris left by comets, causing multiple meteors.",
+      fr: "Les pluies de météores se produisent lorsque la Terre traverse des débris laissés par des comètes, causant de multiples météores."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "74ad78b2-5635-4b6b-9b98-ae7a17f21298",
+    difficulty: 6,
+    question: {
+      en: "Which layer of the Sun’s atmosphere is visible during a total solar eclipse?",
+      fr: "Quelle couche de l'atmosphère solaire est visible lors d'une éclipse solaire totale ?"
+    },
+    answers: {
+      en: ["Corona", "Photosphere", "Chromosphere", "Core"],
+      fr: ["La couronne", "La photosphère", "La chromosphère", "Le noyau"]
+    },
+    explanation: {
+      en: "The corona is visible as a faint halo around the Sun during a total solar eclipse.",
+      fr: "La couronne est visible comme un halo pâle autour du Soleil lors d'une éclipse solaire totale."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "eb476304-79e9-4dcc-8bce-42e33f600be1",
+    difficulty: 4,
+    question: {
+      en: "What is molten rock beneath the Earth's surface called?",
+      fr: "Comment s'appelle la roche en fusion sous la surface de la Terre ?"
+    },
+    answers: {
+      en: ["Magma", "Lava", "Basalt", "Rhyolite"],
+      fr: ["Le magma", "La lave", "Le basalte", "La rhyolite"]
+    },
+    explanation: {
+      en: "Magma is molten rock stored beneath Earth's surface. When it erupts, it becomes lava.",
+      fr: "Le magma est la roche en fusion sous la surface terrestre. Lorsqu'il émerge, il devient de la lave."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "423b23c3-92da-4a2d-9817-9fe57cf86595",
+    difficulty: 5,
+    question: {
+      en: "Which scale measures the magnitude of earthquakes?",
+      fr: "Quelle échelle mesure la magnitude des tremblements de terre ?"
+    },
+    answers: {
+      en: ["Richter scale", "Beaufort scale", "Fujita scale", "Torino scale"],
+      fr: ["L'échelle de Richter", "L'échelle de Beaufort", "L'échelle de Fujita", "L'échelle de Turin"]
+    },
+    explanation: {
+      en: "The Richter scale measures the energy released by an earthquake.",
+      fr: "L'échelle de Richter mesure l'énergie libérée par un séisme."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "41ec9f2d-336b-4a31-b21a-e4ff149a8e79",
+    difficulty: 3,
+    question: {
+      en: "What is the process called where liquid water becomes water vapor?",
+      fr: "Comment s'appelle le processus par lequel l'eau liquide devient de la vapeur d'eau ?"
+    },
+    answers: {
+      en: ["Evaporation", "Condensation", "Precipitation", "Transpiration"],
+      fr: ["L'évaporation", "La condensation", "La précipitation", "La transpiration"]
+    },
+    explanation: {
+      en: "Evaporation turns liquid water into vapor, a key step in the water cycle.",
+      fr: "L'évaporation transforme l'eau liquide en vapeur, une étape clé du cycle de l'eau."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "d5f45b35-b6de-4cfc-a71b-83f4cf1e1bfa",
+    difficulty: 6,
+    question: {
+      en: "Which layer of the Earth is composed primarily of iron and nickel?",
+      fr: "Quelle couche de la Terre est principalement composée de fer et de nickel ?"
+    },
+    answers: {
+      en: ["Core", "Mantle", "Crust", "Lithosphere"],
+      fr: ["Le noyau", "Le manteau", "La croûte", "La lithosphère"]
+    },
+    explanation: {
+      en: "The Earth's core is rich in iron and nickel, split into a solid inner core and a liquid outer core.",
+      fr: "Le noyau terrestre est riche en fer et en nickel, séparé en noyau interne solide et externe liquide."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "893ba8b2-4afa-4fa9-bb8f-609e46419e74",
+    difficulty: 4,
+    question: {
+      en: "What term describes the wearing away of the Earth's surface by wind, water, or ice?",
+      fr: "Quel terme décrit l'usure de la surface terrestre par le vent, l'eau ou la glace ?"
+    },
+    answers: {
+      en: ["Erosion", "Deposition", "Sedimentation", "Weathering"],
+      fr: ["L'érosion", "La déposition", "La sédimentation", "L'altération"]
+    },
+    explanation: {
+      en: "Erosion involves the transport of weathered materials by natural forces.",
+      fr: "L'érosion implique le transport de matériaux altérés par des forces naturelles."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "f4fe40a1-7daa-4937-bc3a-4a7f17c1eb7a",
+    difficulty: 5,
+    question: {
+      en: "Which minerals are the most abundant in the Earth's crust?",
+      fr: "Quels minéraux sont les plus abondants dans la croûte terrestre ?"
+    },
+    answers: {
+      en: ["Silicates", "Carbonates", "Oxides", "Sulfides"],
+      fr: ["Les silicates", "Les carbonates", "Les oxydes", "Les sulfures"]
+    },
+    explanation: {
+      en: "Silicates, composed of silicon and oxygen, dominate the Earth's crust.",
+      fr: "Les silicates, composés de silicium et d'oxygène, dominent la croûte terrestre."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "97ee9603-f18f-451a-abde-62fff73fc8bb",
+    difficulty: 6,
+    question: {
+      en: "What term describes the boundary between two tectonic plates?",
+      fr: "Quel terme décrit la frontière entre deux plaques tectoniques ?"
+    },
+    answers: {
+      en: ["Plate boundary", "Fault zone", "Hot spot", "Orogeny"],
+      fr: ["La limite de plaque", "La zone de faille", "Le point chaud", "L'orogenèse"]
+    },
+    explanation: {
+      en: "Plate boundaries can be divergent, convergent, or transform, where tectonic plates interact.",
+      fr: "Les limites de plaques peuvent être divergentes, convergentes ou transformantes, où les plaques interagissent."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "ca6c18d3-3c5d-4c66-8c9d-aecbe2bdb49d",
+    difficulty: 7,
+    question: {
+      en: "Which type of volcano is characterized by broad, gentle slopes and fluid lava flows?",
+      fr: "Quel type de volcan est caractérisé par des pentes larges et douces et des coulées de lave fluides ?"
+    },
+    answers: {
+      en: ["Shield volcano", "Stratovolcano", "Cinder cone", "Dome volcano"],
+      fr: ["Le volcan bouclier", "Le stratovolcan", "Le cône de scories", "Le volcan en dôme"]
+    },
+    explanation: {
+      en: "Shield volcanoes have gentle slopes formed by low-viscosity lava that spreads widely.",
+      fr: "Les volcans boucliers ont des pentes douces formées par une lave peu visqueuse qui s'étale largement."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "629c5baa-55b1-4269-bcab-5f3882edfc26",
+    difficulty: 5,
+    question: {
+      en: "What is the process called when water vapor cools and turns into liquid water droplets?",
+      fr: "Comment s'appelle le processus par lequel la vapeur d'eau se refroidit et se transforme en gouttelettes d'eau liquide ?"
+    },
+    answers: {
+      en: ["Condensation", "Evaporation", "Sublimation", "Transpiration"],
+      fr: ["La condensation", "L'évaporation", "La sublimation", "La transpiration"]
+    },
+    explanation: {
+      en: "Condensation forms clouds and dew, converting water vapor into liquid droplets.",
+      fr: "La condensation forme les nuages et la rosée, convertissant la vapeur d'eau en gouttelettes liquides."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "b24fc47a-1466-4d35-a341-5a0183f3518a",
+    difficulty: 4,
+    question: {
+      en: "Which type of rock forms from cooling and solidification of magma or lava?",
+      fr: "Quel type de roche se forme à partir du refroidissement et de la solidification du magma ou de la lave ?"
+    },
+    answers: {
+      en: ["Igneous rock", "Sedimentary rock", "Metamorphic rock", "Evaporite"],
+      fr: ["La roche ignée", "La roche sédimentaire", "La roche métamorphique", "L'évaporite"]
+    },
+    explanation: {
+      en: "Igneous rocks crystallize from molten rock, either at the surface (lava) or below (magma).",
+      fr: "Les roches ignées cristallisent à partir de roche en fusion, soit en surface (lave), soit en profondeur (magma)."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "131ea68f-a286-4d82-9a2f-37a179cb96f7",
+    difficulty: 6,
+    question: {
+      en: "What phenomenon involves the shaking of Earth's surface caused by sudden tectonic movements?",
+      fr: "Quel phénomène implique le tremblement de la surface terrestre causé par des mouvements tectoniques soudains ?"
+    },
+    answers: {
+      en: ["Earthquake", "Volcanic eruption", "Landslide", "Tsunami"],
+      fr: ["Le séisme", "L'éruption volcanique", "Le glissement de terrain", "Le tsunami"]
+    },
+    explanation: {
+      en: "Earthquakes occur when stress builds up and is released along faults.",
+      fr: "Les séismes se produisent lorsque des contraintes s'accumulent et se libèrent le long des failles."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "fdf7b0df-5dc7-4da4-9a9c-94bcf6198c2a",
+    difficulty: 7,
+    question: {
+      en: "Which layer of the Earth is divided into tectonic plates?",
+      fr: "Quelle couche de la Terre est divisée en plaques tectoniques ?"
+    },
+    answers: {
+      en: ["Lithosphere", "Asthenosphere", "Outer core", "Mesosphere"],
+      fr: ["La lithosphère", "L'asthénosphère", "Le noyau externe", "La mésosphère"]
+    },
+    explanation: {
+      en: "The lithosphere (crust + upper mantle) is broken into tectonic plates.",
+      fr: "La lithosphère (croûte + partie supérieure du manteau) est divisée en plaques tectoniques."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "8e9dd9c4-8fb6-4e6f-befe-d1a1ebe3faad",
+    difficulty: 4,
+    question: {
+      en: "What term describes the breaking down of rocks into smaller pieces without movement?",
+      fr: "Quel terme décrit la décomposition des roches en morceaux plus petits sans déplacement ?"
+    },
+    answers: {
+      en: ["Weathering", "Erosion", "Deposition", "Metamorphism"],
+      fr: ["L'altération (météorisation)", "L'érosion", "La déposition", "Le métamorphisme"]
+    },
+    explanation: {
+      en: "Weathering is the breakdown of rocks in place, distinct from erosion which involves movement.",
+      fr: "L'altération est la décomposition des roches sur place, à la différence de l'érosion qui implique un déplacement."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "3f55e249-b4e8-4f91-8866-8c99c348638d",
+    difficulty: 5,
+    question: {
+      en: "Which natural cycle involves evaporation, condensation, precipitation, and collection?",
+      fr: "Quel cycle naturel implique l'évaporation, la condensation, la précipitation et la collecte ?"
+    },
+    answers: {
+      en: ["Water cycle", "Rock cycle", "Carbon cycle", "Nitrogen cycle"],
+      fr: ["Le cycle de l'eau", "Le cycle des roches", "Le cycle du carbone", "Le cycle de l'azote"]
+    },
+    explanation: {
+      en: "The water cycle circulates Earth's water through different states and locations.",
+      fr: "Le cycle de l'eau fait circuler l'eau terrestre entre différents états et emplacements."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "c66c1f75-7059-4abc-97bf-605348734f32",
+    difficulty: 4,
+    question: {
+      en: "Which organ is responsible for pumping blood throughout the human body?",
+      fr: "Quel organe est responsable du pompage du sang à travers le corps humain ?"
+    },
+    answers: {
+      en: ["Heart", "Lungs", "Liver", "Kidneys"],
+      fr: ["Le cœur", "Les poumons", "Le foie", "Les reins"]
+    },
+    explanation: {
+      en: "The heart pumps blood, delivering oxygen and nutrients to cells.",
+      fr: "Le cœur pompe le sang, fournissant oxygène et nutriments aux cellules."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "13bc73f2-0672-4b23-9ee7-a58a351e509d",
+    difficulty: 5,
+    question: {
+      en: "What is the smallest unit of life?",
+      fr: "Quelle est la plus petite unité du vivant ?"
+    },
+    answers: {
+      en: ["Cell", "Atom", "Molecule", "Organ"],
+      fr: ["La cellule", "L'atome", "La molécule", "L'organe"]
+    },
+    explanation: {
+      en: "The cell is the smallest unit capable of life functions.",
+      fr: "La cellule est la plus petite unité capable de fonctions vitales."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "24a143ad-74f9-4a27-9c9e-2edb70894798",
+    difficulty: 6,
+    question: {
+      en: "Which blood cells are primarily responsible for carrying oxygen?",
+      fr: "Quelles cellules sanguines sont principalement responsables du transport de l'oxygène ?"
+    },
+    answers: {
+      en: ["Red blood cells", "White blood cells", "Platelets", "Plasma cells"],
+      fr: ["Les globules rouges", "Les globules blancs", "Les plaquettes", "Les plasmocytes"]
+    },
+    explanation: {
+      en: "Red blood cells contain hemoglobin that binds oxygen.",
+      fr: "Les globules rouges contiennent l'hémoglobine qui fixe l'oxygène."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "f45f8175-6fa6-4be8-a4c4-50f83f86cbb6",
+    difficulty: 7,
+    question: {
+      en: "What term describes the variety of different species in an ecosystem?",
+      fr: "Quel terme décrit la variété des différentes espèces dans un écosystème ?"
+    },
+    answers: {
+      en: ["Biodiversity", "Biomass", "Bioremediation", "Biosphere"],
+      fr: ["La biodiversité", "La biomasse", "La bioremédiation", "La biosphère"]
+    },
+    explanation: {
+      en: "Biodiversity refers to the range of species and genetic diversity in an ecosystem.",
+      fr: "La biodiversité fait référence à la variété des espèces et à la diversité génétique dans un écosystème."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "c922bd31-8956-4ed2-849b-1eb40f22db71",
+    difficulty: 5,
+    question: {
+      en: "Which organ filters blood and produces urine?",
+      fr: "Quel organe filtre le sang et produit l'urine ?"
+    },
+    answers: {
+      en: ["Kidneys", "Liver", "Pancreas", "Spleen"],
+      fr: ["Les reins", "Le foie", "Le pancréas", "La rate"]
+    },
+    explanation: {
+      en: "The kidneys filter waste from the blood, producing urine.",
+      fr: "Les reins filtrent les déchets du sang et produisent l'urine."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "92b6c6d9-ea29-4f22-a8e0-48a363c1c9b8",
+    difficulty: 6,
+    question: {
+      en: "Which component of the blood helps in clotting?",
+      fr: "Quel composant du sang aide à la coagulation ?"
+    },
+    answers: {
+      en: ["Platelets", "Red blood cells", "White blood cells", "Plasma"],
+      fr: ["Les plaquettes", "Les globules rouges", "Les globules blancs", "Le plasma"]
+    },
+    explanation: {
+      en: "Platelets are cell fragments that aid in blood clot formation.",
+      fr: "Les plaquettes sont des fragments cellulaires qui aident à la formation de caillots sanguins."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "e16dd31d-64a4-4a8d-9c07-3b3605fac09c",
+    difficulty: 7,
+    question: {
+      en: "Which scientist is famous for discovering penicillin?",
+      fr: "Quel scientifique est célèbre pour avoir découvert la pénicilline ?"
+    },
+    answers: {
+      en: ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Jonas Salk"],
+      fr: ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Jonas Salk"]
+    },
+    explanation: {
+      en: "Alexander Fleming discovered penicillin in 1928.",
+      fr: "Alexander Fleming a découvert la pénicilline en 1928."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "5139eeab-c5e5-45e9-b5d5-b05e2e9ef759",
+    difficulty: 5,
+    question: {
+      en: "What is the study of the structure of the human body called?",
+      fr: "Comment appelle-t-on l'étude de la structure du corps humain ?"
+    },
+    answers: {
+      en: ["Anatomy", "Physiology", "Genetics", "Pathology"],
+      fr: ["L'anatomie", "La physiologie", "La génétique", "La pathologie"]
+    },
+    explanation: {
+      en: "Anatomy focuses on the structure of the body and its organs.",
+      fr: "L'anatomie s'intéresse à la structure du corps et de ses organes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "73504691-67b7-447f-9dc5-45b5c10fddc7",
+    difficulty: 6,
+    question: {
+      en: "Which ecosystem term refers to a community of living organisms and their physical environment?",
+      fr: "Quel terme se réfère à une communauté d'organismes vivants et à leur environnement physique ?"
+    },
+    answers: {
+      en: ["Ecosystem", "Population", "Biome", "Biosphere"],
+      fr: ["L'écosystème", "La population", "Le biome", "La biosphère"]
+    },
+    explanation: {
+      en: "An ecosystem includes all living organisms and the nonliving elements they interact with.",
+      fr: "Un écosystème inclut tous les organismes vivants et les éléments non vivants avec lesquels ils interagissent."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "14e83cfd-26ad-41ec-bf7a-5895141b9e0b",
+    difficulty: 4,
+    question: {
+      en: "What is the genetic material found in almost all living organisms?",
+      fr: "Quel est le matériel génétique que l'on retrouve dans presque tous les organismes vivants ?"
+    },
+    answers: {
+      en: ["DNA", "RNA", "Protein", "Lipids"],
+      fr: ["L'ADN", "L'ARN", "La protéine", "Les lipides"]
+    },
+    explanation: {
+      en: "DNA (Deoxyribonucleic Acid) carries genetic instructions in living organisms.",
+      fr: "L'ADN (Acide Désoxyribonucléique) porte les instructions génétiques chez les êtres vivants."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "ae2edcd4-2893-4a60-a7e9-41f7ad043a0d",
+    difficulty: 7,
+    question: {
+      en: "Which pioneer of nursing improved sanitary conditions in hospitals during the Crimean War?",
+      fr: "Quelle pionnière des soins infirmiers a amélioré les conditions sanitaires dans les hôpitaux pendant la guerre de Crimée ?"
+    },
+    answers: {
+      en: ["Florence Nightingale", "Marie Curie", "Clara Barton", "Elizabeth Blackwell"],
+      fr: ["Florence Nightingale", "Marie Curie", "Clara Barton", "Elizabeth Blackwell"]
+    },
+    explanation: {
+      en: "Florence Nightingale laid the foundation for modern nursing and hygiene standards.",
+      fr: "Florence Nightingale a jeté les bases des soins infirmiers modernes et des normes d'hygiène."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "815b0c03-f1b5-4c03-86c9-22caa372d706",
+    difficulty: 6,
+    question: {
+      en: "What organ in the human body is responsible for detoxification and producing bile?",
+      fr: "Quel organe du corps humain est responsable de la détoxification et de la production de bile ?"
+    },
+    answers: {
+      en: ["Liver", "Pancreas", "Spleen", "Gallbladder"],
+      fr: ["Le foie", "Le pancréas", "La rate", "La vésicule biliaire"]
+    },
+    explanation: {
+      en: "The liver detoxifies blood, produces bile, and metabolizes nutrients.",
+      fr: "Le foie détoxifie le sang, produit la bile et métabolise les nutriments."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "b3bdf3af-2a67-41d6-b197-6f1820084181",
+    difficulty: 5,
+    question: {
+      en: "What type of doctor specializes in the diagnosis and treatment of diseases of the heart?",
+      fr: "Quel type de médecin est spécialisé dans le diagnostic et le traitement des maladies du cœur ?"
+    },
+    answers: {
+      en: ["Cardiologist", "Neurologist", "Oncologist", "Pulmonologist"],
+      fr: ["Le cardiologue", "Le neurologue", "L'oncologue", "Le pneumologue"]
+    },
+    explanation: {
+      en: "A cardiologist specializes in conditions of the heart and blood vessels.",
+      fr: "Un cardiologue est spécialisé dans les affections du cœur et des vaisseaux sanguins."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "baaa5f1d-68a0-44e6-8cae-53de25cbf415",
+    difficulty: 7,
+    question: {
+      en: "Which scientist developed the first successful polio vaccine?",
+      fr: "Quel scientifique a développé le premier vaccin antipoliomyélitique efficace ?"
+    },
+    answers: {
+      en: ["Jonas Salk", "Edward Jenner", "Louis Pasteur", "Alexander Fleming"],
+      fr: ["Jonas Salk", "Edward Jenner", "Louis Pasteur", "Alexander Fleming"]
+    },
+    explanation: {
+      en: "Jonas Salk developed the first effective polio vaccine in the 1950s.",
+      fr: "Jonas Salk a développé le premier vaccin efficace contre la polio dans les années 1950."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "c66c1f75-7059-4abc-97bf-605348734f32",
+    difficulty: 4,
+    question: {
+      en: "Which organ is responsible for pumping blood throughout the human body?",
+      fr: "Quel organe est responsable du pompage du sang à travers le corps humain ?"
+    },
+    answers: {
+      en: ["Heart", "Lungs", "Liver", "Kidneys"],
+      fr: ["Le cœur", "Les poumons", "Le foie", "Les reins"]
+    },
+    explanation: {
+      en: "The heart pumps blood, delivering oxygen and nutrients to cells.",
+      fr: "Le cœur pompe le sang, fournissant oxygène et nutriments aux cellules."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "13bc73f2-0672-4b23-9ee7-a58a351e509d",
+    difficulty: 5,
+    question: {
+      en: "What is the smallest unit of life?",
+      fr: "Quelle est la plus petite unité du vivant ?"
+    },
+    answers: {
+      en: ["Cell", "Atom", "Molecule", "Organ"],
+      fr: ["La cellule", "L'atome", "La molécule", "L'organe"]
+    },
+    explanation: {
+      en: "The cell is the smallest unit capable of life functions.",
+      fr: "La cellule est la plus petite unité capable de fonctions vitales."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "24a143ad-74f9-4a27-9c9e-2edb70894798",
+    difficulty: 6,
+    question: {
+      en: "Which blood cells are primarily responsible for carrying oxygen?",
+      fr: "Quelles cellules sanguines sont principalement responsables du transport de l'oxygène ?"
+    },
+    answers: {
+      en: ["Red blood cells", "White blood cells", "Platelets", "Plasma cells"],
+      fr: ["Les globules rouges", "Les globules blancs", "Les plaquettes", "Les plasmocytes"]
+    },
+    explanation: {
+      en: "Red blood cells contain hemoglobin that binds oxygen.",
+      fr: "Les globules rouges contiennent l'hémoglobine qui fixe l'oxygène."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "f45f8175-6fa6-4be8-a4c4-50f83f86cbb6",
+    difficulty: 7,
+    question: {
+      en: "What term describes the variety of different species in an ecosystem?",
+      fr: "Quel terme décrit la variété des différentes espèces dans un écosystème ?"
+    },
+    answers: {
+      en: ["Biodiversity", "Biomass", "Bioremediation", "Biosphere"],
+      fr: ["La biodiversité", "La biomasse", "La bioremédiation", "La biosphère"]
+    },
+    explanation: {
+      en: "Biodiversity refers to the range of species and genetic diversity in an ecosystem.",
+      fr: "La biodiversité fait référence à la variété des espèces et à la diversité génétique dans un écosystème."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "c922bd31-8956-4ed2-849b-1eb40f22db71",
+    difficulty: 5,
+    question: {
+      en: "Which organ filters blood and produces urine?",
+      fr: "Quel organe filtre le sang et produit l'urine ?"
+    },
+    answers: {
+      en: ["Kidneys", "Liver", "Pancreas", "Spleen"],
+      fr: ["Les reins", "Le foie", "Le pancréas", "La rate"]
+    },
+    explanation: {
+      en: "The kidneys filter waste from the blood, producing urine.",
+      fr: "Les reins filtrent les déchets du sang et produisent l'urine."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "92b6c6d9-ea29-4f22-a8e0-48a363c1c9b8",
+    difficulty: 6,
+    question: {
+      en: "Which component of the blood helps in clotting?",
+      fr: "Quel composant du sang aide à la coagulation ?"
+    },
+    answers: {
+      en: ["Platelets", "Red blood cells", "White blood cells", "Plasma"],
+      fr: ["Les plaquettes", "Les globules rouges", "Les globules blancs", "Le plasma"]
+    },
+    explanation: {
+      en: "Platelets are cell fragments that aid in blood clot formation.",
+      fr: "Les plaquettes sont des fragments cellulaires qui aident à la formation de caillots sanguins."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "e16dd31d-64a4-4a8d-9c07-3b3605fac09c",
+    difficulty: 7,
+    question: {
+      en: "Which scientist is famous for discovering penicillin?",
+      fr: "Quel scientifique est célèbre pour avoir découvert la pénicilline ?"
+    },
+    answers: {
+      en: ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Jonas Salk"],
+      fr: ["Alexander Fleming", "Louis Pasteur", "Robert Koch", "Jonas Salk"]
+    },
+    explanation: {
+      en: "Alexander Fleming discovered penicillin in 1928.",
+      fr: "Alexander Fleming a découvert la pénicilline en 1928."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "5139eeab-c5e5-45e9-b5d5-b05e2e9ef759",
+    difficulty: 5,
+    question: {
+      en: "What is the study of the structure of the human body called?",
+      fr: "Comment appelle-t-on l'étude de la structure du corps humain ?"
+    },
+    answers: {
+      en: ["Anatomy", "Physiology", "Genetics", "Pathology"],
+      fr: ["L'anatomie", "La physiologie", "La génétique", "La pathologie"]
+    },
+    explanation: {
+      en: "Anatomy focuses on the structure of the body and its organs.",
+      fr: "L'anatomie s'intéresse à la structure du corps et de ses organes."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "73504691-67b7-447f-9dc5-45b5c10fddc7",
+    difficulty: 6,
+    question: {
+      en: "Which ecosystem term refers to a community of living organisms and their physical environment?",
+      fr: "Quel terme se réfère à une communauté d'organismes vivants et à leur environnement physique ?"
+    },
+    answers: {
+      en: ["Ecosystem", "Population", "Biome", "Biosphere"],
+      fr: ["L'écosystème", "La population", "Le biome", "La biosphère"]
+    },
+    explanation: {
+      en: "An ecosystem includes all living organisms and the nonliving elements they interact with.",
+      fr: "Un écosystème inclut tous les organismes vivants et les éléments non vivants avec lesquels ils interagissent."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "14e83cfd-26ad-41ec-bf7a-5895141b9e0b",
+    difficulty: 4,
+    question: {
+      en: "What is the genetic material found in almost all living organisms?",
+      fr: "Quel est le matériel génétique que l'on retrouve dans presque tous les organismes vivants ?"
+    },
+    answers: {
+      en: ["DNA", "RNA", "Protein", "Lipids"],
+      fr: ["L'ADN", "L'ARN", "La protéine", "Les lipides"]
+    },
+    explanation: {
+      en: "DNA (Deoxyribonucleic Acid) carries genetic instructions in living organisms.",
+      fr: "L'ADN (Acide Désoxyribonucléique) porte les instructions génétiques chez les êtres vivants."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "ae2edcd4-2893-4a60-a7e9-41f7ad043a0d",
+    difficulty: 7,
+    question: {
+      en: "Which pioneer of nursing improved sanitary conditions in hospitals during the Crimean War?",
+      fr: "Quelle pionnière des soins infirmiers a amélioré les conditions sanitaires dans les hôpitaux pendant la guerre de Crimée ?"
+    },
+    answers: {
+      en: ["Florence Nightingale", "Marie Curie", "Clara Barton", "Elizabeth Blackwell"],
+      fr: ["Florence Nightingale", "Marie Curie", "Clara Barton", "Elizabeth Blackwell"]
+    },
+    explanation: {
+      en: "Florence Nightingale laid the foundation for modern nursing and hygiene standards.",
+      fr: "Florence Nightingale a jeté les bases des soins infirmiers modernes et des normes d'hygiène."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "815b0c03-f1b5-4c03-86c9-22caa372d706",
+    difficulty: 6,
+    question: {
+      en: "What organ in the human body is responsible for detoxification and producing bile?",
+      fr: "Quel organe du corps humain est responsable de la détoxification et de la production de bile ?"
+    },
+    answers: {
+      en: ["Liver", "Pancreas", "Spleen", "Gallbladder"],
+      fr: ["Le foie", "Le pancréas", "La rate", "La vésicule biliaire"]
+    },
+    explanation: {
+      en: "The liver detoxifies blood, produces bile, and metabolizes nutrients.",
+      fr: "Le foie détoxifie le sang, produit la bile et métabolise les nutriments."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "b3bdf3af-2a67-41d6-b197-6f1820084181",
+    difficulty: 5,
+    question: {
+      en: "What type of doctor specializes in the diagnosis and treatment of diseases of the heart?",
+      fr: "Quel type de médecin est spécialisé dans le diagnostic et le traitement des maladies du cœur ?"
+    },
+    answers: {
+      en: ["Cardiologist", "Neurologist", "Oncologist", "Pulmonologist"],
+      fr: ["Le cardiologue", "Le neurologue", "L'oncologue", "Le pneumologue"]
+    },
+    explanation: {
+      en: "A cardiologist specializes in conditions of the heart and blood vessels.",
+      fr: "Un cardiologue est spécialisé dans les affections du cœur et des vaisseaux sanguins."
+    },
+    tags: [TagEnum.SCIENCE]
+  },
+  {
+    id: "baaa5f1d-68a0-44e6-8cae-53de25cbf415",
+    difficulty: 7,
+    question: {
+      en: "Which scientist developed the first successful polio vaccine?",
+      fr: "Quel scientifique a développé le premier vaccin antipoliomyélitique efficace ?"
+    },
+    answers: {
+      en: ["Jonas Salk", "Edward Jenner", "Louis Pasteur", "Alexander Fleming"],
+      fr: ["Jonas Salk", "Edward Jenner", "Louis Pasteur", "Alexander Fleming"]
+    },
+    explanation: {
+      en: "Jonas Salk developed the first effective polio vaccine in the 1950s.",
+      fr: "Jonas Salk a développé le premier vaccin efficace contre la polio dans les années 1950."
+    },
+    tags: [TagEnum.SCIENCE]
   }
-]
-
-export const questions: Question[] = [
-  ...p1,
-  ...p2,
-  ...p3,
-  ...p4,
-  ...p5,
-  ...p6,
-  ...p7,
-  ...p8
 ]
