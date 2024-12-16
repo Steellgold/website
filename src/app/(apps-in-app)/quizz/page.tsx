@@ -1,5 +1,6 @@
 import { Metadata, Viewport } from "next";
 import { Quizz } from "./content";
+import { Buttons } from "@/lib/components/buttons";
 
 export const metadata: Metadata = {
   title: "Quizz | Gaëtan's Portfolio",
@@ -41,7 +42,10 @@ export const viewport: Viewport = {
 
 const Page = () => {
   return (
-    <Quizz />
+    <>
+      <Buttons showTopButton={false} />
+      <Quizz />
+    </>
   );
 }
 

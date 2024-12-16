@@ -107,8 +107,6 @@ export const Quizz = (): ReactElement => {
 
     return (
       <div className="mt-14 md:min-h-screen flex items-center md:justify-center md:mt-0 p-4">
-        <Buttons showTopButton={false} />
-
         <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardTitle>
@@ -152,8 +150,6 @@ export const Quizz = (): ReactElement => {
   if (!currentQuestion) {
     return (
       <div className="mt-14 md:min-h-screen flex items-center md:justify-center md:mt-0 p-4">
-        <Buttons showTopButton={false} />
-
         <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardTitle>Quizz</CardTitle>
@@ -174,8 +170,6 @@ export const Quizz = (): ReactElement => {
   return (
     <>
       <div className="mt-14 md:min-h-screen flex items-center md:justify-center md:mt-0 p-4">
-        <Buttons showTopButton={false} />
-
         <Card className="w-full max-w-2xl">
           <CardHeader>
             <CardDescription className="-mb-4 flex flex-row justify-between">

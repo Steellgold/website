@@ -29,7 +29,7 @@ export const Buttons: Component<Props> = ({ showTopButton = true }) => {
             <span className="hidden sm:block">Menu</span>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="sm:mr-3">
           <DropdownMenuItem asChild>
             <Link href="/blog" className="cursor-pointer">
               <Files size={16} />
