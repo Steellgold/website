@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export const GET = async(): Promise<NextResponse> => {
   const org = process.env.SIMPLIST_ORG_ID;
-  const response = await fetch(`https://simplist.blog/api/${org}/last`, {
+  const response = await fetch(`https://simplist.blog/api/${org}/posts`, {
     headers: {
       "x-api-key": process.env.SIMPLIST_API_KEY!
     } as HeadersInit,
@@ -15,6 +15,5 @@ export const GET = async(): Promise<NextResponse> => {
   }
 
   const data = await response.json();
-  
   return NextResponse.json(data);
 }
