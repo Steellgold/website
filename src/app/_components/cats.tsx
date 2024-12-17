@@ -26,7 +26,7 @@ export const Cats = (): ReactElement => {
     <section id="cats">
       <div className="my-8" />
 
-      <div className="grid auto-rows-[192px] grid-cols-3 gap-4">
+      <div className="grid auto-rows-[192px] grid-cols-3 gap-2">
         {[...Array(7)].map((_, i) => (
           <div
             key={i}
