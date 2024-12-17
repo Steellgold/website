@@ -1,31 +1,28 @@
 "use client";
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/lib/components/ui/card";
-import { Separator } from "@/lib/components/ui/separator";
-import { PostSchema } from "@/lib/types/post.type";
-import { cn } from "@/lib/utils";
-import { Lock } from "lucide-react";
-import Image from "next/image";
+import { PostsSchema } from "@/lib/types/post.type";
 import Link from "next/link";
 import { ReactElement, useEffect, useState } from "react";
-import { NotNowText } from "./not-now";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { useTheme } from "next-themes";
+import { z } from "zod";
+import { cn } from "@/lib/utils";
+import { useLang } from "@/lib/stores/lang.store";
 
 export const Blog = (): ReactElement => {
-  const [data, setData] = useState<any>(null);
-  const { theme } = useTheme();
+  const [data, setData] = useState<z.infer<typeof PostsSchema>>([]);
+  const { lang } = useLang();
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/blog/fetch");
+      const response = await fetch("/api/blog");
 
       if (!response.ok) {
-        console.error('Failed to fetch data');
+        console.error("Failed to fetch posts from Simplist API");
         return;
       }
 
-      const schema = PostSchema.safeParse(await response.json());
+      const schema = PostsSchema.safeParse(await response.json());
       if (!schema.success) return;
       setData(schema.data);
     };
@@ -36,70 +33,41 @@ export const Blog = (): ReactElement => {
 
   if (!data) return <></>;
 
-  if (data.status !== "PUBLISHED") {
-    const lockedUntil = data.metadata?.find((meta: { key: string; }) => meta.key === "lockedUntil")?.value;
-
-    if (lockedUntil) {
-      return (
-        <>
-          <Separator className="my-7 bg-[#1a1a1a] w-[90%] mx-auto" />
-
-          <p className="text-center text-white text-sm">
-            You can go to the articles page to see the other articles I&apos;ve published so far. <Link href="/blog" className="text-blue-500">Go to the articles page</Link>
-          </p>
-
-          <Card className={cn(
-            "bg-[#161616] border-[2px] border-[#1a1a1a]",
-            "hover:border-[#2b2b2b] transition-colors duration-300 hover:bg-[#1a1a1a]"
-          )}>
-            <CardContent className="h-60 relative">
-              <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4 text-white">
-                <Lock size={24} />
-                <NotNowText lockedUntil={lockedUntil} />
-              </div>
-            </CardContent>
-          </Card>
-        </>
-      )
-    }
-
-    return <></>;
-  }
-
   return (
     <>
-      <Separator className="my-7 bg-[#cacaca] dark:bg-[#1a1a1a] w-[90%] mx-auto" />
+      <div className="my-7" />
 
-      <p className="mb-5 text-[#333] dark:text-[#f0f0f0] text-center">
-        Here is the latest article I published on my blog. You can see the others by <Link href="/blog" className="text-blue-500 hover:underline">clicking here</Link>.
-      </p>
+      <div className="w-full flex flex-col">
+        <div className="flex flex-col gap-0.5">
+          <h1 className="text-[#333] dark:text-[#f0f0f0] text-left text-2xl font-bold">Blog</h1>
+          <p className="text-[#333] dark:text-[#f0f0f0] text-left text-sm">
+            {lang == "en"
+              ? "Here are the latest articles I published on my blog. You can see the others by"
+              : "Voici les derniers articles que j'ai publiés sur mon blog. Vous pouvez voir les autres en"
+            }&nbsp;
+            <Link href="/blog" className="text-blue-500 hover:underline">
+              {lang == "en" ? "clicking here" : "cliquant ici"}
+            </Link>.
+          </p>
+        </div>
 
-      <Link href={`/blog/${data.slug}`} passHref>
-        {/* <Card style={{ boxShadow: theme == "dark" ? "inset 1px -1px 10.7px 0px #242424" : "" }}> */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="dark:text-[#f0f0f0]">{data.title}</CardTitle>
-            <CardDescription>{data.excerpt}</CardDescription>
-          </CardHeader>
+        <div className="my-3" />
 
-          <CardContent className="relative h-40 md:h-72 mx-5">
-            <Image
-              src={data.banner || ""}
-              alt={data.title}
-              className="object-cover object-center rounded-lg"
-              fill
-            />
-          </CardContent>
-
-          <div className="my-5" />
-
-          <CardFooter>
-            <CardDescription>
-              Published on {dayJS(data.createdAt).format("DD MMM YYYY")}
-            </CardDescription>
-          </CardFooter>
-        </Card>
-      </Link>
+        <div className="w-full flex flex-col gap-1">
+          {data.map((post) => (
+            <Link
+              className={cn(
+                "flex flex-row justify-between items-center border-b py-2",
+                "border-[#e6e4e4] hover:border-[#e6e4e4]/10",
+                "dark:border-[#727272]/10 dark:hover:border-[#fff]/10"
+              )}
+              href={`/blog/${post.slug}`} key={post.id}>
+              <span>{post.title}</span>
+              <span>{dayJS(post.createdAt).format("MMM DD, YYYY")}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
