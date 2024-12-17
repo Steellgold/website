@@ -48,7 +48,7 @@ export const viewport: Viewport = {
 const Layout: Component<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={`rounded-lg ${monterserrat.className} antialiased`}>
+      <body className={`rounded-lg ${monterserrat.className} antialiased bg-[#121212]`}>
         {process.env.NEXT_PUBLIC_ENV !== "dev" && (
           <script defer src="https://www.woyage.app/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
         )}
