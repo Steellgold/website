@@ -5627,5 +5627,872 @@ export const questions: Question[] = [
       fr: "Jonas Salk a développé le premier vaccin efficace contre la polio dans les années 1950."
     },
     tags: [TagEnum.SCIENCE]
-  }
+  },
+  {
+    id: "a1b2c3d4-01",
+    difficulty: 4,
+    question: {
+      en: "Which company created the 'Halo' series?",
+      fr: "Quelle entreprise a créé la série 'Halo' ?"
+    },
+    answers: {
+      en: ["Bungie", "Valve", "Epic Games", "id Software"],
+      fr: ["Bungie", "Valve", "Epic Games", "id Software"]
+    },
+    explanation: {
+      en: "Bungie originally developed 'Halo', first released on the Xbox in 2001, before the franchise was handed off to 343 Industries.",
+      fr: "Bungie a initialement développé 'Halo', sorti pour la première fois sur Xbox en 2001, avant que la franchise ne soit reprise par 343 Industries."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-02",
+    difficulty: 5,
+    question: {
+      en: "In which year was the first 'The Legend of Zelda' game released?",
+      fr: "En quelle année est sorti le premier jeu 'The Legend of Zelda' ?"
+    },
+    answers: {
+      en: ["1986", "1988", "1990", "1984"],
+      fr: ["1986", "1988", "1990", "1984"]
+    },
+    explanation: {
+      en: "'The Legend of Zelda' was first released by Nintendo for the Famicom Disk System in Japan in 1986.",
+      fr: "Le premier 'The Legend of Zelda' est sorti au Japon en 1986 sur le Famicom Disk System de Nintendo."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-03",
+    difficulty: 3,
+    question: {
+      en: "Which character is the protagonist of the 'God of War' series?",
+      fr: "Quel personnage est le protagoniste de la série 'God of War' ?"
+    },
+    answers: {
+      en: ["Kratos", "Ares", "Zeus", "Hercules"],
+      fr: ["Kratos", "Arès", "Zeus", "Hercule"]
+    },
+    explanation: {
+      en: "Kratos is a Spartan warrior who battles gods and monsters in the 'God of War' franchise.",
+      fr: "Kratos est un guerrier spartiate qui affronte dieux et monstres dans la franchise 'God of War'."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-04",
+    difficulty: 6,
+    question: {
+      en: "Which survival horror game series is set in the fictional Raccoon City?",
+      fr: "Quelle série de jeux d'horreur de survie se déroule dans la ville fictive de Raccoon City ?"
+    },
+    answers: {
+      en: ["Resident Evil", "Silent Hill", "Fatal Frame", "Dead Space"],
+      fr: ["Resident Evil", "Silent Hill", "Fatal Frame", "Dead Space"]
+    },
+    explanation: {
+      en: "'Resident Evil' often takes place in or around Raccoon City, plagued by the T-virus.",
+      fr: "La série 'Resident Evil' se déroule fréquemment à Raccoon City, une ville fictive touchée par le virus-T."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-05",
+    difficulty: 4,
+    question: {
+      en: "Which series features the character Solid Snake?",
+      fr: "Dans quelle série apparaît le personnage de Solid Snake ?"
+    },
+    answers: {
+      en: ["Metal Gear Solid", "Splinter Cell", "Tenchu", "Syphon Filter"],
+      fr: ["Metal Gear Solid", "Splinter Cell", "Tenchu", "Syphon Filter"]
+    },
+    explanation: {
+      en: "Solid Snake is the protagonist of the 'Metal Gear' series, created by Hideo Kojima.",
+      fr: "Solid Snake est le protagoniste de la série 'Metal Gear', créée par Hideo Kojima."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-06",
+    difficulty: 3,
+    question: {
+      en: "On which console did 'Super Mario 64' first appear?",
+      fr: "Sur quelle console 'Super Mario 64' est-il apparu pour la première fois ?"
+    },
+    answers: {
+      en: ["Nintendo 64", "Super Nintendo", "GameCube", "NES"],
+      fr: ["Nintendo 64", "Super Nintendo", "GameCube", "NES"]
+    },
+    explanation: {
+      en: "'Super Mario 64' was a launch title for the Nintendo 64 in 1996.",
+      fr: "‘Super Mario 64’ était un titre de lancement de la Nintendo 64 en 1996."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-07",
+    difficulty: 5,
+    question: {
+      en: "Which racing game franchise features anti-gravity karts and items like green shells?",
+      fr: "Quelle franchise de jeux de course propose des karts anti-gravité et des objets comme les carapaces vertes ?"
+    },
+    answers: {
+      en: ["Mario Kart", "Crash Team Racing", "Diddy Kong Racing", "F-Zero"],
+      fr: ["Mario Kart", "Crash Team Racing", "Diddy Kong Racing", "F-Zero"]
+    },
+    explanation: {
+      en: "Mario Kart is famous for its whimsical tracks, items, and now anti-gravity sections.",
+      fr: "Mario Kart est célèbre pour ses circuits fantaisistes, ses objets et ses sections anti-gravité."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-08",
+    difficulty: 4,
+    question: {
+      en: "Which company developed the 'Pokémon' series?",
+      fr: "Quelle entreprise a développé la série 'Pokémon' ?"
+    },
+    answers: {
+      en: ["Game Freak", "Level-5", "Square Enix", "Capcom"],
+      fr: ["Game Freak", "Level-5", "Square Enix", "Capcom"]
+    },
+    explanation: {
+      en: "Game Freak developed the original 'Pokémon' games for Nintendo's handheld consoles.",
+      fr: "Game Freak a développé les premiers jeux 'Pokémon' pour les consoles portables de Nintendo."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-09",
+    difficulty: 6,
+    question: {
+      en: "Which puzzle game involves clearing lines of falling tetrominoes?",
+      fr: "Quel jeu de puzzle consiste à effacer des lignes de tétriminos tombants ?"
+    },
+    answers: {
+      en: ["Tetris", "Puyo Puyo", "Columns", "Dr. Mario"],
+      fr: ["Tetris", "Puyo Puyo", "Columns", "Dr. Mario"]
+    },
+    explanation: {
+      en: "Tetris, created by Alexey Pajitnov, challenges players to arrange falling blocks into full lines.",
+      fr: "Tetris, créé par Alexey Pajitnov, met le joueur au défi d'assembler des blocs pour former des lignes complètes."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-10",
+    difficulty: 7,
+    question: {
+      en: "In 'Overwatch', which character is known for the catchphrase 'Cheers, love! The cavalry’s here!'?",
+      fr: "Dans 'Overwatch', quel personnage est connu pour la réplique 'Cheers, love! The cavalry’s here!' ?"
+    },
+    answers: {
+      en: ["Tracer", "D.Va", "Mercy", "Reinhardt"],
+      fr: ["Tracer", "D.Va", "Mercy", "Reinhardt"]
+    },
+    explanation: {
+      en: "Tracer, a speedy British hero, often says this cheerful line in Overwatch.",
+      fr: "Tracer, héroïne britannique rapide, prononce souvent cette réplique enjouée dans Overwatch."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-11",
+    difficulty: 8,
+    question: {
+      en: "Which JRPG series is famous for its Chocobos and Moogles?",
+      fr: "Quelle série de JRPG est célèbre pour ses Chocobos et ses Moogles ?"
+    },
+    answers: {
+      en: ["Final Fantasy", "Dragon Quest", "Tales of", "Persona"],
+      fr: ["Final Fantasy", "Dragon Quest", "Tales of", "Persona"]
+    },
+    explanation: {
+      en: "The 'Final Fantasy' series, by Square Enix, features recurring creatures like Chocobos and Moogles.",
+      fr: "La série 'Final Fantasy' de Square Enix présente des créatures récurrentes comme les Chocobos et les Moogles."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-12",
+    difficulty: 4,
+    question: {
+      en: "Which Italian plumber is Nintendo’s iconic mascot?",
+      fr: "Quel plombier italien est la mascotte emblématique de Nintendo ?"
+    },
+    answers: {
+      en: ["Mario", "Luigi", "Wario", "Waluigi"],
+      fr: ["Mario", "Luigi", "Wario", "Waluigi"]
+    },
+    explanation: {
+      en: "Mario, created by Shigeru Miyamoto, is Nintendo’s most recognizable character.",
+      fr: "Mario, créé par Shigeru Miyamoto, est le personnage le plus reconnaissable de Nintendo."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-13",
+    difficulty: 5,
+    question: {
+      en: "In which game do you use a portal gun to solve puzzles?",
+      fr: "Dans quel jeu utilise-t-on un pistolet à portails pour résoudre des énigmes ?"
+    },
+    answers: {
+      en: ["Portal", "Half-Life", "BioShock", "Dishonored"],
+      fr: ["Portal", "Half-Life", "BioShock", "Dishonored"]
+    },
+    explanation: {
+      en: "'Portal' challenges players to use a portal device to navigate test chambers.",
+      fr: "'Portal' met les joueurs au défi d'utiliser un pistolet à portails pour naviguer dans des salles de test."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-14",
+    difficulty: 7,
+    question: {
+      en: "Which game developer is known for titles like 'Bayonetta' and 'Vanquish'?",
+      fr: "Quel studio de développement est connu pour des titres comme 'Bayonetta' et 'Vanquish' ?"
+    },
+    answers: {
+      en: ["PlatinumGames", "FromSoftware", "Team Ninja", "Capcom"],
+      fr: ["PlatinumGames", "FromSoftware", "Team Ninja", "Capcom"]
+    },
+    explanation: {
+      en: "PlatinumGames is renowned for its stylish and fast-paced action games.",
+      fr: "PlatinumGames est réputé pour ses jeux d'action dynamiques et stylés."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-15",
+    difficulty: 4,
+    question: {
+      en: "Which franchise features the characters Master Chief and Cortana?",
+      fr: "Quelle franchise met en scène les personnages du Major (Master Chief) et Cortana ?"
+    },
+    answers: {
+      en: ["Halo", "Mass Effect", "Gears of War", "Killzone"],
+      fr: ["Halo", "Mass Effect", "Gears of War", "Killzone"]
+    },
+    explanation: {
+      en: "Master Chief and Cortana are central figures in the 'Halo' series.",
+      fr: "Le Major et Cortana sont des personnages centraux de la série 'Halo'."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-16",
+    difficulty: 5,
+    question: {
+      en: "In 'Animal Crossing', what is the name of the raccoon who manages your home loans?",
+      fr: "Dans 'Animal Crossing', comment s'appelle le raton laveur qui gère vos prêts immobiliers ?"
+    },
+    answers: {
+      en: ["Tom Nook", "Mr. Resetti", "K.K. Slider", "Blathers"],
+      fr: ["Tom Nook", "M. Resetti", "Kéké Laglisse", "Thibou"]
+    },
+    explanation: {
+      en: "Tom Nook oversees your housing loans and expansions in Animal Crossing.",
+      fr: "Tom Nook s'occupe des prêts pour la maison et de ses agrandissements dans Animal Crossing."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-17",
+    difficulty: 6,
+    question: {
+      en: "Which fighting game series includes characters like Ryu and Chun-Li?",
+      fr: "Quelle série de jeux de combat comprend des personnages comme Ryu et Chun-Li ?"
+    },
+    answers: {
+      en: ["Street Fighter", "Tekken", "Mortal Kombat", "King of Fighters"],
+      fr: ["Street Fighter", "Tekken", "Mortal Kombat", "King of Fighters"]
+    },
+    explanation: {
+      en: "Street Fighter by Capcom introduced iconic fighters like Ryu and Chun-Li.",
+      fr: "Street Fighter, de Capcom, a introduit des combattants emblématiques comme Ryu et Chun-Li."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-18",
+    difficulty: 4,
+    question: {
+      en: "Which company is known for the 'Final Fantasy' and 'Dragon Quest' series?",
+      fr: "Quelle entreprise est connue pour les séries 'Final Fantasy' et 'Dragon Quest' ?"
+    },
+    answers: {
+      en: ["Square Enix", "Bandai Namco", "Sega", "Atlus"],
+      fr: ["Square Enix", "Bandai Namco", "Sega", "Atlus"]
+    },
+    explanation: {
+      en: "Square Enix is a major Japanese publisher and developer behind these iconic JRPGs.",
+      fr: "Square Enix est un grand éditeur et développeur japonais à l'origine de ces JRPG emblématiques."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-19",
+    difficulty: 5,
+    question: {
+      en: "In 'The Last of Us', what is the name of the young girl Joel escorts?",
+      fr: "Dans 'The Last of Us', comment s'appelle la jeune fille que Joel escorte ?"
+    },
+    answers: {
+      en: ["Ellie", "Sarah", "Tess", "Marlene"],
+      fr: ["Ellie", "Sarah", "Tess", "Marlene"]
+    },
+    explanation: {
+      en: "Joel protects Ellie throughout 'The Last of Us', forming a strong bond.",
+      fr: "Joel protège Ellie tout au long de 'The Last of Us', créant un lien fort avec elle."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-20",
+    difficulty: 7,
+    question: {
+      en: "Which roguelike indie hit involves descending into monster-filled floors and is known for its pixel art style?",
+      fr: "Quel succès indépendant de type roguelike consiste à descendre dans des étages remplis de monstres et est connu pour son style pixel-art ?"
+    },
+    answers: {
+      en: ["Enter the Gungeon", "Spelunky", "The Binding of Isaac", "Dead Cells"],
+      fr: ["Enter the Gungeon", "Spelunky", "The Binding of Isaac", "Dead Cells"]
+    },
+    explanation: {
+      en: "'Enter the Gungeon' challenges players to battle through procedurally generated floors full of bullet-hell action.",
+      fr: "'Enter the Gungeon' met les joueurs au défi d'affronter des étages générés procéduralement, pleins d'action de type bullet-hell."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-21",
+    difficulty: 3,
+    question: {
+      en: "Which sandbox game allows players to build and explore worlds made of blocks?",
+      fr: "Quel jeu bac à sable permet aux joueurs de construire et d'explorer des mondes faits de blocs ?"
+    },
+    answers: {
+      en: ["Minecraft", "Terraria", "Roblox", "Dragon Quest Builders"],
+      fr: ["Minecraft", "Terraria", "Roblox", "Dragon Quest Builders"]
+    },
+    explanation: {
+      en: "Minecraft is known for its blocky landscapes and open-ended creativity.",
+      fr: "Minecraft est connu pour ses paysages en blocs et sa créativité sans limites."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-22",
+    difficulty: 4,
+    question: {
+      en: "Which racing simulator series is exclusive to Xbox and features realistic tracks and cars?",
+      fr: "Quelle série de simulateurs de course, exclusive à Xbox, propose des circuits et des voitures réalistes ?"
+    },
+    answers: {
+      en: ["Forza Motorsport", "Gran Turismo", "Project CARS", "Assetto Corsa"],
+      fr: ["Forza Motorsport", "Gran Turismo", "Project CARS", "Assetto Corsa"]
+    },
+    explanation: {
+      en: "Forza Motorsport is developed by Turn 10 Studios and is exclusive to Microsoft platforms.",
+      fr: "Forza Motorsport, développé par Turn 10 Studios, est exclusif aux plateformes Microsoft."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-23",
+    difficulty: 5,
+    question: {
+      en: "Which Capcom series features a warrior fighting giant monsters to craft better gear?",
+      fr: "Quelle série de Capcom met en scène un chasseur luttant contre d'immenses monstres pour fabriquer de meilleurs équipements ?"
+    },
+    answers: {
+      en: ["Monster Hunter", "Devil May Cry", "Dragon's Dogma", "Onimusha"],
+      fr: ["Monster Hunter", "Devil May Cry", "Dragon's Dogma", "Onimusha"]
+    },
+    explanation: {
+      en: "'Monster Hunter' involves hunting creatures and using their materials to craft weapons and armor.",
+      fr: "'Monster Hunter' consiste à chasser des créatures et à utiliser leurs matériaux pour fabriquer armes et armures."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-24",
+    difficulty: 6,
+    question: {
+      en: "Which game by Team Ico features a boy and his giant feathered companion?",
+      fr: "Quel jeu de la Team Ico met en scène un garçon et son gigantesque compagnon à plumes ?"
+    },
+    answers: {
+      en: ["The Last Guardian", "Shadow of the Colossus", "Ico", "Gravity Rush"],
+      fr: ["The Last Guardian", "Shadow of the Colossus", "Ico", "Gravity Rush"]
+    },
+    explanation: {
+      en: "'The Last Guardian' tells the story of a boy and his creature friend, Trico.",
+      fr: "'The Last Guardian' raconte l'histoire d'un garçon et de son ami créature, Trico."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-25",
+    difficulty: 3,
+    question: {
+      en: "Which puzzle-adventure game features Professor Layton solving mysteries?",
+      fr: "Dans quel jeu d'aventure et de puzzle le Professeur Layton résout-il des mystères ?"
+    },
+    answers: {
+      en: ["Professor Layton series", "Ace Attorney", "Ghost Trick", "Hotel Dusk"],
+      fr: ["La série Professeur Layton", "Ace Attorney", "Ghost Trick", "Hotel Dusk"]
+    },
+    explanation: {
+      en: "The 'Professor Layton' series by Level-5 challenges players with logic puzzles and riddles.",
+      fr: "La série 'Professeur Layton' de Level-5 met les joueurs au défi avec des énigmes et casse-têtes logiques."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-26",
+    difficulty: 5,
+    question: {
+      en: "Which game created by Toby Fox features a pacifist route and talking skeletons?",
+      fr: "Quel jeu créé par Toby Fox propose une route pacifiste et des squelettes bavards ?"
+    },
+    answers: {
+      en: ["Undertale", "Hollow Knight", "Stardew Valley", "Celeste"],
+      fr: ["Undertale", "Hollow Knight", "Stardew Valley", "Celeste"]
+    },
+    explanation: {
+      en: "'Undertale' allows players to befriend monsters instead of fighting, with quirky characters like Sans and Papyrus.",
+      fr: "'Undertale' permet aux joueurs de se lier d'amitié avec les monstres plutôt que de se battre, avec des personnages décalés comme Sans et Papyrus."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-27",
+    difficulty: 4,
+    question: {
+      en: "In which stealth-action franchise do you play as an assassin fighting the Templars?",
+      fr: "Dans quelle franchise d'action-infiltration incarne-t-on un assassin luttant contre les Templiers ?"
+    },
+    answers: {
+      en: ["Assassin’s Creed", "Hitman", "Thief", "Splinter Cell"],
+      fr: ["Assassin’s Creed", "Hitman", "Thief", "Splinter Cell"]
+    },
+    explanation: {
+      en: "'Assassin’s Creed' revolves around the conflict between Assassins and Templars across history.",
+      fr: "‘Assassin’s Creed’ tourne autour du conflit entre Assassins et Templiers à travers l'histoire."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-28",
+    difficulty: 6,
+    question: {
+      en: "Which game series by FromSoftware is known for its high difficulty and cryptic lore?",
+      fr: "Quelle série de jeux de FromSoftware est connue pour sa grande difficulté et son lore cryptique ?"
+    },
+    answers: {
+      en: ["Dark Souls", "Sekiro", "Bloodborne", "Demon’s Souls"],
+      fr: ["Dark Souls", "Sekiro", "Bloodborne", "Demon’s Souls"]
+    },
+    explanation: {
+      en: "The 'Dark Souls' series tests players with challenging combat and hidden story elements.",
+      fr: "La série 'Dark Souls' met les joueurs à l'épreuve avec un combat exigeant et un univers narratif caché."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-29",
+    difficulty: 3,
+    question: {
+      en: "Which company is behind the 'Sonic the Hedgehog' series?",
+      fr: "Quelle entreprise est à l'origine de la série 'Sonic the Hedgehog' ?"
+    },
+    answers: {
+      en: ["Sega", "Nintendo", "Hudson Soft", "SNK"],
+      fr: ["Sega", "Nintendo", "Hudson Soft", "SNK"]
+    },
+    explanation: {
+      en: "Sega created Sonic as a rival mascot to Nintendo's Mario in the early '90s.",
+      fr: "Sega a créé Sonic comme mascotte rivale de Mario de Nintendo au début des années 90."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-30",
+    difficulty: 7,
+    question: {
+      en: "Which PlayStation exclusive series involves car combat in a post-apocalyptic setting?",
+      fr: "Quelle série exclusive à PlayStation met en scène des combats de voitures dans un contexte post-apocalyptique ?"
+    },
+    answers: {
+      en: ["Twisted Metal", "MotorStorm", "Wipeout", "Burnout"],
+      fr: ["Twisted Metal", "MotorStorm", "Wipeout", "Burnout"]
+    },
+    explanation: {
+      en: "'Twisted Metal' is known for vehicular combat and chaotic action.",
+      fr: "'Twisted Metal' est connu pour ses combats de véhicules et son action chaotique."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-31",
+    difficulty: 5,
+    question: {
+      en: "In 'Guitar Hero', what peripheral do players use to hit notes?",
+      fr: "Dans 'Guitar Hero', quel accessoire les joueurs utilisent-ils pour jouer les notes ?"
+    },
+    answers: {
+      en: ["Guitar-shaped controller", "Drum pad", "Keyboard", "DJ turntable"],
+      fr: ["Une manette en forme de guitare", "Un pad de batterie", "Un clavier", "Une platine de DJ"]
+    },
+    explanation: {
+      en: "Guitar Hero introduced a guitar-shaped controller to simulate playing rock songs.",
+      fr: "Guitar Hero a introduit une manette en forme de guitare pour simuler l'exécution de chansons rock."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-32",
+    difficulty: 4,
+    question: {
+      en: "Which indie farming simulation game was inspired by Harvest Moon?",
+      fr: "Quel jeu indépendant de simulation agricole s'est inspiré de Harvest Moon ?"
+    },
+    answers: {
+      en: ["Stardew Valley", "My Time at Portia", "Rune Factory", "Slime Rancher"],
+      fr: ["Stardew Valley", "My Time at Portia", "Rune Factory", "Slime Rancher"]
+    },
+    explanation: {
+      en: "Stardew Valley, created by Eric Barone, offers farming, friendships, and exploration.",
+      fr: "Stardew Valley, créé par Eric Barone, propose de l'agriculture, des amitiés et de l'exploration."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-33",
+    difficulty: 6,
+    question: {
+      en: "Which is the main protagonist’s name in the 'Half-Life' series?",
+      fr: "Quel est le nom du protagoniste principal de la série 'Half-Life' ?"
+    },
+    answers: {
+      en: ["Gordon Freeman", "Morgan Black", "Barney Calhoun", "Eli Vance"],
+      fr: ["Gordon Freeman", "Morgan Black", "Barney Calhoun", "Eli Vance"]
+    },
+    explanation: {
+      en: "Gordon Freeman is a silent scientist hero in the Half-Life series by Valve.",
+      fr: "Gordon Freeman est un scientifique silencieux, héros de la série Half-Life de Valve."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-34",
+    difficulty: 5,
+    question: {
+      en: "In which Nintendo franchise do you train and battle pocket monsters?",
+      fr: "Dans quelle franchise Nintendo entraîne-t-on et combat-on des monstres de poche ?"
+    },
+    answers: {
+      en: ["Pokémon", "Metroid", "Kirby", "F-Zero"],
+      fr: ["Pokémon", "Metroid", "Kirby", "F-Zero"]
+    },
+    explanation: {
+      en: "Pokémon involves catching, training, and battling creatures called Pokémon.",
+      fr: "Pokémon consiste à attraper, entraîner et faire combattre des créatures appelées Pokémon."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-35",
+    difficulty: 4,
+    question: {
+      en: "Which character wields a Keyblade in a Disney and Square Enix crossover?",
+      fr: "Quel personnage manie une Keyblade dans le crossover entre Disney et Square Enix ?"
+    },
+    answers: {
+      en: ["Sora", "Riku", "Kairi", "Roxas"],
+      fr: ["Sora", "Riku", "Kairi", "Roxas"]
+    },
+    explanation: {
+      en: "Sora is the protagonist of 'Kingdom Hearts', wielding a Keyblade and traveling across Disney worlds.",
+      fr: "Sora est le protagoniste de 'Kingdom Hearts', maniant une Keyblade et voyageant à travers les mondes Disney."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-36",
+    difficulty: 6,
+    question: {
+      en: "Which stealth series features the assassin Corvo Attano in the city of Dunwall?",
+      fr: "Quelle série d'infiltration met en scène l'assassin Corvo Attano dans la ville de Dunwall ?"
+    },
+    answers: {
+      en: ["Dishonored", "Thief", "Hitman", "Assassin’s Creed"],
+      fr: ["Dishonored", "Thief", "Hitman", "Assassin’s Creed"]
+    },
+    explanation: {
+      en: "Dishonored, by Arkane Studios, focuses on stealth, powers, and player choice.",
+      fr: "Dishonored, par Arkane Studios, met l'accent sur l'infiltration, les pouvoirs et les choix du joueur."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-37",
+    difficulty: 5,
+    question: {
+      en: "Which series is known for the phrase 'Finish Him!'?",
+      fr: "Quelle série est célèbre pour la phrase 'Finish Him!' ?"
+    },
+    answers: {
+      en: ["Mortal Kombat", "Street Fighter", "Tekken", "Killer Instinct"],
+      fr: ["Mortal Kombat", "Street Fighter", "Tekken", "Killer Instinct"]
+    },
+    explanation: {
+      en: "Mortal Kombat uses 'Finish Him!' before performing Fatalities.",
+      fr: "Mortal Kombat annonce 'Finish Him!' avant l'exécution d'une Fatality."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-38",
+    difficulty: 7,
+    question: {
+      en: "In 'Bioshock', what underwater city does the player explore?",
+      fr: "Dans 'Bioshock', quelle ville sous-marine le joueur explore-t-il ?"
+    },
+    answers: {
+      en: ["Rapture", "Columbia", "Atlantis", "Arcadia"],
+      fr: ["Rapture", "Columbia", "Atlantis", "Arcadia"]
+    },
+    explanation: {
+      en: "Rapture is an underwater city in Bioshock, a dystopian world of genetic modification.",
+      fr: "Rapture est une ville sous-marine dans Bioshock, un monde dystopique où règne la modification génétique."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-39",
+    difficulty: 6,
+    question: {
+      en: "Which game introduced the character of Geralt of Rivia to mainstream gamers?",
+      fr: "Quel jeu a introduit le personnage de Geralt de Riv auprès du grand public des joueurs ?"
+    },
+    answers: {
+      en: ["The Witcher", "Skyrim", "Dragon Age: Origins", "Fable"],
+      fr: ["The Witcher", "Skyrim", "Dragon Age: Origins", "Fable"]
+    },
+    explanation: {
+      en: "'The Witcher' (2007) by CD Projekt RED brought Geralt of Rivia, based on novels by Andrzej Sapkowski, to a wide audience.",
+      fr: "'The Witcher' (2007) de CD Projekt RED a popularisé Geralt de Riv, issu des romans d'Andrzej Sapkowski."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-40",
+    difficulty: 5,
+    question: {
+      en: "In which franchise do you gather rings and fight against Dr. Eggman?",
+      fr: "Dans quelle franchise ramasse-t-on des anneaux et combat-on le Dr. Eggman ?"
+    },
+    answers: {
+      en: ["Sonic the Hedgehog", "Crash Bandicoot", "Rayman", "Spyro"],
+      fr: ["Sonic the Hedgehog", "Crash Bandicoot", "Rayman", "Spyro"]
+    },
+    explanation: {
+      en: "Sonic the Hedgehog collects rings and fights Dr. Robotnik (Eggman).",
+      fr: "Sonic the Hedgehog collecte des anneaux et affronte le Dr. Robotnik (Eggman)."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-41",
+    difficulty: 8,
+    question: {
+      en: "Which PC classic introduced the concept of 'deathmatch' in first-person shooters?",
+      fr: "Quel classique sur PC a introduit le concept de 'deathmatch' dans les jeux de tir à la première personne ?"
+    },
+    answers: {
+      en: ["Doom", "Wolfenstein 3D", "Quake", "Marathon"],
+      fr: ["Doom", "Wolfenstein 3D", "Quake", "Marathon"]
+    },
+    explanation: {
+      en: "Doom popularized deathmatch multiplayer, changing FPS gaming forever.",
+      fr: "Doom a popularisé le mode multijoueur deathmatch, révolutionnant ainsi les FPS."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-42",
+    difficulty: 6,
+    question: {
+      en: "In 'Mass Effect', what is the name of the protagonist?",
+      fr: "Dans 'Mass Effect', quel est le nom du protagoniste ?"
+    },
+    answers: {
+      en: ["Commander Shepard", "John Halo", "Ethan Cole", "Adam Jensen"],
+      fr: ["Le Commandant Shepard", "John Halo", "Ethan Cole", "Adam Jensen"]
+    },
+    explanation: {
+      en: "Commander Shepard leads the player's crew through the Mass Effect trilogy.",
+      fr: "Le Commandant Shepard guide l'équipage du joueur à travers la trilogie Mass Effect."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-43",
+    difficulty: 5,
+    question: {
+      en: "Which battle royale game became a global phenomenon starting in 2017?",
+      fr: "Quel jeu battle royale est devenu un phénomène mondial à partir de 2017 ?"
+    },
+    answers: {
+      en: ["PlayerUnknown’s Battlegrounds (PUBG)", "Fortnite", "Apex Legends", "Call of Duty: Warzone"],
+      fr: ["PlayerUnknown’s Battlegrounds (PUBG)", "Fortnite", "Apex Legends", "Call of Duty: Warzone"]
+    },
+    explanation: {
+      en: "PUBG popularized the battle royale genre before Fortnite rose to fame.",
+      fr: "PUBG a popularisé le genre battle royale avant que Fortnite ne devienne ultra populaire."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-44",
+    difficulty: 7,
+    question: {
+      en: "Which indie hit involves navigating a metroidvania world as a small bug-like knight?",
+      fr: "Quel succès indépendant implique d'explorer un monde de type metroidvania en tant que petit chevalier insectoïde ?"
+    },
+    answers: {
+      en: ["Hollow Knight", "Ori and the Blind Forest", "Axiom Verge", "Shovel Knight"],
+      fr: ["Hollow Knight", "Ori and the Blind Forest", "Axiom Verge", "Shovel Knight"]
+    },
+    explanation: {
+      en: "Hollow Knight, by Team Cherry, offers challenging exploration in a bug-filled kingdom.",
+      fr: "Hollow Knight, de Team Cherry, offre une exploration exigeante dans un royaume peuplé d'insectes."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-45",
+    difficulty: 4,
+    question: {
+      en: "Which series centers on a pink puffball who can inhale enemies and copy their abilities?",
+      fr: "Quelle série est centrée sur une petite boule rose capable d'aspirer ses ennemis et de copier leurs pouvoirs ?"
+    },
+    answers: {
+      en: ["Kirby", "Yoshi’s Island", "Klonoa", "Chameleon Twist"],
+      fr: ["Kirby", "Yoshi’s Island", "Klonoa", "Chameleon Twist"]
+    },
+    explanation: {
+      en: "Kirby, created by HAL Laboratory, inhales enemies and gains their powers.",
+      fr: "Kirby, créé par HAL Laboratory, aspire ses ennemis et obtient leurs pouvoirs."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-46",
+    difficulty: 5,
+    question: {
+      en: "In which franchise does the character Ezio Auditore appear?",
+      fr: "Dans quelle franchise apparaît le personnage d'Ezio Auditore ?"
+    },
+    answers: {
+      en: ["Assassin’s Creed", "Prince of Persia", "The Saboteur", "Dishonored"],
+      fr: ["Assassin’s Creed", "Prince of Persia", "The Saboteur", "Dishonored"]
+    },
+    explanation: {
+      en: "Ezio Auditore is a key protagonist in several 'Assassin’s Creed' games.",
+      fr: "Ezio Auditore est un protagoniste clé dans plusieurs jeux 'Assassin’s Creed'."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-47",
+    difficulty: 6,
+    question: {
+      en: "Which game is known for its 'loot and shoot' gameplay and cel-shaded art style, featuring vault hunters?",
+      fr: "Quel jeu est connu pour son gameplay 'loot and shoot', son style graphique en cel-shading et ses chasseurs de l'Arche ?"
+    },
+    answers: {
+      en: ["Borderlands", "Destiny", "Anthem", "Warframe"],
+      fr: ["Borderlands", "Destiny", "Anthem", "Warframe"]
+    },
+    explanation: {
+      en: "Borderlands combines FPS action with RPG-style loot collection and a distinct cel-shaded look.",
+      fr: "Borderlands associe action FPS, collecte de butin façon RPG et style visuel en cel-shading distinctif."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-48",
+    difficulty: 8,
+    question: {
+      en: "Which game by Kojima Productions involves delivering packages across a post-apocalyptic landscape?",
+      fr: "Quel jeu de Kojima Productions consiste à livrer des colis à travers un paysage post-apocalyptique ?"
+    },
+    answers: {
+      en: ["Death Stranding", "Metal Gear Survive", "Control", "Nier: Automata"],
+      fr: ["Death Stranding", "Metal Gear Survive", "Control", "Nier: Automata"]
+    },
+    explanation: {
+      en: "Death Stranding, by Hideo Kojima, tasks players with reconnecting isolated cities.",
+      fr: "Dans Death Stranding, de Hideo Kojima, les joueurs doivent reconnecter des villes isolées en livrant des colis."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-49",
+    difficulty: 5,
+    question: {
+      en: "Which franchise involves hunting demons with a sword and guns, featuring Dante?",
+      fr: "Quelle franchise implique de chasser des démons avec une épée et des pistolets, mettant en scène Dante ?"
+    },
+    answers: {
+      en: ["Devil May Cry", "Bayonetta", "Ninja Gaiden", "Castlevania"],
+      fr: ["Devil May Cry", "Bayonetta", "Ninja Gaiden", "Castlevania"]
+    },
+    explanation: {
+      en: "Devil May Cry, by Capcom, focuses on stylish action and demon hunting.",
+      fr: "Devil May Cry, de Capcom, met l'accent sur l'action stylée et la chasse aux démons."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-50",
+    difficulty: 4,
+    question: {
+      en: "In 'League of Legends', what are the playable characters called?",
+      fr: "Dans 'League of Legends', comment appelle-t-on les personnages jouables ?"
+    },
+    answers: {
+      en: ["Champions", "Heroes", "Operators", "Agents"],
+      fr: ["Les champions", "Les héros", "Les opérateurs", "Les agents"]
+    },
+    explanation: {
+      en: "League of Legends features over a hundred Champions with unique abilities.",
+      fr: "League of Legends propose plus d'une centaine de champions avec des compétences uniques."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+  },
+  {
+    id: "a1b2c3d4-51",
+    difficulty: 5,
+    question: {
+      en: "Which sandbox game series by Bethesda Game Studios is known for titles like 'Morrowind', 'Oblivion', and 'Skyrim'?",
+      fr: "Quelle série de jeux bac à sable de Bethesda Game Studios est connue pour des titres comme 'Morrowind', 'Oblivion' et 'Skyrim' ?"
+    },
+    answers: {
+      en: ["The Elder Scrolls", "Fallout", "Dragon Age", "Gothic"],
+      fr: ["The Elder Scrolls", "Fallout", "Dragon Age", "Gothic"]
+    },
+    explanation: {
+      en: "'The Elder Scrolls' is a fantasy RPG series by Bethesda, known for its open-world exploration and player freedom.",
+      fr: "‘The Elder Scrolls’ est une série de RPG fantastiques de Bethesda, réputée pour son monde ouvert et la liberté offerte au joueur."
+    },
+    tags: [TagEnum.VIDEOGAMES]
+}
 ]
