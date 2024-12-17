@@ -74,7 +74,7 @@ export const Header = (): ReactElement => {
             src="/_static/images/MY_CATS.jpg"
             alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
             className={cn(
-              "w-full object-cover block object-center border-white dark:border-[#0a0a0a] md:border-[10px] md:rounded-3xl",
+              "w-full object-cover block object-center border-white dark:border-[#121212] md:border-[10px] md:rounded-3xl",
               "h-[250px] lg:h-[350px] xl:h-[400px]"
             )}
             quality={100}
@@ -91,7 +91,7 @@ export const Header = (): ReactElement => {
           alt="profile"
           className={cn(
             "-mt-16 h-32 w-32 rounded-lg transform transition-all hover:scale-110", {
-              "border-white dark:border-[#0a0a0a] border-[5px] hover:border-[3.5px]": viewMode == "normal",
+              "border-white dark:border-[#121212] border-[5px] hover:border-[3.5px]": viewMode == "normal",
             }
           )}
           src={"/_static/images/me2.jpg"}
@@ -99,7 +99,7 @@ export const Header = (): ReactElement => {
           height={128}
         />
 
-        <div className="flex flex-col justify-center ml-auto border dark:border-0 dark:bg-[#161616] sm:rounded-lg dark:shadow-lg sm:overflow-hidden">
+        <div className="flex flex-col justify-center ml-auto border dark:border-0 dark:bg-[#242222] sm:rounded-lg dark:shadow-lg sm:overflow-hidden">
           <ul className="flex flex-row justify-end dark:text-white gap-2 p-2">
             <div className="flex gap-2">
               <TooltipProvider delayDuration={100}>
@@ -150,7 +150,7 @@ export const Header = (): ReactElement => {
 
         <h1 className="flex flex-row items-center gap-2">
           <span className="text-5xl font-bold">{viewMode == "normal" ? "Gaëtan" : "Gaëtan Huszovits"}</span>
-          {viewMode == "cv" && <span className="hidden sm:flex text-[#f0f0f0] bg-[#333] px-2 py-1 rounded-md mt-2.5 text-xs gap-1 items-center">
+          {viewMode == "cv" && <span className="hidden sm:flex text-[#f0f0f0] bg-[#252525] px-2 py-1 rounded-md mt-2.5 text-xs gap-1 items-center">
             <MapPin className="h-3 w-3" /> Kingersheim, France
           </span>}
         </h1>
