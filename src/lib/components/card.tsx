@@ -8,7 +8,7 @@ export const CustomCard: Component<PropsWithChildren & {
   highlight?: boolean,
   active?: boolean,
   noHover?: boolean,
-}> = ({ children, className, active = false, noHover = false, highlight = false }) => {
+}> = ({ children, className, active = false, noHover = false }) => {
   return (
     <Card className={cn(
       "h-full border-[2px]",

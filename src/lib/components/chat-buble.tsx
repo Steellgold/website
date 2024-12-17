@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Bot, CircleStop, Copy, Mail, Mailbox, Maximize, Minimize, Send, X } from "lucide-react";
+import { Bot, CircleStop, Copy, Mail, Maximize, Minimize, Send, X } from "lucide-react";
 import { useLang } from "../stores/lang.store";
 import { cn } from "../utils";
-import { Message, useChat } from "ai/react";
+import { useChat } from "ai/react";
 import { useDetectDevice } from "../hooks/use-detect-device";
 import { Separator } from "./ui/separator";
 import dayjs from "dayjs";

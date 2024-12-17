@@ -11,7 +11,7 @@ import { ThemeSwitcher } from "./theme-switcher";
 import React, { ReactElement } from "react";
 
 export const Buttons = (): ReactElement => {
-    const { viewMode, setViewMode } = useViewMode();
+    const { setViewMode } = useViewMode();
     const { lang, setLang } = useLang();
 
   return (

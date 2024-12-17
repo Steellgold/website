@@ -10,7 +10,6 @@ import { z } from "zod";
 import { SpotifyTrack } from "@/lib/utils/spotify/spotify.schema";
 import { FaSpotify } from "react-icons/fa";
 import { useLanyard } from "react-use-lanyard";
-import { ExternalLink } from "lucide-react";
 
 export const SpotifyCard = (): ReactElement => {
   const [track, setTrack] = useState<z.infer<typeof SpotifyTrack> | null>(null);

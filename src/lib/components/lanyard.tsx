@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import { Activity, useLanyard } from "react-use-lanyard";
 import { Component } from "./utils/component";
-import { Card, CardContent, CardFooter } from "./ui/card";
+import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
 import { cn } from "../utils";
 import { AMAZON_PRIME_VIDEO, DISNEY_PLUS, GITHUB, NETFLIX, STACK_OVERFLOW, X, fixActivityGitHubImageLink, getActivityCardColor, getActivityId, isActivityBigImage, isAllowedActivity } from "./presences.consts";

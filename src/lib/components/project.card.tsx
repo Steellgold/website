@@ -6,15 +6,12 @@ import { cn } from "../utils";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Component } from "./utils/component";
 import { ExternalLink } from "lucide-react";
-import { PropsWithChildren } from "react";
 import { useViewMode } from "../stores/mode.store";
 import { useLang } from "../stores/lang.store";
-import { useTheme } from "next-themes";
 
 export const ProjectCard: Component<Project & { className?: string }> = ({ title, description, cvDescription, stacks, url, duration, type, className, isHighlighted, highlightUrl, showOnCv }) => {
   const { viewMode } = useViewMode();
   const { lang } = useLang();
-  const { theme } = useTheme();
 
   if (viewMode == "cv" && !showOnCv) return <></>;
 
@@ -79,15 +76,5 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
         </Link>
       </Card>
     </>
-  );
-}
-
-const SurroundLink: Component<PropsWithChildren & { href?: string, className?: string }> = ({ href, children, className }) => {
-  if (!href) return children as any;
-
-  return (
-    <Link href={href} passHref className={className}>
-      {children}
-    </Link>
   );
 }
