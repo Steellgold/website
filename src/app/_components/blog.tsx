@@ -70,7 +70,7 @@ export const Blog = (): ReactElement => {
     <>
       <Separator className="my-7 bg-[#cacaca] dark:bg-[#1a1a1a] w-[90%] mx-auto" />
 
-      <p className="mb-5 text-[#333] dark:text-[#f0f0f0]">
+      <p className="mb-5 text-[#333] dark:text-[#f0f0f0] text-center">
         Here is the latest article I published on my blog. You can see the others by <Link href="/blog" className="text-blue-500 hover:underline">clicking here</Link>.
       </p>
 
