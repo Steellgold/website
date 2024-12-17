@@ -4,17 +4,20 @@ import { PostsSchema } from "@/lib/types/post.type";
 import Link from "next/link";
 import { ReactElement, useEffect, useState } from "react";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
-import { useTheme } from "next-themes";
 import { z } from "zod";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/lib/stores/lang.store";
 
 export const Blog = (): ReactElement => {
   const [data, setData] = useState<z.infer<typeof PostsSchema>>([]);
+  const [loading, setLoading] = useState(true);
+  
   const { lang } = useLang();
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+
       const response = await fetch("/api/blog");
 
       if (!response.ok) {
@@ -24,6 +27,7 @@ export const Blog = (): ReactElement => {
 
       const schema = PostsSchema.safeParse(await response.json());
       if (!schema.success) return;
+      setLoading(false);
       setData(schema.data);
     };
 
@@ -32,6 +36,10 @@ export const Blog = (): ReactElement => {
   }, []);
 
   if (!data) return <></>;
+
+  if (loading) return (
+    <div className="my-7" />
+  )
 
   return (
     <>
@@ -53,12 +61,12 @@ export const Blog = (): ReactElement => {
 
         <div className="my-3" />
 
-        <div className="w-full flex flex-col gap-1">
+        <div className="w-full flex flex-col gap-3">
           {data.map((post) => (
             <Link
               className={cn(
-                "flex flex-row justify-between items-center border-b py-2",
-                "border-[#e6e4e4] hover:border-[#e6e4e4]/10",
+                "flex flex-row justify-between items-center border-b leading-3 py-2",
+                "border-[#e6e4e4] hover:border-[#eeeded]",
                 "dark:border-[#727272]/10 dark:hover:border-[#fff]/10"
               )}
               href={`/blog/${post.slug}`} key={post.id}>
