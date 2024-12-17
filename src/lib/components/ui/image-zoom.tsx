@@ -1,30 +1,30 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
+import Image, { ImageProps } from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
+import { Component } from "../utils/component"
 
-interface ImageZoomProps {
+type ImageZoomProps = {
   src: string
   alt: string
-  width: number
-  height: number
   className?: string
-}
+} & Partial<ImageProps>
 
-export function ImageZoom({ src, alt, width, height, className }: ImageZoomProps) {
+export const ImageZoom: Component<ImageZoomProps> = ({ src, alt, className, ...props }) => {
   const [isZoomed, setIsZoomed] = useState(false)
 
   const toggleZoom = () => setIsZoomed(!isZoomed)
 
   return (
     <>
-      <img
+      <Image
         src={src}
         alt={alt}
         className={cn("cursor-zoom-in", className)}
         onClick={toggleZoom}
+        {...props}
       />
       <AnimatePresence>
         {isZoomed && (
