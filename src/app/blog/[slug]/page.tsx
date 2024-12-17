@@ -3,12 +3,13 @@ import { AsyncComponent } from "@/lib/components/utils/component";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Metadata } from "next";
 import { PostSchema } from "@/lib/types/post.type";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Facebook, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "@/lib/components/ui/separator";
 import { MarkdownPlease } from "@/lib/mdx";
 import { BackToBlogButton } from "../_components/back-blog";
 import { ConfettiReadComponent } from "../_components/confetti-readed";
+import { ShareThisArticle } from "./_cmpns/share";
 
 type PageProps = {
   params: Promise<{
@@ -115,7 +116,7 @@ const Post: AsyncComponent<PageProps> = async props => {
           className="rounded-lg mb-8"
         />
 
-        <header className="mb-8">
+        <header className="flex flex-col mb-8 items-center">
           <h1 className="text-3xl font-bold text-center">{data.title}</h1>
           <div className="flex items-center justify-center space-x-4">
             <span className="flex items-center">
@@ -123,6 +124,8 @@ const Post: AsyncComponent<PageProps> = async props => {
               {dayJS(data.createdAt).format("MMMM D, YYYY")}
             </span>
           </div>
+
+          <ShareThisArticle slug={data.slug} title={data.title} />
         </header>
 
         <div className="prose prose-invert prose-lg max-w-none">
