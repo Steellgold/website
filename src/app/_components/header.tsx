@@ -2,6 +2,7 @@
 
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { Button, buttonVariants } from "@/lib/components/ui/button";
+import { ImageZoom } from "@/lib/components/ui/image-zoom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
 import { HiglightedSpan } from "@/lib/config/projects";
 import { useLang } from "@/lib/stores/lang.store";
@@ -70,7 +71,7 @@ export const Header = (): ReactElement => {
     <section>
       {viewMode == "normal" && (
         <div className="relative">
-          <Image
+          <ImageZoom
             src="/_static/images/MY_CATS.jpg"
             alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
             className={cn(
@@ -87,7 +88,7 @@ export const Header = (): ReactElement => {
       {viewMode == "cv" && <div className="w-full h-[100px] lg:h-[100px] xl:h-[100px]" />}
 
       <div className="shrink-0 flex items-center justify-start mx-auto w-5/6 lg:w-2/4">
-        <Image
+        <ImageZoom
           alt="profile"
           className={cn(
             "-mt-16 h-32 w-32 rounded-lg transform transition-all hover:scale-110", {
@@ -98,6 +99,7 @@ export const Header = (): ReactElement => {
           width={128}
           height={128}
         />
+
 
         <div className="flex flex-col justify-center ml-auto border dark:border-0 dark:bg-[#242222] sm:rounded-lg dark:shadow-lg sm:overflow-hidden">
           <ul className="flex flex-row justify-end dark:text-white gap-2 p-2">

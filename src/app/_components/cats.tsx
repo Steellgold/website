@@ -14,7 +14,7 @@ type Image = {
 const images: Image[] = [
   { url: "https://www.instagram.com/p/C5vwnZfNR5r/", alt: "Kitty", onInstagram: true },
   { url: "https://www.instagram.com/p/CXqTmYOt_X4/", alt: "Noisette", onInstagram: true },
-  { url: "https://www.instagram.com/p/CaMv-JkNyXS/", alt: "Kitty", onInstagram: true },
+  { alt: "Kitty", onInstagram: false },
   { alt: "Kitty", onInstagram: false },
   { alt: "Noisette", onInstagram: false },
   { url: "https://www.instagram.com/p/CikZINKDYtI/", alt: "Kitty", onInstagram: true },
@@ -26,7 +26,7 @@ export const Cats = (): ReactElement => {
     <section id="cats">
       <div className="my-8" />
 
-      <div className="grid auto-rows-[192px] grid-cols-3 gap-2">
+      <div className="grid auto-rows-[192px] grid-cols-3 gap-4">
         {[...Array(7)].map((_, i) => (
           <div
             key={i}

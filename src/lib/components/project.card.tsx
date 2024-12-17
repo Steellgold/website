@@ -43,7 +43,7 @@ export const ProjectCard: Component<Project & { className?: string }> = ({ title
                 {isHighlighted && (
                   <>
                     {highlightUrl ? (
-                      <Link href={highlightUrl} target="_blank" onClick={(e) => e.stopPropagation()} className="relative z-[100]">
+                      <Link href={highlightUrl} target="_blank" onClick={(e) => e.stopPropagation()} className="relative z-[10]">
                         <span className="text-[#333] bg-[#f5f1de] px-2 py-1 rounded-md text-xs flex items-center gap-1">
                           {lang === "en" ? "Prized project 🏆" : "Projet primé 🏆"}
                           <ExternalLink className="h-3" />
