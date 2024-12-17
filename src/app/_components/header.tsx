@@ -1,7 +1,6 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
-import { Button, buttonVariants } from "@/lib/components/ui/button";
 import { ImageZoom } from "@/lib/components/ui/image-zoom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
 import { HiglightedSpan } from "@/lib/config/projects";
@@ -10,8 +9,6 @@ import { useInitializeViewMode, useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Cake, Cat, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
-import { useTheme } from "next-themes";
-import Image from "next/image";
 import Link from "next/link";
 import { ReactElement } from "react";
 
