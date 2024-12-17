@@ -14,7 +14,7 @@ export const DiscordPresence = (): ReactElement | ReactElement[] => {
   const { viewMode } = useViewMode();
 
   if (viewMode === "cv") return <></>;
-  if (loading) return <p className="text-white">Loading...</p>
+  if (loading) return <></>
 
   const activities = status?.activities;
   const filteredActivities = activities?.filter(activity => activity.name !== "Spotify");
