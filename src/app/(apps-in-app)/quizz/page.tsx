@@ -43,7 +43,8 @@ export const viewport: Viewport = {
 const Page = () => {
   return (
     <>
-      <Buttons showTopButton={false} />
+      <Buttons/>
+
       <Quizz />
     </>
   );
