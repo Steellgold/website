@@ -1,22 +1,16 @@
 "use client";
 
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import Link from "next/link";
 import { useLang } from "../stores/lang.store";
 import { useViewMode } from "../stores/mode.store";
 import { Button } from "./ui/button";
 import { FaSpotify } from "react-icons/fa";
-import { ArrowRight, ArrowUpRight, Binary, Ellipsis, Files, FilesIcon, GraduationCap, Grid3X3, Shapes } from "lucide-react";
+import { ArrowRight, Binary, Ellipsis, Files, Grid3X3, Shapes } from "lucide-react";
 import { ThemeSwitcher } from "./theme-switcher";
 import React, { ReactElement } from "react";
 
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
-import { Component } from "./utils/component";
-
-type Props = {
-  showTopButton?: boolean;
-};
-
-export const Buttons: Component<Props> = ({ showTopButton = true }) => {
+export const Buttons = (): ReactElement => {
     const { viewMode, setViewMode } = useViewMode();
     const { lang, setLang } = useLang();
 
@@ -85,18 +79,6 @@ export const Buttons: Component<Props> = ({ showTopButton = true }) => {
           </>
         </DropdownMenuContent>
       </DropdownMenu>
-
-      {showTopButton && (
-        <Button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          variant="outline"
-          size="sm"
-          className="flex items-center gap-1"
-        >
-          <ArrowUpRight size={16} />
-          <span className="hidden sm:block">Top</span>
-        </Button>
-      )}
     </div>
   )
 }

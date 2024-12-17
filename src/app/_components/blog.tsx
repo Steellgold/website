@@ -42,20 +42,16 @@ export const Blog = (): ReactElement => {
   )
 
   return (
-    <>
+    <div className="m-3">
       <div className="my-7" />
 
       <div className="w-full flex flex-col">
         <div className="flex flex-col gap-0.5">
           <h1 className="text-[#333] dark:text-[#f0f0f0] text-left text-2xl font-bold">Blog</h1>
           <p className="text-[#333] dark:text-[#f0f0f0] text-left text-sm">
-            {lang == "en"
-              ? "Here are the latest articles I published on my blog. You can see the others by"
-              : "Voici les derniers articles que j'ai publiés sur mon blog. Vous pouvez voir les autres en"
-            }&nbsp;
-            <Link href="/blog" className="text-blue-500 hover:underline">
-              {lang == "en" ? "clicking here" : "cliquant ici"}
-            </Link>.
+            {lang == "fr"
+              ? "Voici les articles que j'ai écrits au fil du temps, je parle de tout et de rien, mais surtout de Supabase et de Next.js."
+              : "Here are the articles I've written over time, I talk about everything and nothing, but mostly about Supabase and Next.js."}
           </p>
         </div>
 
@@ -76,6 +72,6 @@ export const Blog = (): ReactElement => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
