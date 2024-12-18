@@ -12,6 +12,8 @@ export const BlackjackButton: Component<BlackjackButtonProps> = ({ children, cla
       "bg-white bg-opacity-10 text-white rounded-md px-3 py-1 flex flex-row items-center group border border-white border-opacity-20",
       "hover:bg-opacity-30 hover:border-opacity-40",
       "transition-colors duration-300 ease-in-out",
+
+      "disabled:bg-opacity-10 disabled:border-opacity-20 disabled:text-opacity-50 disabled:cursor-not-allowed",
       className
     )} {...props}>
       {children}

@@ -11,7 +11,7 @@ import { BlackjackButton } from "./ui/blackjack-button";
 
 export const BlackjackBet = () => {
   const { lang } = useLang();
-  const { gameStatus } = useBlackjack();
+  const { gameStatus, bets, removeBet } = useBlackjack();
 
   if (gameStatus !== "BETTING") return <p className="p-4 bg-red-500">Throw error: gameStatus must be BETTING to render BlackjackBet component</p>;
 
@@ -23,7 +23,11 @@ export const BlackjackBet = () => {
         </span>
 
         <div className="flex items-center gap-1.5">
-          <BlackjackButton className="w-10 h-10 rounded-full">
+          <BlackjackButton
+            className="w-10 h-10 rounded-full"
+            onClick={() => removeBet()}
+            disabled={bets.length === 0}
+          >
             <Undo size={16} />
           </BlackjackButton>
 
@@ -48,7 +52,7 @@ type BlackjackChipProps = {
 };
 
 export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, empiledTotal, mini }) => {
-  const { balance } = useBlackjack();
+  const { balance, addBet } = useBlackjack();
   const { lang } = useLang();
 
   return (
@@ -72,6 +76,11 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, e
           "w-14 h-14 border-[6px]": !mini,
         }
       )}
+      onClick={() => {
+        if (empiled) return;
+        if (value > balance) return;
+        addBet(value);
+      }}
     >
       {!empiled && (
         <span className={cn("font-semibold", {
@@ -92,9 +101,11 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, e
 };
 
 export const BlackjackBets = () => {
+  const { bets } = useBlackjack();
+
   return (
     <div className="relative w-14 h-14">
-      {[1, 2, 5, 10, 25, 100].map((value, index) => (
+      {bets && bets.length >= 1 ? bets.map((value, index) => (
         <div
           key={value}
           className="absolute"
@@ -103,9 +114,20 @@ export const BlackjackBets = () => {
             zIndex: index,
           }}
         >
-          <BlackjackChip value={value as 1 | 2 | 5 | 10 | 25 | 100} empiled empiledTotal={value * 3} mini={false} />
+          <BlackjackChip
+            value={value as ChipValue}
+            empiled
+            mini={false}
+            empiledTotal={bets.reduce((acc, curr) => acc + curr, 0)}
+          />
         </div>
-      ))}
+      )) : (
+        <div>
+          <div className="w-14 h-14 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center">
+            <span className="text-xs">0</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

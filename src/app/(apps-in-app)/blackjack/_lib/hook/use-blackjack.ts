@@ -9,7 +9,7 @@ type BlackjackState = {
 
   bets: number[];
   addBet: (bet: number) => void;
-  removeBet: (bet: number) => void;
+  removeBet: () => void;
 
   gameStatus: GameStatus;
   playerCards: Card[];
@@ -36,9 +36,8 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
   croupierCards: [],
   deck: [],
 
-  addBet: (bet) => set((state) => ({ bets: [...state.bets, bet] })),
-  removeBet: (bet) =>
-    set((state) => ({ bets: state.bets.filter((b) => b !== bet) })),
+  addBet: (bet) => set((state) => ({ bets: [...state.bets, bet], balance: state.balance - bet })),
+  removeBet: () => set((state) => ({ bets: state.bets.slice(0, -1), balance: state.balance + state.bets[state.bets.length - 1] })),
 
   setBalance: (balance) => set({ balance }),
   setBet: (bet) => set({ bet }),
