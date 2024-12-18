@@ -1,13 +1,16 @@
 "use client";
 
 import { create } from "zustand";
-import { Card } from "../blackjack.types";
-
-type GameStatus = "BALANCE_START" | "BETTING" | "PLAYING" | "DEALER_TURN" | "GAME_OVER";
+import { Card, GameStatus } from "../blackjack.types";
 
 type BlackjackState = {
   balance: number;
   bet: number;
+
+  bets: number[];
+  addBet: (bet: number) => void;
+  removeBet: (bet: number) => void;
+
   gameStatus: GameStatus;
   playerCards: Card[];
   croupierCards: Card[];
@@ -27,10 +30,15 @@ type BlackjackState = {
 export const useBlackjack = create<BlackjackState>((set, get) => ({
   balance: 0,
   bet: 0,
+  bets: [],
   gameStatus: "BALANCE_START",
   playerCards: [],
   croupierCards: [],
   deck: [],
+
+  addBet: (bet) => set((state) => ({ bets: [...state.bets, bet] })),
+  removeBet: (bet) =>
+    set((state) => ({ bets: state.bets.filter((b) => b !== bet) })),
 
   setBalance: (balance) => set({ balance }),
   setBet: (bet) => set({ bet }),
@@ -57,6 +65,7 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
   reset: () =>
     set({
       bet: 0,
+      bets: [],
       gameStatus: "BALANCE_START",
       playerCards: [],
       croupierCards: [],
