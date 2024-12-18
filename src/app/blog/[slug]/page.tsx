@@ -97,13 +97,7 @@ const Post: AsyncComponent<PageProps> = async props => {
 
   return (
     <>
-      <BackToBlogButton
-        onlyButton
-        // data={{
-        //   title: schema.data.title,
-        //   createdAt: dayJS(schema.data.createdAt).format("DD MMM YYYY")
-        // }}
-      />
+      <BackToBlogButton onlyButton />
 
       <ConfettiReadComponent />
 
