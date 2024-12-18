@@ -1,12 +1,29 @@
-import { Card } from "./blackjack.types";
+import { Card, Rank, Suit } from "./blackjack.types";
 
 export const createDeck = (): Card[] => {
-  // TODO: Create a deck of 52 cards
-  return [];
+  const suits: Suit[] = ["Hearts", "Diamonds", "Clubs", "Spades"];
+  const ranks: Rank[] = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+
+  const deck: Card[] = [];
+  suits.forEach((suit) => {
+    ranks.forEach((rank) => {
+      deck.push({ rank, suit });
+    });
+  });
+
+  return shuffle(deck);
 }
 
-function shuffle(deck: Card[]): Card[] {
-  // TODO: Shuffle the deck
+const shuffle = (deck: Card[]): Card[] => {
+  let currentIndex = deck.length, randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [deck[currentIndex], deck[randomIndex]] = [deck[randomIndex], deck[currentIndex]];
+  }
+
   return deck;
 }
 

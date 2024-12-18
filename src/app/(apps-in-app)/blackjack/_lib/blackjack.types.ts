@@ -14,5 +14,5 @@ export type Card = {
 
   owner?: "DEALER" | "PLAYER";
 
-  isHidden: boolean;
+  isHidden?: boolean;
 }

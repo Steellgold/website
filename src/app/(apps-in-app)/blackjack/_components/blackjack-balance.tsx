@@ -9,6 +9,7 @@ import { ThemeSwitcher } from "@/lib/components/theme-switcher";
 import { useTheme } from "next-themes";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackButton } from "./ui/blackjack-button";
+import { createDeck } from "../_lib/blackjack.utils";
 
 export const BlackjackBalance = (): ReactElement => {
   const { theme, setTheme } = useTheme();
@@ -42,7 +43,7 @@ export const BlackjackBalance = (): ReactElement => {
 }
 
 export const BlackjackStarting = (): ReactElement => {
-  const { setBalance, setGameStatus, reset } = useBlackjack();
+  const { setBalance, setGameStatus, reset, setDeck } = useBlackjack();
   const { lang } = useLang();
 
   const [inputValue, setInputValue] = useState<number>(0);
@@ -81,6 +82,7 @@ export const BlackjackStarting = (): ReactElement => {
             className="bg-white bg-opacity-10 text-white rounded-md px-3 py-1"
             onClick={() => {
               reset();
+              setDeck(createDeck())
               setBalance(inputValue);
               setGameStatus("BETTING");
             }}

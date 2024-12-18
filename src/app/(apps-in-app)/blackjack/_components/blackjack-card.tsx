@@ -21,7 +21,8 @@ export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, owner = "PL
   return (
     <div className={
       cn(
-        "relative bg-[#f5f7f6] w-24 h-36 rounded-md shadow-md", {
+        "relative bg-[#f5f7f6] w-24 h-36 rounded-md", {
+          "shadow-md": !isHidden,
           "bg-blue-50 border-blue-100 border-2 transition-transform duration-300 ease-in-out": isHidden,
           "transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
           

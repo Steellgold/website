@@ -8,6 +8,7 @@ import { BlackjackBet, BlackjackBets } from "./blackjack-bet";
 import { handValue } from "../_lib/blackjack.utils";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackChoice } from "./blackjack-choice";
+import { BlackjackDeck } from "./blackjack-deck";
 
 export const BlackjackBoard = (): ReactElement => {
   const { gameStatus, bet } = useBlackjack();
@@ -59,6 +60,7 @@ export const BlackjackBoard = (): ReactElement => {
         {/* BUTTONS */}
         {/* <BlackjackBet /> */}
         <BlackjackChoice />
+        <BlackjackDeck />
 
         {/* BETS */}
         <BlackjackCard className="absolute bottom-5 right-5">
