@@ -42,7 +42,7 @@ export const BlackjackBalance = (): ReactElement => {
 }
 
 export const BlackjackStarting = (): ReactElement => {
-  const { setBalance, setGameStatus } = useBlackjack();
+  const { setBalance, setGameStatus, reset } = useBlackjack();
   const { lang } = useLang();
 
   const [inputValue, setInputValue] = useState<number>(0);
@@ -80,6 +80,7 @@ export const BlackjackStarting = (): ReactElement => {
           <BlackjackButton
             className="bg-white bg-opacity-10 text-white rounded-md px-3 py-1"
             onClick={() => {
+              reset();
               setBalance(inputValue);
               setGameStatus("BETTING");
             }}

@@ -3,7 +3,7 @@ export type Rank = "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "J" | 
 
 export type GameStatus = "BALANCE_START" | "BETTING" | "PLAYING" | "DEALER_TURN" | "GAME_OVER";
 
-export type ChipValue = 1 | 2 | 5 | 10 | 25 | 100;
+export type ChipValue = 1 | 2 | 5 | 10 | 25 | 100 | 500 | 1000;
 
 export type Card = {
   suit: Suit;

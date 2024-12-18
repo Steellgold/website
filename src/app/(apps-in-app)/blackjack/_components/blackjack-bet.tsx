@@ -31,7 +31,7 @@ export const BlackjackBet = () => {
             <Undo size={16} />
           </BlackjackButton>
 
-          {[1, 2, 5, 10, 25, 100].map((value) => (
+          {[1, 2, 5, 10, 25, 100, 500, 1000].map((value) => (
             <div style={{ transform: "rotate(-10deg)" }} key={value}>
               <BlackjackChip value={value as ChipValue} key={value} mini />
             </div>
@@ -69,6 +69,8 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, e
           "bg-blue-500 text-white border-blue-300": value === 10,
           "bg-green-500 text-white border-green-300": value === 25,
           "bg-black text-white border-gray-300": value === 100,
+          "bg-yellow-500 text-white border-yellow-300": value === 500,
+          "bg-purple-500 text-white border-purple-300": value === 1000,
 
           // Sizes & Opacity
           "opacity-50": balance < value && !empiled,
