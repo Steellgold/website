@@ -10,20 +10,20 @@ const monterserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Gaëtan | Full-stack Developer",
-  applicationName: "Gaëtan's Portfolio",
+  applicationName: "Gaëtan Portfolio",
   description: "20. Indie Hacker | Full-stack developper",
   openGraph: {
-    title: "Gaëtan | Full-stack Developer",
+    title: "Gaëtan",
     description: "20. Indie Hacker | Full-stack developper",
     type: "website",
     url: "https://gaetanhus.fr",
-    siteName: "Gaëtan | Full-stack Developer",
+    siteName: "Gaëtan Portfolio",
     images: [
       {
         url: "https://gaetanhus.fr/og.png",
         width: 1200,
         height: 630,
-        alt: "Gaëtan's Portfolio",
+        alt: "Open Graph Image",
       },
     ],
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: "https://gaetanhus.fr/og.png",
         width: 1200,
         height: 630,
-        alt: "Gaëtan's Portfolio",
+        alt: "Open Graph Image",
       },
     ],
     title: "Gaëtan | Full-stack Developer",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#15803D"
+  themeColor: "#121212"
 };
 
 const Layout: Component<PropsWithChildren> = ({ children }) => {
