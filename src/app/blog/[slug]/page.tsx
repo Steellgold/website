@@ -3,13 +3,12 @@ import { AsyncComponent } from "@/lib/components/utils/component";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Metadata } from "next";
 import { PostSchema } from "@/lib/types/post.type";
-import { CalendarIcon, Facebook, Linkedin, Twitter } from "lucide-react";
-import Image from "next/image";
-import { Separator } from "@/lib/components/ui/separator";
+import { CalendarIcon } from "lucide-react";
 import { MarkdownPlease } from "@/lib/mdx";
 import { BackToBlogButton } from "../_components/back-blog";
 import { ConfettiReadComponent } from "../_components/confetti-readed";
 import { ShareThisArticle } from "./_cmpns/share";
+import { ImageZoomer } from "image-zoomer-react";
 
 type PageProps = {
   params: Promise<{
@@ -19,7 +18,7 @@ type PageProps = {
 
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   const params = await props.params;
-  const randomString = Math.random().toString(36).substring(7);
+
   const response = await fetch(`https://simplist.blog/api/${params.slug}`, {
     headers: {
       "x-api-key": process.env.SIMPLIST_API_KEY!
@@ -97,20 +96,14 @@ const Post: AsyncComponent<PageProps> = async props => {
 
   return (
     <>
-      <BackToBlogButton
-        onlyButton
-        // data={{
-        //   title: schema.data.title,
-        //   createdAt: dayJS(schema.data.createdAt).format("DD MMM YYYY")
-        // }}
-      />
+      <BackToBlogButton onlyButton />
 
       <ConfettiReadComponent />
 
       <article className="max-w-4xl mx-auto px-4 py-8">
-        <Image
+        <ImageZoomer
           src={data.banner}
-          alt="Image d'illustration de l'article"
+          alt="illustration image"
           width={800}
           height={400}
           className="rounded-lg mb-8"

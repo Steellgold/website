@@ -1,7 +1,6 @@
 "use client";
 // https://github.com/stvehayes/spotify-currently-playing/blob/main/src/spotify/PlayingAnimation.js
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const PlayingAnimation = () => {
   return(

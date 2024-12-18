@@ -1,4 +1,4 @@
-import { fetchTopItems, getAccessToken, getStatsSpotify, TOP_ARTISTS_ENDPOINT, TOP_TRACKS_ENDPOINT } from "@/lib/spotify";
+import { getStatsSpotify } from "@/lib/spotify";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request): Promise<NextResponse> => {

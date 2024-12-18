@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import { ThemeSwitcher } from "../theme-switcher";
 import { useLang } from "@/lib/stores/lang.store";
-import { Button, buttonVariants } from "../ui/button";
+import { Button } from "../ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
