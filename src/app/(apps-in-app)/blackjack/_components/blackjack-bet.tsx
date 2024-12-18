@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { useLang } from "@/lib/stores/lang.store";
 import { Undo } from "lucide-react";
+import { ChipValue } from "../_lib/blackjack.types";
+import { BlackjackCard } from "./ui/blackjack-card";
+import { BlackjackButton } from "./ui/blackjack-button";
 
 export const BlackjackBet = () => {
   const { lang } = useLang();
@@ -14,32 +17,29 @@ export const BlackjackBet = () => {
 
   return (
     <div>
-      <div className={cn(
-        "flex flex-col items-center gap-2 p-3",
-        "bg-white bg-opacity-10 rounded-md text-white"
-      )}>
+      <BlackjackCard className="flex flex-col items-center gap-2">
         <span className="text-lg">
           {lang === "fr" ? "Choix des mises" : "Betting"}
         </span>
 
         <div className="flex items-center gap-1.5">
-          <div className="w-10 h-10 rounded-full bg-white hover:bg-opacity-30 bg-opacity-10 text-white flex items-center justify-center cursor-pointer transition-colors duration-300 ease-in-out">
+          <BlackjackButton className="w-10 h-10 rounded-full">
             <Undo size={16} />
-          </div>
+          </BlackjackButton>
 
           {[1, 2, 5, 10, 25, 100].map((value) => (
             <div style={{ transform: "rotate(-10deg)" }} key={value}>
-              <BlackjackChip value={value as 1 | 2 | 5 | 10 | 25 | 100} key={value} mini />
+              <BlackjackChip value={value as ChipValue} key={value} mini />
             </div>
           ))}
         </div>
-      </div>
+      </BlackjackCard>
     </div>
   );
 };
 
 type BlackjackChipProps = {
-  value: 1 | 2 | 5 | 10 | 25 | 100;
+  value: ChipValue;
 
   mini?: boolean;
 
@@ -67,7 +67,7 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, e
           "bg-black text-white border-gray-300": value === 100,
 
           // Sizes & Opacity
-          "opacity-50": balance < value,
+          "opacity-50": balance < value && !empiled,
           "w-10 h-10 border-4": mini,
           "w-14 h-14 border-[6px]": !mini,
         }
