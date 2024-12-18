@@ -1,5 +1,4 @@
-import { ImageZoom } from "@/lib/components/ui/image-zoom";
-import { Separator } from "@/lib/components/ui/separator";
+import { ImageZoomer } from "image-zoomer-react";
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,16 +8,17 @@ type Image = {
   url?: string;
   alt: string;
   onInstagram: boolean;
+  text?: string;
 }
 
 const images: Image[] = [
-  { url: "https://www.instagram.com/p/C5vwnZfNR5r/", alt: "Kitty", onInstagram: true },
-  { url: "https://www.instagram.com/p/CXqTmYOt_X4/", alt: "Noisette", onInstagram: true },
-  { alt: "Kitty", onInstagram: false },
-  { alt: "Kitty", onInstagram: false },
-  { alt: "Noisette", onInstagram: false },
-  { url: "https://www.instagram.com/p/CikZINKDYtI/", alt: "Kitty", onInstagram: true },
-  { alt: "Noisette", onInstagram: false },
+  { url: "https://www.instagram.com/p/C5vwnZfNR5r/", alt: "Kitty", onInstagram: true, text: "Kitty on her pillow" },
+  { url: "https://www.instagram.com/p/CXqTmYOt_X4/", alt: "Noisette", onInstagram: true, text: "Noisette drinking water" },
+  { alt: "Kitty", onInstagram: false, text: "Kitty play with alluminium foil" },
+  { alt: "Kitty", onInstagram: false, text: "Kitty on my bed... again" },
+  { alt: "Noisette", onInstagram: false, text: "Noisette making the beautiful" },
+  { url: "https://www.instagram.com/p/CikZINKDYtI/", alt: "Kitty", onInstagram: true, text: "Kitty sharpening her claws" },
+  { alt: "Noisette", onInstagram: false, text: "Noisette sunbathing" },
 ];
 
 export const Cats = (): ReactElement => {
@@ -34,10 +34,12 @@ export const Cats = (): ReactElement => {
               i === 3 || i === 6 ? "col-span-2" : ""
             }`}
           >
-            <ImageZoom
+            <ImageZoomer
+              as={Image}
               alt={images[i].alt}
               src={`/cats/${i + 1}.jpg`}
               className="object-cover"
+              textMessage={images[i].text}
               fill
               placeholder="blur"
               blurDataURL="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mOMSE6uBwAD2AGfmsy4kQAAAABJRU5ErkJggg=="

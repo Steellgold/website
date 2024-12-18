@@ -1,14 +1,14 @@
 "use client";
 
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
-import { ImageZoom } from "@/lib/components/ui/image-zoom";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
+import { ImageZoomer } from "image-zoomer-react";
 import { HiglightedSpan } from "@/lib/config/projects";
 import { useLang } from "@/lib/stores/lang.store";
 import { useInitializeViewMode, useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
-import { Cake, Cat, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
+import { Cake, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
 import Link from "next/link";
 import { ReactElement } from "react";
 
@@ -68,14 +68,15 @@ export const Header = (): ReactElement => {
     <section>
       {viewMode == "normal" && (
         <div className="relative">
-          <ImageZoom
+          <ImageZoomer
             src="/_static/images/MY_CATS.jpg"
             alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
             className={cn(
               "w-full object-cover block object-center border-white dark:border-[#121212] md:border-[10px] md:rounded-3xl",
               "h-[250px] lg:h-[350px] xl:h-[400px]"
             )}
-            quality={100}
+            // quality={100}
+            textMessage="hgihjugiu"
             width={3000}
             height={1810}
           />
@@ -85,7 +86,7 @@ export const Header = (): ReactElement => {
       {viewMode == "cv" && <div className="w-full h-[100px] lg:h-[100px] xl:h-[100px]" />}
 
       <div className="shrink-0 flex items-center justify-start mx-auto w-5/6 lg:w-2/4">
-        <ImageZoom
+        <ImageZoomer
           alt="profile"
           className={cn(
             "-mt-16 h-32 w-32 rounded-lg transform transition-all hover:scale-110", {

@@ -1,10 +1,11 @@
 import { Component } from "./components/utils/component";
-import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { Separator } from "./components/ui/separator";
-import { ImageZoom } from "./components/ui/image-zoom";
 import { CodeWindow } from "./components/code-windows";
+import { ImageZoomer } from "image-zoomer-react";
+import ReactMarkdown from 'react-markdown'
+import Image from "next/image";
 
 export const MarkdownPlease: Component<{ content: string }> = ({ content }) => (
   <ReactMarkdown
@@ -24,7 +25,8 @@ export const MarkdownPlease: Component<{ content: string }> = ({ content }) => (
       blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary pl-4 italic my-4" {...props} />,
       // eslint-disable-next-line @next/next/no-img-element
       img: ({node, ...props}) => (
-        <ImageZoom
+        <ImageZoomer
+          as={Image}         
           alt="illustration image"
           src={props.src}
           width={900}
