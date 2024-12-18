@@ -16,14 +16,17 @@ const suitToIcon = (suit: Suit): ReactElement => {
   }
 }
 
-export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast }: Card): ReactElement => {
+export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, owner = "PLAYER" }: Card): ReactElement => {
 
   return (
     <div className={
       cn(
         "relative bg-[#f5f7f6] w-24 h-36 rounded-md shadow-md", {
           "bg-blue-50 border-blue-100 border-2 transition-transform duration-300 ease-in-out": isHidden,
-          "hover:translate-y-[-5rem] hover:-rotate-12 transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
+          "hover:-rotate-12 transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
+          
+          "hover:translate-y-[-5rem]": !isStackedLast && !isHidden && owner === "PLAYER",
+          "hover:translate-y-[5rem]": !isStackedLast && !isHidden && owner === "DEALER",
         }
     )}>
       {rank && !isHidden &&
@@ -42,7 +45,7 @@ export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast }: Card): Re
       {isHidden
         ?
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <span className="text-4xl text-blue-200">?</span>
+            <span className="text-4xl text-blue-200 select-none">?</span>
           </div>
         : <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             {suitToIcon(suit)}
