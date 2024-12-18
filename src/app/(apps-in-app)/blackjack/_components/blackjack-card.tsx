@@ -42,15 +42,19 @@ export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, owner = "PL
       }
 
       {/* CENTERED */}
-      {isHidden
-        ?
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <span className="text-4xl text-blue-200 select-none">?</span>
+      {isHidden && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-1.5">
+          <div className="flex flex-row gap-1.5">
+            <Heart size={16} stroke="#bfdbfe" fill="#bfdbfe" />
+            <Spade size={16} stroke="#a2bcdb" fill="#a2bcdb" />
           </div>
-        : <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            {suitToIcon(suit)}
+
+          <div className="flex flex-row gap-1.5">
+            <Club size={16} stroke="#a2bcdb" fill="#a2bcdb" />
+            <Diamond size={16} stroke="#bfdbfe" fill="#bfdbfe" />
           </div>
-      }
+        </div>
+      )}
     </div>
   )
 }
