@@ -10,6 +10,7 @@ import { MarkdownPlease } from "@/lib/mdx";
 import { BackToBlogButton } from "../_components/back-blog";
 import { ConfettiReadComponent } from "../_components/confetti-readed";
 import { ShareThisArticle } from "./_cmpns/share";
+import { ImageZoomer } from "image-zoomer-react";
 
 type PageProps = {
   params: Promise<{
@@ -102,9 +103,9 @@ const Post: AsyncComponent<PageProps> = async props => {
       <ConfettiReadComponent />
 
       <article className="max-w-4xl mx-auto px-4 py-8">
-        <Image
+        <ImageZoomer
           src={data.banner}
-          alt="Image d'illustration de l'article"
+          alt="illustration image"
           width={800}
           height={400}
           className="rounded-lg mb-8"
