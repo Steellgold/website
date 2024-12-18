@@ -11,6 +11,7 @@ import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { Cake, ExternalLink, Github, Instagram, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
 import Link from "next/link";
 import { ReactElement } from "react";
+import Image from "next/image";
 
 type SocialLink = {
   href: string;
@@ -69,14 +70,14 @@ export const Header = (): ReactElement => {
       {viewMode == "normal" && (
         <div className="relative">
           <ImageZoomer
+            as={Image}
             src="/_static/images/MY_CATS.jpg"
             alt="MY BEAUTIFUL CATS IS SO CUTEEEEEEEEEEEEEEEEEEEEE AMAZING <3 <3 <3 alt text"
             className={cn(
               "w-full object-cover block object-center border-white dark:border-[#121212] md:border-[10px] md:rounded-3xl",
               "h-[250px] lg:h-[350px] xl:h-[400px]"
             )}
-            // quality={100}
-            textMessage="hgihjugiu"
+            quality={100}
             width={3000}
             height={1810}
           />
@@ -87,6 +88,7 @@ export const Header = (): ReactElement => {
 
       <div className="shrink-0 flex items-center justify-start mx-auto w-5/6 lg:w-2/4">
         <ImageZoomer
+          as={Image}
           alt="profile"
           className={cn(
             "-mt-16 h-32 w-32 rounded-lg transform transition-all hover:scale-110", {
