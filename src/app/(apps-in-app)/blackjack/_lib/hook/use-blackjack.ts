@@ -63,9 +63,12 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
 
   reset: () =>
     set({
+      balance: 0,
       bet: 0,
       bets: [],
       gameStatus: "BALANCE_START",
+
+      deck: [],
       playerCards: [],
       croupierCards: [],
     }),
