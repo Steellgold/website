@@ -1,17 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Club, Diamond, Heart, Spade } from "lucide-react";
 import { ReactElement } from "react";
-
-type Suit = "Hearts" | "Diamonds" | "Clubs" | "Spades";
-type Rank = "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "J" | "Q" | "K" | "A";
-// https://www.brugo.be/wp-content/uploads/2023/10/valeur-des-cartes.png
-
-
-type Card = {
-  suit: Suit;
-  rank: Rank;
-  isHidden: boolean;
-}
+import { Card, Suit } from "../_lib/blackjack.types";
 
 const suitToIcon = (suit: Suit): ReactElement => {
   switch (suit) {
@@ -26,12 +16,16 @@ const suitToIcon = (suit: Suit): ReactElement => {
   }
 }
 
-export const BlackjackCard = ({ suit, rank, isHidden }: Card): ReactElement => {
+export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast }: Card): ReactElement => {
 
   return (
-    <div className={cn("relative bg-[#f5f7f6] w-24 h-36 rounded-md shadow-md", {
-      "bg-blue-50 border-blue-100 border-2": isHidden
-    })}>
+    <div className={
+      cn(
+        "relative bg-[#f5f7f6] w-24 h-36 rounded-md shadow-md", {
+          "bg-blue-50 border-blue-100 border-2 transition-transform duration-300 ease-in-out": isHidden,
+          "hover:translate-y-[-5rem] hover:-rotate-12 transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
+        }
+    )}>
       {rank && !isHidden &&
         <div className={cn({
           "text-[#e04f4f]": ["Hearts", "Diamonds"].includes(suit),
@@ -54,6 +48,26 @@ export const BlackjackCard = ({ suit, rank, isHidden }: Card): ReactElement => {
             {suitToIcon(suit)}
           </div>
       }
+    </div>
+  )
+}
+
+export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement => {
+  return (
+    <div className="w-24 h-36 group">
+      {cards.map((card, index) => (
+
+        <div
+          key={index}
+          style={{
+            zIndex: index,
+            marginLeft: `${index * (3 * 0.80)}rem`,
+          }}
+          className="absolute"
+        >
+          <BlackjackCard {...card} isStacked={true} isStackedLast={index === cards.length - 1 ? index : undefined} />
+        </div>
+      ))}
     </div>
   )
 }
