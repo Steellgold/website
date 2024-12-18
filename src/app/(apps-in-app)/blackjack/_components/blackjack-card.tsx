@@ -53,6 +53,10 @@ export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast }: Card): Re
 }
 
 export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement => {
+  if (cards.length === 0) {
+    return <EmptyBlackjackCard />
+  }
+
   return (
     <div className="w-24 h-36 group">
       {cards.map((card, index) => (
