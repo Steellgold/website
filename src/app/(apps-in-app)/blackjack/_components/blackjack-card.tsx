@@ -23,10 +23,10 @@ export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, owner = "PL
       cn(
         "relative bg-[#f5f7f6] w-24 h-36 rounded-md shadow-md", {
           "bg-blue-50 border-blue-100 border-2 transition-transform duration-300 ease-in-out": isHidden,
-          "hover:-rotate-12 transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
+          "transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
           
-          "hover:translate-y-[-5rem]": !isStackedLast && !isHidden && owner === "PLAYER",
-          "hover:translate-y-[5rem]": !isStackedLast && !isHidden && owner === "DEALER",
+          "hover:translate-y-[-5rem] hover:-rotate-12": !isStackedLast && !isHidden && owner === "PLAYER",
+          "hover:translate-y-[5rem] hover:rotate-12": !isStackedLast && !isHidden && owner === "DEALER",
         }
     )}>
       {rank && !isHidden &&
@@ -71,7 +71,6 @@ export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement 
   return (
     <div className="w-24 h-36 group">
       {cards.map((card, index) => (
-
         <div
           key={index}
           style={{
