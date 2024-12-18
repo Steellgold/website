@@ -12,7 +12,7 @@ import {
 } from "../ui/sheet"
 import { use2048 } from "./hooks/use-2048";
 
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { useLang } from "@/lib/stores/lang.store";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { E2048_Tile } from "./tile";

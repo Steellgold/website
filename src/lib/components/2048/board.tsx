@@ -3,7 +3,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { use2048 } from "./hooks/use-2048";
 import { cn } from "@/lib/utils";
-import { getTileColor } from "@/lib/2048.utlils";
 import { ClientOnly } from "../client-only";
 import useTouchScreenSwipe from "@/lib/hooks/use-touch-screen-wipe";
 import { E2048_Tile } from "./tile";

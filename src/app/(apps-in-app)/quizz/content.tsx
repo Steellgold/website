@@ -9,7 +9,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { Angry, Smile } from "lucide-react";
 import { Badge } from "@/lib/components/ui/badge";
 import { useLang } from "@/lib/stores/lang.store";
-import { Buttons } from "@/lib/components/buttons";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/lib/components/ui/dialog";
 import { Checkbox } from "@/lib/components/ui/checkbox";

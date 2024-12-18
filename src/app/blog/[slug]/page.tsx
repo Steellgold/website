@@ -18,7 +18,7 @@ type PageProps = {
 
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   const params = await props.params;
-  const randomString = Math.random().toString(36).substring(7);
+
   const response = await fetch(`https://simplist.blog/api/${params.slug}`, {
     headers: {
       "x-api-key": process.env.SIMPLIST_API_KEY!

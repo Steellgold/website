@@ -2,7 +2,6 @@
 
 import { use2048 } from "@/lib/components/2048/hooks/use-2048";
 import { Button } from "@/lib/components/ui/button";
-import { Card, CardContent } from "@/lib/components/ui/card";
 import { useLang } from "@/lib/stores/lang.store";
 import { ReactElement } from "react";
 
