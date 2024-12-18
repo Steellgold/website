@@ -10,6 +10,7 @@ export const BlackjackCard: Component<BlackjackCardProps> = ({ children, classNa
   return (
     <div className={cn(
       "bg-white bg-opacity-10 p-3 rounded-md border border-white border-opacity-20",
+      "transition-colors duration-300 ease-in-out",
       className
     )} {...props}>
       {children}
