@@ -14,8 +14,12 @@ export const createDeck = (): Card[] => {
   return shuffle(deck);
 }
 
-const shuffle = (deck: Card[]): Card[] => {
+export const shuffle = (deck: Card[]): Card[] => {
   let currentIndex = deck.length, randomIndex;
+
+  // const reloadCardIndex = Math.floor(deck.length * 0.125) + Math.floor(Math.random() * Math.floor(deck.length * 0.875));
+
+  // deck[reloadCardIndex] = { ...deck[reloadCardIndex], isReloadCard: true };
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -25,7 +29,8 @@ const shuffle = (deck: Card[]): Card[] => {
   }
 
   return deck;
-}
+};
+
 
 export const handValue = (cards: Card[]): number => {
   const values = cards.map((card) => card.rank);
