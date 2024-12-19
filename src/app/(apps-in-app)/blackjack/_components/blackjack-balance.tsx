@@ -3,9 +3,7 @@
 import { ReactElement, useState } from "react";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { useLang } from "@/lib/stores/lang.store";
-import { Separator } from "@/lib/components/ui/separator";
 import { Moon, RefreshCcw, Sun } from "lucide-react";
-import { ThemeSwitcher } from "@/lib/components/theme-switcher";
 import { useTheme } from "next-themes";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackButton } from "./ui/blackjack-button";
@@ -43,7 +41,7 @@ export const BlackjackBalance = (): ReactElement => {
 }
 
 export const BlackjackStarting = (): ReactElement => {
-  const { setBalance, setGameStatus, reset, setDeck } = useBlackjack();
+  const { setBalance, setGameStatus, reset, setDeck, startGameTimer } = useBlackjack();
   const { lang } = useLang();
 
   const [inputValue, setInputValue] = useState<number>(0);
@@ -83,6 +81,7 @@ export const BlackjackStarting = (): ReactElement => {
             onClick={() => {
               reset();
               setDeck(createDeck())
+              startGameTimer();
               setBalance(inputValue);
               setGameStatus("BETTING");
             }}
