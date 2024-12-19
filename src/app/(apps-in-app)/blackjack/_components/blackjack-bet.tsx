@@ -8,6 +8,7 @@ import { Undo } from "lucide-react";
 import { ChipValue } from "../_lib/blackjack.types";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackButton } from "./ui/blackjack-button";
+import { useState } from "react";
 
 export const BlackjackBet = () => {
   const { lang } = useLang();
@@ -111,15 +112,17 @@ export const BlackjackBets = () => {
   const { bets } = useBlackjack();
   const { lang } = useLang();
 
+  const [isHover, setIsHover] = useState(false);
+
   return (
-    <div className="relative w-14 h-14">
+    <div className="relative w-14 h-14 group" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
       {bets && bets.length >= 1 ? bets.map((value, index) => (
         <div
           key={value}
-          className="absolute"
+          className="absolute transition-transform duration-300 ease-in-out"
           style={{
-            transform: `translateY(${index * -5}px)`,
-            zIndex: index,
+            transform: isHover ? `translateY(${index * -5}px)` : `translateY(0px)`,
+            zIndex: index
           }}
         >
           <BlackjackChip value={value as ChipValue} empiled mini={false} />
