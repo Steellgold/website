@@ -11,7 +11,7 @@ import { BlackjackChoice } from "./blackjack-choice";
 import { BlackjackDeck } from "./blackjack-deck";
 
 export const BlackjackBoard = (): ReactElement => {
-  const { gameStatus, bet } = useBlackjack();
+  const { gameStatus, bet, croupierCards, playerCards } = useBlackjack();
 
   if (gameStatus === "BALANCE_START") {
     return <BlackjackStarting />
@@ -27,38 +27,33 @@ export const BlackjackBoard = (): ReactElement => {
         {/* DEALER */}
         <div className="absolute top-5 left-1/2 transform -translate-x-1/2 flex flex-col gap-1.5">
           <BlackjackCard>
-            <BlackjackCardsStack cards={[
-              { rank: "10", suit: "Hearts", isHidden: false, owner: "DEALER" },
-              { rank: "A", suit: "Spades", isHidden: true, owner: "DEALER" },
-            ]} />
+            <BlackjackCardsStack cards={croupierCards} />
           </BlackjackCard>
 
           <BlackjackCard className="flex justify-center py-2">
-            Total: {handValue([
-              { rank: "10", suit: "Hearts", isHidden: false, owner: "DEALER" }
-            ])}
+            Total: {handValue(croupierCards)}
           </BlackjackCard>
         </div>
 
         {/* PLAYER */}
         <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex flex-col gap-1.5">
-          <BlackjackCard className="flex justify-center py-2">
-            Total: {handValue([
-              { rank: "10", suit: "Hearts", isHidden: false },
-              { rank: "A", suit: "Spades", isHidden: false },
-            ])}
+          <BlackjackCard className="flex justify-center py-2 flex-row items-center gap-2">
+            <span>Total: {handValue(playerCards)}</span>
+            {handValue(playerCards) > 21 && (
+              <>
+                <span>&bull;</span>
+                <span className="font-bold text-red-500">BUST</span>
+              </>
+            )}
           </BlackjackCard>
 
           <BlackjackCard>
-            <BlackjackCardsStack cards={[
-              { rank: "10", suit: "Hearts", isHidden: false },
-              { rank: "A", suit: "Spades", isHidden: false },
-            ]} />
+            <BlackjackCardsStack cards={playerCards} />
           </BlackjackCard>
         </div>
 
         {/* BUTTONS */}
-        {/* <BlackjackBet /> */}
+        <BlackjackBet />
         <BlackjackChoice />
         <BlackjackDeck />
 
