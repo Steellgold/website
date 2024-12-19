@@ -11,16 +11,24 @@ import { BlackjackButton } from "./ui/blackjack-button";
 
 export const BlackjackBet = () => {
   const { lang } = useLang();
-  const { gameStatus, bets, removeBet } = useBlackjack();
+  const { gameStatus, bets, removeBet, gameStartTimer } = useBlackjack();
 
-  if (gameStatus !== "BETTING") return <p className="p-4 bg-red-500">Throw error: gameStatus must be BETTING to render BlackjackBet component</p>;
+  if (gameStatus !== "BETTING" || gameStartTimer <= 0) return <></>;
 
   return (
     <div>
       <BlackjackCard className="flex flex-col items-center gap-2">
-        <span className="text-lg">
-          {lang === "fr" ? "Choix des mises" : "Betting"}
-        </span>
+        <div className="flex items-center gap-1.5">
+          <span className="text-lg">
+            {lang === "fr" ? "Choix des mises" : "Betting"}
+          </span>
+
+          &bull;
+
+          <span>
+            {lang == "fr" ? `${gameStartTimer}s pour miser` : `${gameStartTimer}s to bet`}
+          </span>
+        </div>
 
         <div className="flex items-center gap-1.5">
           <BlackjackButton
@@ -44,15 +52,12 @@ export const BlackjackBet = () => {
 
 type BlackjackChipProps = {
   value: ChipValue;
-
   mini?: boolean;
-
   empiled?: boolean;
-  empiledTotal?: number;
 };
 
-export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, empiledTotal, mini }) => {
-  const { balance, addBet } = useBlackjack();
+export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, mini }) => {
+  const { balance, addBet, bet} = useBlackjack();
   const { lang } = useLang();
 
   return (
@@ -92,9 +97,9 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, e
         })}>{value}</span>
       )}
 
-      {empiled && empiledTotal && (
+      {empiled && (
         <span className="text-xs">
-          {empiledTotal}
+          {bet}
           {lang === "fr" ? "€" : "$"}
         </span>
       )}
@@ -104,6 +109,7 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, e
 
 export const BlackjackBets = () => {
   const { bets } = useBlackjack();
+  const { lang } = useLang();
 
   return (
     <div className="relative w-14 h-14">
@@ -116,17 +122,12 @@ export const BlackjackBets = () => {
             zIndex: index,
           }}
         >
-          <BlackjackChip
-            value={value as ChipValue}
-            empiled
-            mini={false}
-            empiledTotal={bets.reduce((acc, curr) => acc + curr, 0)}
-          />
+          <BlackjackChip value={value as ChipValue} empiled mini={false} />
         </div>
       )) : (
         <div>
           <div className="w-14 h-14 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center">
-            <span className="text-xs">0</span>
+            <span className="text-xs">0{lang == "fr" ? "€" : "$"}</span>
           </div>
         </div>
       )}

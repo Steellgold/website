@@ -6,8 +6,11 @@ import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { useLang } from "@/lib/stores/lang.store";
 
 export const BlackjackChoice = (): ReactElement => {
-  const { hit } = useBlackjack();
+  const { hit, gameStatus, croupierCards, playerCards } = useBlackjack();
   const { lang } = useLang();
+
+  if (gameStatus !== "PLAYING") return <></>;
+  if (playerCards.length < 2 || croupierCards.length < 2) return <></>;
 
   return (
     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"> 
