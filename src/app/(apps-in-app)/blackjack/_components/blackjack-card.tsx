@@ -16,24 +16,25 @@ const suitToIcon = (suit: Suit): ReactElement => {
   }
 }
 
-export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, owner = "PLAYER" }: Card): ReactElement => {
+export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, isReloadCard, owner = "PLAYER" }: Card): ReactElement => {
 
   return (
     <div className={
       cn(
-        "relative bg-[#f5f7f6] w-24 h-36 rounded-md", {
+        "relative bg-[#f5f7f6] w-24 h-36 rounded-md border-2 transition-transform duration-300 ease-in-out", {
           "shadow-md": !isHidden,
-          "bg-blue-50 border-blue-100 border-2 transition-transform duration-300 ease-in-out": isHidden,
+          "bg-red-600 border-red-500": isReloadCard,
+          "bg-blue-50 border-blue-100": isHidden && !isReloadCard,
           "transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
           
           "hover:translate-y-[-5rem] hover:-rotate-12": !isStackedLast && !isHidden && owner === "PLAYER",
           "hover:translate-y-[5rem] hover:rotate-12": !isStackedLast && !isHidden && owner === "DEALER",
         }
     )}>
-      {rank && !isHidden &&
+      {rank && !isHidden && !isReloadCard &&
         <div className={cn({
           "text-[#e04f4f]": ["Hearts", "Diamonds"].includes(suit),
-          "text-black": ["Clubs", "Spades"].includes(suit)          
+          "text-black": ["Clubs", "Spades"].includes(suit)
         })}>
           {/* TOP LEFT */}
           <span className="absolute top-0 left-0 p-1.5 font-bold">{rank}</span>
@@ -43,16 +44,30 @@ export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, owner = "PL
       }
 
       {/* CENTERED */}
-      {isHidden ? (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-1.5">
-          <div className="flex flex-row gap-1.5">
-            <Heart size={16} stroke="#bfdbfe" fill="#bfdbfe" />
-            <Spade size={16} stroke="#a2bcdb" fill="#a2bcdb" />
+      {isHidden || isReloadCard ? (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-0.5">
+          <div className="flex flex-row gap-0.5">
+            <Heart size={16} className={cn({
+              "fill-[#bfdbfe] stroke-inherit": isHidden,
+              "fill-red-800 stroke-inherit": isReloadCard
+            })} />
+            
+            <Spade size={16} className={cn({
+              "fill-[#a2bcdb] stroke-inherit": isHidden,
+              "fill-red-700 stroke-inherit": isReloadCard
+            })} />
           </div>
 
-          <div className="flex flex-row gap-1.5">
-            <Club size={16} stroke="#a2bcdb" fill="#a2bcdb" />
-            <Diamond size={16} stroke="#bfdbfe" fill="#bfdbfe" />
+          <div className="flex flex-row gap-0.5">
+            <Club size={16} className={cn({
+              "fill-[#a2bcdb] stroke-inherit": isHidden,
+              "fill-red-700 stroke-inherit": isReloadCard
+            })} />
+
+            <Diamond size={16} className={cn({
+              "fill-[#bfdbfe] stroke-inherit": isHidden,
+              "fill-red-800 stroke-inherit": isReloadCard
+            })} />
           </div>
         </div>
       ) : (

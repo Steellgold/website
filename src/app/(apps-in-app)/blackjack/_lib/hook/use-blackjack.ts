@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { Card, GameStatus } from "../blackjack.types";
-import { createDeck } from "../blackjack.utils";
+import { createDeck, shuffle } from "../blackjack.utils";
 
 type BlackjackState = {
   balance: number;
@@ -100,9 +100,16 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
   setDeck: (cards) => set({ deck: cards }),
 
   hit: (who: "player" | "dealer", isHidden: boolean = false) => {
-    const { deck, playerCards, croupierCards } = get();
+    const { deck, playerCards, croupierCards, setDeck } = get();
+
     const card = deck.pop();
     if (!card) throw new Error("No more cards in the deck");
+
+    // if (card.isReloadCard) {
+    //   const remainingCards = [...deck];
+    //   const newDeck = createDeck();
+    //   setDeck(shuffle([...newDeck, ...remainingCards]));
+    // }
 
     if (who === "player") {
       set({ playerCards: [...playerCards, { ...card, isHidden: false }] });

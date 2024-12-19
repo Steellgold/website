@@ -9,6 +9,8 @@ export type Card = {
   suit: Suit;
   rank: Rank;
 
+  isReloadCard?: boolean;
+
   isStacked?: boolean;
   isStackedLast?: number;
 
