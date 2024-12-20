@@ -54,7 +54,7 @@ const Layout: Component<PropsWithChildren> = ({ children }) => {
         )}
         
         <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
-          <Toaster />
+          <Toaster richColors />
 
           {children}
         </ThemeProvider>
