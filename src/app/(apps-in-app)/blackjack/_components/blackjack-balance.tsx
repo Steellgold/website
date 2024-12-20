@@ -1,95 +1,125 @@
 "use client";
 
+import { useLang } from "@/lib/stores/lang.store";
 import { ReactElement, useState } from "react";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
-import { useLang } from "@/lib/stores/lang.store";
-import { Moon, RefreshCcw, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackButton } from "./ui/blackjack-button";
 import { createDeck } from "../_lib/blackjack.utils";
-
-export const BlackjackBalance = (): ReactElement => {
-  const { theme, setTheme } = useTheme();
-  const { lang, setLang } = useLang();
-
-  const { balance, setGameStatus } = useBlackjack();
-  
-  return (
-    <div className="flex flex-col  sm:flex-row gap-1">
-      {/* <BlackjackCard className="flex items-center gap-2">
-        <h1 className="text-lg">
-          {lang === "fr" ? "Solde" : "Balance"}: {balance}{lang === "fr" ? "€" : "$"}
-        </h1>
-
-        <BlackjackButton onClick={() => setGameStatus("BALANCE_START")}>
-          <RefreshCcw size={16} className="group-hover:rotate-6 transition-transform duration-300 ease-in-out" />
-        </BlackjackButton>
-      </BlackjackCard> */}
-
-      <BlackjackButton className="justify-center bg-white bg-opacity-10 text-white rounded-md px-3 py-2 flex items-center" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-        <Sun size={16} className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-        <Moon size={16} className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-        <span className="sr-only">Toggle theme</span>
-      </BlackjackButton>
-
-      <BlackjackButton className="justify-center bg-white bg-opacity-10 text-white rounded-md px-3 py-2" onClick={() => setLang(lang === "fr" ? "en" : "fr")}>
-        {lang === "fr" ? "🇺🇸" : "🇫🇷"}
-      </BlackjackButton>
-    </div>
-  )
-}
+import { BlackjackInput } from "./ui/blackjack-input";
+import { BlackjackButtons } from "./blackjack-menu";
+import { supabase } from "@/lib/utils/db/supabase";
+import { toast } from "sonner";
+import { cn } from "@/lib/utils";
 
 export const BlackjackStarting = (): ReactElement => {
   const { setBalance, setGameStatus, reset, setDeck, startGameTimer } = useBlackjack();
   const { lang } = useLang();
 
-  const [inputValue, setInputValue] = useState<number>(0);
+  const [gameCode, setGameCode] = useState("");
+
+  const joinGame = () => {
+    supabase.from("blackjack").select().eq("id", gameCode).then(({ data }) => {
+      if (!data || data.length === 0) {
+        toast.error(lang === "fr" ? "Aucune partie trouvée avec ce code." : "No game found with this code.");
+        return;
+      }
+
+      toast.success(lang === "fr" ? "Partie trouvée, connexion en cours..." : "Game found, connecting...");
+      window.location.href = `/blackjack/${gameCode}`;
+    });
+  }
+
+  const createGame = () => {
+    const id = Math.random().toString(36).substring(2, 6);
+    setTimeout(() => {}, 140);
+
+    supabase.from("blackjack").insert({ id }).then(({ data, error }) => {
+      if (error) {
+        toast.error(lang === "fr" ? "Une erreur s'est produite lors de la création de la partie." : "An error occurred while creating the game.");
+        return;
+      }
+
+      toast.success(lang === "fr" ? "Partie créée, code: " + id : "Game created, code: " + id);
+    });
+  }
 
   return (
-    <div className="flex items-center justify-center h-screen w-screen bg-green-900 relative">
-      <div className="flex flex-col items-center gap-5 p-3">
-        <BlackjackCard className="flex flex-col">
-          <h1 className="text-lg">Blackjack</h1>
-          <p className="text-sm">
-            {
-              lang == "fr"
-                ? "Choissisez combien d'argent vous voulez ajouter sur le solde de votre compte, puis appuyez sur 'Jouer'."
-                : "Choose how much money you want to add to your account balance, then press 'Play'."
+    <div className="flex items-center justify-center h-screen w-screen bg-green-900 relative p-3 sm:p-0">
+      <BlackjackButtons />
+
+      <div className="flex flex-col items-center gap-3">
+        <BlackjackCard className="flex flex-col items-center gap-1 p-3 w-full">
+          <h1 className="text-xl font-extrabold">Blackjack</h1>
+          <p className="text-sm sm:w-[40vh] text-center">
+            {lang === "fr"
+              ? "Jouer contre l'ordinateur ou rejoindre une partie en ligne avec vos amis pour jouer ensemble sur la même table mais chaqu'un avec sa propre main."
+              : "Play against the computer or join an online game with your friends to play together on the same table but each with their own hand."
             }
           </p>
-          <hr className="my-2 border-white border-opacity-15" />
-          <p className="text-xs">
-            {
-              lang == "fr"
-                ? "Aucun argent réel n'est utilisé dans ce jeu, le solde est fictif et c'est vous qui le définissez."
-                : "No real money is used in this game, the balance is fictional and you define it."
-            }
-          </p>
+
+          <hr />
+
+          <div className="flex items-center gap-3">
+            <BlackjackButton
+              className="bg-white bg-opacity-10 text-white rounded-md px-3 py-1 text-sm"
+              size="small"
+              onClick={() => {
+                reset();
+                setDeck(createDeck())
+                startGameTimer();
+                setBalance(100);
+                setGameStatus("BETTING");
+              }}
+            >
+              {lang === "fr" ? "Jouer contre l'ordinateur" : "Play against the computer"}
+            </BlackjackButton>
+          </div>
         </BlackjackCard>
 
-        <div className="flex items-center gap-3">
-          <input
-            type="number"
-            className="w-20 h-8 bg-white bg-opacity-10 text-white text-center rounded-md focus:outline-none"
-            value={inputValue}
-            onChange={(e) => setInputValue(parseInt(e.target.value))}
-          />
+        <BlackjackCard className="flex flex-col sm:flex-row justify-between items-left gap-3 sm:gap-1 p-3 w-full">
+          <div className="flex flex-col gap-0.5">
+            <h1 className="text-lg">{lang === "fr" ? "Rejoindre une table" : "Join a table"}</h1>
+            <span className="text-xs sm:w-[25vh]">
+              {lang === "fr"
+                ? "Demandez le code de la partie à un ami pour le rejoindre sur la même table."
+                : "Ask your friend for the game code to join them on the same table."}
+              </span>
+          </div>
 
-          <BlackjackButton
-            className="bg-white bg-opacity-10 text-white rounded-md px-3 py-1"
-            onClick={() => {
-              reset();
-              setDeck(createDeck())
-              startGameTimer();
-              setBalance(inputValue);
-              setGameStatus("BETTING");
-            }}
-          >
-            {lang === "fr" ? "Jouer" : "Play"}
-          </BlackjackButton>
-        </div>
+          <div className="flex items-center justify-end gap-1">
+            <BlackjackInput placeholder="Code de table" className="sm:w-32" inputSize="small" value={gameCode} onChange={(e) => setGameCode(e.target.value)} />
+            <BlackjackButton className="text-sm" size="small" onClick={joinGame}>
+              {lang === "fr" ? "Rejoindre" : "Join"}
+            </BlackjackButton>
+          </div>
+        </BlackjackCard>
+
+        <BlackjackCard className="flex flex-row justify-between items-left gap-1 p-3 w-full">
+          <div className="flex flex-col gap-0.5">
+            <h1 className="text-lg">{lang === "fr" ? "Créer une table" : "Create a table"}</h1>
+            <span className="text-xs w-[25vh]">
+              {lang === "fr"
+                ? "Créez une table pour que vos amis puissent vous rejoindre en utilisant le code de la partie."
+                : "Create a table for your friends to join you using the game code."}
+              </span>
+          </div>
+
+          <div className="flex items-center gap-1">
+            <BlackjackButton className="text-sm" size="small" onClick={createGame}>
+              {lang === "fr" ? "Nouvelle partie" : "New game"}
+            </BlackjackButton>
+          </div>
+        </BlackjackCard>
       </div>
+
+      <p className={cn(
+        "absolute bottom-5 left-5 text-xs text-white",
+        "transition-opacity duration-300 ease-in-out",
+        "opacity-50 hover:opacity-100"
+      )}>
+        * Balance fictive, aucune mise ou gain réel n'est effectué.
+      </p>
     </div>
   )
 }
