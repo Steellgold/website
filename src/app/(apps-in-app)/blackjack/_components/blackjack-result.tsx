@@ -18,6 +18,8 @@ export const BlackjackResult = (): ReactElement => {
     gameStatus === "DEALER_BUST" ||
     gameStatus === "PLAYER_BUST" ||
     gameStatus === "DOUBLE_BUST" ||
+    gameStatus === "PLAYER_BLACKJACK" ||
+    gameStatus === "DEALER_BLACKJACK" ||
     gameStatus === "DRAW"
   ) {
     let variant: BlackjackCardVariant = "default";
@@ -54,6 +56,16 @@ export const BlackjackResult = (): ReactElement => {
         variant = "warning";
         title = lang === "fr" ? "Égalité" : "Draw";
         message = `${lang === "fr" ? "Vous récupérez votre mise de" : "You get back your bet of"} ${bet}${lang === "fr" ? "€" : "$"}`;
+        break;
+      case "PLAYER_BLACKJACK":
+        variant = "success";
+        title = lang === "fr" ? "Blackjack" : "Blackjack";
+        message = `${lang === "fr" ? "Vous gagnez" : "You win"} ${bet * 2.5}${lang === "fr" ? "€" : "$"}`;
+        break;
+      case "DEALER_BLACKJACK":
+        variant = "destructive";
+        title = lang === "fr" ? "Blackjack" : "Blackjack";
+        message = `${lang === "fr" ? "Vous perdez votre mise de" : "You lose your bet of"} ${bet}${lang === "fr" ? "€" : "$"}`;
         break;
       default:
         break;

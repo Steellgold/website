@@ -7,6 +7,7 @@ export type GameStatus =
   "DEALER_TURN" |
   "DEALER_WIN" | "PLAYER_WIN" |
   "DEALER_BUST"| "PLAYER_BUST" |
+  "DEALER_BLACKJACK" | "PLAYER_BLACKJACK" |
   "DRAW" | "DOUBLE_BUST";
 
 export type ChipValue = 1 | 2 | 5 | 10 | 25 | 100 | 500 | 1000;

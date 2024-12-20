@@ -52,12 +52,36 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
   gameStatus: "BALANCE_START",
 
   distributeCards: () => {
-    const { hit } = get();
-
+    const { hit, setGameStatus, playerCards, croupierCards, setBalance, balance, bet } = get();
+  
     setTimeout(() => hit("player"), 500);
     setTimeout(() => hit("dealer"), 1000);
     setTimeout(() => hit("player"), 1500);
-    setTimeout(() => hit("dealer", true), 2000);
+    setTimeout(() => {
+      hit("dealer", true);
+  
+      const getHandValue = (cards: Card[]) => {
+        let value = cards.reduce((sum, card) => sum + getValueFromRank(card.rank), 0);
+        const hasAce = cards.some((card) => card.rank === "A");
+        if (hasAce && value <= 11) value += 10;
+        return value;
+      };
+  
+      const playerValue = getHandValue(playerCards);
+      const croupierValue = getHandValue(croupierCards);
+  
+      if (playerValue === 21 && croupierValue === 21) {
+        setGameStatus("DRAW");
+        setBalance(balance + bet);
+      } else if (playerValue === 21) {
+        setGameStatus("PLAYER_BLACKJACK");
+        setBalance(balance + bet * 2.5);
+      } else if (croupierValue === 21) {
+        setGameStatus("DEALER_BLACKJACK");
+      } else {
+        setGameStatus("PLAYING");
+      }
+    }, 2000);
   },
 
   gameStartTimer: 0,
@@ -188,19 +212,21 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
     };
 
     const endGame = () => {
+      const { setBet, setBets, setGameStartTimer, setCroupierCards, setPlayerCards, deck, setDeck, startGameTimer } = get();
+    
       setBet(0);
       setBets([]);
       setGameStartTimer(0);
       setCroupierCards([]);
       setPlayerCards([]);
-
-      if (deck.length <= 3) {
+    
+      if (deck.length <= 10) {
         setDeck(shuffle(createDeck()));
       }
-
+    
       setGameStatus("BETTING");
       startGameTimer();
-    }
+    };
 
     const dealCards = () => {
       const { playerCards } = get();
@@ -238,20 +264,30 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
           const { setBalance, balance, bet, gameStatus: finalStatus } = get();
 
           switch (finalStatus) {
-            case "PLAYER_WIN":
-              setBalance(balance + bet * 2);
+            case "PLAYER_BLACKJACK":
+              setBalance(balance + bet * 2.5);
+              console.log("Player blackjack");
               break;
-            case "DEALER_WIN":
+            case "DEALER_BLACKJACK":
+              console.log("Dealer blackjack");
               break;
             case "DRAW":
               setBalance(balance + bet);
+              console.log("Draw");
               break;
-            case "PLAYER_BUST":
+            case "PLAYER_WIN":
+              setBalance(balance + bet * 2); 
+              console.log("Player win");
+              break;
+            case "DEALER_WIN":
+              console.log("Dealer win");
               break;
             case "DEALER_BUST":
               setBalance(balance + bet * 2);
+              console.log("Dealer bust");
               break;
             case "DOUBLE_BUST":
+              console.log("Double bust");
               break;
             default:
               console.log("Unhandled game status:", finalStatus);
