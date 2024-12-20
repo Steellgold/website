@@ -1,7 +1,7 @@
 "use client";
 
 import { create } from "zustand";
-import { Card, GameStatus } from "../blackjack.types";
+import { Card, GameStatus, SEC_TO_BET } from "../blackjack.types";
 import { createDeck, getValueFromRank, shuffle } from "../blackjack.utils";
 
 type BlackjackState = {
@@ -15,6 +15,7 @@ type BlackjackState = {
   gameStatus: GameStatus;
 
   gameStartTimer: number;
+  setGameStartTimer: (timer: number) => void;
   startGameTimer: () => void;
 
   distributeCards: () => void;
@@ -24,7 +25,10 @@ type BlackjackState = {
   deck: Card[];
 
   setBalance: (balance: number) => void;
+
   setBet: (bet: number) => void;
+  setBets: (bets: number[]) => void;
+  
   setGameStatus: (status: GameStatus) => void;
   setPlayerCards: (cards: Card[]) => void;
   setCroupierCards: (cards: Card[]) => void;
@@ -33,12 +37,17 @@ type BlackjackState = {
   hit: (who: "player" | "dealer", isHidden?: boolean) => Card;
   stand: () => void;
   reset: () => void;
+
+  timerId: NodeJS.Timeout | null;
+  setTimerId: (id: NodeJS.Timeout | null) => void;
 };
 
 export const useBlackjack = create<BlackjackState>((set, get) => ({
   balance: 0,
   bet: 0,
+  
   bets: [],
+  setBets: (bets) => set({ bets }),
 
   gameStatus: "BALANCE_START",
 
@@ -52,11 +61,29 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
   },
 
   gameStartTimer: 0,
+  setGameStartTimer: (timer) => set({ gameStartTimer: timer }),
+
+  timerId: null,
+  setTimerId: (id) => set({ timerId: id }),
+
   startGameTimer: () => {
-    set({ gameStartTimer: 10 });
+    const { setGameStatus, setTimerId, gameStartTimer, gameStatus } = get();
+
+    if (get().timerId) {
+      clearInterval(get().timerId!);
+      set({ timerId: null });
+    }
+
+    set({ gameStartTimer: SEC_TO_BET });
   
     const interval = setInterval(() => {
-      const { bet, distributeCards } = get();
+      const { bet, distributeCards, gameStatus: currentStatus } = get();
+
+      if (currentStatus !== "PLAYING" && currentStatus !== "BETTING") {
+        clearInterval(interval);
+        set({ timerId: null });
+        return;
+      }
   
       if (bet === 0) {
         return;
@@ -64,16 +91,19 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
   
       set((state) => {
         if (state.gameStartTimer <= 1) {
+          setGameStatus("PLAYING");
           clearInterval(interval);
-          set({ gameStatus: "PLAYING" });
-  
+          set({ timerId: null });
+
           distributeCards();
           return { gameStartTimer: 0 };
         }
         return { gameStartTimer: state.gameStartTimer - 1 };
       });
     }, 1000);
-  },  
+
+    setTimerId(interval);
+  },
 
   playerCards: [],
   croupierCards: [],
@@ -85,15 +115,23 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
     bet: state.bet + bet,
   })),
 
-  removeBet: () => set((state) => ({
-    bets: state.bets.slice(0, -1),
-    balance: state.balance + state.bets[state.bets.length - 1],
-    bet: state.bet - state.bets[state.bets.length - 1],
-  })),
+  removeBet: () => set((state) => {
+    if (state.bets.length === 0) return state;
+
+    const lastBet = state.bets[state.bets.length - 1];
+    return {
+      bets: state.bets.slice(0, -1),
+      balance: state.balance + lastBet,
+      bet: state.bet - lastBet,
+    };
+  }),
 
   setBalance: (balance) => set({ balance }),
   setBet: (bet) => set({ bet }),
-  setGameStatus: (status) => set({ gameStatus: status }),
+  setGameStatus: (status) => {
+    console.log("Game status updated to:", status, "Stack trace:", new Error().stack);
+    set({ gameStatus: status });
+  },
   setPlayerCards: (cards) => set({ playerCards: cards }),
   setCroupierCards: (cards) => set({ croupierCards: cards }),
   setDeck: (cards) => set({ deck: cards }),
@@ -115,42 +153,123 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
   },
 
   stand: () => {
-    const { croupierCards, deck, setCroupierCards, setDeck, setGameStatus } = get();
+    const {
+      croupierCards, deck,
+      setCroupierCards, setPlayerCards,
+      setDeck,
+      gameStatus, setGameStatus, setGameStartTimer,
+      setBet, setBets,
+      timerId, setTimerId,
+      startGameTimer
+    } = get();
+
+    if (timerId) {
+      clearInterval(timerId);
+      setTimerId(null);
+    }
+
     setGameStatus("DEALER_TURN");
-    
+
     const revealedCards = croupierCards.map((card) => ({ ...card, isHidden: false }));
     setCroupierCards(revealedCards);
-  
+
     let currentCards = revealedCards;
     let currentDeck = [...deck];
-  
+
     const getHandValue = (cards: Card[]) => {
       let value = cards.reduce((sum, card) => sum + getValueFromRank(card.rank), 0);
       const hasAce = cards.some((card) => card.rank === "A");
-  
+
       if (hasAce && value <= 11) {
         value += 10;
       }
-  
+
       return value;
     };
-  
-    let handValue = getHandValue(currentCards);
-  
-    while (handValue < 17) {
-      const newCard = currentDeck.pop();
-      if (!newCard) throw new Error("No more cards in the deck");
-  
-      currentCards = [...currentCards, { ...newCard, isHidden: false }];
-      handValue = getHandValue(currentCards);
-    }
-  
-    setCroupierCards(currentCards);
-    setDeck(currentDeck);
-    setGameStatus("GAME_OVER");
-  },  
 
-  reset: () =>
+    const endGame = () => {
+      setBet(0);
+      setBets([]);
+      setGameStartTimer(0);
+      setDeck(shuffle(createDeck()));
+      setCroupierCards([]);
+      setPlayerCards([]);
+
+      setGameStatus("BETTING");
+      startGameTimer();
+    }
+
+    const dealCards = () => {
+      const { playerCards } = get();
+
+      let dealerHandValue = getHandValue(currentCards);
+      let playerHandValue = getHandValue(playerCards);
+
+      if (dealerHandValue < 17) {
+        const newCard = currentDeck.pop();
+        if (!newCard) throw new Error("No more cards in the deck");
+
+        currentCards = [...currentCards, { ...newCard, isHidden: false, owner: "DEALER" }];
+        setCroupierCards([...currentCards]);
+        setDeck(currentDeck);
+
+        setTimeout(dealCards, 500);
+      } else {
+        if (dealerHandValue > 21 && playerHandValue > 21) {
+          setGameStatus("DOUBLE_BUST");
+        } else if (playerHandValue > 21) {
+          setGameStatus("PLAYER_BUST");
+        } else if (dealerHandValue > 21) {
+          setGameStatus("DEALER_BUST");
+        } else {
+          if (playerHandValue > dealerHandValue) {
+            setGameStatus("PLAYER_WIN");
+          } else if (playerHandValue < dealerHandValue) {
+            setGameStatus("DEALER_WIN");
+          } else {
+            setGameStatus("DRAW");
+          }
+        }
+
+        setTimeout(() => {
+          const { setBalance, balance, bet, gameStatus: finalStatus } = get();
+
+          switch (finalStatus) {
+            case "PLAYER_WIN":
+              setBalance(balance + bet * 2);
+              break;
+            case "DEALER_WIN":
+              break;
+            case "DRAW":
+              setBalance(balance + bet);
+              break;
+            case "PLAYER_BUST":
+              break;
+            case "DEALER_BUST":
+              setBalance(balance + bet * 2);
+              break;
+            case "DOUBLE_BUST":
+              break;
+            default:
+              console.log("Unhandled game status:", finalStatus);
+          }
+
+          endGame();
+        }, 1200)
+      }
+    };
+
+    dealCards();
+  },
+
+  reset: () => {
+    const { timerId, setTimerId } = get();
+
+    if (timerId) {
+      clearInterval(timerId);
+      setTimerId(null);
+    }
+
     set({
       balance: 0,
       bet: 0,
@@ -160,5 +279,7 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
       deck: [],
       playerCards: [],
       croupierCards: [],
-    }),
+      gameStartTimer: 0,
+    });
+  },
 }));
