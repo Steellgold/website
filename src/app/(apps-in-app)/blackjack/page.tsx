@@ -42,9 +42,13 @@ export const viewport: Viewport = {
 
 const Page = (): ReactElement => {
   return (
-    <div className="text-white">
-      <BlackjackBoard />
-    </div>
+    <>
+      <link rel="icon" href="/_static/blackjack-icon.png" type="image/png" sizes="32x32" />
+
+      <div className="text-white">
+        <BlackjackBoard />
+      </div>
+    </>
   )
 }
 
