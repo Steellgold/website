@@ -36,16 +36,19 @@ export type Database = {
     Tables: {
       blackjack: {
         Row: {
+          code: string
           createdAt: string
-          id: string
+          statis: Database["public"]["Enums"]["GAME_STATUS"] | null
         }
         Insert: {
+          code: string
           createdAt?: string
-          id: string
+          statis?: Database["public"]["Enums"]["GAME_STATUS"] | null
         }
         Update: {
+          code?: string
           createdAt?: string
-          id?: string
+          statis?: Database["public"]["Enums"]["GAME_STATUS"] | null
         }
         Relationships: []
       }
@@ -57,7 +60,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      GAME_STATUS: "WAITING" | "PLAYING"
     }
     CompositeTypes: {
       [_ in never]: never
