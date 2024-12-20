@@ -23,7 +23,7 @@ export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, isReloadCar
   return (
     <div className={cn(
       "relative bg-[#f5f7f6] rounded-md border-2 transition-transform duration-300 ease-in-out",
-      "w-14 h-26 sm:w-24 sm:h-36",
+      "w-20 h-28 sm:w-24 sm:h-36",
       {
         "shadow-md": !isHidden,
         "bg-red-600 border-red-500": isReloadCard,
@@ -89,7 +89,7 @@ export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement 
   }
 
   return (
-    <div className="w-24 h-36 group">
+    <div className="w-20 h-28 sm:w-24 sm:h-36 group">
       {cards.map((card, index) => (
         <div
           key={index}
@@ -108,7 +108,7 @@ export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement 
 
 export const EmptyBlackjackCard = (): ReactElement => {
   return (
-    <div className={cn("relative border-2 border-dashed border-[#f5f7f6] w-24 h-36 rounded-md shadow-md")}>
+    <div className={cn("relative border-2 border-dashed border-[#f5f7f6] w-20 h-28 sm:w-24 sm:h-36 rounded-md shadow-md")}>
       <div className="select-none">&nbsp;</div>
     </div>
   )
