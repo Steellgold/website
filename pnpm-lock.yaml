@@ -117,6 +117,9 @@ importers:
       image-zoomer-react:
         specifier: ^1.0.7
         version: 1.0.7(@emotion/is-prop-valid@1.2.2)
+      just-random-names:
+        specifier: ^1.0.4
+        version: 1.0.4
       lucide-react:
         specifier: ^0.372.0
         version: 0.372.0(react@19.0.0)
@@ -2990,6 +2993,9 @@ packages:
   jsx-ast-utils@3.3.5:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
+
+  just-random-names@1.0.4:
+    resolution: {integrity: sha512-Qi3gxj4oyaSLo/B6BkYohfnPw2mEnvJJuT4N+lVA6b7Mj35KwELMwJ7+w3VumquIcQ6Bl6aam8mHzKhZGSSQTA==}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -7488,6 +7494,8 @@ snapshots:
       array.prototype.flat: 1.3.3
       object.assign: 4.1.5
       object.values: 1.2.0
+
+  just-random-names@1.0.4: {}
 
   keyv@4.5.4:
     dependencies:

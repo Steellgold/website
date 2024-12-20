@@ -34,7 +34,21 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blackjack: {
+        Row: {
+          createdAt: string
+          id: string
+        }
+        Insert: {
+          createdAt?: string
+          id: string
+        }
+        Update: {
+          createdAt?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
