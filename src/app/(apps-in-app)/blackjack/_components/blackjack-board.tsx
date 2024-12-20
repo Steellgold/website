@@ -9,12 +9,18 @@ import { handValue } from "../_lib/blackjack.utils";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackChoice } from "./blackjack-choice";
 import { BlackjackDeck } from "./blackjack-deck";
+import { useLang } from "@/lib/stores/lang.store";
+import { confettiBasic } from "@/lib/components/confetti";
+import { BlackjackResult } from "./blackjack-result";
 
 export const BlackjackBoard = (): ReactElement => {
   const { gameStatus, bet, croupierCards, playerCards } = useBlackjack();
+  const { lang } = useLang();
 
-  if (gameStatus === "BALANCE_START") {
-    return <BlackjackStarting />
+  if (gameStatus === "BALANCE_START") return <BlackjackStarting />
+
+  if (gameStatus === "PLAYER_WIN") {
+    confettiBasic();
   }
 
   return (
@@ -30,10 +36,18 @@ export const BlackjackBoard = (): ReactElement => {
             <BlackjackCardsStack cards={croupierCards} />
           </BlackjackCard>
 
-          <BlackjackCard className="flex justify-center py-2">
-            Total: {handValue(croupierCards)}
+          <BlackjackCard className="flex justify-center py-2 flex-row items-center gap-2">
+            <span>Total: {handValue(croupierCards)}</span>
+            {handValue(croupierCards) > 21 && (
+              <>
+                <span>&bull;</span>
+                <span className="font-bold text-red-500">BUST</span>
+              </>
+            )}
           </BlackjackCard>
         </div>
+
+        <BlackjackResult />
 
         {/* PLAYER */}
         <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex flex-col gap-1.5">
@@ -58,9 +72,11 @@ export const BlackjackBoard = (): ReactElement => {
         <BlackjackDeck />
 
         {/* BETS */}
-        <BlackjackCard className="absolute bottom-5 right-5">
-          <BlackjackBets />
-        </BlackjackCard>
+        <div className="absolute bottom-5 right-5">
+          <BlackjackCard>
+            <BlackjackBets />
+          </BlackjackCard>
+        </div>
       </div>
 
       <div className="absolute inset-0 [background-image:radial-gradient(circle,_rgba(255,255,255,0.1)_100%,_transparent_0%)] opacity-10 z-[1]"></div>
