@@ -108,7 +108,7 @@ export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement 
 
 export const EmptyBlackjackCard = (): ReactElement => {
   return (
-    <div className={cn("relative border-2 border-dashed border-[#f5f7f6] w-20 h-28 sm:w-24 sm:h-36 rounded-md shadow-md")}>
+    <div className={cn("relative border-2 border-dashed border-[#f5f7f6]/10 w-20 h-28 sm:w-24 sm:h-36 rounded-md shadow-md")}>
       <div className="select-none">&nbsp;</div>
     </div>
   )

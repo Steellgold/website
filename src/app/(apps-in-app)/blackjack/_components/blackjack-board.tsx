@@ -14,17 +14,17 @@ import { confettiBasic } from "@/lib/components/confetti";
 import { BlackjackResult } from "./blackjack-result";
 import { useMediaQuery } from "usehooks-ts";
 import { cn } from "@/lib/utils";
+import { BlackjackButton } from "./ui/blackjack-button";
+import { Plus } from "lucide-react";
 
 export const BlackjackBoard = (): ReactElement => {
-  const { gameStatus, bet, croupierCards, playerCards, balance } = useBlackjack();
+  const { gameStatus, bet, croupierCards, playerCards, balance, setBalance } = useBlackjack();
   const { lang } = useLang();
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   if (gameStatus === "BALANCE_START") return <BlackjackStarting />
 
-  if (gameStatus === "PLAYER_WIN") {
-    confettiBasic();
-  }
+  if (gameStatus === "PLAYER_WIN") confettiBasic();
 
   return (
     <div className="flex items-center justify-center h-screen w-screen bg-green-900 dark:bg-green-950 relative">
@@ -80,12 +80,21 @@ export const BlackjackBoard = (): ReactElement => {
           "left-8": isMobile,
         })}>
           <BlackjackCard
-            className={`text-center`}
+            className={`text-center flex justify-center items-center gap-2`}
             style={{
               fontSize: `${Math.max(15 - balance.toString().length, 6)}px`,
             }}
           >
-            {balance}{lang === "fr" ? "€" : "$"}
+            <span>{balance}{lang === "fr" ? "€" : "$"}</span>
+            <BlackjackButton
+              disabled={gameStatus !== "BETTING" || (bet !== 0 && balance < bet) || balance >= 500}
+              size="icon"
+              onClick={() => {
+                setBalance(balance + 100);
+              }
+            }>
+              <Plus size={16} />
+            </BlackjackButton>
           </BlackjackCard>
 
 

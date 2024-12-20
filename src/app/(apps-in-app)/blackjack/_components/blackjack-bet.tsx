@@ -106,9 +106,8 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, m
       )}
 
       {empiled && (
-        <span className="text-xs">
+        <span className="text-sm font-bold">
           {bet}
-          {lang === "fr" ? "€" : "$"}
         </span>
       )}
     </div>
@@ -117,7 +116,6 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, m
 
 export const BlackjackBets = () => {
   const { bets } = useBlackjack();
-  const { lang } = useLang();
 
   const [isHover, setIsHover] = useState(false);
 
@@ -144,10 +142,10 @@ export const BlackjackBets = () => {
       )) : (
         <div>
           <div className={cn(
-            "w-10 h-10 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center",
+            "w-10 h-10 rounded-full border-4 border-dashed border-gray-300/10 flex items-center justify-center",
             "sm:w-14 sm:h-14"
           )}>
-            <span className="text-xs">0{lang == "fr" ? "€" : "$"}</span>
+            <span className="text-xs opacity-10 select-none">0</span>
           </div>
         </div>
       )}

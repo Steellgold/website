@@ -13,7 +13,7 @@ type BlackjackCardProps = React.HTMLAttributes<HTMLDivElement> & {
 export const BlackjackCard: Component<BlackjackCardProps> = ({ children, className, variant = "default", ...props }) => {
   return (
     <div className={cn(
-      "bg-white bg-opacity-10 p-3 rounded-md border border-white border-opacity-20",
+      "bg-white bg-opacity-10 rounded-md border p-3 border-white border-opacity-20",
       "transition-colors duration-300 ease-in-out",
       className, {
         "bg-red-500 border-red-300": variant === "destructive",

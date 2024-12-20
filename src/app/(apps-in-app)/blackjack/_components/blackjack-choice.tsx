@@ -20,7 +20,7 @@ export const BlackjackChoice = (): ReactElement => {
         <div className="flex flex-row gap-2">
           <BlackjackCard
             className={cn(
-              "bg-opacity-50 bg-green-600 hover:bg-opacity-20 p-3 rounded-md cursor-pointer duration-100", {
+              "bg-opacity-50 bg-green-600 hover:bg-opacity-20 p-3 rounded-md select-none cursor-pointer duration-100", {
                 "cursor-not-allowed opacity-70": handValue(playerCards) >= 21
               }
             )}
@@ -33,7 +33,7 @@ export const BlackjackChoice = (): ReactElement => {
           </BlackjackCard>
 
           <BlackjackCard
-            className="bg-opacity-50 bg-red-600 hover:bg-opacity-20 p-3 rounded-md cursor-pointer duration-100"
+            className="bg-opacity-50 bg-red-600 hover:bg-opacity-20 p-3 rounded-md select-none cursor-pointer duration-100"
             onClick={() => stand()}
           >
             <h1 className="text-lg">{lang == "fr" ? "Garder" : "Stand"}</h1>
