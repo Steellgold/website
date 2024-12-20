@@ -191,9 +191,12 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
       setBet(0);
       setBets([]);
       setGameStartTimer(0);
-      setDeck(shuffle(createDeck()));
       setCroupierCards([]);
       setPlayerCards([]);
+
+      if (deck.length <= 3) {
+        setDeck(shuffle(createDeck()));
+      }
 
       setGameStatus("BETTING");
       startGameTimer();

@@ -14,7 +14,7 @@ import { confettiBasic } from "@/lib/components/confetti";
 import { BlackjackResult } from "./blackjack-result";
 
 export const BlackjackBoard = (): ReactElement => {
-  const { gameStatus, bet, croupierCards, playerCards } = useBlackjack();
+  const { gameStatus, bet, croupierCards, playerCards, balance } = useBlackjack();
   const { lang } = useLang();
 
   if (gameStatus === "BALANCE_START") return <BlackjackStarting />
@@ -72,7 +72,17 @@ export const BlackjackBoard = (): ReactElement => {
         <BlackjackDeck />
 
         {/* BETS */}
-        <div className="absolute bottom-5 right-5">
+        <div className="absolute bottom-5 left-2 sm:right-5 flex flex-col gap-1.5">
+          <BlackjackCard
+            className={`text-center`}
+            style={{
+              fontSize: `${Math.max(15 - balance.toString().length, 6)}px`,
+            }}
+          >
+            {balance}{lang === "fr" ? "€" : "$"}
+          </BlackjackCard>
+
+
           <BlackjackCard>
             <BlackjackBets />
           </BlackjackCard>

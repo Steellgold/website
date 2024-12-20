@@ -11,8 +11,8 @@ import { BlackjackButton } from "./ui/blackjack-button";
 import { useState } from "react";
 
 export const BlackjackBet = () => {
-  const { lang } = useLang();
   const { gameStatus, bets, removeBet, gameStartTimer } = useBlackjack();
+  const { lang } = useLang();
 
   if (gameStatus !== "BETTING") return <></>;
 
@@ -31,7 +31,10 @@ export const BlackjackBet = () => {
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5">
+        <div className={cn(
+          "grid grid-cols-3 gap-2",
+          "sm:flex sm:items-center sm:gap-1.5"
+        )}>
           <BlackjackButton
             className="w-10 h-10 rounded-full"
             onClick={() => removeBet()}
@@ -42,7 +45,11 @@ export const BlackjackBet = () => {
 
           {[1, 2, 5, 10, 25, 100, 500, 1000].map((value) => (
             <div style={{ transform: "rotate(-10deg)" }} key={value}>
-              <BlackjackChip value={value as ChipValue} key={value} mini />
+              <BlackjackChip
+                value={value as ChipValue}
+                key={value}
+                mini
+              />
             </div>
           ))}
         </div>
@@ -81,7 +88,7 @@ export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, m
           // Sizes & Opacity
           "opacity-50": balance < value && !empiled,
           "w-10 h-10 border-4": mini,
-          "w-14 h-14 border-[6px]": !mini,
+          "w-10 h-10 sm:w-14 sm:h-14 border-[6px]": !mini,
         }
       )}
       onClick={() => {
@@ -115,7 +122,14 @@ export const BlackjackBets = () => {
   const [isHover, setIsHover] = useState(false);
 
   return (
-    <div className="relative w-14 h-14 group" onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+    <div
+      className={cn(
+        "relative w-10 h-10 group",
+        "sm:w-14 sm:h-14"
+      )}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+    >
       {bets && bets.length >= 1 ? bets.map((value, index) => (
         <div
           key={value}
@@ -129,7 +143,10 @@ export const BlackjackBets = () => {
         </div>
       )) : (
         <div>
-          <div className="w-14 h-14 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center">
+          <div className={cn(
+            "w-10 h-10 rounded-full border-4 border-dashed border-gray-300 flex items-center justify-center",
+            "sm:w-14 sm:h-14"
+          )}>
             <span className="text-xs">0{lang == "fr" ? "€" : "$"}</span>
           </div>
         </div>

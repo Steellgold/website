@@ -16,8 +16,8 @@ export const BlackjackBalance = (): ReactElement => {
   const { balance, setGameStatus } = useBlackjack();
   
   return (
-    <div className="flex flex-row gap-1">
-      <BlackjackCard className="flex items-center gap-2">
+    <div className="flex flex-col  sm:flex-row gap-1">
+      {/* <BlackjackCard className="flex items-center gap-2">
         <h1 className="text-lg">
           {lang === "fr" ? "Solde" : "Balance"}: {balance}{lang === "fr" ? "€" : "$"}
         </h1>
@@ -25,15 +25,15 @@ export const BlackjackBalance = (): ReactElement => {
         <BlackjackButton onClick={() => setGameStatus("BALANCE_START")}>
           <RefreshCcw size={16} className="group-hover:rotate-6 transition-transform duration-300 ease-in-out" />
         </BlackjackButton>
-      </BlackjackCard>
+      </BlackjackCard> */}
 
-      <BlackjackButton className="bg-white bg-opacity-10 text-white rounded-md px-3 py-1 flex items-center" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+      <BlackjackButton className="justify-center bg-white bg-opacity-10 text-white rounded-md px-3 py-2 flex items-center" onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
         <Sun size={16} className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
         <Moon size={16} className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
         <span className="sr-only">Toggle theme</span>
       </BlackjackButton>
 
-      <BlackjackButton className="bg-white bg-opacity-10 text-white rounded-md px-3 py-1" onClick={() => setLang(lang === "fr" ? "en" : "fr")}>
+      <BlackjackButton className="justify-center bg-white bg-opacity-10 text-white rounded-md px-3 py-2" onClick={() => setLang(lang === "fr" ? "en" : "fr")}>
         {lang === "fr" ? "🇺🇸" : "🇫🇷"}
       </BlackjackButton>
     </div>

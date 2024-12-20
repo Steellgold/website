@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Club, Diamond, Heart, Spade } from "lucide-react";
 import { ReactElement } from "react";
 import { Card, Suit } from "../_lib/blackjack.types";
+import { useMediaQuery } from "usehooks-ts";
 
 const suitToIcon = (suit: Suit): ReactElement => {
   switch (suit) {
@@ -17,19 +18,17 @@ const suitToIcon = (suit: Suit): ReactElement => {
 }
 
 export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, isReloadCard, owner = "PLAYER" }: Card): ReactElement => {
-
   return (
-    <div className={
-      cn(
-        "relative bg-[#f5f7f6] w-24 h-36 rounded-md border-2 transition-transform duration-300 ease-in-out", {
-          "shadow-md": !isHidden,
-          "bg-red-600 border-red-500": isReloadCard,
-          "bg-blue-50 border-blue-100": isHidden && !isReloadCard,
-          "transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
-          
-          "hover:translate-y-[-5rem] hover:-rotate-12": !isStackedLast && !isHidden && owner === "PLAYER",
-          "hover:translate-y-[5rem] hover:rotate-12": !isStackedLast && !isHidden && owner === "DEALER",
-        }
+    <div className={cn(
+      "relative bg-[#f5f7f6] w-24 h-36 rounded-md border-2 transition-transform duration-300 ease-in-out",
+      {
+        "shadow-md": !isHidden,
+        "bg-red-600 border-red-500": isReloadCard,
+        "bg-blue-50 border-blue-100": isHidden && !isReloadCard,
+        "transition-transform duration-300 ease-in-out": !isStackedLast && !isHidden,
+        "hover:translate-y-[-5rem] hover:-rotate-12": !isStackedLast && !isHidden && owner === "PLAYER",
+        "hover:translate-y-[5rem] hover:rotate-12": !isStackedLast && !isHidden && owner === "DEALER",
+      }
     )}>
       {rank && !isHidden && !isReloadCard &&
         <div className={cn({
@@ -84,6 +83,8 @@ export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement 
     return <EmptyBlackjackCard />
   }
 
+  const isMobile = useMediaQuery("(max-width: 640px)");
+
   return (
     <div className="w-24 h-36 group">
       {cards.map((card, index) => (
@@ -91,9 +92,9 @@ export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement 
           key={index}
           style={{
             zIndex: index,
-            marginLeft: `${index * (3 * 0.80)}rem`,
+            marginLeft: isMobile ? `${index * (5 * 5.20)}px` : `${index * (3 * 0.50)}rem`,
           }}
-          className="absolute"
+          className={cn("absolute")}
         >
           <BlackjackCard {...card} isStacked={true} isStackedLast={index === cards.length - 1 ? index : undefined} />
         </div>
