@@ -33,7 +33,9 @@ export const shuffle = (deck: Card[]): Card[] => {
 
 
 export const handValue = (cards: Card[]): number => {
-  const values = cards.map((card) => card.rank);
+  const visibleCards = cards.filter((card) => !card.isHidden);
+  const values = visibleCards.map((card) => card.rank);
+  
   let sum = values.reduce((acc, value) => {
     if (value === "A") return acc + 11;
     if (["J", "Q", "K"].includes(value)) return acc + 10;
