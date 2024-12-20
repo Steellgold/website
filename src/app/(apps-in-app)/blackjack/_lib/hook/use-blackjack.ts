@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 import { Card, GameStatus } from "../blackjack.types";
-import { createDeck, shuffle } from "../blackjack.utils";
+import { createDeck, getValueFromRank, shuffle } from "../blackjack.utils";
 
 type BlackjackState = {
   balance: number;
@@ -31,6 +31,7 @@ type BlackjackState = {
   setDeck: (cards: Card[]) => void;
 
   hit: (who: "player" | "dealer", isHidden?: boolean) => Card;
+  stand: () => void;
   reset: () => void;
 };
 
@@ -78,8 +79,6 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
   croupierCards: [],
   deck: [],
 
-  // addBet: (bet) => set((state) => ({ bets: [...state.bets, bet], balance: state.balance - bet })),
-  // removeBet: () => set((state) => ({ bets: state.bets.slice(0, -1), balance: state.balance + state.bets[state.bets.length - 1] })),
   addBet: (bet) => set((state) => ({
     bets: [...state.bets, bet],
     balance: state.balance - bet,
@@ -105,12 +104,6 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
     const card = deck.pop();
     if (!card) throw new Error("No more cards in the deck");
 
-    // if (card.isReloadCard) {
-    //   const remainingCards = [...deck];
-    //   const newDeck = createDeck();
-    //   setDeck(shuffle([...newDeck, ...remainingCards]));
-    // }
-
     if (who === "player") {
       set({ playerCards: [...playerCards, { ...card, isHidden: false }] });
     } else {
@@ -120,6 +113,42 @@ export const useBlackjack = create<BlackjackState>((set, get) => ({
     set({ deck });
     return card;
   },
+
+  stand: () => {
+    const { croupierCards, deck, setCroupierCards, setDeck, setGameStatus } = get();
+    setGameStatus("DEALER_TURN");
+    
+    const revealedCards = croupierCards.map((card) => ({ ...card, isHidden: false }));
+    setCroupierCards(revealedCards);
+  
+    let currentCards = revealedCards;
+    let currentDeck = [...deck];
+  
+    const getHandValue = (cards: Card[]) => {
+      let value = cards.reduce((sum, card) => sum + getValueFromRank(card.rank), 0);
+      const hasAce = cards.some((card) => card.rank === "A");
+  
+      if (hasAce && value <= 11) {
+        value += 10;
+      }
+  
+      return value;
+    };
+  
+    let handValue = getHandValue(currentCards);
+  
+    while (handValue < 17) {
+      const newCard = currentDeck.pop();
+      if (!newCard) throw new Error("No more cards in the deck");
+  
+      currentCards = [...currentCards, { ...newCard, isHidden: false }];
+      handValue = getHandValue(currentCards);
+    }
+  
+    setCroupierCards(currentCards);
+    setDeck(currentDeck);
+    setGameStatus("GAME_OVER");
+  },  
 
   reset: () =>
     set({
