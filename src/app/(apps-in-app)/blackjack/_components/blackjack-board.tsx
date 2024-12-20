@@ -3,7 +3,7 @@
 import { ReactElement } from "react";
 import { BlackjackCardsStack } from "./blackjack-card";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
-import { BlackjackBalance, BlackjackStarting } from "./blackjack-balance";
+import { BlackjackStarting } from "./blackjack-balance";
 import { BlackjackBet, BlackjackBets } from "./blackjack-bet";
 import { handValue } from "../_lib/blackjack.utils";
 import { BlackjackCard } from "./ui/blackjack-card";
@@ -16,6 +16,7 @@ import { useMediaQuery } from "usehooks-ts";
 import { cn } from "@/lib/utils";
 import { BlackjackButton } from "./ui/blackjack-button";
 import { Plus } from "lucide-react";
+import { BlackjackButtons } from "./blackjack-menu";
 
 export const BlackjackBoard = (): ReactElement => {
   const { gameStatus, bet, croupierCards, playerCards, balance, setBalance } = useBlackjack();
@@ -29,9 +30,7 @@ export const BlackjackBoard = (): ReactElement => {
   return (
     <div className="flex items-center justify-center h-screen w-screen bg-green-900 dark:bg-green-950 relative">
       <div className="z-[2]">
-        <div className="absolute top-5 right-5">
-          <BlackjackBalance />
-        </div>
+        <BlackjackButtons />
         
         {/* DEALER */}
         <div className="absolute top-5 left-1/2 transform -translate-x-1/2 flex flex-col gap-1.5">
@@ -86,7 +85,7 @@ export const BlackjackBoard = (): ReactElement => {
             }}
           >
             <span>{balance}{lang === "fr" ? "€" : "$"}</span>
-            <BlackjackButton
+            {/* <BlackjackButton
               disabled={gameStatus !== "BETTING" || (bet !== 0 && balance < bet) || balance >= 500}
               size="icon"
               onClick={() => {
@@ -94,7 +93,7 @@ export const BlackjackBoard = (): ReactElement => {
               }
             }>
               <Plus size={16} />
-            </BlackjackButton>
+            </BlackjackButton> */}
           </BlackjackCard>
 
 
