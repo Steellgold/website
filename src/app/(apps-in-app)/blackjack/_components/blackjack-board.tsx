@@ -12,10 +12,13 @@ import { BlackjackDeck } from "./blackjack-deck";
 import { useLang } from "@/lib/stores/lang.store";
 import { confettiBasic } from "@/lib/components/confetti";
 import { BlackjackResult } from "./blackjack-result";
+import { useMediaQuery } from "usehooks-ts";
+import { cn } from "@/lib/utils";
 
 export const BlackjackBoard = (): ReactElement => {
   const { gameStatus, bet, croupierCards, playerCards, balance } = useBlackjack();
   const { lang } = useLang();
+  const isMobile = useMediaQuery("(max-width: 640px)");
 
   if (gameStatus === "BALANCE_START") return <BlackjackStarting />
 
@@ -72,7 +75,10 @@ export const BlackjackBoard = (): ReactElement => {
         <BlackjackDeck />
 
         {/* BETS */}
-        <div className="absolute bottom-5 left-2 sm:right-5 flex flex-col gap-1.5">
+        <div className={cn("absolute bottom-5 flex flex-col gap-1.5", {
+          "right-5": !isMobile,
+          "left-8": isMobile,
+        })}>
           <BlackjackCard
             className={`text-center`}
             style={{
