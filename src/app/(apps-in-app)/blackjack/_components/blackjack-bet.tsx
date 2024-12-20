@@ -14,7 +14,7 @@ export const BlackjackBet = () => {
   const { lang } = useLang();
   const { gameStatus, bets, removeBet, gameStartTimer } = useBlackjack();
 
-  if (gameStatus !== "BETTING" || gameStartTimer <= 0) return <></>;
+  if (gameStatus !== "BETTING") return <></>;
 
   return (
     <div>
