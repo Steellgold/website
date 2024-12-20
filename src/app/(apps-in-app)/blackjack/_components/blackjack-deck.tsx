@@ -13,7 +13,7 @@ export const BlackjackDeck = () => {
   const [isHover, setIsHover] = useState(false);
 
   return (
-    <UIBlackjackCard className="absolute top-1/2 transform -translate-y-1/2 right-5">
+    <UIBlackjackCard className="hidden sm:block absolute top-1/2 transform -translate-y-1/2 right-5">
       <div
         className="relative w-24 h-36 rounded-md"
         onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>

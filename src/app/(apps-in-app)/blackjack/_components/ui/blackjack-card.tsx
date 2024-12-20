@@ -4,14 +4,22 @@ import { Component } from "@/lib/components/utils/component";
 import { cn } from "@/lib/utils";
 import React from "react";
 
-type BlackjackCardProps = React.HTMLAttributes<HTMLDivElement>;
+export type BlackjackCardVariant = "default" | "destructive" | "success" | "warning"; 
 
-export const BlackjackCard: Component<BlackjackCardProps> = ({ children, className, ...props }) => {
+type BlackjackCardProps = React.HTMLAttributes<HTMLDivElement> & {
+  variant?: BlackjackCardVariant;
+}
+
+export const BlackjackCard: Component<BlackjackCardProps> = ({ children, className, variant = "default", ...props }) => {
   return (
     <div className={cn(
       "bg-white bg-opacity-10 p-3 rounded-md border border-white border-opacity-20",
       "transition-colors duration-300 ease-in-out",
-      className
+      className, {
+        "bg-red-500 border-red-300": variant === "destructive",
+        "bg-green-500 border-green-300": variant === "success",
+        "bg-yellow-500 border-yellow-300": variant === "warning"
+      }
     )} {...props}>
       {children}
     </div>
