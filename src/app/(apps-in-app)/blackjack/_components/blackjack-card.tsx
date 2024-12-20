@@ -22,7 +22,8 @@ const suitToIcon = (suit: Suit): ReactElement => {
 export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, isReloadCard, owner = "PLAYER" }: Card): ReactElement => {
   return (
     <div className={cn(
-      "relative bg-[#f5f7f6] w-24 h-36 rounded-md border-2 transition-transform duration-300 ease-in-out",
+      "relative bg-[#f5f7f6] rounded-md border-2 transition-transform duration-300 ease-in-out",
+      "w-14 h-26 sm:w-24 sm:h-36",
       {
         "shadow-md": !isHidden,
         "bg-red-600 border-red-500": isReloadCard,
