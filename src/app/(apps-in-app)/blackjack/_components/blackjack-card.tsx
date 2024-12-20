@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { Club, Diamond, Heart, Spade } from "lucide-react";
 import { ReactElement } from "react";
@@ -79,11 +81,11 @@ export const BlackjackCard = ({ suit, rank, isHidden, isStackedLast, isReloadCar
 }
 
 export const BlackjackCardsStack = ({ cards }: { cards: Card[] }): ReactElement => {
+  const isMobile = useMediaQuery("(max-width: 640px)");
+
   if (cards.length === 0) {
     return <EmptyBlackjackCard />
   }
-
-  const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
     <div className="w-24 h-36 group">
