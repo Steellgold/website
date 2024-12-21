@@ -113,54 +113,9 @@ export const BlackjackStarting = (): ReactElement => {
           </div>
 
           <div className="flex items-center justify-end gap-1">
-            <BlackjackInput placeholder="Code de table" className="sm:w-32" inputSize="small" value={gameCode} onChange={(e) => setGameCode(e.target.value)} />
-            <BlackjackButton className="text-sm" size="small" onClick={joinGame}>
+            <BlackjackInput placeholder="Code de table" className="sm:w-32" inputSize="small" value={gameCode} onChange={(e) => setGameCode(e.target.value)} disabled />
+            <BlackjackButton className="text-sm" size="small" onClick={joinGame} disabled>
               {lang === "fr" ? "Rejoindre" : "Join"}
-            </BlackjackButton>
-          </div>
-        </BlackjackCard>
-
-        <BlackjackCard className="flex flex-row justify-between items-left gap-1 p-3 w-full">
-          <div className="flex flex-col gap-0.5">
-            <h1 className="text-lg">{lang === "fr" ? "Créer une table" : "Create a table"}</h1>
-            <span className="text-xs w-[25vh]">
-              {lang === "fr"
-                ? "Créez une table pour que vos amis puissent vous rejoindre en utilisant le code de la partie."
-                : "Create a table for your friends to join you using the game code."}
-              </span>
-          </div>
-
-          <div className="flex items-center gap-1">
-            <BlackjackButton className="text-sm" size="small" onClick={createGame}>
-              {lang === "fr" ? "Nouvelle partie" : "New game"}
-            </BlackjackButton>
-          </div>
-        </BlackjackCard>
-
-        <BlackjackCard className="flex flex-row justify-between items-left gap-1 p-3 w-full">
-          <div className="flex flex-col gap-0.5">
-            <h1 className="text-lg">{lang === "fr" ? "Changer de nom" : "Change name"}</h1>
-            <span className="text-xs w-[25vh]">
-              {lang === "fr"
-                ? "Vous pouvez changer votre nom avant de rejoindre une partie."
-                : "You can change your name before joining a game."}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1">
-            <BlackjackInput
-              placeholder="Nom"
-              className="sm:w-36"
-              inputSize="small"
-              value={newName}
-              onChange={(e) => setNewName(e.target.value)}
-            />
-
-            <BlackjackButton className="text-sm" size="small" onClick={() => {
-              setName(newName);
-              toast.success(lang === "fr" ? "Nom changé avec succès." : "Name changed successfully.");
-            }}>
-              {lang === "fr" ? "Changer" : "Change"}
             </BlackjackButton>
           </div>
         </BlackjackCard>
