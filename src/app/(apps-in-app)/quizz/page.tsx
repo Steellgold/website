@@ -3,22 +3,22 @@ import { Quizz } from "./content";
 import { Buttons } from "@/lib/components/buttons";
 
 export const metadata: Metadata = {
-  title: "Quizz | Gaëtan's Portfolio",
-  applicationName: "Gaëtan's Portfolio",
+  title: "Quizz",
+  applicationName: "Gaëtan - Portfolio",
   description: "Quizz game made for fun and to test your knowledge.",
   keywords: ["quizz", "game", "fun", "knowledge"],
   openGraph: {
-    title: "Quizz | Gaëtan's Portfolio",
+    title: "Quizz",
     description: "Quizz game made for fun and to test your knowledge.",
     type: "website",
     url: "https://steellgold.fr/quizz",
-    siteName: "Quizz | Gaëtan's Portfolio",
+    siteName: "Gaëtan - Portfolio",
     images: [
       {
         url: "https://steellgold.fr/quizz-og.png",
         width: 1200,
         height: 630,
-        alt: "Gaëtan's Portfolio",
+        alt: "Quizz Open Graph Image",
       },
     ],
   },
@@ -28,10 +28,10 @@ export const metadata: Metadata = {
         url: "https://steellgold.fr/quizz-og.png",
         width: 1200,
         height: 630,
-        alt: "Gaëtan's Portfolio",
+        alt: "Quizz Open Graph Image",
       },
     ],
-    title: "Quizz | Gaëtan's Portfolio",
+    title: "Quizz",
     description: "Quizz game made for fun and to test your knowledge.",
   }
 };
