@@ -18,6 +18,8 @@ const badgeVariants = cva(
 
         success: "border-[#2e8b57] text-[#2e8b57] bg-transparent",
         fail: "border-[#8b2e2e] text-[#8b2e2e] bg-transparent",
+
+        blackjack: "bg-white bg-opacity-10 text-white border-white border-opacity-10",
       },
     },
     defaultVariants: {

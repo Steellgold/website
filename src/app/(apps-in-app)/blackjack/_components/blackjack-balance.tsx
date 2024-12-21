@@ -1,72 +1,26 @@
 "use client";
 
 import { useLang } from "@/lib/stores/lang.store";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackButton } from "./ui/blackjack-button";
 import { createDeck } from "../_lib/blackjack.utils";
 import { BlackjackInput } from "./ui/blackjack-input";
 import { BlackjackButtons } from "./blackjack-menu";
-import { supabase } from "@/lib/utils/db/supabase";
-import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { generateName } from "just-random-names";
-import { useIdentity } from "../_lib/hook/use-identity";
-import { Separator } from "@/lib/components/ui/separator";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import { Badge } from "@/lib/components/ui/badge";
 
 export const BlackjackStarting = (): ReactElement => {
   const { setBalance, setGameStatus, reset, setDeck, startGameTimer } = useBlackjack();
   const { lang } = useLang();
-  const { name, setIsHost, setName, hydrated } = useIdentity();
-
-  const [newName, setNewName] = useState(name);
-
-  useEffect(() => {
-    console.log("useEffect exécuté, hydrated:", hydrated, "name actuel:", name);
-    if (hydrated && name === "") {
-      const newName = generateName();
-      console.log("Nom généré:", newName);
-      setName(newName);
-    }
-  }, [hydrated, name]); // Dépendances mises à jour
 
   const [gameCode, setGameCode] = useState("");
 
   const joinGame = () => {
-    supabase.from("blackjack").select().eq("code", gameCode).then(({ data }) => {
-      if (!data || data.length === 0) {
-        toast.error(lang === "fr" ? "Aucune partie trouvée avec ce code." : "No game found with this code.");
-        return;
-      }
-
-      toast.success(lang === "fr" ? "Partie trouvée, connexion en cours..." : "Game found, connecting...");
-      setIsHost(false);
-
-      setTimeout(() => {
-        window.location.href = `/blackjack/${gameCode}`;
-      }, 1400);
-    });
-  }
-
-  const createGame = () => {
-    const code = Math.random().toString(36).substring(2, 6);
-    setTimeout(() => {}, 140);
-
-    supabase.from("blackjack").insert({ code }).then(({ data, error }) => {
-      if (error) {
-        toast.error(lang === "fr" ? "Une erreur s'est produite lors de la création de la partie." : "An error occurred while creating the game.");
-        return;
-      }
-
-      toast.loading(lang === "fr" ? "Partie créée, redirection en cours..." : "Game created, redirecting...");
-      setIsHost(true);
-      setName("Gaëtan");
-
-      setTimeout(() => {
-        window.location.href = `/blackjack/${code}`;
-      }, 1400);
-    });
+    console.log("Nop, not yet implemented.");
   }
 
   return (
@@ -104,7 +58,12 @@ export const BlackjackStarting = (): ReactElement => {
 
         <BlackjackCard className="flex flex-col sm:flex-row justify-between items-left gap-3 sm:gap-1 p-3 w-full">
           <div className="flex flex-col gap-0.5">
-            <h1 className="text-lg">{lang === "fr" ? "Rejoindre une table" : "Join a table"}</h1>
+            <h1 className="text-lg flex items-center gap-1.5">
+              {lang === "fr" ? "Rejoindre une table" : "Join a table"}
+              <Badge variant={"blackjack"}>
+                {lang === "fr" ? "Bîentôt" : "Soon"}
+              </Badge>
+            </h1>
             <span className="text-xs sm:w-[25vh]">
               {lang === "fr"
                 ? "Demandez le code de la partie à un ami pour le rejoindre sur la même table."
@@ -119,6 +78,14 @@ export const BlackjackStarting = (): ReactElement => {
             </BlackjackButton>
           </div>
         </BlackjackCard>
+
+        <Link
+          href="https://github.com/Steellgold/website/tree/stable/src/app/(apps-in-app)/blackjack"
+          className="text-xs flex items-center gap-1 hover:underline"
+        >
+          <GitHubLogoIcon className="w-4 h-4" />
+          View source code on GitHub
+        </Link>
       </div>
 
       <p className={cn(
