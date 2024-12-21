@@ -6,7 +6,7 @@ import { useLang } from "../stores/lang.store";
 import { useViewMode } from "../stores/mode.store";
 import { Button } from "./ui/button";
 import { FaSpotify } from "react-icons/fa";
-import { ArrowRight, Binary, Ellipsis, Files, Grid3X3, Shapes } from "lucide-react";
+import { ArrowRight, Binary, Club, Ellipsis, Files, Grid3X3, Shapes } from "lucide-react";
 import { ThemeSwitcher } from "./theme-switcher";
 import React, { ReactElement } from "react";
 
@@ -32,6 +32,14 @@ export const Buttons = (): ReactElement => {
           </DropdownMenuItem>
 
           <DropdownMenuSeparator />
+
+          <DropdownMenuItem asChild>
+            <Link href="/blackjack" className="cursor-pointer">
+              <Club size={16} />
+              <span className="ml-2">Blackjack</span>
+            </Link>
+          </DropdownMenuItem>
+
 
           <DropdownMenuItem asChild>
             <Link href="/quizz" className="cursor-pointer">
