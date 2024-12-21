@@ -1,7 +1,7 @@
 "use client";
 
 import { useLang } from "@/lib/stores/lang.store";
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackButton } from "./ui/blackjack-button";
@@ -11,36 +11,61 @@ import { BlackjackButtons } from "./blackjack-menu";
 import { supabase } from "@/lib/utils/db/supabase";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { generateName } from "just-random-names";
+import { useIdentity } from "../_lib/hook/use-identity";
+import { Separator } from "@/lib/components/ui/separator";
 
 export const BlackjackStarting = (): ReactElement => {
   const { setBalance, setGameStatus, reset, setDeck, startGameTimer } = useBlackjack();
   const { lang } = useLang();
+  const { name, setIsHost, setName, hydrated } = useIdentity();
+
+  const [newName, setNewName] = useState(name);
+
+  useEffect(() => {
+    console.log("useEffect exécuté, hydrated:", hydrated, "name actuel:", name);
+    if (hydrated && name === "") {
+      const newName = generateName();
+      console.log("Nom généré:", newName);
+      setName(newName);
+    }
+  }, [hydrated, name]); // Dépendances mises à jour
 
   const [gameCode, setGameCode] = useState("");
 
   const joinGame = () => {
-    supabase.from("blackjack").select().eq("id", gameCode).then(({ data }) => {
+    supabase.from("blackjack").select().eq("code", gameCode).then(({ data }) => {
       if (!data || data.length === 0) {
         toast.error(lang === "fr" ? "Aucune partie trouvée avec ce code." : "No game found with this code.");
         return;
       }
 
       toast.success(lang === "fr" ? "Partie trouvée, connexion en cours..." : "Game found, connecting...");
-      window.location.href = `/blackjack/${gameCode}`;
+      setIsHost(false);
+
+      setTimeout(() => {
+        window.location.href = `/blackjack/${gameCode}`;
+      }, 1400);
     });
   }
 
   const createGame = () => {
-    const id = Math.random().toString(36).substring(2, 6);
+    const code = Math.random().toString(36).substring(2, 6);
     setTimeout(() => {}, 140);
 
-    supabase.from("blackjack").insert({ id }).then(({ data, error }) => {
+    supabase.from("blackjack").insert({ code }).then(({ data, error }) => {
       if (error) {
         toast.error(lang === "fr" ? "Une erreur s'est produite lors de la création de la partie." : "An error occurred while creating the game.");
         return;
       }
 
-      toast.success(lang === "fr" ? "Partie créée, code: " + id : "Game created, code: " + id);
+      toast.loading(lang === "fr" ? "Partie créée, redirection en cours..." : "Game created, redirecting...");
+      setIsHost(true);
+      setName("Gaëtan");
+
+      setTimeout(() => {
+        window.location.href = `/blackjack/${code}`;
+      }, 1400);
     });
   }
 
@@ -108,6 +133,34 @@ export const BlackjackStarting = (): ReactElement => {
           <div className="flex items-center gap-1">
             <BlackjackButton className="text-sm" size="small" onClick={createGame}>
               {lang === "fr" ? "Nouvelle partie" : "New game"}
+            </BlackjackButton>
+          </div>
+        </BlackjackCard>
+
+        <BlackjackCard className="flex flex-row justify-between items-left gap-1 p-3 w-full">
+          <div className="flex flex-col gap-0.5">
+            <h1 className="text-lg">{lang === "fr" ? "Changer de nom" : "Change name"}</h1>
+            <span className="text-xs w-[25vh]">
+              {lang === "fr"
+                ? "Vous pouvez changer votre nom avant de rejoindre une partie."
+                : "You can change your name before joining a game."}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-1">
+            <BlackjackInput
+              placeholder="Nom"
+              className="sm:w-36"
+              inputSize="small"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+            />
+
+            <BlackjackButton className="text-sm" size="small" onClick={() => {
+              setName(newName);
+              toast.success(lang === "fr" ? "Nom changé avec succès." : "Name changed successfully.");
+            }}>
+              {lang === "fr" ? "Changer" : "Change"}
             </BlackjackButton>
           </div>
         </BlackjackCard>

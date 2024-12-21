@@ -1,20 +1,6 @@
-"use client";
+import { useIdentityStore } from './store/use-identity.store';
 
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { generateName } from "just-random-names";
-
-type IdentityState = {
-  name: string;
-  setName: (name: string) => void;
+export const useIdentity = () => {
+  const { name, setName, isHost, setIsHost, hydrated } = useIdentityStore();
+  return { name, setName, isHost, setIsHost, hydrated };
 };
-
-export const useIdentity = create<IdentityState>()(
-  persist(
-    (set, get) => ({
-      name: generateName(),
-      setName: (name) => set({ name }),
-    }),
-    { name: "identity-storage", getStorage: () => localStorage }
-  )
-);
