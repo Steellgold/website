@@ -93,7 +93,7 @@ export const BlackjackStarting = (): ReactElement => {
         "transition-opacity duration-300 ease-in-out",
         "opacity-50 hover:opacity-100"
       )}>
-        * Balance fictive, aucune mise ou gain réel n'est effectué.
+        * Balance fictive, aucune mise ou gain réel n&apos;est effectué.
       </p>
     </div>
   )
