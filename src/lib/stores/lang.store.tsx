@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 type Lang = "en" | "fr";
 
@@ -7,7 +8,12 @@ type LangStore = {
   setLang: (lang: Lang) => void;
 };
 
-export const useLang = create<LangStore>((set, get) => ({
-  lang: "en",
-  setLang: (lang) => set(() => ({ lang: lang })),
-}));
+export const useLang = create<LangStore>()(
+  persist(
+    (set) => ({
+      lang: "en",
+      setLang: (lang: Lang) => set({ lang }),
+    }),
+    { name: "lang-storage", getStorage: () => localStorage }
+  )
+);
