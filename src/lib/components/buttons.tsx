@@ -36,10 +36,16 @@ export const Buttons = (): ReactElement => {
           <DropdownMenuItem asChild>
             <Link href="/blackjack" className="cursor-pointer">
               <Club size={16} />
-              <span className="ml-2">Blackjack</span>
+              <span className="ml-2">Blackjack (solo / in-app)</span>
             </Link>
           </DropdownMenuItem>
 
+          <DropdownMenuItem asChild>
+            <Link href="https://blackjack.steellgold.fr/" className="cursor-pointer">
+              <Club size={16} />
+              <span className="ml-2">Blackjack (multi-player / external)</span>
+            </Link>
+          </DropdownMenuItem>
 
           <DropdownMenuItem asChild>
             <Link href="/quizz" className="cursor-pointer">
@@ -48,6 +54,7 @@ export const Buttons = (): ReactElement => {
             </Link>
           </DropdownMenuItem>
 
+          <DropdownMenuSeparator />
 
           <DropdownMenuItem asChild>
             <Link href="/2048" className="cursor-pointer">
