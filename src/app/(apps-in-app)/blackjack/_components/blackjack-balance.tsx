@@ -4,7 +4,7 @@ import { useLang } from "@/lib/stores/lang.store";
 import { ReactElement, useState } from "react";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { BlackjackCard } from "./ui/blackjack-card";
-import { BlackjackButton } from "./ui/blackjack-button";
+import { BlackjackButton, BlackjackButtonLink } from "./ui/blackjack-button";
 import { createDeck } from "../_lib/blackjack.utils";
 import { BlackjackInput } from "./ui/blackjack-input";
 import { BlackjackButtons } from "./blackjack-menu";
@@ -56,7 +56,7 @@ export const BlackjackStarting = (): ReactElement => {
           </div>
         </BlackjackCard>
 
-        <BlackjackCard className="flex flex-col sm:flex-row justify-between items-left gap-3 sm:gap-1 p-3 w-full">
+        {/* <BlackjackCard className="flex flex-col sm:flex-row justify-between items-left gap-3 sm:gap-1 p-3 w-full">
           <div className="flex flex-col gap-0.5">
             <h1 className="text-lg flex items-center gap-1.5">
               {lang === "fr" ? "Rejoindre une table" : "Join a table"}
@@ -77,6 +77,24 @@ export const BlackjackStarting = (): ReactElement => {
               {lang === "fr" ? "Rejoindre" : "Join"}
             </BlackjackButton>
           </div>
+        </BlackjackCard> */}
+
+        <BlackjackCard className="flex flex-col items-center gap-1 p-3 w-full">
+          <h1 className="text-lg">{lang === "fr" ? "Nouvelle version" : "New version"}</h1>
+          <p className="text-xs sm:w-[35vh] text-center">
+            {lang === "fr"
+              ? "Il y a maintenant un système de salon pour jouer en ligne avec vos amis, cliquez sur le bouton ci-dessous pour y accéder."
+              : "There is now a lounge system to play online with your friends, click the button below to access it."
+            }
+          </p>
+
+          <BlackjackButtonLink
+            className="bg-white bg-opacity-10 text-white rounded-md px-3 py-1 text-sm mt-2"
+            size="small"
+            href="https://blackjack.steellgold.fr/"
+          >
+            {lang === "fr" ? "Accéder au nouvel URL" : "Access the new URL"}
+          </BlackjackButtonLink>
         </BlackjackCard>
 
         <Link
