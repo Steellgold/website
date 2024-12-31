@@ -246,10 +246,10 @@ export const projects: Project[] = [
       </>,
       fr: <>
         <p>• Un jeu de Blackjack multijoueur en temps réel où les joueurs peuvent créer ou rejoindre des tables et jouer ensemble.</p>
-        <p className="mt-1">• J'ai largement personnalisé les <HiglightedSpan>composants shadcn/ui</HiglightedSpan> pour créer un design unique semi-transparent de type glass-morphism - modifiant leurs styles de base tout en conservant leur accessibilité et fonctionnalité.</p>
+        <p className="mt-1">• J&apos;ai largement personnalisé les <HiglightedSpan>composants shadcn/ui</HiglightedSpan> pour créer un design unique semi-transparent de type glass-morphism - modifiant leurs styles de base tout en conservant leur accessibilité et fonctionnalité.</p>
         <p className="mt-1">• Les fonctionnalités incluent un système complet de paris avec animations des jetons, un chat en temps réel, plusieurs thèmes visuels (casino classique, moderne, néon, sombre), et un design adaptatif pour ordinateur et mobile.</p>
-        <p className="mt-1">• Ce projet m'a permis d'approfondir mes connaissances des technologies <HiglightedSpan>WebSocket</HiglightedSpan> pour les mécaniques de jeu en temps réel et des <HiglightedSpan>systèmes de design de composants</HiglightedSpan>.</p>
-        <p className="mt-1">• Le jeu inclut des fonctionnalités complexes comme des minuteurs de paris, des animations de distribution de cartes, et la gestion d'état pour plusieurs joueurs, tout en maintenant une expérience utilisateur fluide.</p>
+        <p className="mt-1">• Ce projet m&apos;a permis d&apos;approfondir mes connaissances des technologies <HiglightedSpan>WebSocket</HiglightedSpan> pour les mécaniques de jeu en temps réel et des <HiglightedSpan>systèmes de design de composants</HiglightedSpan>.</p>
+        <p className="mt-1">• Le jeu inclut des fonctionnalités complexes comme des minuteurs de paris, des animations de distribution de cartes, et la gestion d&apos;état pour plusieurs joueurs, tout en maintenant une expérience utilisateur fluide.</p>
       </>
     },
     type: "open-source",
