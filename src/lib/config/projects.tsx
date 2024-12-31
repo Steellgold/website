@@ -1,11 +1,12 @@
 import { AppWindow, Github } from "lucide-react";
 import { Separator } from "../components/ui/separator";
 import { dayJS } from "../utils/dayjs/day-js";
-import { DiscordJS, Flowbite, NextJS, OpenAI, PHP, PocketMine, PostgreSQL, Prisma, Railway, Redis, Stripe, Supabase, SvelteKit, TailwindCSS, Typescript, uiShadcn, Vercel } from "./stacks";
+import { DiscordJS, Fastify, Flowbite, NextJS, OpenAI, PHP, PocketMine, PostgreSQL, Prisma, Railway, Redis, SocketIO, Stripe, Supabase, SvelteKit, TailwindCSS, Typescript, uiShadcn, Vercel } from "./stacks";
 import { Project } from "./types/project.type";
 import { Component } from "../components/utils/component";
 import { PropsWithChildren } from "react";
 import Link from "next/link";
+import { CardStackIcon } from "@radix-ui/react-icons";
 
 export const HiglightedSpan: Component<PropsWithChildren> = ({ children }) => (
   <span className="bg-[#f5f1de] text-[#262626] dark:bg-[#262626] dark:text-[#eff0b9] px-1 py-0.5 rounded-md">
@@ -227,5 +228,49 @@ export const projects: Project[] = [
       Stripe,
     ],
     url: "https://github.com/WapyMC"
+  },
+  {
+    title: "Blackjack",
+    showOnCv: true,
+    description: {
+      en: "A modern multiplayer Blackjack game with real-time features, chat system and multiple themes.",
+      fr: "Un jeu de Blackjack multijoueur moderne avec des fonctionnalités en temps réel, système de chat et thèmes multiples."
+    },
+    cvDescription: {
+      en: <>
+        <p>• A real-time multiplayer Blackjack game where players can create or join tables and play together.</p>
+        <p className="mt-1">• I extensively customized the <HiglightedSpan>shadcn/ui components</HiglightedSpan> to create a unique, semi-transparent glass-morphism design - modifying their base styles while keeping their accessibility and functionality.</p>
+        <p className="mt-1">• Features include a complete betting system with chip animations, real-time chat, multiple visual themes (classic casino, modern, neon, darkness), and responsive design for both desktop and mobile.</p>
+        <p className="mt-1">• This project allowed me to deepen my knowledge of <HiglightedSpan>WebSocket</HiglightedSpan> technologies for real-time gaming mechanics and <HiglightedSpan>component design systems</HiglightedSpan>.</p>
+        <p className="mt-1">• The game includes complex features like betting timers, card dealing animations, and state management for multiple players, all while maintaining a smooth user experience.</p>
+      </>,
+      fr: <>
+        <p>• Un jeu de Blackjack multijoueur en temps réel où les joueurs peuvent créer ou rejoindre des tables et jouer ensemble.</p>
+        <p className="mt-1">• J'ai largement personnalisé les <HiglightedSpan>composants shadcn/ui</HiglightedSpan> pour créer un design unique semi-transparent de type glass-morphism - modifiant leurs styles de base tout en conservant leur accessibilité et fonctionnalité.</p>
+        <p className="mt-1">• Les fonctionnalités incluent un système complet de paris avec animations des jetons, un chat en temps réel, plusieurs thèmes visuels (casino classique, moderne, néon, sombre), et un design adaptatif pour ordinateur et mobile.</p>
+        <p className="mt-1">• Ce projet m'a permis d'approfondir mes connaissances des technologies <HiglightedSpan>WebSocket</HiglightedSpan> pour les mécaniques de jeu en temps réel et des <HiglightedSpan>systèmes de design de composants</HiglightedSpan>.</p>
+        <p className="mt-1">• Le jeu inclut des fonctionnalités complexes comme des minuteurs de paris, des animations de distribution de cartes, et la gestion d'état pour plusieurs joueurs, tout en maintenant une expérience utilisateur fluide.</p>
+      </>
+    },
+    type: "open-source",
+    duration: {
+      start: dayJS("12-18-2024")
+    },
+    stacks: [
+      Typescript,
+      NextJS,
+      TailwindCSS,
+      Vercel,
+      PostgreSQL,
+      Railway,
+      SocketIO,
+      Fastify,
+      uiShadcn
+    ],
+    url: "https://blackjack.steellgold.fr",
+    urls: [
+      { title: "Website", url: "https://blackjack.steellgold.fr/", icon: <CardStackIcon className="w-4 h-4" /> },
+      { title: "GitHub Repository", url: "https://github.com/Steellgold/blackjack", icon: <Github className="w-4 h-4" /> }
+    ]
   }
 ];
