@@ -8,6 +8,7 @@ import weekOfYear from "dayjs/plugin/weekOfYear";
 import isBetween from "dayjs/plugin/isBetween";
 
 require("dayjs/locale/en");
+require("dayjs/locale/fr");
 
 dayjs.extend(duration);
 dayjs.extend(utc);
