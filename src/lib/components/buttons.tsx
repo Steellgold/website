@@ -2,7 +2,7 @@
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import Link from "next/link";
-import { useLang } from "../stores/lang.store";
+import { useLang } from "../hooks/use-lang";
 import { useViewMode } from "../stores/mode.store";
 import { Button } from "./ui/button";
 import { FaSpotify } from "react-icons/fa";
@@ -12,7 +12,7 @@ import React, { ReactElement } from "react";
 
 export const Buttons = (): ReactElement => {
     const { setViewMode } = useViewMode();
-    const { lang, setLang } = useLang();
+    const lang = useLang();
 
   return (
     <div className="fixed top-0 right-0 z-50 p-6 no-print flex flex-row gap-2">
@@ -82,10 +82,6 @@ export const Buttons = (): ReactElement => {
           <>
             <div className="flex items-center gap-2">
               <ThemeSwitcher roundedFull={false} size="sm" isHome />
-
-              <Button onClick={() => setLang(lang == "en" ? "fr" : "en")} variant={"outline"} size={"sm"}>
-                {lang == "en" ? "🇫🇷" : "🇺🇸"}
-              </Button>
 
               <Button onClick={() => setViewMode("cv")} variant={"outline"} size={"sm"}>
                 CV <ArrowRight className="w-4 h-4 ml-1" />

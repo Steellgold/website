@@ -9,12 +9,12 @@ import { Separator } from "@/lib/components/ui/separator";
 import { buttonVariants } from "@/lib/components/ui/button";
 import { ReactElement } from "react";
 import { Buttons } from "@/lib/components/buttons";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { cn } from "@/lib/utils";
 
 const ProjectPage = (): ReactElement => {
   const params = useParams<{ projectId: string }>()
-  const { lang } = useLang()
+  const lang = useLang()
 
   const project = projects.find((project) => project.title.toLowerCase() === params.projectId)
 

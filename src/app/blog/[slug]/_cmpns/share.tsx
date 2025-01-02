@@ -1,7 +1,7 @@
 "use client";
 
 import { Component } from "@/lib/components/utils/component";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { useViewMode } from "@/lib/stores/mode.store";
 import { Facebook, Linkedin, Twitter } from "lucide-react";
 
@@ -17,7 +17,7 @@ const TEXT_LANGS: Record<string, string> = {
 
 export const ShareThisArticle: Component<ShareThisArticleProps> = ({ slug, title }) => {
   const { viewMode } = useViewMode();
-  const { lang } = useLang();
+  const lang = useLang();
 
   return (
     <div className="bg-primary-foreground bg-opacity-50 flex flex-col gap-1 p-2 border border-[#f0f0f0] rounded-lg mt-4 w-[50%] sm:w-[20%] items-center">

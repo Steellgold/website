@@ -2,11 +2,11 @@
 
 import { use2048 } from "@/lib/components/2048/hooks/use-2048";
 import { Button } from "@/lib/components/ui/button";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { ReactElement } from "react";
 
 export const HP2048 = (): ReactElement => {
-  const { lang } = useLang();
+  const lang = useLang();
   const { initializeBoard } = use2048();
   
   return (

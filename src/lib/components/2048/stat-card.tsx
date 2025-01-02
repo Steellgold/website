@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { cn } from "@/lib/utils";
 import { use2048 } from "./hooks/use-2048";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 
 const ScoreCaseStyle = cn(
   "bg-[#e4e0d1]/50 dark:bg-gray-800/50 p-1",
@@ -15,7 +15,7 @@ const ScoreCaseStyle = cn(
 
 export const E2048_StatsCard = (): ReactElement => {
   const { bestScore, score, startedTime, gameOver } = use2048();
-  const { lang } = useLang();
+  const lang = useLang();
   
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);

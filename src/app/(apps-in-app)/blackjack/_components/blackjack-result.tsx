@@ -1,14 +1,14 @@
 "use client";
 
 import { confettiBasic } from "@/lib/components/confetti";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { ReactElement } from "react";
 import { BlackjackCard, BlackjackCardVariant } from "./ui/blackjack-card";
 
 export const BlackjackResult = (): ReactElement => {
   const { gameStatus, bet, croupierCards, playerCards } = useBlackjack();
-  const { lang } = useLang();
+  const lang = useLang();
 
   if (gameStatus === "PLAYER_WIN") confettiBasic();
 

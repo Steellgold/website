@@ -7,7 +7,7 @@ import { Input } from "@/lib/components/ui/input"
 import { Button } from "@/lib/components/ui/button"
 import { Skeleton } from "@/lib/components/ui/skeleton"
 import { Component } from "@/lib/components/utils/component"
-import { useLang } from "@/lib/stores/lang.store"
+import { useLang } from "@/lib/hooks/use-lang"
 
 interface WeatherData {
   current: {
@@ -67,7 +67,7 @@ const Page = () => {
   const [error, setError] = useState("")
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  const { lang } = useLang()
+  const lang = useLang()
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000)

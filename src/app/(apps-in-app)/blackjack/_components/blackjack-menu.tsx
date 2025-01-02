@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactElement, useState } from "react";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { ArrowLeft, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { BlackjackButton } from "./ui/blackjack-button";
@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 export const BlackjackButtons = (): ReactElement => {
   const { theme, setTheme } = useTheme();
-  const { lang, setLang } = useLang();
+  const lang = useLang();
 
   const { setGameStatus, gameStatus } = useBlackjack();
 
@@ -31,10 +31,6 @@ export const BlackjackButtons = (): ReactElement => {
           <Sun size={16} className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon size={16} className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
-        </BlackjackButton>
-
-        <BlackjackButton className="justify-center bg-white bg-opacity-10 text-white rounded-md px-3 py-2" onClick={() => setLang(lang === "fr" ? "en" : "fr")}>
-          {lang === "fr" ? "🇺🇸" : "🇫🇷"}
         </BlackjackButton>
       </div>
     </>

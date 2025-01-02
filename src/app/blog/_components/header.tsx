@@ -1,11 +1,11 @@
 "use client";
 
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { ReactElement } from "react";
 import { BackToBlogButton } from "./back-blog";
 
 export const BlogHeaderComponent = (): ReactElement => {
-  const { lang } = useLang();
+  const lang = useLang();
 
   return (
     <>

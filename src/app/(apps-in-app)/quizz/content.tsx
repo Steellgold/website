@@ -8,7 +8,7 @@ import { Button } from "@/lib/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { Angry, Smile } from "lucide-react";
 import { Badge } from "@/lib/components/ui/badge";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/lib/components/ui/dialog";
 import { Checkbox } from "@/lib/components/ui/checkbox";
@@ -41,7 +41,7 @@ export const Quizz = (): ReactElement => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [passedQuestions, setPassedQuestions] = useState<string[]>([]);
 
-  const { lang } = useLang();
+  const lang = useLang();
 
   const [score, setScore] = useState(0);
   const [badScore, setBadScore] = useState(0);

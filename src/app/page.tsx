@@ -14,13 +14,13 @@ import { useViewMode } from "@/lib/stores/mode.store";
 import { AIChatBubble } from "@/lib/components/chat-buble";
 import { Cats } from "./_components/cats";
 import { Button } from "@/lib/components/ui/button";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { ThemeSwitcher } from "@/lib/components/theme-switcher";
 import { ArrowRight } from "lucide-react";
 
 const Home = (): ReactElement => {
   const { viewMode, setViewMode } = useViewMode();
-  const { lang, setLang } = useLang();
+  const lang = useLang();
   
   const triggerPrint = () => window.print();
 
@@ -50,10 +50,6 @@ const Home = (): ReactElement => {
 
         {viewMode == "cv" && (
           <div className="absolute right-0 top-0 p-5 flex gap-2 no-print">
-            <Button onClick={() => setLang(lang == "en" ? "fr" : "en")} variant={"outline"} size={"sm"}>
-              {lang == "en" ? "🇫🇷" : "🇺🇸"}
-            </Button>
-
             <Button onClick={triggerPrint} variant="outline" size="sm">
               Download as PDF
             </Button>

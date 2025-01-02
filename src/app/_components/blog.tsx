@@ -6,13 +6,13 @@ import { ReactElement, useEffect, useState } from "react";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { z } from "zod";
 import { cn } from "@/lib/utils";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 
 export const Blog = (): ReactElement => {
   const [data, setData] = useState<z.infer<typeof PostsSchema>>([]);
   const [loading, setLoading] = useState(true);
   
-  const { lang } = useLang();
+  const lang = useLang();
 
   useEffect(() => {
     const fetchData = async () => {

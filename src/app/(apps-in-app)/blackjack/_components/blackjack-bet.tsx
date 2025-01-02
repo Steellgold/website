@@ -3,7 +3,7 @@
 import { Component } from "@/lib/components/utils/component";
 import { cn } from "@/lib/utils";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { Undo } from "lucide-react";
 import { ChipValue } from "../_lib/blackjack.types";
 import { BlackjackCard } from "./ui/blackjack-card";
@@ -12,7 +12,7 @@ import { useState } from "react";
 
 export const BlackjackBet = () => {
   const { gameStatus, bets, removeBet, gameStartTimer } = useBlackjack();
-  const { lang } = useLang();
+  const lang = useLang();
 
   if (gameStatus !== "BETTING") return <></>;
 
@@ -66,7 +66,7 @@ type BlackjackChipProps = {
 
 export const BlackjackChip: Component<BlackjackChipProps> = ({ value, empiled, mini }) => {
   const { balance, addBet, bet} = useBlackjack();
-  const { lang } = useLang();
+  const lang = useLang();
 
   return (
     <div

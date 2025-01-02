@@ -3,13 +3,13 @@
 import { ReactElement } from "react"
 import { BlackjackCard } from "./ui/blackjack-card"
 import { useBlackjack } from "../_lib/hook/use-blackjack";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { handValue } from "../_lib/blackjack.utils";
 import { cn } from "@/lib/utils";
 
 export const BlackjackChoice = (): ReactElement => {
   const { hit, stand, gameStatus, croupierCards, playerCards } = useBlackjack();
-  const { lang } = useLang();
+  const lang = useLang();
 
   if (gameStatus !== "PLAYING") return <></>;
   if (playerCards.length < 2 || croupierCards.length < 2) return <></>;

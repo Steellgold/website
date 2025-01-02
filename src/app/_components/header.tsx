@@ -4,7 +4,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/lib/components/ui/alert";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
 import { ImageZoomer } from "image-zoomer-react";
 import { HiglightedSpan } from "@/lib/config/projects";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { useInitializeViewMode, useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
@@ -63,7 +63,7 @@ const SocialLinks: SocialLink[] = [ {
 export const Header = (): ReactElement => {
   const { viewMode } = useViewMode();
   useInitializeViewMode()
-  const { lang } = useLang();
+  const lang = useLang();
 
   return (
     <section>

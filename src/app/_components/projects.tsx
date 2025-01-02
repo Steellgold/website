@@ -2,7 +2,7 @@
 
 import { ProjectCard } from "@/lib/components/project.card";
 import { HiglightedLink, HiglightedSpan, projects } from "@/lib/config/projects";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import { ReactElement } from "react";
 export const Projects = (): ReactElement => {
 
   const { viewMode } = useViewMode();
-  const { lang } = useLang();
+  const lang = useLang();
 
   const isOdd = projects.length % 2 !== 0;
 

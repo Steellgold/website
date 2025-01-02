@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/lib/components/ui/button";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Component } from "@/lib/components/utils/component";
@@ -17,7 +17,7 @@ type BackToBlogButtonProps = {
 };
 
 const BackButton: Component<{ backHome: boolean }> = ({ backHome }) => {
-  const { lang } = useLang();
+  const lang = useLang();
 
   return (
     <Button

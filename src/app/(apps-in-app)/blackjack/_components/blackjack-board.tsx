@@ -9,7 +9,7 @@ import { handValue } from "../_lib/blackjack.utils";
 import { BlackjackCard } from "./ui/blackjack-card";
 import { BlackjackChoice } from "./blackjack-choice";
 import { BlackjackDeck } from "./blackjack-deck";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { confettiBasic } from "@/lib/components/confetti";
 import { BlackjackResult } from "./blackjack-result";
 import { useMediaQuery } from "usehooks-ts";
@@ -20,7 +20,7 @@ import { BlackjackButtons } from "./blackjack-menu";
 
 export const BlackjackBoard = (): ReactElement => {
   const { gameStatus, bet, croupierCards, playerCards, balance, setBalance } = useBlackjack();
-  const { lang } = useLang();
+  const lang = useLang();
   const isMobile = useMediaQuery("(max-width: 640px)");
 
   if (gameStatus === "BALANCE_START") return <BlackjackStarting />

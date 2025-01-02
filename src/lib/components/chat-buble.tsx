@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Bot, CircleStop, Copy, Mail, Maximize, Minimize, Send, X } from "lucide-react";
-import { useLang } from "../stores/lang.store";
+import { useLang } from "../hooks/use-lang";
 import { cn } from "../utils";
 import { useChat } from "ai/react";
 import { useDetectDevice } from "../hooks/use-detect-device";
@@ -28,7 +28,7 @@ export const AIChatBubble = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { viewMode } = useViewMode();
 
-  const { lang } = useLang();
+  const lang = useLang();
   const { theme } = useTheme();
 
   const chatEndRef = useRef<HTMLDivElement>(null);

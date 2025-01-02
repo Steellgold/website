@@ -13,7 +13,7 @@ import {
 import { use2048 } from "./hooks/use-2048";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { dayJS } from "@/lib/utils/dayjs/day-js";
 import { E2048_Tile } from "./tile";
 import { Badge } from "../ui/badge";
@@ -21,7 +21,7 @@ import { ScrollArea } from "../ui/scroll-area";
 
 export const E2048_History = () => {
   const { history, getBestScore } = use2048();
-  const { lang } = useLang();
+  const lang = useLang();
 
   return (
     <Sheet>

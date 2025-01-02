@@ -14,12 +14,12 @@ import { Book, BookX, Undo } from "lucide-react";
 import { useEffect, useState } from "react";
 import { HP2048 } from "./hp";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/lib/components/ui/tooltip";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 
 export const Content2048Page = () => {
   const { board, gameOver, resetGame, undoMove, undosAvailable } = use2048();
   const [showGameInfo, setShowGameInfo] = useState(false);
-  const { lang } = useLang();
+  const lang = useLang();
 
   // THis is the wrost way to do this, but j'ai la flemme ok?
   useEffect(() => {

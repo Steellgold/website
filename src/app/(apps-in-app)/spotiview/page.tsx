@@ -9,7 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/lib/components/ui/avatar"
 import { Skeleton } from "@/lib/components/ui/skeleton"
 import { z } from "zod"
 import { Component } from "@/lib/components/utils/component"
-import { useLang } from "@/lib/stores/lang.store"
+import { useLang } from "@/lib/hooks/use-lang"
 import { FaSpotify } from "react-icons/fa"
 import Link from "next/link"
 import { buttonVariants } from "@/lib/components/ui/button"
@@ -28,7 +28,7 @@ export default function SpotifyStatsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedPeriod, setSelectedPeriod] = useState<Period>("last_7_days")
-  const { lang } = useLang();
+  const lang = useLang();
 
   useEffect(() => {
     const fetchTopMusics = async () => {

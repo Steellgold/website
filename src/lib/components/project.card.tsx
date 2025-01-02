@@ -7,11 +7,11 @@ import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/c
 import { Component } from "./utils/component";
 import { ExternalLink } from "lucide-react";
 import { useViewMode } from "../stores/mode.store";
-import { useLang } from "../stores/lang.store";
+import { useLang } from "../hooks/use-lang";
 
 export const ProjectCard: Component<Project & { className?: string }> = ({ title, description, cvDescription, stacks, url, duration, type, className, isHighlighted, highlightUrl, showOnCv }) => {
   const { viewMode } = useViewMode();
-  const { lang } = useLang();
+  const lang = useLang();
 
   if (viewMode == "cv" && !showOnCv) return <></>;
 

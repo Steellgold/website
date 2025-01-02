@@ -1,6 +1,6 @@
 "use client";
 
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { ReactElement, useState } from "react";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { BlackjackCard } from "./ui/blackjack-card";
@@ -15,7 +15,7 @@ import { Badge } from "@/lib/components/ui/badge";
 
 export const BlackjackStarting = (): ReactElement => {
   const { setBalance, setGameStatus, reset, setDeck, startGameTimer } = useBlackjack();
-  const { lang } = useLang();
+  const lang = useLang();
 
   const [gameCode, setGameCode] = useState("");
 

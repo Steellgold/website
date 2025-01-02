@@ -1,6 +1,6 @@
 "use client";
 
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { useBlackjack } from "../_lib/hook/use-blackjack";
 import { BlackjackCard } from "./blackjack-card";
 import { BlackjackCard as UIBlackjackCard } from "./ui/blackjack-card";
@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export const BlackjackDeck = () => {
   const { deck } = useBlackjack();
-  const { lang } = useLang();
+  const lang = useLang();
 
   const [isHover, setIsHover] = useState(false);
 

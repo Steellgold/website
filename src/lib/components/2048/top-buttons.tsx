@@ -2,14 +2,14 @@
 
 import { ReactElement } from "react";
 import { ThemeSwitcher } from "../theme-switcher";
-import { useLang } from "@/lib/stores/lang.store";
+import { useLang } from "@/lib/hooks/use-lang";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const E2048_TopButtons = (): ReactElement => {
-  const { lang, setLang } = useLang();
+  const lang = useLang();
 
   return (
     <div className={cn(
@@ -29,16 +29,6 @@ export const E2048_TopButtons = (): ReactElement => {
             {lang === "en" ? "Back" : "Retour"}
           </span>
         </Link>
-      </Button>
-
-      
-      <Button
-        onClick={() => setLang(lang == "en" ? "fr" : "en")}
-        variant={"outline"}
-        size={"icon"}
-        className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg transition-all"
-      >
-        {lang == "en" ? "🇫🇷" : "🇺🇸"}
       </Button>
 
       <ThemeSwitcher />
