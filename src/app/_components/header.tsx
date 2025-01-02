@@ -100,7 +100,6 @@ export const Header = (): ReactElement => {
           height={128}
         />
 
-
         <div className="flex flex-col justify-center ml-auto border dark:border-0 dark:bg-[#242222] sm:rounded-lg dark:shadow-lg sm:overflow-hidden">
           <ul className="flex flex-row justify-end dark:text-white gap-2 p-2">
             <div className="flex gap-2">

@@ -30,12 +30,12 @@ const Home = (): ReactElement => {
       <Birthday />
 
       <div className={cn("justify-center mx-auto w-[90%] lg:w-[52%] mt-5 mb-5")}>
-        {viewMode == "normal" &&  (
-          <div className={cn("grid gap-3 md:grid-cols-2 mb-3")}>
-            <SpotifyCard />
-            <DiscordPresence />
-          </div>
-        )}
+        <div className={cn("grid gap-3 md:grid-cols-2 mb-3", {
+          "hidden": viewMode === "cv"
+        })}>
+          <SpotifyCard />
+          <DiscordPresence />
+        </div> 
 
         <Projects />
         

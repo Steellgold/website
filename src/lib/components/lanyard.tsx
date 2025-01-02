@@ -42,7 +42,7 @@ const PresenceCard: Component<{ activity: Activity }> = ({ activity }) => {
       "transition-colors duration-300 hover:shadow-lg",
       getActivityCardColor(activity),
     )}>
-      <CardContent className="flex flex-row items-center mt-3 -mb-5 px-3 relative">
+      <CardContent className="flex flex-row items-center mt-4 -mb-5 px-3 relative">
         <div className="relative">
           <Image
             src={

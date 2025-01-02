@@ -43,7 +43,7 @@ export const SpotifyCard = (): ReactElement => {
         "border-[#1ed760] transition-colors duration-300 bg-[#1ed760]/10 hover:shadow-lg",
       )}>
         <div className="relative">
-          <CardContent className="flex flex-row items-center mt-3 -mb-5 px-3">
+          <CardContent className="flex flex-row items-center mt-4 -mb-5 px-3">
             <div className="relative">
               <Image
                 src={track.item.album.images[0].url}
