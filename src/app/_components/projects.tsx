@@ -48,7 +48,9 @@ export const Projects = (): ReactElement => {
     })}>
       {projects.map((project, index) => (
         <ProjectCard {...project} key={project.title} className={cn({
-          "md:col-span-2": isOdd && index === projects.length - 1
+          "md:col-span-2": isOdd && index === projects.length - 1,
+
+          "hover:bg-[#f8f8f8] dark:hover:bg-[#111111]": viewMode == "normal",
         })} /> 
       ))}
     </div>

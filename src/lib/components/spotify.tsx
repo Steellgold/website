@@ -53,17 +53,25 @@ export const SpotifyCard = (): ReactElement => {
                 className="rounded-lg object-cover"
               />
 
-              <div className="absolute -bottom-2 -right-2 p-1 bg-[#03160a] rounded-full transition-colors duration-300">
-                <FaSpotify className="text-green-500" />
+              <div className="absolute -bottom-2 -right-2 p-1 bg-[#e8fbef] dark:bg-[#03160a] rounded-full transition-colors duration-300">
+                <div className="relative">
+                  <FaSpotify className="text-green-500 animate-spin" style={{
+                    animationDuration: "2500ms",
+                  }} />
+                </div>
               </div>
             </div>
               
             <div className="flex flex-col justify-center ml-5">
-              <h1 className="dark:text-white text-lg font-bold flex flex-row items-center">
+              {/* <h1 className="dark:text-white text-lg font-bold flex flex-row items-center">
                 <PlayingAnimation />
                 <div className="ml-1">&nbsp;{track.item.name}</div>
-              </h1>
+              </h1> */}
               
+              <h1 className="dark:text-white text-lg font-bold flex flex-row items-center">
+                <div>{track.item.name}</div>
+              </h1>
+
               <p className="dark:text-white text-xs md:text-md">
                 {track.item.artists.map((artist) => artist.name).join(", ")}
               </p>
