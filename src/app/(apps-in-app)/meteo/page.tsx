@@ -38,7 +38,7 @@ interface GeocodingResult {
   }>
 }
 
-const getWeatherCode = (code: number, lang: string = useLang.getState().lang) => {
+const getWeatherCode = (code: number, lang: "en" | "fr") => {
   if (code === 0) return lang == "en" ? "Clear sky" : "Ciel dégagé"
   if (code === 1) return lang == "en" ? "Mainly clear" : "Peu nuageux"
   if (code === 2) return lang == "en" ? "Partly cloudy" : "Ciel voilé"
@@ -156,7 +156,7 @@ const Page = () => {
       <Card className="w-full max-w-3xl bg-black/30 backdrop-blur-xl border-0 shadow-2xl text-white overflow-hidden">
         <CardHeader className="pb-2">
           <CardTitle className="text-4xl font-light text-center tracking-wide mb-1">
-            {useLang.getState().lang == "en" ? "Weather Forecast" : "Prévisions Météo"}
+            {lang == "en" ? "Weather Forecast" : "Prévisions Météo"}
           </CardTitle>
           <p className="text-center text-gray-400 text-sm font-light">
             {currentTime.toLocaleDateString(format, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
@@ -205,7 +205,7 @@ const Page = () => {
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="flex items-center space-x-2">
                   <Thermometer className="text-red-400 w-4 h-4" />
-                  <span>{getWeatherCode(weather.current.weather_code)}</span>
+                  <span>{getWeatherCode(weather.current.weather_code, lang)}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Droplets className="text-blue-400 w-4 h-4" />
