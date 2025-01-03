@@ -50,7 +50,7 @@ export const Projects = (): ReactElement => {
           "md:col-span-2": isOdd && index === projects.length - 1,
 
           "hover:bg-[#f8f8f8] dark:hover:bg-[#111111]": viewMode == "normal",
-        })} /> 
+        })} />
       ))}
     </div>
   </>;
