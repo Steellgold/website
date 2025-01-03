@@ -27,6 +27,7 @@ export const Prisma: Stack = { name: "Prisma", icon: "prisma" };
 export const Redis: Stack = { name: "Redis", icon: "redis" };
 export const GraphQL: Stack = { name: "GraphQL", icon: "graphql" };
 export const AuthJS: Stack = { name: "Auth JS", icon: "authjs" };
+export const BetterAuth: Stack = { name: "BetterAuth", icon: "betterauth" };
 export const NextAuth: Stack = { name: "NextAuth", icon: "authjs" };
 
 export const PocketMine: Stack = { name: "PocketMine", icon: "pocketmine" };
