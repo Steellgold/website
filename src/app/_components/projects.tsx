@@ -1,12 +1,24 @@
 "use client";
 
 import { ProjectCard } from "@/lib/components/project.card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/lib/components/ui/card";
 import { HiglightedLink, HiglightedSpan, projects } from "@/lib/config/projects";
+import { AuthJS, NextJS, PostgreSQL, Prisma, Supabase, TailwindCSS, Typescript } from "@/lib/config/stacks";
+import { Stack } from "@/lib/config/types/stack.type";
 import { useLang } from "@/lib/hooks/use-lang";
 import { useViewMode } from "@/lib/stores/mode.store";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { ReactElement } from "react";
+
+const mostUsedStacks: Stack[] = [
+  Typescript,
+  NextJS,
+  TailwindCSS,
+  PostgreSQL,
+  Supabase,
+  Prisma,
+  AuthJS
+];
 
 export const Projects = (): ReactElement => {
 
@@ -54,5 +66,28 @@ export const Projects = (): ReactElement => {
         })} /> 
       ))}
     </div>
+
+    {viewMode == "normal" && (
+      <Card className="mt-3">
+        <CardHeader>
+          <CardTitle className="text-[#1f1f1f] dark:text-[#f0f0f0] text-lg font-bold">
+            {lang == "en" ? "My favorite technologies" : "Mes technologies préférées"}
+          </CardTitle>
+          <CardDescription>
+            {lang == "en"
+              ? "I love discovering new technologies, especially within the TypeScript ecosystem, and I'm always participating in new hackathons organized by Supabase 🚀"
+              : "J'aime découvrir de nouvelles technologies, en particulier dans l'écosystème TypeScript, et je participe toujours à de nouveaux hackathons organisés par Supabase 🚀"}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="flex gap-2 flex-wrap mt-2">
+          {mostUsedStacks.map((stack) => (
+            <span key={stack.name} className="dark:text-[#f0f0f0] bg-[#f1f1f1] dark:bg-[#333] px-2 py-1 rounded-md text-xs">
+              {stack.name}
+            </span>
+          ))}
+        </CardContent>
+      </Card>
+    )}
   </>;
 }
