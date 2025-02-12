@@ -9,6 +9,7 @@ import { BackToBlogButton } from "../_components/back-blog";
 import { ConfettiReadComponent } from "../_components/confetti-readed";
 import { ShareThisArticle } from "./_cmpns/share";
 import { ImageZoomer } from "image-zoomer-react";
+import { TableOfContents } from "./_cmpns/toc";
 
 type PageProps = {
   params: Promise<{
@@ -120,6 +121,8 @@ const Post: AsyncComponent<PageProps> = async props => {
 
           <ShareThisArticle slug={data.slug} title={data.title} />
         </header>
+
+        <TableOfContents content={data.content} />
 
         <div className="prose prose-invert prose-lg max-w-none">
           <MarkdownPlease content={data.content} />
