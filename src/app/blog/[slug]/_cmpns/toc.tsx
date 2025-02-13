@@ -77,7 +77,7 @@ const TableOfContents: Component<TableOfContentsProps> = ({ content }) => {
 
   return (
     <div className={cn(
-      "hidden lg:block fixed w-72 max-h-[calc(100vh-8rem)] overflow-y-auto p-4 rounded-lg border",
+      "hidden xl:block fixed w-72 max-h-[calc(100vh-8rem)] overflow-y-auto p-4 rounded-lg border",
       "top-20 right-4 z-10",
       "bg-background/95"
     )}>
