@@ -10,6 +10,7 @@ import { ConfettiReadComponent } from "../_components/confetti-readed";
 import { ShareThisArticle } from "./_cmpns/share";
 import { ImageZoomer } from "image-zoomer-react";
 import TableOfContents from "./_cmpns/toc";
+import ProgressBar from "./_cmpns/progress";
 
 type PageProps = {
   params: Promise<{
@@ -99,6 +100,7 @@ const Post: AsyncComponent<PageProps> = async props => {
     <>
       <BackToBlogButton onlyButton />
       <ConfettiReadComponent />
+      <ProgressBar />
 
       <div className="relative">
         <TableOfContents content={data.content} />
