@@ -7,8 +7,13 @@ import { Separator } from "./components/ui/separator";
 import { CodeWindow } from "./components/code-windows";
 import { ImageZoomer } from "image-zoomer-react";
 import Image from "next/image";
+import { Component } from "./components/utils/component";
 
-export const MarkdownPlease = ({ content }) => (
+type MarkdownPleaseProps = {
+  content: string;
+};
+
+export const MarkdownPlease: Component<MarkdownPleaseProps> = ({ content }) => (
   <ReactMarkdown
     remarkPlugins={[remarkGfm]}
     components={{
