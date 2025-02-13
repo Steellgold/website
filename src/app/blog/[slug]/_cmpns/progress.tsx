@@ -14,10 +14,10 @@ const ProgressBar = (): ReactElement => {
       setProgress(scrollProgress);
     };
 
-    window.addEventListener('scroll', updateProgress);
+    window.addEventListener("scroll", updateProgress);
     
     return () => {
-      window.removeEventListener('scroll', updateProgress);
+      window.removeEventListener("scroll", updateProgress);
     };
   }, []);
 
