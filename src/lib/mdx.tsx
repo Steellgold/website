@@ -7,17 +7,22 @@ import { Separator } from "./components/ui/separator";
 import { CodeWindow } from "./components/code-windows";
 import { ImageZoomer } from "image-zoomer-react";
 import Image from "next/image";
+import { Component } from "./components/utils/component";
 
-export const MarkdownPlease = ({ content }) => (
+type MarkdownPleaseProps = {
+  content: string;
+};
+
+export const MarkdownPlease: Component<MarkdownPleaseProps> = ({ content }) => (
   <ReactMarkdown
     remarkPlugins={[remarkGfm]}
     components={{
-      h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />,
-      h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mt-6 mb-3" {...props} />,
-      h3: ({ node, ...props }) => <h3 className="text-xl font-semibold mt-4 mb-2" {...props} />,
-      h4: ({ node, ...props }) => <h4 className="text-lg font-semibold mt-4 mb-2" {...props} />,
-      h5: ({ node, ...props }) => <h5 className="text-base font-semibold mt-4 mb-2" {...props} />,
-      h6: ({ node, ...props }) => <h6 className="text-sm font-semibold mt-4 mb-2" {...props} />,
+      h1: ({ node, ...props }) => <h1 className="text-3xl font-bold mt-8 mb-4" id={props.children} {...props} />,
+      h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold mt-6 mb-3" id={props.children} {...props} />,
+      h3: ({ node, ...props }) => <h3 className="text-xl font-semibold mt-4 mb-2" id={props.children} {...props} />,
+      h4: ({ node, ...props }) => <h4 className="text-lg font-semibold mt-4 mb-2" id={props.children} {...props} />,
+      h5: ({ node, ...props }) => <h5 className="text-base font-semibold mt-4 mb-2" id={props.children} {...props} />,
+      h6: ({ node, ...props }) => <h6 className="text-sm font-semibold mt-4 mb-2" id={props.children} {...props} />,
       p: ({ node, ...props }) => <p className="mb-4" {...props} />,
       hr: ({ node, ...props }) => <Separator className="my-8" />,
       ul: ({ node, ...props }) => <ul className="list-disc mb-4 pl-6" {...props} />,
