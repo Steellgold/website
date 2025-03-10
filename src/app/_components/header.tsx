@@ -95,7 +95,7 @@ export const Header = (): ReactElement => {
               "border-white dark:border-[#121212] border-[5px] hover:border-[3.5px]": viewMode == "normal",
             }
           )}
-          src={"/_static/images/me2.jpg"}
+          src={"/_static/images/me3.png"}
           width={128}
           height={128}
         />
