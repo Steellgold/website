@@ -1,12 +1,12 @@
-const PrivacyPage = () => {
+const TermsPage = () => {
   return (
     <div>
-      <h1>Privacy Policy</h1>
+      <h1>Terms of Service</h1>
       <p>
-        This is the privacy policy for our app. We do not collect any personal data.
+        This is the terms of service for our app. We do not collect any personal data.
       </p>
     </div>
   )
 }
 
-export default PrivacyPage;
+export default TermsPage;
