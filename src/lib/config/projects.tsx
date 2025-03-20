@@ -54,7 +54,8 @@ export const projects: Project[] = [
     },
     type: "open-source",
     duration: {
-      start: dayJS("01-15-2023")
+      start: dayJS("01-15-2023"),
+      end: dayJS("01-18-2025")
     },
     stacks: [
       Typescript,
@@ -94,7 +95,8 @@ export const projects: Project[] = [
     },
     type: "open-source",
     duration: {
-      start: dayJS("01-15-2023")
+      start: dayJS("04-08-2023"),
+      end: dayJS("09-22-2023")
     },
     stacks: [
       Typescript,
