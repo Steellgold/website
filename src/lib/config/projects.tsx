@@ -23,7 +23,7 @@ export const HiglightedLink: Component<PropsWithChildren & { href: string }> = (
 export const projects: Project[] = [
   {
     title: "Linkfy",
-    showOnCv: true,
+    showOnCv: false,
     description: {
       en: "Link shortener with analytics, custom domains or link-tree like pages.",
       fr: "Raccourcisseur de liens avec analytics, domaines personnalisés ou pages de type link-tree."
@@ -152,7 +152,7 @@ export const projects: Project[] = [
   },
   {
     title: "Bottly",
-    showOnCv: true,
+    showOnCv: false,
     description: {
       en: "An Discord bot allow users ask questions to OpenAI GPT-3.5 in commands or thread directly (discuss, chat, generate text).",
       fr: "Un bot Discord permet aux utilisateurs de poser des questions à OpenAI en commandes ou dans un salon de discussion"
@@ -191,49 +191,92 @@ export const projects: Project[] = [
     ]
   },
   {
-    title: "Wapy",
-    showOnCv: false,
+    title: "Imagine.place",
+    showOnCv: true,
     description: {
-      en: "A Minecraft Bedrock Edition, PvP Factions server.",
-      fr: "Un serveur Minecraft Bedrock Edition, PvP Factions."
+      en: "An interactive storytelling platform powered by AI where players shape their adventure with choices, visuals, and dynamic outcomes.",
+      fr: "Une plateforme de récits interactifs alimentée par l'IA où les joueurs façonnent leur aventure à travers des choix, des visuels et des issues dynamiques."
     },
     cvDescription: {
-      fr: <>
-        <p className="mt-1">• Le projet Wapy a été lancé en 2022 par une équipe de passionnés souhaitant offrir une alternative aux serveurs PVP Faction classiques. Dès le début, le but était de proposer un serveur original et immersif, tout en mettant en avant des mécaniques de jeu inédites.</p>
-        <p className="mt-1">• En 2023, le projet a connu une pause, principalement due à un manque de motivation et de disponibilité de la part de l&apos;équipe. Après plusieurs mois de travail intensif, le projet est resté en veille pendant un moment. Bien que cette pause ait ralenti le développement, elle a permis à l&apos;équipe de se ressourcer et de réfléchir à de nouvelles idées.</p>
-        <p className="mt-1">• En 2024, la motivation est revenue plus forte que jamais. Grâce à de nouvelles inspirations et à l&apos;envie de donner vie au projet, l&apos;équipe a repris le développement de Wapy avec détermination. Depuis, nous travaillons d&apos;arrache-pied chaque jour pour vous
-          proposer une expérience de jeu toujours plus enrichissante, en ajoutant de nouvelles fonctionnalités et en perfectionnant chaque détail du serveur.</p>
-        <p className="mt-1">• Nous sommes plus que jamais engagés à faire de Wapy un serveur de référence dans le monde des PVP Faction, et nous sommes impatients de partager cette aventure avec vous !</p>
-      </>,
       en: <>
-        <p className="mt-1">• The Wapy project was launched in 2022 by a team of enthusiasts wishing to offer an alternative to classic PVP Faction servers. From the beginning, the goal was to offer an original and immersive server, while highlighting new game mechanics.</p>
-        <p className="mt-1">• In 2023, the project experienced a pause, mainly due to a lack of motivation and availability on the part of the team. After several months of intensive work, the project remained on hold for a while. Although this break slowed down development, it allowed the team to recharge and think about new ideas.</p>
-        <p className="mt-1">• In 2024, motivation returned stronger than ever. Thanks to new inspirations and the desire to bring the project to life, the team resumed the development of Wapy with determination. Since then, we have been working hard every day to offer you an ever more enriching gaming experience, adding new features and perfecting every detail of the server.</p>
-        <p className="mt-1">• We are more committed than ever to making Wapy a reference server in the world of PVP Faction, and we are looking forward to sharing this adventure with you!</p>
+        <p>• Imagine.place is an <HiglightedSpan>AI-powered storytelling platform</HiglightedSpan> where users can create or explore narrative adventures that evolve based on their choices.</p>
+        <p className="mt-1">• I developed this app using the latest stack: <HiglightedSpan>Next.js 15</HiglightedSpan> with React 19, App Router, Server Actions and shadcn/ui components for the UI system.</p>
+        <p className="mt-1">• Stories are generated in real-time thanks to <HiglightedSpan>OpenAI (GPT & DALL·E)</HiglightedSpan> and Supabase Edge Functions, allowing the player to interact with text and visuals.</p>
+        <p className="mt-1">• The platform supports <HiglightedSpan>French and English</HiglightedSpan>, offers visual themes, dice rolling mechanics, and tracks user progression.</p>
+      </>,
+      fr: <>
+        <p>• Imagine.place est une <HiglightedSpan>plateforme de récits interactifs alimentée par l'IA</HiglightedSpan> où les utilisateurs peuvent créer ou explorer des aventures narratives évolutives selon leurs choix.</p>
+        <p className="mt-1">• J’ai développé cette application avec les dernières technologies : <HiglightedSpan>Next.js 15</HiglightedSpan> avec React 19, App Router, Server Actions, et les composants shadcn/ui pour l’interface.</p>
+        <p className="mt-1">• Les histoires sont générées en temps réel grâce à <HiglightedSpan>OpenAI (GPT & DALL·E)</HiglightedSpan> et les Edge Functions de Supabase, permettant au joueur d’interagir avec des textes et des visuels.</p>
+        <p className="mt-1">• La plateforme est <HiglightedSpan>bilingue (FR/EN)</HiglightedSpan>, propose des thèmes visuels, un système de dés, et permet de sauvegarder la progression de l'utilisateur.</p>
       </>
     },
-    type: "team",
+    type: "open-source",
     duration: {
-      start: dayJS("12-25-2020")
+      start: dayJS("03-05-2025")
     },
+    highlightUrl: "https://x.com/supabase/status/1909552551206560004",
+    isHighlighted: true,
     stacks: [
-      PocketMine,
-      PHP,
       Typescript,
       NextJS,
       TailwindCSS,
       Vercel,
-      Railway,
-      Redis,
-      PostgreSQL,
+      uiShadcn,
+      Supabase,
       Prisma,
-      Stripe,
+      OpenAI
     ],
-    url: "https://github.com/WapyMC"
+    url: "https://imagine.place",
+    urls: [
+      { title: "Website", url: "https://imagine.place", icon: <AppWindow className="w-4 h-4" /> },
+      { title: "Demo Video", url: "https://www.youtube.com/watch?v=LS3gtutZYnU", icon: <CardStackIcon className="w-4 h-4" /> }
+    ]
   },
+  // {
+  //   title: "Wapy",
+  //   showOnCv: false,
+  //   description: {
+  //     en: "A Minecraft Bedrock Edition, PvP Factions server.",
+  //     fr: "Un serveur Minecraft Bedrock Edition, PvP Factions."
+  //   },
+  //   cvDescription: {
+  //     fr: <>
+  //       <p className="mt-1">• Le projet Wapy a été lancé en 2022 par une équipe de passionnés souhaitant offrir une alternative aux serveurs PVP Faction classiques. Dès le début, le but était de proposer un serveur original et immersif, tout en mettant en avant des mécaniques de jeu inédites.</p>
+  //       <p className="mt-1">• En 2023, le projet a connu une pause, principalement due à un manque de motivation et de disponibilité de la part de l&apos;équipe. Après plusieurs mois de travail intensif, le projet est resté en veille pendant un moment. Bien que cette pause ait ralenti le développement, elle a permis à l&apos;équipe de se ressourcer et de réfléchir à de nouvelles idées.</p>
+  //       <p className="mt-1">• En 2024, la motivation est revenue plus forte que jamais. Grâce à de nouvelles inspirations et à l&apos;envie de donner vie au projet, l&apos;équipe a repris le développement de Wapy avec détermination. Depuis, nous travaillons d&apos;arrache-pied chaque jour pour vous
+  //         proposer une expérience de jeu toujours plus enrichissante, en ajoutant de nouvelles fonctionnalités et en perfectionnant chaque détail du serveur.</p>
+  //       <p className="mt-1">• Nous sommes plus que jamais engagés à faire de Wapy un serveur de référence dans le monde des PVP Faction, et nous sommes impatients de partager cette aventure avec vous !</p>
+  //     </>,
+  //     en: <>
+  //       <p className="mt-1">• The Wapy project was launched in 2022 by a team of enthusiasts wishing to offer an alternative to classic PVP Faction servers. From the beginning, the goal was to offer an original and immersive server, while highlighting new game mechanics.</p>
+  //       <p className="mt-1">• In 2023, the project experienced a pause, mainly due to a lack of motivation and availability on the part of the team. After several months of intensive work, the project remained on hold for a while. Although this break slowed down development, it allowed the team to recharge and think about new ideas.</p>
+  //       <p className="mt-1">• In 2024, motivation returned stronger than ever. Thanks to new inspirations and the desire to bring the project to life, the team resumed the development of Wapy with determination. Since then, we have been working hard every day to offer you an ever more enriching gaming experience, adding new features and perfecting every detail of the server.</p>
+  //       <p className="mt-1">• We are more committed than ever to making Wapy a reference server in the world of PVP Faction, and we are looking forward to sharing this adventure with you!</p>
+  //     </>
+  //   },
+  //   type: "team",
+  //   duration: {
+  //     start: dayJS("12-25-2020")
+  //   },
+  //   stacks: [
+  //     PocketMine,
+  //     PHP,
+  //     Typescript,
+  //     NextJS,
+  //     TailwindCSS,
+  //     Vercel,
+  //     Railway,
+  //     Redis,
+  //     PostgreSQL,
+  //     Prisma,
+  //     Stripe,
+  //   ],
+  //   url: "https://github.com/WapyMC"
+  // },
   {
     title: "Blackjack",
-    showOnCv: true,
+    showOnCv: false,
     description: {
       en: "A modern multiplayer Blackjack game with real-time features, chat system and multiple themes.",
       fr: "Un jeu de Blackjack multijoueur moderne avec des fonctionnalités en temps réel, système de chat et thèmes multiples."
