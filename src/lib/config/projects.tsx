@@ -22,56 +22,46 @@ export const HiglightedLink: Component<PropsWithChildren & { href: string }> = (
 
 export const projects: Project[] = [
   {
-    title: "Linkfy",
-    showOnCv: false,
+    title: "Imagine.place",
+    showOnCv: true,
     description: {
-      en: "Link shortener with analytics, custom domains or link-tree like pages.",
-      fr: "Raccourcisseur de liens avec analytics, domaines personnalisés ou pages de type link-tree."
+      en: "An interactive storytelling platform powered by AI where players shape their adventure with choices, visuals, and dynamic outcomes.",
+      fr: "Une plateforme de récits interactifs alimentée par l'IA où les joueurs façonnent leur aventure à travers des choix, des visuels et des issues dynamiques."
     },
     cvDescription: {
       en: <>
-        <p>• Linkfy is a link shortener that allows users to shorten links and share them with others.</p>
-        <p className="mt-1">• It was my serious first open-source project, I learned how to use TypeScript with SvelteKit and how to deploy applications on Vercel.</p>
-        <p className="mt-1">• It was on this project that I discovered Supabase, I learned how to use TailwindCSS and how to make REST APIs or use Prisma with PostgreSQL.</p>
-        <p className="mt-1">• During the activity period of Linkfy, the site had more than <HiglightedSpan>~500 shortened links</HiglightedSpan>.</p>
-        
-        <Separator className="mt-3" />
-
-        <p className="mt-3">• Thanks to this project, I learned a lot, especially the importance of securing my APIs to prevent any abusive use of the API routes to modify the shortened links.</p>
-        <p className="mt-1">• And I recently (October 2024) took over the project under NextJS, I fixed the security flaws and added new features as well as a new design.</p>
+        <p>• Imagine.place is an <HiglightedSpan>AI-powered storytelling platform</HiglightedSpan> where users can create or explore narrative adventures that evolve based on their choices.</p>
+        <p className="mt-1">• I developed this app using the latest stack: <HiglightedSpan>Next.js 15</HiglightedSpan> with React 19, App Router, Server Actions and shadcn/ui components for the UI system.</p>
+        <p className="mt-1">• Stories are generated in real-time thanks to <HiglightedSpan>OpenAI (GPT & DALL·E)</HiglightedSpan> and Supabase Edge Functions, allowing the player to interact with text and visuals.</p>
+        <p className="mt-1">• The platform supports <HiglightedSpan>French and English</HiglightedSpan>, offers visual themes, dice rolling mechanics, and tracks user progression.</p>
       </>,
       fr: <>
-        <p>• Linkfy est un raccourcisseur de liens qui permet aux utilisateurs de raccourcir des liens et de les partager avec d&apos;autres.</p>
-        <p className="mt-1">• C&apos;était mon premier projet open-source sérieux, j&apos;ai appris à utiliser TypeScript avec SvelteKit et comment déployer des applications sur Vercel.</p>
-        <p className="mt-1">• C&apos;est sur ce projet que j&apos;ai découvert Supabase, j&apos;ai appris à utiliser TailwindCSS et comment faire des APIs REST ou utiliser Prisma avec PostgreSQL.</p>
-        <p className="mt-1">• Durant toute la periode d&apos;activité de Linkfy, le site à eu plus de <HiglightedSpan>~500 liens raccourcis</HiglightedSpan>.</p>
-        
-        <Separator className="mt-3" />
-
-        <p className="mt-3">• Grâce à ce projet, j&apos;ai appris énormément, notamment l&apos;importance de sécuriser mes APIs afin de prévenir toute utilisation abusive des routes API pour modifier les liens de raccourcissement.</p>
-        <p className="mt-1">• Et j&apos;ai récemment (octobre 2024) repris le projet sous NextJS, j&apos;ai corrigé les failles de sécurité et j&apos;ai ajouté de nouvelles fonctionnalités ainsi qu&apos;un nouveau design.</p>
+        <p>• Imagine.place est une <HiglightedSpan>plateforme de récits interactifs alimentée par l&apos;IA</HiglightedSpan> où les utilisateurs peuvent créer ou explorer des aventures narratives évolutives selon leurs choix.</p>
+        <p className="mt-1">• J’ai développé cette application avec les dernières technologies : <HiglightedSpan>Next.js 15</HiglightedSpan> avec React 19, App Router, Server Actions, et les composants shadcn/ui pour l’interface.</p>
+        <p className="mt-1">• Les histoires sont générées en temps réel grâce à <HiglightedSpan>OpenAI (GPT & DALL·E)</HiglightedSpan> et les Edge Functions de Supabase, permettant au joueur d’interagir avec des textes et des visuels.</p>
+        <p className="mt-1">• La plateforme est <HiglightedSpan>bilingue (FR/EN)</HiglightedSpan>, propose des thèmes visuels, un système de dés, et permet de sauvegarder la progression de l&apos;utilisateur.</p>
       </>
     },
     type: "open-source",
     duration: {
-      start: dayJS("01-15-2023"),
-      end: dayJS("01-18-2025")
+      start: dayJS("03-05-2025")
     },
+    highlightUrl: "https://x.com/supabase/status/1909552551206560004",
+    isHighlighted: true,
     stacks: [
       Typescript,
-      SvelteKit,
+      NextJS,
       TailwindCSS,
       Vercel,
-      Prisma,
-      PostgreSQL,
+      uiShadcn,
       Supabase,
-      Flowbite
+      Prisma,
+      OpenAI
     ],
-    url: "https://github.com/Steellgold/svelte-linkfy",
+    url: "https://imagine.place",
     urls: [
-      { title: "Website", url: "https://linkfy.fr", icon: <AppWindow className="w-4 h-4" /> },
-      { title: "GitHub Repository", url: "https://github.com/Steellgold/linkfy", icon: <Github className="w-4 h-4" /> },
-      { title: "Legacy NextJS Version", url: "https://github.com/Steellgold/linkfy-nextjs-legacy", icon: <Github className="w-4 h-4" /> }
+      { title: "Website", url: "https://imagine.place", icon: <AppWindow className="w-4 h-4" /> },
+      { title: "Demo Video", url: "https://www.youtube.com/watch?v=LS3gtutZYnU", icon: <CardStackIcon className="w-4 h-4" /> }
     ]
   },
   {
@@ -151,6 +141,59 @@ export const projects: Project[] = [
     url: "https://simplist.blog"
   },
   {
+    title: "Linkfy",
+    showOnCv: false,
+    description: {
+      en: "Link shortener with analytics, custom domains or link-tree like pages.",
+      fr: "Raccourcisseur de liens avec analytics, domaines personnalisés ou pages de type link-tree."
+    },
+    cvDescription: {
+      en: <>
+        <p>• Linkfy is a link shortener that allows users to shorten links and share them with others.</p>
+        <p className="mt-1">• It was my serious first open-source project, I learned how to use TypeScript with SvelteKit and how to deploy applications on Vercel.</p>
+        <p className="mt-1">• It was on this project that I discovered Supabase, I learned how to use TailwindCSS and how to make REST APIs or use Prisma with PostgreSQL.</p>
+        <p className="mt-1">• During the activity period of Linkfy, the site had more than <HiglightedSpan>~500 shortened links</HiglightedSpan>.</p>
+        
+        <Separator className="mt-3" />
+
+        <p className="mt-3">• Thanks to this project, I learned a lot, especially the importance of securing my APIs to prevent any abusive use of the API routes to modify the shortened links.</p>
+        <p className="mt-1">• And I recently (October 2024) took over the project under NextJS, I fixed the security flaws and added new features as well as a new design.</p>
+      </>,
+      fr: <>
+        <p>• Linkfy est un raccourcisseur de liens qui permet aux utilisateurs de raccourcir des liens et de les partager avec d&apos;autres.</p>
+        <p className="mt-1">• C&apos;était mon premier projet open-source sérieux, j&apos;ai appris à utiliser TypeScript avec SvelteKit et comment déployer des applications sur Vercel.</p>
+        <p className="mt-1">• C&apos;est sur ce projet que j&apos;ai découvert Supabase, j&apos;ai appris à utiliser TailwindCSS et comment faire des APIs REST ou utiliser Prisma avec PostgreSQL.</p>
+        <p className="mt-1">• Durant toute la periode d&apos;activité de Linkfy, le site à eu plus de <HiglightedSpan>~500 liens raccourcis</HiglightedSpan>.</p>
+        
+        <Separator className="mt-3" />
+
+        <p className="mt-3">• Grâce à ce projet, j&apos;ai appris énormément, notamment l&apos;importance de sécuriser mes APIs afin de prévenir toute utilisation abusive des routes API pour modifier les liens de raccourcissement.</p>
+        <p className="mt-1">• Et j&apos;ai récemment (octobre 2024) repris le projet sous NextJS, j&apos;ai corrigé les failles de sécurité et j&apos;ai ajouté de nouvelles fonctionnalités ainsi qu&apos;un nouveau design.</p>
+      </>
+    },
+    type: "open-source",
+    duration: {
+      start: dayJS("01-15-2023"),
+      end: dayJS("01-18-2025")
+    },
+    stacks: [
+      Typescript,
+      SvelteKit,
+      TailwindCSS,
+      Vercel,
+      Prisma,
+      PostgreSQL,
+      Supabase,
+      Flowbite
+    ],
+    url: "https://github.com/Steellgold/svelte-linkfy",
+    urls: [
+      { title: "Website", url: "https://linkfy.fr", icon: <AppWindow className="w-4 h-4" /> },
+      { title: "GitHub Repository", url: "https://github.com/Steellgold/linkfy", icon: <Github className="w-4 h-4" /> },
+      { title: "Legacy NextJS Version", url: "https://github.com/Steellgold/linkfy-nextjs-legacy", icon: <Github className="w-4 h-4" /> }
+    ]
+  },
+  {
     title: "Bottly",
     showOnCv: false,
     description: {
@@ -188,49 +231,6 @@ export const projects: Project[] = [
     urls: [
       { title: "Discord Application Directory", url: "https://discord.com/application-directory/1076862546658738236" },
       { title: "GitHub Repository", url: "https://github.com/bottlycorp" }
-    ]
-  },
-  {
-    title: "Imagine.place",
-    showOnCv: true,
-    description: {
-      en: "An interactive storytelling platform powered by AI where players shape their adventure with choices, visuals, and dynamic outcomes.",
-      fr: "Une plateforme de récits interactifs alimentée par l'IA où les joueurs façonnent leur aventure à travers des choix, des visuels et des issues dynamiques."
-    },
-    cvDescription: {
-      en: <>
-        <p>• Imagine.place is an <HiglightedSpan>AI-powered storytelling platform</HiglightedSpan> where users can create or explore narrative adventures that evolve based on their choices.</p>
-        <p className="mt-1">• I developed this app using the latest stack: <HiglightedSpan>Next.js 15</HiglightedSpan> with React 19, App Router, Server Actions and shadcn/ui components for the UI system.</p>
-        <p className="mt-1">• Stories are generated in real-time thanks to <HiglightedSpan>OpenAI (GPT & DALL·E)</HiglightedSpan> and Supabase Edge Functions, allowing the player to interact with text and visuals.</p>
-        <p className="mt-1">• The platform supports <HiglightedSpan>French and English</HiglightedSpan>, offers visual themes, dice rolling mechanics, and tracks user progression.</p>
-      </>,
-      fr: <>
-        <p>• Imagine.place est une <HiglightedSpan>plateforme de récits interactifs alimentée par l'IA</HiglightedSpan> où les utilisateurs peuvent créer ou explorer des aventures narratives évolutives selon leurs choix.</p>
-        <p className="mt-1">• J’ai développé cette application avec les dernières technologies : <HiglightedSpan>Next.js 15</HiglightedSpan> avec React 19, App Router, Server Actions, et les composants shadcn/ui pour l’interface.</p>
-        <p className="mt-1">• Les histoires sont générées en temps réel grâce à <HiglightedSpan>OpenAI (GPT & DALL·E)</HiglightedSpan> et les Edge Functions de Supabase, permettant au joueur d’interagir avec des textes et des visuels.</p>
-        <p className="mt-1">• La plateforme est <HiglightedSpan>bilingue (FR/EN)</HiglightedSpan>, propose des thèmes visuels, un système de dés, et permet de sauvegarder la progression de l'utilisateur.</p>
-      </>
-    },
-    type: "open-source",
-    duration: {
-      start: dayJS("03-05-2025")
-    },
-    highlightUrl: "https://x.com/supabase/status/1909552551206560004",
-    isHighlighted: true,
-    stacks: [
-      Typescript,
-      NextJS,
-      TailwindCSS,
-      Vercel,
-      uiShadcn,
-      Supabase,
-      Prisma,
-      OpenAI
-    ],
-    url: "https://imagine.place",
-    urls: [
-      { title: "Website", url: "https://imagine.place", icon: <AppWindow className="w-4 h-4" /> },
-      { title: "Demo Video", url: "https://www.youtube.com/watch?v=LS3gtutZYnU", icon: <CardStackIcon className="w-4 h-4" /> }
     ]
   },
   // {
