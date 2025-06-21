@@ -62,7 +62,7 @@ const Home = (): ReactElement => {
           </div>
         )}
 
-        <AIChatBubble />
+        {/* <AIChatBubble /> */}
         <MadeWith />
       </div>
 
