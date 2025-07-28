@@ -286,7 +286,7 @@ export {
 };
 
 export type SkillName =
-  | "AmazonWebServices"
+  | "AWS"
   | "BaseUI"
   | "BetterAuth"
   | "Cloudflare"
@@ -319,7 +319,7 @@ export type SkillName =
   | "Upstash"
   | "v0"
   | "Vercel"
-  | "VisualStudioCode"
+  | "VSCode"
   | "Zod";
 
 export const iconsByName: Record<
@@ -330,7 +330,7 @@ export const iconsByName: Record<
     url: string;
   }
 > = {
-  AmazonWebServices: {
+  AWS: {
     normal: AmazonWebServices,
     light: AmazonWebServicesLight,
     url: "https://aws.amazon.com/"
@@ -495,7 +495,7 @@ export const iconsByName: Record<
     light: VercelLight,
     url: "https://vercel.com/"
   },
-  VisualStudioCode: {
+  VSCode: {
     normal: VisualStudioCode,
     light: VisualStudioCode,
     url: "https://code.visualstudio.com/"

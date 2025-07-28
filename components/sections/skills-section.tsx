@@ -14,7 +14,7 @@ export const SkillsSection = (): ReactElement => {
     <div className="flex flex-col gap-6 w-full">
       <h2 className={cn("text-4xl sm:text-5xl", oregano.className)}>Using</h2>
       
-      <div className="flex flex-wrap items-center gap-2 sm:gap-1">
+      <div className="flex flex-wrap items-center gap-1 sm:gap-1">
         <Skill name="React" />
         <Skill name="Next" />
         <Skill name="Tailwind" />
@@ -29,7 +29,7 @@ export const SkillsSection = (): ReactElement => {
         <Skill name="Neon" />
         <Skill name="Zod" />
         <Skill name="Turborepo" />
-        <Skill name="AmazonWebServices" />
+        <Skill name="AWS" />
         <Skill name="PostgreSQL" />
         <Skill name="Nodejs" />
         <Skill name="Upstash" />
