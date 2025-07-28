@@ -11,11 +11,11 @@ type Skill = {
 export const Skill: Component<Skill> = ({
   name,
   favorite = false,
-  minimized = false,
+  minimized = false
 }) => {
   const paddingClass = !minimized
-    ? "text-xs sm:text-lg px-1.5 py-0.5"
-    : "text-xs px-1 py-0.5";
+    ? "text-xs sm:text-lg px-1.5 py-1.5 sm:py-0"
+    : "text-xs px-1 py-1 sm:py-1 sm:px-1.5";
 
   const borderClass = favorite
     ? "border-inside-preferred bg-white"
@@ -27,7 +27,7 @@ export const Skill: Component<Skill> = ({
     <Link
       href={iconsByName[name].url}
       className={[
-        "flex flex-row items-center gap-2 bg-clip-padding border-inside",
+        "inline-flex items-center align-middle gap-1 sm:gap-2 bg-clip-padding border-inside",
         paddingClass,
         borderClass,
       ].join(" ")}

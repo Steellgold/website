@@ -4,7 +4,7 @@ import { PROJECTS } from "@/config/projects";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { ReactElement, useState } from "react";
-import { oregano } from "../font";
+import { piano } from "../font";
 import { SkillName } from "../icons";
 import { ProjectCard } from "../project";
 
@@ -15,7 +15,7 @@ export const ProjectsSection = (): ReactElement => {
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      <h2 className={cn("text-4xl sm:text-5xl", oregano.className)}>Projects</h2>
+      <h2 className={cn("text-4xl sm:text-5xl", piano.className)}>Projects</h2>
       
       <div className="relative group">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
