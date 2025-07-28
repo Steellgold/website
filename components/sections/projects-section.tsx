@@ -13,7 +13,7 @@ const oregano = Oregano({
 
 export const ProjectsSection = (): ReactElement => {
   return (
-    <div className="flex flex-col gap-6 w-full">
+    <div className="flex flex-col gap-3 w-full">
       <h2 className={cn("text-4xl sm:text-5xl", oregano.className)}>Projects</h2>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">

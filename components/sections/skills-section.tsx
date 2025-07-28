@@ -11,7 +11,7 @@ const oregano = Oregano({
 
 export const SkillsSection = (): ReactElement => {
   return (
-    <div className="flex flex-col gap-6 w-full">
+    <div className="flex flex-col gap-3 w-full">
       <h2 className={cn("text-4xl sm:text-5xl", oregano.className)}>Using</h2>
       
       <div className="flex flex-wrap items-center gap-1 sm:gap-1">
