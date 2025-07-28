@@ -128,6 +128,41 @@
     --border-inside-color: rgba(29, 29, 29, 0.2);
     color: black;
   }
+
+  .border-inside-working {
+    --border-inside-size: 1.5px;
+    --border-inside-color: #FFD700;
+    color: #000000;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 215, 0, 0.1) 10px,
+      rgba(255, 215, 0, 0.1) 20px
+    );
+    position: relative;
+  }
+
+  .border-inside-working::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 15px,
+      #000000 15px,
+      #000000 20px
+    );
+    background-size: 20px 4px;
+    background-repeat: repeat-x;
+    background-position: 0 0, 0 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
 }
 
 @layer base {
