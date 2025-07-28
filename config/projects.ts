@@ -1,6 +1,6 @@
 import { SkillName } from "@/components/icons";
 
-type ProjectStatus = "Open-Source" | "Freelance" | "Private";
+type ProjectStatus = "Open-Source" | "Freelance" | "Private" | "In Progress" | "Refactoring";
 
 type Project = {
   name: string;
@@ -13,7 +13,7 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    name: "Imagine",
+    name: "Imagine.place",
     description: "An AI-powered interactive storytelling platform where players shape their adventure through choices, visuals, and dynamic outcomes.",
     technologies: [
       "TypeScript", "Next", "Tailwind", "Vercel", "shadcn/ui", "Supabase", "Prisma", "OpenAI"
@@ -30,8 +30,8 @@ const PROJECTS: Project[] = [
     technologies: [
       "React", "Next", "Turborepo", "Tailwind", "shadcn/ui", "AWS", "Vercel", "TypeScript", "Upstash", "Stripe", "BetterAuth"
     ],
-    status: "Open-Source",
-    url: "https://simplist.place"
+    status: "Refactoring",
+    url: "https://simplist.blog"
   }
 ]
 

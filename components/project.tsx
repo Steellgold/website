@@ -1,13 +1,22 @@
 import { Project } from "@/config/projects";
+import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+import { useHover } from "usehooks-ts";
 import { Skill } from "./skill";
 
 export const ProjectCard: Component<Project> = ({ name, status, description, technologies, awards }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isHovering = useHover<HTMLDivElement>(ref as React.RefObject<HTMLDivElement>);
+
   return (
     <div
-      className="flex flex-col gap-4 p-6 bg-[#1d1d1d] transition-colors border-inside border-inside-default"
+      ref={ref}
+      className={cn("flex flex-col gap-4 p-6 bg-[#1d1d1d] transition-colors border-inside border-inside-default", {
+        "border-inside-working": status === "Refactoring" && isHovering
+      })}
       style={{ "--border-inside-size": "1.5px" } as React.CSSProperties}
     >
       <div className="flex items-center justify-between">
