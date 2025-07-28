@@ -2,6 +2,7 @@ import { BLOG_POSTS } from "@/config/blog";
 import { cn } from "@/lib/utils";
 import { ReactElement } from "react";
 import { BlogPostItem } from "../blog-post";
+import { piano } from "../font";
 
 export const BlogSection = (): ReactElement => {
   if (!BLOG_POSTS || BLOG_POSTS.length === 0) {
