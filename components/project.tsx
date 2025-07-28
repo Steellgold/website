@@ -14,7 +14,7 @@ export const ProjectCard: Component<Project> = ({ name, status, description, tec
   return (
     <div
       ref={ref}
-      className={cn("flex flex-col gap-2 p-4 sm:p-6 bg-[#1d1d1d] transition-all border-inside border-inside-default", {
+      className={cn("flex flex-col gap-2 p-4 sm:p-5 bg-[#1d1d1d] transition-all border-inside border-inside-default", {
         "border-inside-working": status === "Refactoring" && isHovering
       })}
       style={{ "--border-inside-size": "1.5px" } as React.CSSProperties}
