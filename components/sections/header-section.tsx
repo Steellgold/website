@@ -13,7 +13,7 @@ export const HeaderSection = (): ReactElement => {
       <div className="flex flex-row items-center gap-3 sm:gap-4">
         <div className="flex-shrink-0 self-center sm:self-auto">
           <Image
-            src="/ME.svg"
+            src="/me.webp"
             alt="BWR"
             width={74}
             height={74}
