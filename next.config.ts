@@ -1,21 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      { hostname: "dgzmokcshopxlsimyjqx.supabase.co", protocol: "https" },
-      { hostname: "xjgmgvvxdtpgkymqpvnz.supabase.co", protocol: "https" },
-      { hostname: "i.scdn.co", protocol: "https" },
-      { hostname: "raw.githubusercontent.com", protocol: "https" },
-      { hostname: "cdn.rcd.gg", protocol: "https" },
-      { hostname: "cdn.discordapp.com", protocol: "https" },
-      { hostname: "media.discordapp.net", protocol: "https" },
-      { hostname: "avatars.githubusercontent.com", protocol: "https" },
-      { hostname: "pbs.twimg.com", protocol: "https" },
-      { hostname: "upload.wikimedia.org", protocol: "https" },
-      { hostname: "api.dicebear.com", protocol: "https" },
-    ]
-  }
+  /* config options here */
 };
 
 export default nextConfig;
