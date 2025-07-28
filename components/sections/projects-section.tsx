@@ -27,6 +27,7 @@ export const ProjectsSection = (): ReactElement => {
               status={project.status}
               technologies={project.technologies as SkillName[]}
               awards={project.awards}
+              githubUrl={project.githubUrl}
               url={project.url}
             />
           ))}

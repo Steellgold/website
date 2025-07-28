@@ -7,14 +7,14 @@ import { useRef } from "react";
 import { useHover } from "usehooks-ts";
 import { Skill } from "./skill";
 
-export const ProjectCard: Component<Project> = ({ name, status, description, technologies, awards, url }) => {
+export const ProjectCard: Component<Project> = ({ name, status, description, technologies, awards, url, githubUrl }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isHovering = useHover<HTMLDivElement>(ref as React.RefObject<HTMLDivElement>);
 
   return (
     <div
       ref={ref}
-      className={cn("flex flex-col gap-4 p-4 sm:p-6 bg-[#1d1d1d] transition-all border-inside border-inside-default", {
+      className={cn("flex flex-col gap-2 p-4 sm:p-6 bg-[#1d1d1d] transition-all border-inside border-inside-default", {
         "border-inside-working": status === "Refactoring" && isHovering
       })}
       style={{ "--border-inside-size": "1.5px" } as React.CSSProperties}
@@ -28,20 +28,20 @@ export const ProjectCard: Component<Project> = ({ name, status, description, tec
           <h3 className="text-xl font-semibold text-white">{name}</h3>
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <Link 
-            href={url}
+            href={githubUrl || url}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="bg-[#1d1d1d] border-inside border-inside-default px-1">
+            <span className="bg-[#1d1d1d] border-inside border-inside-default px-2 py-0.5">
               {status}
             </span>
           </Link>
 
           {awards && awards.length > 0 && (
             <Link
-              className="bg-[#F3FF45] p-[4px] border-inside border-inside-preferred select-none"
+              className="bg-[#F3FF45] p-[4px] border-inside border-inside-preferred select-none flex items-center gap-1"
               href={awards[0]}
               target="_blank"
               rel="noopener noreferrer"
@@ -52,6 +52,10 @@ export const ProjectCard: Component<Project> = ({ name, status, description, tec
                 width={16}
                 height={16}
               />
+
+              <span className="text-xs">
+                Awarded
+              </span>
             </Link>
           )}
         </div>

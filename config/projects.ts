@@ -8,18 +8,20 @@ type Project = {
   technologies: SkillName[];
   status: ProjectStatus;
   url: string;
+  githubUrl?: string;
   awards?: string[];
 }
 
 const PROJECTS: Project[] = [
   {
-    name: "Imagine.place",
+    name: "Imagine",
     description: "An AI-powered interactive storytelling platform where players shape their adventure through choices, visuals, and dynamic outcomes.",
     technologies: [
       "TypeScript", "Next", "Tailwind", "Vercel", "shadcn/ui", "Supabase", "Prisma", "OpenAI"
     ],
     status: "Open-Source",
     url: "https://imagine.place",
+    githubUrl: "https://github.com/Steellgold/imagine.place",
     awards: [
       "https://x.com/supabase/status/1909552551206560004"
     ]
@@ -31,6 +33,7 @@ const PROJECTS: Project[] = [
       "React", "Next", "Turborepo", "Tailwind", "shadcn/ui", "AWS", "Vercel", "TypeScript", "Upstash", "Stripe", "BetterAuth"
     ],
     status: "Refactoring",
+    githubUrl: "https://github.com/Steellgold/simplist.blog",
     url: "https://simplist.blog"
   },
   {
