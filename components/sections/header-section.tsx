@@ -32,18 +32,18 @@ export const HeaderSection = (): ReactElement => {
       </div>
       
       <div className="mt-1 sm:mt-2">
-        <p className="flex flex-wrap gap-1 text-sm sm:text-lg">
+        <p className="flex flex-wrap gap-1 text-md sm:text-lg">
           <span>Full-Stack Developer, specializing in the</span>
           <Skill name="TypeScript" />
           <span>ecosystem.</span>
         </p>
 
         <div className="mt-2">
-          <p className="text-sm sm:text-lg">
+          <p className="text-md sm:text-lg">
             I design robust, high-performance, and well-structured web applications using
           </p>
 
-          <p className="flex flex-wrap gap-1.5 text-sm sm:text-lg">
+          <p className="flex flex-wrap gap-1.5 text-md sm:text-lg">
             <RoughNotation type="highlight" color="#2537FF55" show={true} iterations={2} order={3}>
               modern technologies
             </RoughNotation>
