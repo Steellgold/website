@@ -1,13 +1,7 @@
 import { cn } from "@/lib/utils";
-import { Oregano } from "next/font/google";
 import { ReactElement } from "react";
+import { oregano } from "../font";
 import { Skill } from "../skill";
-
-const oregano = Oregano({
-  weight: "400",
-  style: "italic",
-  subsets: ["latin"],
-});
 
 export const SkillsSection = (): ReactElement => {
   return (

@@ -1,15 +1,9 @@
 import { cn } from "@/lib/utils";
-import { Oregano } from "next/font/google";
 import Image from "next/image";
 import { ReactElement } from "react";
 import { RoughNotation } from "react-rough-notation";
+import { oregano } from "../font";
 import { Skill } from "../skill";
-
-const oregano = Oregano({
-  weight: "400",
-  style: "italic",
-  subsets: ["latin"],
-});
 
 export const HeaderSection = (): ReactElement => {
   return (

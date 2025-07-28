@@ -1,14 +1,8 @@
 import { BLOG_POSTS } from "@/config/blog";
 import { cn } from "@/lib/utils";
-import { Oregano } from "next/font/google";
 import { ReactElement } from "react";
 import { BlogPostItem } from "../blog-post";
-
-const oregano = Oregano({
-  weight: "400",
-  style: "italic",
-  subsets: ["latin"],
-});
+import { oregano } from "../font";
 
 export const BlogSection = (): ReactElement => {
   if (!BLOG_POSTS || BLOG_POSTS.length === 0) {
