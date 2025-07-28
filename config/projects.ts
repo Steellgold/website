@@ -32,6 +32,18 @@ const PROJECTS: Project[] = [
     ],
     status: "Refactoring",
     url: "https://simplist.blog"
+  },
+  {
+    name: "Tweeets",
+    description: "A tweet generator with AI, emotions, tones and other features.",
+    technologies: [
+      "TypeScript", "Next", "OpenAI", "Tailwind", "Vercel", "Prisma", "PostgreSQL", "Supabase", "Stripe", "shadcn/ui"
+    ],
+    status: "Open-Source",
+    url: "https://github.com/Steellgold/tweeets",
+    awards: [
+      "https://supabase.com/blog/launch-week-8-hackathon-winners#best-use-of-ai"
+    ]
   }
 ]
 
