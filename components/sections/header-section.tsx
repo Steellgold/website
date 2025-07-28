@@ -1,8 +1,10 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import { ReactElement } from "react";
 import { RoughNotation } from "react-rough-notation";
 import { oregano } from "../font";
+import { Social_GitHub, Social_LinkedIn, Social_Malt, Social_XformerlyTwitter } from "../icons";
 import { Skill } from "../skill";
 
 export const HeaderSection = (): ReactElement => {
@@ -49,6 +51,51 @@ export const HeaderSection = (): ReactElement => {
             <Skill name="Tailwind" />
           </p>
         </div>
+      </div>
+
+      <div className={cn(
+        "flex flex-row gap-2 mt-2 *:bg-[#2d2d2d] *:hover:bg-[#242424]",
+        "*:px-2.5 *:py-1 *:flex *:flex-row *:items-center *:gap-2 *:text-sm",
+      )}>
+        <Link
+          href="https://www.linkedin.com/in/gaetanhus/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group"
+        >
+          <Social_LinkedIn width={14} height={14} fill="#fff" className="group-hover:fill-[#0077B5]" />
+          <span className="group-hover:text-white">LinkedIn</span>
+        </Link>
+
+        <Link
+          href="https://www.malt.fr/profile/gaetanhuszovits"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group"
+        >
+          <Social_Malt width={14} height={14} fill="#fff" className="group-hover:fill-[#FC5656]" />
+          <span className="group-hover:text-white">Malt</span>
+        </Link>
+
+        <Link
+          href="https://github.com/Steellgold"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group"
+        >
+          <Social_GitHub width={14} height={14} fill="#fff" />
+          <span className="group-hover:text-white">GitHub</span>
+        </Link>
+
+        <Link
+          href="https://x.com/Steellgold"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group"
+        >
+          <Social_XformerlyTwitter width={14} height={14} fill="#fff" />
+          <span className="group-hover:text-white">X</span>
+        </Link>
       </div>
     </div>
   )
