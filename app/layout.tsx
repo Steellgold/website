@@ -19,7 +19,13 @@ export const metadata: Metadata = {
 
 const RootLayout: Component<PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      style={{ scrollBehavior: "smooth" }}
+      className={cn(
+        "selection:bg-white selection:text-black"
+      )}
+    >
       <body className={`${outfit.className} antialiased bg-[#121212] text-white relative min-h-screen`}>
         <div className="absolute top-0 left-0 right-0 overflow-hidden pointer-events-none">
           <div className="w-full h-54 sm:h-96">

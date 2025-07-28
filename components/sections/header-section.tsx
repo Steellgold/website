@@ -44,7 +44,7 @@ export const HeaderSection = (): ReactElement => {
           </p>
 
           <p className="flex flex-wrap gap-1.5 text-md sm:text-lg">
-            <RoughNotation type="highlight" color="#2537FF55" show={true} iterations={2} order={3}>
+            <RoughNotation type="highlight" color="#2537FF55" show iterations={2} order={3}>
               modern technologies
             </RoughNotation>
             such as
