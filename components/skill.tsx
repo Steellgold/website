@@ -13,10 +13,13 @@ export const Skill: Component<Skill> = ({
   favorite = false,
   minimized = false,
 }) => {
-  const paddingClass = !minimized ? "px-1.5 py-0.5" : "";
+  const paddingClass = !minimized
+    ? "text-xs sm:text-lg px-1.5 py-0.5"
+    : "text-xs px-1 py-0.5";
+
   const borderClass = favorite
-    ? "border-inside-preferred"
-    : "border-inside-default";
+    ? "border-inside-preferred bg-white"
+    : "border-inside-default bg-[#1d1d1d]";
 
   const Icon = favorite ? iconsByName[name].light : iconsByName[name].normal;
 
@@ -24,11 +27,12 @@ export const Skill: Component<Skill> = ({
     <Link
       href={iconsByName[name].url}
       className={[
-        "flex flex-row items-center gap-2 text-xs sm:text-lg bg-clip-padding border-inside",
+        "flex flex-row items-center gap-2 bg-clip-padding border-inside",
         paddingClass,
         borderClass,
       ].join(" ")}
       style={{ "--border-inside-size": "1px" } as React.CSSProperties}
+      title={minimized ? name : undefined}
     >
       <Icon />
       {name}

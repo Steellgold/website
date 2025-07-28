@@ -121,13 +121,11 @@
 
   .border-inside-default {
     --border-inside-color: rgba(255, 255, 255, 0.2);
-    background-color: #1D1D1D;
     color: white;
   }
 
   .border-inside-preferred {
     --border-inside-color: rgba(29, 29, 29, 0.2);
-    background-color: white;
     color: black;
   }
 }
