@@ -68,14 +68,13 @@ const RootLayout: Component<PropsWithChildren> = ({ children }) => {
   return (
     <html
       lang="en"
-      style={{ scrollBehavior: "smooth" }}
       className={cn(
         "selection:bg-white selection:text-black"
       )}
     >
       <body className={`${outfit.className} antialiased bg-[#121212] text-white relative min-h-screen`}>
         <div className="absolute top-0 left-0 right-0 overflow-hidden pointer-events-none">
-          <div className="w-full h-54 sm:h-96">
+          <div className="w-full h-54 sm:h-100">
             <Image 
               src="/BWR.webp" 
               alt="BWR" 
@@ -88,7 +87,7 @@ const RootLayout: Component<PropsWithChildren> = ({ children }) => {
         
         <div className={cn(
           "relative z-10",
-          "p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 2xl:p-16",
+          "p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12",
           "max-w-4xl mx-auto"
         )}>
           {children}
