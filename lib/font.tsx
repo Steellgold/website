@@ -5,3 +5,9 @@ export const piano = Instrument_Serif({
   style: "italic",
   subsets: ["latin"],
 });
+
+export const piano_electric = Instrument_Serif({
+  weight: "400",
+  style: "normal",
+  subsets: ["latin"],
+});
