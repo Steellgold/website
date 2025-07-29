@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Gaëtan Huszovits",
     description: "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
     siteName: "Gaëtan Huszovits",
-    images: [{ url: `${CURRENT_URL}/og-image.png?v=2`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
+    images: [{ url: `${CURRENT_URL}/og-image.png`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
   },
   twitter: {
     card: "summary_large_image",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     creator: "@Steellgold",
     title: "Gaëtan Huszovits",
     description: "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
-    images: [{ url: `${CURRENT_URL}/og-image.png?v=2`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
+    images: [{ url: `${CURRENT_URL}/og-image.png`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
   }
 }
 
