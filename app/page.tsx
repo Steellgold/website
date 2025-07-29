@@ -6,7 +6,7 @@ import { ReactElement } from "react";
 
 const Home = (): ReactElement => {
   return (
-    <div className="flex flex-col gap-[55px]">
+    <div className="flex flex-col gap-12">
       <HeaderSection />
       <SkillsSection />
       <ProjectsSection />

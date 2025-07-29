@@ -30,13 +30,19 @@ export const HeaderSection = (): ReactElement => {
       <div className="mt-1 sm:mt-2">
         <span className="flex flex-wrap gap-1">
           Full-Stack Developer specializing in the{" "}
-          <Skill name="TypeScript" minimized /> ecosystem, passionate about building{" "}
-          <span>
-            <RoughNotation type="highlight" color="#2537FF55" show iterations={2}>
-              modern web applications
-            </RoughNotation>
-          </span>
-          {" "}with high performance, well-structured and modern technologies such as{" "}
+          <Skill name="TypeScript" minimized /> ecosystem
+        </span>
+        <span className="flex flex-wrap gap-1">
+          Building web applications with{" "}
+          <RoughNotation 
+            type="highlight" 
+            color="#2537FF55" 
+            show 
+            iterations={2}
+          >
+            modern technologies
+          </RoughNotation>
+          such as{" "}
           <Skill name="Next" minimized />{" "}
           <Skill name="BetterAuth" minimized />{" "}
           <Skill name="Prisma" minimized />{" "}
@@ -45,7 +51,7 @@ export const HeaderSection = (): ReactElement => {
       </div>
 
       <div className={cn(
-        "flex flex-row gap-2 mt-0.5 *:bg-[#2d2d2d] *:hover:bg-[#242424]",
+        "flex flex-row gap-2 *:bg-[#2d2d2d] *:hover:bg-[#242424]",
         "*:px-2.5 *:py-1 *:flex *:flex-row *:items-center *:gap-2 *:text-sm",
       )}>
         <Link
