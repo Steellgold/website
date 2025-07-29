@@ -1,4 +1,6 @@
+import { ConditionalPadding } from "@/components/conditional-padding";
 import { iconsByName } from "@/components/icons";
+import { AppProvider } from "@/contexts/app-context";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
 import type { Metadata } from "next";
@@ -72,26 +74,24 @@ const RootLayout: Component<PropsWithChildren> = ({ children }) => {
         "selection:bg-white selection:text-black"
       )}
     >
-      <body className={`${outfit.className} antialiased bg-[#121212] text-white relative min-h-screen`}>
-        <div className="absolute top-0 left-0 right-0 overflow-hidden pointer-events-none">
-          <div className="w-full h-54 sm:h-100">
-            <Image 
-              src="/BWR.webp" 
-              alt="BWR" 
-              width={1000}
-              height={256}
-              className="w-full h-full"
-            />
+      <body className={`${outfit.className} antialiased bg-[#121212] text-white relative`}>
+        <AppProvider>
+          <div className="absolute top-0 left-0 right-0  pointer-events-none">
+            <div className="w-full h-54 sm:h-100">
+              <Image 
+                src="/BWR.webp" 
+                alt="BWR" 
+                width={1000}
+                height={256}
+                className="w-full h-full"
+              />
+            </div>
           </div>
-        </div>
-        
-        <div className={cn(
-          "relative z-10",
-          "p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12",
-          "max-w-4xl mx-auto"
-        )}>
-          {children}
-        </div>
+          
+          <ConditionalPadding>
+            {children}
+          </ConditionalPadding>
+        </AppProvider>
       </body>
     </html>
   );
