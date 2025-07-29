@@ -48,13 +48,13 @@ export const ContactSection = (): ReactElement => {
           </div>
 
           <div className="inline-flex items-center gap-2 px-2 py-1 bg-[#2630a0] text-white rounded-lg hover:bg-[#2630a0]/80 transition-colors font-medium">
-            <Link href="mailto:pro@gaetanhus.fr">
-              pro@gaetanhus.fr
+            <Link href="mailto:contact@gaetanhus.fr">
+              contact@gaetanhus.fr
             </Link>
 
             <button
-              onClick={() => copy("pro@gaetanhus.fr")}
-              className="text-white hover:text-gray-300 transition-colors hover:bg-white/10 rounded-sm p-1 *:w-4 *:h-4"
+              onClick={() => copy("contact@gaetanhus.fr")}
+              className="text-white hover:text-gray-300 transition-colors hover:bg-white/10 rounded-sm  -1 *:w-4 *:h-4"
             >
               {isCopied ? <CopyCheck /> : <Copy />}
             </button>
