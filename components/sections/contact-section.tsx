@@ -1,15 +1,11 @@
+import { Section } from "@/components/section";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ReactElement } from "react";
-import { piano } from "../font";
 
 export const ContactSection = (): ReactElement => {
   return (
-    <div className="flex flex-col gap-6 w-full">
-      <h2 className={cn("text-4xl sm:text-5xl", piano.className)}>
-        Let&apos;s talk
-      </h2>
-      
+    <Section name="Let&apos;s talk">
       <div className="bg-[#1d1d1d] border-inside border-inside-default p-6">
         <div className="text-center space-y-4">
           
@@ -26,7 +22,10 @@ export const ContactSection = (): ReactElement => {
           </div>
 
           <div className="flex flex-col gap-1">
-            <h3 className="text-xl font-semibold text-white">Get in touch</h3>
+            <h3 className="text-xl font-semibold text-white">
+              Get in touch
+            </h3>
+
             <p className="text-gray-300">
               Ready to start a project or just want to say hello?
               <br />
@@ -42,6 +41,6 @@ export const ContactSection = (): ReactElement => {
           </Link>
         </div>
       </div>
-    </div>
+    </Section>
   );
 };

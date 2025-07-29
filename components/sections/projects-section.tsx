@@ -1,12 +1,12 @@
 "use client";
 
+import { SkillName } from "@/components/icons";
+import { ProjectCard } from "@/components/project";
+import { Section } from "@/components/section";
 import { PROJECTS } from "@/config/projects";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { ReactElement, useState } from "react";
-import { piano } from "../font";
-import { SkillName } from "../icons";
-import { ProjectCard } from "../project";
 
 export const ProjectsSection = (): ReactElement => {
   const [showMore, setShowMore] = useState(false);
@@ -14,9 +14,7 @@ export const ProjectsSection = (): ReactElement => {
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex flex-col gap-3 w-full">
-      <h2 className={cn("text-4xl sm:text-5xl", piano.className)}>Projects</h2>
-      
+    <Section name="Projects">
       <div className="relative group">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           {PROJECTS.slice(0, showMore ? PROJECTS.length : 2).map((project) => (
@@ -47,6 +45,6 @@ export const ProjectsSection = (): ReactElement => {
           </div>
         )}
       </div>
-    </div>
+    </Section>
   );
 }; 

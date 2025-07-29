@@ -1,11 +1,11 @@
+import { Social_GitHub, Social_LinkedIn, Social_Malt, Social_XformerlyTwitter } from "@/components/icons";
+import { Skill } from "@/components/skill";
+import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactElement } from "react";
 import { RoughNotation } from "react-rough-notation";
-import { piano } from "../font";
-import { Social_GitHub, Social_LinkedIn, Social_Malt, Social_XformerlyTwitter } from "../icons";
-import { Skill } from "../skill";
 
 export const HeaderSection = (): ReactElement => {
   return (

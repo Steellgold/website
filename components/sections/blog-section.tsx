@@ -1,8 +1,7 @@
+import { BlogPostItem } from "@/components/blog-post";
+import { Section } from "@/components/section";
 import { BLOG_POSTS } from "@/config/blog";
-import { cn } from "@/lib/utils";
 import { ReactElement } from "react";
-import { BlogPostItem } from "../blog-post";
-import { piano } from "../font";
 
 export const BlogSection = (): ReactElement => {
   if (!BLOG_POSTS || BLOG_POSTS.length === 0) {
@@ -10,9 +9,7 @@ export const BlogSection = (): ReactElement => {
   }
 
   return (
-    <div className="flex flex-col gap-3 w-full">
-      <h2 className={cn("text-4xl sm:text-5xl", piano.className)}>Blog</h2>
-      
+    <Section name="Blog">
       <div className="flex flex-col">
         {BLOG_POSTS && BLOG_POSTS.length > 0 && BLOG_POSTS.map((post, index) => (
           <div key={post.title} className="group">
@@ -28,6 +25,6 @@ export const BlogSection = (): ReactElement => {
           </div>
         ))}
       </div>
-    </div>
+    </Section>
   );
 }; 

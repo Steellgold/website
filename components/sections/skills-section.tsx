@@ -1,13 +1,12 @@
+import { Section } from "@/components/section";
+import { Skill } from "@/components/skill";
+import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { ReactElement } from "react";
-import { piano } from "../font";
-import { Skill } from "../skill";
 
 export const SkillsSection = (): ReactElement => {
   return (
-    <div className="flex flex-col gap-3 w-full">
-      <h2 className={cn("text-4xl sm:text-5xl", piano.className)}>Using</h2>
-      
+    <Section name="Using">
       <div className="flex flex-wrap items-center gap-1 sm:gap-1">
         <Skill name="React" />
         <Skill name="Next" />
@@ -33,6 +32,6 @@ export const SkillsSection = (): ReactElement => {
           and many others...
         </span>
       </div>
-    </div>
+    </Section>
   );
 };
