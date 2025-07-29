@@ -1,4 +1,4 @@
-# Portfolio Website
+<img width="1797" height="266" alt="OG GitHub" src="https://github.com/user-attachments/assets/f4823143-2daa-48f8-8022-1f430d11fcfa" />
 
 This repository contains the source code for my personal portfolio website, developed with Next.js 15 and TypeScript. This site showcases my development skills through interactive components, responsive design, and modern web technologies.
 
