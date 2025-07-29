@@ -1,4 +1,5 @@
 import { BlogSection } from "@/components/sections/blog-section";
+import { ContactSection } from "@/components/sections/contact-section";
 import { HeaderSection } from "@/components/sections/header-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { SkillsSection } from "@/components/sections/skills-section";
@@ -11,6 +12,7 @@ const Home = (): ReactElement => {
       <SkillsSection />
       <ProjectsSection />
       <BlogSection />
+      <ContactSection />
     </div>
   );
 }
