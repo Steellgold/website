@@ -1,9 +1,23 @@
+"use client";
+
 import { Section } from "@/components/section";
 import { cn } from "@/lib/utils";
+import { Copy, CopyCheck } from "lucide-react";
 import Link from "next/link";
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
+import { useCopyToClipboard } from "usehooks-ts";
 
 export const ContactSection = (): ReactElement => {
+  const [isCopied, copy] = useCopyToClipboard();
+
+  useEffect(() => {
+    if (isCopied) {
+      setTimeout(() => {
+        copy("");
+      }, 2000);
+    }
+  }, [isCopied, copy]);
+
   return (
     <Section name="Let&apos;s talk">
       <div className="bg-[#1d1d1d] border-inside border-inside-default p-6">
@@ -33,12 +47,18 @@ export const ContactSection = (): ReactElement => {
             </p>
           </div>
 
-          <Link
-            href="mailto:pro@gaetanhus.fr"
-            className="inline-flex items-center gap-2 px-2 py-1 bg-[#2630a0] text-white rounded-lg hover:bg-[#2630a0]/80 transition-colors font-medium"
-          >
-            pro@gaetanhus.fr
-          </Link>
+          <div className="inline-flex items-center gap-2 px-2 py-1 bg-[#2630a0] text-white rounded-lg hover:bg-[#2630a0]/80 transition-colors font-medium">
+            <Link href="mailto:pro@gaetanhus.fr">
+              pro@gaetanhus.fr
+            </Link>
+
+            <button
+              onClick={() => copy("pro@gaetanhus.fr")}
+              className="text-white hover:text-gray-300 transition-colors"
+            >
+              {isCopied ? <CopyCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+            </button>
+          </div>
         </div>
       </div>
     </Section>
