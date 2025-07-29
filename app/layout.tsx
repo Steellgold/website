@@ -9,7 +9,7 @@ import Image from "next/image";
 import { PropsWithChildren } from "react";
 import "./globals.css";
 
-const CURRENT_URL = "https://2025.steellgold.fr";
+const CURRENT_URL = "https://gaetanhus.fr";
 
 const outfit = Outfit({
   weight: "400",
