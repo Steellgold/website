@@ -17,7 +17,7 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Gaëtan Huszovits",
-  description: "Full-Stack Developer specializing in the TypeScript ecosystem, passionate about building modern web applications with high performance, well-structured and modern technologies.",
+  description: "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
   applicationName: "Gaëtan Huszovits",
   authors: [
     { name: "Gaëtan Huszovits", url: CURRENT_URL }
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     type: "website",
     url: CURRENT_URL,
     title: "Gaëtan Huszovits",
-    description: "Full-Stack Developer specializing in the TypeScript ecosystem, passionate about building modern web applications with high performance, well-structured and modern technologies.",
+    description: "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
     siteName: "Gaëtan Huszovits",
     images: [{ url: `${CURRENT_URL}/og-image.png?v=2`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
   },
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     site: "@Steellgold",
     creator: "@Steellgold",
     title: "Gaëtan Huszovits",
-    description: "Full-Stack Developer specializing in the TypeScript ecosystem, passionate about building modern web applications with high performance, well-structured and modern technologies.",
+    description: "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
     images: [{ url: `${CURRENT_URL}/og-image.png?v=2`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
   }
 }

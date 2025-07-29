@@ -54,9 +54,9 @@ export const ContactSection = (): ReactElement => {
 
             <button
               onClick={() => copy("pro@gaetanhus.fr")}
-              className="text-white hover:text-gray-300 transition-colors"
+              className="text-white hover:text-gray-300 transition-colors hover:bg-white/10 rounded-sm p-1 *:w-4 *:h-4"
             >
-              {isCopied ? <CopyCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              {isCopied ? <CopyCheck /> : <Copy />}
             </button>
           </div>
         </div>
