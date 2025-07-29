@@ -1,3 +1,4 @@
+import { iconsByName } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
 import type { Metadata } from "next";
@@ -19,7 +20,19 @@ export const metadata: Metadata = {
   authors: [
     { name: "Gaëtan Huszovits", url: "https://gaetanhus.fr/" }
   ],
-  keywords: [""],
+  keywords: [
+    "Gaëtan Huszovits",
+    "Steellgold",
+    "gaetan huszovits portfolio",
+    "full-stack developer",
+    "TypeScript developer",
+    "React developer",
+    "Next.js developer",
+    "web developer modern stack",
+    "modern web developer",
+    "front-end back-end integration",
+    ...Object.keys(iconsByName).map((icon) => icon.toLowerCase()),
+  ],
   robots: {
     index: true,
     follow: true
