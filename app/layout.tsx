@@ -74,6 +74,11 @@ const RootLayout: Component<PropsWithChildren> = ({ children }) => {
         "selection:bg-white selection:text-black"
       )}
     >
+      <head>
+        <script defer src="https://woyage.app/track.js" data-website-id="c8c86e74-6786-464f-b388-472644ded343"></script>
+        <script defer src="https://woyage.app/track.js" data-website-id="ffd6eb05-59b1-4fa2-8a47-225c12ca64f8"></script>
+      </head>
+
       <body className={`${outfit.className} antialiased bg-[#121212] text-white relative`}>
         <AppProvider>
           <div className="absolute top-0 left-0 right-0  pointer-events-none">
@@ -87,7 +92,7 @@ const RootLayout: Component<PropsWithChildren> = ({ children }) => {
               />
             </div>
           </div>
-          
+            
           <ConditionalPadding>
             {children}
           </ConditionalPadding>
