@@ -1,6 +1,12 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
+export const RESERVED_SHORT_LINKS = [
+  "new",
+  "not-found",
+  "blog"
+]
+
 export const cn = (...inputs: ClassValue[]) => {
   const merged = twMerge(clsx(inputs));
   
@@ -24,4 +30,17 @@ export const cn = (...inputs: ClassValue[]) => {
   const result = [merged, ...preservedCustomClasses].filter(Boolean).join(" ");
   
   return result;
+};
+
+export const getIp = (headersList: Headers) => {
+  const forwardedFor = headersList.get("x-forwarded-for");
+  const realIp = headersList.get("x-real-ip");
+
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0].trim();
+  }
+
+  if (realIp) return realIp.trim();
+
+  return "0.0.0.0";
 };
