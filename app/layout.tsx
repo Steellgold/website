@@ -7,6 +7,8 @@ import Image from "next/image";
 import { PropsWithChildren } from "react";
 import "./globals.css";
 
+const CURRENT_URL = "https://2025.steellgold.fr";
+
 const outfit = Outfit({
   weight: "400",
   subsets: ["latin"],
@@ -18,7 +20,7 @@ export const metadata: Metadata = {
   description: "Full-Stack Developer specializing in the TypeScript ecosystem, passionate about building modern web applications with high performance, well-structured and modern technologies.",
   applicationName: "Gaëtan Huszovits",
   authors: [
-    { name: "Gaëtan Huszovits", url: "https://gaetanhus.fr/" }
+    { name: "Gaëtan Huszovits", url: CURRENT_URL }
   ],
   keywords: [
     "Gaëtan Huszovits",
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     follow: true
   },
   alternates: {
-    canonical: "https://gaetanhus.fr"
+    canonical: CURRENT_URL
   },
   icons: {
     icon: "/favicon.ico",
@@ -46,11 +48,11 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://gaetanhus.fr",
+    url: CURRENT_URL,
     title: "Gaëtan Huszovits",
     description: "Full-Stack Developer specializing in the TypeScript ecosystem, passionate about building modern web applications with high performance, well-structured and modern technologies.",
     siteName: "Gaëtan Huszovits",
-    images: [{ url: "https://gaetanhus.fr/og-image.png", width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
+    images: [{ url: `${CURRENT_URL}/og-image.png`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
   },
   twitter: {
     card: "summary_large_image",
@@ -58,7 +60,7 @@ export const metadata: Metadata = {
     creator: "@Steellgold",
     title: "Gaëtan Huszovits",
     description: "Full-Stack Developer specializing in the TypeScript ecosystem, passionate about building modern web applications with high performance, well-structured and modern technologies.",
-    images: [{ url: "https://gaetanhus.fr/og-image.png", width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
+    images: [{ url: `${CURRENT_URL}/og-image.png`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
   }
 }
 
