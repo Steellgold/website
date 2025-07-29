@@ -88,6 +88,8 @@ export const createShortLink = async (request: CreateShortLinkForm, ip: string) 
     const shortLink: ShortLink = {
       url: request.url,
       createdAt: Date.now(),
+      ip: ip,
+      clicks: 0,
     };
 
     if (request.password) {
@@ -99,6 +101,7 @@ export const createShortLink = async (request: CreateShortLinkForm, ip: string) 
     }
 
     await redis.set(`short:${short}`, shortLink);
+    await redis.sadd(`ip:${ip}:links`, short);
 
     if (request.expiresAt) {
       const ttl = Math.floor((new Date(request.expiresAt).getTime() - Date.now()) / 1000);
@@ -142,5 +145,64 @@ export const verifyPassword = async (password: string, hashedPassword: string): 
   } catch (error) {
     console.error("Error verifying password:", error);
     return false;
+  }
+};
+
+export const getLinksByIp = async (ip: string): Promise<Array<{ short: string; link: ShortLink }>> => {
+  try {
+    const shortLinks = await redis.smembers(`ip:${ip}:links`);
+    const links = [];
+
+    for (const short of shortLinks) {
+      const link = await getShortLink(short);
+      if (link) {
+        links.push({ short, link });
+      } else {
+        await redis.srem(`ip:${ip}:links`, short);
+      }
+    }
+
+    return links.sort((a, b) => b.link.createdAt - a.link.createdAt);
+  } catch (error) {
+    console.error("Error getting links by IP:", error);
+    return [];
+  }
+};
+
+export const deleteShortLink = async (short: string, ip: string): Promise<{ success: boolean; error?: string }> => {
+  try {
+    const shortLink = await getShortLink(short);
+    if (!shortLink) {
+      return { success: false, error: "Link not found" };
+    }
+
+    if (shortLink.ip !== ip) {
+      return { success: false, error: "Unauthorized to delete this link" };
+    }
+
+    await redis.del(`short:${short}`);
+    await redis.srem(`ip:${ip}:links`, short);
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error deleting short link:", error);
+    return { success: false, error: "Internal server error" };
+  }
+};
+
+export const incrementClicks = async (short: string): Promise<{ success: boolean; error?: string }> => {
+  try {
+    const shortLink = await getShortLink(short);
+    if (!shortLink) {
+      return { success: false, error: "Link not found" };
+    }
+
+    shortLink.clicks = (shortLink.clicks || 0) + 1;
+    await redis.set(`short:${short}`, shortLink);
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error incrementing clicks:", error);
+    return { success: false, error: "Internal server error" };
   }
 };

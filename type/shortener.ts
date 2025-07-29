@@ -4,7 +4,9 @@ export const shortLinkSchema = z.object({
   url: z.url(),
   password: z.string().optional(),
   expiresAt: z.number().optional(),
-  createdAt: z.number()
+  createdAt: z.number(),
+  ip: z.string(),
+  clicks: z.number().default(0)
 });
 
 export type ShortLink = z.infer<typeof shortLinkSchema>;

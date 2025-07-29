@@ -1,6 +1,5 @@
-import { getShortLink } from '@/lib/shortener';
-import { RESERVED_SHORT_LINKS } from '@/lib/utils';
-import { NextRequest, NextResponse } from 'next/server';
+import { getShortLink, incrementClicks } from "@/lib/shortener";
+import { NextRequest, NextResponse } from "next/server";
 
 type Props = {
   params: Promise<{ short: string }>
@@ -9,24 +8,21 @@ type Props = {
 export async function GET(request: NextRequest, { params }: Props) {
   try {
     const { short } = await params;
-
-    if (RESERVED_SHORT_LINKS.includes(short)) {
-      return new NextResponse("Not found", { status: 404 });
-    }
-
     const shortLink = await getShortLink(short);
 
     if (!shortLink) {
-      return new NextResponse("Not found", { status: 404 });
+      return NextResponse.redirect(new URL("/", request.url));
     }
 
     if (shortLink.password) {
       return NextResponse.redirect(new URL(`/${short}/password`, request.url));
     }
 
+    await incrementClicks(short);
     return NextResponse.redirect(shortLink.url);
+
   } catch (error) {
-    console.error("Error in short link route:", error);
-    return new NextResponse("Internal server error", { status: 500 });
+    console.error("Error in short link redirect:", error);
+    return NextResponse.redirect(new URL("/", request.url));
   }
 }

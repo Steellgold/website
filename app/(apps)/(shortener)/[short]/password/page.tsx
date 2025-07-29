@@ -90,6 +90,6 @@ const PasswordPage: Component<Props> = ({ params }) => {
       </div>
     </div>
   );
-}
+};
 
 export default PasswordPage;
