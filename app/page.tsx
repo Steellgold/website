@@ -13,6 +13,18 @@ const Home = (): ReactElement => {
       <ProjectsSection />
       <BlogSection />
       <ContactSection />
+
+      <footer className="flex flex-col items-center justify-between">
+        <div className="flex flex-row items-center gap-2">
+          <span className="text-sm text-white">© {new Date().getFullYear()} Gaëtan Huszovits</span>
+        </div>
+
+        <div className="flex flex-row items-center gap-2">
+          <span className="text-sm text-white">
+            Made in Alsace, France
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }
