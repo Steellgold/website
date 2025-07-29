@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Website
 
-## Getting Started
+This repository contains the source code for my personal portfolio website, developed with Next.js 15 and TypeScript. This site showcases my development skills through interactive components, responsive design, and modern web technologies.
 
-First, run the development server:
+## 📚 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework**: [Next.js 15](https://nextjs.org/) - React framework with App Router and Turbopack
+- **Language**: [TypeScript](https://www.typescriptlang.org/) - for static typing and better maintainability
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) - utility CSS framework with custom configurations
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) - accessible and customizable interface elements
+- **Icons**: [Lucide React](https://lucide.dev/) - beautiful & consistent icon toolkit
+- **Markdown**: [React Markdown](https://github.com/remarkjs/react-markdown) - for blog content rendering
+- **State Management**: React Context API for lightweight state management
+- **APIs**: Integration with Simplist for blog content management
+
+## 🔧 API Integrations and Environment Variables
+
+The project uses the Simplist API to fetch and display blog posts. Here's the required environment variable:
+
+```plaintext
+NEXT_PUBLIC_SIMPLIST_API_KEY=<Your Simplist API Key>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Integration Description
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Simplist**: A blogging service that provides an API to retrieve blog articles. The website fetches blog posts from Simplist and displays them with proper markdown rendering. For more information, visit [Simplist](https://simplist.blog/).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Running Locally
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git clone https://github.com/Steellgold/website.git
+cd website
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm install
+```
 
-## Deploy on Vercel
+3. Configure the environment variables in `.env.local`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+NEXT_PUBLIC_SIMPLIST_API_KEY=your_simplist_api_key_here
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Start the development server:
+
+```bash
+pnpm dev
+```
+
+5. Access the site locally at `http://localhost:3000`.
+
+## 🏗️ Build and Deploy
+
+To build the project for production:
+
+```bash
+pnpm build
+```
+
+To start the production server:
+
+```bash
+pnpm start
+```
+
+## 📁 Project Structure
+
+```
+website/
+├── app/                    # Next.js App Router pages
+│   ├── blog/[slug]/       # Dynamic blog post pages
+│   ├── globals.css        # Global styles with Tailwind
+│   ├── layout.tsx         # Root layout component
+│   └── page.tsx           # Home page
+├── components/            # Reusable React components
+│   ├── sections/          # Page sections (header, skills, etc.)
+│   └── markdown/          # Markdown rendering components
+├── config/               # Configuration files
+│   ├── projects.ts       # Projects data
+│   └── blog.ts           # Blog posts metadata
+├── contexts/             # React context providers
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility functions and configurations
+├── public/               # Static assets
+└── type/                 # TypeScript type definitions
+```
+
+## 🎨 Features
+
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Blog Integration**: Dynamic blog posts with markdown support
+- **SEO Optimized**: Meta tags, Open Graph, and Twitter Cards
+- **Performance**: Optimized images, fonts, and bundle size
+- **Accessibility**: Semantic HTML and ARIA attributes
+- **Dark Theme**: Beautiful dark theme with custom CSS variables
+
+## 📝 License
+
+This project is private and proprietary. All rights reserved.
