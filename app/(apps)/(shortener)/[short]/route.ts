@@ -1,4 +1,5 @@
 import { getShortLink, incrementClicks } from "@/lib/shortener";
+import { isBotOrCrawler } from "@/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
 
 type Props = {
@@ -18,7 +19,13 @@ export async function GET(request: NextRequest, { params }: Props) {
       return NextResponse.redirect(new URL(`/${short}/password`, request.url));
     }
 
-    await incrementClicks(short);
+    const userAgent = request.headers.get('user-agent') || '';
+    const isBot = isBotOrCrawler(userAgent);
+
+    if (!isBot) {
+      await incrementClicks(short);
+    }
+
     return NextResponse.redirect(shortLink.url);
 
   } catch (error) {

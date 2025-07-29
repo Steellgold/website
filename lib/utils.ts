@@ -44,3 +44,59 @@ export const getIp = (headersList: Headers) => {
 
   return "0.0.0.0";
 };
+
+export const isBotOrCrawler = (userAgent: string): boolean => {
+  if (!userAgent) return true;
+  
+  const botPatterns = [
+    // Discord
+    /discord/i,
+    /discordbot/i,
+    // Slack
+    /slack/i,
+    /slackbot/i,
+    // Telegram
+    /telegram/i,
+    /telegrambot/i,
+    // WhatsApp
+    /whatsapp/i,
+    // Facebook
+    /facebook/i,
+    /facebookexternalhit/i,
+    // Twitter/X
+    /twitter/i,
+    /twitterbot/i,
+    /x-bot/i,
+    // LinkedIn
+    /linkedin/i,
+    /linkedinbot/i,
+    // Bots generic
+    /bot/i,
+    /crawler/i,
+    /spider/i,
+    /scraper/i,
+    /preview/i,
+    /embed/i,
+    // Headless browsers
+    /headless/i,
+    /phantomjs/i,
+    /selenium/i,
+    /puppeteer/i,
+    // Preview services
+    /preview/i,
+    /embed/i,
+    /iframe/i,
+    // Other platforms
+    /skype/i,
+    /teams/i,
+    /zoom/i,
+    /discordapp/i,
+    /t\.me/i,
+    /wa\.me/i,
+    /fb\.me/i,
+    /t\.co/i,
+    /lnkd\.in/i,
+  ];
+
+  return botPatterns.some(pattern => pattern.test(userAgent));
+}

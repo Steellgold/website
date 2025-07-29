@@ -1,9 +1,9 @@
 "use server";
 
 import { createShortLink, deleteShortLink, getLinksByIp, getShortLink, incrementClicks, verifyPassword } from "@/lib/shortener";
+import { getIp, isBotOrCrawler } from "@/lib/utils";
 import { CreateShortLinkForm, VerifyPasswordForm } from "@/type/shortener";
 import { headers } from "next/headers";
-import { getIp } from "../utils";
 
 export const createShortLinkAction = async (data: CreateShortLinkForm) => {
   const { url, slug, password, expiresAt } = data;
@@ -56,7 +56,13 @@ export const verifyPasswordAction = async (data: VerifyPasswordForm) => {
       return { success: false, error: "Password is incorrect" };
     }
 
-    await incrementClicks(short);
+    const headersList = await headers();
+    const userAgent = headersList.get('user-agent') || '';
+    const isBot = isBotOrCrawler(userAgent);
+
+    if (!isBot) {
+      await incrementClicks(short);
+    }
 
     return { success: true, url: shortLink.url };
   } catch (error) {
