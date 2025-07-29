@@ -101,4 +101,4 @@ website/
 
 ## 📝 License
 
-This project is private and proprietary. All rights reserved.
+This project is open-source and available under the MIT License. Feel free to use this code as inspiration for your own projects!
