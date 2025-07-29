@@ -36,7 +36,7 @@ export const HeaderSection = (): ReactElement => {
               modern web applications
             </RoughNotation>
           </span>
-          {" "}with performance and clarity in mind. I work mainly with{" "}
+          {" "}with high performance, well-structured and modern technologies such as{" "}
           <Skill name="Next" minimized />{" "}
           <Skill name="BetterAuth" minimized />{" "}
           <Skill name="Prisma" minimized />{" "}
