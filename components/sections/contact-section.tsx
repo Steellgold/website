@@ -54,6 +54,7 @@ export const ContactSection = (): ReactElement => {
 
             <button
               onClick={() => copy("contact@gaetanhus.fr")}
+              aria-label="Copy email"
               className="text-white hover:text-gray-300 transition-colors hover:bg-white/10 rounded-sm  -1 *:w-4 *:h-4"
             >
               {isCopied ? <CopyCheck /> : <Copy />}

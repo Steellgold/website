@@ -76,25 +76,27 @@ const RootLayout: Component<PropsWithChildren> = ({ children }) => {
       )}
     >
       <body className={`${outfit.className} antialiased bg-[#121212] text-white relative`}>
-        <AppProvider>
-          <div className="absolute top-0 left-0 right-0  pointer-events-none">
-            <div className="w-full h-54 sm:h-100">
-              <Image 
-                src="/BWR.webp" 
-                alt="BWR" 
-                width={1000}
-                height={256}
-                className="w-full h-full"
-              />
+        <main>
+          <AppProvider>
+            <div className="absolute top-0 left-0 right-0  pointer-events-none">
+              <div className="w-full h-54 sm:h-100">
+                <Image 
+                  src="/BWR.webp" 
+                  alt="BWR" 
+                  width={1000}
+                  height={256}
+                  className="w-full h-full"
+                />
+              </div>
             </div>
-          </div>
+              
+            <ConditionalPadding>
+              {children}
+            </ConditionalPadding>
             
-          <ConditionalPadding>
-            {children}
-          </ConditionalPadding>
-          
-          <SpotifyPlayer />
-        </AppProvider>
+            <SpotifyPlayer />
+          </AppProvider>
+        </main>
       </body>
     </html>
   );
