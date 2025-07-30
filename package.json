@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "ngrok": "C:\\ngrok.exe http --url=namely-fond-snail.ngrok-free.app 3000"
+    "ngrok": "C:\\ngrok.exe http --url=namely-fond-snail.ngrok-free.app 3000",
+    "spotify-token": "node scripts/get-spotify-token.js",
+    "spotify-process": "node scripts/process-spotify-code.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
