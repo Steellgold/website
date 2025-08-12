@@ -11,7 +11,10 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     authInterrupts: true
-  }
+  },
+  outputFileTracingIncludes: {
+    registry: ["./registry/**/*"],
+  },
 };
 
 export default nextConfig;

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "steellgold",
+  "homepage": "https://steellgold.fr",
+  "items": [
+    {
+      "name": "color-picker",
+      "type": "registry:component",
+      "title": "Color Picker",
+      "description": "A color picker component.",
+      "registryDependencies": ["button", "input", "label", "popover"],
+      "files": [
+        {
+          "path": "registry/new-york/color-picker/page.tsx",
+          "type": "registry:page",
+          "target": "app/registry/color-picker/page.tsx"
+        },
+        {
+          "path": "registry/new-york/color-picker/components/color-picker.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/color-picker/lib/color-utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}

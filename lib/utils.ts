@@ -4,7 +4,11 @@ import { twMerge } from "tailwind-merge";
 export const RESERVED_SHORT_LINKS = [
   "new",
   "not-found",
-  "blog"
+  "blog",
+  "registry",
+  "ui",
+  "links",
+  "api"
 ]
 
 export const cn = (...inputs: ClassValue[]) => {

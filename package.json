@@ -9,12 +9,18 @@
     "lint": "next lint",
     "ngrok": "C:\\ngrok.exe http --url=namely-fond-snail.ngrok-free.app 3000",
     "spotify-token": "node scripts/get-spotify-token.js",
-    "spotify-process": "node scripts/process-spotify-code.js"
+    "spotify-process": "node scripts/process-spotify-code.js",
+    "registry:build": "shadcn build"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
     "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-popover": "^1.1.14",
+    "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-switch": "^1.2.5",
+    "@radix-ui/react-toggle": "^1.1.9",
+    "@radix-ui/react-toggle-group": "^1.1.10",
     "@types/spotify-web-api-node": "^5.0.11",
     "@upstash/ratelimit": "^2.0.6",
     "@upstash/redis": "^1.35.2",
@@ -30,6 +36,7 @@
     "react-rough-notation": "^1.0.5",
     "react-syntax-highlighter": "^15.6.1",
     "remark-gfm": "^4.0.1",
+    "shadcn": "2.9.3-canary.0",
     "spotify-web-api-node": "^5.0.2",
     "tailwind-merge": "^3.3.1",
     "usehooks-ts": "^3.1.1",
