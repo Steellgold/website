@@ -1,5 +1,6 @@
 "use client"
 
+import { CodeBlockCommand } from "@/components/code-block-command"
 import { OpenInV0Button } from "@/components/open-in-v0"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -27,6 +28,7 @@ export const ColorPickerPlayground = () => {
 
   const [currentColor, setCurrentColor] = useState(defaultValue)
   const [copied, setCopied] = useState(false)
+  const downloadUrl = "https://ui.steellgold.fr/r/color-picker.json"
 
   const resetConfig = () => {
     setShowPresets(true)
@@ -306,6 +308,22 @@ export const ColorPickerPlayground = () => {
             <pre className="bg-[#1d1d1d] p-3 text-sm border-inside border-inside-default whitespace-pre-wrap break-words md:whitespace-pre md:break-normal md:overflow-x-auto">
               {generateCode()}
             </pre>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Installation</CardTitle>
+            <CardDescription>via CLI (shadcn)</CardDescription>
+          </CardHeader>
+
+          <CardContent className="-mt-2">
+            <CodeBlockCommand
+              __pnpm__={`pnpx shadcn@latest add ${downloadUrl}`}
+              __npm__={`npx shadcn@latest add ${downloadUrl}`}
+              __yarn__={`yarn shadcn@latest add ${downloadUrl}`}
+              __bun__={`bunx shadcn@latest add ${downloadUrl}`}
+            />
           </CardContent>
         </Card>
       </div>

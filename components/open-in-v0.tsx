@@ -18,7 +18,7 @@ export const OpenInV0Button: Component<OpenInV0ButtonProps> = ({ name, className
       asChild
     >
       <Link
-        href={`https://v0.dev/chat/api/open?url=${process.env.NEXT_PUBLIC_BASE_URL}/r/${name}.json`}
+        href={`https://v0.dev/chat/api/open?url=https://ui.steellgold.fr/r/${name}.json`}
         target="_blank"
         rel="noreferrer"
       >

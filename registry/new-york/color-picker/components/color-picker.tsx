@@ -159,7 +159,7 @@ export const ColorPicker = React.forwardRef<HTMLButtonElement, ColorPickerProps>
             ref={ref}
             variant="outline"
             className={cn(
-              "justify-start text-left font-normal",
+              "w-[200px] justify-start text-left font-normal",
               !displayValue && "text-muted-foreground",
               className,
             )}
