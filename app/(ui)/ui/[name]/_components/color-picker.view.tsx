@@ -1,6 +1,8 @@
 "use client"
 
+import { OpenInV0Button } from "@/components/open-in-v0"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -10,8 +12,6 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { ColorPicker } from "@/registry/new-york/color-picker/components/color-picker"
 import { Check, Copy, PanelBottom, PanelLeft, PanelRight, PanelTop } from "lucide-react"
 import { useState } from "react"
-import { OpenInV0Button } from "./open-in-v0"
-import { Button } from "./ui/button"
 
 export const ColorPickerPlayground = () => {
   const [showPresets, setShowPresets] = useState(true)
