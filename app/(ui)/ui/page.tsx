@@ -1,7 +1,7 @@
-import { ColorPickerPlayground } from "@/components/color-picker-playground";
 import { iconsByName } from "@/components/icons";
 import { Section } from "@/components/section";
 import { Metadata } from "next";
+import { ColorPickerPlayground } from "./[name]/_components/color-picker.view";
 
 const CURRENT_URL = "https://ui.gaetanhus.fr";
 
