@@ -11,11 +11,6 @@
       "registryDependencies": ["button", "input", "label", "popover"],
       "files": [
         {
-          "path": "registry/new-york/color-picker/page.tsx",
-          "type": "registry:page",
-          "target": "app/registry/color-picker/page.tsx"
-        },
-        {
           "path": "registry/new-york/color-picker/components/color-picker.tsx",
           "type": "registry:component"
         },
