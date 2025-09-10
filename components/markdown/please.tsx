@@ -103,17 +103,29 @@ export const MarkdownPlease: Component<MarkdownPleaseProps> = ({ content }) => (
           {...props} 
         />
       ),
-      img: ({ ...props }) => (
-        <div className="my-6">
-          <Image
-            alt="illustration image"
-            src={props.src as string}
-            width={900}
-            height={500}
-            className="rounded-lg w-full h-auto max-w-full"
-          />
-        </div>
-      ),
+      img: ({ ...props }) => {
+        const isValidUrl = (url: string) => {
+          try {
+            return url.startsWith('/') || url.startsWith('http://') || url.startsWith('https://');
+          } catch {
+            return false;
+          }
+        };
+        
+        const imageSrc = isValidUrl(props.src as string) ? props.src as string : '/local-og.png';
+        
+        return (
+          <div className="my-6">
+            <Image
+              alt="illustration image"
+              src={imageSrc}
+              width={900}
+              height={500}
+              className="rounded-lg w-full h-auto max-w-full"
+            />
+          </div>
+        );
+      },
       i: ({ ...props }) => (
         <i className="italic text-gray-200" {...props} />
       ),
@@ -128,8 +140,25 @@ export const MarkdownPlease: Component<MarkdownPleaseProps> = ({ content }) => (
       ),
       code({ className, children, ...props }) {
         const match = /language-(\w+)/.exec(className || "");
+        
+        const cleanCode = (code: string) => {
+          const lines = code.split('\n');
+          const nonEmptyLines = lines.filter(line => line.trim().length > 0);
+          if (nonEmptyLines.length === 0) return code;
+          
+          const minIndent = Math.min(...nonEmptyLines.map(line => {
+            const match = line.match(/^(\s*)/);
+            return match ? match[1].length : 0;
+          }));
+          
+          return lines.map(line => {
+            if (line.trim().length === 0) return line;
+            return line.slice(minIndent);
+          }).join('\n').replace(/\n$/, "");
+        };
+        
         return match ? (
-          <CodeWindow language={match[1]} textCode={String(children).replace(/\n$/, "")}>
+          <CodeWindow language={match[1]} textCode={cleanCode(String(children))}>
             <SyntaxHighlighter
               // @ts-expect-error - All good
               style={{
@@ -149,7 +178,7 @@ export const MarkdownPlease: Component<MarkdownPleaseProps> = ({ content }) => (
               PreTag="div"
               {...props}
             >
-              {String(children).replace(/\n$/, "")}
+              {cleanCode(String(children))}
             </SyntaxHighlighter>
           </CodeWindow>
         ) : (
