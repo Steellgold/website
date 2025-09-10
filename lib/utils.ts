@@ -8,7 +8,11 @@ export const RESERVED_SHORT_LINKS = [
   "registry",
   "ui",
   "links",
-  "api"
+  "api",
+  "md",
+  "about",
+  "privacy",
+  "terms"
 ]
 
 export const cn = (...inputs: ClassValue[]) => {
