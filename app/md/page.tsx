@@ -2,8 +2,9 @@
 
 import { MarkdownPlease } from "@/components/markdown/please";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { File, Clock, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Input } from "@/components/ui/input";
+import { File, Clock, X, Search } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
 
 interface RecentFile {
   name: string;
@@ -15,6 +16,7 @@ export default function MarkdownPage() {
   const [markdownContent, setMarkdownContent] = useState<string>("");
   const [fileName, setFileName] = useState<string>("");
   const [recentFiles, setRecentFiles] = useState<RecentFile[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {
     const saved = localStorage.getItem("md-recent-files");
@@ -50,6 +52,16 @@ export default function MarkdownPage() {
     setFileName(file.name);
     setMarkdownContent(file.content);
   };
+
+  const filteredFiles = useMemo(() => {
+    if (!searchQuery.trim()) return recentFiles;
+    
+    return recentFiles.filter(file => {
+      const searchTerm = searchQuery.toLowerCase();
+      return file.name.toLowerCase().includes(searchTerm) || 
+             file.content.toLowerCase().includes(searchTerm);
+    });
+  }, [recentFiles, searchQuery]);
 
   const removeFrontmatter = (content: string): string => {
     let cleaned = content;
@@ -100,7 +112,7 @@ export default function MarkdownPage() {
 
   return (
     <div className="relative">
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto">
         <div className={markdownContent ? "block" : "hidden"}>
           <label
             htmlFor="md-file-input"
@@ -148,9 +160,7 @@ export default function MarkdownPage() {
         ) : (
           <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
             <div className="space-y-2">
-              <div
-                className="text-6xl bg-primary-foreground/15 rounded-full p-2.5 inline-block"
-              >
+              <div className="text-6xl bg-primary-foreground/15 rounded-full p-2.5 inline-block">
                 <File className="mx-auto text-white" />
               </div>
 
@@ -170,20 +180,31 @@ export default function MarkdownPage() {
             </div>
 
             {recentFiles.length > 0 && (
-              <div className="mt-8">
+              <div>
                 <div className="flex items-center gap-2 mb-4">
                   <Clock className="w-5 h-5 text-muted-foreground" />
                   <h3 className="text-lg font-medium text-white/90">Recent files</h3>
                 </div>
 
+                <div className="relative mb-3">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input
+                    type="text"
+                    placeholder="Search files by name or content..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10 bg-primary-foreground/10 border-primary-foreground/20"
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
-                  {recentFiles.map((file) => {
+                  {filteredFiles.length > 0 ? filteredFiles.map((file) => {
                     const flat = file.content.replace(/\s+/g, " ").trim();
                     const preview = flat.length > 120 ? `${flat.slice(0, 117)}...` : flat;
                     return (
                       <div
                         key={file.name}
-                        className="group p-4 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 hover:bg-primary-foreground/20 transition-colors"
+                        className="group p-4 bg-primary-foreground/10 border border-primary-foreground/20 hover:bg-primary-foreground/20 transition-colors"
                       >
                         <button onClick={() => loadRecentFile(file)} className="w-full text-left">
                           <div className="flex items-start gap-2">
@@ -194,6 +215,7 @@ export default function MarkdownPage() {
                                   ? `${file.name.slice(0, 22)}...${file.name.slice(-6)}`
                                   : file.name}
                               </div>
+
                               <div className="text-xs text-muted-foreground">
                                 {new Date(file.timestamp).toLocaleDateString("fr-FR", {
                                   day: "2-digit",
@@ -225,7 +247,11 @@ export default function MarkdownPage() {
                         </div>
                       </div>
                     );
-                  })}
+                  }) : (
+                    <div className="col-span-full text-center py-8 text-muted-foreground">
+                      No files match your search criteria
+                    </div>
+                  )}
                 </div>
               </div>
             )}
