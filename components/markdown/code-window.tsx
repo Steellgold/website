@@ -70,7 +70,7 @@ export const CodeWindow: Component<CodeWindowProps> = ({
         )}
       </div>
 
-      <div className="p-4 bg-black/25 selection:bg-blue-400/20">
+      <div className="p-4 bg-black/25 selection:bg-blue-400/20 overflow-x-auto">
         {children}
       </div>
 
