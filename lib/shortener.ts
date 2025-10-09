@@ -56,7 +56,7 @@ export const createShortLink = async (request: CreateShortLinkForm, ip: string) 
       return { success: false, error: "Rate limit exceeded. Try again in 30 minutes." };
     }
 
-    if (!request.url.startsWith("http://") && !request.url.startsWith("https://")) {
+    if (request.type === "link" && request.url && !request.url.startsWith("http://") && !request.url.startsWith("https://")) {
       return { success: false, error: "Invalid URL. Must start with http:// or https://" };
     }
 
@@ -86,11 +86,23 @@ export const createShortLink = async (request: CreateShortLinkForm, ip: string) 
     }
 
     const shortLink: ShortLink = {
-      url: request.url,
+      type: request.type || "link",
       createdAt: Date.now(),
       ip: ip,
       clicks: 0,
     };
+
+    if (request.type === "link" && request.url) {
+      shortLink.url = request.url;
+    }
+
+    if (request.type === "article") {
+      shortLink.title = request.title;
+      shortLink.content = request.content;
+      if (request.banner) {
+        shortLink.banner = request.banner;
+      }
+    }
 
     if (request.password) {
       shortLink.password = await bcrypt.hash(request.password, 12);
@@ -203,6 +215,79 @@ export const incrementClicks = async (short: string): Promise<{ success: boolean
     return { success: true };
   } catch (error) {
     console.error("Error incrementing clicks:", error);
+    return { success: false, error: "Internal server error" };
+  }
+};
+
+export const updateShortLink = async (short: string, updates: Partial<CreateShortLinkForm>): Promise<{ success: boolean; error?: string }> => {
+  try {
+    const shortLink = await getShortLink(short);
+    if (!shortLink) {
+      return { success: false, error: "Content not found" };
+    }
+
+    // Update the fields
+    if (updates.type) {
+      shortLink.type = updates.type;
+    }
+
+    if (updates.type === "link" && updates.url) {
+      if (!updates.url.startsWith("http://") && !updates.url.startsWith("https://")) {
+        return { success: false, error: "Invalid URL. Must start with http:// or https://" };
+      }
+      shortLink.url = updates.url;
+      // Clear article fields when switching to link
+      delete shortLink.title;
+      delete shortLink.content;
+      delete shortLink.banner;
+    }
+
+    if (updates.type === "article") {
+      if (updates.title) shortLink.title = updates.title;
+      if (updates.content) shortLink.content = updates.content;
+      if (updates.banner !== undefined) {
+        if (updates.banner) {
+          shortLink.banner = updates.banner;
+        } else {
+          delete shortLink.banner;
+        }
+      }
+      // Clear link URL when switching to article
+      delete shortLink.url;
+    }
+
+    // Handle password update
+    if (updates.password !== undefined) {
+      if (updates.password) {
+        shortLink.password = await bcrypt.hash(updates.password, 12);
+      } else {
+        // If empty password is provided, remove password protection
+        delete shortLink.password;
+      }
+    }
+
+    // Handle expiration update
+    if (updates.expiresAt !== undefined) {
+      if (updates.expiresAt) {
+        shortLink.expiresAt = new Date(updates.expiresAt).getTime();
+      } else {
+        delete shortLink.expiresAt;
+      }
+    }
+
+    await redis.set(`short:${short}`, shortLink);
+
+    // Update TTL if expiration is set
+    if (shortLink.expiresAt) {
+      const ttl = Math.floor((shortLink.expiresAt - Date.now()) / 1000);
+      if (ttl > 0) {
+        await redis.expire(`short:${short}`, ttl);
+      }
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Error updating short link:", error);
     return { success: false, error: "Internal server error" };
   }
 };

@@ -2,27 +2,29 @@
 
 import { ShortenerNav } from "@/components/shortener-nav";
 import { Button } from "@/components/ui/button";
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, useForm, zodResolver } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
-import { createShortLinkAction } from "@/lib/actions/link-actions";
+import { getShortLinkForEditAction, updateShortLinkAction } from "@/lib/actions/link-actions";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { CreateShortLinkForm, createShortLinkSchema } from "@/type/shortener";
-import { Copy, CopyCheck, Loader } from "lucide-react";
-import { useState, useTransition } from "react";
-import { useCopyToClipboard } from "usehooks-ts";
+import { Loader } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { use, useEffect, useState, useTransition } from "react";
 
-const LinksPage = () => {
+type Props = {
+  params: Promise<{ short: string }>
+}
+
+const EditPage = ({ params }: Props) => {
   const [isPending, startTransition] = useTransition();
-  const [isCopied, copy] = useCopyToClipboard();
-
-  const [success, setSuccess] = useState<{
-    short: string;
-    url: string;
-  } | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string>("");
+  const { short } = use(params);
+  const router = useRouter();
 
   const form = useForm<CreateShortLinkForm>({
     resolver: zodResolver(createShortLinkSchema),
@@ -40,14 +42,45 @@ const LinksPage = () => {
 
   const watchType = form.watch("type");
 
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
+        const result = await getShortLinkForEditAction(short);
+        
+        if (result.success && result.data) {
+          const data = result.data;
+          form.reset({
+            type: data.type || "link",
+            url: data.url || "",
+            slug: short,
+            password: "", // Ne pas pré-remplir le mot de passe pour la sécurité
+            expiresAt: data.expiresAt ? new Date(data.expiresAt).toISOString().slice(0, 16) : "",
+            title: data.title || "",
+            content: data.content || "",
+            banner: data.banner || ""
+          });
+        } else {
+          setError(result.error || "Failed to load data");
+        }
+      } catch (error) {
+        console.error("Error loading data:", error);
+        setError("Failed to load data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadData();
+  }, [short, form]);
+
   const onSubmit = (data: CreateShortLinkForm) =>
     startTransition(async () => {
       try {
-        const result = await createShortLinkAction(data);
+        const result = await updateShortLinkAction(short, data);
         
-        if (result.success && result.short) {
-          setSuccess({ short: result.short, url: `${window.location.origin}/${result.short}` });
-          form.reset();
+        if (result.success) {
+          router.push("/links");
         } else {
           form.setError("root", { message: result.error || "An error occurred" });
         }
@@ -57,39 +90,53 @@ const LinksPage = () => {
       }
     });
 
+  if (loading) {
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <ShortenerNav />
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto"></div>
+            <p className="mt-4 text-neutral-300">Loading...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-16">
+        <ShortenerNav />
+        <div className="max-w-4xl mx-auto">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-red-400">Error</CardTitle>
+              <CardDescription>{error}</CardDescription>
+            </CardHeader>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-16">
-
       <ShortenerNav />
 
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <div> 
             <h1 className={cn(piano.className, "text-5xl font-extrabold text-white")}>
-              Create a {watchType === "link" ? "short link" : "short article"}
+              Edit {watchType === "link" ? "link" : "article"}
             </h1>
             <p className="text-neutral-300 mt-2 text-lg">
-              {watchType === "link" 
-                ? "Create a new short link with a custom slug or let the system generate one for you"
-                : "Create a short article with markdown content and optional password protection"
-              }
+              Modify your existing {watchType === "link" ? "short link" : "article"}
             </p>
           </div>
         </div>
 
         <Card>
-          <CardHeader className={cn({ "sr-only": !success })}>
-            <CardTitle>{watchType === "link" ? "Short link" : "Short article"} created</CardTitle>
-            <CardDescription>Your {watchType === "link" ? "short link" : "short article"} has been created successfully</CardDescription>
-
-            <CardAction>
-              <Button variant="outline" onClick={() => copy(success?.url || "")}>
-                {isCopied ? <CopyCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                Copy link
-              </Button>
-            </CardAction>
-          </CardHeader>
-
           <CardContent>
             <Form
               form={form}
@@ -219,19 +266,18 @@ Write your content in **Markdown** format...
                 name="slug"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Custom slug (optional)</FormLabel>
+                    <FormLabel>Custom slug</FormLabel>
                     <FormControl>
                       <Input
                         type="text"
                         placeholder="custom-slug"
+                        disabled
                         {...field}
                       />
                     </FormControl>
-
                     <p className="text-sm text-neutral-400">
-                      Leave empty to generate automatically. 3-20 characters, letters, numbers, dashes and underscores.
+                      Slug cannot be changed after creation
                     </p>
-
                     <FormMessage />
                   </FormItem>
                 )}
@@ -244,13 +290,11 @@ Write your content in **Markdown** format...
                   <FormItem>
                     <FormLabel>Password (optional)</FormLabel>
                     <FormControl>
-                      <Input type="password" placeholder="Leave empty for no password" {...field} />
+                      <Input type="password" placeholder="Leave empty to keep current password, or enter new one" {...field} />
                     </FormControl>
-
                     <p className="text-sm text-neutral-400">
-                      If defined, users will need to enter this password to access the link
+                      Leave empty to keep current password protection settings
                     </p>
-
                     <FormMessage />
                   </FormItem>
                 )}
@@ -265,11 +309,9 @@ Write your content in **Markdown** format...
                     <FormControl>
                       <Input type="datetime-local" {...field} />
                     </FormControl>
-
                     <p className="text-sm text-neutral-400">
-                      The link will be automatically deleted after this date
+                      The content will be automatically deleted after this date
                     </p>
-
                     <FormMessage />
                   </FormItem>
                 )}
@@ -281,19 +323,29 @@ Write your content in **Markdown** format...
                 </div>
               )}
 
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="w-full"
-              >
-                {isPending ? <Loader className="w-4 h-4 animate-spin" /> : `Create ${watchType === "link" ? "short link" : "article"}`}
-              </Button>
+              <div className="flex gap-4">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => router.push("/links")}
+                  className="flex-1"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={isPending}
+                  className="flex-1"
+                >
+                  {isPending ? <Loader className="w-4 h-4 animate-spin" /> : "Update"}
+                </Button>
+              </div>
             </Form>
           </CardContent>
         </Card>
       </div>
     </div>
   );
-}
+};
 
-export default LinksPage;
+export default EditPage;

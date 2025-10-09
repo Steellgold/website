@@ -26,7 +26,12 @@ export async function GET(request: NextRequest, { params }: Props) {
       await incrementClicks(short);
     }
 
-    return NextResponse.redirect(shortLink.url);
+    // Handle articles differently - redirect to view page instead of external URL
+    if (shortLink.type === "article") {
+      return NextResponse.redirect(new URL(`/${short}/view`, request.url));
+    }
+
+    return NextResponse.redirect(shortLink.url!);
 
   } catch (error) {
     console.error("Error in short link redirect:", error);

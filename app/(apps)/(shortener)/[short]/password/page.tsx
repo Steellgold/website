@@ -42,7 +42,11 @@ const PasswordPage: Component<Props> = ({ params }) => {
       try {
         const result = await verifyPasswordAction(data);
         if (result.success) {
-          router.push(result.url || "/");
+          if (result.type === "article") {
+            router.push(`/${short}/view`);
+          } else {
+            router.push(result.url || "/");
+          }
         } else {
           form.setError("password", { message: "Password is incorrect" });
         }
@@ -56,8 +60,8 @@ const PasswordPage: Component<Props> = ({ params }) => {
     <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
       <div className="max-w-md w-full space-y-6">
         <div>
-          <h2 className={cn(piano.className, "text-5xl font-extrabold text-white")}>Protected link</h2>
-          <p className="text-sm text-neutral-300">This link is protected by a password</p>
+          <h2 className={cn(piano.className, "text-5xl font-extrabold text-white")}>Protected content</h2>
+          <p className="text-sm text-neutral-300">This content is protected by a password</p>
         </div>
         
         <Form
@@ -84,7 +88,7 @@ const PasswordPage: Component<Props> = ({ params }) => {
           />
 
           <Button type="submit" disabled={isPending} className="w-full">
-            {isPending ? <Loader className="w-4 h-4 animate-spin" /> : "Access the link"}
+            {isPending ? <Loader className="w-4 h-4 animate-spin" /> : "Access content"}
           </Button>
         </Form>
       </div>

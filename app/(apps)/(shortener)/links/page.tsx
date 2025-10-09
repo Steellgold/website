@@ -7,18 +7,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { deleteShortLinkAction, getLinksByIpAction } from "@/lib/actions/link-actions";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { Calendar, Clock, Copy, CopyCheck, ExternalLink, Lock, MousePointer, Trash2 } from "lucide-react";
+import { Calendar, Clock, Copy, CopyCheck, Edit, ExternalLink, Lock, MousePointer, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useCopyToClipboard } from "usehooks-ts";
 
 type Link = {
   short: string;
-  url: string;
+  url?: string;
   createdAt: number;
   expiresAt?: number;
   hasPassword: boolean;
   clicks: number;
+  type?: string;
+  title?: string;
 }
 
 const LinksPage = () => {
@@ -102,10 +104,10 @@ const LinksPage = () => {
         <ShortenerNav />
 
         <div className="max-w-4xl mx-auto">
-          <h1 className={cn(piano.className, "text-5xl font-extrabold text-white mb-8")}>My Short Links</h1>
+          <h1 className={cn(piano.className, "text-5xl font-extrabold text-white mb-8")}>My Content</h1>
           <div className="text-center py-8">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white mx-auto"></div>
-            <p className="mt-4 text-neutral-300">Loading your links...</p>
+            <p className="mt-4 text-neutral-300">Loading your content...</p>
           </div>
         </div>
       </div>
@@ -120,9 +122,9 @@ const LinksPage = () => {
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center mb-8">
           <div> 
-            <h1 className={cn(piano.className, "text-5xl font-extrabold text-white")}>My Short Links</h1>
+            <h1 className={cn(piano.className, "text-5xl font-extrabold text-white")}>My Content</h1>
             <p className="text-neutral-300 mt-2 text-lg">
-              Here are all the short links you have created
+              Here are all the short links and articles you have created
             </p>
           </div>
           <Button onClick={fetchLinks} variant="outline">
@@ -140,8 +142,8 @@ const LinksPage = () => {
           <Card>
             <CardContent>
               <div className="text-center py-16">
-                <p className="text-neutral-400 mb-2">You don&apos;t have any short links yet</p>
-                <Link href="/new" className={buttonVariants({ variant: "outline" })}>Create your first link</Link>
+                <p className="text-neutral-400 mb-2">You don&apos;t have any content yet</p>
+                <Link href="/new" className={buttonVariants({ variant: "outline" })}>Create your first link or article</Link>
               </div>
             </CardContent>
           </Card>
@@ -154,6 +156,9 @@ const LinksPage = () => {
                     <div className="flex-1">
                       <CardTitle className="flex items-center gap-2">
                         <span className="font-mono text-lg">/{link.short}</span>
+                        <Badge variant={link.type === "article" ? "default" : "outline"}>
+                          {link.type === "article" ? "Article" : "Link"}
+                        </Badge>
                         {link.hasPassword && (
                           <Badge variant="secondary" className="flex items-center gap-1">
                             <Lock className="w-3 h-3" />
@@ -171,7 +176,7 @@ const LinksPage = () => {
                         )}
                       </CardTitle>
                       <CardDescription className="mt-2 break-all">
-                        {link.url}
+                        {link.type === "article" ? link.title : link.url}
                       </CardDescription>
                     </div>
                     <div className="flex gap-2 ml-4">
@@ -182,13 +187,24 @@ const LinksPage = () => {
                        >
                         {isCopied ? <CopyCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                        </Button>
-                       <Button
+                       {(link.type === "article" || link.url) && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          asChild
+                         >
+                          <Link href={link.type === "article" ? `/${link.short}/view` : link.url!} target={link.type === "article" ? "_self" : "_blank"} rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4" />
+                          </Link>
+                        </Button>
+                       )}
+                      <Button
                         size="sm"
                         variant="outline"
                         asChild
                        >
-                        <Link href={link.url} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4" />
+                        <Link href={`/edit/${link.short}`}>
+                          <Edit className="w-4 h-4" />
                         </Link>
                       </Button>
                       <Button
