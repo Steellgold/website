@@ -1,10 +1,9 @@
 import { BlogPostItem } from "@/components/blog-post";
 import { Section } from "@/components/section";
 import { blog } from "@/lib/blog";
-import { AsyncComponent } from "@/type/component";
 import { ReactElement } from "react";
 
-export const BlogSection: AsyncComponent<void> = async (): Promise<ReactElement> => {
+export const BlogSection = async (): Promise<ReactElement> => {
   const posts = (await blog.articles.list()).data;
 
   return (
