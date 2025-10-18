@@ -83,6 +83,10 @@ const Page: AsyncComponent<PageProps> = async ({ params }) => {
           <MarkdownPlease content={post.content} />
         </div>
       </article>
+      
+      <script
+        src={`https://cdn.simplist.blog/analytics.js?apiKey=pk_dea112132cb660210d93b956162d0058a6c237dac4fc6f9aa70913f45ad1940e&slug=${slug}`}
+      ></script>
     </div>
   )
 };

@@ -42,8 +42,8 @@ importers:
         specifier: ^1.2.7
         version: 1.2.7(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@simplist.blog/sdk':
-        specifier: 0.0.3
-        version: 0.0.3
+        specifier: 0.0.5
+        version: 0.0.5
       '@types/spotify-web-api-node':
         specifier: ^5.0.11
         version: 5.0.11
@@ -1044,8 +1044,8 @@ packages:
   '@rushstack/eslint-patch@1.12.0':
     resolution: {integrity: sha512-5EwMtOqvJMMa3HbmxLlF74e+3/HhwBTMcvt3nqVJgGCozO6hzIPOBlwm8mGVNR9SN2IJpxSnlxczyDjcn7qIyw==}
 
-  '@simplist.blog/sdk@0.0.3':
-    resolution: {integrity: sha512-udozja6QeEirPrRYiyQHgB88cyV0R9ERpH6pTicXeyhT4TIa1xN9CszLPne9JIo6SecPudMsXql43Tl00oq/HQ==}
+  '@simplist.blog/sdk@0.0.5':
+    resolution: {integrity: sha512-par3Jab6/jzxrmh4nCRi9a9vtihKLa8wcDcj1NBiNMhXBOKMiyHX6w5BKR0Y03+2ImUKThA6RvMkrcwrvH+wug==}
     engines: {node: '>=18'}
 
   '@standard-schema/utils@0.3.0':
@@ -4661,7 +4661,7 @@ snapshots:
 
   '@rushstack/eslint-patch@1.12.0': {}
 
-  '@simplist.blog/sdk@0.0.3': {}
+  '@simplist.blog/sdk@0.0.5': {}
 
   '@standard-schema/utils@0.3.0': {}
 
