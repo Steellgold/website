@@ -1,6 +1,6 @@
 import { MarkdownPlease } from "@/components/markdown/please";
+import { blog } from "@/lib/blog";
 import { AsyncComponent } from "@/type/component";
-import { PostSchema } from "@/type/post";
 import { CalendarIcon } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
@@ -16,52 +16,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
 
   try {
-    const response = await fetch(`https://simplist.blog/api/${slug}`, {
-      headers: {
-        "x-api-key": process.env.NEXT_PUBLIC_SIMPLIST_API_KEY!
-      },
-      cache: "no-cache"
-    });
-
-    const data = await response.json();
-    const schema = PostSchema.safeParse(data);
-
-    if (!schema.success) {
-      return {
-        title: "Blog Post Not Found",
-        description: "The requested blog post could not be found."
-      };
-    }
-
-    const post = schema.data;
-    
-    const description = post.content
-      .replace(/[#*`]/g, '')
-      .substring(0, 160)
-      .trim() + (post.content.length > 160 ? '...' : '');
+    const post = (await blog.articles.get(slug)).data;
+    if (!post) notFound();
 
     return {
       title: `${post.title} | Gaëtan Huszovits`,
-      description,
+      description: post.excerpt,
       openGraph: {
         title: post.title,
-        description,
+        description: post.excerpt!,
         type: "article",
         publishedTime: post.createdAt,
-        images: post.banner ? [
-          {
-            url: post.banner,
-            width: 1200,
-            height: 630,
-            alt: post.title,
-          }
-        ] : [],
+        images: post.coverImage ? [post.coverImage] : [],
       },
       twitter: {
         card: "summary_large_image",
         title: post.title,
-        description,
-        images: post.banner ? [post.banner] : [],
+        description: post.excerpt!,
+        images: post.coverImage ? [post.coverImage] : [],
       },
     };
   } catch (error) {
@@ -76,28 +48,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const Page: AsyncComponent<PageProps> = async ({ params }) => {
   const { slug } = await params;
 
-  const response = await fetch(`https://simplist.blog/api/${slug}`, {
-    headers: {
-      "x-api-key": process.env.NEXT_PUBLIC_SIMPLIST_API_KEY!
-    },
-    cache: "no-cache"
-  });
-
-  const data = await response.json();
-  const schema = PostSchema.safeParse(data);
-
-  if (!schema.success) {
-    console.log(schema.error);
-    notFound();
-  }
+  const post = (await blog.articles.get(slug)).data;
 
   return (
     <div className="relative">
       <article className="max-w-4xl mx-auto px-4 py-8">
-        {data.banner && (
+        {post.coverImage && (
           <div className="mb-8">
             <Image
-              src={data.banner}
+              src={post.coverImage}
               alt="Blog post illustration"
               className="w-full h-64 object-cover rounded-lg"
               width={1200}
@@ -107,11 +66,11 @@ const Page: AsyncComponent<PageProps> = async ({ params }) => {
         )}
 
         <header className="flex flex-col mb-8 items-center">
-          <h1 className="text-3xl font-bold text-center text-white mb-4">{data.title}</h1>
+          <h1 className="text-3xl font-bold text-center text-white mb-4">{post.title}</h1>
           <div className="flex items-center justify-center space-x-4 mb-4">
             <span className="flex items-center text-gray-300">
               <CalendarIcon className="w-4 h-4 mr-2" />
-              {new Date(data.createdAt).toLocaleDateString("en-US", {
+              {new Date(post.createdAt).toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "long",
                 year: "numeric"
@@ -121,7 +80,7 @@ const Page: AsyncComponent<PageProps> = async ({ params }) => {
         </header>
 
         <div className="prose prose-invert prose-lg max-w-none">
-          <MarkdownPlease content={data.content} />
+          <MarkdownPlease content={post.content} />
         </div>
       </article>
     </div>

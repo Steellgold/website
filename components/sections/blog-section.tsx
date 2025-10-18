@@ -1,25 +1,24 @@
 import { BlogPostItem } from "@/components/blog-post";
 import { Section } from "@/components/section";
-import { BLOG_POSTS } from "@/config/blog";
+import { blog } from "@/lib/blog";
+import { AsyncComponent } from "@/type/component";
 import { ReactElement } from "react";
 
-export const BlogSection = (): ReactElement => {
-  if (!BLOG_POSTS || BLOG_POSTS.length === 0) {
-    return <></>;
-  }
+export const BlogSection: AsyncComponent<void> = async (): Promise<ReactElement> => {
+  const posts = (await blog.articles.list()).data;
 
   return (
     <Section name="Blog">
       <div className="flex flex-col">
-        {BLOG_POSTS && BLOG_POSTS.length > 0 && BLOG_POSTS.map((post, index) => (
+        {posts && posts.length > 0 && posts.map((post, index) => (
           <div key={post.title} className="group">
             <BlogPostItem
               title={post.title}
-              date={post.date}
-              url={post.url}
+              date={post.createdAt}
+              url={post.slug}
             />
 
-            {index < BLOG_POSTS.length - 1 && (
+            {index < posts.length - 1 && (
               <div className="border-t border-[#FFFFFF10] group-hover:border-[#FFFFFF20] transition-colors" />
             )}
           </div>
