@@ -4,6 +4,7 @@ import { AsyncComponent } from "@/type/component";
 import { CalendarIcon } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 
 type PageProps = {
@@ -84,9 +85,10 @@ const Page: AsyncComponent<PageProps> = async ({ params }) => {
         </div>
       </article>
       
-      <script
-        src={`https://cdn.simplist.blog/analytics.js?apiKey=pk_dea112132cb660210d93b956162d0058a6c237dac4fc6f9aa70913f45ad1940e&slug=${slug}`}
-      ></script>
+      <Script
+        src={`https://cdn.simplist.blog/analytics.js?apiKey=pk_2833d012f3242b623c909a7f3e30a89a8a4723b66401649a0615ca9cfc5d1e71&slug=${slug}`}
+        strategy="afterInteractive"
+      />
     </div>
   )
 };

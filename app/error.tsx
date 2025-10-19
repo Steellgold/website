@@ -12,7 +12,7 @@ type ErrorPageProps = {
   reset: () => void
 }
 
-const ErrorPage = ({ error, reset }: ErrorPageProps) => {
+const ErrorPage = ({ reset }: ErrorPageProps) => {
   const { setIs404 } = useAppContext();
 
   useEffect(() => {
