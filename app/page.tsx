@@ -5,6 +5,8 @@ import { ProjectsSection } from "@/components/sections/projects-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { ReactElement } from "react";
 
+export const revalidate = 300;
+
 const Home = (): ReactElement => {
   return (
     <div className="flex flex-col gap-18">
