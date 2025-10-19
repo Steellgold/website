@@ -7,7 +7,7 @@ import { ReactElement } from "react";
 
 export const revalidate = 300;
 
-const Home = (): ReactElement => {
+const Home = async (): Promise<ReactElement> => {
   return (
     <div className="flex flex-col gap-18">
       <HeaderSection />
