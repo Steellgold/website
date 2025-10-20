@@ -4,14 +4,16 @@ import { AsyncComponent } from "@/type/component";
 import { CalendarIcon } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
-import Script from "next/script";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 
 type PageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+export const revalidate = 300;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -85,10 +87,16 @@ const Page: AsyncComponent<PageProps> = async ({ params }) => {
         </div>
       </article>
       
-      <Script
-        src={`https://cdn.simplist.blog/analytics.js?apiKey=${process.env.NEXT_PUBLIC_SIMPLIST_API_KEY}&slug=${slug}&DATE=${new Date().toISOString()}`}
+      {/* <Script
+        src={`https://cdn.simplist.blog/analytics.js?apiKey=pk_f3ac7b0e31d67473c95d86d6459a03b3c510c85ef37adbec1d56f18e8460d770&slug=${slug}&DATE=${new Date().toISOString()}`}
         strategy="afterInteractive"
-      />
+      /> */}
+      <Script
+        src={
+          `https://cdn.simplist.blog/analytics.js?date=${new Date().toISOString()}`
+        }
+        data-api-key={process.env.NEXT_PUBLIC_SIMPLIST_API_KEY}
+        data-slug={slug}/>
     </div>
   )
 };
