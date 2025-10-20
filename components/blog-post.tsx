@@ -1,8 +1,11 @@
 import { BlogPost } from "@/config/blog";
 import { Component } from "@/type/component";
 import Link from "next/link";
+import { format } from 'date-fns'
 
 export const BlogPostItem: Component<BlogPost> = ({ title, date, url }) => {
+  const formattedDate = format(new Date(date), 'MMM d, yyyy');
+
   return (
     <Link
       href={`/blog/${url}`}
@@ -11,7 +14,7 @@ export const BlogPostItem: Component<BlogPost> = ({ title, date, url }) => {
       target="_blank"
     >
       <span className="text-white font-sans">{title}</span>
-      <span className="text-white font-sans text-sm">{date}</span>
+      <span className="text-white font-sans text-sm">{formattedDate}</span>
     </Link>
   );
 }; 
