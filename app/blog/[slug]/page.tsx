@@ -86,7 +86,7 @@ const Page: AsyncComponent<PageProps> = async ({ params }) => {
       </article>
       
       <Script
-        src={`https://cdn.simplist.blog/analytics.js?apiKey=pk_2dbec24376e405c5f6a3424669d9d02ae7c45e7365219ffc9eeab1d99e264404&slug=${slug}`}
+        src={`https://cdn.simplist.blog/analytics.js?apiKey=${process.env.NEXT_PUBLIC_SIMPLIST_API_KEY}&slug=${slug}&DATE=${new Date().toISOString()}`}
         strategy="afterInteractive"
       />
     </div>
