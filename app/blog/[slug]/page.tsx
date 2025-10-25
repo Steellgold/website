@@ -50,7 +50,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 const Page: AsyncComponent<PageProps> = async ({ params }) => {
   const { slug } = await params;
-
   const post = (await blog.articles.get(slug)).data;
 
   return (
