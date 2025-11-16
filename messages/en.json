@@ -22,7 +22,8 @@
   "projects": {
     "title": "Projects",
     "seeMore": "See more projects",
-    "awarded": "Awarded"
+    "awarded": "Awarded",
+    "view": "View project"
   },
   "skills": {
     "title": "Using",

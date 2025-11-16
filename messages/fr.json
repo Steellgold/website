@@ -22,7 +22,8 @@
   "projects": {
     "title": "Projets",
     "seeMore": "Voir plus de projets",
-    "awarded": "Récompensé"
+    "awarded": "Récompensé",
+    "view": "Voir le projet"
   },
   "skills": {
     "title": "Technologies",

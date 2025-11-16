@@ -2,8 +2,9 @@
 
 import { SkillName } from "@/components/icons";
 import { ProjectCard } from "@/components/project";
+import { ProjectDialog } from "@/components/project-dialog";
 import { Section } from "@/components/section";
-import { PROJECTS } from "@/config/projects";
+import { PROJECTS, Project } from "@/config/projects";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -11,9 +12,18 @@ import { ReactElement, useState } from "react";
 
 export const ProjectsSection = (): ReactElement => {
   const [showMore, setShowMore] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const hasMoreProjects = PROJECTS.length > 2;
   const isMobile = useIsMobile();
   const t = useTranslations("projects");
+
+  const handleProjectClick = (project: Project) => {
+    const hasImages = project.images && project.images.length > 0;
+    if (!hasImages) return;
+    setSelectedProject(project);
+    setIsDialogOpen(true);
+  };
 
   return (
     <Section name={t("title")}>
@@ -30,6 +40,8 @@ export const ProjectsSection = (): ReactElement => {
                 awards={project.awards}
                 githubUrl={project.githubUrl}
                 url={project.url}
+                images={project.images}
+                onClick={() => handleProjectClick(project)}
               />
             ))}
           </div>
@@ -48,6 +60,8 @@ export const ProjectsSection = (): ReactElement => {
                       awards={project.awards}
                       githubUrl={project.githubUrl}
                       url={project.url}
+                      images={project.images}
+                      onClick={() => handleProjectClick(project)}
                     />
                   ))}
                 </div>
@@ -71,6 +85,12 @@ export const ProjectsSection = (): ReactElement => {
           )}
         </div>
       </div>
+
+      <ProjectDialog
+        project={selectedProject}
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+      />
     </Section>
   );
 }; 

@@ -10,6 +10,7 @@ type Project = {
   url: string;
   githubUrl?: string;
   awards?: string[];
+  images?: string[];
 }
 
 const PROJECTS: Project[] = [
@@ -56,6 +57,11 @@ const PROJECTS: Project[] = [
     ],
     status: "Open-Source",
     url: "https://supaclicker.vercel.app",
+    images: [
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-1.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-1.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-1.png"
+    ],
     awards: [
       "https://supabase.com/blog/lw15-hackathon-winners#winner-2"
     ]
