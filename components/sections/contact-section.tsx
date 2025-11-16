@@ -3,12 +3,14 @@
 import { Section } from "@/components/section";
 import { cn } from "@/lib/utils";
 import { Copy, CopyCheck } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ReactElement, useEffect } from "react";
 import { useCopyToClipboard } from "usehooks-ts";
 
 export const ContactSection = (): ReactElement => {
   const [isCopied, copy] = useCopyToClipboard();
+  const t = useTranslations("contact");
 
   useEffect(() => {
     if (isCopied) {
@@ -19,7 +21,7 @@ export const ContactSection = (): ReactElement => {
   }, [isCopied, copy]);
 
   return (
-    <Section name="Let&apos;s talk">
+    <Section name={t("title")}>
       <div className="bg-[#1d1d1d] border-inside border-inside-default p-6">
         <div className="text-center space-y-4">
           
@@ -37,13 +39,13 @@ export const ContactSection = (): ReactElement => {
 
           <div className="flex flex-col gap-1">
             <h3 className="text-xl font-semibold text-white">
-              Get in touch
+              {t("getInTouch")}
             </h3>
 
             <p className="text-gray-300">
-              Ready to start a project or just want to say hello?
+              {t("ready")}
               <br />
-              I&apos;m always open to new opportunities and collaborations.
+              {t("open")}
             </p>
           </div>
 
@@ -54,7 +56,7 @@ export const ContactSection = (): ReactElement => {
 
             <button
               onClick={() => copy("contact@gaetanhus.fr")}
-              aria-label="Copy email"
+              aria-label={t("copyEmail")}
               className="text-white hover:text-gray-300 transition-colors hover:bg-white/10 rounded-sm  -1 *:w-4 *:h-4"
             >
               {isCopied ? <CopyCheck /> : <Copy />}

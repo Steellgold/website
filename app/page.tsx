@@ -4,11 +4,14 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { HeaderSection } from "@/components/sections/header-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
 import { SkillsSection } from "@/components/sections/skills-section";
+import { getTranslations } from "next-intl/server";
 import { ReactElement } from "react";
 
 export const revalidate = 300;
 
 const Home = async (): Promise<ReactElement> => {
+  const t = await getTranslations("common");
+  
   return (
     <div className="flex flex-col gap-18">
       <HeaderSection />
@@ -25,7 +28,7 @@ const Home = async (): Promise<ReactElement> => {
 
         <div className="flex flex-row items-center gap-2">
           <span className="text-sm text-white">
-            Made in Alsace, France
+            {t("madeIn")}
           </span>
         </div>
       </footer>

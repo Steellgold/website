@@ -1,8 +1,11 @@
+"use client";
+
 import { Stars_Thinsmooth } from "@/components/icons";
 import { Skill } from "@/components/skill";
 import { Project } from "@/config/projects";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRef } from "react";
 import { useHover } from "usehooks-ts";
@@ -10,6 +13,7 @@ import { useHover } from "usehooks-ts";
 export const ProjectCard: Component<Project> = ({ name, status, description, technologies, awards, url, githubUrl }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isHovering = useHover<HTMLDivElement>(ref as React.RefObject<HTMLDivElement>);
+  const t = useTranslations("projects");
 
   return (
     <div
@@ -49,7 +53,7 @@ export const ProjectCard: Component<Project> = ({ name, status, description, tec
               <Stars_Thinsmooth />
 
               <span className="text-xs">
-                Awarded
+                {t("awarded")}
               </span>
             </Link>
           )}

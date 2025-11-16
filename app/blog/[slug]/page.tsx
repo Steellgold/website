@@ -3,6 +3,7 @@ import { blog } from "@/lib/blog";
 import { AsyncComponent } from "@/type/component";
 import { CalendarIcon } from "lucide-react";
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Script from "next/script";
@@ -17,6 +18,7 @@ export const revalidate = 300;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const t = await getTranslations("blog");
 
   try {
     const post = (await blog.articles.get(slug)).data;
@@ -40,10 +42,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       },
     };
   } catch (error) {
-    console.error("Error generating metadata:", error);
+    if (process.env.NODE_ENV === "development") console.error("Error generating metadata:", error);
     return {
-      title: "Blog Post | Gaëtan Huszovits",
-      description: "A blog post from Gaëtan Huszovits."
+      title: t("blogPost"),
+      description: t("blogPostDescription")
     };
   }
 }
@@ -51,6 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const Page: AsyncComponent<PageProps> = async ({ params }) => {
   const { slug } = await params;
   const post = (await blog.articles.get(slug)).data;
+  const t = await getTranslations("blog");
 
   return (
     <div className="relative">
@@ -59,7 +62,7 @@ const Page: AsyncComponent<PageProps> = async ({ params }) => {
           <div className="mb-8">
             <Image
               src={post.coverImage}
-              alt="Blog post illustration"
+              alt={t("illustration")}
               className="w-full h-64 object-cover rounded-lg"
               width={1200}
               height={630}

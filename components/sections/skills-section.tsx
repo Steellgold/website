@@ -1,12 +1,17 @@
+"use client";
+
 import { Section } from "@/components/section";
 import { Skill } from "@/components/skill";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import { ReactElement } from "react";
 
 export const SkillsSection = (): ReactElement => {
+  const t = useTranslations("skills");
+  
   return (
-    <Section name="Using">
+    <Section name={t("title")}>
       <div className="flex flex-wrap items-center gap-1 sm:gap-1">
         <Skill name="React" />
         <Skill name="Next" />
@@ -29,7 +34,7 @@ export const SkillsSection = (): ReactElement => {
         <Skill name="Redis" />
 
         <span className={cn(piano.className, "ml-3 text-sm sm:text-lg")}>
-          and many others...
+          {t("andManyOthers")}
         </span>
       </div>
     </Section>
