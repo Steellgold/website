@@ -1,0 +1,46 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "description": "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
+    "madeIn": "Made in Alsace, France"
+  },
+  "header": {
+    "hello": "Hello, I'm",
+    "fullStackDeveloper": "Full-Stack Developer specializing in the",
+    "building": "Building web applications with",
+    "modernTechnologies": "modern technologies",
+    "suchAs": "such as",
+    "and": "and"
+  },
+  "contact": {
+    "title": "Let's talk",
+    "getInTouch": "Get in touch",
+    "ready": "Ready to start a project or just want to say hello?",
+    "open": "I'm always open to new opportunities and collaborations.",
+    "copyEmail": "Copy email"
+  },
+  "projects": {
+    "title": "Projects",
+    "seeMore": "See more projects",
+    "awarded": "Awarded"
+  },
+  "skills": {
+    "title": "Using",
+    "andManyOthers": "and many others..."
+  },
+  "blog": {
+    "title": "Blog",
+    "unavailable": "Blog posts are currently unavailable.",
+    "illustration": "Blog post illustration",
+    "blogPost": "Blog Post | Gaëtan Huszovits",
+    "blogPostDescription": "A blog post from Gaëtan Huszovits."
+  },
+  "errors": {
+    "oops": "Oops !",
+    "notFound": "The page you are looking for does not exist.",
+    "backToHome": "Back to home",
+    "somethingWentWrong": "Something went wrong!",
+    "unexpectedError": "An unexpected error has occurred. Please try again later.",
+    "tryAgain": "Try again"
+  }
+}
