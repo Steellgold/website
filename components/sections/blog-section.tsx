@@ -5,7 +5,8 @@ import { ReactElement } from "react";
 
 export const BlogSection = async (): Promise<ReactElement> => {
   try {
-    const posts = (await blog.articles.list()).data;
+    const response = await blog.articles.list();
+    const posts = response.data;
 
     return (
       <Section name="Blog">
