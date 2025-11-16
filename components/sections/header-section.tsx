@@ -11,7 +11,7 @@ export const HeaderSection = (): ReactElement => {
   return (
     <div className="flex flex-col gap-3 w-full">
       <div className="flex flex-row items-center gap-3 sm:gap-4">
-        <div className="flex-shrink-0 self-center sm:self-auto">
+        <div className="flex shrink-0 self-center sm:self-auto">
           <Image
             src="/me.webp"
             alt="BWR"
@@ -32,6 +32,7 @@ export const HeaderSection = (): ReactElement => {
           Full-Stack Developer specializing in the{" "}
           <Skill name="TypeScript" minimized /> ecosystem
         </span>
+
         <span className="flex flex-wrap gap-1">
           Building web applications with{" "}
           <RoughNotation 
