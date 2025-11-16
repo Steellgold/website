@@ -1,6 +1,6 @@
 import { SkillName } from "@/components/icons";
 
-type ProjectStatus = "Open-Source" | "Freelance" | "Private" | "In Progress" | "Refactoring";
+type ProjectStatus = "Open-Source" | "Freelance" | "Private" | "In Progress" | "Refactoring" | "Miscellaneous";
 
 type Project = {
   name: string;
@@ -47,6 +47,27 @@ const PROJECTS: Project[] = [
     awards: [
       "https://supabase.com/blog/launch-week-8-hackathon-winners#best-use-of-ai"
     ]
+  },
+  {
+    name: "Supa Clicker",
+    description: "An addictive incremental clicker game with prestige system, achievements, and real-time leaderboard.",
+    technologies: [
+      "TypeScript", "Next", "React", "Tailwind", "Supabase", "Vercel", "shadcn/ui"
+    ],
+    status: "Open-Source",
+    url: "https://supaclicker.vercel.app",
+    awards: [
+      "https://supabase.com/blog/lw15-hackathon-winners#winner-2"
+    ]
+  },
+  {
+    name: "Douceurs du Palais",
+    description: "University project in my degree course - A bakery website built with Symfony and Twig.",
+    technologies: [
+      "Tailwind", "PHP", "Symfony", "Twig", "Webpack", "Docker"
+    ],
+    status: "Miscellaneous",
+    url: "https://github.com/Steellgold/douceurs-palais"
   }
 ]
 
