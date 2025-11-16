@@ -1,3 +1,4 @@
+import { DiscordActivities } from "@/components/discord-activities";
 import { BlogSection } from "@/components/sections/blog-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { HeaderSection } from "@/components/sections/header-section";
@@ -11,6 +12,7 @@ const Home = async (): Promise<ReactElement> => {
   return (
     <div className="flex flex-col gap-18">
       <HeaderSection />
+      <DiscordActivities />
       <SkillsSection />
       <ProjectsSection />
       <BlogSection />
