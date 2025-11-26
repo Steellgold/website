@@ -25,6 +25,9 @@ const PROJECTS: Project[] = [
     githubUrl: "https://github.com/Steellgold/imagine.place",
     awards: [
       "https://x.com/supabase/status/1909552551206560004"
+    ],
+    images: [
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/imagine-1.png",
     ]
   },
   {
@@ -35,7 +38,13 @@ const PROJECTS: Project[] = [
     ],
     status: "Refactoring",
     githubUrl: "https://github.com/Steellgold/simplist.blog",
-    url: "https://simplist.blog"
+    url: "https://simplist.blog",
+    images: [
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/simplist-1.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/simplist-2.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/simplist-3.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/simplist-4.png"
+    ]
   },
   {
     name: "Tweeets",
@@ -47,6 +56,11 @@ const PROJECTS: Project[] = [
     url: "https://github.com/Steellgold/tweeets",
     awards: [
       "https://supabase.com/blog/launch-week-8-hackathon-winners#best-use-of-ai"
+    ],
+    images: [
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/tweeets-1.webp",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/tweeets-2.webp",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/tweeets-3.webp"
     ]
   },
   {
@@ -59,8 +73,7 @@ const PROJECTS: Project[] = [
     url: "https://supaclicker.vercel.app",
     images: [
       "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-1.png",
-      "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-1.png",
-      "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-1.png"
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-2.png",
     ],
     awards: [
       "https://supabase.com/blog/lw15-hackathon-winners#winner-2"
@@ -73,7 +86,15 @@ const PROJECTS: Project[] = [
       "Tailwind", "PHP", "Symfony", "Twig", "Webpack", "Docker"
     ],
     status: "Miscellaneous",
-    url: "https://github.com/Steellgold/douceurs-palais"
+    url: "https://github.com/Steellgold/douceurs-palais",
+    images: [
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-0.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-1.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-10.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-16.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-17.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-5.png",
+    ],
   }
 ]
 
