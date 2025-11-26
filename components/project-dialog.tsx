@@ -21,23 +21,21 @@ export const ProjectDialog: Component<{
   const t = useTranslations("projects");
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
+  const hasImages = project?.images && project.images.length > 0;
+
   useEffect(() => {
     if (open && project) {
       setSelectedImageIndex(0);
     }
-  }, [project?.name, open]);
+  }, [project, open]);
 
-  if (!project) return <></>;
-
-  const hasImages = project.images && project.images.length > 0;
-  
-  // Fermer le dialog si le projet n'a pas d'images
   useEffect(() => {
     if (open && !hasImages) {
       onOpenChange(false);
     }
   }, [open, hasImages, onOpenChange]);
 
+  if (!project) return <></>;
   if (!hasImages) return <></>;
 
   const hasMultipleImages = hasImages && project.images!.length > 1;
