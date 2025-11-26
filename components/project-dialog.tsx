@@ -1,6 +1,7 @@
 "use client";
 
 import { Stars_Thinsmooth } from "@/components/icons";
+import { ImageZoom } from "@/components/kibo-ui/image-zoom";
 import { Skill } from "@/components/skill";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -24,10 +25,10 @@ export const ProjectDialog: Component<{
   const hasImages = project?.images && project.images.length > 0;
 
   useEffect(() => {
-    if (open && project) {
+    if (project) {
       setSelectedImageIndex(0);
     }
-  }, [project, open]);
+  }, [project]);
 
   useEffect(() => {
     if (open && !hasImages) {
@@ -56,23 +57,37 @@ export const ProjectDialog: Component<{
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         className="p-0 max-h-[95vh] md:max-h-[90vh]"
-        style={{ 
-          maxWidth: "95vw", 
+        style={{
+          maxWidth: "95vw",
           width: "900px",
           maxHeight: "95vh"
+        }}
+        onInteractOutside={(e) => {
+          const target = e.target as HTMLElement;
+          if (target.closest('[data-rmiz-modal-overlay]')) {
+            e.preventDefault();
+          }
         }}
       >
         <div className="flex flex-col md:grid md:grid-cols-2 h-full max-h-[95vh] md:max-h-[90vh]">
           {hasImages && (
             <div className="relative w-full h-64 md:h-full md:min-h-0 shrink-0 md:shrink md:order-2">
-              <Image
-                src={project.images![selectedImageIndex]}
-                alt={`${project.name} - Image ${selectedImageIndex + 1}`}
-                fill
-                className="h-full w-full object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                unoptimized={project.images![selectedImageIndex].startsWith('http')}
-              />
+              <ImageZoom
+                className="relative object-cover w-full h-full"
+                zoomMargin={50}
+                backdropClassName={cn(
+                  '[&_[data-rmiz-modal-overlay="visible"]]:bg-white/10'
+                )}
+              >
+                <Image
+                  src={project.images![selectedImageIndex]}
+                  alt={`${project.name} - Image ${selectedImageIndex + 1}`}
+                  fill
+                  className="h-full w-full object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  unoptimized={project.images![selectedImageIndex].startsWith('http')}
+                />
+              </ImageZoom>
 
               {hasMultipleImages && (
                 <>
@@ -191,7 +206,6 @@ export const ProjectDialog: Component<{
               </div>
             </div>
           </div>
-
         </div>
       </DialogContent>
     </Dialog>

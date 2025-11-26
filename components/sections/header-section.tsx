@@ -1,6 +1,7 @@
 "use client";
 
 import { Social_GitHub, Social_LinkedIn, Social_Malt, Social_XformerlyTwitter } from "@/components/icons";
+import { ImageZoom } from "@/components/kibo-ui/image-zoom";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { Skill } from "@/components/skill";
 import { piano } from "@/lib/font";
@@ -18,13 +19,15 @@ export const HeaderSection = (): ReactElement => {
       <div className="flex flex-row items-center justify-between gap-3 sm:gap-4">
         <div className="flex flex-row items-center gap-3 sm:gap-4">
           <div className="flex shrink-0 self-center sm:self-auto">
-            <Image
-              src="/me.webp"
-              alt="BWR"
-              width={74}
-              height={74}
-              className="hover:scale-105 transition-transform duration-200"
-            />
+            <ImageZoom>
+              <Image
+                src="/me.webp"
+                alt="BWR"
+                width={74}
+                height={74}
+                className="hover:scale-105 transition-transform duration-200"
+              />
+            </ImageZoom>
           </div>
 
           <div className="flex flex-col text-left min-w-0">
