@@ -6,6 +6,13 @@ import { Input } from "@/components/ui/input";
 import { File, Clock, X, Search } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 interface RecentFile {
   name: string;
   content: string;
