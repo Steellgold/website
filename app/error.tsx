@@ -7,12 +7,12 @@ import { cn } from '@/lib/utils';
 import { RefreshCcw } from 'lucide-react';
 import { useEffect } from 'react';
 
-type ErrorPageProps = {  
+type ErrorPageProps = {
   error: Error & { digest?: string }
   reset: () => void
 }
 
-const ErrorPage = ({ error, reset }: ErrorPageProps) => {
+const ErrorPage = ({ reset }: ErrorPageProps) => {
   const { setIs404 } = useAppContext();
 
   useEffect(() => {

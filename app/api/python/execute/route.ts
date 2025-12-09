@@ -76,9 +76,10 @@ export async function POST(request: NextRequest) {
       needsInput: needsInput,
       code: result.run?.code || 0,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Internal server error";
     return NextResponse.json(
-      { success: false, error: error.message || "Internal server error" },
+      { success: false, error: message },
       { status: 500 }
     );
   }

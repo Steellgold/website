@@ -58,8 +58,9 @@ export default function PythonRunner({ code }: PythonRunnerProps) {
         setIsRunning(false);
         setUserInputs([]);
       }
-    } catch (error: any) {
-      setOutput([`❌ Erreur réseau: ${error.message}`]);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Unknown error";
+      setOutput([`❌ Erreur réseau: ${message}`]);
       setIsRunning(false);
       setUserInputs([]);
     }
