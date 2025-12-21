@@ -31,7 +31,7 @@ const getLocale = (request: NextRequest): string => {
   return defaultLocale;
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { nextUrl } = request;
   const hostHeader = request.headers.get("host")?.toLowerCase() ?? "";
   const hostname = hostHeader.split(":")[0];
@@ -68,5 +68,3 @@ export const config = {
     "/((?!api|_next/static|_next/image|favicon.ico|apple-touch-icon.png|og-image.png|.*\\.(?:png|jpg|jpeg|gif|webp|svg|ico|css|js|map|txt)).*)",
   ],
 };
-
-
