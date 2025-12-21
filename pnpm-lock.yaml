@@ -45,8 +45,8 @@ importers:
         specifier: ^1.2.8
         version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.5))(@types/react@19.2.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@simplist.blog/sdk':
-        specifier: 0.0.6
-        version: 0.0.6
+        specifier: 0.0.9
+        version: 0.0.9
       '@types/spotify-web-api-node':
         specifier: ^5.0.11
         version: 5.0.11
@@ -1089,8 +1089,8 @@ packages:
   '@schummar/icu-type-parser@1.21.5':
     resolution: {integrity: sha512-bXHSaW5jRTmke9Vd0h5P7BtWZG9Znqb8gSDxZnxaGSJnGwPLDPfS+3g0BKzeWqzgZPsIVZkM7m2tbo18cm5HBw==}
 
-  '@simplist.blog/sdk@0.0.6':
-    resolution: {integrity: sha512-uDWgjuvKS4JFpsacIKdVrZvW0rL8gR+D+ZKgpGEJKuhw38IdVOedB0mNj/zJZK2DyKdawxsi01TZNRqEZb8dGw==}
+  '@simplist.blog/sdk@0.0.9':
+    resolution: {integrity: sha512-D+p2sRe5huG2HyQy8RD0WweVnPcwTMSDh4ZRFFSzHYJbrbqegSV7gqh6mo2Dz1H3PEdaF0xbbPD0Y+PTay+mAQ==}
     engines: {node: '>=18'}
 
   '@standard-schema/utils@0.3.0':
@@ -4834,7 +4834,7 @@ snapshots:
 
   '@schummar/icu-type-parser@1.21.5': {}
 
-  '@simplist.blog/sdk@0.0.6': {}
+  '@simplist.blog/sdk@0.0.9': {}
 
   '@standard-schema/utils@0.3.0': {}
 
