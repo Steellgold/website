@@ -45,6 +45,7 @@ const formatTime = (timestamp: number | null): string => {
 export const DiscordActivities = () => {
   const [presence, setPresence] = useState<DiscordPresence | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [, setCurrentTime] = useState(Date.now());
 
   const fetchPresence = async () => {
     try {
@@ -60,8 +61,15 @@ export const DiscordActivities = () => {
   useEffect(() => {
     fetchPresence();
     
-    const interval = setInterval(fetchPresence, 30000);
-    return () => clearInterval(interval);
+    const fetchInterval = setInterval(fetchPresence, 30000);
+    const timeUpdateInterval = setInterval(() => {
+      setCurrentTime(Date.now());
+    }, 60000);
+    
+    return () => {
+      clearInterval(fetchInterval);
+      clearInterval(timeUpdateInterval);
+    };
   }, []);
 
   if (isLoading || !presence || presence.activities.length === 0) {
