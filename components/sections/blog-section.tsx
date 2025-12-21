@@ -2,6 +2,7 @@ import { BlogPostItem } from "@/components/blog-post";
 import { Section } from "@/components/section";
 import { blog } from "@/lib/blog";
 import { getTranslations } from "next-intl/server";
+import { cookies } from "next/headers";
 import { ReactElement } from "react";
 
 export const BlogSection = async (): Promise<ReactElement> => {
@@ -11,22 +12,34 @@ export const BlogSection = async (): Promise<ReactElement> => {
     const response = await blog.articles.list();
     const posts = response.data;
 
+    // Get user language from cookies
+    const cookieStore = await cookies();
+    const userLang = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+
     return (
       <Section name={t("title")}>
         <div className="flex flex-col">
-          {posts && posts.length > 0 && posts.map((post, index) => (
-            <div key={post.title} className="group">
-              <BlogPostItem
-                title={post.title}
-                date={post.createdAt}
-                url={post.slug}
-              />
+          {posts && posts.length > 0 && posts.map((post, index) => {
+            // Get title in user's language if available
+            let title = post.title;
+            if (userLang === 'fr' && post.variants?.fr?.title) {
+              title = post.variants.fr.title;
+            }
+            
+            return (
+              <div key={post.slug} className="group">
+                <BlogPostItem
+                  title={title}
+                  date={post.createdAt}
+                  url={post.slug}
+                />
 
-              {index < posts.length - 1 && (
-                <div className="border-t border-[#FFFFFF10] group-hover:border-[#FFFFFF20] transition-colors" />
-              )}
-            </div>
-          ))}
+                {index < posts.length - 1 && (
+                  <div className="border-t border-[#FFFFFF10] group-hover:border-[#FFFFFF20] transition-colors" />
+                )}
+              </div>
+            );
+          })}
         </div>
       </Section>
     );
@@ -40,4 +53,4 @@ export const BlogSection = async (): Promise<ReactElement> => {
       </Section>
     );
   }
-}; 
+};

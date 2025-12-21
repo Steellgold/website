@@ -1,12 +1,11 @@
-import { MarkdownPlease } from "@/components/markdown/please";
 import { blog } from "@/lib/blog";
 import { AsyncComponent } from "@/type/component";
-import { CalendarIcon } from "lucide-react";
+import { getBestMatchingVariant } from "@simplist.blog/sdk";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import Image from "next/image";
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-import Script from "next/script";
+import { BlogArticleClient } from "./page-client";
 
 type PageProps = {
   params: Promise<{
@@ -24,21 +23,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const post = (await blog.articles.get(slug)).data;
     if (!post) notFound();
 
+    // Get user language from cookies for SEO
+    const cookieStore = await cookies();
+    const userLang = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+    
+    // Get best matching variant (automatically handles fallback)
+    const variant = getBestMatchingVariant(post, userLang as 'en' | 'fr');
+    const lang = 'lang' in variant ? variant.lang : 'en';
+
     return {
-      title: `${post.title} | Gaëtan Huszovits`,
-      description: post.excerpt,
+      title: `${variant.title} | Gaëtan Huszovits`,
+      description: variant.excerpt ?? undefined,
       openGraph: {
-        title: post.title,
-        description: post.excerpt!,
+        title: variant.title,
+        description: variant.excerpt ?? undefined,
         type: "article",
         publishedTime: post.createdAt,
-        images: post.coverImage ? [post.coverImage] : [],
+        images: variant.coverImage ? [variant.coverImage] : [],
+        locale: lang
       },
       twitter: {
         card: "summary_large_image",
-        title: post.title,
-        description: post.excerpt!,
-        images: post.coverImage ? [post.coverImage] : [],
+        title: variant.title,
+        description: variant.excerpt ?? undefined,
+        images: variant.coverImage ? [variant.coverImage] : [],
       },
     };
   } catch (error) {
@@ -53,50 +61,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 const Page: AsyncComponent<PageProps> = async ({ params }) => {
   const { slug } = await params;
   const post = (await blog.articles.get(slug)).data;
-  const t = await getTranslations("blog");
 
-  return (
-    <div className="relative">
-      <article className="max-w-4xl mx-auto px-4 py-8">
-        {post.coverImage && (
-          <div className="mb-8">
-            <Image
-              src={post.coverImage}
-              alt={t("illustration")}
-              className="w-full h-64 object-cover rounded-lg"
-              width={1200}
-              height={630}
-            />
-          </div>
-        )}
+  // Get user language from cookies
+  const cookieStore = await cookies();
+  const userLang = cookieStore.get('NEXT_LOCALE')?.value || 'en';
 
-        <header className="flex flex-col mb-8 items-center">
-          <h1 className="text-3xl font-bold text-center text-white mb-4">{post.title}</h1>
-          <div className="flex items-center justify-center space-x-4 mb-4">
-            <span className="flex items-center text-gray-300">
-              <CalendarIcon className="w-4 h-4 mr-2" />
-              {new Date(post.createdAt).toLocaleDateString("en-US", {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-              })}
-            </span>
-          </div>
-        </header>
-
-        <div className="prose prose-invert prose-lg max-w-none">
-          <MarkdownPlease content={post.content} />
-        </div>
-      </article>
-      
-      <Script
-        src="https://cdn.simplist.blog/analytics.js"
-        data-api-key={process.env.NEXT_PUBLIC_SIMPLIST_API_KEY}
-        data-slug={slug}
-        strategy="afterInteractive"
-      />
-    </div>
-  )
+  return <BlogArticleClient post={post} slug={slug} initialLang={userLang} />;
 };
 
 export default Page;
