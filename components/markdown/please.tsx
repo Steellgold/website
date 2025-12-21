@@ -116,7 +116,7 @@ export const MarkdownPlease: Component<MarkdownPleaseProps> = ({ content }) => (
         const imageSrc = isValidUrl(props.src as string) ? props.src as string : '/local-og.png';
         
         return (
-          <div className="my-6">
+          <span className="block my-6">
             <ImageZoom>
               <Image
                 alt="illustration image"
@@ -126,7 +126,7 @@ export const MarkdownPlease: Component<MarkdownPleaseProps> = ({ content }) => (
                 className="rounded-lg w-full h-auto max-w-full"
               />
             </ImageZoom>
-          </div>
+          </span>
         );
       },
       i: ({ ...props }) => (

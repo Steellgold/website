@@ -54,6 +54,7 @@ const PROJECTS: Project[] = [
     ],
     status: "Open-Source",
     url: "https://github.com/Steellgold/tweeets",
+    githubUrl: "https://github.com/Steellgold/tweeets",
     awards: [
       "https://supabase.com/blog/launch-week-8-hackathon-winners#best-use-of-ai"
     ],
@@ -71,6 +72,7 @@ const PROJECTS: Project[] = [
     ],
     status: "Open-Source",
     url: "https://supaclicker.vercel.app",
+    githubUrl: "https://github.com/Steellgold/supaclicker",
     images: [
       "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-1.png",
       "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-2.png",
@@ -87,6 +89,7 @@ const PROJECTS: Project[] = [
     ],
     status: "Miscellaneous",
     url: "https://github.com/Steellgold/douceurs-palais",
+    githubUrl: "https://github.com/Steellgold/douceurs-palais",
     images: [
       "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-0.png",
       "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-1.png",

@@ -6,13 +6,15 @@ import { Skill } from "@/components/skill";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Project } from "@/config/projects";
+import { getGitHubStats, GitHubStats } from "@/lib/actions/github-actions";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
-import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Github, Star, GitFork } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useSwipeable } from "react-swipeable";
 
 export const ProjectDialog: Component<{
   project: Project | null;
@@ -21,8 +23,48 @@ export const ProjectDialog: Component<{
 }> = ({ project, open, onOpenChange }) => {
   const t = useTranslations("projects");
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [githubStats, setGithubStats] = useState<GitHubStats | null>(null);
+  const [loadingStats, setLoadingStats] = useState(false);
 
   const hasImages = project?.images && project.images.length > 0;
+  const hasMultipleImages = hasImages && project.images!.length > 1;
+
+  const nextImage = () => {
+    if (hasImages && hasMultipleImages) {
+      setSelectedImageIndex((prev) => (prev + 1) % project.images!.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (hasImages && hasMultipleImages) {
+      setSelectedImageIndex((prev) => (prev - 1 + project.images!.length) % project.images!.length);
+    }
+  };
+
+  // Swipe handlers - MUST be called before conditional returns
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => nextImage(),
+    onSwipedRight: () => prevImage(),
+    trackMouse: false,
+    trackTouch: true
+  });
+
+  // Fetch GitHub stats when project changes
+  useEffect(() => {
+    if (project?.githubUrl) {
+      setLoadingStats(true);
+      getGitHubStats(project.githubUrl)
+        .then(stats => setGithubStats(stats))
+        .catch(error => {
+          console.error('Failed to fetch GitHub stats:', error);
+          setGithubStats(null);
+        })
+        .finally(() => setLoadingStats(false));
+    } else {
+      setGithubStats(null);
+      setLoadingStats(false);
+    }
+  }, [project?.githubUrl]);
 
   useEffect(() => {
     if (project) {
@@ -38,20 +80,6 @@ export const ProjectDialog: Component<{
 
   if (!project) return <></>;
   if (!hasImages) return <></>;
-
-  const hasMultipleImages = hasImages && project.images!.length > 1;
-
-  const nextImage = () => {
-    if (hasImages && hasMultipleImages) {
-      setSelectedImageIndex((prev) => (prev + 1) % project.images!.length);
-    }
-  };
-
-  const prevImage = () => {
-    if (hasImages && hasMultipleImages) {
-      setSelectedImageIndex((prev) => (prev - 1 + project.images!.length) % project.images!.length);
-    }
-  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -71,7 +99,10 @@ export const ProjectDialog: Component<{
       >
         <div className="flex flex-col md:grid md:grid-cols-2 h-full max-h-[95vh] md:max-h-[90vh]">
           {hasImages && (
-            <div className="relative w-full h-64 md:h-full md:min-h-0 shrink-0 md:shrink md:order-2">
+            <div 
+              {...swipeHandlers}
+              className="relative w-full h-64 md:h-full md:min-h-0 shrink-0 md:shrink md:order-2"
+            >
               <ImageZoom
                 className="relative object-cover w-full h-full"
                 zoomMargin={50}
@@ -143,9 +174,23 @@ export const ProjectDialog: Component<{
                 {project.description}
               </p>
 
-                <div className="flex flex-wrap gap-1.5">
-                  {project.technologies.map((tech) => (
-                    <Skill key={tech} name={tech} minimized />
+              {/* GitHub Stats */}
+              {project.githubUrl && githubStats && !loadingStats && (
+                <div className="flex items-center gap-2 flex-wrap">
+                  <div className="bg-[#1d1d1d] border-inside border-inside-default px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5">
+                    <Star className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                    <span className="text-xs md:text-sm">{githubStats.stars}</span>
+                  </div>
+                  <div className="bg-[#1d1d1d] border-inside border-inside-default px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5">
+                    <GitFork className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                    <span className="text-xs md:text-sm">{githubStats.forks}</span>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex flex-wrap gap-1.5">
+                {project.technologies.map((tech) => (
+                  <Skill key={tech} name={tech} minimized />
                 ))}
               </div>
 
@@ -170,21 +215,23 @@ export const ProjectDialog: Component<{
               </div>
 
               <div className="flex flex-col sm:flex-row gap-2">
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full sm:w-auto"
-                >
-                  <Link
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center"
+                {project.url !== project.githubUrl && (
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full sm:w-auto"
                   >
-                    <ExternalLink />
-                    {t("view")}
-                  </Link>
-                </Button>
+                    <Link
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center"
+                    >
+                      <ExternalLink />
+                      {t("view")}
+                    </Link>
+                  </Button>
+                )}
 
                 {project.githubUrl && (
                   <Button
