@@ -1,7 +1,7 @@
 "use client";
 
 import { MarkdownPlease } from "@/components/markdown/please";
-import { Article, getBestMatchingVariant } from "@simplist.blog/sdk";
+import { Article, getBestMatchingVariant, detectUserLanguage } from "@simplist.blog/sdk";
 import { CalendarIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -11,16 +11,17 @@ import { useMemo } from "react";
 type BlogArticleClientProps = {
   post: Article;
   slug: string;
-  initialLang: string;
 };
 
-export const BlogArticleClient = ({ post, slug, initialLang }: BlogArticleClientProps) => {
+export const BlogArticleClient = ({ post, slug }: BlogArticleClientProps) => {
   const t = useTranslations("blog");
   
-  // Get best matching variant using initial language from SSR
+  // Use Simplist SDK's native language detection
+  // This automatically detects browser language and falls back appropriately
   const variant = useMemo(() => {
-    return getBestMatchingVariant(post, initialLang as any);
-  }, [post, initialLang]);
+    const userLang = detectUserLanguage();
+    return getBestMatchingVariant(post, userLang);
+  }, [post]);
 
   const lang = 'lang' in variant ? variant.lang : 'en';
 

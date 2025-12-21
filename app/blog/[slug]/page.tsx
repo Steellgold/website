@@ -3,7 +3,6 @@ import { AsyncComponent } from "@/type/component";
 import { getBestMatchingVariant } from "@simplist.blog/sdk";
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { BlogArticleClient } from "./page-client";
 
@@ -23,12 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const post = (await blog.articles.get(slug)).data;
     if (!post) notFound();
 
-    // Get user language from cookies for SEO
-    const cookieStore = await cookies();
-    const userLang = cookieStore.get('NEXT_LOCALE')?.value || 'en';
-    
-    // Get best matching variant (automatically handles fallback)
-    const variant = getBestMatchingVariant(post, userLang as 'en' | 'fr');
+    const variant = getBestMatchingVariant(post, 'en');
     const lang = 'lang' in variant ? variant.lang : 'en';
 
     return {
@@ -62,11 +56,9 @@ const Page: AsyncComponent<PageProps> = async ({ params }) => {
   const { slug } = await params;
   const post = (await blog.articles.get(slug)).data;
 
-  // Get user language from cookies
-  const cookieStore = await cookies();
-  const userLang = cookieStore.get('NEXT_LOCALE')?.value || 'en';
-
-  return <BlogArticleClient post={post} slug={slug} initialLang={userLang} />;
+  // Client-side component will use Simplist SDK's detectUserLanguage()
+  // to automatically show content in user's browser language
+  return <BlogArticleClient post={post} slug={slug} />;
 };
 
 export default Page;
