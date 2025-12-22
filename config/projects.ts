@@ -36,7 +36,7 @@ const PROJECTS: Project[] = [
     technologies: [
       "React", "Next", "Turborepo", "Tailwind", "shadcn/ui", "AWS", "Vercel", "TypeScript", "Upstash", "Stripe", "BetterAuth"
     ],
-    status: "Refactoring",
+    status: "Open-Source",
     githubUrl: "https://github.com/Steellgold/simplist.blog",
     url: "https://simplist.blog",
     images: [
