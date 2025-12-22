@@ -1,4 +1,4 @@
-import { Instrument_Serif } from "next/font/google";
+import { Instrument_Serif, Syne } from "next/font/google";
 
 export const piano = Instrument_Serif({
   weight: "400",
@@ -11,3 +11,5 @@ export const piano_electric = Instrument_Serif({
   style: "normal",
   subsets: ["latin"],
 });
+
+export const syne = Syne({ subsets: ["latin"], weight: ["800"] });

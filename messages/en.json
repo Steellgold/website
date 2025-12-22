@@ -2,7 +2,9 @@
   "common": {
     "welcome": "Welcome",
     "description": "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
-    "madeIn": "Made in Alsace, France"
+    "madeIn": "Made in Alsace, France",
+
+    "poweredBy": "Powered by"
   },
   "header": {
     "hello": "Hello, I'm",

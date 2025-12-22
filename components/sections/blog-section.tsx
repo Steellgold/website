@@ -22,17 +22,14 @@ export const BlogSection = async (): Promise<ReactElement> => {
           {posts && posts.length > 0 && posts.map((post, index) => {
             // Get title in user's language if available
             let title = post.title;
+
             if (userLang === 'fr' && post.variants?.fr?.title) {
               title = post.variants.fr.title;
             }
             
             return (
               <div key={post.slug} className="group">
-                <BlogPostItem
-                  title={title}
-                  date={post.createdAt}
-                  url={post.slug}
-                />
+                <BlogPostItem article={{ ...post, title: title }} />
 
                 {index < posts.length - 1 && (
                   <div className="border-t border-[#FFFFFF10] group-hover:border-[#FFFFFF20] transition-colors" />

@@ -2,7 +2,9 @@
   "common": {
     "welcome": "Bienvenue",
     "description": "Développeur Full-Stack spécialisé dans l'écosystème TypeScript, créant des applications web avec des technologies modernes.",
-    "madeIn": "Fait en Alsace, France"
+    "madeIn": "Fait en Alsace, France",
+
+    "poweredBy": "Propulsé par"
   },
   "header": {
     "hello": "Bonjour, je suis",
