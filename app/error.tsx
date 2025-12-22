@@ -8,7 +8,7 @@ import { RefreshCcw } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
-type ErrorPageProps = {  
+type ErrorPageProps = {
   error: Error & { digest?: string }
   reset: () => void
 }
