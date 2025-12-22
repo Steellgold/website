@@ -32,14 +32,16 @@ export const Section: Component<Section> = ({ name, description, children }) => 
       {children}
 
       {name.toLowerCase() == "blog" && (
-        <Link
-          href="https://simplist.blog?ref=gaetanhuszovits"
-          target="_blank"
-          className={cn("text-sm flex items-center gap-1.5 justify-end mt-4.5")}
-        >
-          <p>{t("poweredBy")}</p>
-          <span className={cn(syne.className, "")}>Simplist</span>
-        </Link>
+        <div className="flex flex-row items-center gap-1.5 justify-end mt-4.5">
+          <Link
+            href="https://simplist.blog?ref=gaetanhuszovits"
+            target="_blank"
+            className={cn("group text-sm flex items-center  gap-1.5 *:transition-colors")}
+          >
+            <p>{t("poweredBy")}</p>
+            <span className={cn(syne.className, "group-hover:text-[#F0BB3B]")}>Simplist</span>
+          </Link>
+        </div>
       )}
     </div>
   );
