@@ -1,0 +1,47 @@
+{
+  "common": {
+    "welcome": "Bienvenue",
+    "description": "Développeur Full-Stack spécialisé dans l'écosystème TypeScript, créant des applications web avec des technologies modernes.",
+    "madeIn": "Fait en Alsace, France"
+  },
+  "header": {
+    "hello": "Bonjour, je suis",
+    "fullStackDeveloper": "Développeur Full-Stack spécialisé dans l'écosystème",
+    "building": "Création d'applications web avec",
+    "modernTechnologies": "des technologies modernes",
+    "suchAs": "telles que",
+    "and": "et"
+  },
+  "contact": {
+    "title": "Parlons-en",
+    "getInTouch": "Entrer en contact",
+    "ready": "Prêt à démarrer un projet ou simplement dire bonjour ?",
+    "open": "Je suis toujours ouvert aux nouvelles opportunités et collaborations.",
+    "copyEmail": "Copier l'email"
+  },
+  "projects": {
+    "title": "Projets",
+    "seeMore": "Voir plus de projets",
+    "awarded": "Récompensé",
+    "view": "Voir le projet"
+  },
+  "skills": {
+    "title": "Technologies",
+    "andManyOthers": "et bien d'autres..."
+  },
+  "blog": {
+    "title": "Blog",
+    "unavailable": "Les articles de blog ne sont actuellement pas disponibles.",
+    "illustration": "Illustration de l'article de blog",
+    "blogPost": "Article de blog | Gaëtan Huszovits",
+    "blogPostDescription": "Un article de blog de Gaëtan Huszovits."
+  },
+  "errors": {
+    "oops": "Oups !",
+    "notFound": "La page que vous recherchez n'existe pas.",
+    "backToHome": "Retour à l'accueil",
+    "somethingWentWrong": "Quelque chose s'est mal passé !",
+    "unexpectedError": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.",
+    "tryAgain": "Réessayer"
+  }
+}

@@ -1,14 +1,16 @@
-'use client';
+"use client";
 
-import { useAppContext } from '@/contexts/app-context';
-import { piano, piano_electric } from '@/lib/font';
-import { cn } from '@/lib/utils';
-import { ArrowLeftIcon } from 'lucide-react';
-import Link from 'next/link';
-import { useEffect } from 'react';
+import { useAppContext } from "@/contexts/app-context";
+import { piano, piano_electric } from "@/lib/font";
+import { cn } from "@/lib/utils";
+import { ArrowLeftIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useEffect } from "react";
 
 const NotFound = () => {
   const { setIs404 } = useAppContext();
+  const t = useTranslations("errors");
 
   useEffect(() => {
     setIs404(true);
@@ -28,11 +30,11 @@ const NotFound = () => {
 
       <div className="max-w-md mb-2">
         <h2 className={cn("text-2xl sm:text-3xl font-bold", piano.className )}>
-          Oops !
+          {t("oops")}
         </h2>
         
         <p className="text-muted-foreground text-lg leading-relaxed">
-          The page you are looking for does not exist.
+          {t("notFound")}
         </p>
       </div>
 
@@ -43,7 +45,7 @@ const NotFound = () => {
           prefetch
         >
           <ArrowLeftIcon className="w-4 h-4" />
-          Back to home
+          {t("backToHome")}
         </Link>
       </div>
     </div>

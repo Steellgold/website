@@ -3,8 +3,9 @@ import { iconsByName } from "@/components/icons";
 import { SpotifyPlayer } from "@/components/spotify-player";
 import { AppProvider } from "@/contexts/app-context";
 import { cn } from "@/lib/utils";
-import { Component } from "@/type/component";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 import { Outfit } from "next/font/google";
 import Image from "next/image";
 import { PropsWithChildren } from "react";
@@ -67,35 +68,40 @@ export const metadata: Metadata = {
   }
 }
 
-const RootLayout: Component<PropsWithChildren> = ({ children }) => {
+const RootLayout = async ({ children }: PropsWithChildren) => {
+  const locale = await getLocale();
+  const messages = await getMessages();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={cn(
         "selection:bg-white selection:text-black"
       )}
     >
       <body className={`${outfit.className} antialiased bg-[#121212] text-white relative`}>
         <main>
-          <AppProvider>
-            <div className="absolute top-0 left-0 right-0  pointer-events-none">
-              <div className="w-full h-54 sm:h-100">
-                <Image 
-                  src="/BWR.webp" 
-                  alt="BWR" 
-                  width={1000}
-                  height={256}
-                  className="w-full h-full"
-                />
+          <NextIntlClientProvider messages={messages}>
+            <AppProvider>
+              <div className="absolute top-0 left-0 right-0  pointer-events-none">
+                <div className="w-full h-54 sm:h-100">
+                  <Image 
+                    src="/BWR.webp" 
+                    alt="BWR" 
+                    width={1000}
+                    height={256}
+                    className="w-full h-full"
+                  />
+                </div>
               </div>
-            </div>
               
-            <ConditionalPadding>
-              {children}
-            </ConditionalPadding>
-            
-            <SpotifyPlayer />
-          </AppProvider>
+              <ConditionalPadding>
+                {children}
+              </ConditionalPadding>
+              
+              <SpotifyPlayer />
+            </AppProvider>
+          </NextIntlClientProvider>
         </main>
       </body>
     </html>

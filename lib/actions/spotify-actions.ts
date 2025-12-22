@@ -28,6 +28,7 @@ export const getSpotifyNowPlaying = async (): Promise<SpotifyNowPlaying> => {
     if (process.env.NODE_ENV === "development") {
       console.error("Error in getSpotifyNowPlaying action:", error)
     }
+
     return {
       track: null,
       isPlaying: false,

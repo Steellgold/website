@@ -1,52 +1,64 @@
+"use client";
+
 import { Social_GitHub, Social_LinkedIn, Social_Malt, Social_XformerlyTwitter } from "@/components/icons";
+import { ImageZoom } from "@/components/kibo-ui/image-zoom";
+import { LanguageSwitcher } from "@/components/language-switcher";
 import { Skill } from "@/components/skill";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactElement } from "react";
 import { RoughNotation } from "react-rough-notation";
 
 export const HeaderSection = (): ReactElement => {
+  const t = useTranslations("header");
   return (
     <div className="flex flex-col gap-3 w-full">
-      <div className="flex flex-row items-center gap-3 sm:gap-4">
-        <div className="flex-shrink-0 self-center sm:self-auto">
-          <Image
-            src="/me.webp"
-            alt="BWR"
-            width={74}
-            height={74}
-            className="hover:scale-105 transition-transform duration-200"
-          />
-        </div>
+      <div className="flex flex-row items-center justify-between gap-3 sm:gap-4">
+        <div className="flex flex-row items-center gap-3 sm:gap-4">
+          <div className="flex shrink-0 self-center sm:self-auto">
+            <ImageZoom>
+              <Image
+                src="/me.webp"
+                alt="BWR"
+                width={74}
+                height={74}
+                className="hover:scale-105 transition-transform duration-200"
+              />
+            </ImageZoom>
+          </div>
 
-        <div className="flex flex-col text-left min-w-0">
-          <span className="text-md sm:text-lg">Hello, I&apos;m</span>
-          <h1 className={cn("text-4xl sm:text-5xl", piano.className)}>Gaëtan Huszovits</h1>
+          <div className="flex flex-col text-left min-w-0">
+            <span className="text-md sm:text-lg">{t("hello")}</span>
+            <h1 className={cn("text-4xl sm:text-5xl", piano.className)}>Gaëtan Huszovits</h1>
+          </div>
         </div>
+        <LanguageSwitcher />
       </div>
       
       <div className="mt-1 sm:mt-2">
         <span className="flex flex-wrap gap-1">
-          Full-Stack Developer specializing in the{" "}
+          {t("fullStackDeveloper")}{" "}
           <Skill name="TypeScript" minimized /> ecosystem
         </span>
+
         <span className="flex flex-wrap gap-1">
-          Building web applications with{" "}
+          {t("building")}{" "}
           <RoughNotation 
             type="highlight" 
             color="#2537FF55" 
             show 
             iterations={2}
           >
-            modern technologies
+            {t("modernTechnologies")}
           </RoughNotation>
-          such as{" "}
+          {t("suchAs")}{" "}
           <Skill name="Next" minimized />{" "}
           <Skill name="BetterAuth" minimized />{" "}
           <Skill name="Prisma" minimized />{" "}
-          and <Skill name="Tailwind" minimized />
+          {t("and")} <Skill name="Tailwind" minimized />
         </span>
       </div>
 

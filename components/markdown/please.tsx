@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import remarkGfm from "remark-gfm";
+import { ImageZoom } from "../kibo-ui/image-zoom";
 import { CodeWindow } from "./code-window";
 
 type MarkdownPleaseProps = {
@@ -115,15 +116,17 @@ export const MarkdownPlease: Component<MarkdownPleaseProps> = ({ content }) => (
         const imageSrc = isValidUrl(props.src as string) ? props.src as string : '/local-og.png';
         
         return (
-          <div className="my-6">
-            <Image
-              alt="illustration image"
-              src={imageSrc}
-              width={900}
-              height={500}
-              className="rounded-lg w-full h-auto max-w-full"
-            />
-          </div>
+          <span className="block my-6">
+            <ImageZoom>
+              <Image
+                alt="illustration image"
+                src={imageSrc}
+                width={900}
+                height={500}
+                className="rounded-lg w-full h-auto max-w-full"
+              />
+            </ImageZoom>
+          </span>
         );
       },
       i: ({ ...props }) => (
