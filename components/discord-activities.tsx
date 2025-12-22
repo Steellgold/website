@@ -24,28 +24,27 @@ const getImageUrl = (imageId: string | null, applicationId: string | null): stri
   return null;
 };
 
-const formatTime = (timestamp: number | null): string => {
+const formatTime = (timestamp: number | null, currentTime: number): string => {
   if (!timestamp) return "";
   
-  const date = new Date(timestamp);
-  const now = new Date();
-  const diff = now.getTime() - date.getTime();
-  const minutes = Math.floor(diff / 60000);
-  const hours = Math.floor(minutes / 60);
+  const diff = currentTime - timestamp;
+  const totalSeconds = Math.floor(diff / 1000);
   
-  if (hours > 0) {
-    return `since ${hours}h`;
-  }
-  if (minutes > 0) {
-    return `since ${minutes}min`;
-  }
-  return "now";
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  
+  const hoursStr = hours.toString().padStart(2, '0');
+  const minutesStr = minutes.toString().padStart(2, '0');
+  const secondsStr = seconds.toString().padStart(2, '0');
+  
+  return `since ${hoursStr}:${minutesStr}:${secondsStr}`;
 };
 
 export const DiscordActivities = () => {
   const [presence, setPresence] = useState<DiscordPresence | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [, setCurrentTime] = useState(Date.now());
+  const [currentTime, setCurrentTime] = useState(Date.now());
 
   const fetchPresence = async () => {
     try {
@@ -64,7 +63,7 @@ export const DiscordActivities = () => {
     const fetchInterval = setInterval(fetchPresence, 30000);
     const timeUpdateInterval = setInterval(() => {
       setCurrentTime(Date.now());
-    }, 60000);
+    }, 1000);
     
     return () => {
       clearInterval(fetchInterval);
@@ -82,7 +81,7 @@ export const DiscordActivities = () => {
         {presence.activities.map((activity: DiscordActivity, index: number) => {
           const largeImageUrl = getImageUrl(activity.assets.largeImage, activity.applicationId);
           const smallImageUrl = getImageUrl(activity.assets.smallImage, activity.applicationId);
-          const timeText = formatTime(activity.timestamps.start);
+          const timeText = formatTime(activity.timestamps.start, currentTime);
 
           return (
             <div
