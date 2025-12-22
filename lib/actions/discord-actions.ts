@@ -18,7 +18,7 @@ export const getDiscordPresence = async (): Promise<DiscordPresence | null> => {
 
   try {
     const response = await fetch("https://presence.steellgold.fr/", {
-      next: { revalidate: 30 }
+      cache: "no-store"
     })
 
     if (!response.ok) {
