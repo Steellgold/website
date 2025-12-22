@@ -1,7 +1,7 @@
 "use client";
 
 import { MarkdownPlease } from "@/components/markdown/please";
-import { Article, getBestMatchingVariant, detectUserLanguage } from "@simplist.blog/sdk";
+import { Article, detectUserLanguage, getBestMatchingVariant } from "@simplist.blog/sdk";
 import { CalendarIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
