@@ -75,10 +75,18 @@ export const DiscordActivities = () => {
     return null;
   }
 
+  const filteredActivities = presence.activities.filter(
+    (activity: DiscordActivity) => activity.name.toLowerCase() !== "spotify"
+  );
+
+  if (filteredActivities.length === 0) {
+    return null;
+  }
+
   return (
     <div className="-mt-8 -mb-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pointer-events-auto">
-        {presence.activities.map((activity: DiscordActivity, index: number) => {
+        {filteredActivities.map((activity: DiscordActivity, index: number) => {
           const largeImageUrl = getImageUrl(activity.assets.largeImage, activity.applicationId);
           const smallImageUrl = getImageUrl(activity.assets.smallImage, activity.applicationId);
           const timeText = formatTime(activity.timestamps.start, currentTime);
