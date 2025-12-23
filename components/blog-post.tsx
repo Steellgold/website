@@ -1,13 +1,17 @@
 "use client";
 
 import { Tag } from "@/components/tag";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
 import { ArticleListItem } from "@simplist.blog/sdk";
-import { format } from 'date-fns';
+import { format } from "date-fns";
 import { ArrowUpRight } from "lucide-react";
+import { useLocale } from "next-intl";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 type BlogPostItemProps = {
   article: ArticleListItem;
@@ -15,8 +19,25 @@ type BlogPostItemProps = {
 
 export const BlogPostItem: Component<BlogPostItemProps> = ({ article }) => {
   const isMobile = useIsMobile();
+  const locale = useLocale();
+  const [tooltipSide, setTooltipSide] = useState<"left" | "top">("left");
 
-  return (
+  useEffect(() => {
+    const updateTooltipSide = () => {
+      setTooltipSide(window.innerWidth < 1490 ? "top" : "left");
+    };
+
+    updateTooltipSide();
+
+    window.addEventListener("resize", updateTooltipSide);
+    return () => window.removeEventListener("resize", updateTooltipSide);
+  }, []);
+
+  const coverImage = (locale === 'fr' && article.variants?.fr?.coverImage) 
+    ? article.variants.fr.coverImage 
+    : article.coverImage;
+
+  const linkContent = (
     <Link
       href={`/blog/${article.slug}`}
       className={cn(
@@ -65,5 +86,33 @@ export const BlogPostItem: Component<BlogPostItemProps> = ({ article }) => {
         <ArrowUpRight className="size-4 hidden group-hover:block transition" />
       </div>
     </Link>
+  );
+
+  if (!coverImage || isMobile) {
+    return linkContent;
+  }
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        {linkContent}
+      </TooltipTrigger>
+
+      <TooltipContent
+        side={tooltipSide}
+        sideOffset={10}
+        className="p-0.5 bg-primary/10 rounded-lg"
+      >
+        <div className="relative w-[300px] h-[168px] rounded-lg overflow-hidden">
+          <Image
+            src={coverImage}
+            alt={article.title}
+            fill
+            className="object-cover"
+            sizes="300px"
+          />
+        </div>
+      </TooltipContent>
+    </Tooltip>
   );
 };
