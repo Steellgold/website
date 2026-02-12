@@ -89,7 +89,7 @@ export const DiscordActivities = () => {
         {filteredActivities.map((activity: DiscordActivity, index: number) => {
           const largeImageUrl = getImageUrl(activity.assets?.largeImage ?? null, activity.applicationId);
           const smallImageUrl = getImageUrl(activity.assets?.smallImage ?? null, activity.applicationId);
-          const timeText = formatTime(activity.timestamps.start, currentTime);
+          const timeText = formatTime(activity.timestamps?.start ?? null, currentTime);
 
           return (
             <div

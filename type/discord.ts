@@ -8,7 +8,7 @@ export type DiscordActivity = {
   timestamps: {
     start: number | null;
     end: number | null;
-  };
+  } | null;
   assets: {
     largeImage: string | null;
     largeText: string | null;
