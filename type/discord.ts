@@ -14,7 +14,7 @@ export type DiscordActivity = {
     largeText: string | null;
     smallImage: string | null;
     smallText: string | null;
-  };
+  } | null;
   party: unknown | null;
 };
 

@@ -87,8 +87,8 @@ export const DiscordActivities = () => {
     <div className="-mt-8 -mb-8">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pointer-events-auto">
         {filteredActivities.map((activity: DiscordActivity, index: number) => {
-          const largeImageUrl = getImageUrl(activity.assets.largeImage, activity.applicationId);
-          const smallImageUrl = getImageUrl(activity.assets.smallImage, activity.applicationId);
+          const largeImageUrl = getImageUrl(activity.assets?.largeImage ?? null, activity.applicationId);
+          const smallImageUrl = getImageUrl(activity.assets?.smallImage ?? null, activity.applicationId);
           const timeText = formatTime(activity.timestamps.start, currentTime);
 
           return (
@@ -115,7 +115,7 @@ export const DiscordActivities = () => {
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full overflow-hidden border-2 border-[#1d1d1d]">
                       <Image
                         src={smallImageUrl}
-                        alt={activity.assets.smallText || ""}
+                        alt={activity.assets?.smallText || ""}
                         width={20}
                         height={20}
                         className="w-full h-full object-cover"
