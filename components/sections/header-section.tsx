@@ -14,6 +14,7 @@ import { RoughNotation } from "react-rough-notation";
 
 export const HeaderSection = (): ReactElement => {
   const t = useTranslations("header");
+  const fullStackDeveloperSuffix = t("fullStackDeveloperSuffix").trim()
   return (
     <div className="flex flex-col gap-3 w-full">
       <div className="flex flex-row items-center justify-between gap-3 sm:gap-4">
@@ -41,7 +42,8 @@ export const HeaderSection = (): ReactElement => {
       <div className="mt-1 sm:mt-2">
         <span className="flex flex-wrap gap-1">
           {t("fullStackDeveloper")}{" "}
-          <Skill name="TypeScript" minimized /> ecosystem
+          <Skill name="TypeScript" minimized />
+          {fullStackDeveloperSuffix && <>{" "}{fullStackDeveloperSuffix}</>}
         </span>
 
         <span className="flex flex-wrap gap-1">

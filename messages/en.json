@@ -9,6 +9,7 @@
   "header": {
     "hello": "Hello, I'm",
     "fullStackDeveloper": "Full-Stack Developer specializing in the",
+    "fullStackDeveloperSuffix": "ecosystem",
     "building": "Building web applications with",
     "modernTechnologies": "modern technologies",
     "suchAs": "such as",
