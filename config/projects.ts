@@ -4,19 +4,23 @@ type ProjectStatus = "Open-Source" | "Freelance" | "Private" | "In Progress" | "
 
 type Project = {
   name: string;
-  description: string;
+  description: { en: string; fr: string };
   technologies: SkillName[];
   status: ProjectStatus;
   url: string;
   githubUrl?: string;
   awards?: string[];
+  contributors?: { name: string; url: string }[];
   images?: string[];
 }
 
 const PROJECTS: Project[] = [
   {
     name: "Imagine",
-    description: "An AI-powered interactive storytelling platform where players shape their adventure through choices, visuals, and dynamic outcomes.",
+    description: {
+      en: "An AI-powered interactive storytelling platform where players shape their adventure through choices, visuals, and dynamic outcomes.",
+      fr: "Une plateforme de narration interactive alimentée par l'IA où les joueurs façonnent leur aventure à travers des choix, des visuels et des résultats dynamiques."
+    },
     technologies: [
       "TypeScript", "Next", "Tailwind", "Vercel", "shadcn/ui", "Supabase", "Prisma", "OpenAI"
     ],
@@ -32,7 +36,10 @@ const PROJECTS: Project[] = [
   },
   {
     name: "Simplist",
-    description: "A blog platform with content management, allowing users to publish articles and access them via API.",
+    description: {
+      en: "A blog platform with content management, allowing users to publish articles and access them via API.",
+      fr: "Une plateforme de blog avec gestion de contenu, permettant aux utilisateurs de publier des articles et d'y accéder via une API."
+    },
     technologies: [
       "React", "Next", "Turborepo", "Tailwind", "shadcn/ui", "AWS", "Vercel", "TypeScript", "Upstash", "Stripe", "BetterAuth"
     ],
@@ -48,7 +55,10 @@ const PROJECTS: Project[] = [
   },
   {
     name: "Tweeets",
-    description: "A tweet generator with AI, emotions, tones and other features.",
+    description: {
+      en: "A tweet generator with AI, emotions, tones and other features.",
+      fr: "Un générateur de tweets avec IA, émotions, tons et autres fonctionnalités."
+    },
     technologies: [
       "TypeScript", "Next", "OpenAI", "Tailwind", "Vercel", "Prisma", "PostgreSQL", "Supabase", "Stripe", "shadcn/ui"
     ],
@@ -66,7 +76,10 @@ const PROJECTS: Project[] = [
   },
   {
     name: "Supa Clicker",
-    description: "An addictive incremental clicker game with prestige system, achievements, and real-time leaderboard.",
+    description: {
+      en: "An addictive incremental clicker game with prestige system, achievements, and real-time leaderboard.",
+      fr: "Un jeu de clicker incrémental addictif avec système de prestige, succès et classement en temps réel."
+    },
     technologies: [
       "TypeScript", "Next", "React", "Tailwind", "Supabase", "Vercel", "shadcn/ui"
     ],
@@ -83,7 +96,10 @@ const PROJECTS: Project[] = [
   },
   {
     name: "Douceurs du Palais",
-    description: "University project in my degree course - A bakery website built with Symfony and Twig.",
+    description: {
+      en: "University project in my degree course - A bakery website built with Symfony and Twig.",
+      fr: "Projet universitaire dans le cadre de ma formation - Un site de boulangerie construit avec Symfony et Twig."
+    },
     technologies: [
       "Tailwind", "PHP", "Symfony", "Twig", "Webpack", "Docker"
     ],
@@ -97,6 +113,29 @@ const PROJECTS: Project[] = [
       "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-16.png",
       "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-17.png",
       "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-5.png",
+    ],
+  },
+  {
+    name: "Nowly",
+    description: {
+      en: "Nowly is a system that automatically displays what you're watching online in your Discord Rich Presence status. Using a browser extension, it detects the content you're viewing and shares it in real-time with your Discord friends: title, channel, progress, and clickable buttons.",
+      fr: "La façon la plus simple d'afficher automatiquement ce que vous regardez. Séries, films ou streams, votre statut Discord reste toujours à jour."
+    },
+    technologies: [
+      "TypeScript", "React", "Next", "Tailwind", "Fastify", "PostgreSQL", "Zod", "Cloudflare", "Go", "Chrome"
+    ],
+    status: "Open-Source",
+    url: "https://nowly.me/",
+    githubUrl: "https://github.com/nowly-presence/nowly",
+    contributors: [
+      { name: "q-kimi", url: "https://github.com/q-kimi" }
+    ],
+    images: [
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-1.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-2.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-3.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-4.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-5.png",
     ],
   }
 ]
