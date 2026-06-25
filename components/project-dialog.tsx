@@ -10,7 +10,7 @@ import { getGitHubStats, GitHubStats } from "@/lib/actions/github-actions";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
 import { ChevronLeft, ChevronRight, ExternalLink, Github, Star, GitFork } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -22,6 +22,7 @@ export const ProjectDialog: Component<{
   onOpenChange: (open: boolean) => void;
 }> = ({ project, open, onOpenChange }) => {
   const t = useTranslations("projects");
+  const locale = useLocale();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [githubStats, setGithubStats] = useState<GitHubStats | null>(null);
   const [loadingStats, setLoadingStats] = useState(false);
@@ -171,7 +172,7 @@ export const ProjectDialog: Component<{
 
             <div className="space-y-4">
               <p className="text-sm md:text-base text-gray-300 leading-relaxed">
-                {project.description}
+                {project.description[locale as "en" | "fr"] || project.description.en}
               </p>
 
               {/* GitHub Stats */}
@@ -185,6 +186,23 @@ export const ProjectDialog: Component<{
                     <GitFork className="w-3 h-3 md:w-3.5 md:h-3.5" />
                     <span className="text-xs md:text-sm">{githubStats.forks}</span>
                   </div>
+                </div>
+              )}
+
+              {project.contributors && project.contributors.length > 0 && (
+                <div className="flex items-center gap-2 flex-wrap">
+                  {project.contributors.map((contributor) => (
+                    <Link
+                      key={contributor.url}
+                      href={contributor.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#1d1d1d] border-inside border-inside-default px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+                    >
+                      <Github className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                      <span className="text-xs md:text-sm">{contributor.name}</span>
+                    </Link>
+                  ))}
                 </div>
               )}
 

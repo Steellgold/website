@@ -5,7 +5,7 @@ import { Skill } from "@/components/skill";
 import { Project } from "@/config/projects";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRef } from "react";
 import { useHover } from "usehooks-ts";
@@ -14,6 +14,7 @@ export const ProjectCard: Component<Project & { onClick?: () => void }> = ({ nam
   const ref = useRef<HTMLDivElement>(null);
   const isHovering = useHover<HTMLDivElement>(ref as React.RefObject<HTMLDivElement>);
   const t = useTranslations("projects");
+  const locale = useLocale();
 
   return (
     <div
@@ -51,7 +52,7 @@ export const ProjectCard: Component<Project & { onClick?: () => void }> = ({ nam
       </div>
 
       <p className="text-gray-300 text-sm leading-relaxed">
-        {description}
+        {description[locale as "en" | "fr"] || description.en}
       </p>
       
       <div className="flex flex-wrap gap-1.5 mt-auto">
