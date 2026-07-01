@@ -11,7 +11,7 @@ import { createShortLinkAction } from "@/lib/actions/link-actions";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { CreateShortLinkForm, createShortLinkSchema } from "@/type/shortener";
-import { Copy, CopyCheck, Loader } from "lucide-react";
+import { IconCopy, IconCopyCheck, IconLoader } from "@tabler/icons-react";
 import { useState, useTransition } from "react";
 import { useCopyToClipboard } from "usehooks-ts";
 
@@ -84,7 +84,7 @@ const LinksPage = () => {
 
             <CardAction>
               <Button variant="outline" onClick={() => copy(success?.url || "")}>
-                {isCopied ? <CopyCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {isCopied ? <IconCopyCheck className="w-4 h-4" /> : <IconCopy className="w-4 h-4" />}
                 Copy link
               </Button>
             </CardAction>
@@ -286,7 +286,7 @@ Write your content in **Markdown** format...
                 disabled={isPending}
                 className="w-full"
               >
-                {isPending ? <Loader className="w-4 h-4 animate-spin" /> : `Create ${watchType === "link" ? "short link" : "article"}`}
+                {isPending ? <IconLoader className="w-4 h-4 animate-spin" /> : `Create ${watchType === "link" ? "short link" : "article"}`}
               </Button>
             </Form>
           </CardContent>

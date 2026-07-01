@@ -11,7 +11,7 @@ import { getShortLinkForEditAction, updateShortLinkAction } from "@/lib/actions/
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { CreateShortLinkForm, createShortLinkSchema } from "@/type/shortener";
-import { Loader } from "lucide-react";
+import { IconLoader } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { use, useEffect, useState, useTransition } from "react";
 
@@ -337,7 +337,7 @@ Write your content in **Markdown** format...
                   disabled={isPending}
                   className="flex-1"
                 >
-                  {isPending ? <Loader className="w-4 h-4 animate-spin" /> : "Update"}
+                  {isPending ? <IconLoader className="w-4 h-4 animate-spin" /> : "Update"}
                 </Button>
               </div>
             </Form>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { List, Plus } from "lucide-react";
+import { IconList, IconPlus } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -19,7 +19,7 @@ export const ShortenerNav = () => {
             className="rounded-sm"
           >
             <Link href="/new">
-              <Plus className="w-4 h-4" />
+              <IconPlus className="w-4 h-4" />
               New Link
             </Link>
           </Button>
@@ -31,7 +31,7 @@ export const ShortenerNav = () => {
             className="rounded-sm"
           >
             <Link href="/links">
-              <List className="w-4 h-4" />
+              <IconList className="w-4 h-4" />
               My Links
             </Link>
           </Button>

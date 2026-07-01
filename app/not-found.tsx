@@ -3,7 +3,7 @@
 import { useAppContext } from "@/contexts/app-context";
 import { piano, piano_electric } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { ArrowLeftIcon } from "lucide-react";
+import { IconArrowLeft } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -44,7 +44,7 @@ const NotFound = () => {
           className="text-white underline flex flex-row items-center gap-2 hover:text-gray-300 transition-colors"
           prefetch
         >
-          <ArrowLeftIcon className="w-4 h-4" />
+          <IconArrowLeft className="w-4 h-4" />
           {t("backToHome")}
         </Link>
       </div>

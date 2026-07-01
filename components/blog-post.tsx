@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
 import { ArticleListItem } from "@simplist.blog/sdk";
 import { format } from "date-fns";
-import { ArrowUpRight } from "lucide-react";
+import { IconArrowUpRight } from "@tabler/icons-react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -83,7 +83,7 @@ export const BlogPostItem: Component<BlogPostItemProps> = ({ article }) => {
           {format(new Date(article.createdAt), "MMM d, yyyy")}
         </span>
 
-        <ArrowUpRight className="size-4 hidden group-hover:block transition" />
+        <IconArrowUpRight className="size-4 hidden group-hover:block transition" />
       </div>
     </Link>
   );

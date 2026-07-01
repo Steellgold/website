@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { deleteShortLinkAction, getLinksByIpAction } from "@/lib/actions/link-actions";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { Calendar, Clock, Copy, CopyCheck, Edit, ExternalLink, Lock, MousePointer, Trash2 } from "lucide-react";
+import { IconCalendar, IconClock, IconCopy, IconCopyCheck, IconEdit, IconExternalLink, IconLock, IconPointer, IconTrash } from "@tabler/icons-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useCopyToClipboard } from "usehooks-ts";
@@ -161,7 +161,7 @@ const LinksPage = () => {
                         </Badge>
                         {link.hasPassword && (
                           <Badge variant="secondary" className="flex items-center gap-1">
-                            <Lock className="w-3 h-3" />
+                            <IconLock className="w-3 h-3" />
                             Protected
                           </Badge>
                         )}
@@ -170,7 +170,7 @@ const LinksPage = () => {
                             variant={isExpired(link.expiresAt) ? "destructive" : "outline"}
                             className="flex items-center gap-1"
                           >
-                            <Clock className="w-3 h-3" />
+                            <IconClock className="w-3 h-3" />
                             {isExpired(link.expiresAt) ? "Expired" : getTimeUntilExpiry(link.expiresAt)}
                           </Badge>
                         )}
@@ -185,7 +185,7 @@ const LinksPage = () => {
                         variant="outline"
                         onClick={() => copy(`${window.location.origin}/${link.short}`)}
                        >
-                        {isCopied ? <CopyCheck className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                        {isCopied ? <IconCopyCheck className="w-4 h-4" /> : <IconCopy className="w-4 h-4" />}
                        </Button>
                        {(link.type === "article" || link.url) && (
                         <Button
@@ -194,7 +194,7 @@ const LinksPage = () => {
                           asChild
                          >
                           <Link href={link.type === "article" ? `/${link.short}/view` : link.url!} target={link.type === "article" ? "_self" : "_blank"} rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4" />
+                            <IconExternalLink className="w-4 h-4" />
                           </Link>
                         </Button>
                        )}
@@ -204,7 +204,7 @@ const LinksPage = () => {
                         asChild
                        >
                         <Link href={`/edit/${link.short}`}>
-                          <Edit className="w-4 h-4" />
+                          <IconEdit className="w-4 h-4" />
                         </Link>
                       </Button>
                       <Button
@@ -212,7 +212,7 @@ const LinksPage = () => {
                         variant="destructive"
                         onClick={() => handleDelete(link.short)}
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <IconTrash className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
@@ -221,18 +221,18 @@ const LinksPage = () => {
                 <CardContent>
                   <div className="flex items-center gap-4 text-sm text-neutral-400">
                     <div className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
+                      <IconCalendar className="w-4 h-4" />
                       Created on {formatDate(link.createdAt)}
                     </div>
 
                     <div className="flex items-center gap-1">
-                      <MousePointer className="w-4 h-4" />
+                      <IconPointer className="w-4 h-4" />
                       {link.clicks} click{link.clicks !== 1 ? 's' : ''}
                     </div>
 
                     {link.expiresAt && (
                       <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
+                        <IconClock className="w-4 h-4" />
                         Expires on {formatDate(link.expiresAt)}
                       </div>
                     )}

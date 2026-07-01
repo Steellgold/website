@@ -8,7 +8,7 @@ This repository contains the source code for my personal portfolio website, deve
 - **Language**: [TypeScript](https://www.typescriptlang.org/) - for static typing and better maintainability
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) - utility CSS framework with custom configurations
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/) - accessible and customizable interface elements
-- **Icons**: [Lucide React](https://lucide.dev/) - beautiful & consistent icon toolkit
+- **Icons**: [Tabler Icons](https://tabler-icons.io/) - beautiful & consistent icon toolkit
 - **Markdown**: [React Markdown](https://github.com/remarkjs/react-markdown) - for blog content rendering
 - **State Management**: React Context API for lightweight state management
 - **Blogging**: [Simplist SDK](https://simplist.blog/) - for fetching and displaying blog articles

@@ -9,7 +9,7 @@ import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
 import { VerifyPasswordForm, verifyPasswordSchema } from "@/type/shortener";
-import { Loader } from "lucide-react";
+import { IconLoader } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import { use, useEffect, useTransition } from "react";
 
@@ -88,7 +88,7 @@ const PasswordPage: Component<Props> = ({ params }) => {
           />
 
           <Button type="submit" disabled={isPending} className="w-full">
-            {isPending ? <Loader className="w-4 h-4 animate-spin" /> : "Access content"}
+            {isPending ? <IconLoader className="w-4 h-4 animate-spin" /> : "Access content"}
           </Button>
         </Form>
       </div>

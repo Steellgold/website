@@ -2,7 +2,7 @@
 
 import { Section } from "@/components/section";
 import { cn } from "@/lib/utils";
-import { Copy, CopyCheck } from "lucide-react";
+import { IconCopy, IconCopyCheck } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { ReactElement, useEffect } from "react";
@@ -59,7 +59,7 @@ export const ContactSection = (): ReactElement => {
               aria-label={t("copyEmail")}
               className="text-white hover:text-gray-300 transition-colors hover:bg-white/10 rounded-sm  -1 *:w-4 *:h-4"
             >
-              {isCopied ? <CopyCheck /> : <Copy />}
+              {isCopied ? <IconCopyCheck /> : <IconCopy />}
             </button>
           </div>
         </div>

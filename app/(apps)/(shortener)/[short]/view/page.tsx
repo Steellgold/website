@@ -1,6 +1,6 @@
 import { MarkdownPlease } from "@/components/markdown/please";
 import { getShortLink } from "@/lib/shortener";
-import { CalendarIcon } from "lucide-react";
+import { IconCalendar } from "@tabler/icons-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -89,7 +89,7 @@ export default async function ArticleViewPage({ params }: PageProps) {
           <h1 className="text-3xl font-bold text-center text-white mb-4">{shortLink.title}</h1>
           <div className="flex items-center justify-center space-x-4 mb-4">
             <span className="flex items-center text-gray-300">
-              <CalendarIcon className="w-4 h-4 mr-2" />
+              <IconCalendar className="w-4 h-4 mr-2" />
               {new Date(shortLink.createdAt).toLocaleDateString("en-US", {
                 day: "numeric",
                 month: "long",

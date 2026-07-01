@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useAppContext } from "@/contexts/app-context";
 import { piano, piano_electric } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { RefreshCcw } from "lucide-react";
+import { IconRefresh } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
@@ -45,7 +45,7 @@ const ErrorPage = ({ reset }: ErrorPageProps) => {
 
       <div className="flex flex-col sm:flex-row gap-4 w-full max-w-sm justify-center">
         <Button variant={"outline"}>
-          <RefreshCcw size={16} />
+          <IconRefresh size={16} />
           <span onClick={() => reset()}>{t("tryAgain")}</span>
         </Button>
       </div>

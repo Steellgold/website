@@ -9,7 +9,7 @@ import { Project } from "@/config/projects";
 import { getGitHubStats, GitHubStats } from "@/lib/actions/github-actions";
 import { cn } from "@/lib/utils";
 import { Component } from "@/type/component";
-import { ChevronLeft, ChevronRight, ExternalLink, Github, Star, GitFork } from "lucide-react";
+import { IconChevronLeft, IconChevronRight, IconExternalLink, IconBrandGithub, IconStar, IconGitFork } from "@tabler/icons-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
@@ -129,7 +129,7 @@ export const ProjectDialog: Component<{
                     className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-[#1d1d1d]/80 hover:bg-[#1d1d1d]"
                     onClick={prevImage}
                   >
-                    <ChevronLeft />
+                    <IconChevronLeft />
                     <span className="sr-only">Previous image</span>
                   </Button>
 
@@ -139,7 +139,7 @@ export const ProjectDialog: Component<{
                     className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-[#1d1d1d]/80 hover:bg-[#1d1d1d]"
                     onClick={nextImage}
                   >
-                    <ChevronRight />
+                    <IconChevronRight />
                     <span className="sr-only">Next image</span>
                   </Button>
 
@@ -179,11 +179,11 @@ export const ProjectDialog: Component<{
               {project.githubUrl && githubStats && !loadingStats && (
                 <div className="flex items-center gap-2 flex-wrap">
                   <div className="bg-[#1d1d1d] border-inside border-inside-default px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5">
-                    <Star className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                    <IconStar className="w-3 h-3 md:w-3.5 md:h-3.5" />
                     <span className="text-xs md:text-sm">{githubStats.stars}</span>
                   </div>
                   <div className="bg-[#1d1d1d] border-inside border-inside-default px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5">
-                    <GitFork className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                    <IconGitFork className="w-3 h-3 md:w-3.5 md:h-3.5" />
                     <span className="text-xs md:text-sm">{githubStats.forks}</span>
                   </div>
                 </div>
@@ -199,7 +199,7 @@ export const ProjectDialog: Component<{
                       rel="noopener noreferrer"
                       className="bg-[#1d1d1d] border-inside border-inside-default px-2 md:px-3 py-1 md:py-1.5 flex items-center gap-1.5 hover:opacity-80 transition-opacity"
                     >
-                      <Github className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                      <IconBrandGithub className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       <span className="text-xs md:text-sm">{contributor.name}</span>
                     </Link>
                   ))}
@@ -245,7 +245,7 @@ export const ProjectDialog: Component<{
                       rel="noopener noreferrer"
                       className="flex items-center justify-center"
                     >
-                      <ExternalLink />
+                      <IconExternalLink />
                       {t("view")}
                     </Link>
                   </Button>
@@ -263,7 +263,7 @@ export const ProjectDialog: Component<{
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2"
                     >
-                      <Github className="w-4 h-4" />
+                      <IconBrandGithub className="w-4 h-4" />
                       Code source
                     </Link>
                   </Button>

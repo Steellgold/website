@@ -2,7 +2,7 @@
 
 import { locales, type Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { Globe } from "lucide-react";
+import { IconGlobe } from "@tabler/icons-react";
 import { useLocale } from "next-intl";
 import { useState, useTransition } from "react";
 
@@ -43,7 +43,7 @@ export const LanguageSwitcher = () => {
         disabled={isPending}
         aria-label="Switch language"
       >
-        <Globe className="w-4 h-4" />
+        <IconGlobe className="w-4 h-4" />
         <span>{localeNames[locale]}</span>
       </button>
 

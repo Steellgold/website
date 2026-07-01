@@ -1,7 +1,7 @@
 "use client";
 
 import { Component } from "@/type/component";
-import { Clipboard, ClipboardCheck, Code2 } from "lucide-react";
+import { IconClipboard, IconClipboardCheck, IconCode } from "@tabler/icons-react";
 import { PropsWithChildren, ReactElement } from "react";
 import { useCopyToClipboard } from "usehooks-ts";
 
@@ -42,20 +42,20 @@ export const CodeWindow: Component<CodeWindowProps> = ({
     <div className="rounded-lg overflow-hidden border border-black/70 my-4 hover:border-gray-300/15 transition-all duration-200">
       <div className="bg-black/35 px-4 py-2 flex items-center justify-between">
         <div className="flex flex-row gap-0.5">
-          <Code2 className="w-5 h-5 mr-2 text-gray-300" />
+          <IconCode className="w-5 h-5 mr-2 text-gray-300" />
           <span className="text-sm font-medium text-gray-200">
             {name}
           </span>
         </div>
 
         {copiedText ? (
-          <ClipboardCheck className="w-5 h-5 ml-2 text-gray-300" />
+          <IconClipboardCheck className="w-5 h-5 ml-2 text-gray-300" />
         ) : (
-          <Clipboard
+          <IconClipboard
             onClick={() => {
               console.log("Copied to clipboard");
               // toast("Copied to clipboard", {
-              //   icon: <ClipboardCheck className="w-5 h-5" />,
+              //   icon: <IconClipboardCheck className="w-5 h-5" />,
               //   duration: 2000,
               // });
 

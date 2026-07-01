@@ -4,7 +4,7 @@ import { MarkdownPlease } from "@/components/markdown/please";
 import { Tag } from "@/components/tag";
 import { cn } from "@/lib/utils";
 import { Article, detectUserLanguage, getBestMatchingVariant } from "@simplist.blog/sdk";
-import { CalendarIcon, Clock, Edit3, Type } from "lucide-react";
+import { IconCalendar, IconClock, IconEdit, IconTypography } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Script from "next/script";
@@ -49,7 +49,7 @@ export const BlogArticleClient = ({ post, slug }: BlogArticleClientProps) => {
             "flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-gray-300 mb-3"
           )}>
             <span className={cn("flex items-center gap-1")}>
-              <CalendarIcon className="w-3.5 h-3.5" />
+              <IconCalendar className="w-3.5 h-3.5" />
               {new Date(post.createdAt).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
                 day: "numeric",
                 month: "short",
@@ -61,7 +61,7 @@ export const BlogArticleClient = ({ post, slug }: BlogArticleClientProps) => {
               <>
                 <span className="text-gray-600">•</span>
                 <span className={cn("flex items-center gap-1")}>
-                  <Edit3 className="w-3.5 h-3.5" />
+                  <IconEdit className="w-3.5 h-3.5" />
                   {new Date(post.updatedAt).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US', {
                     day: "numeric",
                     month: "short",
@@ -73,13 +73,13 @@ export const BlogArticleClient = ({ post, slug }: BlogArticleClientProps) => {
 
             <span className="text-gray-600">•</span>
             <span className={cn("flex items-center gap-1")}>
-              <Clock className="w-3.5 h-3.5" />
+              <IconClock className="w-3.5 h-3.5" />
               ~{post.readTimeMinutes} min
             </span>
 
             <span className="text-gray-600">•</span>
             <span className={cn("flex items-center gap-1")}>
-              <Type className="w-3.5 h-3.5" />
+              <IconTypography className="w-3.5 h-3.5" />
               {post.wordCount.toLocaleString()}
             </span>
           </div>
