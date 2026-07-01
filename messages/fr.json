@@ -39,6 +39,17 @@
     "blogPost": "Article de blog | Gaëtan Huszovits",
     "blogPostDescription": "Un article de blog de Gaëtan Huszovits."
   },
+  "cd": {
+    "time": "Temps",
+    "play": "Lecture",
+    "pause": "Pause",
+    "playRadio": "Lire la radio",
+    "pauseRadio": "Mettre en pause",
+    "playDisc": "Lire la musique",
+    "pauseDisc": "Mettre en pause",
+    "versionShort": "Version courte",
+    "versionLong": "Version longue"
+  },
   "errors": {
     "oops": "Oups !",
     "notFound": "La page que vous recherchez n'existe pas.",

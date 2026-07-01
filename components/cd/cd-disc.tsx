@@ -1,3 +1,7 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 type CdDiscProps = {
   coverUrl: string;
   isPlaying: boolean;
@@ -5,11 +9,13 @@ type CdDiscProps = {
 };
 
 export const CdDisc = ({ coverUrl, isPlaying, onTogglePlayback }: CdDiscProps) => {
+  const t = useTranslations("cd");
+
   return (
     <button
       type="button"
       onClick={onTogglePlayback}
-      aria-label={isPlaying ? "Mettre en pause" : "Lire la musique"}
+      aria-label={isPlaying ? t("pauseDisc") : t("playDisc")}
       aria-pressed={isPlaying}
       className="group relative z-20 aspect-square w-[min(72vw,31rem)] max-w-124 rounded-full outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
       style={{
