@@ -147,7 +147,7 @@ export const SpotifyPlayer = () => {
         <div
           className={cn(
             "w-full flex items-center justify-between absolute",
-            "top-[-40px] left-0 right-0 h-10 pointer-events-auto"
+            "-top-10 left-0 right-0 h-10 pointer-events-auto"
           )}
         >
           <div className={cn("flex items-center min-w-0")}>

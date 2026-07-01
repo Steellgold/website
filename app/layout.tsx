@@ -1,13 +1,11 @@
-import { ConditionalPadding } from "@/components/conditional-padding";
 import { iconsByName } from "@/components/icons";
-import { SpotifyPlayer } from "@/components/spotify-player";
+import { PageChrome } from "@/components/page-chrome";
 import { AppProvider } from "@/contexts/app-context";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Outfit } from "next/font/google";
-import Image from "next/image";
 import { PropsWithChildren } from "react";
 import "./globals.css";
 
@@ -83,23 +81,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
         <main>
           <NextIntlClientProvider messages={messages}>
             <AppProvider>
-              <div className="absolute top-0 left-0 right-0  pointer-events-none">
-                <div className="w-full h-54 sm:h-100">
-                  <Image 
-                    src="/BWR.webp" 
-                    alt="BWR" 
-                    width={1000}
-                    height={256}
-                    className="w-full h-full"
-                  />
-                </div>
-              </div>
-              
-              <ConditionalPadding>
-                {children}
-              </ConditionalPadding>
-              
-              <SpotifyPlayer />
+              <PageChrome>{children}</PageChrome>
             </AppProvider>
           </NextIntlClientProvider>
         </main>

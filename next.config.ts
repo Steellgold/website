@@ -12,13 +12,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "i.scdn.co", port: "", pathname: "/**" },
       { protocol: "https", hostname: "cdn.simplist.blog", port: "", pathname: "/**" }
     ]
-  },
-  experimental: {
-    authInterrupts: true
-  },
-  outputFileTracingIncludes: {
-    registry: ["./registry/**/*"],
-  },
+  }
 };
 
 export default withNextIntl(nextConfig);
