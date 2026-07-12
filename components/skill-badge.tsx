@@ -7,14 +7,16 @@ import { FC } from "react";
 type SkillBadgeProps = {
   name: string;
   minimized?: boolean;
+  className?: string;
 };
 
-export const SkillBadge: FC<SkillBadgeProps> = ({ name, minimized = false }) => {
+export const SkillBadge: FC<SkillBadgeProps> = ({ name, minimized = false, className }) => {
   const entry = SKILLS[name as SkillName];
   const badgeClass = cn(
     "inline-flex items-center gap-1.5 rounded-md border border-border bg-card",
     "hover:bg-accent transition-colors",
-    minimized ? "text-xs px-1.5 py-1" : "text-sm px-[9.5px] py-[5.5px]"
+    minimized ? "text-xs px-1.5 py-1" : "text-sm px-[9.5px] py-[5.5px]",
+    className
   );
 
   if (!entry) {

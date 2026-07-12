@@ -11,9 +11,9 @@ export const TechnologiesSection: FC = () => {
   return (
     <section className="flex flex-col gap-3 w-full mt-12">
       <h2 className={cn("text-3xl sm:text-4xl", piano.className)}>{t("title")}</h2>
-      <div className="flex flex-wrap gap-2">
+      <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
         {TECHNOLOGIES_GRID.map((name) => (
-          <SkillBadge key={name} name={name} />
+          <SkillBadge key={name} name={name} className="w-full justify-center sm:w-auto sm:justify-start" />
         ))}
       </div>
     </section>
