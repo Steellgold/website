@@ -22,8 +22,8 @@ export const FreelanceSection: FC = () => {
 
   return (
     <section className="flex flex-col gap-4 w-full mt-12 border border-border rounded-lg p-5 sm:p-6 bg-card/40">
-      <div className="flex flex-col gap-1">
-        <h2 className={cn("text-3xl sm:text-4xl", piano.className)}>{t("title")}</h2>
+      <div className="flex flex-col gap-2">
+        <h2 className={cn("text-2xl sm:text-3xl text-pretty", piano.className)}>{t("title")}</h2>
         <p className="text-muted-foreground text-pretty">{t("pitch")}</p>
       </div>
 
