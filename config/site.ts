@@ -7,7 +7,9 @@ export const SITE_TITLE_TEMPLATE = "%s | Gaëtan Huszovits"
 export const SITE_DESCRIPTION =
   "Full-Stack Developer specialized in the Next.js / React ecosystem. Available for freelance work on showcase websites, web applications and SaaS products."
 
-export const SITE_OG_IMAGE = "https://cdn.gaetanhus.fr/og-image.png"
+const OG_IMAGE_VERSION = 2
+
+export const SITE_OG_IMAGE = `https://cdn.gaetanhus.fr/og-image.png?v=${OG_IMAGE_VERSION}`
 
 export const SITE_KEYWORDS = [
   "Gaëtan Huszovits",
