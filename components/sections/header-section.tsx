@@ -39,10 +39,10 @@ export const HeaderSection: FC = () => {
           href={CV_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-card hover:bg-accent border border-border text-sm transition-colors shrink-0 self-end sm:self-auto"
+          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-card hover:bg-accent border border-border text-sm transition-colors shrink-0"
         >
           <RiDownloadLine className="w-3.5 h-3.5" />
-          <span className="hidden sm:inline">{tCv("view")}</span>
+          <span>{tCv("view")}</span>
         </Link>
       </div>
 
