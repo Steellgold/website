@@ -1,10 +1,12 @@
 import { FloatingControls } from "@/components/floating-controls";
 import { Footer } from "@/components/footer";
+import { StructuredData } from "@/components/structured-data";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE_TEMPLATE, SITE_URL, TWITTER_HANDLE } from "@/config/site";
 import { handwritten, piano } from "@/lib/font";
-import type { Metadata } from "next";
+import { cn } from "@/lib/utils";
+import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -14,15 +16,39 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
-const CURRENT_URL = "https://gaetanhus.fr";
-
 export const metadata: Metadata = {
-  title: "Gaëtan Huszovits",
-  description: "Développeur Full-Stack spécialisé dans l'écosystème Next.js / React.",
-  applicationName: "Gaëtan Huszovits",
-  authors: [{ name: "Gaëtan Huszovits", url: CURRENT_URL }],
-  robots: { index: true, follow: true },
-  alternates: { canonical: CURRENT_URL },
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_NAME, template: SITE_TITLE_TEMPLATE },
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: TWITTER_HANDLE,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  alternates: { canonical: SITE_URL },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  colorScheme: "dark light",
 };
 
 const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
@@ -36,6 +62,7 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground antialiased selection:bg-foreground selection:text-background">
+        <StructuredData />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <TooltipProvider>
