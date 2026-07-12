@@ -15,7 +15,7 @@ export const BlogSection: FC = async () => {
 
   return (
     <section className="flex flex-col gap-3 w-full mt-12">
-      <h2 className={cn("text-3xl sm:text-4xl", piano.className)}>{t("title")}</h2>
+      <h2 className={cn("text-2xl sm:text-3xl", piano.className)}>{t("title")}</h2>
 
       <div className="flex flex-col">
         {articles.map((article, index) => {

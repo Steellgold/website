@@ -32,7 +32,7 @@ export const HeaderSection: FC = () => {
 
           <div className="flex flex-col text-left min-w-0">
             <span className="text-md sm:text-lg text-muted-foreground">{t("hello")}</span>
-            <h1 className={cn("text-4xl sm:text-5xl", piano.className)}>Gaëtan Huszovits</h1>
+            <h1 className={cn("text-3xl sm:text-4xl", piano.className)}>Gaëtan Huszovits</h1>
           </div>
         </div>
 
