@@ -1,96 +1,39 @@
-"use client";
-
-import { SkillName } from "@/components/icons";
-import { ProjectCard } from "@/components/project";
-import { ProjectDialog } from "@/components/project-dialog";
-import { Section } from "@/components/section";
-import { PROJECTS, Project } from "@/config/projects";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { ProjectCard } from "@/components/project-card";
+import { PROJECTS } from "@/config/projects";
+import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { ReactElement, useState } from "react";
+import Link from "next/link";
+import { FC } from "react";
 
-export const ProjectsSection = (): ReactElement => {
-  const [showMore, setShowMore] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const hasMoreProjects = PROJECTS.length > 2;
-  const isMobile = useIsMobile();
+const FEATURED_COUNT = 4;
+
+export const ProjectsSection: FC = () => {
   const t = useTranslations("projects");
-
-  const handleProjectClick = (project: Project) => {
-    const hasImages = project.images && project.images.length > 0;
-    if (!hasImages) return;
-    setSelectedProject(project);
-    setIsDialogOpen(true);
-  };
+  const featuredProjects = [...PROJECTS]
+    .sort((a, b) => Number(b.featured) - Number(a.featured))
+    .slice(0, FEATURED_COUNT);
 
   return (
-    <Section name={t("title")}>
-      <div className="relative group">
-        <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {PROJECTS.slice(0, showMore ? PROJECTS.length : 2).map((project) => (
-              <ProjectCard
-                key={project.name}
-                name={project.name}
-                description={project.description}
-                status={project.status}
-                technologies={project.technologies as SkillName[]}
-                awards={project.awards}
-                githubUrl={project.githubUrl}
-                url={project.url}
-                images={project.images}
-                onClick={() => handleProjectClick(project)}
-              />
-            ))}
-          </div>
-          
-          {hasMoreProjects && !showMore && (
-            <>
-              <div className="relative mt-2 overflow-hidden" style={{ maxHeight: "120px" }}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 opacity-40">
-                  {PROJECTS.slice(2, 4).map((project) => (
-                    <ProjectCard
-                      key={project.name}
-                      name={project.name}
-                      description={project.description}
-                      status={project.status}
-                      technologies={project.technologies as SkillName[]}
-                      awards={project.awards}
-                      githubUrl={project.githubUrl}
-                      url={project.url}
-                      images={project.images}
-                      onClick={() => handleProjectClick(project)}
-                    />
-                  ))}
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-t from-black to-transparent pointer-events-none" />
-              </div>
-              
-              <div className={cn(
-                "absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-black via-black/80 to-transparent flex items-end justify-center pb-4 transition-opacity duration-300",
-                isMobile ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-              )}>
-              </div>
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-                <button
-                  onClick={() => setShowMore(true)}
-                  className="px-2 py-1 bg-white text-[#1d1d1d] rounded-md text-sm"
-                >
-                  {t("seeMore")}
-                </button>
-              </div>
-            </>
-          )}
-        </div>
+    <section className="flex flex-col gap-3 w-full mt-12">
+      <div className="flex items-center justify-between">
+        <h2 className={cn("text-2xl sm:text-3xl", piano.className)}>{t("title")}</h2>
+        <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          {t("viewAll")} ({PROJECTS.length})
+        </Link>
       </div>
 
-      <ProjectDialog
-        project={selectedProject}
-        open={isDialogOpen}
-        onOpenChange={setIsDialogOpen}
-      />
-    </Section>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {featuredProjects.map((project, index) => (
+          <ProjectCard
+            key={project.name}
+            project={project}
+            showBanner={index < 2}
+            maxTechnologies={8}
+            priorityBanner={index === 0}
+          />
+        ))}
+      </div>
+    </section>
   );
-}; 
+};

@@ -1,93 +1,85 @@
-import { iconsByName } from "@/components/icons";
-import { PageChrome } from "@/components/page-chrome";
-import { AppProvider } from "@/contexts/app-context";
+import { FloatingControls } from "@/components/floating-controls";
+import { Footer } from "@/components/footer";
+import { StructuredData } from "@/components/structured-data";
+import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE_TEMPLATE, SITE_URL, TWITTER_HANDLE } from "@/config/site";
+import { handwritten, piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
-import { Outfit } from "next/font/google";
-import { PropsWithChildren } from "react";
+import { Geist, Geist_Mono } from "next/font/google";
+import { FC, PropsWithChildren } from "react";
 import "./globals.css";
 
-const CURRENT_URL = "https://gaetanhus.fr";
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
-const outfit = Outfit({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-outfit",
-});
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getLocale();
+  const openGraphLocale = locale === "fr" ? "fr_FR" : "en_US";
 
-export const metadata: Metadata = {
-  title: "Gaëtan Huszovits",
-  description: "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
-  applicationName: "Gaëtan Huszovits",
-  authors: [
-    { name: "Gaëtan Huszovits", url: CURRENT_URL }
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: { default: SITE_NAME, template: SITE_TITLE_TEMPLATE },
+    description: SITE_DESCRIPTION,
+    keywords: SITE_KEYWORDS,
+    applicationName: SITE_NAME,
+    authors: [{ name: SITE_NAME, url: SITE_URL }],
+    openGraph: {
+      type: "website",
+      url: SITE_URL,
+      siteName: SITE_NAME,
+      title: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      locale: openGraphLocale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      creator: TWITTER_HANDLE,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
+    alternates: { canonical: SITE_URL },
+  };
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
-  keywords: [
-    "Gaëtan Huszovits",
-    "Steellgold",
-    "gaetan huszovits portfolio",
-    "full-stack developer",
-    "TypeScript developer",
-    "React developer",
-    "Next.js developer",
-    "web developer modern stack",
-    "modern web developer",
-    "front-end back-end integration",
-    ...Object.keys(iconsByName).map((icon) => icon.toLowerCase()),
-  ],
-  robots: {
-    index: true,
-    follow: true
-  },
-  alternates: {
-    canonical: CURRENT_URL
-  },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png"
-  },
-  openGraph: {
-    type: "website",
-    url: CURRENT_URL,
-    title: "Gaëtan Huszovits",
-    description: "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
-    siteName: "Gaëtan Huszovits",
-    images: [{ url: `${CURRENT_URL}/og-image.png`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@Steellgold",
-    creator: "@Steellgold",
-    title: "Gaëtan Huszovits",
-    description: "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
-    images: [{ url: `${CURRENT_URL}/og-image.png`, width: 1200, height: 630, alt: "Gaëtan Huszovits" }]
-  }
-}
+  colorScheme: "dark light",
+};
 
-const RootLayout = async ({ children }: PropsWithChildren) => {
+const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
   const locale = await getLocale();
   const messages = await getMessages();
 
   return (
     <html
       lang={locale}
-      className={cn(
-        "selection:bg-white selection:text-black"
-      )}
+      className={cn(geist.variable, geistMono.variable, piano.variable, handwritten.variable)}
+      suppressHydrationWarning
     >
-      <body className={`${outfit.className} antialiased bg-[#121212] text-white relative`}>
-        <main>
-          <NextIntlClientProvider messages={messages}>
-            <AppProvider>
-              <PageChrome>{children}</PageChrome>
-            </AppProvider>
-          </NextIntlClientProvider>
-        </main>
+      <body className="bg-background text-foreground antialiased selection:bg-foreground selection:text-background">
+        <StructuredData locale={locale} />
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider>
+            <TooltipProvider>
+              {children}
+              <Footer />
+              <FloatingControls />
+            </TooltipProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

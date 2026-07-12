@@ -1,54 +1,33 @@
-"use client";
-
-import { useAppContext } from "@/contexts/app-context";
-import { piano, piano_electric } from "@/lib/font";
+import { Button } from "@/components/ui/button";
+import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { IconArrowLeft } from "@tabler/icons-react";
-import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { useEffect } from "react";
+import { FC } from "react";
 
-const NotFound = () => {
-  const { setIs404 } = useAppContext();
-  const t = useTranslations("errors");
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  robots: { index: false, follow: false },
+};
 
-  useEffect(() => {
-    setIs404(true);
-    return () => setIs404(false);
-  }, [setIs404]);
+const NotFound: FC = async () => {
+  const t = await getTranslations("notFound");
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
-      <div className="mb-8">
-        <h1 className={cn(
-          "text-8xl sm:text-9xl font-bold text-white",
-          piano_electric.className
-        )}>
-          404
-        </h1>
+    <main className="flex min-h-[calc(100dvh-6rem)] flex-col items-center justify-center gap-6 px-4 text-center">
+      <span className={cn("text-8xl sm:text-9xl text-muted-foreground", piano.className)}>
+        404
+      </span>
+      <div className="flex flex-col gap-3">
+        <h1 className={cn("text-3xl sm:text-4xl", piano.className)}>{t("title")}</h1>
+        <p className="text-muted-foreground">{t("description")}</p>
       </div>
 
-      <div className="max-w-md mb-2">
-        <h2 className={cn("text-2xl sm:text-3xl font-bold", piano.className )}>
-          {t("oops")}
-        </h2>
-        
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          {t("notFound")}
-        </p>
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-4 w-full max-w-sm justify-center">
-        <Link 
-          href="/" 
-          className="text-white underline flex flex-row items-center gap-2 hover:text-gray-300 transition-colors"
-          prefetch
-        >
-          <IconArrowLeft className="w-4 h-4" />
-          {t("backToHome")}
-        </Link>
-      </div>
-    </div>
+      <Button asChild>
+        <Link href="/">{t("cta")}</Link>
+      </Button>
+    </main>
   );
 };
 

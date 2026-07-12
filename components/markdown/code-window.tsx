@@ -1,13 +1,9 @@
 "use client";
 
-import { Component } from "@/type/component";
-import { IconClipboard, IconClipboardCheck, IconCode } from "@tabler/icons-react";
-import { PropsWithChildren, ReactElement } from "react";
-import { useCopyToClipboard } from "usehooks-ts";
+import { RiCheckLine, RiCodeSSlashLine, RiFileCopyLine } from "@remixicon/react";
+import { FC, PropsWithChildren, useState } from "react";
 
-const languageNames: {
-  [key: string]: string
-} = {
+const languageNames: Record<string, string> = {
   ts: "TypeScript",
   js: "JavaScript",
   tsx: "TypeScript React",
@@ -25,72 +21,37 @@ const languageNames: {
   sh: "Shell",
   bash: "Bash",
   yaml: "YAML",
-}
+};
 
 type CodeWindowProps = {
-  language: keyof typeof languageNames;
+  language: string;
   textCode: string;
 } & PropsWithChildren;
 
-export const CodeWindow: Component<CodeWindowProps> = ({
-  language, textCode, children
-}): ReactElement => {
-  const name = languageNames[language] || language;
-  const [copiedText, copy] = useCopyToClipboard();
+export const CodeWindow: FC<CodeWindowProps> = ({ language, textCode, children }) => {
+  const name = languageNames[language] ?? language;
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(textCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <div className="rounded-lg overflow-hidden border border-black/70 my-4 hover:border-gray-300/15 transition-all duration-200">
-      <div className="bg-black/35 px-4 py-2 flex items-center justify-between">
-        <div className="flex flex-row gap-0.5">
-          <IconCode className="w-5 h-5 mr-2 text-gray-300" />
-          <span className="text-sm font-medium text-gray-200">
-            {name}
-          </span>
+    <div className="rounded-lg overflow-hidden border border-border my-4">
+      <div className="bg-card px-4 py-2 flex items-center justify-between border-b border-border">
+        <div className="flex flex-row items-center gap-2">
+          <RiCodeSSlashLine className="w-4 h-4 text-muted-foreground" />
+          <span className="text-sm font-medium text-muted-foreground">{name}</span>
         </div>
 
-        {copiedText ? (
-          <IconClipboardCheck className="w-5 h-5 ml-2 text-gray-300" />
-        ) : (
-          <IconClipboard
-            onClick={() => {
-              console.log("Copied to clipboard");
-              // toast("Copied to clipboard", {
-              //   icon: <IconClipboardCheck className="w-5 h-5" />,
-              //   duration: 2000,
-              // });
-
-              copy(textCode);
-
-              setTimeout(() => {
-                copy("");
-              }, 2000);
-            }}
-            className="w-5 h-5 ml-2 text-gray-300 cursor-pointer"
-          />
-        )}
+        <button onClick={handleCopy} aria-label="Copy code" className="text-muted-foreground hover:text-foreground transition-colors">
+          {copied ? <RiCheckLine className="w-4 h-4" /> : <RiFileCopyLine className="w-4 h-4" />}
+        </button>
       </div>
 
-      <div className="p-4 bg-black/25 selection:bg-blue-400/20 overflow-x-auto">
-        {children}
-      </div>
-
-      <style jsx>
-        {`
-          ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;  
-          }
-
-          ::-webkit-scrollbar-track {
-            background: #0a0a0a;
-          }
-
-          ::-webkit-scrollbar-thumb {
-            background: #0f0f0f;
-            border-radius: 10px;
-          }
-        `}
-      </style>
+      <div className="p-4 bg-card/40 overflow-x-auto text-sm">{children}</div>
     </div>
-  )
-}
+  );
+};

@@ -1,53 +1,44 @@
-import { BlogPostItem } from "@/components/blog-post";
-import { Section } from "@/components/section";
-import { blog } from "@/lib/blog";
-import { getTranslations } from "next-intl/server";
-import { cookies } from "next/headers";
-import { ReactElement } from "react";
+import { getArticles } from "@/lib/blog";
+import { piano } from "@/lib/font";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { getLocale, getTranslations } from "next-intl/server";
+import Link from "next/link";
+import { FC } from "react";
 
-export const BlogSection = async (): Promise<ReactElement> => {
+export const BlogSection: FC = async () => {
   const t = await getTranslations("blog");
-  
-  try {
-    const response = await blog.articles.list();
-    const posts = response.data;
+  const locale = await getLocale();
+  const articles = await getArticles();
 
-    // Get user language from cookies
-    const cookieStore = await cookies();
-    const userLang = cookieStore.get('NEXT_LOCALE')?.value || 'en';
+  if (articles.length === 0) return null;
 
-    return (
-      <Section name={t("title")}>
-        <div className="flex flex-col">
-          {posts && posts.length > 0 && posts.map((post, index) => {
-            // Get title in user's language if available
-            let title = post.title;
+  return (
+    <section className="flex flex-col gap-3 w-full mt-12">
+      <h2 className={cn("text-2xl sm:text-3xl", piano.className)}>{t("title")}</h2>
 
-            if (userLang === 'fr' && post.variants?.fr?.title) {
-              title = post.variants.fr.title;
-            }
-            
-            return (
-              <div key={post.slug} className="group">
-                <BlogPostItem article={{ ...post, title: title }} />
+      <div className="flex flex-col">
+        {articles.map((article, index) => {
+          const title = locale === "fr" && article.variants?.fr?.title ? article.variants.fr.title : article.title;
 
-                {index < posts.length - 1 && (
-                  <div className="border-t border-[#FFFFFF10] group-hover:border-[#FFFFFF20] transition-colors" />
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </Section>
-    );
-  } catch (error) {
-    if (process.env.NODE_ENV === "development") console.error("Error loading blog posts:", error);
-    return (
-      <Section name={t("title")}>
-        <div className="flex flex-col">
-          <p className="text-gray-400">{t("unavailable")}</p>
-        </div>
-      </Section>
-    );
-  }
+          return (
+            <Link
+              key={article.slug}
+              href={`/posts/${article.slug}`}
+              className={cn(
+                "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3",
+                "hover:text-muted-foreground transition-colors",
+                index !== articles.length - 1 && "border-b border-border"
+              )}
+            >
+              <span>{title}</span>
+              <span className="text-sm text-muted-foreground whitespace-nowrap">
+                {format(new Date(article.createdAt), "MMM d, yyyy")}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+    </section>
+  );
 };

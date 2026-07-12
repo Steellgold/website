@@ -2,116 +2,49 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Project
+
+Personal portfolio/homepage for Gaëtan Huszovits (gaetanhus.fr), built with Next.js (App Router) and shadcn/ui. Single-page app with a projects list, gallery, and blog teaser, localized in French (default) and English.
+
 ## Commands
 
-**Development**
-- `pnpm dev` - Start development server with Turbopack and experimental HTTPS
-- `pnpm build` - Build the production application
-- `pnpm start` - Start production server
-- `pnpm lint` - Run ESLint checks
-
-**Component Registry**
-- `pnpm registry:build` - Build shadcn/ui component registry
-
-**Spotify Integration**
-- `pnpm spotify-token` - Generate Spotify API token
-- `pnpm spotify-process` - Process Spotify authentication code
-
-## Architecture Overview
-
-This is a Next.js 15 personal portfolio website with integrated blogging and URL shortener functionality.
-
-### Core Technologies
-- **Framework**: Next.js 15 with App Router and Turbopack
-- **Styling**: Tailwind CSS v4 with custom configurations
-- **UI**: shadcn/ui components (New York style)
-- **Database**: Upstash Redis for URL shortener
-- **Blog**: Simplist API integration
-- **Music**: Spotify Web API integration
-
-### Project Structure
-
-```
-app/
-├── (ui)/                    # UI components showcase/testing
-├── (apps)/                  # Integrated applications
-│   └── (shortener)/         # URL shortener app
-├── blog/[slug]/             # Dynamic blog posts
-├── api/auth/spotify/        # Spotify OAuth callback
-└── layout.tsx               # Root layout with metadata
+```bash
+pnpm dev         # start dev server (Turbopack)
+pnpm build       # production build
+pnpm start       # run production build
+pnpm lint        # eslint
+pnpm typecheck   # tsc --noEmit, no output
+pnpm format      # prettier --write on **/*.{ts,tsx}
 ```
 
-### Key Features Architecture
+There is no test runner configured in this repo.
 
-**URL Shortener** (`/lib/shortener.ts`)
-- Redis-based storage with Upstash
-- Rate limiting (10 requests per 30 minutes)
-- Password protection and expiration support
-- Both link and article types
-- IP-based link management
+To add a shadcn/ui component: `npx shadcn@latest add <name>`, it's placed in `components/ui`.
 
-**Blog System** (`/lib/blog.ts`)
-- Simplist SDK integration
-- Server-side rendering with revalidation (300s)
-- Markdown rendering with syntax highlighting
+## Important: this is a pre-release Next.js version
 
-**Spotify Integration** (`/lib/spotify.ts`)
-- Real-time currently playing track
-- OAuth flow for user authentication
-- Player component with live updates
+`AGENTS.md` flags that the installed `next` version (16.2.6) has breaking changes vs. the Next.js you were trained on: APIs, conventions, and file structure may differ. Before writing Next.js-specific code, check `node_modules/next/dist/docs/` for the relevant guide and heed deprecation notices. If `node_modules` isn't installed yet, run `pnpm install` first.
 
-### Component Organization
+## Architecture
 
-**Sections** (`components/sections/`)
-- Modular page sections (header, skills, projects, blog, contact)
-- Each section is self-contained with its own data
+**Rendering model**: everything is a single route (`app/page.tsx`) composed from section components in `components/sections/*`, plus two secondary pages (`app/projects/page.tsx`, `app/gallery/page.tsx`). Sections default to server components; only components needing interactivity (e.g. `components/language-switcher.tsx`) are `"use client"`.
 
-**UI Components** (`components/ui/`)
-- shadcn/ui components with Tailwind CSS
-- Consistent design system using stone color palette
+**Content lives in `config/*.ts`, not in components or CMS**: `config/projects.ts` (portfolio projects), `config/skills.ts` (tech stack + icons, also used to build `TECHNOLOGIES_GRID`), `config/gallery.ts` (cat photo gallery, served from `cdn.gaetanhus.fr`). Components import and render these directly. Adding a project/skill/photo means editing the config file, not touching JSX.
 
-**Custom Components**
-- `conditional-padding.tsx` - Context-aware padding management
-- `spotify-player.tsx` - Real-time music player
-- `markdown/` - Blog content rendering components
+**i18n via next-intl, cookie-based (not URL-based)**:
+- `i18n/routing.ts` defines `locales` (`fr`, `en`) and `defaultLocale` (`fr`).
+- `i18n.ts` (`getRequestConfig`) reads the `NEXT_LOCALE` cookie server-side to pick the locale. There's no `/en`/`/fr` path prefix.
+- `components/language-switcher.tsx` sets the cookie client-side and does a full `window.location.reload()` to apply it.
+- Translated strings live in `messages/fr.json` / `messages/en.json`, consumed via `useTranslations`/`getTranslations`.
+- Content that isn't a short UI string (project descriptions, photo captions) is instead stored inline in the `config/*.ts` files as `{ en, fr }` objects, not in the messages JSON.
 
-### Environment Variables
+**Optional external dependency**: the blog section (`lib/blog.ts`, `components/sections/blog-section.tsx`) calls the `@simplist.blog/sdk` client, gated on `env.SIMPLIST_API_KEY` (validated via `lib/env.ts` with zod). If the key isn't set, `getArticles` returns `[]` and the section is expected to render nothing; this degradation must keep working when touching that code path.
 
-Required for full functionality:
-```
-SIMPLIST_API_KEY=                    # Blog content (public)
-UPSTASH_REDIS_REST_URL=             # URL shortener storage
-UPSTASH_REDIS_REST_TOKEN=           # URL shortener auth
-SPOTIFY_CLIENT_ID=                  # Music integration
-SPOTIFY_CLIENT_SECRET=              # Music integration
-SPOTIFY_REFRESH_TOKEN=              # Music integration
-```
+**Styling**: Tailwind CSS v4 (`app/globals.css`, no `tailwind.config`), shadcn/ui `radix-nova` style with `neutral` base color and no class prefix. Use the `cn()` helper from `lib/utils.ts` (clsx + tailwind-merge) when composing conditional class names. Two custom Google fonts are wired as CSS variables in `lib/font.tsx` (`piano` = Instrument Serif for headings, `handwritten` = Caveat) alongside Geist/Geist Mono set up in `app/layout.tsx`.
 
-### Routing Patterns
+**Path alias**: `@/*` maps to the repo root (see `tsconfig.json`), e.g. `@/components/ui/button`, `@/lib/utils`, `@/config/projects`.
 
-- **App Router**: All routes use the new App Router pattern
-- **Route Groups**: `(ui)` and `(apps)` for logical organization
-- **Dynamic Routes**: `[slug]` for blog posts, `[short]` for shortened URLs
-- **API Routes**: Server actions in `lib/actions/` directory
+## Code style
 
-### Data Management
-
-**Blog Posts**: Server-side fetched from Simplist SDK with 5-minute cache
-**URL Shortener**: Redis with automatic cleanup of expired links
-**Spotify**: Real-time API calls with refresh token rotation
-
-### Development Notes
-
-- Uses `@/*` path aliases configured in tsconfig.json
-- Component registry system for shadcn/ui management
-- Turbopack enabled for faster development builds
-- HTTPS in development for OAuth testing
-- TypeScript strict mode enabled throughout
-
-### Testing & Deployment
-
-The application is optimized for production with:
-- Image optimization for multiple CDN sources
-- Static asset optimization
-- Bundle analysis and splitting
-- SEO optimization with comprehensive metadata
+- Prettier: no semicolons, double quotes, 80-char print width, trailing commas (ES5). `prettier-plugin-tailwindcss` auto-sorts class names, also applied inside `cn()` and `cva()` calls per `.prettierrc`'s `tailwindFunctions`.
+- Components are typed as `FC` (from `"react"`) rather than implicit function declarations, e.g. `export const ProjectsSection: FC = () => { ... }`.

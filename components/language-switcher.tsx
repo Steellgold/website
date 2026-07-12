@@ -1,77 +1,79 @@
 "use client";
 
-import { locales, type Locale } from "@/i18n/routing";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useScrolled } from "@/hooks/use-scrolled";
+import { type Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { IconGlobe } from "@tabler/icons-react";
-import { useLocale } from "next-intl";
-import { useState, useTransition } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { FC, useState, useTransition } from "react";
 
 const localeNames: Record<Locale, string> = {
   fr: "Français",
   en: "English",
 };
 
-export const LanguageSwitcher = () => {
+const localeFlags: Record<Locale, string> = {
+  fr: "fr",
+  en: "gb",
+};
+
+const otherLocale: Record<Locale, Locale> = {
+  fr: "en",
+  en: "fr",
+};
+
+export const LanguageSwitcher: FC = () => {
+  const t = useTranslations("language");
   const locale = useLocale() as Locale;
   const [isPending, startTransition] = useTransition();
-  const [isOpen, setIsOpen] = useState(false);
+  const isScrolled = useScrolled();
+  const isExpanded = !isScrolled;
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
-  const switchLocale = (newLocale: Locale) => {
-    if (newLocale === locale) {
-      setIsOpen(false);
-      return;
-    }
-
+  const toggleLocale = () => {
+    const newLocale = otherLocale[locale];
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${60 * 60 * 24 * 365}`;
-    
+
     startTransition(() => {
       window.location.reload();
     });
   };
 
-  return (
-    <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={cn(
-          "flex items-center gap-2 px-3 py-1.5 rounded-md",
-          "bg-[#2d2d2d] hover:bg-[#242424]",
-          "text-sm text-white transition-colors",
-          "border border-[#3d3d3d]",
-          isPending && "opacity-50 cursor-not-allowed"
-        )}
-        disabled={isPending}
-        aria-label="Switch language"
-      >
-        <IconGlobe className="w-4 h-4" />
-        <span>{localeNames[locale]}</span>
-      </button>
-
-      {isOpen && (
-        <>
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setIsOpen(false)}
-          />
-          <div className="absolute top-full mt-2 right-0 z-20 bg-[#1d1d1d] border border-[#3d3d3d] rounded-md shadow-lg min-w-[120px]">
-            {locales.map((loc) => (
-              <button
-                key={loc}
-                onClick={() => switchLocale(loc)}
-                className={cn(
-                  "w-full text-left px-4 py-2 text-sm transition-colors",
-                  "hover:bg-[#2d2d2d] first:rounded-t-md last:rounded-b-md",
-                  loc === locale && "bg-[#2d2d2d] text-white font-medium",
-                  loc !== locale && "text-gray-300"
-                )}
-              >
-                {localeNames[loc]}
-              </button>
-            ))}
-          </div>
-        </>
+  const button = (
+    <button
+      onClick={toggleLocale}
+      className={cn(
+        "flex items-center justify-center gap-0 h-10 px-2.5 rounded-full",
+        "bg-card hover:bg-accent shadow-lg",
+        "border border-border transition-all duration-300",
+        isExpanded && "sm:gap-2 sm:px-4",
+        isPending && "opacity-50 cursor-not-allowed"
       )}
-    </div>
+      disabled={isPending}
+      aria-label="Switch language"
+    >
+      <img
+        src={`/flags/${localeFlags[locale]}.svg`}
+        alt=""
+        className="w-5 h-5 rounded-full object-cover shrink-0"
+      />
+      <span
+        className={cn(
+          "grid grid-cols-[0fr] transition-all duration-300",
+          isExpanded && "sm:grid-cols-[1fr]"
+        )}
+      >
+        <span className="min-w-0 overflow-hidden text-sm whitespace-nowrap">
+          {localeNames[locale]}
+        </span>
+      </span>
+    </button>
+  );
+
+  return (
+    <Tooltip open={!isExpanded && tooltipOpen} onOpenChange={setTooltipOpen}>
+      <TooltipTrigger asChild>{button}</TooltipTrigger>
+      <TooltipContent side="left">{t("switch")}</TooltipContent>
+    </Tooltip>
   );
 };
-

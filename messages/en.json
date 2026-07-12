@@ -1,61 +1,69 @@
 {
-  "common": {
-    "welcome": "Welcome",
-    "description": "Full-Stack Developer specializing in the TypeScript ecosystem, building web applications with modern technologies.",
-    "madeIn": "Made in Alsace, France",
-
-    "poweredBy": "Powered by"
-  },
   "header": {
-    "hello": "Hello, I'm",
-    "fullStackDeveloper": "Full-Stack Developer specializing in the",
+    "hello": "Hi, I'm",
+    "fullStackDeveloper": "Full-Stack Developer specialized in the",
     "fullStackDeveloperSuffix": "ecosystem",
-    "building": "Building web applications with",
-    "modernTechnologies": "modern technologies",
-    "suchAs": "such as",
-    "and": "and"
+    "pitch": "I build modern web applications, fast and robust, for demanding projects."
   },
-  "contact": {
-    "title": "Let's talk",
-    "getInTouch": "Get in touch",
-    "ready": "Ready to start a project or just want to say hello?",
-    "open": "I'm always open to new opportunities and collaborations.",
-    "copyEmail": "Copy email"
+  "technologies": {
+    "title": "Technologies"
+  },
+  "freelance": {
+    "title": "I help businesses bring their web projects to life",
+    "pitch": "Showcase sites, business tools or SaaS products: I design custom solutions, from idea to deployment.",
+    "quoteNote": "Free quote",
+    "maltCta": "View my Malt profile",
+    "servicesPrimaryTitle": "What I do",
+    "servicesPrimary": [
+      "Showcase / custom websites",
+      "Web applications / SaaS",
+      "Technical refactors and API integrations",
+      "Project not listed here? Get in touch"
+    ]
   },
   "projects": {
     "title": "Projects",
-    "seeMore": "See more projects",
-    "awarded": "Awarded",
-    "view": "View project"
+    "viewAll": "View all projects",
+    "categoryActive": "Active / ongoing",
+    "categoryFinished": "Finished",
+    "featuredBadge": "Flagship project",
+    "awardBadge": "Award-winning"
   },
-  "skills": {
-    "title": "Using",
-    "andManyOthers": "and many others..."
+  "cv": {
+    "title": "Resume",
+    "view": "View resume",
+    "download": "Download resume"
   },
   "blog": {
     "title": "Blog",
-    "unavailable": "Blog posts are currently unavailable.",
-    "illustration": "Blog post illustration",
-    "blogPost": "Blog Post | Gaëtan Huszovits",
-    "blogPostDescription": "A blog post from Gaëtan Huszovits."
+    "poweredBy": "Powered by",
+    "empty": "No articles yet."
   },
-  "cd": {
-    "time": "Time",
-    "play": "Play",
-    "pause": "Pause",
-    "playRadio": "Play radio",
-    "pauseRadio": "Pause radio",
-    "playDisc": "Play music",
-    "pauseDisc": "Pause",
-    "versionShort": "Short version",
-    "versionLong": "Long version"
+  "gallery": {
+    "teaserTitle": "My cats",
+    "teaserSubtitle": "A little break from code.",
+    "cta": "View gallery"
   },
-  "errors": {
-    "oops": "Oops !",
-    "notFound": "The page you are looking for does not exist.",
-    "backToHome": "Back to home",
-    "somethingWentWrong": "Something went wrong!",
-    "unexpectedError": "An unexpected error has occurred. Please try again later.",
-    "tryAgain": "Try again"
+  "footer": {
+    "madeIn": "Made in Alsace, France"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "cta": "Back to home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. You can try again or go back to the home page.",
+    "retry": "Try again",
+    "cta": "Back to home"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light",
+    "toggle": "Switch theme"
+  },
+  "language": {
+    "switch": "Switch language"
   }
 }

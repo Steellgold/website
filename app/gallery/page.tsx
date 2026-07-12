@@ -1,0 +1,44 @@
+import { BackLink } from "@/components/back-link";
+import { GalleryLightbox } from "@/components/gallery-lightbox";
+import { GALLERY_PHOTOS, KITTY, KITTY_FEATURED_PHOTO } from "@/config/gallery";
+import { handwritten } from "@/lib/font";
+import { formatLifespan } from "@/lib/pet-age";
+import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
+import { getLocale, getTranslations } from "next-intl/server";
+import { FC } from "react";
+
+export const metadata: Metadata = {
+  title: "Gallery",
+  description: "Gaëtan's cat photo gallery, a little break from code.",
+  alternates: { canonical: "/gallery" },
+  openGraph: {
+    title: "Gallery",
+    description: "Gaëtan's cat photo gallery, a little break from code.",
+    url: "/gallery",
+    type: "website",
+  },
+};
+
+const Page: FC = async () => {
+  const t = await getTranslations("gallery");
+  const locale = (await getLocale()) as "fr" | "en";
+  const kittyLifespan = formatLifespan(KITTY.birth, KITTY.death, locale);
+
+  return (
+    <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <BackLink />
+
+      <h1 className={cn("text-4xl sm:text-5xl mb-10", handwritten.className)}>{t("teaserTitle")}</h1>
+
+      <GalleryLightbox
+        featured={KITTY_FEATURED_PHOTO}
+        featuredLifespan={kittyLifespan}
+        photos={GALLERY_PHOTOS}
+        locale={locale}
+      />
+    </main>
+  );
+};
+
+export default Page;

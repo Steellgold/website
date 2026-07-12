@@ -1,61 +1,69 @@
 {
-  "common": {
-    "welcome": "Bienvenue",
-    "description": "Développeur Full-Stack spécialisé dans l'écosystème TypeScript, créant des applications web avec des technologies modernes.",
-    "madeIn": "Fait en Alsace, France",
-
-    "poweredBy": "Propulsé par"
-  },
   "header": {
     "hello": "Bonjour, je suis",
     "fullStackDeveloper": "Développeur Full-Stack spécialisé dans l'écosystème",
     "fullStackDeveloperSuffix": "",
-    "building": "Création d'applications web avec",
-    "modernTechnologies": "des technologies modernes",
-    "suchAs": "telles que",
-    "and": "et"
+    "pitch": "Je développe des applications web modernes, rapides et robustes pour des projets exigeants."
   },
-  "contact": {
-    "title": "Parlons-en",
-    "getInTouch": "Entrer en contact",
-    "ready": "Prêt à démarrer un projet ou simplement dire bonjour ?",
-    "open": "Je suis toujours ouvert aux nouvelles opportunités et collaborations.",
-    "copyEmail": "Copier l'email"
+  "technologies": {
+    "title": "Technologies"
+  },
+  "freelance": {
+    "title": "J'accompagne les entreprises dans la création de leurs projets web",
+    "pitch": "Sites vitrines, applications métier ou produits SaaS : je conçois des solutions sur-mesure, de l'idée au déploiement.",
+    "quoteNote": "Devis gratuit",
+    "maltCta": "Voir mon profil Malt",
+    "servicesPrimaryTitle": "Ce que je fais",
+    "servicesPrimary": [
+      "Sites vitrines / sites web sur-mesure",
+      "Applications web / SaaS",
+      "Refonte technique et intégrations API",
+      "Un projet non listé ici ? Contactez-moi"
+    ]
   },
   "projects": {
     "title": "Projets",
-    "seeMore": "Voir plus de projets",
-    "awarded": "Récompensé",
-    "view": "Voir le projet"
+    "viewAll": "Voir tous les projets",
+    "categoryActive": "Actif / en cours",
+    "categoryFinished": "Terminé",
+    "featuredBadge": "Projet phare",
+    "awardBadge": "Récompensé"
   },
-  "skills": {
-    "title": "Technologies",
-    "andManyOthers": "et bien d'autres..."
+  "cv": {
+    "title": "CV",
+    "view": "Voir le CV",
+    "download": "Télécharger le CV"
   },
   "blog": {
     "title": "Blog",
-    "unavailable": "Les articles de blog ne sont actuellement pas disponibles.",
-    "illustration": "Illustration de l'article de blog",
-    "blogPost": "Article de blog | Gaëtan Huszovits",
-    "blogPostDescription": "Un article de blog de Gaëtan Huszovits."
+    "poweredBy": "Propulsé par",
+    "empty": "Aucun article pour le moment."
   },
-  "cd": {
-    "time": "Temps",
-    "play": "Lecture",
-    "pause": "Pause",
-    "playRadio": "Lire la radio",
-    "pauseRadio": "Mettre en pause",
-    "playDisc": "Lire la musique",
-    "pauseDisc": "Mettre en pause",
-    "versionShort": "Version courte",
-    "versionLong": "Version longue"
+  "gallery": {
+    "teaserTitle": "Mes chats",
+    "teaserSubtitle": "Une petite pause hors code.",
+    "cta": "Voir la galerie"
   },
-  "errors": {
-    "oops": "Oups !",
-    "notFound": "La page que vous recherchez n'existe pas.",
-    "backToHome": "Retour à l'accueil",
-    "somethingWentWrong": "Quelque chose s'est mal passé !",
-    "unexpectedError": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.",
-    "tryAgain": "Réessayer"
+  "footer": {
+    "madeIn": "Fait en Alsace, France"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "cta": "Retour à l'accueil"
+  },
+  "error": {
+    "title": "Une erreur est survenue",
+    "description": "Une erreur inattendue s'est produite. Vous pouvez réessayer ou retourner à l'accueil.",
+    "retry": "Réessayer",
+    "cta": "Retour à l'accueil"
+  },
+  "theme": {
+    "dark": "Sombre",
+    "light": "Clair",
+    "toggle": "Changer de thème"
+  },
+  "language": {
+    "switch": "Changer de langue"
   }
 }
