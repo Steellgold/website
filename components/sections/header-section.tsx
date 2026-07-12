@@ -48,9 +48,9 @@ export const HeaderSection: FC = () => {
       </div>
 
       <div className="mt-1 sm:mt-2 text-muted-foreground">
-        <p className="flex flex-wrap items-center gap-1.5">
-          {t("fullStackDeveloper")}
-          <SkillBadge name="TypeScript" size="xs" className="align-middle" />
+        <p>
+          {t("fullStackDeveloper")}{" "}
+          <SkillBadge name="TypeScript" size="xs" className="align-middle mx-0.5" />{" "}
           {t("fullStackDeveloperSuffix")}
         </p>
         <p>{t("pitch")}</p>
