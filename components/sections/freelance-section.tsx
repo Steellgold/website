@@ -1,5 +1,6 @@
 "use client";
 
+import { CONTACT_EMAIL } from "@/config/site";
 import { lastik } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { RiCheckLine, RiExternalLinkLine, RiFileCopyLine } from "@remixicon/react";
@@ -7,15 +8,13 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { FC, useState } from "react";
 
-const EMAIL = "me@gaetanhus.fr";
-
 export const FreelanceSection: FC = () => {
   const t = useTranslations("freelance");
   const servicesPrimary = t.raw("servicesPrimary") as string[];
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(EMAIL);
+    navigator.clipboard.writeText(CONTACT_EMAIL);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -52,7 +51,7 @@ export const FreelanceSection: FC = () => {
           </Link>
 
           <div className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-primary text-primary-foreground pl-3 pr-1.5 py-1.5 text-sm font-medium">
-            <Link href={`mailto:${EMAIL}`}>{EMAIL}</Link>
+            <Link href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</Link>
             <button
               onClick={handleCopy}
               aria-label="Copy email"

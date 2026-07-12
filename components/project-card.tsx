@@ -1,7 +1,7 @@
 "use client";
 
 import { SkillBadge } from "@/components/skill-badge";
-import { Icon_ChromeWebStore } from "@/components/tech-icons";
+import { Icon_ChromeWebStore, Icon_Npm } from "@/components/tech-icons";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { type Project, type ProjectImage } from "@/config/projects";
@@ -159,6 +159,22 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>Chrome Web Store</TooltipContent>
+              </Tooltip>
+            )}
+
+            {project.npmUrl && (
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={project.npmUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-6 h-6 border border-border rounded-md text-muted-foreground hover:text-foreground hover:border-white/30 transition-colors overflow-hidden"
+                  >
+                    <Icon_Npm className="w-3.5 h-3.5" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>npm</TooltipContent>
               </Tooltip>
             )}
           </div>

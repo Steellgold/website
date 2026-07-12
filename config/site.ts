@@ -36,6 +36,7 @@ export const SOCIAL_LINKS = {
 } as const
 
 export const TWITTER_HANDLE = "@Steellgold"
+export const CONTACT_EMAIL = "me@gaetanhus.fr"
 
 export const CV_URLS = {
   fr: "https://cdn.gaetanhus.fr/resume.pdf",

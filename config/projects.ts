@@ -14,6 +14,7 @@ export type Project = {
   url: string;
   githubUrl?: string;
   chromeWebStoreUrl?: string;
+  npmUrl?: string;
   images?: ProjectImage[];
   awards?: string[];
   contributors?: { name: string; url: string }[];
@@ -32,6 +33,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     timelineDate: "2024",
     githubUrl: "https://github.com/Steellgold/simplist.blog",
+    npmUrl: "https://www.npmjs.com/package/@simplist.blog/sdk",
     images: [
       {
         src: "https://cdn.gaetanhus.fr/assets/projects_images/simplist.png",
