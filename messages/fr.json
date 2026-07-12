@@ -49,5 +49,9 @@
   },
   "footer": {
     "madeIn": "Fait en Alsace, France"
+  },
+  "theme": {
+    "dark": "Sombre",
+    "light": "Clair"
   }
 }

@@ -1,5 +1,5 @@
+import { FloatingControls } from "@/components/floating-controls";
 import { Footer } from "@/components/footer";
-import { LanguageSwitcher } from "@/components/language-switcher";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -41,7 +41,7 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
             <TooltipProvider>
               {children}
               <Footer />
-              <LanguageSwitcher />
+              <FloatingControls />
             </TooltipProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

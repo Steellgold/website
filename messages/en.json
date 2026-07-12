@@ -49,5 +49,9 @@
   },
   "footer": {
     "madeIn": "Made in Alsace, France"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light"
   }
 }
