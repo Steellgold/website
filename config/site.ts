@@ -1,4 +1,4 @@
-export const SITE_URL = "https://gaetanhus.fr"
+export const SITE_URL = "https://www.gaetanhus.fr"
 
 export const SITE_NAME = "Gaëtan Huszovits"
 
