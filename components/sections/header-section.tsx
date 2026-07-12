@@ -17,7 +17,7 @@ export const HeaderSection: FC = () => {
 
   return (
     <div className="flex flex-col gap-3 w-full">
-      <div className="flex flex-row items-center justify-between gap-3 sm:gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
         <div className="flex flex-row items-center gap-3 sm:gap-4">
           <div className="flex shrink-0 self-center sm:self-auto relative">
             <Image
@@ -39,7 +39,7 @@ export const HeaderSection: FC = () => {
           href={CV_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-card hover:bg-accent border border-border text-sm transition-colors shrink-0"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-card hover:bg-accent border border-border text-sm transition-colors shrink-0 self-end sm:self-auto"
         >
           <RiDownloadLine className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">{tCv("view")}</span>

@@ -46,7 +46,8 @@ export const FreelanceSection: FC = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-2 text-sm hover:bg-accent transition-colors"
           >
-            {t("maltCta")}
+            <span className="sm:hidden">Malt</span>
+            <span className="hidden sm:inline">{t("maltCta")}</span>
             <RiExternalLinkLine className="w-3.5 h-3.5" />
           </Link>
 
