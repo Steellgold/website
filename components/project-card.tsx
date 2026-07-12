@@ -4,7 +4,7 @@ import { SkillBadge } from "@/components/skill-badge";
 import { Icon_ChromeWebStore } from "@/components/tech-icons";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { type Project } from "@/config/projects";
+import { type Project, type ProjectImage } from "@/config/projects";
 import { cn } from "@/lib/utils";
 import { RiArrowLeftSLine, RiArrowRightSLine, RiAwardFill, RiGithubFill } from "@remixicon/react";
 import { useLocale, useTranslations } from "next-intl";
@@ -17,13 +17,22 @@ type ProjectCardProps = {
   showBanner?: boolean;
 };
 
+const imageSrc = (image: ProjectImage): string => (typeof image === "string" ? image : image.src);
+
+const imageAlt = (image: ProjectImage, locale: "en" | "fr"): string | null => {
+  if (typeof image === "string" || !image.alt) return null;
+  return image.alt[locale] ?? image.alt.en;
+};
+
 export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false }) => {
   const locale = useLocale() as "en" | "fr";
   const t = useTranslations("projects");
   const hasAward = Boolean(project.awards && project.awards.length > 0);
   const images = project.images ?? [];
-  const previewImage = showBanner ? images[0] : undefined;
+  const previewImage = showBanner && images[0] ? imageSrc(images[0]) : undefined;
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const currentImage = lightboxIndex !== null ? images[lightboxIndex] : null;
+  const currentAlt = currentImage ? imageAlt(currentImage, locale) : null;
 
   const goPrev = () => setLightboxIndex((i) => (i === null ? i : (i - 1 + images.length) % images.length));
   const goNext = () => setLightboxIndex((i) => (i === null ? i : (i + 1) % images.length));
@@ -83,7 +92,11 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false 
         )}
       >
         <div className="flex items-center justify-between gap-2 flex-wrap pointer-events-auto">
-          <h3 className="text-lg font-semibold whitespace-nowrap">{project.name}</h3>
+          <h3 className="text-lg font-semibold whitespace-nowrap">
+            <Link href={project.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+              {project.name}
+            </Link>
+          </h3>
 
           <div className="flex items-center gap-1.5 shrink-0">
             {hasAward && project.githubUrl ? (
@@ -145,9 +158,14 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false 
           </div>
         </div>
 
-        <p className="text-sm text-muted-foreground leading-relaxed pointer-events-auto">
+        <Link
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-muted-foreground leading-relaxed pointer-events-auto hover:text-foreground transition-colors"
+        >
           {project.description[locale] ?? project.description.en}
-        </p>
+        </Link>
 
         <div className="flex flex-wrap gap-1.5 mt-auto pt-1 pointer-events-auto">
           {project.technologies.map((tech) => (
@@ -164,7 +182,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false 
           >
             <DialogTitle className="sr-only">{project.name}</DialogTitle>
 
-            {lightboxIndex !== null && (
+            {lightboxIndex !== null && currentImage && (
               <>
                 {images.length > 1 && (
                   <button
@@ -180,13 +198,13 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false 
                 )}
 
                 <div
-                  key={images[lightboxIndex]}
+                  key={imageSrc(currentImage)}
                   onClick={stopPropagation}
                   className="relative max-w-[92vw] max-h-[85vh] w-full h-full animate-in fade-in duration-200"
                 >
                   <Image
-                    src={images[lightboxIndex]}
-                    alt={`${project.name} screenshot ${lightboxIndex + 1}`}
+                    src={imageSrc(currentImage)}
+                    alt={currentAlt ?? `${project.name} screenshot ${lightboxIndex + 1}`}
                     fill
                     className="object-contain"
                     sizes="90vw"
@@ -206,9 +224,15 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false 
                   </button>
                 )}
 
-                <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-xs">
-                  {lightboxIndex + 1} / {images.length}
-                </span>
+                <div
+                  onClick={stopPropagation}
+                  className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5 text-center px-4"
+                >
+                  {currentAlt && <span className="text-white text-sm">{currentAlt}</span>}
+                  <span className="text-white/60 text-xs">
+                    {lightboxIndex + 1} / {images.length}
+                  </span>
+                </div>
               </>
             )}
           </DialogContent>
