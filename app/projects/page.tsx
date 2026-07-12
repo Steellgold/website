@@ -11,7 +11,7 @@ import { FC } from "react";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "A selection of full-stack projects built with Next.js, React and TypeScript — from open-source SaaS tools to freelance client work.",
+    "A selection of full-stack projects built with Next.js, React and TypeScript, from open-source SaaS tools to freelance client work.",
   alternates: { canonical: "/projects" },
   openGraph: {
     title: "Projects",

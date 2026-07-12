@@ -11,11 +11,11 @@ import { FC } from "react";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "A little break from code — Gaëtan's cat photo gallery.",
+  description: "Gaëtan's cat photo gallery, a little break from code.",
   alternates: { canonical: "/gallery" },
   openGraph: {
     title: "Gallery",
-    description: "A little break from code — Gaëtan's cat photo gallery.",
+    description: "Gaëtan's cat photo gallery, a little break from code.",
     url: "/gallery",
     type: "website",
   },
