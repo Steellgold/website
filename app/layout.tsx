@@ -16,31 +16,36 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: { default: SITE_NAME, template: SITE_TITLE_TEMPLATE },
-  description: SITE_DESCRIPTION,
-  keywords: SITE_KEYWORDS,
-  applicationName: SITE_NAME,
-  authors: [{ name: SITE_NAME, url: SITE_URL }],
-  openGraph: {
-    type: "website",
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    title: SITE_NAME,
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getLocale();
+  const openGraphLocale = locale === "fr" ? "fr_FR" : "en_US";
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: { default: SITE_NAME, template: SITE_TITLE_TEMPLATE },
     description: SITE_DESCRIPTION,
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    creator: TWITTER_HANDLE,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
-  alternates: { canonical: SITE_URL },
+    keywords: SITE_KEYWORDS,
+    applicationName: SITE_NAME,
+    authors: [{ name: SITE_NAME, url: SITE_URL }],
+    openGraph: {
+      type: "website",
+      url: SITE_URL,
+      siteName: SITE_NAME,
+      title: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      locale: openGraphLocale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      creator: TWITTER_HANDLE,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
+    alternates: { canonical: SITE_URL },
+  };
 };
 
 export const viewport: Viewport = {
@@ -62,7 +67,7 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground antialiased selection:bg-foreground selection:text-background">
-        <StructuredData />
+        <StructuredData locale={locale} />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <TooltipProvider>
