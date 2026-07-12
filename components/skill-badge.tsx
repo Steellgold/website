@@ -7,15 +7,19 @@ import { FC } from "react";
 type SkillBadgeProps = {
   name: string;
   minimized?: boolean;
+  size?: "default" | "xs";
   className?: string;
 };
 
-export const SkillBadge: FC<SkillBadgeProps> = ({ name, minimized = false, className }) => {
+export const SkillBadge: FC<SkillBadgeProps> = ({ name, minimized = false, size = "default", className }) => {
   const entry = SKILLS[name as SkillName];
+  const iconClass = size === "xs" ? "w-3 h-3 shrink-0" : "w-3.5 h-3.5 shrink-0";
   const badgeClass = cn(
     "inline-flex items-center gap-1.5 rounded-md border border-border bg-card",
     "hover:bg-accent transition-colors",
-    minimized ? "text-xs px-1.5 py-1" : "text-sm px-[9.5px] py-[5.5px]",
+    minimized && "text-xs px-1.5 py-1",
+    !minimized && size === "xs" && "text-xs px-1.5 py-0.5",
+    !minimized && size === "default" && "text-sm px-[9.5px] py-[5.5px]",
     className
   );
 

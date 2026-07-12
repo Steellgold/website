@@ -1,5 +1,6 @@
 "use client";
 
+import { SkillBadge } from "@/components/skill-badge";
 import { Social_Malt } from "@/components/social-icons";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
@@ -47,12 +48,12 @@ export const HeaderSection: FC = () => {
       </div>
 
       <div className="mt-1 sm:mt-2 text-muted-foreground">
-        <p>
-          {t("fullStackDeveloper")} TypeScript.
+        <p className="flex flex-wrap items-center gap-1.5">
+          {t("fullStackDeveloper")}
+          <SkillBadge name="TypeScript" size="xs" className="align-middle" />
+          {t("fullStackDeveloperSuffix")}
         </p>
-        <p>
-          {t("building")} {t("modernTechnologies")} {t("suchAs")} Next.js, Better Auth, shadcn/ui {t("and")} Tailwind CSS.
-        </p>
+        <p>{t("pitch")}</p>
       </div>
 
       <div

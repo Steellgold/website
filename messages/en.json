@@ -3,10 +3,7 @@
     "hello": "Hi, I'm",
     "fullStackDeveloper": "Full-Stack Developer specialized in the",
     "fullStackDeveloperSuffix": "ecosystem",
-    "building": "Building web applications with",
-    "modernTechnologies": "modern technologies",
-    "suchAs": "such as",
-    "and": "and"
+    "pitch": "I build modern web applications, fast and robust, for demanding projects."
   },
   "technologies": {
     "title": "Technologies"
