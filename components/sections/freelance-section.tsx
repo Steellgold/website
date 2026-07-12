@@ -39,19 +39,19 @@ export const FreelanceSection: FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-2 pt-4 border-t border-border">
         <span className="text-sm text-muted-foreground">{t("quoteNote")}</span>
 
-        <div className="flex flex-row gap-2 sm:ml-auto">
+        <div className="flex flex-row gap-2 w-full sm:w-auto sm:ml-auto">
           <Link
             href="https://www.malt.fr/profile/gaetanhuszovits"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-border bg-card px-3 py-2 text-sm hover:bg-accent transition-colors"
+            className="inline-flex flex-1 sm:flex-none items-center justify-center gap-1.5 rounded-md border border-border bg-card px-3 py-2 text-sm hover:bg-accent transition-colors"
           >
             <span className="sm:hidden">Malt</span>
             <span className="hidden sm:inline">{t("maltCta")}</span>
             <RiExternalLinkLine className="w-3.5 h-3.5" />
           </Link>
 
-          <div className="inline-flex items-center gap-1.5 rounded-md bg-primary text-primary-foreground pl-3 pr-1.5 py-1.5 text-sm font-medium">
+          <div className="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-primary text-primary-foreground pl-3 pr-1.5 py-1.5 text-sm font-medium">
             <Link href={`mailto:${EMAIL}`}>{EMAIL}</Link>
             <button
               onClick={handleCopy}
