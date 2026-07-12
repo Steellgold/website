@@ -11,6 +11,8 @@ export type Project = {
   timelineDate: string;
   url: string;
   githubUrl?: string;
+  chromeWebStoreUrl?: string;
+  images?: string[];
   awards?: string[];
   contributors?: { name: string; url: string }[];
 };
@@ -28,6 +30,12 @@ export const PROJECTS: Project[] = [
     featured: true,
     timelineDate: "2024",
     githubUrl: "https://github.com/Steellgold/simplist.blog",
+    images: [
+      "https://cdn.gaetanhus.fr/assets/projects_images/simplist.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/simplist-2.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/simplist-3.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/simplist-4.png",
+    ],
     url: "https://simplist.blog",
   },
   {
@@ -41,6 +49,14 @@ export const PROJECTS: Project[] = [
     category: "active",
     timelineDate: "2025",
     githubUrl: "https://github.com/nowly-presence/nowly",
+    chromeWebStoreUrl: "https://chromewebstore.google.com/detail/nowly/kmnlnfldimgneaopdihplkebobckcjpf",
+    images: [
+      "https://cdn.gaetanhus.fr/assets/projects_images/nowly.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-2.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-3.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-4.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/nowly-5.png",
+    ],
     url: "https://nowly.me/",
     contributors: [{ name: "q-kimi", url: "https://github.com/q-kimi" }],
   },
@@ -55,6 +71,9 @@ export const PROJECTS: Project[] = [
     category: "finished",
     timelineDate: "2024",
     githubUrl: "https://github.com/Steellgold/imagine.place",
+    images: [
+      "https://cdn.gaetanhus.fr/assets/projects_images/imagine.png",
+    ],
     url: "https://imagine.place",
     awards: ["https://x.com/supabase/status/1909552551206560004"],
   },
@@ -69,6 +88,11 @@ export const PROJECTS: Project[] = [
     category: "finished",
     timelineDate: "2023",
     githubUrl: "https://github.com/Steellgold/tweeets",
+    images: [
+      "https://cdn.gaetanhus.fr/assets/projects_images/tweeets.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/tweeets-2.webp",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/tweeets-3.webp",
+    ],
     url: "https://github.com/Steellgold/tweeets",
     awards: ["https://supabase.com/blog/launch-week-8-hackathon-winners#best-use-of-ai"],
   },
@@ -83,20 +107,33 @@ export const PROJECTS: Project[] = [
     category: "finished",
     timelineDate: "2025",
     githubUrl: "https://github.com/Steellgold/supaclicker",
+    images: [
+      "https://cdn.gaetanhus.fr/assets/projects_images/supaclicker.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/supaclicker-2.png",
+    ],
     url: "https://supaclicker.vercel.app",
     awards: ["https://supabase.com/blog/lw15-hackathon-winners#winner-2"],
   },
   {
     name: "Douceurs du Palais",
     description: {
-      en: "A complete e-commerce platform for a bakery: product catalog, cart, Stripe checkout, loyalty program and admin back-office. University project built as part of my degree course.",
-      fr: "Une plateforme e-commerce complète pour une boulangerie : catalogue de produits, panier, paiement Stripe, programme de fidélité et back-office admin. Projet universitaire réalisé dans le cadre de ma formation.",
+      en: "E-commerce platform for a bakery, with Stripe checkout and a loyalty program. University project.",
+      fr: "Plateforme e-commerce pour une boulangerie, avec paiement Stripe et programme de fidélité. Projet universitaire.",
     },
     technologies: ["Tailwind CSS", "PHP", "Symfony", "Twig", "Webpack", "Stripe", "Docker"],
     status: "Miscellaneous",
     category: "finished",
     timelineDate: "2023",
     githubUrl: "https://github.com/Steellgold/douceurs-palais",
+    images: [
+      "https://cdn.gaetanhus.fr/assets/projects_images/palais.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-0.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-1.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-5.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-10.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-16.png",
+      "https://cdn.gaetanhus.fr/portfolio-preview-images/palais-17.png",
+    ],
     url: "https://github.com/Steellgold/douceurs-palais",
   },
 ];

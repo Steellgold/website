@@ -36,7 +36,7 @@ const Page: FC = async () => {
         <h2 className="text-sm uppercase tracking-wide text-muted-foreground">{t("categoryActive")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {activeProjects.map((project) => (
-            <ProjectCard key={project.name} project={project} />
+            <ProjectCard key={project.name} project={project} showBanner />
           ))}
         </div>
       </div>
@@ -45,7 +45,7 @@ const Page: FC = async () => {
         <h2 className="text-sm uppercase tracking-wide text-muted-foreground">{t("categoryFinished")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {finishedProjects.map((project) => (
-            <ProjectCard key={project.name} project={project} />
+            <ProjectCard key={project.name} project={project} showBanner />
           ))}
         </div>
       </div>

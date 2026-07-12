@@ -19,13 +19,13 @@ export const ProjectsSection: FC = () => {
       <div className="flex items-center justify-between">
         <h2 className={cn("text-3xl sm:text-4xl", piano.className)}>{t("title")}</h2>
         <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-          {t("viewAll")}
+          {t("viewAll")} ({PROJECTS.length})
         </Link>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {featuredProjects.map((project) => (
-          <ProjectCard key={project.name} project={project} />
+        {featuredProjects.map((project, index) => (
+          <ProjectCard key={project.name} project={project} showBanner={index < 2} />
         ))}
       </div>
     </section>
