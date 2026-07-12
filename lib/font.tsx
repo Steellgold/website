@@ -1,10 +1,12 @@
-import { Caveat, Instrument_Serif } from "next/font/google";
+import { Caveat } from "next/font/google";
+import localFont from "next/font/local";
 
-export const piano = Instrument_Serif({
+export const piano = localFont({
+  src: "./fonts/lastik-free-font.woff2",
   weight: "400",
   style: "normal",
-  subsets: ["latin"],
   variable: "--font-serif",
+  display: "swap",
 });
 
 export const handwritten = Caveat({
