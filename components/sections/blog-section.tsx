@@ -24,9 +24,7 @@ export const BlogSection: FC = async () => {
           return (
             <Link
               key={article.slug}
-              href={`https://simplist.blog/${article.slug}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`/posts/${article.slug}`}
               className={cn(
                 "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 py-3",
                 "hover:text-muted-foreground transition-colors",

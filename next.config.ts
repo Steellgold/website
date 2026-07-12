@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "cdn.gaetanhus.fr", port: "", pathname: "/**" },
+      { protocol: "https", hostname: "cdn.simplist.blog", port: "", pathname: "/**" },
     ],
   },
 };
