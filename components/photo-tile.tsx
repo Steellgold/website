@@ -1,5 +1,5 @@
 import { KITTY, NOISETTE, type CatPhoto } from "@/config/gallery";
-import { formatAge } from "@/lib/pet-age";
+import { formatAge, formatPhotoDate } from "@/lib/pet-age";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { CSSProperties, FC } from "react";
@@ -74,6 +74,12 @@ export const PhotoTile: FC<PhotoTileProps> = ({
           "opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         )}
       >
+        {photo.date && (
+          <span className="absolute top-3 right-3 bg-black/50 backdrop-blur-[1px] rounded px-1.5 py-0.5 text-white/80 text-[11px]">
+            {formatPhotoDate(photo.date, locale)}
+          </span>
+        )}
+
         <span className="text-white text-sm font-medium">{names}</span>
         <span className="text-white/80 text-xs">{photo.description[locale]}</span>
         {lifespan && <span className="text-white/60 text-[11px] mt-0.5">{lifespan}</span>}

@@ -33,3 +33,13 @@ export const formatLifespan = (
 
   return `${formatter.format(birth)} – ${formatter.format(death)}`;
 };
+
+export const formatPhotoDate = (date: Date, locale: "fr" | "en"): string => {
+  const formatter = new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  return formatter.format(date);
+};
