@@ -1,11 +1,12 @@
 import { PERSON, SITE_NAME } from "@/config/site"
 import { ImageResponse } from "next/og"
 
-export const alt = "Gaëtan Huszovits — Full-Stack Developer"
+export const alt = "Gaëtan Huszovits, Full-Stack Developer"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
-const TAGLINE = "Full-Stack Developer — Next.js / React ecosystem"
+const GREETING = "Hi, I'm"
+const TAGLINE = "Full-Stack Developer for the Next.js / React ecosystem"
 
 async function loadGoogleFont(weight: 400 | 500, text: string) {
   const url = `https://fonts.googleapis.com/css2?family=Inter:wght@${weight}&text=${encodeURIComponent(text)}`
@@ -23,7 +24,7 @@ async function loadGoogleFont(weight: 400 | 500, text: string) {
 }
 
 const Image = async () => {
-  const text = `${SITE_NAME}${TAGLINE}`
+  const text = `${GREETING}${SITE_NAME}${TAGLINE}`
 
   const [photoBuffer, fontMedium, fontRegular] = await Promise.all([
     fetch(PERSON.image).then((res) => res.arrayBuffer()),
@@ -52,11 +53,12 @@ const Image = async () => {
           width={220}
           height={220}
           alt=""
-          style={{ borderRadius: 9999, objectFit: "cover", marginRight: 56 }}
+          style={{ borderRadius: 36, objectFit: "cover", marginRight: 56 }}
         />
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 72, fontWeight: 500 }}>{SITE_NAME}</div>
+          <div style={{ fontSize: 28, fontWeight: 400, opacity: 0.6 }}>{GREETING}</div>
+          <div style={{ fontSize: 72, fontWeight: 500, marginTop: 4 }}>{SITE_NAME}</div>
           <div style={{ fontSize: 32, fontWeight: 400, opacity: 0.7, marginTop: 16 }}>
             {TAGLINE}
           </div>
