@@ -1,0 +1,53 @@
+{
+  "header": {
+    "hello": "Bonjour, je suis",
+    "fullStackDeveloper": "Développeur Full-Stack spécialisé dans l'écosystème",
+    "fullStackDeveloperSuffix": "",
+    "building": "Création d'applications web avec",
+    "modernTechnologies": "des technologies modernes",
+    "suchAs": "telles que",
+    "and": "et"
+  },
+  "technologies": {
+    "title": "Technologies"
+  },
+  "freelance": {
+    "title": "Disponible pour de nouveaux projets",
+    "pitch": "Je conçois des sites web et applications sur-mesure, du site vitrine au produit SaaS complet.",
+    "quoteNote": "Devis gratuit",
+    "maltCta": "Voir mon profil Malt",
+    "servicesPrimaryTitle": "Ce que je fais",
+    "servicesPrimary": [
+      "Sites vitrines / sites web sur-mesure",
+      "Applications web / SaaS",
+      "Refonte technique et intégrations API",
+      "Un projet non listé ici ? Contactez-moi"
+    ]
+  },
+  "projects": {
+    "title": "Projets",
+    "viewAll": "Voir tous les projets",
+    "categoryActive": "Actif / en cours",
+    "categoryFinished": "Terminé",
+    "featuredBadge": "Projet phare",
+    "awardBadge": "Récompensé"
+  },
+  "cv": {
+    "title": "CV",
+    "view": "Voir le CV",
+    "download": "Télécharger le CV"
+  },
+  "blog": {
+    "title": "Blog",
+    "poweredBy": "Propulsé par",
+    "empty": "Aucun article pour le moment."
+  },
+  "gallery": {
+    "teaserTitle": "Mes chats",
+    "teaserSubtitle": "Une petite pause hors code.",
+    "cta": "Voir la galerie"
+  },
+  "footer": {
+    "madeIn": "Fait en Alsace, France"
+  }
+}

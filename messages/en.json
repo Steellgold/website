@@ -1,0 +1,53 @@
+{
+  "header": {
+    "hello": "Hi, I'm",
+    "fullStackDeveloper": "Full-Stack Developer specialized in the",
+    "fullStackDeveloperSuffix": "ecosystem",
+    "building": "Building web applications with",
+    "modernTechnologies": "modern technologies",
+    "suchAs": "such as",
+    "and": "and"
+  },
+  "technologies": {
+    "title": "Technologies"
+  },
+  "freelance": {
+    "title": "Available for new projects",
+    "pitch": "I design custom websites and applications, from showcase sites to full SaaS products.",
+    "quoteNote": "Free quote",
+    "maltCta": "View my Malt profile",
+    "servicesPrimaryTitle": "What I do",
+    "servicesPrimary": [
+      "Showcase / custom websites",
+      "Web applications / SaaS",
+      "Technical refactors and API integrations",
+      "Project not listed here? Get in touch"
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "viewAll": "View all projects",
+    "categoryActive": "Active / ongoing",
+    "categoryFinished": "Finished",
+    "featuredBadge": "Flagship project",
+    "awardBadge": "Award-winning"
+  },
+  "cv": {
+    "title": "Resume",
+    "view": "View resume",
+    "download": "Download resume"
+  },
+  "blog": {
+    "title": "Blog",
+    "poweredBy": "Powered by",
+    "empty": "No articles yet."
+  },
+  "gallery": {
+    "teaserTitle": "My cats",
+    "teaserSubtitle": "A little break from code.",
+    "cta": "View gallery"
+  },
+  "footer": {
+    "madeIn": "Made in Alsace, France"
+  }
+}
