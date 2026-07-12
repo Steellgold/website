@@ -1,6 +1,6 @@
 import { ProjectCard } from "@/components/project-card";
 import { PROJECTS } from "@/config/projects";
-import { piano } from "@/lib/font";
+import { lastik } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -17,7 +17,7 @@ export const ProjectsSection: FC = () => {
   return (
     <section className="flex flex-col gap-3 w-full mt-12">
       <div className="flex items-center justify-between">
-        <h2 className={cn("text-2xl sm:text-3xl", piano.className)}>{t("title")}</h2>
+        <h2 className={cn("text-2xl sm:text-3xl", lastik.className)}>{t("title")}</h2>
         <Link href="/projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
           {t("viewAll")} ({PROJECTS.length})
         </Link>

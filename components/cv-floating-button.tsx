@@ -1,24 +1,24 @@
 "use client";
 
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { CV_URLS } from "@/config/site";
 import { useScrolled } from "@/hooks/use-scrolled";
 import { cn } from "@/lib/utils";
 import { RiDownloadLine } from "@remixicon/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { FC, useState } from "react";
 
-const CV_URL = "https://cdn.gaetanhus.fr/resume.pdf";
-
 export const CvFloatingButton: FC = () => {
   const t = useTranslations("cv");
+  const locale = useLocale() as "fr" | "en";
   const isScrolled = useScrolled();
   const isExpanded = !isScrolled;
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const link = (
     <Link
-      href={CV_URL}
+      href={CV_URLS[locale] ?? CV_URLS.en}
       target="_blank"
       rel="noopener noreferrer"
       className={cn(

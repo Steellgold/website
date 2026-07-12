@@ -1,6 +1,6 @@
 import { CodeWindow } from "@/components/markdown/code-window";
 import { LightboxImage } from "@/components/markdown/lightbox-image";
-import { piano } from "@/lib/font";
+import { lastik } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { FC } from "react";
 import ReactMarkdown from "react-markdown";
@@ -34,9 +34,9 @@ export const MarkdownContent: FC<MarkdownContentProps> = ({ content }) => (
   <ReactMarkdown
     remarkPlugins={[remarkGfm]}
     components={{
-      h1: ({ ...props }) => <h1 className={cn(piano.className, "text-3xl mt-8 mb-2")} {...props} />,
-      h2: ({ ...props }) => <h2 className={cn(piano.className, "text-2xl mt-6 mb-2")} {...props} />,
-      h3: ({ ...props }) => <h3 className={cn(piano.className, "text-xl mt-4 mb-1")} {...props} />,
+      h1: ({ ...props }) => <h1 className={cn(lastik.className, "text-3xl mt-8 mb-2")} {...props} />,
+      h2: ({ ...props }) => <h2 className={cn(lastik.className, "text-2xl mt-6 mb-2")} {...props} />,
+      h3: ({ ...props }) => <h3 className={cn(lastik.className, "text-xl mt-4 mb-1")} {...props} />,
       h4: ({ ...props }) => <h4 className="text-lg font-semibold mt-4 mb-1" {...props} />,
       h5: ({ ...props }) => <h5 className="text-base font-semibold mt-4 mb-1" {...props} />,
       h6: ({ ...props }) => <h6 className="text-sm font-semibold mt-4 mb-1" {...props} />,

@@ -1,7 +1,7 @@
 import { BackLink } from "@/components/back-link";
 import { ProjectCard } from "@/components/project-card";
 import { PROJECTS } from "@/config/projects";
-import { piano } from "@/lib/font";
+import { lastik } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -30,7 +30,7 @@ const Page: FC = async () => {
     <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
       <BackLink />
 
-      <h1 className={cn("text-3xl sm:text-4xl mb-10", piano.className)}>{t("title")}</h1>
+      <h1 className={cn("text-3xl sm:text-4xl mb-10", lastik.className)}>{t("title")}</h1>
 
       <div className="flex flex-col gap-3 mb-10">
         <h2 className="text-sm uppercase tracking-wide text-muted-foreground">{t("categoryActive")}</h2>

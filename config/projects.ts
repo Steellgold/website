@@ -136,7 +136,7 @@ export const PROJECTS: Project[] = [
         },
       },
     ],
-    url: "https://imagine.place",
+    url: "https://github.com/Steellgold/imagine.place",
     awards: ["https://x.com/supabase/status/1909552551206560004"],
   },
   {

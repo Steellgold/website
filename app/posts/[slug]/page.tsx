@@ -1,7 +1,7 @@
 import { BackLink } from "@/components/back-link";
 import { MarkdownContent } from "@/components/markdown/markdown-content";
 import { getArticle } from "@/lib/blog";
-import { piano } from "@/lib/font";
+import { lastik } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { RiCalendarLine, RiText, RiTimerLine } from "@remixicon/react";
 import { format } from "date-fns";
@@ -57,7 +57,7 @@ const Page: FC<PageProps> = async ({ params }) => {
         </div>
       )}
 
-      <h1 className={cn("text-3xl sm:text-4xl mb-3", piano.className)}>{title}</h1>
+      <h1 className={cn("text-3xl sm:text-4xl mb-3", lastik.className)}>{title}</h1>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-10">
         <span className="flex items-center gap-1">

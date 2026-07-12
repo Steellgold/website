@@ -7,6 +7,8 @@ export const SITE_TITLE_TEMPLATE = "%s | Gaëtan Huszovits"
 export const SITE_DESCRIPTION =
   "Full-Stack Developer specialized in the Next.js / React ecosystem. Available for freelance work on showcase websites, web applications and SaaS products."
 
+export const SITE_OG_IMAGE = "https://cdn.gaetanhus.fr/og-image.png"
+
 export const SITE_KEYWORDS = [
   "Gaëtan Huszovits",
   "Full-Stack Developer",
@@ -32,3 +34,8 @@ export const SOCIAL_LINKS = {
 } as const
 
 export const TWITTER_HANDLE = "@Steellgold"
+
+export const CV_URLS = {
+  fr: "https://cdn.gaetanhus.fr/resume.pdf",
+  en: "https://cdn.gaetanhus.fr/english_resume.pdf",
+} as const
