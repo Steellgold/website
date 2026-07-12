@@ -5,17 +5,22 @@ import { cn } from "@/lib/utils"
 import { RiMoonLine, RiSunLine } from "@remixicon/react"
 import { useTranslations } from "next-intl"
 import { useTheme } from "next-themes"
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 
 export const ThemeToggler: FC = () => {
   const t = useTranslations("theme")
   const { resolvedTheme, setTheme } = useTheme()
   const isScrolled = useScrolled()
   const isExpanded = !isScrolled
-  // resolvedTheme is undefined before next-themes resolves the stored value
-  // client-side; default to the site's defaultTheme ("dark") so server and
-  // client render the same thing on the first pass and avoid a hydration mismatch.
-  const isDark = resolvedTheme !== "light"
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  // Before mount, resolvedTheme may already differ from the server-rendered
+  // defaultTheme once next-themes reads the stored preference; keep the first
+  // client render locked to the default so it matches the server and avoid a
+  // hydration mismatch, then switch to the real value once mounted.
+  const isDark = mounted ? resolvedTheme !== "light" : true
 
   return (
     <button
