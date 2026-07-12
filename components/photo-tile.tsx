@@ -21,7 +21,7 @@ export const PhotoTile: FC<PhotoTileProps> = ({
   locale,
   sizes,
   priority,
-  aspectClassName = "aspect-[3/4]",
+  aspectClassName = "aspect-3/4",
   lifespan,
   onClick,
 }) => {
@@ -61,7 +61,7 @@ export const PhotoTile: FC<PhotoTileProps> = ({
         src={photo.src}
         alt={photo.description[locale]}
         fill
-        className="object-cover transition-transform duration-300 ease-out group-hover:scale-[var(--hover-zoom)]"
+        className="object-cover transition-transform duration-300 ease-out group-hover:scale-(--hover-zoom)"
         style={{ "--hover-zoom": zoom * 1.08, transform: `scale(${zoom})` } as CSSProperties}
         sizes={sizes ?? "(max-width: 640px) 50vw, 33vw"}
         priority={priority}
@@ -70,7 +70,7 @@ export const PhotoTile: FC<PhotoTileProps> = ({
       <div
         className={cn(
           "absolute inset-0 flex flex-col justify-end p-3",
-          "bg-gradient-to-t from-black/85 via-black/30 to-transparent backdrop-blur-[1px]",
+          "bg-linear-to-t from-black/85 via-black/30 to-transparent backdrop-blur-[1px]",
           "opacity-0 group-hover:opacity-100 transition-opacity duration-200"
         )}
       >

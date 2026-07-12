@@ -6,7 +6,7 @@ import { KITTY, NOISETTE, type CatPhoto } from "@/config/gallery";
 import { formatAge } from "@/lib/pet-age";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "@remixicon/react";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { FC, MouseEvent, useEffect, useState } from "react";
 
 type GalleryLightboxProps = {
   featured: CatPhoto;
@@ -23,6 +23,8 @@ export const GalleryLightbox: FC<GalleryLightboxProps> = ({ featured, featuredLi
 
   const goPrev = () => setOpenIndex((i) => (i === null ? i : (i - 1 + allPhotos.length) % allPhotos.length));
   const goNext = () => setOpenIndex((i) => (i === null ? i : (i + 1) % allPhotos.length));
+  const close = () => setOpenIndex(null);
+  const stopPropagation = (event: MouseEvent) => event.stopPropagation();
 
   useEffect(() => {
     if (openIndex === null) return;
@@ -57,7 +59,7 @@ export const GalleryLightbox: FC<GalleryLightboxProps> = ({ featured, featuredLi
         <PhotoTile
           photo={featured}
           locale={locale}
-          aspectClassName="aspect-[1600/840]"
+          aspectClassName="aspect-1600/840"
           sizes="768px"
           priority
           lifespan={featuredLifespan}
@@ -71,14 +73,20 @@ export const GalleryLightbox: FC<GalleryLightboxProps> = ({ featured, featuredLi
         ))}
       </div>
 
-      <Dialog open={openIndex !== null} onOpenChange={(open) => !open && setOpenIndex(null)}>
-        <DialogContent className="max-w-none w-screen h-screen sm:max-w-none p-0 rounded-none bg-black/95 ring-0 border-0 flex items-center justify-center">
+      <Dialog open={openIndex !== null} onOpenChange={(open) => !open && close()}>
+        <DialogContent
+          onClick={close}
+          className="max-w-none w-screen h-screen sm:max-w-none p-0 rounded-none bg-black/95 ring-0 border-0 flex items-center justify-center"
+        >
           <DialogTitle className="sr-only">{current?.description[locale]}</DialogTitle>
 
           {current && (
             <>
               <button
-                onClick={goPrev}
+                onClick={(event) => {
+                  stopPropagation(event);
+                  goPrev();
+                }}
                 className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
                 aria-label="Previous"
               >
@@ -87,6 +95,7 @@ export const GalleryLightbox: FC<GalleryLightboxProps> = ({ featured, featuredLi
 
               <div
                 key={current.src}
+                onClick={stopPropagation}
                 className="relative max-w-[92vw] max-h-[85vh] w-full h-full animate-in fade-in duration-200"
                 style={{ aspectRatio: `${current.width} / ${current.height}` }}
               >
@@ -100,7 +109,10 @@ export const GalleryLightbox: FC<GalleryLightboxProps> = ({ featured, featuredLi
               </div>
 
               <button
-                onClick={goNext}
+                onClick={(event) => {
+                  stopPropagation(event);
+                  goNext();
+                }}
                 className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
                 aria-label="Next"
               >
@@ -109,6 +121,7 @@ export const GalleryLightbox: FC<GalleryLightboxProps> = ({ featured, featuredLi
 
               <div
                 key={`${current.src}-caption`}
+                onClick={stopPropagation}
                 className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5 text-center px-4 animate-in fade-in duration-200"
               >
                 <span className="text-white text-sm font-medium">{names}</span>
