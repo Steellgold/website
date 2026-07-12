@@ -1,11 +1,10 @@
+import { BackLink } from "@/components/back-link";
 import { ProjectCard } from "@/components/project-card";
 import { PROJECTS } from "@/config/projects";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { RiArrowLeftLine } from "@remixicon/react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import Link from "next/link";
 import { FC } from "react";
 
 export const metadata: Metadata = {
@@ -29,10 +28,7 @@ const Page: FC = async () => {
 
   return (
     <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
-        <RiArrowLeftLine className="w-4 h-4" />
-        Gaëtan Huszovits
-      </Link>
+      <BackLink />
 
       <h1 className={cn("text-3xl sm:text-4xl mb-10", piano.className)}>{t("title")}</h1>
 

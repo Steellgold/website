@@ -1,13 +1,13 @@
+import { BackLink } from "@/components/back-link";
 import { MarkdownContent } from "@/components/markdown/markdown-content";
 import { getArticle } from "@/lib/blog";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
-import { RiArrowLeftLine, RiCalendarLine, RiText, RiTimerLine } from "@remixicon/react";
+import { RiCalendarLine, RiText, RiTimerLine } from "@remixicon/react";
 import { format } from "date-fns";
 import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FC } from "react";
 
@@ -49,10 +49,7 @@ const Page: FC<PageProps> = async ({ params }) => {
 
   return (
     <main className="max-w-2xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
-        <RiArrowLeftLine className="w-4 h-4" />
-        Gaëtan Huszovits
-      </Link>
+      <BackLink />
 
       {coverImage && (
         <div className="relative w-full aspect-900/500 rounded-lg overflow-hidden border border-border mb-8">

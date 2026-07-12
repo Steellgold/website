@@ -1,12 +1,11 @@
+import { BackLink } from "@/components/back-link";
 import { GalleryLightbox } from "@/components/gallery-lightbox";
 import { GALLERY_PHOTOS, KITTY, KITTY_FEATURED_PHOTO } from "@/config/gallery";
 import { handwritten } from "@/lib/font";
 import { formatLifespan } from "@/lib/pet-age";
 import { cn } from "@/lib/utils";
-import { RiArrowLeftLine } from "@remixicon/react";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
-import Link from "next/link";
 import { FC } from "react";
 
 export const metadata: Metadata = {
@@ -28,10 +27,7 @@ const Page: FC = async () => {
 
   return (
     <main className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
-      <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
-        <RiArrowLeftLine className="w-4 h-4" />
-        Gaëtan Huszovits
-      </Link>
+      <BackLink />
 
       <h1 className={cn("text-4xl sm:text-5xl mb-10", handwritten.className)}>{t("teaserTitle")}</h1>
 
