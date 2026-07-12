@@ -60,6 +60,10 @@
   },
   "theme": {
     "dark": "Sombre",
-    "light": "Clair"
+    "light": "Clair",
+    "toggle": "Changer de thème"
+  },
+  "language": {
+    "switch": "Changer de langue"
   }
 }

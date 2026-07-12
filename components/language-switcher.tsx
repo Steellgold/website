@@ -1,10 +1,11 @@
 "use client";
 
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useScrolled } from "@/hooks/use-scrolled";
 import { type Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { useLocale } from "next-intl";
-import { FC, useTransition } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { FC, useState, useTransition } from "react";
 
 const localeNames: Record<Locale, string> = {
   fr: "Français",
@@ -22,10 +23,12 @@ const otherLocale: Record<Locale, Locale> = {
 };
 
 export const LanguageSwitcher: FC = () => {
+  const t = useTranslations("language");
   const locale = useLocale() as Locale;
   const [isPending, startTransition] = useTransition();
   const isScrolled = useScrolled();
   const isExpanded = !isScrolled;
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggleLocale = () => {
     const newLocale = otherLocale[locale];
@@ -36,7 +39,7 @@ export const LanguageSwitcher: FC = () => {
     });
   };
 
-  return (
+  const button = (
     <button
       onClick={toggleLocale}
       className={cn(
@@ -65,5 +68,12 @@ export const LanguageSwitcher: FC = () => {
         </span>
       </span>
     </button>
+  );
+
+  return (
+    <Tooltip open={!isExpanded && tooltipOpen} onOpenChange={setTooltipOpen}>
+      <TooltipTrigger asChild>{button}</TooltipTrigger>
+      <TooltipContent side="left">{t("switch")}</TooltipContent>
+    </Tooltip>
   );
 };

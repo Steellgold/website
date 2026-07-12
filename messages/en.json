@@ -60,6 +60,10 @@
   },
   "theme": {
     "dark": "Dark",
-    "light": "Light"
+    "light": "Light",
+    "toggle": "Switch theme"
+  },
+  "language": {
+    "switch": "Switch language"
   }
 }

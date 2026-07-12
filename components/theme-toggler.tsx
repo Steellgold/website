@@ -1,28 +1,30 @@
 "use client"
 
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import { useMounted } from "@/hooks/use-mounted"
 import { useScrolled } from "@/hooks/use-scrolled"
 import { cn } from "@/lib/utils"
 import { RiMoonLine, RiSunLine } from "@remixicon/react"
 import { useTranslations } from "next-intl"
 import { useTheme } from "next-themes"
-import { FC, useEffect, useState } from "react"
+import { FC, useState } from "react"
 
 export const ThemeToggler: FC = () => {
   const t = useTranslations("theme")
   const { resolvedTheme, setTheme } = useTheme()
   const isScrolled = useScrolled()
   const isExpanded = !isScrolled
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => setMounted(true), [])
+  const mounted = useMounted()
 
   // Before mount, resolvedTheme may already differ from the server-rendered
   // defaultTheme once next-themes reads the stored preference; keep the first
   // client render locked to the default so it matches the server and avoid a
   // hydration mismatch, then switch to the real value once mounted.
   const isDark = mounted ? resolvedTheme !== "light" : true
+  const label = isDark ? t("dark") : t("light")
+  const [tooltipOpen, setTooltipOpen] = useState(false)
 
-  return (
+  const button = (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
@@ -44,10 +46,15 @@ export const ThemeToggler: FC = () => {
           isExpanded && "sm:grid-cols-[1fr]"
         )}
       >
-        <span className="min-w-0 overflow-hidden text-sm whitespace-nowrap">
-          {isDark ? t("dark") : t("light")}
-        </span>
+        <span className="min-w-0 overflow-hidden text-sm whitespace-nowrap">{label}</span>
       </span>
     </button>
+  )
+
+  return (
+    <Tooltip open={!isExpanded && tooltipOpen} onOpenChange={setTooltipOpen}>
+      <TooltipTrigger asChild>{button}</TooltipTrigger>
+      <TooltipContent side="left">{t("toggle")}</TooltipContent>
+    </Tooltip>
   )
 }

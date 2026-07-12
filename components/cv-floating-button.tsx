@@ -1,11 +1,12 @@
 "use client";
 
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useScrolled } from "@/hooks/use-scrolled";
 import { cn } from "@/lib/utils";
 import { RiDownloadLine } from "@remixicon/react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
 
 const CV_URL = "https://cdn.gaetanhus.fr/resume.pdf";
 
@@ -13,8 +14,9 @@ export const CvFloatingButton: FC = () => {
   const t = useTranslations("cv");
   const isScrolled = useScrolled();
   const isExpanded = !isScrolled;
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
-  return (
+  const link = (
     <Link
       href={CV_URL}
       target="_blank"
@@ -37,5 +39,12 @@ export const CvFloatingButton: FC = () => {
         <span className="min-w-0 overflow-hidden text-sm whitespace-nowrap">{t("view")}</span>
       </span>
     </Link>
+  );
+
+  return (
+    <Tooltip open={!isExpanded && tooltipOpen} onOpenChange={setTooltipOpen}>
+      <TooltipTrigger asChild>{link}</TooltipTrigger>
+      <TooltipContent side="left">{t("view")}</TooltipContent>
+    </Tooltip>
   );
 };
