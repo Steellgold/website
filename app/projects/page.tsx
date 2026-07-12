@@ -35,8 +35,8 @@ const Page: FC = async () => {
       <div className="flex flex-col gap-3 mb-10">
         <h2 className="text-sm uppercase tracking-wide text-muted-foreground">{t("categoryActive")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {activeProjects.map((project) => (
-            <ProjectCard key={project.name} project={project} showBanner />
+          {activeProjects.map((project, index) => (
+            <ProjectCard key={project.name} project={project} showBanner priorityBanner={index === 0} />
           ))}
         </div>
       </div>

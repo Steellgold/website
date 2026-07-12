@@ -16,6 +16,7 @@ type ProjectCardProps = {
   project: Project;
   showBanner?: boolean;
   maxTechnologies?: number;
+  priorityBanner?: boolean;
 };
 
 const imageSrc = (image: ProjectImage): string => (typeof image === "string" ? image : image.src);
@@ -25,7 +26,7 @@ const imageAlt = (image: ProjectImage, locale: "en" | "fr"): string | null => {
   return image.alt[locale] ?? image.alt.en;
 };
 
-export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false, maxTechnologies }) => {
+export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false, maxTechnologies, priorityBanner = false }) => {
   const locale = useLocale() as "en" | "fr";
   const t = useTranslations("projects");
   const hasAward = Boolean(project.awards && project.awards.length > 0);
@@ -83,6 +84,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
             fill
             className="object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-100"
             sizes="(max-width: 768px) 100vw, 50vw"
+            priority={priorityBanner}
           />
           <div className="absolute inset-0 bg-linear-to-b from-transparent from-0% via-black/15 via-35% to-card to-60% dark:via-black/70" />
         </div>

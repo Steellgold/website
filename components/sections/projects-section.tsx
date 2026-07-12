@@ -25,7 +25,13 @@ export const ProjectsSection: FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {featuredProjects.map((project, index) => (
-          <ProjectCard key={project.name} project={project} showBanner={index < 2} maxTechnologies={8} />
+          <ProjectCard
+            key={project.name}
+            project={project}
+            showBanner={index < 2}
+            maxTechnologies={8}
+            priorityBanner={index === 0}
+          />
         ))}
       </div>
     </section>
