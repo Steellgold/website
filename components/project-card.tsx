@@ -98,7 +98,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
       >
         <div className="flex items-center justify-between gap-2 flex-wrap pointer-events-auto">
           <h3 className="text-lg font-semibold whitespace-nowrap">
-            <Link href={project.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+            <Link href={project.url} target="_blank" rel="noopener noreferrer">
               {project.name}
             </Link>
           </h3>
@@ -123,8 +123,9 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs border border-border rounded-md px-2 py-0.5 text-muted-foreground hover:text-foreground hover:border-white/30 transition-colors"
+                className="flex items-center gap-1 text-xs border border-border rounded-md px-2 py-0.5 text-muted-foreground hover:text-foreground hover:border-white/30 transition-colors"
               >
+                <RiGithubFill className="w-3 h-3" />
                 {project.status}
               </Link>
             ) : (
@@ -167,7 +168,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm text-muted-foreground leading-relaxed pointer-events-auto hover:text-foreground transition-colors"
+          className="text-sm text-muted-foreground leading-relaxed pointer-events-auto"
         >
           {project.description[locale] ?? project.description.en}
         </Link>

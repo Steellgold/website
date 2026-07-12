@@ -2,19 +2,19 @@
 
 import { SkillBadge } from "@/components/skill-badge";
 import { Social_Malt } from "@/components/social-icons";
-import { piano } from "@/lib/font";
+import { CV_URLS } from "@/config/site";
+import { lastik } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { RiDownloadLine, RiGithubFill, RiLinkedinBoxFill, RiTwitterXFill } from "@remixicon/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
-const CV_URL = "https://cdn.gaetanhus.fr/resume.pdf";
-
 export const HeaderSection: FC = () => {
   const t = useTranslations("header");
   const tCv = useTranslations("cv");
+  const locale = useLocale() as "fr" | "en";
 
   return (
     <div className="flex flex-col gap-3 w-full">
@@ -32,12 +32,12 @@ export const HeaderSection: FC = () => {
 
           <div className="flex flex-col text-left min-w-0">
             <span className="text-md sm:text-lg text-muted-foreground">{t("hello")}</span>
-            <h1 className={cn("text-3xl sm:text-4xl", piano.className)}>Gaëtan Huszovits</h1>
+            <h1 className={cn("text-3xl sm:text-4xl", lastik.className)}>Gaëtan Huszovits</h1>
           </div>
         </div>
 
         <Link
-          href={CV_URL}
+          href={CV_URLS[locale] ?? CV_URLS.en}
           target="_blank"
           rel="noopener noreferrer"
           className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-card hover:bg-accent border border-border text-sm transition-colors shrink-0"

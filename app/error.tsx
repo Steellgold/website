@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { piano } from "@/lib/font";
+import { lastik } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import { RiRefreshLine } from "@remixicon/react";
 import { useTranslations } from "next-intl";
@@ -23,7 +23,7 @@ const ErrorPage: FC<ErrorPageProps> = ({ error, reset }) => {
   return (
     <main className="flex min-h-[calc(100dvh-6rem)] flex-col items-center justify-center gap-6 px-4 text-center">
       <div className="flex flex-col gap-3">
-        <h1 className={cn("text-3xl sm:text-4xl", piano.className)}>{t("title")}</h1>
+        <h1 className={cn("text-3xl sm:text-4xl", lastik.className)}>{t("title")}</h1>
         <p className="text-muted-foreground">{t("description")}</p>
       </div>
 

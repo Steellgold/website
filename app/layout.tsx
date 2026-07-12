@@ -3,8 +3,8 @@ import { Footer } from "@/components/footer";
 import { StructuredData } from "@/components/structured-data";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_TITLE_TEMPLATE, SITE_URL, TWITTER_HANDLE } from "@/config/site";
-import { handwritten, piano } from "@/lib/font";
+import { SITE_DESCRIPTION, SITE_KEYWORDS, SITE_NAME, SITE_OG_IMAGE, SITE_TITLE_TEMPLATE, SITE_URL, TWITTER_HANDLE } from "@/config/site";
+import { handwritten, lastik } from "@/lib/font";
 import { cn } from "@/lib/utils";
 import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
@@ -34,10 +34,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
       title: SITE_NAME,
       description: SITE_DESCRIPTION,
       locale: openGraphLocale,
+      images: [SITE_OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       creator: TWITTER_HANDLE,
+      images: [SITE_OG_IMAGE],
     },
     robots: {
       index: true,
@@ -63,7 +65,7 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
   return (
     <html
       lang={locale}
-      className={cn(geist.variable, geistMono.variable, piano.variable, handwritten.variable)}
+      className={cn(geist.variable, geistMono.variable, lastik.variable, handwritten.variable)}
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground antialiased selection:bg-foreground selection:text-background">

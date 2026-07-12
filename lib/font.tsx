@@ -1,7 +1,7 @@
 import { Caveat } from "next/font/google";
 import localFont from "next/font/local";
 
-export const piano = localFont({
+export const lastik = localFont({
   src: "./fonts/lastik-free-font.woff2",
   weight: "400",
   style: "normal",
