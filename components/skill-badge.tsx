@@ -41,8 +41,8 @@ export const SkillBadge: FC<SkillBadgeProps> = ({ name, minimized = false, size 
   const { icon: Icon, url } = entry;
 
   const link = (
-    <Link href={url} target="_blank" rel="noopener noreferrer" className={badgeClass}>
-      <Icon className="w-3.5 h-3.5 shrink-0" />
+    <Link href={url} target="_blank" rel="noopener noreferrer" title={name} aria-label={name} className={badgeClass}>
+      <Icon className={iconClass} aria-hidden="true" />
       {!minimized && <span>{name}</span>}
     </Link>
   );
