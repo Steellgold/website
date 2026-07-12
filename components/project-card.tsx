@@ -15,6 +15,7 @@ import { FC, MouseEvent, useEffect, useState } from "react";
 type ProjectCardProps = {
   project: Project;
   showBanner?: boolean;
+  maxTechnologies?: number;
 };
 
 const imageSrc = (image: ProjectImage): string => (typeof image === "string" ? image : image.src);
@@ -24,11 +25,13 @@ const imageAlt = (image: ProjectImage, locale: "en" | "fr"): string | null => {
   return image.alt[locale] ?? image.alt.en;
 };
 
-export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false }) => {
+export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false, maxTechnologies }) => {
   const locale = useLocale() as "en" | "fr";
   const t = useTranslations("projects");
   const hasAward = Boolean(project.awards && project.awards.length > 0);
   const images = project.images ?? [];
+  const visibleTechnologies = maxTechnologies ? project.technologies.slice(0, maxTechnologies) : project.technologies;
+  const hiddenTechnologies = maxTechnologies ? project.technologies.slice(maxTechnologies) : [];
   const previewImage = showBanner && images[0] ? imageSrc(images[0]) : undefined;
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const currentImage = lightboxIndex !== null ? images[lightboxIndex] : null;
@@ -167,10 +170,26 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false 
           {project.description[locale] ?? project.description.en}
         </Link>
 
-        <div className="flex flex-wrap gap-1.5 mt-auto pt-1 pointer-events-auto">
-          {project.technologies.map((tech) => (
+        <div
+          className={cn(
+            "flex gap-1.5 mt-auto pt-1 pointer-events-auto",
+            maxTechnologies ? "flex-nowrap overflow-hidden" : "flex-wrap"
+          )}
+        >
+          {visibleTechnologies.map((tech) => (
             <SkillBadge key={tech} name={tech} minimized />
           ))}
+
+          {hiddenTechnologies.length > 0 && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="inline-flex items-center justify-center shrink-0 rounded-md border border-border bg-card text-xs px-1.5 py-1 text-muted-foreground">
+                  +{hiddenTechnologies.length}
+                </span>
+              </TooltipTrigger>
+              <TooltipContent>{hiddenTechnologies.join(", ")}</TooltipContent>
+            </Tooltip>
+          )}
         </div>
       </div>
 
