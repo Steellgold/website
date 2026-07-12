@@ -21,7 +21,7 @@ export const CvFloatingButton: FC = () => {
       rel="noopener noreferrer"
       className={cn(
         "flex items-center justify-center gap-0 h-10 px-2.5 rounded-full",
-        "bg-card hover:bg-accent shadow-lg",
+        "bg-foreground text-background hover:bg-foreground/90 shadow-lg",
         "border border-border transition-all duration-300",
         isExpanded && "gap-2 px-4"
       )}
