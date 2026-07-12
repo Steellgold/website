@@ -1,12 +1,25 @@
 import { GalleryLightbox } from "@/components/gallery-lightbox";
 import { GALLERY_PHOTOS, KITTY, KITTY_FEATURED_PHOTO } from "@/config/gallery";
 import { handwritten } from "@/lib/font";
-import { cn } from "@/lib/utils";
 import { formatLifespan } from "@/lib/pet-age";
+import { cn } from "@/lib/utils";
 import { RiArrowLeftLine } from "@remixicon/react";
+import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { FC } from "react";
+
+export const metadata: Metadata = {
+  title: "Gallery",
+  description: "A little break from code — Gaëtan's cat photo gallery.",
+  alternates: { canonical: "/gallery" },
+  openGraph: {
+    title: "Gallery",
+    description: "A little break from code — Gaëtan's cat photo gallery.",
+    url: "/gallery",
+    type: "website",
+  },
+};
 
 const Page: FC = async () => {
   const t = await getTranslations("gallery");

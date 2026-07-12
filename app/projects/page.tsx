@@ -2,10 +2,25 @@ import { ProjectCard } from "@/components/project-card";
 import { PROJECTS } from "@/config/projects";
 import { piano } from "@/lib/font";
 import { cn } from "@/lib/utils";
+import { RiArrowLeftLine } from "@remixicon/react";
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { RiArrowLeftLine } from "@remixicon/react";
 import { FC } from "react";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "A selection of full-stack projects built with Next.js, React and TypeScript — from open-source SaaS tools to freelance client work.",
+  alternates: { canonical: "/projects" },
+  openGraph: {
+    title: "Projects",
+    description:
+      "A selection of full-stack projects built with Next.js, React and TypeScript.",
+    url: "/projects",
+    type: "website",
+  },
+};
 
 const Page: FC = async () => {
   const t = await getTranslations("projects");
