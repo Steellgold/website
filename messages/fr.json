@@ -50,6 +50,17 @@
   "footer": {
     "madeIn": "Fait en Alsace, France"
   },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "cta": "Retour à l'accueil"
+  },
+  "error": {
+    "title": "Une erreur est survenue",
+    "description": "Une erreur inattendue s'est produite. Vous pouvez réessayer ou retourner à l'accueil.",
+    "retry": "Réessayer",
+    "cta": "Retour à l'accueil"
+  },
   "theme": {
     "dark": "Sombre",
     "light": "Clair"

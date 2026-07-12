@@ -50,6 +50,17 @@
   "footer": {
     "madeIn": "Made in Alsace, France"
   },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved.",
+    "cta": "Back to home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. You can try again or go back to the home page.",
+    "retry": "Try again",
+    "cta": "Back to home"
+  },
   "theme": {
     "dark": "Dark",
     "light": "Light"
