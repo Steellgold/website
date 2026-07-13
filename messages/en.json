@@ -27,7 +27,8 @@
     "categoryActive": "Active / ongoing",
     "categoryFinished": "Finished",
     "featuredBadge": "Flagship project",
-    "awardBadge": "Award-winning"
+    "awardBadge": "Award-winning",
+    "currentlyOn": "Currently on"
   },
   "cv": {
     "title": "Resume",

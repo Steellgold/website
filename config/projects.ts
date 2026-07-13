@@ -15,6 +15,7 @@ export type Project = {
   githubUrl?: string;
   chromeWebStoreUrl?: string;
   npmUrl?: string;
+  workspaceNames?: string[];
   images?: ProjectImage[];
   awards?: string[];
   contributors?: { name: string; url: string }[];
@@ -31,6 +32,7 @@ export const PROJECTS: Project[] = [
     status: "Open-Source",
     category: "active",
     featured: true,
+    workspaceNames: ["simplist", "simplist.blog"],
     timelineDate: "2024",
     githubUrl: "https://github.com/Steellgold/simplist.blog",
     npmUrl: "https://www.npmjs.com/package/@simplist.blog/sdk",
@@ -75,6 +77,7 @@ export const PROJECTS: Project[] = [
     technologies: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Fastify", "Railway", "PostgreSQL", "Zod"],
     status: "Open-Source",
     category: "active",
+    workspaceNames: ["nowly"],
     timelineDate: "2025",
     githubUrl: "https://github.com/nowly-presence/nowly",
     chromeWebStoreUrl: "https://chromewebstore.google.com/detail/nowly/kmnlnfldimgneaopdihplkebobckcjpf",

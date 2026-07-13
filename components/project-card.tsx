@@ -1,16 +1,19 @@
 "use client";
 
+import { useDiscordPresence } from "@/components/discord-presence-provider";
 import { SkillBadge } from "@/components/skill-badge";
 import { Icon_ChromeWebStore, Icon_Npm } from "@/components/tech-icons";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { DISCORD_PRESENCE_APPS, VSCODE_APP_ID } from "@/config/discord-presence";
 import { type Project, type ProjectImage } from "@/config/projects";
+import { getActiveVSCodeWorkspace, projectMatchesWorkspace } from "@/lib/discord-workspace-match";
 import { cn } from "@/lib/utils";
 import { RiArrowLeftSLine, RiArrowRightSLine, RiAwardFill, RiGithubFill } from "@remixicon/react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { FC, MouseEvent, useEffect, useState } from "react";
+import { CSSProperties, FC, MouseEvent, useEffect, useState } from "react";
 
 type ProjectCardProps = {
   project: Project;
@@ -30,6 +33,12 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
   const locale = useLocale() as "en" | "fr";
   const t = useTranslations("projects");
   const hasAward = Boolean(project.awards && project.awards.length > 0);
+  const presence = useDiscordPresence();
+  const activeWorkspace = getActiveVSCodeWorkspace(presence);
+  const isCurrentlyActive = projectMatchesWorkspace(project, activeWorkspace);
+  const vsCodeActivity = presence?.activities.find((a) => a.applicationId === VSCODE_APP_ID) ?? null;
+  const vsCodeEntry = DISCORD_PRESENCE_APPS[VSCODE_APP_ID];
+  const VSCodeIcon = vsCodeEntry.icon;
   const images = project.images ?? [];
   const visibleTechnologies = maxTechnologies ? project.technologies.slice(0, maxTechnologies) : project.technologies;
   const hiddenTechnologies = maxTechnologies ? project.technologies.slice(maxTechnologies) : [];
@@ -61,8 +70,11 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
     <div
       className={cn(
         "group relative flex flex-col overflow-hidden border border-border rounded-lg",
-        previewImage ? "bg-card" : "bg-card/40"
+        previewImage ? "bg-card" : "bg-card/40",
+        isCurrentlyActive && "ring-1",
+        isCurrentlyActive && previewImage && "transition-shadow duration-300 hover:ring-0"
       )}
+      style={isCurrentlyActive ? ({ "--tw-ring-color": `${vsCodeEntry.color}99` } as CSSProperties) : undefined}
     >
       {previewImage && (
         <div
@@ -179,6 +191,21 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
             )}
           </div>
         </div>
+
+        {isCurrentlyActive && (
+          <span
+            className="flex items-center gap-1.5 w-full text-xs border rounded-md px-2 py-0.5 pointer-events-auto"
+            style={{ borderColor: `${vsCodeEntry.color}40` }}
+          >
+            <VSCodeIcon className="w-3 h-3 shrink-0" style={{ color: vsCodeEntry.color }} />
+            <span className="shrink-0">
+              {t("currentlyOn")} {vsCodeEntry.name}
+            </span>
+            {vsCodeActivity?.details && (
+              <span className="text-muted-foreground line-clamp-1 break-all">{vsCodeActivity.details}</span>
+            )}
+          </span>
+        )}
 
         <Link
           href={project.url}

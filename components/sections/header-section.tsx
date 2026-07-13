@@ -1,5 +1,6 @@
 "use client";
 
+import { DiscordPresenceWidget } from "@/components/discord-presence";
 import { SkillBadge } from "@/components/skill-badge";
 import { Social_Malt } from "@/components/social-icons";
 import { CV_URLS } from "@/config/site";
@@ -83,6 +84,8 @@ export const HeaderSection: FC = () => {
           <span>X</span>
         </Link>
       </div>
+
+      <DiscordPresenceWidget />
     </div>
   );
 };

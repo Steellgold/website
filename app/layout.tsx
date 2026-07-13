@@ -1,3 +1,4 @@
+import { DiscordPresenceProvider } from "@/components/discord-presence-provider";
 import { FloatingControls } from "@/components/floating-controls";
 import { Footer } from "@/components/footer";
 import { StructuredData } from "@/components/structured-data";
@@ -73,9 +74,11 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <TooltipProvider>
-              {children}
-              <Footer />
-              <FloatingControls />
+              <DiscordPresenceProvider>
+                {children}
+                <Footer />
+                <FloatingControls />
+              </DiscordPresenceProvider>
             </TooltipProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

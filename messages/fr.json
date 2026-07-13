@@ -27,7 +27,8 @@
     "categoryActive": "Actif / en cours",
     "categoryFinished": "Terminé",
     "featuredBadge": "Projet phare",
-    "awardBadge": "Récompensé"
+    "awardBadge": "Récompensé",
+    "currentlyOn": "Actuellement sur"
   },
   "cv": {
     "title": "CV",
