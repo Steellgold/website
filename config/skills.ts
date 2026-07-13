@@ -10,6 +10,7 @@ import {
   Icon_PHP,
   Icon_PostgreSQL,
   Icon_Prisma,
+  Icon_Railway,
   Icon_React,
   Icon_Redis,
   Icon_shadcnui,
@@ -52,7 +53,8 @@ export type SkillName =
   | "PHP"
   | "Symfony"
   | "Twig"
-  | "Webpack";
+  | "Webpack"
+  | "Railway";
 
 type SkillEntry = {
   icon: FC<SVGProps<SVGSVGElement>>;
@@ -85,6 +87,7 @@ export const SKILLS: Record<SkillName, SkillEntry> = {
   Symfony: { icon: Icon_Symfony, url: "https://symfony.com" },
   Twig: { icon: Icon_Twig, url: "https://twig.symfony.com" },
   Webpack: { icon: Icon_Webpack, url: "https://webpack.js.org" },
+  Railway: { icon: Icon_Railway, url: "https://railway.app" },
 };
 
 export const TECHNOLOGIES_GRID: SkillName[] = [
