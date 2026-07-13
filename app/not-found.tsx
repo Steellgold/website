@@ -15,7 +15,12 @@ const NotFound: FC = async () => {
   const t = await getTranslations("notFound");
 
   return (
-    <main className="flex min-h-[calc(100dvh-6rem)] flex-col items-center justify-center gap-6 px-4 text-center">
+    <main className="relative flex min-h-[calc(100dvh-6rem)] flex-col items-center justify-center gap-6 overflow-hidden px-4 text-center">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/5 blur-3xl"
+      />
+
       <span className={cn("text-8xl sm:text-9xl text-muted-foreground", lastik.className)}>
         404
       </span>
