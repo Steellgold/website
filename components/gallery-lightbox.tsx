@@ -63,6 +63,7 @@ export const GalleryLightbox: FC<GalleryLightboxProps> = ({ featured, featuredLi
           sizes="768px"
           priority
           lifespan={featuredLifespan}
+          grayscale
           onClick={() => setOpenIndex(0)}
         />
       </div>
