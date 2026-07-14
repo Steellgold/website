@@ -5,9 +5,9 @@ import { SkillBadge } from "@/components/skill-badge";
 import { Icon_ChromeWebStore, Icon_Npm } from "@/components/tech-icons";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { DISCORD_PRESENCE_APPS, VSCODE_APP_ID } from "@/config/discord-presence";
+import { DISCORD_PRESENCE_APPS } from "@/config/discord-presence";
 import { type Project, type ProjectImage } from "@/config/projects";
-import { getActiveVSCodeWorkspace, projectMatchesWorkspace } from "@/lib/discord-workspace-match";
+import { getMatchingPresenceActivities } from "@/lib/discord-workspace-match";
 import { cn } from "@/lib/utils";
 import { RiArrowLeftSLine, RiArrowRightSLine, RiAwardFill, RiGithubFill } from "@remixicon/react";
 import { useLocale, useTranslations } from "next-intl";
@@ -29,16 +29,29 @@ const imageAlt = (image: ProjectImage, locale: "en" | "fr"): string | null => {
   return image.alt[locale] ?? image.alt.en;
 };
 
+const formatElapsedShort = (start: number | null | undefined, now: number): string | null => {
+  if (!start) return null;
+
+  const totalMinutes = Math.max(0, Math.floor((now - start) / 60000));
+  if (totalMinutes < 1) return "now";
+  if (totalMinutes < 60) return `${totalMinutes}m`;
+
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  return minutes > 0 ? `${hours}h ${minutes}m` : `${hours}h`;
+};
+
 export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false, maxTechnologies, priorityBanner = false }) => {
   const locale = useLocale() as "en" | "fr";
   const t = useTranslations("projects");
   const hasAward = Boolean(project.awards && project.awards.length > 0);
   const presence = useDiscordPresence();
-  const activeWorkspace = getActiveVSCodeWorkspace(presence);
-  const isCurrentlyActive = projectMatchesWorkspace(project, activeWorkspace);
-  const vsCodeActivity = presence?.activities.find((a) => a.applicationId === VSCODE_APP_ID) ?? null;
-  const vsCodeEntry = DISCORD_PRESENCE_APPS[VSCODE_APP_ID];
-  const VSCodeIcon = vsCodeEntry.icon;
+  const matchingActivities = getMatchingPresenceActivities(presence, project);
+  const isCurrentlyActive = matchingActivities.length > 0;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeActivity = isCurrentlyActive ? matchingActivities[activeIndex % matchingActivities.length] : undefined;
+  const activeEntry = activeActivity ? DISCORD_PRESENCE_APPS[activeActivity.applicationId as string] : null;
+  const [now, setNow] = useState(() => Date.now());
   const images = project.images ?? [];
   const visibleTechnologies = maxTechnologies ? project.technologies.slice(0, maxTechnologies) : project.technologies;
   const hiddenTechnologies = maxTechnologies ? project.technologies.slice(maxTechnologies) : [];
@@ -52,6 +65,22 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
   const close = () => setLightboxIndex(null);
   const stopPropagation = (event: MouseEvent) => event.stopPropagation();
   const openLightbox = () => images.length > 0 && setLightboxIndex(0);
+
+  useEffect(() => {
+    if (!isCurrentlyActive) return;
+
+    const tickInterval = setInterval(() => setNow(Date.now()), 30000);
+    return () => clearInterval(tickInterval);
+  }, [isCurrentlyActive]);
+
+  useEffect(() => {
+    if (matchingActivities.length < 2) return;
+
+    const cycleInterval = setInterval(() => {
+      setActiveIndex((i) => (i + 1) % matchingActivities.length);
+    }, 5000);
+    return () => clearInterval(cycleInterval);
+  }, [matchingActivities.length]);
 
   useEffect(() => {
     if (lightboxIndex === null) return;
@@ -74,7 +103,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
         isCurrentlyActive && "ring-1",
         isCurrentlyActive && previewImage && "transition-shadow duration-300 hover:ring-0"
       )}
-      style={isCurrentlyActive ? ({ "--tw-ring-color": `${vsCodeEntry.color}99` } as CSSProperties) : undefined}
+      style={isCurrentlyActive ? ({ "--tw-ring-color": `${activeEntry!.color}99` } as CSSProperties) : undefined}
     >
       {previewImage && (
         <div
@@ -192,18 +221,32 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
           </div>
         </div>
 
-        {isCurrentlyActive && (
+        {isCurrentlyActive && activeActivity && activeEntry && (
           <span
             className="flex items-center gap-1.5 w-full text-xs border rounded-md px-2 py-0.5 pointer-events-auto"
-            style={{ borderColor: `${vsCodeEntry.color}40` }}
+            style={{ borderColor: `${activeEntry.color}40` }}
           >
-            <VSCodeIcon className="w-3 h-3 shrink-0" style={{ color: vsCodeEntry.color }} />
-            <span className="shrink-0">
-              {t("currentlyOn")} {vsCodeEntry.name}
-            </span>
-            {vsCodeActivity?.details && (
-              <span className="text-muted-foreground line-clamp-1 break-all">{vsCodeActivity.details}</span>
+            <activeEntry.icon className="w-3 h-3 shrink-0" style={{ color: activeEntry.color }} />
+            {activeActivity.details && (
+              <span className="line-clamp-1 break-all">{activeActivity.details}</span>
             )}
+            <span className="flex items-center gap-1.5 shrink-0 ml-auto">
+              {formatElapsedShort(activeActivity.timestamps?.start, now) && (
+                <span className="text-muted-foreground shrink-0">
+                  {formatElapsedShort(activeActivity.timestamps?.start, now)}
+                </span>
+              )}
+              {matchingActivities.length > 1 && (
+                <span className="flex items-center gap-0.5 shrink-0">
+                  {matchingActivities.map((activity, index) => (
+                    <span
+                      key={activity.applicationId}
+                      className={cn("w-1 h-1 rounded-full", index === activeIndex % matchingActivities.length ? "bg-foreground" : "bg-muted-foreground/30")}
+                    />
+                  ))}
+                </span>
+              )}
+            </span>
           </span>
         )}
 
