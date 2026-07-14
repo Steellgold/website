@@ -1,17 +1,20 @@
-import { VSCODE_APP_ID } from "@/config/discord-presence"
+import { DISCORD_PRESENCE_APPS } from "@/config/discord-presence"
 import type { Project } from "@/config/projects"
-import type { DiscordPresence } from "@/type/discord"
+import type { DiscordActivity, DiscordPresence } from "@/type/discord"
 
-export const getActiveVSCodeWorkspace = (presence: DiscordPresence | null): string | null => {
-  const activity = presence?.activities.find((a) => a.applicationId === VSCODE_APP_ID)
-  if (!activity?.state) return null
+export const getMatchingPresenceActivities = (
+  presence: DiscordPresence | null,
+  project: Project
+): DiscordActivity[] => {
+  if (!presence || !project.workspaceNames || project.workspaceNames.length === 0) return []
 
-  return activity.state.replace(/^Workspace:\s*/i, "").trim()
-}
+  const normalizedNames = project.workspaceNames.map((name) => name.toLowerCase())
 
-export const projectMatchesWorkspace = (project: Project, workspace: string | null): boolean => {
-  if (!workspace || !project.workspaceNames || project.workspaceNames.length === 0) return false
+  return presence.activities.filter((activity) => {
+    const entry = activity.applicationId ? DISCORD_PRESENCE_APPS[activity.applicationId] : undefined
+    if (!entry) return false
 
-  const normalizedWorkspace = workspace.toLowerCase()
-  return project.workspaceNames.some((name) => name.toLowerCase() === normalizedWorkspace)
+    const matchKey = entry.extractMatchKey(activity)
+    return matchKey !== null && normalizedNames.includes(matchKey.toLowerCase())
+  })
 }
