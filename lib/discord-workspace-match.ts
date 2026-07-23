@@ -1,4 +1,4 @@
-import { DISCORD_PRESENCE_APPS } from "@/config/discord-presence"
+import { getPresenceAppEntry } from "@/config/discord-presence"
 import type { Project } from "@/config/projects"
 import type { DiscordActivity, DiscordPresence } from "@/type/discord"
 
@@ -11,7 +11,7 @@ export const getMatchingPresenceActivities = (
   const normalizedNames = project.workspaceNames.map((name) => name.toLowerCase())
 
   return presence.activities.filter((activity) => {
-    const entry = activity.applicationId ? DISCORD_PRESENCE_APPS[activity.applicationId] : undefined
+    const entry = getPresenceAppEntry(activity)
     if (!entry) return false
 
     const matchKey = entry.extractMatchKey(activity)

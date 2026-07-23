@@ -10,20 +10,21 @@ export type DiscordPresenceAppEntry = {
   extractMatchKey: (activity: DiscordActivity) => string | null
 }
 
-export const VSCODE_APP_ID = "383226320970055681"
-export const FIGMA_APP_ID = "1510223984392671302"
-
+/** Keyed by `activity.name` (lowercased), not `applicationId` — the presence bridge reuses the same applicationId across unrelated activities. */
 export const DISCORD_PRESENCE_APPS: Record<string, DiscordPresenceAppEntry> = {
-  [VSCODE_APP_ID]: {
+  "visual studio code": {
     name: "VS Code",
     color: "#007ACC",
     icon: Icon_VSCode,
     extractMatchKey: (activity) => activity.state?.replace(/^Workspace:\s*/i, "").trim() || null,
   },
-  [FIGMA_APP_ID]: {
+  figma: {
     name: "Figma",
     color: "#a357ff",
     icon: Icon_Figma,
     extractMatchKey: (activity) => activity.state?.trim() || null,
   },
 }
+
+export const getPresenceAppEntry = (activity: Pick<DiscordActivity, "name">): DiscordPresenceAppEntry | undefined =>
+  DISCORD_PRESENCE_APPS[activity.name.toLowerCase()]

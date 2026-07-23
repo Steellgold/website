@@ -5,7 +5,7 @@ import { SkillBadge } from "@/components/skill-badge";
 import { Icon_ChromeWebStore, Icon_Npm } from "@/components/tech-icons";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { DISCORD_PRESENCE_APPS } from "@/config/discord-presence";
+import { getPresenceAppEntry } from "@/config/discord-presence";
 import { type Project, type ProjectImage } from "@/config/projects";
 import { getMatchingPresenceActivities } from "@/lib/discord-workspace-match";
 import { cn } from "@/lib/utils";
@@ -50,7 +50,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
   const isCurrentlyActive = matchingActivities.length > 0;
   const [activeIndex, setActiveIndex] = useState(0);
   const activeActivity = isCurrentlyActive ? matchingActivities[activeIndex % matchingActivities.length] : undefined;
-  const activeEntry = activeActivity ? DISCORD_PRESENCE_APPS[activeActivity.applicationId as string] : null;
+  const activeEntry = activeActivity ? getPresenceAppEntry(activeActivity) ?? null : null;
   const [now, setNow] = useState(() => Date.now());
   const images = project.images ?? [];
   const visibleTechnologies = maxTechnologies ? project.technologies.slice(0, maxTechnologies) : project.technologies;
@@ -240,7 +240,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project, showBanner = false,
                 <span className="flex items-center gap-0.5 shrink-0">
                   {matchingActivities.map((activity, index) => (
                     <span
-                      key={activity.applicationId}
+                      key={`${activity.name}-${index}`}
                       className={cn("w-1 h-1 rounded-full", index === activeIndex % matchingActivities.length ? "bg-foreground" : "bg-muted-foreground/30")}
                     />
                   ))}

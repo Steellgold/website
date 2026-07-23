@@ -1,7 +1,7 @@
 "use client"
 
 import { useDiscordPresence } from "@/components/discord-presence-provider"
-import { DISCORD_PRESENCE_APPS } from "@/config/discord-presence"
+import { getPresenceAppEntry } from "@/config/discord-presence"
 import { cn } from "@/lib/utils"
 import type { DiscordActivity } from "@/type/discord"
 import { FC, useEffect, useState } from "react"
@@ -29,8 +29,7 @@ export const DiscordPresenceWidget: FC = () => {
   }, [])
 
   const activities = (presence?.activities ?? []).filter(
-    (activity: DiscordActivity): boolean =>
-      activity.applicationId !== null && activity.applicationId in DISCORD_PRESENCE_APPS
+    (activity: DiscordActivity): boolean => getPresenceAppEntry(activity) !== undefined
   )
 
   if (activities.length === 0) return null
@@ -38,13 +37,13 @@ export const DiscordPresenceWidget: FC = () => {
   return (
     <div className="flex flex-row flex-wrap gap-2">
       {activities.map((activity) => {
-        const entry = DISCORD_PRESENCE_APPS[activity.applicationId as string]
+        const entry = getPresenceAppEntry(activity)!
         const Icon = entry.icon
         const elapsed = formatElapsed(activity.timestamps?.start ?? null, now)
 
         return (
           <span
-            key={activity.applicationId}
+            key={activity.name}
             title={elapsed}
             className={cn(
               "inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md",
