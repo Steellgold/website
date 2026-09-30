@@ -65,5 +65,25 @@
   },
   "language": {
     "switch": "Changer de langue"
+  },
+  "ftrv": {
+    "title": "Salon France Travail",
+    "subtitle": "Forum des métiers du Numérique",
+    "date": "2 octobre 2026",
+    "portfolio": {
+      "title": "Voir mon portfolio",
+      "description": "Découvrez mes projets, les technologies que j’utilise et mon expérience."
+    },
+    "resume": {
+      "title": "Voir mon CV",
+      "description": "Consultez mon parcours, mes compétences et mes expériences professionnelles."
+    },
+    "qr": {
+      "label": "QR Code",
+      "ariaLabel": "Afficher le QR code",
+      "title": "Scannez pour découvrir mon profil",
+      "description": "Portfolio et CV — Salon France Travail",
+      "alt": "QR code vers gaetanhus.fr/ftrv-2oct"
+    }
   }
 }

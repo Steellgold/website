@@ -65,5 +65,25 @@
   },
   "language": {
     "switch": "Switch language"
+  },
+  "ftrv": {
+    "title": "France Travail Job Fair",
+    "subtitle": "Digital Careers Forum",
+    "date": "October 2, 2026",
+    "portfolio": {
+      "title": "View my portfolio",
+      "description": "Explore my projects, the technologies I use, and my experience."
+    },
+    "resume": {
+      "title": "View my resume",
+      "description": "Explore my background, skills, and professional experience."
+    },
+    "qr": {
+      "label": "QR Code",
+      "ariaLabel": "Show QR code",
+      "title": "Scan to explore my profile",
+      "description": "Portfolio and resume — France Travail Job Fair",
+      "alt": "QR code linking to gaetanhus.fr/ftrv-2oct"
+    }
   }
 }
