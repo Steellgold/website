@@ -1,4 +1,3 @@
-import { Caveat } from "next/font/google";
 import localFont from "next/font/local";
 
 export const lastik = localFont({
@@ -9,8 +8,9 @@ export const lastik = localFont({
   display: "swap",
 });
 
-export const handwritten = Caveat({
-  weight: ["600", "700"],
-  subsets: ["latin"],
+export const handwritten = localFont({
+  src: "./fonts/caveat-latin.woff2",
+  weight: "400 700",
+  style: "normal",
   variable: "--font-handwritten",
 });
