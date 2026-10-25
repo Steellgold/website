@@ -39,6 +39,6 @@ export const TWITTER_HANDLE = "@Steellgold"
 export const CONTACT_EMAIL = "me@gaetanhus.fr"
 
 export const CV_URLS = {
-  fr: "https://cdn.gaetanhus.fr/resume.pdf",
+  fr: "https://cdn.gaetanhus.fr/resume.pdf?v=20260930",
   en: "https://cdn.gaetanhus.fr/english_resume.pdf",
 } as const
