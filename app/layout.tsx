@@ -85,7 +85,7 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
         </NextIntlClientProvider>
         <Script
           defer
-          src="https://umami.nowly.me/script.js"
+          src="https://stats.nowly.me/script.js"
           data-website-id="5163f1f1-7785-4e3c-a5fe-ade98df0976b"
           strategy="afterInteractive"
         />
