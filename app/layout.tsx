@@ -11,6 +11,7 @@ import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { FC, PropsWithChildren } from "react";
 import "./globals.css";
 
@@ -82,6 +83,12 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
             </TooltipProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
+        <Script
+          defer
+          src="https://umami.nowly.me/script.js"
+          data-website-id="5163f1f1-7785-4e3c-a5fe-ade98df0976b"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
