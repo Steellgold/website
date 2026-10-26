@@ -89,6 +89,12 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
           data-website-id="5163f1f1-7785-4e3c-a5fe-ade98df0976b"
           strategy="afterInteractive"
         />
+        <Script
+          defer
+          src="https://stats.nowly.me/recorder.js"
+          data-website-id="5163f1f1-7785-4e3c-a5fe-ade98df0976b"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
