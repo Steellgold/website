@@ -45,7 +45,31 @@
     "cta": "View gallery"
   },
   "footer": {
-    "madeIn": "Made in Alsace, France"
+    "madeIn": "Made in Alsace, France",
+    "legalNotice": "Legal notice"
+  },
+  "legal": {
+    "title": "Legal notice",
+    "description": "Legal information and privacy details for Gaëtan Huszovits’s personal website.",
+    "publisherTitle": "Website publisher",
+    "publisher": "This personal website is published by Gaëtan Huszovits, a private individual who is also its publication director. It presents his background, projects and publications.",
+    "contact": "Contact:",
+    "hostingTitle": "Hosting",
+    "hosting": "This website is hosted by Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, United States.",
+    "hostingPhone": "Contact phone number published by Vercel:",
+    "hostingPrivacy": "Vercel’s privacy notice",
+    "intellectualPropertyTitle": "Intellectual property",
+    "intellectualProperty": "Unless otherwise stated, the texts, photographs and personal creations published on this website belong to Gaëtan Huszovits. Reuse requires his permission, subject to statutory exceptions. Third-party trademarks, logos and content remain the property of their respective owners. The source code is governed by the licence specified in its repository.",
+    "privacyTitle": "Personal data",
+    "privacy": "Gaëtan Huszovits is your contact for data processing related to this website. If you contact him by email, your address and the information you provide are used to handle your request and follow up on the conversation. The hosting provider may also process technical connection data, including IP addresses, to operate and secure the website. As Vercel is based in the United States, this processing may involve transfers outside the European Union; its privacy notice describes the applicable safeguards.",
+    "analyticsTitle": "Analytics and preferences",
+    "analytics": "This website uses Umami, a self-hosted analytics solution operated by Gaëtan Huszovits at stats.nowly.me. Statistics are anonymous and IP addresses are not stored by this tool. They help understand website traffic, including pages visited, referral sources, and browser and device types. The website also loads a session recording script to analyse browsing interactions.",
+    "preferences": "The website uses browser local storage to remember your display theme.",
+    "rightsTitle": "Your rights",
+    "rights": "Depending on the processing and the conditions set out in the GDPR, you may request access to, rectification or deletion of your data, restriction of processing, object to processing or exercise your right to data portability. To exercise your rights or ask a privacy question, write to the address below. You may also lodge a complaint with the French data protection authority, the CNIL.",
+    "cnil": "CNIL website",
+    "linksTitle": "External links and availability",
+    "links": "This website may link to third-party websites whose publishers are responsible for their content and privacy practices. Despite the care taken with published information, errors or interruptions may occur. You can report an error or problematic content using the contact address above."
   },
   "notFound": {
     "title": "Page not found",

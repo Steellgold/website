@@ -10,6 +10,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     { url: SITE_URL, lastModified, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/projects`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/gallery`, lastModified, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_URL}/legal-notice`, lastModified, changeFrequency: "yearly", priority: 0.2 },
     ...articles.map((article) => ({
       url: `${SITE_URL}/posts/${article.slug}`,
       lastModified: new Date(article.createdAt),

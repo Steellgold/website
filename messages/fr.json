@@ -45,7 +45,31 @@
     "cta": "Voir la galerie"
   },
   "footer": {
-    "madeIn": "Fait en Alsace, France"
+    "madeIn": "Fait en Alsace, France",
+    "legalNotice": "Mentions légales"
+  },
+  "legal": {
+    "title": "Mentions légales",
+    "description": "Informations légales et confidentialité du site personnel de Gaëtan Huszovits.",
+    "publisherTitle": "Éditeur du site",
+    "publisher": "Ce site personnel est édité par Gaëtan Huszovits, particulier, également directeur de la publication. Il présente son parcours, ses projets et ses publications.",
+    "contact": "Contact :",
+    "hostingTitle": "Hébergement",
+    "hosting": "Le site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.",
+    "hostingPhone": "Téléphone de contact publié par Vercel :",
+    "hostingPrivacy": "Politique de confidentialité de Vercel",
+    "intellectualPropertyTitle": "Propriété intellectuelle",
+    "intellectualProperty": "Sauf mention contraire, les textes, photographies et créations personnelles publiés sur ce site appartiennent à Gaëtan Huszovits. Leur réutilisation est soumise à son autorisation, sous réserve des exceptions prévues par la loi. Les marques, logos et contenus de tiers restent la propriété de leurs titulaires respectifs. Le code source est régi par la licence indiquée dans son dépôt.",
+    "privacyTitle": "Données personnelles",
+    "privacy": "Gaëtan Huszovits est votre interlocuteur pour les traitements de données liés à ce site. Si vous le contactez par courriel, votre adresse et les informations transmises servent à traiter votre demande et à assurer le suivi de l’échange. L’hébergeur peut également traiter des données techniques de connexion, notamment l’adresse IP, pour assurer le fonctionnement et la sécurité du site. Vercel étant établi aux États-Unis, ces traitements peuvent impliquer des transferts hors de l’Union européenne ; sa politique de confidentialité présente les garanties applicables.",
+    "analyticsTitle": "Mesure d’audience et préférences",
+    "analytics": "Ce site utilise Umami, une solution de mesure d’audience auto-hébergée et administrée par Gaëtan Huszovits sur stats.nowly.me. Les statistiques sont anonymes et les adresses IP ne sont pas stockées par cet outil. Elles permettent de comprendre la fréquentation du site, notamment les pages consultées, la provenance des visites et les types de navigateurs et d’appareils utilisés. Le site charge également un script d’enregistrement de session pour analyser les interactions de navigation.",
+    "preferences": "Le site utilise le stockage local du navigateur pour mémoriser le thème d’affichage.",
+    "rightsTitle": "Vos droits",
+    "rights": "Selon les traitements et les conditions prévues par le RGPD, vous pouvez demander l’accès, la rectification ou l’effacement de vos données, ainsi que la limitation du traitement, vous y opposer ou exercer votre droit à la portabilité. Pour exercer vos droits ou poser une question sur la confidentialité, écrivez à l’adresse ci-dessous. Vous pouvez également adresser une réclamation à la CNIL.",
+    "cnil": "Site de la CNIL",
+    "linksTitle": "Liens externes et disponibilité",
+    "links": "Ce site peut proposer des liens vers des sites tiers, dont les contenus et les pratiques de confidentialité relèvent de leurs éditeurs. Malgré le soin apporté aux informations publiées, des erreurs ou des interruptions peuvent survenir. Vous pouvez signaler une erreur ou un contenu problématique à l’adresse de contact ci-dessus."
   },
   "notFound": {
     "title": "Page introuvable",
