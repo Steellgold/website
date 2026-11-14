@@ -25,10 +25,10 @@ export const PROJECTS: Project[] = [
   {
     name: "Simplist",
     description: {
-      en: "A blog platform with content management, allowing users to publish articles and access them via API.",
-      fr: "Une plateforme de blog avec gestion de contenu, permettant aux utilisateurs de publier des articles et d'y accéder via une API.",
+      en: "An open-source headless blog platform: write and translate posts, publish them on a hosted blog or read them through the REST API, the TypeScript SDK or MCP, with built-in analytics.",
+      fr: "Une plateforme de blog headless open-source : rédigez et traduisez vos articles, publiez-les sur un blog hébergé ou lisez-les via l'API REST, le SDK TypeScript ou MCP, avec des analytics intégrés.",
     },
-    technologies: ["React", "Next.js", "Turborepo", "Tailwind CSS", "shadcn/ui", "AWS", "Vercel", "Fastify", "Railway", "TypeScript", "Upstash", "Stripe", "Better Auth"],
+    technologies: ["React", "Next.js", "Tailwind CSS", "shadcn/ui", "AWS", "Vercel", "Railway", "TypeScript", "PostgreSQL", "Drizzle ORM", "Zod", "Upstash", "Stripe", "Better Auth"],
     status: "Open-Source",
     category: "active",
     featured: true,
