@@ -12,8 +12,8 @@ importers:
         specifier: ^4.9.0
         version: 4.9.0(react@19.2.7)
       '@simplist.blog/sdk':
-        specifier: ^0.0.12
-        version: 0.0.12
+        specifier: ^1.0.0
+        version: 1.0.0
       '@tailwindcss/typography':
         specifier: ^0.5.20
         version: 0.5.20(tailwindcss@4.3.3)
@@ -1404,8 +1404,8 @@ packages:
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
 
-  '@simplist.blog/sdk@0.0.12':
-    resolution: {integrity: sha512-izGy1tEZlpfvBHPhbkuQjH4uh7whhRQQn4mqHNirzoK7CWlDgJuzAqIjQxp+yrTn2LTc63deCYPcYHYZwmbY+Q==}
+  '@simplist.blog/sdk@1.0.0':
+    resolution: {integrity: sha512-EdSct7fwRLC6DZqKw/kd2jV22zPkQCQ2DwGjgBOWNTNhFsPo/BLzFPGA18/2LPGk8hP6OoaR9UJJxJe1vzIFAg==}
     engines: {node: '>=18'}
 
   '@sindresorhus/merge-streams@4.0.0':
@@ -5671,7 +5671,7 @@ snapshots:
 
   '@sec-ant/readable-stream@0.4.1': {}
 
-  '@simplist.blog/sdk@0.0.12': {}
+  '@simplist.blog/sdk@1.0.0': {}
 
   '@sindresorhus/merge-streams@4.0.0': {}
 

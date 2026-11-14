@@ -19,7 +19,8 @@ export const BlogSection: FC = async () => {
 
       <div className="flex flex-col">
         {articles.map((article, index) => {
-          const title = locale === "fr" && article.variants?.fr?.title ? article.variants.fr.title : article.title;
+          const translation = article.translations.find((item) => item.language === locale);
+          const title = translation?.title ?? article.title;
 
           return (
             <Link
@@ -33,7 +34,7 @@ export const BlogSection: FC = async () => {
             >
               <span>{title}</span>
               <span className="text-sm text-muted-foreground whitespace-nowrap">
-                {format(new Date(article.createdAt), "MMM d, yyyy")}
+                {format(new Date(article.publishedAt ?? article.createdAt), "MMM d, yyyy")}
               </span>
             </Link>
           );

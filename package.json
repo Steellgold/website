@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@remixicon/react": "^4.9.0",
-    "@simplist.blog/sdk": "^0.0.12",
+    "@simplist.blog/sdk": "^1.0.0",
     "@tailwindcss/typography": "^0.5.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

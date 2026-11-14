@@ -23,14 +23,14 @@ export const generateMetadata = async ({ params }: PageProps): Promise<Metadata>
 
   return {
     title: article.title,
-    description: article.excerpt ?? undefined,
+    description: article.description || undefined,
     alternates: { canonical: `/posts/${slug}` },
     openGraph: {
       title: article.title,
-      description: article.excerpt ?? undefined,
+      description: article.description || undefined,
       url: `/posts/${slug}`,
       type: "article",
-      images: article.coverImage ? [article.coverImage] : undefined,
+      images: article.thumbnail ? [article.thumbnail] : undefined,
     },
   };
 };
@@ -42,10 +42,12 @@ const Page: FC<PageProps> = async ({ params }) => {
 
   if (!article) notFound();
 
-  const variant = locale === "fr" ? article.variants?.fr : undefined;
-  const title = variant?.title ?? article.title;
-  const content = variant?.content ?? article.content;
-  const coverImage = variant?.coverImage ?? article.coverImage;
+  const translation = article.translations.find((item) => item.language === locale);
+  const title = translation?.title ?? article.title;
+  const content = translation?.content ?? article.content;
+  const coverImage = article.thumbnail;
+  const wordCount = content.trim().split(/s+/).filter(Boolean).length;
+  const readTimeMinutes = Math.max(1, Math.round(wordCount / 200));
 
   return (
     <main className="max-w-2xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
@@ -62,22 +64,18 @@ const Page: FC<PageProps> = async ({ params }) => {
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mb-10">
         <span className="flex items-center gap-1">
           <RiCalendarLine className="w-3.5 h-3.5" />
-          {format(new Date(article.createdAt), "MMM d, yyyy")}
+          {format(new Date(article.publishedAt ?? article.createdAt), "MMM d, yyyy")}
         </span>
 
-        {article.readTimeMinutes ? (
-          <span className="flex items-center gap-1">
-            <RiTimerLine className="w-3.5 h-3.5" />
-            ~{article.readTimeMinutes} min
-          </span>
-        ) : null}
+        <span className="flex items-center gap-1">
+          <RiTimerLine className="w-3.5 h-3.5" />
+          ~{readTimeMinutes} min
+        </span>
 
-        {article.wordCount ? (
-          <span className="flex items-center gap-1">
-            <RiText className="w-3.5 h-3.5" />
-            {article.wordCount.toLocaleString()}
-          </span>
-        ) : null}
+        <span className="flex items-center gap-1">
+          <RiText className="w-3.5 h-3.5" />
+          {wordCount.toLocaleString()}
+        </span>
       </div>
 
       <MarkdownContent content={content} />
