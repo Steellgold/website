@@ -6,3 +6,6 @@ allowBuilds:
   msw: false
   '@parcel/watcher': true
   '@swc/core': true
+
+minimumReleaseAgeExclude:
+  - '@simplist.blog/sdk@1.0.0'

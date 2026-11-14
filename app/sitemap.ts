@@ -13,7 +13,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
     { url: `${SITE_URL}/legal-notice`, lastModified, changeFrequency: "yearly", priority: 0.2 },
     ...articles.map((article) => ({
       url: `${SITE_URL}/posts/${article.slug}`,
-      lastModified: new Date(article.createdAt),
+      lastModified: new Date(article.updatedAt),
       changeFrequency: "yearly" as const,
       priority: 0.6,
     })),
